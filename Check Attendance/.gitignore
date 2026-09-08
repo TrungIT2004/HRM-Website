@@ -1,0 +1,35 @@
+﻿# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+
+# Sensitive Database config
+src/db_config.py
+db_config.py
+!src/db_config.py.example
+!db_config.py.example
+
+# Biometric face images & embeddings (Dữ liệu nhận diện nhân viên)
+faces/*
+!faces/.gitkeep
+src/faces/*
+!src/faces/.gitkeep
+embeddings/*
+!embeddings/.gitkeep
+
+# Uploads & Logs
+uploads/
+logs/
+*.log
+
+# Personal/Office Documents
+*.docx
+*.xlsx
+*.pptx
+*.pdf

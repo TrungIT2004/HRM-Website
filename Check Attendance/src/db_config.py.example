@@ -1,0 +1,6 @@
+﻿DB_CONFIG = {
+    "host": "localhost",
+    "database": "social_app",
+    "user": "postgres",
+    "password": "YOUR_POSTGRESQL_PASSWORD"
+}
