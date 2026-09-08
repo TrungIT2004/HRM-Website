@@ -1,0 +1,116 @@
+﻿# ==========================================
+# 1. BẢO MẬT & THÔNG TIN NHẠY CẢM (QUAN TRỌNG)
+# ==========================================
+# File cấu hình Spring Boot chứa mật khẩu DB, Gmail, JWT
+**/application.properties
+**/application-*.properties
+!**/application.properties.example
+
+# File môi trường
+.env
+.env*.local
+*.env
+
+# File cấu hình Database Python chứa mật khẩu DB
+**/db_config.py
+!**/db_config.py.example
+
+# Dữ liệu ảnh khuôn mặt & embedding nhân viên (Bảo mật sinh trắc học)
+**/faces/*
+!**/faces/.gitkeep
+**/embeddings/*
+!**/embeddings/.gitkeep
+
+# ==========================================
+# 2. RUNTIME & DỮ LIỆU UPLOAD & LOGS
+# ==========================================
+# Dữ liệu media upload của người dùng
+uploads/
+**/uploads/**
+
+# File Logs
+logs/
+**/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Tài liệu văn phòng cá nhân / báo cáo thực tập (Word, Excel, PowerPoint)
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+
+# ==========================================
+# 3. FRONTEND (Next.js / Node.js / React)
+# ==========================================
+node_modules/
+**/node_modules/
+.next/
+**/.next/
+out/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# ==========================================
+# 4. BACKEND (Java / Spring Boot / Maven)
+# ==========================================
+target/
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/wrapper/maven-wrapper.jar
+
+# ==========================================
+# 5. PYTHON (Môi trường ảo & Cache)
+# ==========================================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.class
+venv/
+**/venv/**
+.venv/
+**/.venv/**
+env/
+**/env/**
+ENV/
+
+# ==========================================
+# 6. IDEs & HỆ ĐIỀU HÀNH
+# ==========================================
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# NetBeans
+nbproject/private/
+build/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/*
+!.vscode/launch.json
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
