@@ -6,10 +6,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "SocialAppApplication",
+      "name": "HrmApplication",
       "request": "launch",
-      "mainClass": "com.minhtrung.social_app.SocialAppApplication",
-      "projectName": "social-app"
+      "mainClass": "com.minhtrung.hrm.HrmApplication",
+      "projectName": "hrm"
     },
     {
       "name": "Dart & Flutter",
