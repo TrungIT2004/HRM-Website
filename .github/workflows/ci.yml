@@ -55,6 +55,13 @@ jobs:
         working-directory: backend
         run: chmod +x mvnw
 
+      - name: Prepare application.properties for CI
+        working-directory: backend
+        run: |
+          cp src/main/resources/application.properties.example src/main/resources/application.properties
+          sed -i 's/YOUR_POSTGRESQL_PASSWORD/password123/g' src/main/resources/application.properties
+          mkdir -p logs uploads
+
       - name: Run Backend Tests
         working-directory: backend
         env:
