@@ -151,6 +151,9 @@ public class GlobalExceptionHandler {
             case UNAUTHORIZED_ACTION:
                 return HttpStatus.FORBIDDEN;
             case TIMESHEET_ALREADY_LOCKED:
+            case WORK_SHIFT_DAILY_HOURS_EXCEEDED:
+            case WORK_SHIFT_WEEKLY_HOURS_EXCEEDED:
+            case WORK_SHIFT_INVALID_TIME:
                 return HttpStatus.BAD_REQUEST;
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;

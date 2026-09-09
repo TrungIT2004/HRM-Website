@@ -22,8 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.minhtrung.hrm.auth.dtos.requests.ChangePasswordRequest;
 
 
 @RestController
@@ -236,6 +239,32 @@ public class AuthController {
             return ResponseEntity.ok()
                 .header("Set-Cookie", refreshCookie.toString())
                 .body(Map.of("message", "Logged out"));
+        }
+    }
+
+    @PutMapping("/change-password")
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePasswordRequest request) {
+        RequestContext ctx = RequestContextHolder.get();
+        if (ctx == null || ctx.getTokenPayload() == null) {
+            return ResponseEntity.status(401).body(Map.of("message", "Yêu cầu đăng nhập trước khi đổi mật khẩu"));
+        }
+
+        UUID userId = ctx.getTokenPayload().getUserId();
+        try {
+            authService.changePassword(userId, request);
+            return ResponseEntity.ok(Map.of("message", "Đổi mật khẩu thành công"));
+        } catch (AuthenticationException ex) {
+            return ResponseEntity.status(400).body(Map.of(
+                "errorCode", ex.getCode().toString(),
+                "message", ex.getMessage()
+            ));
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(400).body(Map.of(
+                "message", ex.getMessage()
+            ));
+        } catch (Exception ex) {
+            log.error("Lỗi khi đổi mật khẩu cho user: {}", userId, ex);
+            return ResponseEntity.status(500).body(Map.of("message", "Lỗi máy chủ nội bộ khi đổi mật khẩu"));
         }
     }
 }

@@ -47,7 +47,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         "/api/overtime",
         "/api/employees",
                         
-        "/api/payrolls"
+        "/api/payrolls",
+        "/api/dashboard",
+        "/api/work-shifts",
+        "/auth/change-password"
     );
 
     JwtAuthFilter(JwtService jwtService, ClientInfoService clientInfoService,
