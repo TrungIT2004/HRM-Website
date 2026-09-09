@@ -12,7 +12,9 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.management.RuntimeErrorException;
 
@@ -128,8 +130,15 @@ public class AttendanceService {
 
     public void clockOut(Attendance usersTodayAttendance, LocalTime attendancesClockInTime, WorkShift usersWorkShift) {
         LocalTime clockOutTime = LocalTime.now();
-        LocalTime startTime = usersWorkShift.getStartTime();
-        LocalTime endTime = usersWorkShift.getEndTime();
+        LocalDate workDate = usersTodayAttendance.getWorkDate() != null ? usersTodayAttendance.getWorkDate() : LocalDate.now();
+        int dayNumber = workDate.getDayOfWeek().getValue();
+
+        Optional<WorkShiftSchedule> scheduleOpt = (usersWorkShift != null && usersWorkShift.getShiftId() != null)
+                ? workShiftScheduleRepository.findByWorkShift_ShiftIdAndDayOfWeek(usersWorkShift.getShiftId(), dayNumber)
+                : Optional.empty();
+
+        LocalTime startTime = scheduleOpt.map(WorkShiftSchedule::getStartTime).orElse(LocalTime.of(8, 0));
+        LocalTime endTime = scheduleOpt.map(WorkShiftSchedule::getEndTime).orElse(LocalTime.of(17, 30));
 
         boolean sufficientWorkShift = attendancesClockInTime.compareTo(startTime) <= 0 && clockOutTime.compareTo(endTime) >= 0;
         boolean lateWorkShift = attendancesClockInTime.compareTo(startTime) > 0 && clockOutTime.compareTo(endTime) >= 0;
@@ -138,7 +147,6 @@ public class AttendanceService {
 
         usersTodayAttendance.setClockOutTime(clockOutTime);
 
-        LocalDate workDate = usersTodayAttendance.getWorkDate();
         UUID userId = usersTodayAttendance.getUserId();
 
         if (sufficientWorkShift) {
@@ -555,6 +563,12 @@ public class AttendanceService {
                 standardWorkingDays = 22; // Mặc định 22 ngày nếu chưa gán ca
             }
 
+            // Bản đồ lịch trình tuần của ca (nếu có)
+            Map<Integer, WorkShiftSchedule> userSchedules = (shift != null && shift.getShiftId() != null)
+                    ? workShiftScheduleRepository.findByWorkShift_ShiftId(shift.getShiftId()).stream()
+                            .collect(Collectors.toMap(WorkShiftSchedule::getDayOfWeek, s -> s, (s1, s2) -> s1))
+                    : Collections.emptyMap();
+
             // 2. Tổng hợp chấm công thực tế
             List<Attendance> attendances = attendanceRepository.findByUserIdAndDateRange(user.getUserId(), startOfMonth, endOfMonth);
             BigDecimal actualWorkedDays = BigDecimal.ZERO;
@@ -568,6 +582,13 @@ public class AttendanceService {
                 AttendanceStatus status = att.getStatus();
                 if (status == null) continue;
 
+                WorkShiftSchedule daySchedule = att.getWorkDate() != null
+                        ? userSchedules.get(att.getWorkDate().getDayOfWeek().getValue())
+                        : null;
+                LocalTime shiftStartTime = (daySchedule != null) ? daySchedule.getStartTime() : null;
+                LocalTime shiftRestStart = (daySchedule != null) ? daySchedule.getRestStartTime() : null;
+                LocalTime shiftRestEnd = (daySchedule != null) ? daySchedule.getRestEndTime() : null;
+
                 switch (status) {
                     case SUFFICIENT:
                     case BUSINESS_TRIP:
@@ -577,9 +598,9 @@ public class AttendanceService {
                     case LATE:
                         actualWorkedDays = actualWorkedDays.add(BigDecimal.ONE);
                         lateCount++;
-                        if (att.getClockInTime() != null && shift != null && shift.getStartTime() != null) {
-                            if (att.getClockInTime().isAfter(shift.getStartTime())) {
-                                totalLateMinutes += (int) Duration.between(shift.getStartTime(), att.getClockInTime()).toMinutes();
+                        if (att.getClockInTime() != null && shiftStartTime != null) {
+                            if (att.getClockInTime().isAfter(shiftStartTime)) {
+                                totalLateMinutes += (int) Duration.between(shiftStartTime, att.getClockInTime()).toMinutes();
                             }
                         }
                         break;
@@ -591,9 +612,9 @@ public class AttendanceService {
                         actualWorkedDays = actualWorkedDays.add(BigDecimal.ONE);
                         lateCount++;
                         earlyDepartureCount++;
-                        if (att.getClockInTime() != null && shift != null && shift.getStartTime() != null) {
-                            if (att.getClockInTime().isAfter(shift.getStartTime())) {
-                                totalLateMinutes += (int) Duration.between(shift.getStartTime(), att.getClockInTime()).toMinutes();
+                        if (att.getClockInTime() != null && shiftStartTime != null) {
+                            if (att.getClockInTime().isAfter(shiftStartTime)) {
+                                totalLateMinutes += (int) Duration.between(shiftStartTime, att.getClockInTime()).toMinutes();
                             }
                         }
                         break;
@@ -611,9 +632,9 @@ public class AttendanceService {
                 // Tính giờ làm thực tế
                 if (att.getClockInTime() != null && att.getClockOutTime() != null) {
                     long minutes = Duration.between(att.getClockInTime(), att.getClockOutTime()).toMinutes();
-                    if (shift != null && shift.getRestStartTime() != null && shift.getRestEndTime() != null) {
-                        if (!att.getClockInTime().isAfter(shift.getRestStartTime()) && !att.getClockOutTime().isBefore(shift.getRestEndTime())) {
-                            long restMins = Duration.between(shift.getRestStartTime(), shift.getRestEndTime()).toMinutes();
+                    if (shiftRestStart != null && shiftRestEnd != null) {
+                        if (!att.getClockInTime().isAfter(shiftRestStart) && !att.getClockOutTime().isBefore(shiftRestEnd)) {
+                            long restMins = Duration.between(shiftRestStart, shiftRestEnd).toMinutes();
                             minutes = Math.max(0, minutes - restMins);
                         }
                     }

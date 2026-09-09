@@ -938,6 +938,37 @@
               "raw": "{\n  \"departmentId\": \"REPLACE_WITH_DEPARTMENT_UUID\",\n  \"jobId\": \"REPLACE_WITH_JOB_UUID\",\n  \"employeeCode\": \"EMP999\",\n  \"email\": \"new.employee@company.com\",\n  \"password\": \"test@123\",\n  \"firstName\": \"New\",\n  \"lastName\": \"Employee\",\n  \"gender\": \"Male\",\n  \"profilePicUrl\": \"\",\n  \"birthDate\": \"1995-06-15\",\n  \"joinedDate\": \"2026-08-30\"\n}"
             }
           }
+        },
+        {
+          "name": "Change Password (Authenticated User)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"oldPassword\": \"test@123\",\n  \"newPassword\": \"newPassword@123\",\n  \"confirmPassword\": \"newPassword@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/change-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "change-password"
+              ]
+            },
+            "description": "Any logged-in employee can change their password. Requires current accessToken."
+          }
         }
       ]
     },
@@ -2228,6 +2259,65 @@
                   }
                 }
               ]
+            }
+          ]
+        },
+        {
+          "name": "Work Shifts Management",
+          "item": [
+            {
+              "name": "1. Get All Work Shifts (Dropdown list)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{accessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/work-shifts",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "work-shifts"
+                  ]
+                },
+                "description": "Get all active work shifts in the company for dropdown selections."
+              }
+            },
+            {
+              "name": "2. Create New Work Shift (HR Head / Executive)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{hrHeadAccessToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Ca hành chính tiêu chuẩn (T2-T6)\",\n  \"schedules\": [\n    {\"dayOfWeek\": 1, \"isWorking\": true, \"startTime\": \"08:00:00\", \"endTime\": \"17:30:00\", \"restStartTime\": \"12:00:00\", \"restEndTime\": \"13:30:00\"},\n    {\"dayOfWeek\": 2, \"isWorking\": true, \"startTime\": \"08:00:00\", \"endTime\": \"17:30:00\", \"restStartTime\": \"12:00:00\", \"restEndTime\": \"13:30:00\"},\n    {\"dayOfWeek\": 3, \"isWorking\": true, \"startTime\": \"08:00:00\", \"endTime\": \"17:30:00\", \"restStartTime\": \"12:00:00\", \"restEndTime\": \"13:30:00\"},\n    {\"dayOfWeek\": 4, \"isWorking\": true, \"startTime\": \"08:00:00\", \"endTime\": \"17:30:00\", \"restStartTime\": \"12:00:00\", \"restEndTime\": \"13:30:00\"},\n    {\"dayOfWeek\": 5, \"isWorking\": true, \"startTime\": \"08:00:00\", \"endTime\": \"17:30:00\", \"restStartTime\": \"12:00:00\", \"restEndTime\": \"13:30:00\"},\n    {\"dayOfWeek\": 6, \"isWorking\": false},\n    {\"dayOfWeek\": 7, \"isWorking\": false}\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/work-shifts",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "work-shifts"
+                  ]
+                },
+                "description": "Create a new work shift. Validates <=8h/day and <=48h/week. Requires HR Head or Executive role."
+              }
             }
           ]
         }
@@ -4423,6 +4513,37 @@
               "raw": "{\n  \"departmentId\": \"REPLACE_WITH_DEPT_UUID\",\n  \"jobId\": \"REPLACE_WITH_JOB_UUID\",\n  \"shiftId\": \"REPLACE_WITH_SHIFT_UUID\"\n}"
             }
           }
+        },
+        {
+          "name": "10. HR: Create New Employee (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"new.employee@company.com\",\n  \"password\": \"tempPass@123\",\n  \"firstName\": \"Văn Bình\",\n  \"lastName\": \"Hoàng\",\n  \"gender\": \"Nam\",\n  \"birthDate\": \"1998-05-15\",\n  \"joinedDate\": \"2026-09-01\",\n  \"departmentId\": \"d0000000-0000-0000-0000-000000000003\",\n  \"jobId\": \"j0000000-0000-0000-0000-000000000006\",\n  \"employeeCode\": \"EMP099\",\n  \"phoneNumber\": \"0987654321\",\n  \"citizenId\": \"001298000123\",\n  \"address\": \"Hà Nội\",\n  \"baseSalary\": 15000000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "HR creates new employee profile with initial password filled by HR. Requires hrAccessToken."
+          }
         }
       ]
     },
@@ -5176,6 +5297,83 @@
               ]
             },
             "description": "Khởi tạo bổ sung hoặc làm mới dữ liệu cho riêng Tháng 8 năm 2026."
+          }
+        }
+      ]
+    },
+    {
+      "name": "07. Dashboard",
+      "item": [
+        {
+          "name": "1. Get Personal Dashboard Summary (All Roles)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/dashboard/summary",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            },
+            "description": "Returns full dashboard overview including personal profile, today's attendance, monthly work summary, leave balance, and pending approval counts for Managers/HR/Executives."
+          }
+        },
+        {
+          "name": "2. Get Dashboard Summary (as Department Head)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{deptHeadAccessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/dashboard/summary",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            },
+            "description": "Returns dashboard summary with pending approvals count for Dept Head."
+          }
+        },
+        {
+          "name": "3. Get Dashboard Summary (as HR)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/dashboard/summary",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            },
+            "description": "Returns dashboard summary with pending approvals count for HR."
           }
         }
       ]

@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,7 @@ import com.minhtrung.hrm.attendance.repositories.WorkShiftRepository;
 import com.minhtrung.hrm.attendance.repositories.WorkShiftScheduleRepository;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.employees.dtos.internals.UserDetailedInfo;
+import com.minhtrung.hrm.employees.dtos.requests.CreateEmployeeRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateAssignmentRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateBasicInfoRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateContractRequest;
@@ -62,6 +64,7 @@ public class EmployeeService {
     private final WorkShiftRepository workShiftRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
     private final AttendanceRepository attendanceRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // Dependency Injection qua Constructor
     public EmployeeService(
@@ -74,7 +77,8 @@ public class EmployeeService {
             JobRepository jobRepository,
             WorkShiftRepository workShiftRepository,
             WorkShiftScheduleRepository workShiftScheduleRepository,
-            AttendanceRepository attendanceRepository
+            AttendanceRepository attendanceRepository,
+            PasswordEncoder passwordEncoder
     ) {
         this.userRepository = userRepository;
         this.userProfileRepository = userProfileRepository;
@@ -86,6 +90,7 @@ public class EmployeeService {
         this.workShiftRepository = workShiftRepository;
         this.workShiftScheduleRepository = workShiftScheduleRepository;
         this.attendanceRepository = attendanceRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     /**
@@ -476,6 +481,91 @@ public class EmployeeService {
         userRepository.save(user);
 
         return getEmployeeDetailedProfile(targetUserId, currentUser);
+    }
+
+    /**
+     * HR Tạo tài khoản và hồ sơ nhân viên mới trọn gói.
+     */
+    @Transactional
+    public EmployeeDetailResponse createEmployee(CreateEmployeeRequest request, TokenPayload currentUser) {
+        checkHRAccess(currentUser);
+
+        if (userRepository.existsByEmail(request.getEmail().trim())) {
+            throw new IllegalArgumentException("Email " + request.getEmail() + " đã tồn tại trên hệ thống!");
+        }
+
+        Department department = departmentRepository.findById(request.getDepartmentId())
+                .orElseThrow(() -> new IllegalArgumentException("Phòng ban không tồn tại: " + request.getDepartmentId()));
+
+        Job job = jobRepository.findById(request.getJobId())
+                .orElseThrow(() -> new IllegalArgumentException("Vị trí công việc không tồn tại: " + request.getJobId()));
+
+        WorkShift shift;
+        if (request.getShiftId() != null) {
+            shift = workShiftRepository.findById(request.getShiftId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ca làm việc không tồn tại: " + request.getShiftId()));
+        } else {
+            shift = workShiftRepository.findAll().stream().findFirst()
+                    .orElseThrow(() -> new IllegalStateException("Chưa cấu hình ca làm việc mặc định trong hệ thống"));
+        }
+
+        String employeeCode = request.getEmployeeCode();
+        if (employeeCode == null || employeeCode.isBlank()) {
+            Long nextNumber = userRepository.getNextEmployeeNumber();
+            employeeCode = "EMP" + String.format("%03d", nextNumber);
+        }
+
+        User user = new User();
+        user.setEmail(request.getEmail().trim());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setFirstName(request.getFirstName().trim());
+        user.setLastName(request.getLastName().trim());
+        user.setGender(request.getGender() != null ? request.getGender() : "Nam");
+        user.setBirthDate(request.getBirthDate() != null ? request.getBirthDate() : LocalDate.of(1995, 1, 1));
+        user.setJoinedDate(request.getJoinedDate() != null ? request.getJoinedDate() : LocalDate.now());
+        user.setProfilePicUrl(request.getProfilePicUrl() != null && !request.getProfilePicUrl().isBlank()
+                ? request.getProfilePicUrl() : "https://ui-avatars.com/api/?name=" + request.getFirstName() + "+" + request.getLastName() + "&background=random");
+        user.setAnnualLeaveDays(12);
+        user.setUsedLeaveDays(0);
+        user.setEmployeeCode(employeeCode);
+        user.setDepartment(department);
+        user.setJob(job);
+        user.setShift(shift);
+
+        User savedUser = userRepository.save(user);
+
+        // Khởi tạo UserProfile
+        UserProfile profile = new UserProfile();
+        profile.setUser(savedUser);
+        if (request.getPhoneNumber() != null) profile.setPhoneNumber(request.getPhoneNumber().trim());
+        if (request.getCitizenId() != null) profile.setCitizenIdNumber(request.getCitizenId().trim());
+        if (request.getAddress() != null) profile.setPlaceOfBirth(request.getAddress().trim());
+        userProfileRepository.save(profile);
+
+        // Khởi tạo UserContract
+        UserContract contract = new UserContract();
+        contract.setUser(savedUser);
+        contract.setContractType("Hợp đồng xác định thời hạn");
+        contract.setContractStartDate(savedUser.getJoinedDate());
+        contract.setContractEndDate(savedUser.getJoinedDate().plusYears(1));
+        userContractRepository.save(contract);
+
+        // Khởi tạo Salary ban đầu nếu có baseSalary
+        if (request.getBaseSalary() != null) {
+            Salary salary = new Salary();
+            salary.setUser(savedUser);
+            salary.setBaseSalary(request.getBaseSalary().doubleValue());
+            salary.setPayFrequency(PayFrequency.MONTHLY);
+            salary.setWorkDays(22.0);
+            salary.setStartDate(savedUser.getJoinedDate());
+            salary.setActive(true);
+            salaryRepository.save(salary);
+        }
+
+        // Gửi email chào mừng kèm thông tin tài khoản & mật khẩu tạm (Tạm thời comment do email hiện tại là fake)
+        // emailService.sendWelcomeEmail(savedUser.getEmail(), savedUser.getFirstName(), request.getPassword());
+
+        return getEmployeeDetailedProfile(savedUser.getUserId(), currentUser);
     }
 
     // ─── 4. HELPER METHODS ──────────────────────────────────────────

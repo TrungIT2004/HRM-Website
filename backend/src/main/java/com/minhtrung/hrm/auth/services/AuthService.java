@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.minhtrung.hrm.auth.dtos.internals.ClientMetaData;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.auth.dtos.internals.UserAuthInfo;
+import com.minhtrung.hrm.auth.dtos.requests.ChangePasswordRequest;
 import com.minhtrung.hrm.auth.dtos.requests.SignInRequest;
 import com.minhtrung.hrm.auth.dtos.requests.SignUpRequest;
 import com.minhtrung.hrm.auth.dtos.response.SignInResponse;
@@ -302,5 +303,35 @@ public class AuthService {
         } else {
             return;
         }
+    }
+
+    public void changePassword(UUID userId, ChangePasswordRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new AuthenticationException(AuthErrorCode.USER_NOT_FOUND, "Không tìm thấy người dùng"));
+
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
+            throw new AuthenticationException(AuthErrorCode.USER_CREDENTIALS_INVALID, "Mật khẩu cũ không chính xác");
+        }
+
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            throw new IllegalArgumentException("Mật khẩu mới và xác nhận mật khẩu không khớp");
+        }
+
+        if (passwordEncoder.matches(request.getNewPassword(), user.getPassword())) {
+            throw new IllegalArgumentException("Mật khẩu mới không được trùng với mật khẩu hiện tại");
+        }
+
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+
+        // Thu hồi toàn bộ các phiên đăng nhập cũ trong Redis để bảo mật
+        List<UserSession> activeSessions = userSessionRepository.findByUserId(userId);
+        for (UserSession s : activeSessions) {
+            s.setRevoked(true);
+            userSessionRepository.save(s);
+            sessionBlacklistService.blacklistSession(s.getSessionId(), 15);
+        }
+
+        log.info("Người dùng {} đã đổi mật khẩu thành công và các phiên cũ đã được thu hồi.", userId);
     }
 }
