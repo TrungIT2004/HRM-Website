@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.minhtrung</groupId>
-	<artifactId>social-app</artifactId>
+	<artifactId>hrm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
+	<name>hrm</name>
 	<description/>
 	<url/>
 	<licenses>

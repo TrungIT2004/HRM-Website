@@ -16,7 +16,7 @@ services:
 
   app:
     build: .
-    container_name: social-app
+    container_name: hrm-backend
     ports:
       - "8080:8080"
     environment:
