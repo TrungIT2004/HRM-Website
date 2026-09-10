@@ -22,6 +22,8 @@ import com.minhtrung.hrm.overtime.enums.OvertimeErrorCode;
 import com.minhtrung.hrm.overtime.exceptions.OvertimeException;
 import com.minhtrung.hrm.payroll.enums.PayrollErrorCode;
 import com.minhtrung.hrm.payroll.exceptions.PayrollException;
+import com.minhtrung.hrm.resignation.enums.ResignationErrorCode;
+import com.minhtrung.hrm.resignation.exceptions.ResignationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 
@@ -324,6 +326,33 @@ public class GlobalExceptionHandler {
                 return "Mã xác thực đã hết hạn";
             default:
                 return "Xác thực thất bại";
+        }
+    }
+
+    // ─── RESIGNATION EXCEPTION ────────────────────────────────
+    @ExceptionHandler(ResignationException.class)
+    public ResponseEntity<Map<String, Object>> handleResignationException(ResignationException ex) {
+        HttpStatus status = mapResignationECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ thôi việc: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapResignationECToStatus(ResignationErrorCode errorCode) {
+        switch (errorCode) {
+            case RESIGNATION_NOT_FOUND:
+            case CONTRACT_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case SELF_APPROVAL_NOT_ALLOWED:
+            case UNAUTHORIZED_ACTION:
+                return HttpStatus.FORBIDDEN;
+            case ACTIVE_REQUEST_EXISTS:
+            case INVALID_NOTICE_PERIOD:
+            case INVALID_STATUS_TRANSITION:
+                return HttpStatus.BAD_REQUEST;
+            default:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
 }

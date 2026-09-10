@@ -48,5 +48,4 @@ public class UserDetailedInfo {
     private String contractType;
     private LocalDate contractStartDate;
     private LocalDate contractEndDate;
-    private LocalDate probationEndDate;
 }

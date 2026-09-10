@@ -94,6 +94,11 @@
       "key": "jobId",
       "value": "REPLACE_WITH_JOB_UUID",
       "type": "string"
+    },
+    {
+      "key": "resignationId",
+      "value": "REPLACE_WITH_RESIGNATION_UUID",
+      "type": "string"
     }
   ],
   "item": [
@@ -5624,6 +5629,366 @@
               ]
             }
           }
+        }
+      ]
+    },
+    {
+      "name": "09. Resignation Requests",
+      "item": [
+        {
+          "name": "Staff",
+          "item": [
+            {
+              "name": "Create Resignation Request (POST)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "var json = pm.response.json();",
+                      "var resId = (json && json.resignationId) || (json && json.data && json.data.resignationId);",
+                      "if (resId) {",
+                      "    pm.collectionVariables.set(\"resignationId\", resId);",
+                      "    console.log(\"Saved resignationId:\", resId);",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{staffAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lastWorkingDate\": \"2026-11-01\",\n  \"reason\": \"Chuyển định hướng nghề nghiệp và phát triển năng lực cá nhân\"\n}"
+                },
+                "description": "Nhân viên nộp đơn xin thôi việc. Thời hạn báo trước tự động tính theo loại hợp đồng (Indefinite: >=45 ngày, Fixed-term: >=30 ngày, Probation: >=3 ngày)."
+              }
+            },
+            {
+              "name": "Get My Resignations (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{staffAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/my-requests?page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "my-requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "Xem danh sách các đơn thôi việc của chính nhân viên đang đăng nhập."
+              }
+            },
+            {
+              "name": "Cancel Resignation Request (PATCH)",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{staffAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/{{resignationId}}/cancel",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "{{resignationId}}",
+                    "cancel"
+                  ]
+                },
+                "description": "Hủy đơn xin thôi việc khi đơn còn ở trạng thái PENDING."
+              }
+            }
+          ]
+        },
+        {
+          "name": "Department Head",
+          "item": [
+            {
+              "name": "Get Resignations To Approve (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{deptHeadAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/approvals?page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "approvals"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "Trưởng phòng xem các đơn xin thôi việc PENDING của nhân viên trong phòng ban."
+              }
+            },
+            {
+              "name": "Transfer Resignation - Approve Handover (PUT)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{deptHeadAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/transfer",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "transfer"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resignationId\": \"{{resignationId}}\",\n  \"status\": \"MANAGER_APPROVED\",\n  \"managerComment\": \"Đã thống nhất kế hoạch bàn giao công việc và phân bổ người tiếp nhận.\"\n}"
+                },
+                "description": "Trưởng phòng duyệt kế hoạch bàn giao, chuyển trạng thái sang MANAGER_APPROVED."
+              }
+            },
+            {
+              "name": "Transfer Resignation - Reject Handover (PUT)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{deptHeadAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/transfer",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "transfer"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resignationId\": \"{{resignationId}}\",\n  \"status\": \"MANAGER_REJECTED\",\n  \"managerComment\": \"Chưa bàn giao xong các tài liệu dự án và mã nguồn quan trọng.\"\n}"
+                },
+                "description": "Trưởng phòng từ chối kế hoạch bàn giao, chuyển trạng thái sang MANAGER_REJECTED."
+              }
+            }
+          ]
+        },
+        {
+          "name": "HR & Executive Leadership",
+          "item": [
+            {
+              "name": "Get Resignations To Approve (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{hrAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/approvals?page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "approvals"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "HR / Ban Giám Đốc xem các đơn đã qua phê duyệt bàn giao (MANAGER_APPROVED) hoặc đơn của các Trưởng phòng."
+              }
+            },
+            {
+              "name": "Finalize Resignation - Approve (PUT)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{hrAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/approve",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "approve"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resignationId\": \"{{resignationId}}\",\n  \"status\": \"APPROVED\",\n  \"executiveComment\": \"Đồng ý cho thôi việc theo đúng quy trình và nguyện vọng của nhân viên.\"\n}"
+                },
+                "description": "HR hoặc Ban Giám Đốc phê duyệt chính thức đơn thôi việc (APPROVED). Cron Job sẽ tự động khóa tài khoản khi hết ngày làm việc cuối cùng."
+              }
+            },
+            {
+              "name": "Finalize Resignation - Reject (PUT)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{hrAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/approve",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "approve"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resignationId\": \"{{resignationId}}\",\n  \"status\": \"REJECTED\",\n  \"executiveComment\": \"Từ chối yêu cầu thôi việc do vi phạm thời hạn cam kết dự án trọng điểm.\"\n}"
+                },
+                "description": "HR hoặc Ban Giám Đốc từ chối đơn thôi việc (REJECTED)."
+              }
+            },
+            {
+              "name": "Get All Company Resignations (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{hrAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/resignations/company?page=0&size=20",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "resignations",
+                    "company"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "status",
+                      "value": "APPROVED",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "HR hoặc Ban Giám Đốc xem toàn bộ đơn thôi việc của công ty (hỗ trợ lọc theo status)."
+              }
+            }
+          ]
         }
       ]
     }
