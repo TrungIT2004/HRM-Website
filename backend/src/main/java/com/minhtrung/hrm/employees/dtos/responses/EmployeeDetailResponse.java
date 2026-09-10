@@ -73,9 +73,6 @@ public class EmployeeDetailResponse {
 
         @JsonFormat(pattern = "yyyy-MM-dd")
         private LocalDate contractEndDate;
-
-        @JsonFormat(pattern = "yyyy-MM-dd")
-        private LocalDate probationEndDate;
     }
 
     @Getter

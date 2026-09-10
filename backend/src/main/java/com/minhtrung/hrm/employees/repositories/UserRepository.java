@@ -62,7 +62,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
        "d.name, j.title, s.baseSalary," +
        "p.phoneNumber, p.personalEmail, p.placeOfBirth, p.maritalStatus, p.nationality, p.citizenIdNumber, p.socialInsuranceNumber, p.taxIdentificationNumber, p.socialInsuranceStartDate, p.emergencyContactName, p.emergencyContactPhone, " +
        "b.bankName, b.bankAccountNumber, " +
-       "c.contractType, c.contractStartDate, c.contractEndDate, c.probationEndDate) " +
+       "c.contractType, c.contractStartDate, c.contractEndDate) " +
        "FROM User u " +
        "LEFT JOIN u.department d " +
        "LEFT JOIN u.job j " +
@@ -78,7 +78,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
        "d.name, j.title, s.baseSalary," +
        "p.phoneNumber, p.personalEmail, p.placeOfBirth, p.maritalStatus, p.nationality, p.citizenIdNumber, p.socialInsuranceNumber, p.taxIdentificationNumber, p.socialInsuranceStartDate, p.emergencyContactName, p.emergencyContactPhone, " +
        "b.bankName, b.bankAccountNumber, " +
-       "c.contractType, c.contractStartDate, c.contractEndDate, c.probationEndDate) " +
+       "c.contractType, c.contractStartDate, c.contractEndDate) " +
        "FROM User u " +
        "LEFT JOIN u.department d " +
        "LEFT JOIN u.job j " +

@@ -15,5 +15,4 @@ public class UserContractInfo {
     private String contractType;     
     private LocalDate contractStartDate;
     private LocalDate contractEndDate;
-    private LocalDate probationEndDate;
 }

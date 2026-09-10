@@ -238,7 +238,6 @@ public class EmployeeService {
                         .contractType(c.getContractType())
                         .contractStartDate(c.getContractStartDate())
                         .contractEndDate(c.getContractEndDate())
-                        .probationEndDate(c.getProbationEndDate())
                         .build();
             }
         }
@@ -407,7 +406,7 @@ public class EmployeeService {
         User user = userRepository.findById(targetUserId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
 
-        UserContract contract = userContractRepository.findById(targetUserId).orElseGet(() -> {
+        UserContract contract = userContractRepository.findByUser_UserId(targetUserId).orElseGet(() -> {
             UserContract c = new UserContract();
             c.setUser(user);
             return c;
@@ -416,7 +415,6 @@ public class EmployeeService {
         if (request.getContractType() != null) contract.setContractType(request.getContractType().trim());
         if (request.getContractStartDate() != null) contract.setContractStartDate(request.getContractStartDate());
         if (request.getContractEndDate() != null) contract.setContractEndDate(request.getContractEndDate());
-        if (request.getProbationEndDate() != null) contract.setProbationEndDate(request.getProbationEndDate());
 
         userContractRepository.save(contract);
 
