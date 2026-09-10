@@ -12,6 +12,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.minhtrung.hrm.auth.enums.AuthErrorCode;
+import com.minhtrung.hrm.auth.exceptions.AuthenticationException;
 import com.minhtrung.hrm.attendance.enums.AttendanceErrorCode;
 import com.minhtrung.hrm.attendance.exceptions.AttendanceException;
 import com.minhtrung.hrm.leave.enums.LeaveErrorCode;
@@ -20,13 +22,14 @@ import com.minhtrung.hrm.overtime.enums.OvertimeErrorCode;
 import com.minhtrung.hrm.overtime.exceptions.OvertimeException;
 import com.minhtrung.hrm.payroll.enums.PayrollErrorCode;
 import com.minhtrung.hrm.payroll.exceptions.PayrollException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 
 import lombok.extern.slf4j.Slf4j;
 
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-
     // ─── BEAN VALIDATION ───────────────────────────────────────
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
@@ -46,74 +49,6 @@ public class GlobalExceptionHandler {
                 "msg", firstErrorMessage,
                 "errors", fieldErrors
         ));
-    }
-
-    // ─── DATA INTEGRITY ────────────────────────────────────────
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<?> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
-        String msg = ex.getMostSpecificCause().getMessage();
-        log.warn("Data integrity violation: {}", msg);
-
-        BiFunction<String, String, ResponseEntity<?>> error = (code, message) ->
-            ResponseEntity.status(404).body(Map.of("errorCode", code, "msg", message));
-
-        BiFunction<String, String, ResponseEntity<?>> conflict = (code, message) ->
-            ResponseEntity.status(409).body(Map.of("errorCode", code, "msg", message));
-
-        // 1. Friendship
-        if (msg.contains("fk_friendship_requester")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "Requester not found");
-        }
-        if (msg.contains("fk_friendship_addressee") || msg.contains("uk_friendship_addressee")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "Addressee not found");
-        }
-        if (msg.contains("uk_friendship")) {
-            return conflict.apply("FRIENDSHIP_ALREADY_EXISTS", "Friendship already exists");
-        }
-
-        // 2. Post
-        if (msg.contains("fk_post_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-
-        // 3. Post reaction
-        if (msg.contains("fk_post_reaction_interactable")) {
-            return error.apply("REFERENCED_POST_NOT_FOUND", "Post not exists");
-        }
-        if (msg.contains("uk_user_interactable")) {
-            return conflict.apply("REACTION_ALREADY_EXISTS", "User has already reacted to the post");
-        }
-
-        // 4. Comment
-        if (msg.contains("fk_comment_interactable")) {
-            return error.apply("REFERENCED_POST_NOT_FOUND", "Post not exists");
-        }
-        if (msg.contains("fk_comment_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-
-        // 5. Comment reaction
-        if (msg.contains("fk_comment_reaction_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-        if (msg.contains("fk_comment_reaction_comment")) {
-            return error.apply("REFERENCED_COMMENT_NOT_FOUND", "Comment not exists");
-        }
-        if (msg.contains("uk_user_comment")) {
-            return conflict.apply("REACTION_ALREADY_EXISTS", "User already reacted to this comment");
-        }
-
-        // 6. Share
-        if (msg.contains("fk_share_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-        if (msg.contains("fk_share_post")) {
-            return error.apply("REFERENCED_POST_NOT_FOUND", "Referenced post not exists");
-        }
-
-        return ResponseEntity.status(500).body(Map.of(
-            "errorCode", "DATA_INTEGRITY_ERROR",
-            "msg", "Database constraint violation"));
     }
 
     // ─── GENERIC EXCEPTION ────────────────────────────────────
@@ -253,6 +188,15 @@ public class GlobalExceptionHandler {
         ));
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        log.warn("Invalid argument: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "errorCode", "BAD_REQUEST",
+                "msg", ex.getMessage()
+        ));
+    }
+
     // ─── PAYROLL EXCEPTION ─────────────────────────────────────
     @ExceptionHandler(PayrollException.class)
     public ResponseEntity<Map<String, Object>> handlePayrollException(PayrollException ex) {
@@ -289,6 +233,97 @@ public class GlobalExceptionHandler {
             case GENERIC:
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
+
+    // ─── AUTHENTICATION EXCEPTION ─────────────────────────────
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<Map<String, Object>> handleAuthenticationException(AuthenticationException ex) {
+        HttpStatus status = mapAuthECToStatus(ex.getCode());
+        log.warn("Lỗi xác thực (Authentication error): Mã lỗi: {}, Thông báo: {}", ex.getCode(), ex.getMessage());
+
+        ResponseCookie deleteCookie = ResponseCookie.from("refreshToken", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .build();
+
+        String message = ex.getMessage();
+        if ("Wrong credentials".equalsIgnoreCase(message)) {
+            message = "Email hoặc mật khẩu không chính xác";
+        } else if ("User doesn't exists".equalsIgnoreCase(message)) {
+            message = "Tài khoản không tồn tại trong hệ thống";
+        } else if (message == null || message.isBlank()) {
+            message = getDefaultAuthMessage(ex.getCode());
+        }
+
+        return ResponseEntity.status(status)
+                .header(HttpHeaders.SET_COOKIE, deleteCookie.toString())
+                .body(Map.of(
+                        "errorCode", ex.getCode().name(),
+                        "message", message,
+                        "msg", message
+                ));
+    }
+
+    private HttpStatus mapAuthECToStatus(AuthErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.UNAUTHORIZED;
+        }
+
+        switch (errorCode) {
+            case USER_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case USER_CREDENTIALS_INVALID:
+                return HttpStatus.UNAUTHORIZED;
+            case ACCOUNT_DISABLED:
+            case USER_MISMATCH:
+            case DEVICE_MISMATCH:
+            case DEVICE_COOKIE_MISMATCH:
+                return HttpStatus.FORBIDDEN;
+            case INVALID_CODE:
+            case EXPIRED_CODE:
+                return HttpStatus.BAD_REQUEST;
+            case SESSION_COMPROMISED:
+            case SESSION_NOT_FOUND:
+            case SESSION_REVOKED:
+            case SESSION_MISMATCH:
+                return HttpStatus.UNAUTHORIZED;
+            case INTERNAL_SERVER_ERROR:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+            default:
+                return HttpStatus.UNAUTHORIZED;
+        }
+    }
+
+    private String getDefaultAuthMessage(AuthErrorCode errorCode) {
+        if (errorCode == null) {
+            return "Lỗi xác thực người dùng";
+        }
+        switch (errorCode) {
+            case USER_NOT_FOUND:
+                return "Không tìm thấy người dùng trong hệ thống";
+            case USER_CREDENTIALS_INVALID:
+                return "Email hoặc mật khẩu không chính xác";
+            case ACCOUNT_DISABLED:
+                return "Tài khoản nhân viên này đã bị khóa do đã thôi việc.";
+            case SESSION_COMPROMISED:
+                return "Phiên làm việc có dấu hiệu bị xâm nhập. Vui lòng đăng nhập lại.";
+            case SESSION_NOT_FOUND:
+            case SESSION_REVOKED:
+            case SESSION_MISMATCH:
+                return "Phiên đăng nhập không hợp lệ hoặc đã hết hạn.";
+            case USER_MISMATCH:
+            case DEVICE_MISMATCH:
+            case DEVICE_COOKIE_MISMATCH:
+                return "Thông tin thiết bị hoặc phiên không khớp.";
+            case INVALID_CODE:
+                return "Mã xác thực không chính xác";
+            case EXPIRED_CODE:
+                return "Mã xác thực đã hết hạn";
+            default:
+                return "Xác thực thất bại";
         }
     }
 }

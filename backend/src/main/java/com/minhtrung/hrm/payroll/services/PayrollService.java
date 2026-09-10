@@ -168,13 +168,16 @@ public class PayrollService {
                     ? baseSalary.divide(hoursInMonth, 2, RoundingMode.HALF_UP)
                     : BigDecimal.ZERO;
 
-            // Lương cơ bản theo ngày làm thực tế
+            // Lương cơ bản theo ngày làm thực tế + ngày nghỉ phép có lương (hưởng 100% lương)
             BigDecimal actualWorkedDays = ts.getActualWorkedDays() != null ? ts.getActualWorkedDays() : BigDecimal.ZERO;
+            BigDecimal paidLeaveDays = ts.getPaidLeaveDays() != null ? ts.getPaidLeaveDays() : BigDecimal.ZERO;
+            BigDecimal payableDays = actualWorkedDays.add(paidLeaveDays);
+
             BigDecimal basicPay;
-            if (actualWorkedDays.compareTo(standardDaysBd) >= 0) {
+            if (payableDays.compareTo(standardDaysBd) >= 0) {
                 basicPay = baseSalary;
             } else {
-                basicPay = baseSalary.multiply(actualWorkedDays).divide(standardDaysBd, 2, RoundingMode.HALF_UP);
+                basicPay = baseSalary.multiply(payableDays).divide(standardDaysBd, 2, RoundingMode.HALF_UP);
             }
 
             // Lương tăng ca (totalPaidOtHours đã nhân hệ số luật định)

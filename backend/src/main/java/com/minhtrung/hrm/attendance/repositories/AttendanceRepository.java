@@ -44,5 +44,7 @@ public interface AttendanceRepository extends JpaRepository<Attendance, UUID>, J
         @Param("endOfMonth") LocalDate endOfMonth
     );
 
-    void deleteByWorkDateBetween(LocalDate startDate, LocalDate endDate);
+    @org.springframework.data.jpa.repository.Modifying
+    @Query("DELETE FROM Attendance a WHERE a.workDate BETWEEN :startDate AND :endDate")
+    void deleteByWorkDateBetween(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 }

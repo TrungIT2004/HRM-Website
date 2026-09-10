@@ -17,4 +17,5 @@ public class UserAuthInfo {
     private String profilePicUrl;
     private String department;
     private String job;
+    private boolean isActive;
 }

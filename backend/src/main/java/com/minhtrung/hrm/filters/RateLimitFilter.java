@@ -27,8 +27,8 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private final ClientInfoService clientInfoService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    // Hạn mức nghiêm ngặt cho /auth (5 requests / 60 giây)
-    private static final int AUTH_MAX_REQUESTS = 5;
+    // Hạn mức cho /auth (30 requests / 60 giây)
+    private static final int AUTH_MAX_REQUESTS = 30;
     private static final int AUTH_WINDOW_SECONDS = 60;
 
     // Hạn mức chung cho toàn bộ các route khác (100 requests / 60 giây)

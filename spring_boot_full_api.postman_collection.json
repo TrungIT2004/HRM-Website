@@ -84,6 +84,16 @@
       "key": "payrollId",
       "value": "REPLACE_WITH_PAYROLL_UUID",
       "type": "string"
+    },
+    {
+      "key": "departmentId",
+      "value": "REPLACE_WITH_DEPARTMENT_UUID",
+      "type": "string"
+    },
+    {
+      "key": "jobId",
+      "value": "REPLACE_WITH_JOB_UUID",
+      "type": "string"
     }
   ],
   "item": [
@@ -4544,6 +4554,108 @@
             },
             "description": "HR creates new employee profile with initial password filled by HR. Requires hrAccessToken."
           }
+        },
+        {
+          "name": "11. HR: Update Employee Status (Active/Inactive) (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrHeadAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isActive\": false,\n  \"reason\": \"Nh\\u00e2n vi\\u00ean xin th\\u00f4i vi\\u1ec7c t\\u1eeb ng\\u00e0y 01/10/2026\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees/{{userId}}/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{userId}}",
+                "status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "12. Employee: Upload My Avatar (POST multipart/form-data)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Image file (jpg, png, webp, gif <= 5MB)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees/me/avatar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "me",
+                "avatar"
+              ]
+            }
+          }
+        },
+        {
+          "name": "13. HR: Upload Employee Avatar (POST multipart/form-data)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Image file (jpg, png, webp, gif <= 5MB)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees/{{userId}}/avatar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{userId}}",
+                "avatar"
+              ]
+            }
+          }
         }
       ]
     },
@@ -5374,6 +5486,143 @@
               ]
             },
             "description": "Returns dashboard summary with pending approvals count for HR."
+          }
+        }
+      ]
+    },
+    {
+      "name": "08. Organization (Departments & Jobs)",
+      "item": [
+        {
+          "name": "1. Get All Departments (with Job & Employee Counts)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/departments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "departments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. Create Department (HR Head / Executive)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrHeadAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Phòng Nghiên cứu & Phát triển (R&D)\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/departments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "departments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. Get All Jobs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/jobs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "jobs"
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. Get Jobs by DepartmentId Filter",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/jobs?departmentId={{departmentId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "jobs"
+              ],
+              "query": [
+                {
+                  "key": "departmentId",
+                  "value": "{{departmentId}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. Create Job under Department (HR Head / Executive)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrHeadAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Kỹ sư Trí tuệ nhân tạo (AI Engineer)\",\n  \"departmentId\": \"{{departmentId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/jobs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "jobs"
+              ]
+            }
           }
         }
       ]

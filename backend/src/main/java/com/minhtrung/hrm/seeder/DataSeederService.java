@@ -54,6 +54,7 @@ public class DataSeederService {
     private final PayrollRepository payrollRepository;
     private final MonthlyPayrollSummaryRepository monthlyPayrollSummaryRepository;
     private final AttendanceService attendanceService;
+    private final jakarta.persistence.EntityManager entityManager;
 
     public DataSeederService(
             UserRepository userRepository,
@@ -66,7 +67,8 @@ public class DataSeederService {
             MonthlyTimesheetRepository monthlyTimesheetRepository,
             PayrollRepository payrollRepository,
             MonthlyPayrollSummaryRepository monthlyPayrollSummaryRepository,
-            AttendanceService attendanceService) {
+            AttendanceService attendanceService,
+            jakarta.persistence.EntityManager entityManager) {
         this.userRepository = userRepository;
         this.workShiftRepository = workShiftRepository;
         this.salaryRepository = salaryRepository;
@@ -78,6 +80,7 @@ public class DataSeederService {
         this.payrollRepository = payrollRepository;
         this.monthlyPayrollSummaryRepository = monthlyPayrollSummaryRepository;
         this.attendanceService = attendanceService;
+        this.entityManager = entityManager;
     }
 
     /**
@@ -105,6 +108,9 @@ public class DataSeederService {
             monthlyTimesheetRepository.deleteByPeriodYearAndPeriodMonthBetween(year, fromMonth, toMonth);
             payrollRepository.deleteByPeriodYearAndPeriodMonthBetween(year, fromMonth, toMonth);
             monthlyPayrollSummaryRepository.deleteByPeriodYearAndPeriodMonthBetween(year, fromMonth, toMonth);
+
+            entityManager.flush();
+            entityManager.clear();
         }
 
         List<User> users = userRepository.findAll();
@@ -260,6 +266,7 @@ public class DataSeederService {
 
     private int seedOvertimeRecords(List<User> users, int year, int fromMonth, int toMonth) {
         List<OvertimeRecord> otList = new ArrayList<>();
+        java.util.Set<String> processedKeys = new java.util.HashSet<>();
 
         for (int m = fromMonth; m <= toMonth; m++) {
             LocalDate monthStart = LocalDate.of(year, m, 1);
@@ -272,19 +279,22 @@ public class DataSeederService {
                 // Đợt 1: OT Ngày thường ban ngày (1.5x)
                 LocalDate otDate1 = LocalDate.of(year, m, Math.min(6 + (i % 12), monthEnd.getDayOfMonth()));
                 if (otDate1.getDayOfWeek() != DayOfWeek.SATURDAY && otDate1.getDayOfWeek() != DayOfWeek.SUNDAY) {
-                    OvertimeRecord ot1 = new OvertimeRecord();
-                    ot1.setRequestor(u);
-                    ot1.setApprovedDate(otDate1);
-                    ot1.setApprovedStartTime(LocalDateTime.of(otDate1, LocalTime.of(17, 30)));
-                    ot1.setApprovedEndTime(LocalDateTime.of(otDate1, LocalTime.of(20, 0)));
-                    ot1.setClockInTime(LocalDateTime.of(otDate1, LocalTime.of(17, 30)));
-                    ot1.setClockOutTime(LocalDateTime.of(otDate1, LocalTime.of(20, 0)));
-                    ot1.setNightTime(false);
-                    ot1.setWeekend(false);
-                    ot1.setHoliday(false);
-                    ot1.setStatus(OvertimeRecordStatus.accepted);
-                    ot1.setReason("Làm thêm giờ hoàn thành báo cáo tiến độ dự án");
-                    otList.add(ot1);
+                    String key1 = u.getUserId().toString() + "_" + otDate1;
+                    if (processedKeys.add(key1) && !overtimeRecordRepository.existsByRequestor_UserIdAndApprovedDate(u.getUserId(), otDate1)) {
+                        OvertimeRecord ot1 = new OvertimeRecord();
+                        ot1.setRequestor(u);
+                        ot1.setApprovedDate(otDate1);
+                        ot1.setApprovedStartTime(LocalDateTime.of(otDate1, LocalTime.of(17, 30)));
+                        ot1.setApprovedEndTime(LocalDateTime.of(otDate1, LocalTime.of(20, 0)));
+                        ot1.setClockInTime(LocalDateTime.of(otDate1, LocalTime.of(17, 30)));
+                        ot1.setClockOutTime(LocalDateTime.of(otDate1, LocalTime.of(20, 0)));
+                        ot1.setNightTime(false);
+                        ot1.setWeekend(false);
+                        ot1.setHoliday(false);
+                        ot1.setStatus(OvertimeRecordStatus.accepted);
+                        ot1.setReason("Làm thêm giờ hoàn thành báo cáo tiến độ dự án");
+                        otList.add(ot1);
+                    }
                 }
 
                 // Đợt 2: OT Cuối tuần ban ngày (2.0x)
@@ -294,38 +304,44 @@ public class DataSeederService {
                     otDate2 = otDate2.plusDays(1);
                 }
                 if (otDate2.getDayOfWeek() == DayOfWeek.SATURDAY && !otDate2.isAfter(monthEnd)) {
-                    OvertimeRecord ot2 = new OvertimeRecord();
-                    ot2.setRequestor(u);
-                    ot2.setApprovedDate(otDate2);
-                    ot2.setApprovedStartTime(LocalDateTime.of(otDate2, LocalTime.of(8, 30)));
-                    ot2.setApprovedEndTime(LocalDateTime.of(otDate2, LocalTime.of(12, 30)));
-                    ot2.setClockInTime(LocalDateTime.of(otDate2, LocalTime.of(8, 30)));
-                    ot2.setClockOutTime(LocalDateTime.of(otDate2, LocalTime.of(12, 30)));
-                    ot2.setNightTime(false);
-                    ot2.setWeekend(true);
-                    ot2.setHoliday(false);
-                    ot2.setStatus(OvertimeRecordStatus.accepted);
-                    ot2.setReason("Hỗ trợ bảo trì hệ thống và triển khai release cuối tuần");
-                    otList.add(ot2);
+                    String key2 = u.getUserId().toString() + "_" + otDate2;
+                    if (processedKeys.add(key2) && !overtimeRecordRepository.existsByRequestor_UserIdAndApprovedDate(u.getUserId(), otDate2)) {
+                        OvertimeRecord ot2 = new OvertimeRecord();
+                        ot2.setRequestor(u);
+                        ot2.setApprovedDate(otDate2);
+                        ot2.setApprovedStartTime(LocalDateTime.of(otDate2, LocalTime.of(8, 30)));
+                        ot2.setApprovedEndTime(LocalDateTime.of(otDate2, LocalTime.of(12, 30)));
+                        ot2.setClockInTime(LocalDateTime.of(otDate2, LocalTime.of(8, 30)));
+                        ot2.setClockOutTime(LocalDateTime.of(otDate2, LocalTime.of(12, 30)));
+                        ot2.setNightTime(false);
+                        ot2.setWeekend(true);
+                        ot2.setHoliday(false);
+                        ot2.setStatus(OvertimeRecordStatus.accepted);
+                        ot2.setReason("Hỗ trợ bảo trì hệ thống và triển khai release cuối tuần");
+                        otList.add(ot2);
+                    }
                 }
 
                 // Đợt 3: OT Ngày thường ban đêm (2.0x) cho một số nhân viên
                 if (i % 3 == 0) {
                     LocalDate otDate3 = LocalDate.of(year, m, Math.min(22 + (i % 5), monthEnd.getDayOfMonth()));
                     if (otDate3.getDayOfWeek() != DayOfWeek.SATURDAY && otDate3.getDayOfWeek() != DayOfWeek.SUNDAY) {
-                        OvertimeRecord ot3 = new OvertimeRecord();
-                        ot3.setRequestor(u);
-                        ot3.setApprovedDate(otDate3);
-                        ot3.setApprovedStartTime(LocalDateTime.of(otDate3, LocalTime.of(22, 0)));
-                        ot3.setApprovedEndTime(LocalDateTime.of(otDate3.plusDays(1), LocalTime.of(1, 0)));
-                        ot3.setClockInTime(LocalDateTime.of(otDate3, LocalTime.of(22, 0)));
-                        ot3.setClockOutTime(LocalDateTime.of(otDate3.plusDays(1), LocalTime.of(1, 0)));
-                        ot3.setNightTime(true);
-                        ot3.setWeekend(false);
-                        ot3.setHoliday(false);
-                        ot3.setStatus(OvertimeRecordStatus.accepted);
-                        ot3.setReason("Xử lý sự cố máy chủ ban đêm");
-                        otList.add(ot3);
+                        String key3 = u.getUserId().toString() + "_" + otDate3;
+                        if (processedKeys.add(key3) && !overtimeRecordRepository.existsByRequestor_UserIdAndApprovedDate(u.getUserId(), otDate3)) {
+                            OvertimeRecord ot3 = new OvertimeRecord();
+                            ot3.setRequestor(u);
+                            ot3.setApprovedDate(otDate3);
+                            ot3.setApprovedStartTime(LocalDateTime.of(otDate3, LocalTime.of(22, 0)));
+                            ot3.setApprovedEndTime(LocalDateTime.of(otDate3.plusDays(1), LocalTime.of(1, 0)));
+                            ot3.setClockInTime(LocalDateTime.of(otDate3, LocalTime.of(22, 0)));
+                            ot3.setClockOutTime(LocalDateTime.of(otDate3.plusDays(1), LocalTime.of(1, 0)));
+                            ot3.setNightTime(true);
+                            ot3.setWeekend(false);
+                            ot3.setHoliday(false);
+                            ot3.setStatus(OvertimeRecordStatus.accepted);
+                            ot3.setReason("Xử lý sự cố máy chủ ban đêm");
+                            otList.add(ot3);
+                        }
                     }
                 }
             }
@@ -333,6 +349,7 @@ public class DataSeederService {
 
         if (!otList.isEmpty()) {
             overtimeRecordRepository.saveAll(otList);
+            overtimeRecordRepository.flush();
         }
         return otList.size();
     }
@@ -374,7 +391,7 @@ public class DataSeederService {
                     att.setUser(u);
                     att.setShift(shift);
                     att.setWorkDate(d);
-                    att.setStatus(AttendanceStatus.LEAVE);
+                    att.setStatus(AttendanceStatus.PAID_LEAVE);
                     batch.add(att);
                     continue;
                 }

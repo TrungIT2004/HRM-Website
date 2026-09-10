@@ -23,6 +23,8 @@ public interface OvertimeRecordRepository
     @Query("SELECT o FROM OvertimeRecord o WHERE o.requestor.userId = :userId AND o.approvedDate = :date AND o.status = :status")
     Optional<OvertimeRecord> findByRequestorIdAndApprovedDateAndStatus(@Param("userId") UUID userId, @Param("date") LocalDate date, @Param("status") OvertimeRecordStatus status);
 
+    boolean existsByRequestor_UserIdAndApprovedDate(UUID userId, LocalDate approvedDate);
+
     @Query(value = """
         SELECT COALESCE(SUM(EXTRACT(EPOCH FROM (approved_end_time - approved_start_time))/3600), 0)
         FROM overtime_records
@@ -213,5 +215,7 @@ public interface OvertimeRecordRepository
         @Param("endOfMonth") LocalDate endOfMonth
     );
 
-    void deleteByApprovedDateBetween(LocalDate startDate, LocalDate endDate);
+    @org.springframework.data.jpa.repository.Modifying
+    @Query("DELETE FROM OvertimeRecord ot WHERE ot.approvedDate BETWEEN :startDate AND :endDate")
+    void deleteByApprovedDateBetween(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 }

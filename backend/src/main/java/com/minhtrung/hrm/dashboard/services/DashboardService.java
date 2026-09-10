@@ -127,6 +127,8 @@ public class DashboardService {
                     if (st == AttendanceStatus.LATE || st == AttendanceStatus.LATE_AND_EARLY) {
                         lateDays++;
                     }
+                } else if (st == AttendanceStatus.MISSING) {
+                    actualWorkDays += 0.5;
                 }
             }
             monthlySummary = MonthlySummaryDto.builder()

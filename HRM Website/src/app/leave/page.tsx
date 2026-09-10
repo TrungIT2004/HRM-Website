@@ -84,9 +84,9 @@ export default function LeavePage() {
       const matchFrom = !filterFromDate || r.toDate >= filterFromDate;
       const matchTo = !filterToDate || r.fromDate <= filterToDate;
       const matchKeyword = !filterKeyword ||
-        r.requestorName.toLowerCase().includes(filterKeyword.toLowerCase()) ||
-        r.requestorCode.toLowerCase().includes(filterKeyword.toLowerCase()) ||
-        r.reason.toLowerCase().includes(filterKeyword.toLowerCase());
+        (r.requestorName?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
+        (r.requestorCode?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
+        (r.reason?.toLowerCase() || '').includes(filterKeyword.toLowerCase());
       const matchDept = !allowDept || filterDept === 'ALL' || r.requestorDepartment === filterDept;
 
       return matchStatus && matchFrom && matchTo && matchKeyword && matchDept;
@@ -583,7 +583,7 @@ export default function LeavePage() {
                         <div className="text-[10px] text-slate-400 font-mono">{req.requestorCode} • {req.requestorJob}</div>
                       </td>
                       <td className="py-3 px-4 font-mono text-[11px] text-slate-600">
-                        <div>{req.requestorEmail || `${req.requestorCode.toLowerCase()}@act.com`}</div>
+                        <div>{req.requestorEmail || `${(req.requestorCode || '').toLowerCase()}@act.com`}</div>
                         <div className="text-[10px] text-slate-400">{req.requestorPhoneNumber || '0901234567'}</div>
                       </td>
                       <td className="py-3 px-4 text-slate-600">{req.requestorDepartment}</td>

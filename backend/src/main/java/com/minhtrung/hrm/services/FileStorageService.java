@@ -63,6 +63,19 @@ public class FileStorageService {
     }
 
     /**
+     * Lưu avatar nhân viên (nén webp 500x500 và trả về URL)
+     */
+    public String storeAvatar(MultipartFile file, UUID userId) {
+        try {
+            String fileName = storeFile(file, "avatars");
+            return "/uploads/avatars/" + fileName;
+        } catch (IOException e) {
+            log.error("Failed to store avatar for user {}", userId, e);
+            throw new RuntimeException("Không thể lưu file ảnh: " + e.getMessage(), e);
+        }
+    }
+
+    /**
      * Lưu file với tuỳ chọn bỏ qua nén (giữ nguyên)
      */
     public String storeFile(MultipartFile file, String subFolder, boolean skipCompression) throws IOException {

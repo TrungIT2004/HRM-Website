@@ -148,6 +148,7 @@ public class AuthService {
         userSessionRepository.save(session);
 
         SignInResponse signInResponse = new SignInResponse();
+        signInResponse.setUserId(userId);
         signInResponse.setAccessToken(accessToken);
         signInResponse.setRefreshToken(refreshToken);
         signInResponse.setFullName(fullName);
@@ -188,53 +189,52 @@ public class AuthService {
     public SignInResponse signIn(SignInRequest signInRequest, UUID deviceId, ClientMetaData clientMetaData) {
         UserAuthInfo user = userRepository.getUserInfo(signInRequest.getEmail());
 
-        if (user.getUserId() == null) {
+        if (user == null || user.getUserId() == null) {
             throw new AuthenticationException(AuthErrorCode.USER_NOT_FOUND,
-                "User doesn't exists");
+                    "User doesn't exists");
         }
 
-        try {
-            if (passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())) {
-                List<UserSession> sessionList = userSessionRepository.findByUserId(user.getUserId());
+        if (!user.isActive()) {
+            throw new AuthenticationException(AuthErrorCode.ACCOUNT_DISABLED,
+                    "Tài khoản của bạn đã bị vô hiệu hóa hoặc đã thôi việc. Vui lòng liên hệ phòng Nhân sự!");
+        }
 
-                if (sessionList.isEmpty()) {
-                    System.out.println("First Login");
-                    return generateToken(deviceId, clientMetaData, user);
-                }
+        if (passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())) {
+            List<UserSession> sessionList = userSessionRepository.findByUserId(user.getUserId());
 
-                UserSession session = sessionList.stream()
-                        .filter(s -> s.getDeviceId().equals(deviceId))
-                        .findFirst()
-                        .orElse(null);
-
-                if (session == null || deviceId.equals("")) {
-                    System.out.println("Untrusted device");
-                    log.warn("Đăng nhập từ thiết bị chưa từng đăng nhập. Email: {}, DeviceId: {}",
-                            signInRequest.getEmail(), deviceId);
-                    emailService.sendUntrustedDeviceWarning(user.getEmail());
-                    return generateToken(deviceId, clientMetaData, user);
-                } else if (session != null && session.getDeviceId().equals(deviceId)) {
-                    System.out.println("Trusted device");
-    
-                    // 1. Xóa session cũ (để sessionId cũ tiếp tục bị giam trong Redis)
-                    userSessionRepository.delete(session);
-                    
-                    log.info("Đăng nhập thành công (thiết bị tin cậy). Email: {}, DeviceId: {}", user.getEmail(),
-                            deviceId);
-                    
-                    // 2. Gọi generateToken là xong toàn bộ (tự tạo session mới, tự sinh token mới, tự return)
-                    return generateToken(deviceId, clientMetaData, user);
-                }
-            } else {
-                log.warn("Đăng nhập thất bại. Sai mật khẩu cho email: {}", signInRequest.getEmail());
-                throw new AuthenticationException(AuthErrorCode.USER_CREDENTIALS_INVALID, "Wrong credentials");
+            if (sessionList.isEmpty()) {
+                System.out.println("First Login");
+                return generateToken(deviceId, clientMetaData, user);
             }
-        } catch (Exception ex) {
-            log.error("Login error", ex);   // ✅ logs full stack trace
-            throw new RuntimeException(ex.getMessage());
+
+            UserSession session = sessionList.stream()
+                    .filter(s -> s.getDeviceId().equals(deviceId))
+                    .findFirst()
+                    .orElse(null);
+
+            if (session == null || deviceId.equals("")) {
+                log.warn("Đăng nhập từ thiết bị chưa từng đăng nhập. Email: {}, DeviceId: {}",
+                        signInRequest.getEmail(), deviceId);
+                emailService.sendUntrustedDeviceWarning(user.getEmail());
+                return generateToken(deviceId, clientMetaData, user);
+            } else if (session != null && session.getDeviceId().equals(deviceId)) {
+                // 1. Xóa session cũ (để sessionId cũ tiếp tục bị giam trong Redis)
+                userSessionRepository.delete(session);
+
+                log.info("Đăng nhập thành công (thiết bị tin cậy). Email: {}, DeviceId: {}", user.getEmail(),
+                        deviceId);
+
+                // 2. Gọi generateToken là xong toàn bộ (tự tạo session mới, tự sinh token mới, tự return)
+                return generateToken(deviceId, clientMetaData, user);
+            }
+        } else {
+            log.warn("Đăng nhập thất bại. Sai mật khẩu cho email: {}", signInRequest.getEmail());
+            throw new AuthenticationException(AuthErrorCode.USER_CREDENTIALS_INVALID, "Wrong credentials");
         }
+        
         return null;
-    } 
+    }
+    
     
     public SignInResponse autoSignIn(String token, UUID deviceId, ClientMetaData clientMetaData) {
         if (jwtService.isTokenValid(token, refreshSecret)) {
@@ -282,7 +282,6 @@ public class AuthService {
             return updateToken(clientMetaData, payload, session);
         }
         
-        System.out.println("Redirect to login page");
         throw new AuthenticationException(AuthErrorCode.SESSION_MISMATCH, "User's session not match");
     }
     

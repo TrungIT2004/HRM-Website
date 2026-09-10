@@ -32,13 +32,13 @@ export default function FaceScanModal({ onClose }: { onClose: () => void }) {
     return () => clearTimeout(timer);
   }, [currentUser]);
 
-  const handlePunch = (type: 'IN' | 'OUT') => {
+  const handlePunch = async (type: 'IN' | 'OUT') => {
     if (type === 'IN') {
-      const res = clockInAttendance('FACE_SCAN');
+      const res = await clockInAttendance('FACE_SCAN');
       setResultMessage(res.message);
       setScanStep('completed');
     } else {
-      const res = clockOutAttendance('FACE_SCAN');
+      const res = await clockOutAttendance('FACE_SCAN');
       setResultMessage(res.message);
       setScanStep('completed');
     }

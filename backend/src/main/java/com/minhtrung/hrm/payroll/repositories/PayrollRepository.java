@@ -7,6 +7,9 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import com.minhtrung.hrm.payroll.entities.Payroll;
 import com.minhtrung.hrm.payroll.enums.PayrollStatus;
 
@@ -26,5 +29,7 @@ public interface PayrollRepository extends JpaRepository<Payroll, UUID>, JpaSpec
 
     void deleteByPeriodMonthAndPeriodYearAndStatus(int periodMonth, int periodYear, PayrollStatus status);
 
-    void deleteByPeriodYearAndPeriodMonthBetween(int periodYear, int fromMonth, int toMonth);
+    @org.springframework.data.jpa.repository.Modifying
+    @Query("DELETE FROM Payroll p WHERE p.periodYear = :periodYear AND p.periodMonth BETWEEN :fromMonth AND :toMonth")
+    void deleteByPeriodYearAndPeriodMonthBetween(@Param("periodYear") int periodYear, @Param("fromMonth") int fromMonth, @Param("toMonth") int toMonth);
 }

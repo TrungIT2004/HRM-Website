@@ -24,4 +24,5 @@ public class EmployeeDirectoryItemResponse {
     private String profilePicUrl;
     private String departmentName;
     private String jobTitle;
+    private boolean isActive;
 }
