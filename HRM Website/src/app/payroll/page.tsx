@@ -5,6 +5,7 @@ import AppShell from '@/components/layout/AppShell';
 import { useAuth } from '@/context/AuthContext';
 import { useHRMData } from '@/context/HRMDataContext';
 import { PayrollRecord } from '@/types';
+import { payrollService } from '@/services/payrollService';
 import {
   CreditCard,
   FileSpreadsheet,
@@ -35,27 +36,43 @@ export default function PayrollPage() {
     setTimeout(() => setToastMsg(''), 4000);
   };
 
+  const isFinanceOrExecutive = isExecutive || currentUser?.department === 'Finance & Accounting' || Boolean(currentUser?.job?.toLowerCase().includes('accountant'));
+
   // Reset tab if role switches and tab is no longer permitted
   React.useEffect(() => {
-    if (!isHR && !isExecutive && activeTab === 'company') {
+    if (!isFinanceOrExecutive && activeTab === 'company') {
       setActiveTab('my');
     }
-  }, [isHR, isExecutive, activeTab]);
+  }, [isFinanceOrExecutive, activeTab]);
 
   // Find current user's payslip
   const myPayslip = payrolls.find(p => p.userId === currentUser?.userId);
 
-  const handleRunPayroll = () => {
-    generateMonthlyPayroll(selectedMonth, selectedYear);
-    showToast(`Đã tính toán bảng lương tự động cho Tháng ${selectedMonth}/${selectedYear} thành công!`);
+  const handleRunPayroll = async () => {
+    try {
+      await generateMonthlyPayroll(selectedMonth, selectedYear);
+      showToast(`Đã tính toán bảng lương tự động cho Tháng ${selectedMonth}/${selectedYear} thành công!`);
+    } catch (err: any) {
+      showToast('Lỗi tính lương: ' + (err.message || 'Không thể tính toán'));
+    }
   };
 
-  const handleExportExcel = () => {
-    showToast(`Đã xuất file ACT_Bang_Luong_Thang_${selectedMonth}_${selectedYear}.xlsx thành công!`);
+  const handleExportExcel = async () => {
+    try {
+      if (activeTab === 'company') {
+        await payrollService.exportCompanyPayrolls({ month: selectedMonth, year: selectedYear });
+      } else {
+        await payrollService.exportMyPayrolls({ month: selectedMonth, year: selectedYear });
+      }
+      showToast('Đã tải xuống file Excel bảng lương thành công!');
+    } catch (err: any) {
+      showToast('Lỗi xuất Excel: ' + (err.message || 'Không thể tải file'));
+    }
   };
 
-  const formatVND = (num: number) => {
-    return num.toLocaleString('vi-VN') + ' ₫';
+  const formatVND = (num?: number | null) => {
+    if (num === undefined || num === null || isNaN(Number(num))) return '0 ₫';
+    return Number(num).toLocaleString('vi-VN') + ' ₫';
   };
 
   return (
@@ -84,7 +101,7 @@ export default function PayrollPage() {
             </p>
           </div>
 
-          {(isHR || isExecutive) && (
+          {isFinanceOrExecutive && (
             <div className="flex items-center gap-2.5">
               <button
                 onClick={handleRunPayroll}
@@ -114,7 +131,7 @@ export default function PayrollPage() {
           >
             Phiếu lương của tôi (Tháng 08/2026)
           </button>
-          {(isHR || isExecutive) && (
+          {isFinanceOrExecutive && (
             <button
               onClick={() => setActiveTab('company')}
               className={`px-4 py-2 rounded-xl transition cursor-pointer ${
@@ -207,8 +224,8 @@ export default function PayrollPage() {
           </div>
         )}
 
-        {/* Tab 2: Company All (HR / Executive) */}
-        {activeTab === 'company' && (isHR || isExecutive) && (
+        {/* Tab 2: Company All (Finance / Executive) */}
+        {activeTab === 'company' && isFinanceOrExecutive && (
           <div className="space-y-4">
             <div className="rounded-2xl bg-white p-4 border border-slate-200 shadow-xs flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -225,7 +242,7 @@ export default function PayrollPage() {
 
               <div className="text-xs text-slate-500">
                 Tổng quỹ lương chi trả: <strong className="text-emerald-700 font-black text-sm">
-                  {formatVND(payrolls.reduce((sum, p) => sum + p.netPay, 0))}
+                  {formatVND(payrolls.reduce((sum, p) => sum + (p.netPay || 0), 0))}
                 </strong>
               </div>
             </div>

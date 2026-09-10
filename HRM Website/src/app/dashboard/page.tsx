@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AppShell from '@/components/layout/AppShell';
 import { useAuth } from '@/context/AuthContext';
 import { useHRMData } from '@/context/HRMDataContext';
+import { dashboardService, DashboardSummaryResponse } from '@/services/dashboardService';
 import {
   Clock,
   CalendarDays,
@@ -23,15 +24,29 @@ import {
 export default function DashboardPage() {
   const { currentUser, roleLevel, isHR, isManager, isExecutive } = useAuth();
   const { attendances, leaveRequests, overtimeRecords } = useHRMData();
+  const [summaryData, setSummaryData] = useState<DashboardSummaryResponse | null>(null);
 
-  const todayStr = '2026-09-04';
+  useEffect(() => {
+    dashboardService.getSummary().then(data => {
+      if (data) setSummaryData(data);
+    }).catch(() => {});
+  }, [currentUser]);
+
+  const todayStr = new Date().toISOString().split('T')[0];
   const todayRecord = attendances.find(
     a => a.userId === currentUser?.userId && a.workDate === todayStr
   );
 
-  // Pending counts
-  const pendingLeaves = leaveRequests.filter(l => l.status === 'pending');
-  const pendingOTs = overtimeRecords.filter(o => o.status === 'pending');
+  // Pending counts from API or fallback
+  const pendingLeavesCount = summaryData?.management?.pendingLeavesCount ?? leaveRequests.filter(l => l.status === 'pending').length;
+  const pendingOTsCount = summaryData?.management?.pendingOvertimesCount ?? overtimeRecords.filter(o => o.status === 'pending').length;
+
+  const clockIn = summaryData?.clockInTime || todayRecord?.clockInTime;
+  const clockOut = summaryData?.clockOutTime || todayRecord?.clockOutTime;
+
+  const workedDays = summaryData?.monthSummary?.totalWorkDays ?? 4;
+  const standardDays = summaryData?.monthSummary?.standardWorkDays ?? 22;
+  const remainingLeaves = summaryData?.monthSummary?.remainingLeaveDays ?? ((currentUser?.annualLeaveDays || 12) - (currentUser?.usedLeaveDays || 0));
 
   return (
     <AppShell>
@@ -46,10 +61,10 @@ export default function DashboardPage() {
                 <span>Cổng Thông Tin Nhân Sự ACT</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Xin chào, {currentUser?.fullName || 'Nhân viên'}!
+                Xin chào, {currentUser?.fullName || summaryData?.fullName || 'Nhân viên'}!
               </h1>
               <p className="mt-1 text-xs sm:text-sm text-blue-100 max-w-xl">
-                {currentUser?.job} • Phòng {currentUser?.department} ({currentUser?.employeeCode})
+                {currentUser?.job || summaryData?.job} • Phòng {currentUser?.department || summaryData?.department} ({currentUser?.employeeCode || summaryData?.employeeCode})
               </p>
             </div>
 
@@ -74,7 +89,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Pending Approvals Notice for Managers & HR */}
-        {(isManager || isHR || isExecutive) && (pendingLeaves.length > 0 || pendingOTs.length > 0) && (
+        {(isManager || isHR || isExecutive) && (pendingLeavesCount > 0 || pendingOTsCount > 0) && (
           <div className="rounded-2xl bg-amber-50 p-4 border border-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100 text-amber-700 font-bold shrink-0">
@@ -85,7 +100,7 @@ export default function DashboardPage() {
                   Bạn có yêu cầu đang chờ phê duyệt:
                 </h4>
                 <p className="text-[11px] text-amber-700">
-                  {pendingLeaves.length} đơn xin nghỉ phép • {pendingOTs.length} đơn đăng ký làm thêm giờ (OT)
+                  {pendingLeavesCount} đơn xin nghỉ phép • {pendingOTsCount} đơn đăng ký làm thêm giờ (OT)
                 </p>
               </div>
             </div>
@@ -117,28 +132,28 @@ export default function DashboardPage() {
                   <span>Trạng thái công nhật hôm nay</span>
                 </div>
                 <span className="text-[11px] font-mono text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full font-medium">
-                  04/09/2026
+                  {new Date().toLocaleDateString('vi-VN')}
                 </span>
               </div>
 
               {/* Status Display */}
               <div className="rounded-2xl bg-slate-50 p-4 border border-slate-100 text-center mb-4">
                 <div className="text-xs text-slate-500 mb-1">Ghi nhận công nhật</div>
-                {todayRecord?.clockInTime ? (
+                {clockIn ? (
                   <div>
                     <div className="inline-flex items-center gap-1.5 text-emerald-600 font-extrabold text-base">
                       <CheckCircle2 className="h-5 w-5" />
-                      <span>{todayRecord.clockOutTime ? 'Đã hoàn thành ngày công' : 'Đang trong ca làm việc'}</span>
+                      <span>{clockOut ? 'Đã hoàn thành ngày công' : 'Đang trong ca làm việc'}</span>
                     </div>
                     <div className="mt-3 grid grid-cols-2 gap-2 text-xs border-t border-slate-200/60 pt-3">
                       <div className="bg-white p-2.5 rounded-xl border border-slate-100">
                         <span className="text-slate-400 block text-[11px]">Giờ vào ca:</span>
-                        <span className="font-mono font-bold text-slate-800 text-sm">{todayRecord.clockInTime}</span>
+                        <span className="font-mono font-bold text-slate-800 text-sm">{clockIn}</span>
                       </div>
                       <div className="bg-white p-2.5 rounded-xl border border-slate-100">
                         <span className="text-slate-400 block text-[11px]">Giờ ra ca:</span>
                         <span className="font-mono font-bold text-slate-800 text-sm">
-                          {todayRecord.clockOutTime || 'Chưa ghi nhận'}
+                          {clockOut || 'Chưa ghi nhận'}
                         </span>
                       </div>
                     </div>
@@ -157,18 +172,20 @@ export default function DashboardPage() {
               <div className="space-y-2 text-xs text-slate-600 bg-slate-50/70 p-3.5 rounded-2xl border border-slate-100">
                 <div className="flex justify-between items-center">
                   <span className="text-slate-400">Ca phân công:</span>
-                  <span className="font-semibold text-slate-800">{currentUser?.shiftName || 'Ca hành chính chuẩn'}</span>
+                  <span className="font-semibold text-slate-800">
+                    {summaryData?.todayShifts?.[0]?.shiftName || currentUser?.shiftName || 'Ca hành chính chuẩn'}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-400">Khung giờ ca:</span>
                   <span className="font-mono font-medium text-slate-800">
-                    {currentUser?.shiftStartTime || '08:30'} - {currentUser?.shiftEndTime || '17:30'}
+                    {summaryData?.todayShifts?.[0]?.startTime || currentUser?.shiftStartTime || '08:00'} - {summaryData?.todayShifts?.[0]?.endTime || currentUser?.shiftEndTime || '17:30'}
                   </span>
                 </div>
                 <div className="flex justify-between items-center pt-1 border-t border-slate-200/60">
                   <span className="text-slate-400">Trạng thái chấm công:</span>
                   <span className="font-bold text-emerald-700">
-                    {todayRecord ? 'Đã đồng bộ' : 'Chờ đồng bộ'}
+                    {clockIn ? 'Đã đồng bộ' : 'Chờ đồng bộ'}
                   </span>
                 </div>
               </div>
@@ -188,32 +205,33 @@ export default function DashboardPage() {
             {/* Stat 1: Working Days */}
             <div className="rounded-3xl bg-white p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Công Tháng 09/2026</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Công Tháng Này</span>
                 <span className="p-2 rounded-xl bg-blue-50 text-blue-600"><Clock className="h-5 w-5" /></span>
               </div>
               <div className="mt-4">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-slate-900">4</span>
-                  <span className="text-xs text-slate-400 font-medium">/ 22 ngày chuẩn</span>
+                  <span className="text-3xl font-black text-slate-900">{workedDays}</span>
+                  <span className="text-xs text-slate-400 font-medium">/ {standardDays} ngày chuẩn</span>
                 </div>
                 <div className="mt-2 w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                  <div className="bg-blue-600 h-2 rounded-full" style={{ width: '18%' }} />
+                  <div
+                    className="bg-blue-600 h-2 rounded-full"
+                    style={{ width: `${Math.min(100, Math.round((workedDays / standardDays) * 100))}%` }}
+                  />
                 </div>
               </div>
-              <p className="mt-3 text-[11px] text-slate-500">Chuẩn giờ làm: 8 giờ/ngày • Nghỉ T7 & CN</p>
+              <p className="mt-3 text-[11px] text-slate-500">Tổng giờ công: {summaryData?.monthSummary?.totalWorkHours ?? (workedDays * 8)} giờ</p>
             </div>
 
             {/* Stat 2: Annual Leave Balance */}
             <div className="rounded-3xl bg-white p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Quỹ Phép Năm</span>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Quỹ Phép Năm Còn Lại</span>
                 <span className="p-2 rounded-xl bg-indigo-50 text-indigo-600"><CalendarDays className="h-5 w-5" /></span>
               </div>
               <div className="mt-4">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-indigo-600">
-                    {(currentUser?.annualLeaveDays || 12) - (currentUser?.usedLeaveDays || 0)}
-                  </span>
+                  <span className="text-3xl font-black text-indigo-600">{remainingLeaves}</span>
                   <span className="text-xs text-slate-400 font-medium">/ {currentUser?.annualLeaveDays || 12} ngày phép</span>
                 </div>
                 <div className="mt-2 text-xs text-slate-600">Đã sử dụng: <strong>{currentUser?.usedLeaveDays || 0} ngày</strong></div>
@@ -235,7 +253,7 @@ export default function DashboardPage() {
                   <span className="text-3xl font-black text-orange-600">4.0</span>
                   <span className="text-xs text-slate-400 font-medium">giờ đã phê duyệt</span>
                 </div>
-                <p className="mt-1 text-[11px] text-slate-500">Bao gồm 4.0h ngày Lễ Quốc Khánh 2/9 (Hệ số 3.0x)</p>
+                <p className="mt-1 text-[11px] text-slate-500">Tính theo hệ số ngày thường / nghỉ tuần / ngày lễ</p>
               </div>
               <Link href="/overtime" className="mt-3 text-[11px] font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
                 <span>Xem bản ghi tăng ca</span>
@@ -250,8 +268,8 @@ export default function DashboardPage() {
                 <span className="p-2 rounded-xl bg-emerald-50 text-emerald-600"><CreditCard className="h-5 w-5" /></span>
               </div>
               <div className="mt-4">
-                <div className="text-xs text-slate-500">Kỳ lương Tháng 08/2026:</div>
-                <div className="text-2xl font-black text-emerald-600 mt-1">Đã chốt & chuyển khoản</div>
+                <div className="text-xs text-slate-500">Trạng thái phiếu lương:</div>
+                <div className="text-2xl font-black text-emerald-600 mt-1">Đã chốt sổ</div>
               </div>
               <Link href="/payroll" className="mt-3 text-[11px] font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1">
                 <span>Mở bảng lương chi tiết</span>
@@ -311,7 +329,7 @@ export default function DashboardPage() {
             </div>
             <div>
               <div className="text-xs font-bold text-slate-900">Danh Bạ Công Ty</div>
-              <div className="text-[11px] text-slate-500">15 đồng nghiệp</div>
+              <div className="text-[11px] text-slate-500">Nhân sự & cơ cấu</div>
             </div>
           </Link>
         </div>

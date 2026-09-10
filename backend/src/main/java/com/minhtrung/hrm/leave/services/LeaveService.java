@@ -255,24 +255,36 @@ public class LeaveService {
                             : List.of(DayOfWeek.SATURDAY.getValue(), DayOfWeek.SUNDAY.getValue());
                     List<LocalDate> holidayDates = holidayRepository.getHolidayBetween(leaveRequest.getFromDate(), leaveRequest.getToDate());
 
+                    int remainingPaidDays = leaveRequest.getPaidLeaveDays();
+
                     for (LocalDate d = leaveRequest.getFromDate(); !d.isAfter(leaveRequest.getToDate()); d = d.plusDays(1)) {
                         boolean isHoliday = holidayDates.contains(d);
                         boolean isRestDay = weeklyRestDays.contains(d.getDayOfWeek().getValue());
 
                         // Chỉ cập nhật chấm công nghỉ phép cho các ngày làm việc thực tế
                         if (!isHoliday && !isRestDay) {
-                            Attendance requestorAttendanceOnLeaveDate = attendanceRepository.findUsersTodayAttendance(requestorId, d).orElse(null);
+                            AttendanceStatus statusToSet;
+                            if (remainingPaidDays > 0) {
+                                statusToSet = AttendanceStatus.PAID_LEAVE;
+                                remainingPaidDays--;
+                            } else {
+                                statusToSet = AttendanceStatus.UNPAID_LEAVE;
+                            }
+
+                            Attendance requestorAttendanceOnLeaveDate = attendanceRepository
+                                    .findUsersTodayAttendance(requestorId, d).orElse(null);
 
                             if (requestorAttendanceOnLeaveDate != null) {
-                                requestorAttendanceOnLeaveDate.setStatus(AttendanceStatus.LEAVE);
+                                requestorAttendanceOnLeaveDate.setStatus(statusToSet);
+                                attendanceRepository.save(requestorAttendanceOnLeaveDate);
                             } else {
                                 Attendance newRequestorAttendanceOnLeaveDate = new Attendance();
                                 User requestorProxy = userRepository.getReferenceById(requestorId);
                                 newRequestorAttendanceOnLeaveDate.setUser(requestorProxy);
                                 newRequestorAttendanceOnLeaveDate.setShift(shift);
                                 newRequestorAttendanceOnLeaveDate.setWorkDate(d);
-                                newRequestorAttendanceOnLeaveDate.setStatus(AttendanceStatus.LEAVE);
-                                
+                                newRequestorAttendanceOnLeaveDate.setStatus(statusToSet);
+
                                 attendanceRepository.save(newRequestorAttendanceOnLeaveDate);
                             }
                         }

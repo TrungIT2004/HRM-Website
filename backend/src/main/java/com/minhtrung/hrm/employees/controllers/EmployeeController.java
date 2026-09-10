@@ -9,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.common.context.RequestContextHolder;
@@ -23,9 +25,11 @@ import com.minhtrung.hrm.employees.dtos.requests.CreateEmployeeRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateAssignmentRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateBasicInfoRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateContractRequest;
+import com.minhtrung.hrm.employees.dtos.requests.UpdateEmployeeStatusRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateLegalProfileRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdatePayrollRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateProfileRequest;
+import com.minhtrung.hrm.employees.dtos.responses.AvatarUploadResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDetailResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDirectoryItemResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeePublicProfile;
@@ -224,5 +228,55 @@ public class EmployeeController {
 
         EmployeeDetailResponse response = employeeService.createEmployee(request, currentUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    /**
+     * API 9: Khóa hoặc Mở khóa tài khoản nhân viên thôi việc (Chỉ dành cho HR Head hoặc Executive).
+     * 
+     * PATCH /api/employees/{userId}/status
+     */
+    @PatchMapping("/{userId}/status")
+    public ResponseEntity<EmployeeDetailResponse> updateEmployeeStatus(
+            @PathVariable UUID userId,
+            @Valid @RequestBody UpdateEmployeeStatusRequest request
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        log.info("User {} updating status for employee {}: isActive={}", currentUser.getUserId(), userId, request.getIsActive());
+
+        EmployeeDetailResponse response = employeeService.updateEmployeeStatus(userId, request, currentUser);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * API 10: Nhân viên tự upload / cập nhật ảnh đại diện (Avatar) của chính mình.
+     * 
+     * POST /api/employees/me/avatar
+     */
+    @PostMapping("/me/avatar")
+    public ResponseEntity<AvatarUploadResponse> updateMyAvatar(
+            @RequestParam("file") MultipartFile file
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        log.info("Current user {} is uploading their avatar", currentUser.getUserId());
+
+        AvatarUploadResponse response = employeeService.updateAvatar(currentUser.getUserId(), file, currentUser);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * API 11: HR / Ban Giám Đốc upload ảnh đại diện cho nhân viên bất kỳ.
+     * 
+     * POST /api/employees/{userId}/avatar
+     */
+    @PostMapping("/{userId}/avatar")
+    public ResponseEntity<AvatarUploadResponse> updateEmployeeAvatar(
+            @PathVariable UUID userId,
+            @RequestParam("file") MultipartFile file
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        log.info("User {} is uploading avatar for employee {}", currentUser.getUserId(), userId);
+
+        AvatarUploadResponse response = employeeService.updateAvatar(userId, file, currentUser);
+        return ResponseEntity.ok(response);
     }
 }

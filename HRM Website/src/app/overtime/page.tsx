@@ -110,9 +110,9 @@ export default function OvertimePage() {
       const matchFrom = !filterFromDate || o.approvedDate >= filterFromDate;
       const matchTo = !filterToDate || o.approvedDate <= filterToDate;
       const matchKeyword = !filterKeyword ||
-        o.requestorName.toLowerCase().includes(filterKeyword.toLowerCase()) ||
-        o.requestorCode.toLowerCase().includes(filterKeyword.toLowerCase()) ||
-        o.reason.toLowerCase().includes(filterKeyword.toLowerCase());
+        (o.requestorName?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
+        (o.requestorCode?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
+        (o.reason?.toLowerCase() || '').includes(filterKeyword.toLowerCase());
       const matchDept = !allowDept || filterDept === 'ALL' || o.requestorDepartment === filterDept;
 
       return matchStatus && matchFrom && matchTo && matchKeyword && matchDept;
@@ -671,7 +671,7 @@ export default function OvertimePage() {
                         <td className="py-3 px-4 whitespace-nowrap">
                           <div className="flex items-center gap-1 text-[11px] text-slate-700">
                             <Mail className="h-3 w-3 text-slate-400" />
-                            <span>{ot.requestorEmail || `${ot.requestorCode.toLowerCase()}@act.com`}</span>
+                            <span>{ot.requestorEmail || `${(ot.requestorCode || '').toLowerCase()}@act.com`}</span>
                           </div>
                           <div className="flex items-center gap-1 text-[10px] text-slate-500 font-mono mt-0.5">
                             <Phone className="h-3 w-3 text-slate-400" />

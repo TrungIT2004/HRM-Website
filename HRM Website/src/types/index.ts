@@ -41,6 +41,7 @@ export interface User {
   job: JobTitle;
   profilePicUrl?: string;
   todayStatus: TodayAttendanceStatus;
+  isActive?: boolean;
   gender?: 'Nam' | 'Nữ' | 'Khác';
   birthDate?: string;
   joinedDate?: string;
@@ -63,7 +64,8 @@ export type AttendanceStatus =
   | 'LATE_AND_EARLY'
   | 'MISSING'
   | 'UNEXCUSED_ABSENCE'
-  | 'LEAVE'
+  | 'PAID_LEAVE'
+  | 'UNPAID_LEAVE'
   | 'HOLIDAY'
   | 'BUSINESS_TRIP'
   | 'ADJUSTED';
@@ -72,6 +74,7 @@ export interface AttendanceRecord {
   attendanceId: string;
   userId: string;
   userName: string;
+  fullName?: string;
   employeeCode: string;
   department: DepartmentName;
   job: JobTitle;
@@ -178,11 +181,13 @@ export interface UserProfileData {
   socialInsuranceStartDate: string; // YYYY-MM-DD
   emergencyContactName: string;
   emergencyContactPhone: string;
+  address?: string;
 }
 
 export interface UserBankAccountData {
   bankName: string;
   bankAccountNumber: string;
+  accountHolder?: string;
 }
 
 export interface UserContractData {

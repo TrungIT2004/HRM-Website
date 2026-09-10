@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.minhtrung.hrm.attendance.entities.MonthlyTimesheet;
 import com.minhtrung.hrm.attendance.enums.TimesheetStatus;
@@ -26,5 +28,7 @@ public interface MonthlyTimesheetRepository extends JpaRepository<MonthlyTimeshe
 
     void deleteByPeriodMonthAndPeriodYearAndStatus(int periodMonth, int periodYear, TimesheetStatus status);
 
-    void deleteByPeriodYearAndPeriodMonthBetween(int periodYear, int fromMonth, int toMonth);
+    @org.springframework.data.jpa.repository.Modifying
+    @Query("DELETE FROM MonthlyTimesheet m WHERE m.periodYear = :periodYear AND m.periodMonth BETWEEN :fromMonth AND :toMonth")
+    void deleteByPeriodYearAndPeriodMonthBetween(@Param("periodYear") int periodYear, @Param("fromMonth") int fromMonth, @Param("toMonth") int toMonth);
 }

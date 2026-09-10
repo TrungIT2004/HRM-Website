@@ -42,6 +42,14 @@ import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.entities.UserBankAccount;
 import com.minhtrung.hrm.employees.entities.UserContract;
 import com.minhtrung.hrm.employees.entities.UserProfile;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.minhtrung.hrm.auth.entities.UserSession;
+import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
+import com.minhtrung.hrm.auth.services.SessionBlacklistService;
+import com.minhtrung.hrm.services.FileStorageService;
+import com.minhtrung.hrm.employees.dtos.requests.UpdateEmployeeStatusRequest;
+import com.minhtrung.hrm.employees.dtos.responses.AvatarUploadResponse;
 import com.minhtrung.hrm.employees.enums.PayFrequency;
 import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
 import com.minhtrung.hrm.employees.repositories.JobRepository;
@@ -51,7 +59,10 @@ import com.minhtrung.hrm.employees.repositories.UserContractRepository;
 import com.minhtrung.hrm.employees.repositories.UserProfileRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class EmployeeService {
 
     private final UserRepository userRepository;
@@ -65,6 +76,9 @@ public class EmployeeService {
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
     private final AttendanceRepository attendanceRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserSessionRepository userSessionRepository;
+    private final SessionBlacklistService sessionBlacklistService;
+    private final FileStorageService fileStorageService;
 
     // Dependency Injection qua Constructor
     public EmployeeService(
@@ -78,7 +92,10 @@ public class EmployeeService {
             WorkShiftRepository workShiftRepository,
             WorkShiftScheduleRepository workShiftScheduleRepository,
             AttendanceRepository attendanceRepository,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            UserSessionRepository userSessionRepository,
+            SessionBlacklistService sessionBlacklistService,
+            FileStorageService fileStorageService
     ) {
         this.userRepository = userRepository;
         this.userProfileRepository = userProfileRepository;
@@ -91,6 +108,9 @@ public class EmployeeService {
         this.workShiftScheduleRepository = workShiftScheduleRepository;
         this.attendanceRepository = attendanceRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userSessionRepository = userSessionRepository;
+        this.sessionBlacklistService = sessionBlacklistService;
+        this.fileStorageService = fileStorageService;
     }
 
     /**
@@ -107,6 +127,7 @@ public class EmployeeService {
                 .profilePicUrl(user.getProfilePicUrl())
                 .departmentName(user.getDepartment() != null ? user.getDepartment().getName() : null)
                 .jobTitle(user.getJob() != null ? user.getJob().getTitle() : null)
+                .isActive(user.isActive())
                 .build());
     }
 
@@ -163,6 +184,7 @@ public class EmployeeService {
                 .todayStatus(todayStatus)
                 .shiftName(shiftName)
                 .weeklySchedule(weeklySchedule)
+                .isActive(user.isActive())
                 .build();
     }
 
@@ -599,5 +621,76 @@ public class EmployeeService {
 
     public UserDetailedInfo getEmployeeDetailedInf(UUID userId) {
         return userRepository.getUsersDetailedInfo(userId);
+    }
+
+    /**
+     * Khóa hoặc Mở khóa tài khoản nhân viên thôi việc (Chỉ HR hoặc Executive).
+     * Khi khóa: Thu hồi toàn bộ phiên đăng nhập của nhân viên đó trong Redis & DB ngay lập tức.
+     */
+    @Transactional
+    public EmployeeDetailResponse updateEmployeeStatus(UUID targetUserId, UpdateEmployeeStatusRequest request, TokenPayload currentUser) {
+        checkHRAccess(currentUser);
+
+        if (currentUser.getUserId().equals(targetUserId)) {
+            throw new IllegalArgumentException("Không thể tự thay đổi trạng thái hoạt động của chính tài khoản mình đang đăng nhập!");
+        }
+
+        User targetUser = userRepository.findById(targetUserId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
+
+        boolean newStatus = Boolean.TRUE.equals(request.getIsActive());
+        targetUser.setActive(newStatus);
+        userRepository.save(targetUser);
+
+        // Nếu vô hiệu hóa/thôi việc -> Thu hồi ngay lập tức toàn bộ phiên đăng nhập
+        if (!newStatus) {
+            List<UserSession> activeSessions = userSessionRepository.findByUserId(targetUserId);
+            for (UserSession s : activeSessions) {
+                s.setRevoked(true);
+                userSessionRepository.save(s);
+                sessionBlacklistService.blacklistSession(s.getSessionId(), 15);
+            }
+            log.warn("HR {} đã khóa tài khoản của nhân viên {} ({}). Lý do: {}",
+                    currentUser.getUserId(), targetUser.getUserId(), targetUser.getEmail(), request.getReason());
+        } else {
+            log.info("HR {} đã kích hoạt lại tài khoản của nhân viên {} ({})",
+                    currentUser.getUserId(), targetUser.getUserId(), targetUser.getEmail());
+        }
+
+        return getEmployeeDetailedProfile(targetUserId, currentUser);
+    }
+
+    /**
+     * Cập nhật ảnh đại diện Avatar cho nhân viên.
+     * Người dùng có thể tự đổi avatar của chính mình, HR hoặc Executive có thể đổi cho nhân viên khác.
+     */
+    @Transactional
+    public AvatarUploadResponse updateAvatar(UUID targetUserId, MultipartFile file, TokenPayload currentUser) {
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
+        }
+
+        boolean isSelf = currentUser.getUserId().equals(targetUserId);
+        boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
+        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
+
+        if (!isSelf && !isHR && !isExecutive) {
+            throw new AccessDeniedException("Bạn không có quyền cập nhật ảnh đại diện của nhân viên khác!");
+        }
+
+        User targetUser = userRepository.findById(targetUserId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
+
+        String avatarUrl = fileStorageService.storeAvatar(file, targetUserId);
+        targetUser.setProfilePicUrl(avatarUrl);
+        userRepository.save(targetUser);
+
+        log.info("Người dùng {} đã cập nhật ảnh đại diện cho nhân viên {}: {}",
+                currentUser.getUserId(), targetUserId, avatarUrl);
+
+        return AvatarUploadResponse.builder()
+                .profilePicUrl(avatarUrl)
+                .message("Cập nhật ảnh đại diện thành công!")
+                .build();
     }
 }

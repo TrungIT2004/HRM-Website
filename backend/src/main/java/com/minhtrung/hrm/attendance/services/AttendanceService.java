@@ -323,12 +323,32 @@ public class AttendanceService {
     
     @Transactional
     public Attendance editAttendanceRecord(UUID attendanceId, UserRole userRole, EditAttendanceRequest request) {
+        validateHROrExecutive(userRole);
+
         Attendance attendance = attendanceRepository.findById(attendanceId).orElseThrow(() -> {
             throw new AttendanceException(AttendanceErrorCode.ATTENDANCE_NOT_FOUND, "Không tìm thấy bản ghi chấm công");
         });
 
+        LocalDate workDate = attendance.getWorkDate();
+        if (workDate != null) {
+            boolean isLocked = false;
+            if (attendance.getUser() != null) {
+                isLocked = monthlyTimesheetRepository
+                        .findByUser_UserIdAndPeriodMonthAndPeriodYear(attendance.getUser().getUserId(), workDate.getMonthValue(), workDate.getYear())
+                        .map(t -> t.getStatus() == TimesheetStatus.LOCKED)
+                        .orElse(false);
+            }
+            if (!isLocked) {
+                isLocked = monthlyTimesheetRepository.existsByPeriodMonthAndPeriodYearAndStatus(
+                        workDate.getMonthValue(), workDate.getYear(), TimesheetStatus.LOCKED);
+            }
+            if (isLocked) {
+                throw new AttendanceException(AttendanceErrorCode.TIMESHEET_ALREADY_LOCKED,
+                        "Không thể chỉnh sửa chấm công vì bảng chấm công tháng " + workDate.getMonthValue() + "/" + workDate.getYear() + " đã được khóa sổ (LOCKED).");
+            }
+        }
+
         UUID edtiorId = userRole.getUserId();
-        String department = userRole.getDepartment();
 
         LocalTime editedClockInTime = request.getEditedClockInTime();
         LocalTime editedClockOutTime = request.getEditedClockOutTime();
@@ -342,45 +362,54 @@ public class AttendanceService {
             }
         }
 
-        if (department.equals("Human Resources")) {
-            attendance.setEdited(true);
-            attendance.setClockInTime(editedClockInTime);
-            attendance.setClockOutTime(editedClockOutTime);
-            attendance.setEditedReason(edtiedReason);
-            attendance.setStatus(editedStatus);
+        attendance.setEdited(true);
+        attendance.setClockInTime(editedClockInTime);
+        attendance.setClockOutTime(editedClockOutTime);
+        attendance.setEditedReason(edtiedReason);
+        attendance.setStatus(editedStatus);
 
-            User userProxy = userRepository.getReferenceById(edtiorId);
-            attendance.setEditor(userProxy);
+        User userProxy = userRepository.getReferenceById(edtiorId);
+        attendance.setEditor(userProxy);
 
-            attendanceRepository.save(attendance);
-            log.warn("Bản ghi chấm công bị chỉnh sửa. HR Editor: {}, Bản ghi ID: {}, Nhân viên: {}, Giờ vào mới: {}, Giờ ra mới: {}, Lý do: {}",
-                    edtiorId, attendanceId,
-                    attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A",
-                    editedClockInTime, editedClockOutTime, edtiedReason);
-            return attendance;
-        } else {
-            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
-                    "Nhân viên không có quyền thực hiện chức năng này");
-        }
+        attendanceRepository.save(attendance);
+        log.warn("Bản ghi chấm công bị chỉnh sửa. HR Editor: {}, Bản ghi ID: {}, Nhân viên: {}, Giờ vào mới: {}, Giờ ra mới: {}, Lý do: {}",
+                edtiorId, attendanceId,
+                attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A",
+                editedClockInTime, editedClockOutTime, edtiedReason);
+        return attendance;
     }
 
     @Transactional
     public void deleteAttendanceRecord(UUID attendanceId, UserRole userRole) {
+        validateHROrExecutive(userRole);
+
         Attendance attendance = attendanceRepository.findById(attendanceId).orElseThrow(() -> {
             throw new AttendanceException(AttendanceErrorCode.ATTENDANCE_NOT_FOUND, "Can't find attendance record");
         });
 
-        String department = userRole.getDepartment();
-
-        if (department.startsWith("Human Resources")) {
-            attendanceRepository.delete(attendance);
-            log.warn("Bản ghi chấm công bị XÓA. HR Executor: {}, Bản ghi ID: {}, Nhân viên: {}",
-                    userRole.getUserId(), attendanceId,
-                    attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A");
-        } else {
-            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
-                    "Nhân viên không có quyền thực hiện chức năng này");
+        LocalDate workDate = attendance.getWorkDate();
+        if (workDate != null) {
+            boolean isLocked = false;
+            if (attendance.getUser() != null) {
+                isLocked = monthlyTimesheetRepository
+                        .findByUser_UserIdAndPeriodMonthAndPeriodYear(attendance.getUser().getUserId(), workDate.getMonthValue(), workDate.getYear())
+                        .map(t -> t.getStatus() == TimesheetStatus.LOCKED)
+                        .orElse(false);
+            }
+            if (!isLocked) {
+                isLocked = monthlyTimesheetRepository.existsByPeriodMonthAndPeriodYearAndStatus(
+                        workDate.getMonthValue(), workDate.getYear(), TimesheetStatus.LOCKED);
+            }
+            if (isLocked) {
+                throw new AttendanceException(AttendanceErrorCode.TIMESHEET_ALREADY_LOCKED,
+                        "Không thể xóa chấm công vì bảng chấm công tháng " + workDate.getMonthValue() + "/" + workDate.getYear() + " đã được khóa sổ (LOCKED).");
+            }
         }
+
+        attendanceRepository.delete(attendance);
+        log.warn("Bản ghi chấm công bị XÓA. HR Executor: {}, Bản ghi ID: {}, Nhân viên: {}",
+                userRole.getUserId(), attendanceId,
+                attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A");
     }
     
     // ─── XUẤT EXCEL BẢNG CHẤM CÔNG (HR) ──────────────────────────────
@@ -642,7 +671,7 @@ public class AttendanceService {
                     actualWorkHours = actualWorkHours.add(BigDecimal.valueOf(hours));
                 } else if (status == AttendanceStatus.MISSING) {
                     actualWorkHours = actualWorkHours.add(BigDecimal.valueOf(4.0));
-                } else if (status == AttendanceStatus.BUSINESS_TRIP || status == AttendanceStatus.ADJUSTED) {
+                } else if (status == AttendanceStatus.BUSINESS_TRIP || status == AttendanceStatus.ADJUSTED || status == AttendanceStatus.PAID_LEAVE) {
                     actualWorkHours = actualWorkHours.add(BigDecimal.valueOf(8.0));
                 }
             }
@@ -674,6 +703,21 @@ public class AttendanceService {
                 } else {
                     unpaidLeaveDays = unpaidLeaveDays.add(BigDecimal.valueOf(daysInMonth));
                 }
+            }
+
+            // Đồng bộ thêm nếu có bản ghi PAID_LEAVE / UNPAID_LEAVE trực tiếp từ chấm công
+            long directPaidLeaveCount = attendances.stream()
+                    .filter(a -> a.getStatus() == AttendanceStatus.PAID_LEAVE)
+                    .count();
+            if (directPaidLeaveCount > paidLeaveDays.longValue()) {
+                paidLeaveDays = BigDecimal.valueOf(directPaidLeaveCount);
+            }
+
+            long directUnpaidLeaveCount = attendances.stream()
+                    .filter(a -> a.getStatus() == AttendanceStatus.UNPAID_LEAVE)
+                    .count();
+            if (directUnpaidLeaveCount > unpaidLeaveDays.longValue()) {
+                unpaidLeaveDays = BigDecimal.valueOf(directUnpaidLeaveCount);
             }
 
             // 4. Tổng hợp Tăng ca (OT)

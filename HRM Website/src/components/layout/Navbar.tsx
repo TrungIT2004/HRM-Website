@@ -20,7 +20,7 @@ export default function Navbar() {
   const { attendances } = useHRMData();
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const todayStr = '2026-09-04';
+  const todayStr = new Date().toISOString().split('T')[0];
   const todayRecord = attendances.find(
     a => a.userId === currentUser?.userId && a.workDate === todayStr
   );

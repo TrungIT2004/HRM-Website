@@ -22,14 +22,14 @@ export default function LoginPage() {
     setErrorMsg('');
 
     try {
-      const success = await login(email, password);
-      if (success) {
+      const res = await login(email, password);
+      if (res.success) {
         router.push('/dashboard');
       } else {
-        setErrorMsg('Email hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!');
+        setErrorMsg(res.error || 'Email hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!');
       }
-    } catch {
-      setErrorMsg('Đã có lỗi xảy ra trong quá trình đăng nhập.');
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Đã có lỗi xảy ra trong quá trình đăng nhập.');
     } finally {
       setIsLoading(false);
     }
@@ -39,11 +39,19 @@ export default function LoginPage() {
     setEmail(userEmail);
     setPassword('test@123');
     setIsLoading(true);
-    const success = await login(userEmail, 'test@123');
-    if (success) {
-      router.push('/dashboard');
+    setErrorMsg('');
+    try {
+      const res = await login(userEmail, 'test@123');
+      if (res.success) {
+        router.push('/dashboard');
+      } else {
+        setErrorMsg(res.error || 'Đăng nhập nhanh không thành công');
+      }
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Đã có lỗi xảy ra');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   return (

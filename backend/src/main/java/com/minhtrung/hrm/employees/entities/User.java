@@ -73,6 +73,9 @@ public class User {
     @Column(name = "employee_code", nullable = false, unique = true, length = 10)
     private String employeeCode;
 
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId", foreignKey = @ForeignKey(name = "fk_user_department"))
     @JsonIgnore
@@ -83,7 +86,7 @@ public class User {
     @JsonIgnore
     private Job job;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "shiftId", referencedColumnName = "shiftId", foreignKey = @ForeignKey(name = "fk_user_shift"))
     @JsonIgnore
     private WorkShift shift;

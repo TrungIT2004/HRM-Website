@@ -6,6 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useHRMData } from '@/context/HRMDataContext';
 import { MOCK_MONTHLY_SUMMARIES } from '@/mock/attendances';
 import { AttendanceRecord, AttendanceStatus, MonthlyTimesheetSummary } from '@/types';
+import { attendanceService } from '@/services/attendanceService';
 import {
   Clock,
   Camera,
@@ -88,8 +89,8 @@ export default function AttendancePage() {
     return records.filter(a => {
       const matchKeyword = 
         !filterKeyword || 
-        a.userName.toLowerCase().includes(filterKeyword.toLowerCase()) ||
-        a.employeeCode.toLowerCase().includes(filterKeyword.toLowerCase());
+        ((a.userName || a.fullName)?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
+        (a.employeeCode?.toLowerCase() || '').includes(filterKeyword.toLowerCase());
 
       const matchDept = !allowDeptFilter || filterDept === 'ALL' || a.department === filterDept;
       const matchStatus = filterStatus === 'ALL' || a.status === filterStatus;
@@ -123,7 +124,7 @@ export default function AttendancePage() {
     ? MOCK_MONTHLY_SUMMARIES.filter(s => s.department === currentUser?.department)
     : myMonthlySummary ? [myMonthlySummary] : []
   ).filter(s => {
-    const matchK = !summaryKeyword || s.fullName.toLowerCase().includes(summaryKeyword.toLowerCase()) || s.employeeCode.toLowerCase().includes(summaryKeyword.toLowerCase());
+    const matchK = !summaryKeyword || ((s.fullName || '')?.toLowerCase() || '').includes(summaryKeyword.toLowerCase()) || ((s.employeeCode || '')?.toLowerCase() || '').includes(summaryKeyword.toLowerCase());
     const matchD = summaryDept === 'ALL' || s.department === summaryDept;
     const matchM = s.month === Number(summaryMonth);
     const matchY = s.year === Number(summaryYear);
@@ -156,11 +157,44 @@ export default function AttendancePage() {
     showToast(`Đã cập nhật bản ghi chấm công cho ${editingRecord.userName}`);
   };
 
-  const handleExportExcel = (type: 'daily' | 'monthly') => {
-    const filename = type === 'daily' 
-      ? `ACT_Bao_Cao_Cham_Cong_${Date.now()}.xlsx` 
-      : `ACT_Bang_Tong_Hop_Cong_Thang_9_${Date.now()}.xlsx`;
-    showToast(`Đã xuất file báo cáo ${filename} thành công!`);
+  const handleExportExcel = async (type: 'daily' | 'monthly') => {
+    try {
+      if (type === 'daily') {
+        await attendanceService.exportAttendances({
+          startDate: filterStartDate,
+          endDate: filterEndDate,
+          status: filterStatus,
+          keyword: filterKeyword
+        });
+      } else {
+        await attendanceService.exportCompanyMonthlySummary({
+          month: summaryMonth,
+          year: summaryYear,
+          keyword: summaryKeyword
+        });
+      }
+      showToast('Đã tải xuống file báo cáo Excel thành công!');
+    } catch (err: any) {
+      showToast('Lỗi xuất Excel: ' + (err.message || 'Không thể tải file'));
+    }
+  };
+
+  const handleCalculateSummary = async () => {
+    try {
+      await attendanceService.generateMonthlySummary(summaryMonth, summaryYear);
+      showToast(`Đã tính toán bảng công tháng ${summaryMonth}/${summaryYear} thành công!`);
+    } catch (err: any) {
+      showToast('Lỗi tính công: ' + (err.message || 'Không thể tính toán'));
+    }
+  };
+
+  const handleLockTimesheet = async () => {
+    try {
+      await attendanceService.lockMonthlySummary(summaryMonth, summaryYear);
+      showToast(`Đã chốt sổ bảng công tháng ${summaryMonth}/${summaryYear}!`);
+    } catch (err: any) {
+      showToast('Lỗi chốt công: ' + (err.message || 'Không thể chốt sổ'));
+    }
   };
 
   const statusBadge = (status: AttendanceStatus) => {
@@ -175,8 +209,10 @@ export default function AttendancePage() {
         return <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 text-orange-800 px-2.5 py-0.5 text-[11px] font-bold">Về sớm</span>;
       case 'HOLIDAY':
         return <span className="inline-flex items-center gap-1 rounded-full bg-purple-100 text-purple-800 px-2.5 py-0.5 text-[11px] font-bold">Nghỉ Lễ</span>;
-      case 'LEAVE':
-        return <span className="inline-flex items-center gap-1 rounded-full bg-indigo-100 text-indigo-800 px-2.5 py-0.5 text-[11px] font-bold">Nghỉ Phép</span>;
+      case 'PAID_LEAVE':
+        return <span className="inline-flex items-center gap-1 rounded-full bg-indigo-100 text-indigo-800 px-2.5 py-0.5 text-[11px] font-bold">Nghỉ Phép (Có Lương)</span>;
+      case 'UNPAID_LEAVE':
+        return <span className="inline-flex items-center gap-1 rounded-full bg-slate-200 text-slate-700 px-2.5 py-0.5 text-[11px] font-bold">Nghỉ Không Lương</span>;
       case 'ADJUSTED':
         return <span className="inline-flex items-center gap-1 rounded-full bg-cyan-100 text-cyan-800 px-2.5 py-0.5 text-[11px] font-bold">Đã điều chỉnh</span>;
       default:
@@ -335,8 +371,8 @@ export default function AttendancePage() {
                   <option value="SUFFICIENT">Đúng giờ (SUFFICIENT)</option>
                   <option value="WORKING">Đang làm việc (WORKING)</option>
                   <option value="LATE">Đi trễ (LATE)</option>
-                  <option value="EARLY">Về sớm (EARLY)</option>
-                  <option value="LEAVE">Nghỉ phép (LEAVE)</option>
+                  <option value="PAID_LEAVE">Nghỉ phép có lương (PAID_LEAVE)</option>
+                  <option value="UNPAID_LEAVE">Nghỉ không lương (UNPAID_LEAVE)</option>
                   <option value="HOLIDAY">Nghỉ Lễ (HOLIDAY)</option>
                   <option value="ADJUSTED">Đã điều chỉnh (ADJUSTED)</option>
                 </select>
@@ -776,7 +812,25 @@ export default function AttendancePage() {
                     </p>
                   </div>
                   
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {(isHR || isExecutive) && (
+                      <>
+                        <button
+                          onClick={handleCalculateSummary}
+                          className="flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 text-xs font-bold transition cursor-pointer shadow-xs"
+                        >
+                          <Sparkles className="h-3.5 w-3.5" />
+                          <span>Tính toán công tháng</span>
+                        </button>
+                        <button
+                          onClick={handleLockTimesheet}
+                          className="flex items-center gap-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 text-xs font-bold transition cursor-pointer shadow-xs"
+                        >
+                          <Lock className="h-3.5 w-3.5" />
+                          <span>Chốt sổ bảng công</span>
+                        </button>
+                      </>
+                    )}
                     <button
                       onClick={() => handleExportExcel('monthly')}
                       className="flex items-center gap-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 text-xs font-bold transition cursor-pointer"
@@ -918,7 +972,8 @@ export default function AttendancePage() {
                     <option value="LATE">Đi trễ (LATE)</option>
                     <option value="EARLY">Về sớm (EARLY)</option>
                     <option value="ADJUSTED">Đã điều chỉnh (ADJUSTED)</option>
-                    <option value="LEAVE">Nghỉ phép (LEAVE)</option>
+                    <option value="PAID_LEAVE">Nghỉ phép có lương (PAID_LEAVE)</option>
+                    <option value="UNPAID_LEAVE">Nghỉ không lương (UNPAID_LEAVE)</option>
                     <option value="BUSINESS_TRIP">Công tác (BUSINESS_TRIP)</option>
                   </select>
                 </div>

@@ -20,6 +20,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Long getNextEmployeeNumber();
     
     boolean existsByEmail(String email);
+    int countByDepartment_DepartmentId(UUID departmentId);
 
     @Query("SELECT u FROM User u WHERE u.email = :email")
     User findByEmail(String email);
@@ -48,7 +49,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     
 
     @Query("""
-        SELECT new com.minhtrung.hrm.auth.dtos.internals.UserAuthInfo(u.userId, u.email, u.password, CONCAT(u.firstName, ' ', u.lastName), u.profilePicUrl, d.name, j.title)
+        SELECT new com.minhtrung.hrm.auth.dtos.internals.UserAuthInfo(u.userId, u.email, u.password, CONCAT(u.firstName, ' ', u.lastName), u.profilePicUrl, d.name, j.title, u.isActive)
         FROM User u
         JOIN u.department d
         JOIN u.job j

@@ -62,6 +62,9 @@ public class EmployeePublicProfile {
     private String shiftName;
     private List<WorkShiftScheduleDto> weeklySchedule;
 
+    // 6. Trạng thái tài khoản (Đang làm việc hay Đã thôi việc)
+    private boolean isActive;
+
     /**
      * DTO con biểu diễn lịch làm việc từng ngày trong tuần (Thứ 2 -> Chủ Nhật)
      */
