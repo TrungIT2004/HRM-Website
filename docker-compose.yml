@@ -1,0 +1,100 @@
+services:
+  # 1. Database: PostgreSQL 17 kèm pgvector
+  hrm-database:
+    image: pgvector/pgvector:pg17
+    container_name: hrm-database
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hrm}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-@Minhtrung1408}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-hrm}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 2. Cache: Redis 7
+  hrm-cache:
+    image: redis:7-alpine
+    container_name: hrm-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 3. Core Backend: Spring Boot API Server
+  hrm-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hrm-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://hrm-database:5432/${POSTGRES_DB:-hrm}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-@Minhtrung1408}
+      SPRING_DATA_REDIS_HOST: hrm-cache
+      SPRING_DATA_REDIS_PORT: ${REDIS_PORT:-6379}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/logs:/app/logs
+    depends_on:
+      hrm-database:
+        condition: service_healthy
+      hrm-cache:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 4. Frontend Web: Next.js Standalone
+  hrm-frontend:
+    build:
+      context: ./HRM Website
+      dockerfile: Dockerfile
+    container_name: hrm-frontend
+    environment:
+      INTERNAL_BACKEND_URL: http://hrm-backend:8080
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - hrm-backend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 5. Đường hầm Cloudflare Quick Tunnel (TryCloudflare)
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: hrm-cloudflared
+    command: tunnel --no-autoupdate --url http://hrm-frontend:3000
+    depends_on:
+      - hrm-frontend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  hrm-network:
+    driver: bridge

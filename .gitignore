@@ -1,4 +1,4 @@
-﻿# ==========================================
+# ==========================================
 # 1. BẢO MẬT & THÔNG TIN NHẠY CẢM (QUAN TRỌNG)
 # ==========================================
 # File cấu hình Spring Boot chứa mật khẩu DB, Gmail, JWT
@@ -10,6 +10,11 @@
 .env
 .env*.local
 *.env
+
+# File backup cơ sở dữ liệu
+init-db/*.sql
+init-db/*.sql.gz
+!init-db/README.md
 
 # File cấu hình Database Python chứa mật khẩu DB
 **/db_config.py
@@ -42,6 +47,12 @@ pnpm-debug.log*
 *.xlsx
 *.pptx
 *.pdf
+
+# File nén backup / lưu trữ
+*.rar
+*.zip
+*.7z
+*.tar.gz
 
 # ==========================================
 # 3. FRONTEND (Next.js / Node.js / React)
