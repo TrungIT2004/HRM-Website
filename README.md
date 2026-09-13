@@ -1738,3 +1738,321 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
    ├─ accepted → Tự động cập nhật chấm công + trừ phép năm (nghỉ phép)
    └─ rejected → Kết thúc
 ```
+
+---
+
+## 13. Request Body – HR Employee Update Endpoints
+
+> Tất cả trường trong các endpoint cập nhật hồ sơ đều là **tuỳ chọn** (partial update). Chỉ cần gửi những trường muốn thay đổi.
+
+### `PUT /api/employees/{userId}/basic-info` – `UpdateBasicInfoRequest`
+
+```json
+{
+  "firstName": "Văn An",
+  "lastName": "Nguyễn",
+  "gender": "Male | Female | Other",
+  "birthDate": "1995-05-20",
+  "profilePicUrl": "https://...",
+  "phoneNumber": "0901234567"
+}
+```
+
+---
+
+### `PUT /api/employees/{userId}/legal-profile` – `UpdateLegalProfileRequest`
+
+```json
+{
+  "citizenIdNumber": "012345678901",
+  "taxIdentificationNumber": "1234567890",
+  "socialInsuranceNumber": "SN123456",
+  "socialInsuranceStartDate": "2022-01-01",
+  "personalEmail": "an@gmail.com",
+  "placeOfBirth": "Hà Nội",
+  "maritalStatus": "Single | Married | Divorced | Widowed",
+  "nationality": "Vietnamese",
+  "emergencyContactName": "Nguyễn Văn B",
+  "emergencyContactPhone": "0987654321"
+}
+```
+
+---
+
+### `PUT /api/employees/{userId}/profile` – `UpdateProfileRequest`
+
+> Endpoint gộp, cập nhật cả thông tin cơ bản lẫn pháp lý trong một request.
+
+```json
+{
+  "firstName": "Văn An",
+  "lastName": "Nguyễn",
+  "gender": "Male",
+  "birthDate": "1995-05-20",
+  "profilePicUrl": "https://...",
+  "phoneNumber": "0901234567",
+  "personalEmail": "an@gmail.com",
+  "placeOfBirth": "Hà Nội",
+  "maritalStatus": "Single",
+  "nationality": "Vietnamese",
+  "citizenIdNumber": "012345678901",
+  "socialInsuranceNumber": "SN123456",
+  "socialInsuranceStartDate": "2022-01-01",
+  "taxIdentificationNumber": "1234567890",
+  "emergencyContactName": "Nguyễn Văn B",
+  "emergencyContactPhone": "0987654321"
+}
+```
+
+---
+
+### `PUT /api/employees/{userId}/contract` – `UpdateContractRequest`
+
+```json
+{
+  "contractType": "Indefinite | Fixed-term | Probation",
+  "contractStartDate": "2024-01-01",
+  "contractEndDate": "2026-01-01"
+}
+```
+
+> `contractEndDate` có thể là `null` nếu là hợp đồng không xác định thời hạn (`Indefinite`).
+
+---
+
+### `PUT /api/employees/{userId}/payroll` – `UpdatePayrollRequest`
+
+```json
+{
+  "baseSalary": 15000000,
+  "payFrequency": "MONTHLY | WEEKLY | HOURLY",
+  "workDays": 22.0,
+  "startDate": "2024-01-01",
+  "endDate": null,
+  "isActive": true,
+  "bankName": "Vietcombank",
+  "bankAccountNumber": "1234567890123"
+}
+```
+
+---
+
+### `PUT /api/employees/{userId}/assignment` – `UpdateAssignmentRequest`
+
+```json
+{
+  "departmentId": "uuid",
+  "jobId": "uuid",
+  "shiftId": "uuid"
+}
+```
+
+---
+
+### `PATCH /api/employees/{userId}/status` – `UpdateEmployeeStatusRequest`
+
+```json
+{
+  "isActive": false,
+  "reason": "Nhân viên đã nghỉ việc chính thức ngày 01/10/2024"
+}
+```
+
+> `isActive` **bắt buộc**. `reason` tuỳ chọn.
+
+---
+
+## 14. Hạ tầng & Bảo mật
+
+### Authentication Flow
+
+```
+Client                              Server
+  │                                   │
+  │──── POST /auth/login ─────────────▶│
+  │                                   │ Xác thực email + password
+  │◀─── accessToken (15 phút) ────────│
+  │◀─── refreshToken cookie (7 ngày) ─│
+  │                                   │
+  │── API call với Bearer accessToken ▶│
+  │◀── Data ──────────────────────────│
+  │                                   │
+  │  (accessToken hết hạn sau 15 phút)│
+  │                                   │
+  │──── POST /auth/auto-login ────────▶│  (cookie refreshToken tự gửi)
+  │◀─── accessToken mới (15 phút) ────│
+  │◀─── refreshToken cookie mới ──────│
+```
+
+### JWT Token
+
+| Loại | Thời hạn | Lưu trữ | Ghi chú |
+|---|---|---|---|
+| **Access Token** | **15 phút** | Memory / `Authorization` header | Dùng để gọi API |
+| **Refresh Token** | **7 ngày** | Cookie `HttpOnly` | Dùng để làm mới Access Token |
+
+**Access Token payload** (JWT claims):
+```json
+{
+  "sub": "userId (UUID)",
+  "sessionId": "UUID",
+  "deviceId": "UUID",
+  "email": "user@company.com",
+  "fullName": "Nguyễn Văn An",
+  "profilePicUrl": "https://...",
+  "department": "Human Resources",
+  "job": "HR Specialist",
+  "iat": 1726123456,
+  "exp": 1726124356
+}
+```
+
+**Thuật toán ký:** `HS256`
+
+---
+
+### CORS
+
+| Mục | Giá trị |
+|---|---|
+| **Allowed Origins** | `http://localhost:*` · `http://127.0.0.1:*` · `https://*.trycloudflare.com` |
+| **Allowed Methods** | `GET, POST, PUT, DELETE, PATCH, OPTIONS` |
+| **Allowed Headers** | `*` (tất cả) |
+| **Allow Credentials** | `true` (bắt buộc để gửi cookie) |
+| **Exposed Headers** | `Set-Cookie, Retry-After, X-RateLimit-Limit, X-RateLimit-Remaining` |
+| **Max Age (preflight)** | 3600 giây |
+
+> ⚠️ Khi gọi API từ browser, phải set `credentials: "include"` (fetch) hoặc `withCredentials: true` (axios) để cookie `refreshToken` được gửi kèm.
+
+---
+
+### Rate Limiting
+
+Hệ thống sử dụng Redis để giới hạn tần suất request theo IP.
+
+| Nhóm endpoint | Giới hạn | Cửa sổ thời gian |
+|---|---|---|
+| `/auth/*` | **30 request** | 60 giây |
+| Tất cả các route khác | Không giới hạn thực tế | — |
+
+**Response khi bị rate limit** (`HTTP 429 Too Many Requests`):
+```json
+{
+  "errorCode": "TOO_MANY_REQUESTS",
+  "message": "Quá nhiều yêu cầu. Vui lòng thử lại sau 45 giây.",
+  "retryAfterSeconds": 45
+}
+```
+
+**Response headers kèm theo mọi request:**
+```
+X-RateLimit-Limit: 30
+X-RateLimit-Remaining: 27
+Retry-After: 45   (chỉ xuất hiện khi bị block)
+```
+
+---
+
+### File Upload (Avatar)
+
+| Mục | Giá trị |
+|---|---|
+| **Endpoint** | `POST /api/employees/me/avatar` · `POST /api/employees/{id}/avatar` |
+| **Content-Type** | `multipart/form-data` |
+| **Field name** | `file` |
+| **Định dạng cho phép** | JPG, PNG, WebP, GIF và các định dạng ảnh phổ biến |
+| **Xử lý server-side** | Tự động nén & chuyển đổi sang **WebP 500×500px** |
+| **Đường dẫn lưu trữ** | `./uploads/avatars/<uuid>.webp` |
+| **URL trả về** | `/uploads/avatars/<uuid>.webp` (serve tĩnh) |
+
+---
+
+### Hạ tầng phụ trợ
+
+| Thành phần | Vai trò |
+|---|---|
+| **PostgreSQL** | Database chính |
+| **Redis** | Session blacklist + Rate limiting |
+| **File system** | Lưu trữ avatar (`./uploads/`) |
+
+---
+
+## 15. Tổng hợp Business Rules
+
+### Chấm công & Ca làm việc
+
+| Rule | Giá trị |
+|---|---|
+| Giờ tối đa / ngày (work shift) | ≤ **8 giờ** |
+| Giờ tối đa / tuần (work shift) | ≤ **48 giờ** |
+| Bảng công có thể sửa khi | `TimesheetStatus = DRAFT` |
+| Bảng công bị khoá khi | `TimesheetStatus = LOCKED` – không thể thêm/sửa/xóa bản ghi chấm công |
+
+### Tăng ca (Overtime)
+
+| Rule | Giá trị |
+|---|---|
+| OT tối thiểu / đơn | ≥ **1 giờ** |
+| OT tối đa / đơn | ≤ **12 giờ** |
+| OT tối đa / tháng | ≤ **40 giờ** |
+| OT tối đa / năm | ≤ **200 giờ** |
+| Thời gian nghỉ tối thiểu giữa 2 ca (kể cả OT) | ≥ **12 giờ** |
+| OT không được trùng giờ làm chính | ✅ Kiểm tra tự động |
+
+### Nghỉ phép
+
+| Rule | Giá trị |
+|---|---|
+| Số ngày nghỉ tối đa / đơn | ≤ **14 ngày lịch** |
+| Phép năm mặc định | Theo cấu hình khi tạo tài khoản (`annualLeaveDays`) |
+| Chairman không được xin nghỉ | ✅ Bị chặn bởi `CHAIRMAN_CANNOT_LEAVE` |
+| Không được xin nghỉ trùng đơn đang active | ✅ Kiểm tra `OVERLAPPING_LEAVE_REQUEST` |
+| Phạm vi ngày cho phép | Từ 1 đến tối đa 14 ngày lịch |
+
+### Thôi việc – Thời hạn báo trước tối thiểu
+
+| Loại hợp đồng | Thời hạn tối thiểu |
+|---|---|
+| `Indefinite` (Không xác định thời hạn) | ≥ **45 ngày** |
+| `Fixed-term` (Xác định thời hạn) | ≥ **30 ngày** |
+| `Probation` (Thử việc) | ≥ **3 ngày** |
+
+### Lương – Tỷ lệ bảo hiểm & thuế
+
+| Khoản mục | Tỷ lệ | Bên chịu |
+|---|---|---|
+| Bảo hiểm xã hội (BHXH) | 8% | Người lao động |
+| Bảo hiểm y tế (BHYT) | 1.5% | Người lao động |
+| Bảo hiểm thất nghiệp (BHTN) | 1% | Người lao động |
+| **Tổng khấu trừ NLĐ** | **10.5%** | Người lao động |
+| BHXH (công ty đóng) | 17.5% | Công ty |
+| BHYT (công ty đóng) | 3% | Công ty |
+| BHTN (công ty đóng) | 1% | Công ty |
+| **Tổng công ty đóng** | **21.5%** | Công ty |
+| Kinh phí công đoàn | 2% | Công ty |
+| Thuế TNCN | Lũy tiến 7 bậc | Người lao động |
+
+**7 bậc thuế TNCN (tính trên thu nhập tính thuế):**
+
+| Bậc | Thu nhập / tháng | Thuế suất |
+|---|---|---|
+| 1 | ≤ 5 triệu | 5% |
+| 2 | 5 – 10 triệu | 10% |
+| 3 | 10 – 18 triệu | 15% |
+| 4 | 18 – 32 triệu | 20% |
+| 5 | 32 – 52 triệu | 25% |
+| 6 | 52 – 80 triệu | 30% |
+| 7 | > 80 triệu | 35% |
+
+> Thu nhập tính thuế = Gross Pay − Bảo hiểm NLĐ − Giảm trừ gia cảnh (11 triệu/tháng cá nhân + 4.4 triệu/người phụ thuộc)
+
+### Quy trình phê duyệt & trạng thái đơn
+
+| Loại đơn | Người duyệt Cấp 1 | Người duyệt Cấp 2 | Ghi chú |
+|---|---|---|---|
+| Nghỉ phép | Trưởng phòng cùng phòng hoặc BGĐ | — | 1 cấp duyệt |
+| Tăng ca | Trưởng phòng cùng phòng hoặc BGĐ | — | 1 cấp duyệt |
+| Thôi việc | Trưởng phòng cùng phòng hoặc BGĐ | HR hoặc BGĐ | 2 cấp duyệt |
+| Bảng lương | Kế toán (tính toán + điều chỉnh) | KT Trưởng hoặc BGĐ (approve) | 2 bước xử lý |
+
+> **Quy tắc chung:** Không ai được tự phê duyệt đơn của chính mình (`SELF_APPROVAL_NOT_ALLOWED`).
