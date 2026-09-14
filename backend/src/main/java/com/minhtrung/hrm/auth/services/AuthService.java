@@ -269,6 +269,20 @@ public class AuthService {
                 throw new AuthenticationException(AuthErrorCode.SESSION_REVOKED, "Session revoked");
             }
 
+            // Kiểm tra tài khoản người dùng có đang hoạt động hay đã bị khóa / thôi việc
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new AuthenticationException(AuthErrorCode.USER_NOT_FOUND, "User not found"));
+
+            if (!user.isActive()) {
+                log.warn("Cảnh báo bảo mật: Tài khoản đã bị vô hiệu hóa hoặc thôi việc nhưng cố gắng auto-login. UserId: {}, Email: {}, SessionId: {}",
+                        userId, user.getEmail(), sessionId);
+                session.setRevoked(true);
+                userSessionRepository.save(session);
+                sessionBlacklistService.blacklistSession(sessionId, 15);
+                throw new AuthenticationException(AuthErrorCode.ACCOUNT_DISABLED,
+                        "Tài khoản của bạn đã bị vô hiệu hóa hoặc đã thôi việc. Vui lòng liên hệ phòng Nhân sự!");
+            }
+
             if (!hash(token).equals(session.getToken())) {
                 log.error("CẢNH BÁO NGHIÊM TRỌNG: Phát hiện Token bị làm giả / Session bị tấn công! SessionId: {}, UserId: {}. Đang thu hồi phiên.", sessionId, userId);
                 session.setRevoked(true);

@@ -99,6 +99,26 @@
       "key": "resignationId",
       "value": "REPLACE_WITH_RESIGNATION_UUID",
       "type": "string"
+    },
+    {
+      "key": "adminAccessToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "pendingUserId",
+      "value": "REPLACE_WITH_PENDING_USER_UUID",
+      "type": "string"
+    },
+    {
+      "key": "contractId",
+      "value": "REPLACE_WITH_CONTRACT_UUID",
+      "type": "string"
+    },
+    {
+      "key": "adminSessionId",
+      "value": "REPLACE_WITH_SESSION_UUID",
+      "type": "string"
     }
   ],
   "item": [
@@ -120,7 +140,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "var json = pm.response.json(); var token = (json.data && json.data.accessToken) || json.accessToken; if (token) { pm.collectionVariables.set('accessToken', token); pm.collectionVariables.set('executiveAccessToken', token); }"
+                  "var json = pm.response.json(); var token = (json.data && json.data.accessToken) || json.accessToken; if (token) { pm.collectionVariables.set('accessToken', token); pm.collectionVariables.set('executiveAccessToken', token); pm.collectionVariables.set('adminAccessToken', token); }"
                 ]
               }
             }
@@ -151,6 +171,104 @@
               "mode": "raw",
               "raw": "{\n  \"email\": \"nguyenminhduc@company.com\",\n  \"password\": \"test@123\"\n}"
             }
+          }
+        },
+        {
+          "name": "Login - System Administrator (sysadmin@company.com)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.collectionVariables.set('deviceId', pm.variables.replaceIn('{{$randomUUID}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json(); var token = (json.data && json.data.accessToken) || json.accessToken; if (token) { pm.collectionVariables.set('accessToken', token); pm.collectionVariables.set('adminAccessToken', token); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Cookie",
+                "value": "deviceId={{deviceId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"sysadmin@company.com\",\n  \"password\": \"Admin@123\"\n}"
+            },
+            "description": "Đăng nhập với tư cách System Administrator (Phòng Information Technology, Mã NV: EMP027) để lấy adminAccessToken gọi các API quản trị hệ thống."
+          }
+        },
+        {
+          "name": "Login - System Administrator / Executive (nguyenminhduc)",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.collectionVariables.set('deviceId', pm.variables.replaceIn('{{$randomUUID}}'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json(); var token = (json.data && json.data.accessToken) || json.accessToken; if (token) { pm.collectionVariables.set('accessToken', token); pm.collectionVariables.set('adminAccessToken', token); pm.collectionVariables.set('executiveAccessToken', token); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Cookie",
+                "value": "deviceId={{deviceId}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"nguyenminhduc@company.com\",\n  \"password\": \"test@123\"\n}"
+            },
+            "description": "Đăng nhập với tư cách System Administrator / Ban Giám Đốc để lấy adminAccessToken gọi các API quản trị hệ thống."
           }
         },
         {
@@ -4530,7 +4648,7 @@
           }
         },
         {
-          "name": "10. HR: Create New Employee (POST)",
+          "name": "10. HR: Create New Employee (Onboarding - Pending User) (POST)",
           "request": {
             "method": "POST",
             "header": [
@@ -4545,7 +4663,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"new.employee@company.com\",\n  \"password\": \"tempPass@123\",\n  \"firstName\": \"Văn Bình\",\n  \"lastName\": \"Hoàng\",\n  \"gender\": \"Nam\",\n  \"birthDate\": \"1998-05-15\",\n  \"joinedDate\": \"2026-09-01\",\n  \"departmentId\": \"d0000000-0000-0000-0000-000000000003\",\n  \"jobId\": \"j0000000-0000-0000-0000-000000000006\",\n  \"employeeCode\": \"EMP099\",\n  \"phoneNumber\": \"0987654321\",\n  \"citizenId\": \"001298000123\",\n  \"address\": \"Hà Nội\",\n  \"baseSalary\": 15000000\n}"
+              "raw": "{\n  \"email\": \"candidate.it@gmail.com\",\n  \"password\": \"tempPass@123\",\n  \"firstName\": \"Văn Bình\",\n  \"lastName\": \"Hoàng\",\n  \"gender\": \"Nam\",\n  \"birthDate\": \"1998-05-15\",\n  \"joinedDate\": \"2026-09-01\",\n  \"departmentId\": \"d0000000-0000-0000-0000-000000000003\",\n  \"jobId\": \"j0000000-0000-0000-0000-000000000006\",\n  \"employeeCode\": \"EMP099\",\n  \"phoneNumber\": \"0987654321\",\n  \"citizenId\": \"001298000123\",\n  \"address\": \"Hà Nội\",\n  \"baseSalary\": 15000000\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/employees",
@@ -4557,11 +4675,11 @@
                 "employees"
               ]
             },
-            "description": "HR creates new employee profile with initial password filled by HR. Requires hrAccessToken."
+            "description": "HR nhập hồ sơ ứng viên/nhân viên chuẩn bị vào làm việc. Dữ liệu được lưu vào bảng pending_users ở trạng thái PENDING để chờ System Admin duyệt và cấp email công ty, tài khoản chính thức. Yêu cầu hrAccessToken."
           }
         },
         {
-          "name": "11. HR: Update Employee Status (Active/Inactive) (PATCH)",
+          "name": "11. Admin/Executive: Update Employee Status (Active/Inactive) (PATCH)",
           "request": {
             "method": "PATCH",
             "header": [
@@ -4571,12 +4689,12 @@
               },
               {
                 "key": "Authorization",
-                "value": "Bearer {{hrHeadAccessToken}}"
+                "value": "Bearer {{adminAccessToken}}"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"isActive\": false,\n  \"reason\": \"Nh\\u00e2n vi\\u00ean xin th\\u00f4i vi\\u1ec7c t\\u1eeb ng\\u00e0y 01/10/2026\"\n}"
+              "raw": "{\n  \"isActive\": false,\n  \"reason\": \"Nhân viên vi phạm bảo mật / Tạm đình chỉ công tác\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/employees/{{userId}}/status",
@@ -4589,7 +4707,8 @@
                 "{{userId}}",
                 "status"
               ]
-            }
+            },
+            "description": "Khóa hoặc mở khóa tài khoản nhân viên. Chỉ System Administrator hoặc Ban Giám Đốc mới có quyền gọi. Khi khóa (isActive = false), toàn bộ session của nhân viên đó trong DB và Redis blacklist sẽ bị thu hồi ngay lập tức."
           }
         },
         {
@@ -4660,6 +4779,132 @@
                 "avatar"
               ]
             }
+          }
+        },
+        {
+          "name": "14. HR: Get Employee Contract History (GET)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/employees/{{userId}}/contracts",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{userId}}",
+                "contracts"
+              ]
+            },
+            "description": "Lấy toàn bộ lịch sử danh sách các hợp đồng lao động của nhân viên theo thứ tự mới nhất đến cũ nhất."
+          }
+        },
+        {
+          "name": "15. HR: Renew Employee Contract (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractType\": \"Indefinite\",\n  \"contractStartDate\": \"2027-10-02\",\n  \"contractEndDate\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees/{{userId}}/contracts/renew",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{userId}}",
+                "contracts",
+                "renew"
+              ]
+            },
+            "description": "Gia hạn hợp đồng: Tự động vô hiệu hóa (is_active = false) hợp đồng cũ đang active và tạo hợp đồng mới (is_active = true)."
+          }
+        },
+        {
+          "name": "16. HR: Create New Contract (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractType\": \"Fixed-term\",\n  \"contractStartDate\": \"2026-10-01\",\n  \"contractEndDate\": \"2027-10-01\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees/{{userId}}/contracts",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{userId}}",
+                "contracts"
+              ]
+            },
+            "description": "Ký hợp đồng lao động mới cho nhân viên. Loại hợp đồng chuẩn: 'Indefinite', 'Fixed-term', 'Probation'."
+          }
+        },
+        {
+          "name": "17. HR: Update Specific Contract (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{hrAccessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractType\": \"Fixed-term\",\n  \"contractStartDate\": \"2026-10-01\",\n  \"contractEndDate\": \"2027-10-01\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/employees/{{userId}}/contracts/{{contractId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{userId}}",
+                "contracts",
+                "{{contractId}}"
+              ]
+            },
+            "description": "Chỉnh sửa thông tin của một hợp đồng lao động cụ thể (ngày bắt đầu, ngày kết thúc, loại hợp đồng) qua contractId."
           }
         }
       ]
@@ -5986,6 +6231,332 @@
                   ]
                 },
                 "description": "HR hoặc Ban Giám Đốc xem toàn bộ đơn thôi việc của công ty (hỗ trợ lọc theo status)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "10. System Administration (System Admin Portal)",
+      "item": [
+        {
+          "name": "1. Onboarding & Provisioning",
+          "item": [
+            {
+              "name": "1. Get Pending Users (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/admin/pending-users?status=PENDING",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "pending-users"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "PENDING",
+                      "description": "PENDING | APPROVED | REJECTED"
+                    }
+                  ]
+                },
+                "description": "System Admin lấy danh sách hồ sơ tuyển dụng nhân sự do HR gửi sang đang chờ duyệt cấp tài khoản."
+              }
+            },
+            {
+              "name": "2. Provision Account (POST)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"corporateEmail\": \"vanbinh.hoang@company.com\",\n  \"temporaryPassword\": \"InitPass@2026\",\n  \"employeeCode\": \"EMP030\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/admin/pending-users/{{pendingUserId}}/provision",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "pending-users",
+                    "{{pendingUserId}}",
+                    "provision"
+                  ]
+                },
+                "description": "System Admin duyệt hồ sơ tuyển dụng, cấp email công ty + mật khẩu khởi tạo tạm thời. Hệ thống tự động kích hoạt tài khoản vào users, user_profiles, user_contracts, salaries."
+              }
+            },
+            {
+              "name": "3. Reject Pending User (POST)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Hồ sơ thiếu CCCD công chứng hoặc thông tin số điện thoại không liên lạc được\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/admin/pending-users/{{pendingUserId}}/reject",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "pending-users",
+                    "{{pendingUserId}}",
+                    "reject"
+                  ]
+                },
+                "description": "System Admin từ chối hồ sơ tuyển dụng và ghi rõ lý do để bộ phận HR nắm thông tin."
+              }
+            }
+          ]
+        },
+        {
+          "name": "2. Account Management & Security",
+          "item": [
+            {
+              "name": "1. Get All Accounts (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/admin/accounts",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "accounts"
+                  ]
+                },
+                "description": "System Admin xem danh sách toàn bộ tài khoản người dùng, chức danh, phòng ban và trạng thái hoạt động (Active/Locked)."
+              }
+            },
+            {
+              "name": "2. Lock or Unlock User Account (PATCH)",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isActive\": false,\n  \"reason\": \"Nghi vấn vi phạm chính sách bảo mật dữ liệu công ty\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/admin/accounts/{{userId}}/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "accounts",
+                    "{{userId}}",
+                    "status"
+                  ]
+                },
+                "description": "System Admin khóa hoặc mở khóa tài khoản. Khi khóa tài khoản: Tự động thu hồi mọi phiên làm việc trong DB và đưa vào blacklist Redis ngay lập tức."
+              }
+            },
+            {
+              "name": "3. Reset User Password - Rescue (POST)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"newPassword\": \"RescuePass@2026\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/admin/accounts/{{userId}}/reset-password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "accounts",
+                    "{{userId}}",
+                    "reset-password"
+                  ]
+                },
+                "description": "System Admin cấp cứu đặt lại mật khẩu tạm thời cho nhân viên khi quên/bị mất tài khoản, đồng thời hủy bỏ các phiên đăng nhập cũ."
+              }
+            }
+          ]
+        },
+        {
+          "name": "3. Session Monitoring & Remote Logout",
+          "item": [
+            {
+              "name": "1. Get All Active Sessions (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/admin/sessions?keyword=EMP027",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "sessions"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyword",
+                      "value": "EMP027",
+                      "description": "Tìm kiếm theo tên, mã nhân viên (EMP...), email hoặc IP",
+                      "disabled": false
+                    },
+                    {
+                      "key": "userId",
+                      "value": "{{userId}}",
+                      "description": "Lọc chính xác theo UUID nhân viên",
+                      "disabled": true
+                    }
+                  ]
+                },
+                "description": "System Admin theo dõi toàn bộ các phiên làm việc đang online trong hệ thống. Hỗ trợ tìm kiếm theo từ khóa (tên, mã NV, email, IP) hoặc lọc theo userId."
+              }
+            },
+            {
+              "name": "2. Get Sessions of Specific User (GET)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/admin/users/{{userId}}/sessions",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "users",
+                    "{{userId}}",
+                    "sessions"
+                  ]
+                },
+                "description": "Xem trực tiếp toàn bộ các phiên làm việc của một nhân viên cụ thể theo userId."
+              }
+            },
+            {
+              "name": "3. Revoke Single Session - Kick Device (DELETE)",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/admin/sessions/{{adminSessionId}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "sessions",
+                    "{{adminSessionId}}"
+                  ]
+                },
+                "description": "Đá 1 thiết bị cụ thể: Thu hồi phiên đăng nhập và đưa token vào Redis blacklist trong 15 phút, buộc thiết bị đó phải đăng nhập lại."
+              }
+            },
+            {
+              "name": "4. Revoke All User Sessions - Force Logout (DELETE)",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminAccessToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/admin/users/{{userId}}/sessions",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "users",
+                    "{{userId}}",
+                    "sessions"
+                  ]
+                },
+                "description": "Đá toàn bộ thiết bị của nhân viên: Cưỡng chế đăng xuất tất cả máy tính/điện thoại mà nhân viên đó đang đăng nhập."
               }
             }
           ]

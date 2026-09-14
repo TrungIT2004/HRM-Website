@@ -46,7 +46,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         "/api/jobs",
         "/api/resignations",
         "/api/resignation",
-        "/auth/change-password"
+        "/auth/change-password",
+        "/api/admin"
     );
 
     JwtAuthFilter(JwtService jwtService, ClientInfoService clientInfoService,

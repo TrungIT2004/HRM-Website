@@ -249,6 +249,15 @@ public class GlobalExceptionHandler {
                 .secure(false)
                 .path("/")
                 .maxAge(0)
+                .sameSite("Lax")
+                .build();
+
+        ResponseCookie deleteDeviceCookie = ResponseCookie.from("deviceId", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .sameSite("Lax")
                 .build();
 
         String message = ex.getMessage();
@@ -260,13 +269,18 @@ public class GlobalExceptionHandler {
             message = getDefaultAuthMessage(ex.getCode());
         }
 
-        return ResponseEntity.status(status)
-                .header(HttpHeaders.SET_COOKIE, deleteCookie.toString())
-                .body(Map.of(
-                        "errorCode", ex.getCode().name(),
-                        "message", message,
-                        "msg", message
-                ));
+        ResponseEntity.BodyBuilder builder = ResponseEntity.status(status)
+                .header(HttpHeaders.SET_COOKIE, deleteCookie.toString());
+
+        if (ex.getCode() == AuthErrorCode.ACCOUNT_DISABLED) {
+            builder.header(HttpHeaders.SET_COOKIE, deleteDeviceCookie.toString());
+        }
+
+        return builder.body(Map.of(
+                "errorCode", ex.getCode().name(),
+                "message", message,
+                "msg", message
+        ));
     }
 
     private HttpStatus mapAuthECToStatus(AuthErrorCode errorCode) {

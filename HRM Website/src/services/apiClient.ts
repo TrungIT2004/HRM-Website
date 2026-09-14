@@ -1,6 +1,4 @@
-// Central API Client for communicating with Spring Boot Backend
-
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? '';
 
 export class ApiError extends Error {
   status: number;
@@ -52,7 +50,7 @@ export async function request<T = any>(
   try {
     response = await fetch(url, config);
   } catch (err: any) {
-    throw new ApiError(0, 'Không thể kết nối đến máy chủ Backend (http://localhost:8080). Vui lòng kiểm tra lại!');
+    throw new ApiError(0, `Không thể kết nối đến máy chủ Backend (${API_BASE_URL || 'nội bộ'}). Vui lòng kiểm tra lại!`);
   }
 
   if (response.status === 401 && !endpoint.includes('/auth/login') && !endpoint.includes('/auth/auto-login')) {

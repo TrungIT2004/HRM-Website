@@ -87,11 +87,22 @@ function mapDetailResponse(res: any): EmployeeDetailed {
       accountHolder: pay.bankAccountHolder || res.bankAccount?.accountHolder || pub.fullName || ''
     },
     contract: {
-      contractType: contract.contractType || 'Chính thức',
+      contractId: contract.contractId,
+      contractType: contract.contractType || 'Fixed-term',
       contractStartDate: contract.contractStartDate || '',
       contractEndDate: contract.contractEndDate || '',
-      probationEndDate: contract.probationEndDate || ''
+      probationEndDate: contract.probationEndDate || '',
+      isActive: contract.isActive !== undefined ? contract.isActive : true
     },
+    contracts: Array.isArray(res.contracts)
+      ? res.contracts.map((c: any) => ({
+          contractId: c.contractId,
+          contractType: c.contractType,
+          contractStartDate: c.contractStartDate,
+          contractEndDate: c.contractEndDate,
+          isActive: c.isActive
+        }))
+      : [],
     salary: {
       salaryId: pay.salaryId || '',
       baseSalary: pay.baseSalary || 0,
@@ -160,7 +171,27 @@ export const employeeService = {
   },
 
   updateContract: async (userId: string, data: any): Promise<EmployeeDetailed> => {
-    return apiClient.put<EmployeeDetailed>(`/api/employees/${userId}/contract`, data);
+    const res = await apiClient.put<any>(`/api/employees/${userId}/contract`, data);
+    return mapDetailResponse(res);
+  },
+
+  renewContract: async (userId: string, data: { contractType: string; contractStartDate: string; contractEndDate?: string }): Promise<EmployeeDetailed> => {
+    const res = await apiClient.post<any>(`/api/employees/${userId}/contracts/renew`, data);
+    return mapDetailResponse(res);
+  },
+
+  createContract: async (userId: string, data: { contractType: string; contractStartDate: string; contractEndDate?: string }): Promise<EmployeeDetailed> => {
+    const res = await apiClient.post<any>(`/api/employees/${userId}/contracts`, data);
+    return mapDetailResponse(res);
+  },
+
+  getContractHistory: async (userId: string): Promise<any[]> => {
+    return apiClient.get<any[]>(`/api/employees/${userId}/contracts`);
+  },
+
+  updateSpecificContract: async (userId: string, contractId: string, data: any): Promise<EmployeeDetailed> => {
+    const res = await apiClient.put<any>(`/api/employees/${userId}/contracts/${contractId}`, data);
+    return mapDetailResponse(res);
   },
 
   updatePayroll: async (userId: string, data: any): Promise<EmployeeDetailed> => {

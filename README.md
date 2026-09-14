@@ -63,7 +63,8 @@ Hệ thống quản lý nhân sự toàn diện dành cho doanh nghiệp, bao g�
 
 ## Tính năng chính
 
-- 👤 **Quản lý nhân viên** – Hồ sơ, hợp đồng, lương, phân công phòng ban & ca làm
+- 👤 **Quản lý nhân viên & Onboarding** – HR tiếp nhận hồ sơ ứng viên (pending users), quản lý hợp đồng, lương, điều chuyển phòng ban & ca làm
+- 🛠️ **Quản trị hệ thống (Admin IT)** – Duyệt & cấp tài khoản chính thức (provisioning), khóa/mở khóa tài khoản, reset mật khẩu, giám sát & thu hồi phiên đăng nhập
 - 🕐 **Chấm công** – Clock in/out thủ công hoặc nhận diện khuôn mặt, tổng hợp bảng công tháng
 - 🏖️ **Nghỉ phép** – Đăng ký, phê duyệt, trừ phép năm tự động
 - ⏰ **Tăng ca** – Đăng ký, phê duyệt, tính giờ OT thực tế
@@ -171,20 +172,21 @@ curl http://localhost:8080/auth/login \
 ```
 backend/src/main/java/com/minhtrung/hrm/
 │
-├── auth/                    # Đăng nhập, JWT, session
-├── attendance/              # Chấm công, ca làm việc, bảng công tháng
-├── leave/                   # Nghỉ phép
-├── overtime/                # Tăng ca
-├── payroll/                 # Bảng lương
-├── resignation/             # Thôi việc
-├── employees/               # Nhân viên, phòng ban, chức vụ
-├── dashboard/               # Dashboard tổng quan
-├── seeder/                  # Seed dữ liệu mẫu (dev)
+├── admin/                    # Quản trị hệ thống, cấp tài khoản, quản lý phiên
+├── auth/                     # Đăng nhập, JWT, session
+├── attendance/               # Chấm công, ca làm việc, bảng công tháng
+├── leave/                    # Nghỉ phép
+├── overtime/                 # Tăng ca
+├── payroll/                  # Bảng lương
+├── resignation/              # Thôi việc
+├── employees/                # Nhân viên, phòng ban, chức vụ
+├── dashboard/                # Dashboard tổng quan
+├── seeder/                   # Seed dữ liệu mẫu (dev)
 │
-├── configs/                 # Security, CORS, Web config
-├── filters/                 # JWT filter, Rate limit filter
-├── exceptions/              # Global exception handler
-└── services/                # Shared services (file storage, ...)
+├── configs/                  # Security, CORS, Web config
+├── filters/                  # JWT filter, Rate limit filter
+├── exceptions/               # Global exception handler
+└── services/                 # Shared services (file storage, ...)
 ```
 
 ---
@@ -197,6 +199,7 @@ backend/src/main/java/com/minhtrung/hrm/
 | **Manager** | `job` bắt đầu bằng `"Department Head"` |
 | **HR** | `department = "Human Resources"` |
 | **HR Head** | HR + `job` chứa `"Head"` |
+| **System Admin** | `department = "Information Technology"` + `job` chứa `"System Administrator"` hoặc `"Admin"` |
 | **Executive** | `department = "Executive Leadership"` |
 | **Accounting** | `department` hoặc `job` chứa từ khóa kế toán/tài chính |
 

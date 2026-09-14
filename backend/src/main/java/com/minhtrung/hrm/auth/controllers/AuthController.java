@@ -19,6 +19,8 @@ import com.minhtrung.hrm.auth.dtos.requests.ChangePasswordRequest;
 import com.minhtrung.hrm.auth.dtos.requests.SignInRequest;
 import com.minhtrung.hrm.auth.dtos.requests.SignUpRequest;
 import com.minhtrung.hrm.auth.dtos.response.SignInResponse;
+import com.minhtrung.hrm.auth.enums.AuthErrorCode;
+import com.minhtrung.hrm.auth.exceptions.AuthenticationException;
 import com.minhtrung.hrm.auth.services.AuthService;
 import com.minhtrung.hrm.common.context.RequestContext;
 import com.minhtrung.hrm.common.context.RequestContextHolder;
@@ -94,23 +96,57 @@ public class AuthController {
         if (ctx == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", "Missing context"));
         }
-        
-        ClientMetaData clientMetaData = ctx.getMetaData();
-        SignInResponse response = authService.autoSignIn(token, deviceId, clientMetaData);
 
-        String refreshToken = response.getRefreshToken();
-
-        ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
+        ResponseCookie deleteRefreshCookie = ResponseCookie.from("refreshToken", "")
                 .httpOnly(true)
                 .secure(false)
                 .path("/")
-                .maxAge(7 * 24 * 60 * 60) // 7 days
+                .maxAge(0)
                 .sameSite("Lax")
                 .build();
 
-        return ResponseEntity.ok()
-                .header(HttpHeaders.SET_COOKIE, refreshCookie.toString())
-                .body(response);
+        ResponseCookie deleteDeviceCookie = ResponseCookie.from("deviceId", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .sameSite("Lax")
+                .build();
+
+        try {
+            ClientMetaData clientMetaData = ctx.getMetaData();
+            SignInResponse response = authService.autoSignIn(token, deviceId, clientMetaData);
+
+            String refreshToken = response.getRefreshToken();
+
+            ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
+                    .httpOnly(true)
+                    .secure(false)
+                    .path("/")
+                    .maxAge(7 * 24 * 60 * 60) // 7 days
+                    .sameSite("Lax")
+                    .build();
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.SET_COOKIE, refreshCookie.toString())
+                    .body(response);
+        } catch (AuthenticationException ex) {
+            log.warn("Auto-login thất bại: Code={}, Msg={}. Đang xóa toàn bộ cookies (refreshToken & deviceId)",
+                    ex.getCode(), ex.getMessage());
+
+            HttpStatus status = ex.getCode() == AuthErrorCode.ACCOUNT_DISABLED 
+                    ? HttpStatus.FORBIDDEN 
+                    : HttpStatus.UNAUTHORIZED;
+
+            return ResponseEntity.status(status)
+                    .header(HttpHeaders.SET_COOKIE, deleteRefreshCookie.toString())
+                    .header(HttpHeaders.SET_COOKIE, deleteDeviceCookie.toString())
+                    .body(Map.of(
+                            "errorCode", ex.getCode().name(),
+                            "message", ex.getMessage(),
+                            "msg", ex.getMessage()
+                    ));
+        }
     }
     
     @PostMapping("/logout")

@@ -21,7 +21,7 @@ public class UserContract {
     @Column(name = "contract_id")
     private UUID contractId;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "userId")
     @JsonIgnore
     private User user;
@@ -34,4 +34,7 @@ public class UserContract {
 
     @Column(name = "contract_end_date")
     private LocalDate contractEndDate;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
 }

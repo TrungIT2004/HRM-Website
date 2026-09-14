@@ -7,6 +7,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.minhtrung.hrm.auth.entities.UserSession;
+import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
+import com.minhtrung.hrm.auth.services.SessionBlacklistService;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
 import com.minhtrung.hrm.resignation.entities.ResignationRequest;
@@ -23,6 +26,8 @@ public class ResignationScheduler {
 
     private final ResignationRequestRepository resignationRequestRepository;
     private final UserRepository userRepository;
+    private final UserSessionRepository userSessionRepository;
+    private final SessionBlacklistService sessionBlacklistService;
 
     /**
      * Cron job: Chạy vào lúc 00:05:00 mỗi ngày
@@ -54,7 +59,16 @@ public class ResignationScheduler {
             if (user != null) {
                 user.setActive(false);
                 userRepository.save(user);
-                log.info("CronJob: Đã khóa tài khoản nhân viên {} ({} {}) do đã hoàn tất thôi việc.",
+
+                // Thu hồi toàn bộ session và blacklist trong Redis
+                List<UserSession> activeSessions = userSessionRepository.findByUserId(user.getUserId());
+                for (UserSession s : activeSessions) {
+                    s.setRevoked(true);
+                    userSessionRepository.save(s);
+                    sessionBlacklistService.blacklistSession(s.getSessionId(), 15);
+                }
+
+                log.info("CronJob: Đã khóa tài khoản và thu hồi toàn bộ session của nhân viên {} ({} {}) do đã hoàn tất thôi việc.",
                         user.getUserId(), user.getLastName(), user.getFirstName());
             }
 

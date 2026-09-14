@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.minhtrung.hrm.auth.entities.UserSession;
+import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
+import com.minhtrung.hrm.auth.services.SessionBlacklistService;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.entities.UserContract;
@@ -37,6 +40,8 @@ public class ResignationService {
     private final ResignationRequestRepository resignationRequestRepository;
     private final UserContractRepository userContractRepository;
     private final UserRepository userRepository;
+    private final UserSessionRepository userSessionRepository;
+    private final SessionBlacklistService sessionBlacklistService;
 
     /**
      * 1. Nhân viên tạo đơn xin thôi việc
@@ -205,9 +210,16 @@ public class ResignationService {
             if (requestor != null) {
                 requestor.setActive(false);
                 userRepository.save(requestor);
+
+                List<UserSession> activeSessions = userSessionRepository.findByUserId(requestor.getUserId());
+                for (UserSession s : activeSessions) {
+                    s.setRevoked(true);
+                    userSessionRepository.save(s);
+                    sessionBlacklistService.blacklistSession(s.getSessionId(), 15);
+                }
             }
             resignationRequest.setStatus(ResignationStatus.COMPLETED);
-            log.info("Đã khóa tài khoản nhân viên {} ngay sau khi duyệt do ngày làm việc cuối đã qua", requestorId);
+            log.info("Đã khóa tài khoản và thu hồi toàn bộ session nhân viên {} ngay sau khi duyệt do ngày làm việc cuối đã qua", requestorId);
         }
 
         resignationRequestRepository.save(resignationRequest);

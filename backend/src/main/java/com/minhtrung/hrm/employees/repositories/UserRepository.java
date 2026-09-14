@@ -66,10 +66,10 @@ public interface UserRepository extends JpaRepository<User, UUID> {
        "FROM User u " +
        "LEFT JOIN u.department d " +
        "LEFT JOIN u.job j " +
-       "LEFT JOIN u.salaries s " +
+       "LEFT JOIN u.salaries s WITH s.isActive = true " +
        "LEFT JOIN u.profile p " +
        "LEFT JOIN u.bankAccount b " +
-       "LEFT JOIN u.contract c " + 
+       "LEFT JOIN u.contracts c WITH c.isActive = true " +
        "WHERE u.userId = :userId")
     UserDetailedInfo getUsersDetailedInfo(@Param("userId") UUID userId);
 
@@ -82,10 +82,10 @@ public interface UserRepository extends JpaRepository<User, UUID> {
        "FROM User u " +
        "LEFT JOIN u.department d " +
        "LEFT JOIN u.job j " +
-       "LEFT JOIN u.salaries s " +
+       "LEFT JOIN u.salaries s WITH s.isActive = true " +
        "LEFT JOIN u.profile p " +
        "LEFT JOIN u.bankAccount b " +
-       "LEFT JOIN u.contract c")
+       "LEFT JOIN u.contracts c WITH c.isActive = true")
     List<UserDetailedInfo> getAllUsersDetailedInfo();
 
     @Query("""

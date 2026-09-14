@@ -21,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.common.context.RequestContextHolder;
+import com.minhtrung.hrm.employees.dtos.requests.CreateContractRequest;
 import com.minhtrung.hrm.employees.dtos.requests.CreateEmployeeRequest;
+import com.minhtrung.hrm.employees.dtos.requests.RenewContractRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateAssignmentRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateBasicInfoRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateContractRequest;
@@ -30,6 +32,7 @@ import com.minhtrung.hrm.employees.dtos.requests.UpdateLegalProfileRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdatePayrollRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateProfileRequest;
 import com.minhtrung.hrm.employees.dtos.responses.AvatarUploadResponse;
+import com.minhtrung.hrm.employees.dtos.responses.ContractResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDetailResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDirectoryItemResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeePublicProfile;
@@ -175,6 +178,66 @@ public class EmployeeController {
         log.info("HR user {} updating contract for employee ID: {}", currentUser.getUserId(), userId);
 
         EmployeeDetailResponse response = employeeService.updateContract(userId, request, currentUser);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * API 5.1: Lấy toàn bộ lịch sử hợp đồng của nhân viên.
+     * GET /api/employees/{userId}/contracts
+     */
+    @GetMapping("/{userId}/contracts")
+    public ResponseEntity<java.util.List<ContractResponse>> getContractHistory(@PathVariable UUID userId) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        java.util.List<ContractResponse> history = employeeService.getContractHistory(userId, currentUser);
+        return ResponseEntity.ok(history);
+    }
+
+    /**
+     * API 5.2: Gia hạn hợp đồng lao động (Tạo HĐ mới, đóng HĐ cũ).
+     * POST /api/employees/{userId}/contracts/renew
+     */
+    @PostMapping("/{userId}/contracts/renew")
+    public ResponseEntity<EmployeeDetailResponse> renewContract(
+            @PathVariable UUID userId,
+            @Valid @RequestBody RenewContractRequest request
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        log.info("HR user {} renewing contract for employee ID: {}", currentUser.getUserId(), userId);
+
+        EmployeeDetailResponse response = employeeService.renewContract(userId, request, currentUser);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * API 5.3: Ký hợp đồng lao động mới.
+     * POST /api/employees/{userId}/contracts
+     */
+    @PostMapping("/{userId}/contracts")
+    public ResponseEntity<EmployeeDetailResponse> createContract(
+            @PathVariable UUID userId,
+            @Valid @RequestBody CreateContractRequest request
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        log.info("HR user {} creating new contract for employee ID: {}", currentUser.getUserId(), userId);
+
+        EmployeeDetailResponse response = employeeService.createContract(userId, request, currentUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    /**
+     * API 5.4: Chỉnh sửa 1 hợp đồng cụ thể (sửa lỗi chính tả/ngày tháng).
+     * PUT /api/employees/{userId}/contracts/{contractId}
+     */
+    @PutMapping("/{userId}/contracts/{contractId}")
+    public ResponseEntity<EmployeeDetailResponse> updateSpecificContract(
+            @PathVariable UUID userId,
+            @PathVariable UUID contractId,
+            @Valid @RequestBody UpdateContractRequest request
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        log.info("HR user {} updating specific contract {} for employee ID: {}", currentUser.getUserId(), contractId, userId);
+
+        EmployeeDetailResponse response = employeeService.updateSpecificContract(userId, contractId, request, currentUser);
         return ResponseEntity.ok(response);
     }
 

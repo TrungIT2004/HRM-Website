@@ -88,12 +88,20 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 | 🟠 **HR Head** | `department == "Human Resources"` + `job.contains("Head")` |
 | 🔵 **Manager** | `job.startsWith("Department Head")` |
 | 🔴 **Executive** | `department == "Executive Leadership"` |
+| 🛠️ **System Admin** | `department == "Information Technology"` + `job` chứa `"System Administrator"` hoặc `"Admin"` **HOẶC** 🔴 Executive |
 | 💰 **Accounting** | `dept` chứa `accounting/finance/kế toán/tài chính` **HOẶC** `job` chứa `accountant/kế toán` |
 | 💰💰 **Chief Accountant** | `job` chứa `head/manager/lead` + phòng Kế toán/Tài chính **HOẶC** 🔴 Executive |
 
 ---
 
 ## Enum Values
+
+### `PendingUserStatus`
+| Giá trị | Mô tả |
+|---|---|
+| `PENDING` | Hồ sơ mới do HR tạo, đang chờ Quản trị viên hệ thống (Admin) duyệt và cấp tài khoản |
+| `APPROVED` | Admin đã phê duyệt, cấp email công ty và kích hoạt tài khoản chính thức |
+| `REJECTED` | Admin đã từ chối hồ sơ tuyển dụng kèm lý do |
 
 ### `AttendanceStatus`
 | Giá trị | Mô tả |
@@ -440,6 +448,77 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 
 ---
 
+### `GET /api/employees/{userId}/contracts` 🔒 Bản thân / 🔵 Manager (cùng phòng) / 🟡 HR / 🔴 Executive
+
+> Lấy toàn bộ danh sách lịch sử hợp đồng lao động của nhân viên, sắp xếp theo ngày bắt đầu mới nhất.
+
+**Response** `200` – `List<ContractResponse>`:
+```json
+[
+  {
+    "contractId": "uuid",
+    "userId": "uuid",
+    "contractType": "Fixed-term",
+    "contractStartDate": "2024-01-01",
+    "contractEndDate": "2025-01-01",
+    "isActive": true
+  }
+]
+```
+
+---
+
+### `POST /api/employees/{userId}/contracts/renew` 🟡 HR
+
+> Gia hạn hợp đồng: Tự động vô hiệu hóa (`isActive = false`) hợp đồng hiện tại và tạo một hợp đồng lao động mới.
+
+**Request Body:**
+```json
+{
+  "contractType": "Indefinite | Fixed-term (bắt buộc)",
+  "contractStartDate": "2025-01-01 (bắt buộc)",
+  "contractEndDate": "2027-01-01 (tuỳ chọn nếu là Indefinite)"
+}
+```
+
+**Response** `200` – `EmployeeDetailResponse`
+
+---
+
+### `POST /api/employees/{userId}/contracts` 🟡 HR
+
+> Ký hợp đồng lao động mới cho nhân viên.
+
+**Request Body:**
+```json
+{
+  "contractType": "Fixed-term | Indefinite | Probation (bắt buộc)",
+  "contractStartDate": "2024-09-01 (bắt buộc)",
+  "contractEndDate": "2025-09-01 (tuỳ chọn)"
+}
+```
+
+**Response** `201` – `EmployeeDetailResponse`
+
+---
+
+### `PUT /api/employees/{userId}/contracts/{contractId}` 🟡 HR
+
+> Chỉnh sửa thông tin của một hợp đồng cụ thể (sửa lỗi chính tả, điều chỉnh ngày tháng).
+
+**Request Body:**
+```json
+{
+  "contractType": "Fixed-term",
+  "contractStartDate": "2024-01-01",
+  "contractEndDate": "2025-01-01"
+}
+```
+
+**Response** `200` – `EmployeeDetailResponse`
+
+---
+
 ### `PUT /api/employees/{userId}/payroll` 🟡 HR
 
 **Request Body:**
@@ -475,20 +554,22 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 
 ### `POST /api/employees` 🟡 HR
 
+> ⚠️ **Quy trình Onboarding mới:** Endpoint này dành cho HR nhập hồ sơ thông tin cho nhân viên chuẩn bị vào làm việc. Dữ liệu sẽ được lưu vào bảng `pending_users` với trạng thái `PENDING`. Tài khoản chính thức (`users`) sẽ do **Quản trị viên Hệ thống (System Admin)** kiểm tra và cấp phát qua API `/api/admin/pending-users/{pendingId}/provision`.
+
 **Request Body:**
 ```json
 {
-  "email": "newstaff@company.com (bắt buộc)",
-  "password": "Pass@1234 (bắt buộc, tối thiểu 8 ký tự)",
+  "email": "candidate@gmail.com (bắt buộc, email cá nhân/liên hệ)",
+  "password": "Pass@1234 (bắt buộc, mật khẩu khởi tạo tạm thời)",
   "firstName": "Văn Bình (bắt buộc)",
   "lastName": "Trần (bắt buộc)",
-  "gender": "Male",
+  "gender": "Nam | Nữ | Khác",
   "birthDate": "1998-03-15",
   "joinedDate": "2024-09-01",
   "departmentId": "uuid (bắt buộc)",
   "jobId": "uuid (bắt buộc)",
-  "shiftId": "uuid (bắt buộc)",
-  "employeeCode": "NV010",
+  "shiftId": "uuid (tuỳ chọn, nếu trống sẽ lấy ca mặc định đầu tiên)",
+  "employeeCode": "NV010 (tuỳ chọn)",
   "phoneNumber": "0901111222",
   "citizenId": "012345678901",
   "address": "123 Lê Lợi, Q.1, TP.HCM",
@@ -496,11 +577,33 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 }
 ```
 
-**Response** `201` – `EmployeeDetailResponse`
+**Response** `201` – `EmployeeDetailResponse`:
+```json
+{
+  "publicProfile": {
+    "userId": "pendingId (UUID trong pending_users)",
+    "fullName": "Văn Bình Trần",
+    "workEmail": "candidate@gmail.com (Đang chờ Admin cấp email công ty)",
+    "departmentName": "Engineering",
+    "jobTitle": "Developer",
+    "joinedDate": "2024-09-01",
+    "isActive": false,
+    "employeeCode": "PENDING",
+    "profilePicUrl": "https://ui-avatars.com/api/?name=..."
+  }
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Email đã tồn tại hoặc đang chờ duyệt | `400` | `BAD_REQUEST` |
+| Không phải phòng Nhân sự | `403` | `FORBIDDEN` |
 
 ---
 
-### `PATCH /api/employees/{userId}/status` 🟡 HR
+### `PATCH /api/employees/{userId}/status` 🛠️ System Admin / 🔴 Executive
+
+> Khóa hoặc Mở khóa tài khoản nhân viên. Khi khóa tài khoản (`isActive = false`): Toàn bộ phiên đăng nhập của nhân viên sẽ bị thu hồi và đưa vào Redis blacklist (15 phút) ngay lập tức. Người gọi không thể tự thay đổi trạng thái của chính tài khoản mình.
 
 **Request Body:**
 ```json
@@ -512,7 +615,10 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 
 **Response** `200` – `EmployeeDetailResponse`
 
-> Khi `isActive = false`: Thu hồi toàn bộ session ngay lập tức.
+| Error | HTTP | errorCode |
+|---|---|---|
+| Tự thay đổi trạng thái của chính mình | `400` | `BAD_REQUEST` |
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
 
 ---
 
@@ -1701,7 +1807,345 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 
 ---
 
+## 13. Quản trị hệ thống (Admin) – `/api/admin`
+
+> Dành riêng cho 🛠️ **System Admin** (`department == "Information Technology"` + `job` chứa `"System Administrator"` hoặc `"Admin"`) hoặc 🔴 **Executive** (`department == "Executive Leadership"`).
+
+---
+
+### 13.1. Onboarding & Cấp phát tài khoản (Provisioning)
+
+#### `GET /api/admin/pending-users` 🛠️ System Admin / 🔴 Executive
+
+> Lấy danh sách hồ sơ tuyển dụng đang chờ duyệt (hoặc lọc theo trạng thái).
+
+**Query Params:**
+
+| Param | Kiểu | Default | Mô tả |
+|---|---|---|---|
+| `status` | `String` | `PENDING` | Trạng thái lọc: `PENDING`, `APPROVED`, `REJECTED`, hoặc để trống |
+
+**Response** `200` – `List<PendingUserResponse>`:
+```json
+[
+  {
+    "pendingId": "uuid",
+    "firstName": "Văn Bình",
+    "lastName": "Trần",
+    "fullName": "Văn Bình Trần",
+    "gender": "Nam",
+    "birthDate": "1998-03-15",
+    "personalEmail": "binh.tv@gmail.com",
+    "phoneNumber": "0901111222",
+    "citizenId": "012345678901",
+    "placeOfBirth": "123 Lê Lợi, Q.1, TP.HCM",
+    "departmentId": "uuid",
+    "departmentName": "Information Technology",
+    "jobId": "uuid",
+    "jobTitle": "Backend Developer",
+    "shiftId": "uuid",
+    "shiftName": "Ca Hành Chính",
+    "baseSalary": 15000000.00,
+    "contractType": "Fixed-term",
+    "contractStartDate": "2024-10-01",
+    "contractEndDate": "2025-10-01",
+    "status": "PENDING",
+    "rejectionReason": null,
+    "createdByName": "Nguyễn HR",
+    "createdAt": "2024-09-14 09:30:00"
+  }
+]
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+#### `POST /api/admin/pending-users/{pendingId}/provision` 🛠️ System Admin / 🔴 Executive
+
+> Phê duyệt hồ sơ chờ duyệt và chính thức cấp phát tài khoản nhân viên. Hệ thống tự động:
+> 1. Tạo tài khoản `User` chính thức với email công ty và mã nhân viên.
+> 2. Khởi tạo `UserProfile` (SĐT, CCCD, nơi sinh, email cá nhân).
+> 3. Khởi tạo `UserContract` (hợp đồng có hiệu lực 1 năm theo mặc định).
+> 4. Khởi tạo `Salary` (nếu hồ sơ có khai báo mức lương cơ bản).
+> 5. Chuyển trạng thái hồ sơ trong `pending_users` thành `APPROVED`.
+
+**Request Body:**
+```json
+{
+  "corporateEmail": "binh.tran@company.com (bắt buộc, email công ty)",
+  "temporaryPassword": "InitPassword@123 (bắt buộc, tối thiểu 8 ký tự)",
+  "employeeCode": "EMP015 (tuỳ chọn, để trống sẽ tự sinh EMP001, EMP002...)"
+}
+```
+
+**Response** `201` – `AdminAccountResponse`:
+```json
+{
+  "userId": "uuid",
+  "employeeCode": "EMP015",
+  "fullName": "Văn Bình Trần",
+  "email": "binh.tran@company.com",
+  "departmentName": "Information Technology",
+  "jobTitle": "Backend Developer",
+  "isActive": true,
+  "joinedDate": "2024-10-01",
+  "activeSessionCount": 0
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Email công ty đã tồn tại | `400` | `BAD_REQUEST` |
+| Không tìm thấy hồ sơ chờ duyệt | `400` | `BAD_REQUEST` |
+| Hồ sơ không ở trạng thái PENDING | `400 / 500` | `BAD_REQUEST` |
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+#### `POST /api/admin/pending-users/{pendingId}/reject` 🛠️ System Admin / 🔴 Executive
+
+> Từ chối hồ sơ tuyển dụng. Chuyển trạng thái `pending_users` thành `REJECTED` kèm lý do.
+
+**Request Body:**
+```json
+{
+  "reason": "Ứng viên không đến nhận việc đúng hạn / Không đạt yêu cầu bổ sung hồ sơ (bắt buộc)"
+}
+```
+
+**Response** `200`:
+```json
+{
+  "message": "Đã từ chối hồ sơ tuyển dụng thành công"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy hồ sơ chờ duyệt | `400` | `BAD_REQUEST` |
+| Lý do để trống | `400` | `VALIDATION_FAILED` |
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+### 13.2. Quản lý tài khoản & Bảo mật (Account & Security)
+
+#### `GET /api/admin/accounts` 🛠️ System Admin / 🔴 Executive
+
+> Lấy danh sách toàn bộ tài khoản nhân viên trong hệ thống kèm số lượng phiên đăng nhập đang hoạt động (`activeSessionCount`).
+
+**Response** `200` – `List<AdminAccountResponse>`:
+```json
+[
+  {
+    "userId": "uuid",
+    "employeeCode": "EMP001",
+    "fullName": "Nguyễn Văn An",
+    "email": "an.nguyen@company.com",
+    "departmentName": "Human Resources",
+    "jobTitle": "HR Specialist",
+    "isActive": true,
+    "joinedDate": "2022-01-01",
+    "activeSessionCount": 2
+  }
+]
+```
+
+---
+
+#### `PATCH /api/admin/accounts/{userId}/status` 🛠️ System Admin / 🔴 Executive
+
+> Khóa hoặc Kích hoạt lại tài khoản nhân viên.
+> ⚠️ **Bảo mật:** Khi khóa tài khoản (`isActive = false`), toàn bộ phiên làm việc của nhân viên sẽ bị thu hồi (`revoked = true`) và đưa vào Redis Blacklist (15 phút) ngay lập tức. Người gọi không thể tự thay đổi trạng thái của chính tài khoản mình.
+
+**Request Body:**
+```json
+{
+  "isActive": false,
+  "reason": "Nhân viên vi phạm bảo mật / Tạm đình chỉ công tác (tuỳ chọn)"
+}
+```
+
+**Response** `200` – `AdminAccountResponse`:
+```json
+{
+  "userId": "uuid",
+  "employeeCode": "EMP001",
+  "fullName": "Nguyễn Văn An",
+  "email": "an.nguyen@company.com",
+  "departmentName": "Human Resources",
+  "jobTitle": "HR Specialist",
+  "isActive": false,
+  "joinedDate": "2022-01-01",
+  "activeSessionCount": 0
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Tự thay đổi trạng thái của chính mình | `400` | `BAD_REQUEST` |
+| Không tìm thấy nhân viên | `400` | `BAD_REQUEST` |
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+#### `POST /api/admin/accounts/{userId}/reset-password` 🛠️ System Admin / 🔴 Executive
+
+> Đặt lại mật khẩu tạm thời cho nhân viên. Sau khi đặt lại mật khẩu, hệ thống **cưỡng chế đăng xuất toàn bộ phiên làm việc** cũ của nhân viên trên tất cả thiết bị (thu hồi và đưa vào Redis Blacklist 15 phút), bắt buộc nhân viên đăng nhập lại với mật khẩu mới.
+
+**Request Body:**
+```json
+{
+  "newPassword": "NewTempPassword@2026 (bắt buộc, tối thiểu 8 ký tự)"
+}
+```
+
+**Response** `200`:
+```json
+{
+  "message": "Đặt lại mật khẩu tạm thời thành công. Đã ngắt các phiên đăng nhập cũ."
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Mật khẩu dưới 8 ký tự | `400` | `VALIDATION_FAILED` |
+| Không tìm thấy nhân viên | `400` | `BAD_REQUEST` |
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+### 13.3. Giám sát & Quản lý phiên làm việc (Sessions & Devices)
+
+#### `GET /api/admin/sessions` 🛠️ System Admin / 🔴 Executive
+
+> Giám sát danh sách các phiên làm việc (UserSession) trong hệ thống: thiết bị, hệ điều hành, trình duyệt, IP, vị trí địa lý, nhà mạng (ISP), thời điểm tạo, hoạt động cuối và trạng thái thu hồi (`revoked`).
+> Hỗ trợ tìm kiếm theo từ khóa (tên nhân viên, mã nhân viên, email, phòng ban, IP) hoặc lọc theo `userId`.
+
+**Query Params:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `keyword` | `String` | Tìm kiếm theo tên nhân viên, mã nhân viên (`EMP027`), email, phòng ban hoặc địa chỉ IP |
+| `userId` | `UUID` | Lọc chính xác theo ID của một nhân viên |
+
+**Response** `200` – `List<AdminSessionResponse>`:
+```json
+[
+  {
+    "sessionId": "uuid",
+    "userId": "uuid",
+    "employeeCode": "EMP027",
+    "userFullName": "Nguyễn Văn Admin",
+    "userEmail": "sysadmin@company.com",
+    "departmentName": "Information Technology",
+    "deviceType": "Desktop",
+    "deviceOS": "Windows 11",
+    "browser": "Chrome 128.0",
+    "ipAddr": "118.69.182.10",
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "isp": "VNPT",
+    "createdAt": "2024-09-14 08:00:00",
+    "lastActiveAt": "2024-09-14 09:15:00",
+    "revoked": false
+  }
+]
+```
+
+---
+
+#### `GET /api/admin/users/{userId}/sessions` 🛠️ System Admin / 🔴 Executive
+
+> Xem danh sách toàn bộ các phiên làm việc đang có của một nhân viên cụ thể.
+
+**Path Param:** `userId` (UUID, bắt buộc)
+
+**Response** `200` – `List<AdminSessionResponse>`
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+#### `DELETE /api/admin/sessions/{sessionId}` 🛠️ System Admin / 🔴 Executive
+
+> Thu hồi (Revoke) 1 phiên đăng nhập cụ thể của nhân viên. Đánh dấu `revoked = true` trong database và đưa `sessionId` vào Redis Blacklist trong 15 phút.
+
+**Response** `200`:
+```json
+{
+  "message": "Đã thu hồi phiên đăng nhập thành công"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy phiên làm việc | `400` | `BAD_REQUEST` |
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
+#### `DELETE /api/admin/users/{userId}/sessions` 🛠️ System Admin / 🔴 Executive
+
+> Cưỡng chế đăng xuất toàn bộ thiết bị của một nhân viên (thu hồi và blacklist toàn bộ các phiên đăng nhập đang có).
+
+**Response** `200`:
+```json
+{
+  "message": "Đã đăng xuất toàn bộ thiết bị của nhân viên thành công"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không đủ quyền Admin/Executive | `403` | `FORBIDDEN` |
+
+---
+
 ## Sơ đồ các luồng nghiệp vụ chính
+
+### Luồng Onboarding & Cấp phát tài khoản nhân viên (HR + Admin IT)
+
+```
+[HR] Nhập hồ sơ nhân viên chuẩn bị vào làm (POST /api/employees)
+                            │
+                            ▼
+           Bảng pending_users: status = PENDING
+                            │
+        ┌───────────────────┴───────────────────────────────┐
+        ▼                                                   ▼
+[Admin IT / BGĐ] Phê duyệt & Cấp tài khoản          [Admin IT / BGĐ] Từ chối hồ sơ
+(POST /api/admin/pending-users/{id}/provision)       (POST /api/admin/pending-users/{id}/reject)
+  - Cung cấp Email công ty & Mật khẩu khởi tạo        - Nhập lý do từ chối
+  - Hệ thống tự động:                                 - pending_users: REJECTED
+    + Tạo User chính thức (users)                     - Không tạo tài khoản
+    + Tạo Hồ sơ nhân thân (user_profiles)
+    + Tạo Hợp đồng lao động (user_contracts)
+    + Khởi tạo Mức lương (salaries)
+    + Cập nhật pending_users: APPROVED
+  - Nhân viên sẵn sàng đăng nhập
+```
+
+### Luồng Quản trị bảo mật & Cưỡng chế ngắt phiên (Session Invalidation)
+
+```
+[Admin IT / BGĐ] Thực hiện một trong các thao tác:
+  ├─ Khóa tài khoản nhân viên (isActive = false)
+  ├─ Đặt lại mật khẩu tạm thời (Reset password)
+  └─ Thu hồi phiên cụ thể hoặc đăng xuất toàn bộ thiết bị
+                            │
+                            ▼
+1. Cập nhật UserSession: revoked = true trong PostgreSQL
+2. Đưa sessionId vào Redis Blacklist (TTL = 15 phút)
+                            │
+                            ▼
+Mọi request mang Access Token cũ của phiên đó sẽ bị JwtAuthFilter chặn ngay lập tức (401/403)
+```
 
 ### Luồng phê duyệt đơn thôi việc (2 cấp)
 
@@ -1743,7 +2187,7 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
 
 ---
 
-## 13. Request Body – HR Employee Update Endpoints
+## 14. Request Body – HR Employee Update Endpoints
 
 > Tất cả trường trong các endpoint cập nhật hồ sơ đều là **tuỳ chọn** (partial update). Chỉ cần gửi những trường muốn thay đổi.
 
@@ -1864,7 +2308,7 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
 
 ---
 
-## 14. Hạ tầng & Bảo mật
+## 15. Hạ tầng & Bảo mật
 
 ### Authentication Flow
 
@@ -1979,7 +2423,7 @@ Retry-After: 45   (chỉ xuất hiện khi bị block)
 
 ---
 
-## 15. Tổng hợp Business Rules
+## 16. Tổng hợp Business Rules
 
 ### Chấm công & Ca làm việc
 
@@ -2052,6 +2496,7 @@ Retry-After: 45   (chỉ xuất hiện khi bị block)
 
 | Loại đơn | Người duyệt Cấp 1 | Người duyệt Cấp 2 | Ghi chú |
 |---|---|---|---|
+| Onboarding & Cấp tài khoản | HR (nhập hồ sơ `pending_users`) | System Admin IT hoặc BGĐ (cấp email & active tài khoản) | 2 bước quy trình |
 | Nghỉ phép | Trưởng phòng cùng phòng hoặc BGĐ | — | 1 cấp duyệt |
 | Tăng ca | Trưởng phòng cùng phòng hoặc BGĐ | — | 1 cấp duyệt |
 | Thôi việc | Trưởng phòng cùng phòng hoặc BGĐ | HR hoặc BGĐ | 2 cấp duyệt |
