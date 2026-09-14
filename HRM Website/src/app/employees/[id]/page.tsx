@@ -29,7 +29,8 @@ import {
   EyeOff,
   Camera,
   UserX,
-  Sparkles
+  Sparkles,
+  RefreshCw
 } from 'lucide-react';
 
 export default function EmployeeDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -45,9 +46,112 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
   const [toastMsg, setToastMsg] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Contract Modal States
+  const [contractModal, setContractModal] = useState<{
+    open: boolean;
+    mode: 'renew' | 'create' | 'edit';
+    contractId?: string;
+    contractType: string;
+    startDate: string;
+    endDate: string;
+  }>({
+    open: false,
+    mode: 'renew',
+    contractType: 'Fixed-term',
+    startDate: '',
+    endDate: ''
+  });
+  const [contractLoading, setContractLoading] = useState(false);
+
   const showToast = (msg: string) => {
     setToastMsg(msg);
     setTimeout(() => setToastMsg(''), 4000);
+  };
+
+  const openRenewModal = () => {
+    let nextStart = '';
+    if (employee.contract?.contractEndDate) {
+      const d = new Date(employee.contract.contractEndDate);
+      d.setDate(d.getDate() + 1);
+      nextStart = d.toISOString().split('T')[0];
+    } else {
+      nextStart = new Date().toISOString().split('T')[0];
+    }
+    const dEnd = new Date(nextStart);
+    dEnd.setFullYear(dEnd.getFullYear() + 1);
+    const nextEnd = dEnd.toISOString().split('T')[0];
+
+    setContractModal({
+      open: true,
+      mode: 'renew',
+      contractType: 'Fixed-term',
+      startDate: nextStart,
+      endDate: nextEnd
+    });
+  };
+
+  const openCreateModal = () => {
+    const today = new Date().toISOString().split('T')[0];
+    const dEnd = new Date();
+    dEnd.setFullYear(dEnd.getFullYear() + 1);
+
+    setContractModal({
+      open: true,
+      mode: 'create',
+      contractType: 'Fixed-term',
+      startDate: today,
+      endDate: dEnd.toISOString().split('T')[0]
+    });
+  };
+
+  const openEditModal = (c: any) => {
+    setContractModal({
+      open: true,
+      mode: 'edit',
+      contractId: c.contractId,
+      contractType: c.contractType || 'Fixed-term',
+      startDate: c.contractStartDate || '',
+      endDate: c.contractEndDate || ''
+    });
+  };
+
+  const handleSaveContract = async () => {
+    if (!contractModal.contractType || !contractModal.startDate) {
+      showToast('Vui lòng chọn loại hợp đồng và ngày bắt đầu!');
+      return;
+    }
+    setContractLoading(true);
+    try {
+      let updated: EmployeeDetailed;
+      if (contractModal.mode === 'renew') {
+        updated = await employeeService.renewContract(userId, {
+          contractType: contractModal.contractType,
+          contractStartDate: contractModal.startDate,
+          contractEndDate: contractModal.endDate || undefined
+        });
+        showToast('Gia hạn hợp đồng thành công!');
+      } else if (contractModal.mode === 'create') {
+        updated = await employeeService.createContract(userId, {
+          contractType: contractModal.contractType,
+          contractStartDate: contractModal.startDate,
+          contractEndDate: contractModal.endDate || undefined
+        });
+        showToast('Ký hợp đồng mới thành công!');
+      } else {
+        updated = await employeeService.updateSpecificContract(userId, contractModal.contractId!, {
+          contractType: contractModal.contractType,
+          contractStartDate: contractModal.startDate,
+          contractEndDate: contractModal.endDate || undefined
+        });
+        showToast('Cập nhật hợp đồng thành công!');
+      }
+      setLiveEmployee(updated);
+      setContractModal(prev => ({ ...prev, open: false }));
+    } catch (err: any) {
+      showToast(err?.response?.data?.message || err?.message || 'Có lỗi xảy ra');
+    } finally {
+      setContractLoading(false);
+    }
   };
 
   const loadProfile = async () => {
@@ -247,7 +351,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
   const avatarSrc = employee.profilePicUrl?.startsWith('http')
     ? employee.profilePicUrl
     : employee.profilePicUrl
-    ? `http://localhost:8080${employee.profilePicUrl}`
+    ? employee.profilePicUrl
     : null;
 
   return (
@@ -548,21 +652,150 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
           {/* TAB 3: CONTRACT */}
           {activeTab === 'contract' && canViewContract && (
             <div className="space-y-6">
-              <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3">
-                Thông tin Hợp đồng Lao động (user_contracts)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-xs">
-                <div>
-                  <span className="text-slate-400 block mb-1">Loại hợp đồng:</span>
-                  <span className="font-bold text-blue-700 text-sm">{employee.contract?.contractType || 'Hợp đồng lao động không xác định thời hạn'}</span>
+              {/* Active Contract Card */}
+              <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50/70 to-indigo-50/40 p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-blue-100 pb-4 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+                      <FileText className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-base font-bold text-slate-900">
+                          Hợp Đồng Lao Động Hiện Tại
+                        </h3>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full">
+                          <CheckCircle2 className="w-3 h-3" /> Đang hiệu lực
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500">Mã hợp đồng: {employee.contract?.contractId || 'HĐ-HIEN-HANH'}</p>
+                    </div>
+                  </div>
+
+                  {canEdit && (
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <button
+                        onClick={openRenewModal}
+                        className="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-xs transition-colors flex items-center gap-1.5"
+                      >
+                        <RefreshCw className="w-3.5 h-3.5" />
+                        <span>Gia Hạn HĐ</span>
+                      </button>
+
+                      <button
+                        onClick={() => openEditModal(employee.contract)}
+                        className="px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5"
+                      >
+                        <Edit3 className="w-3.5 h-3.5" />
+                        <span>Chỉnh Sửa</span>
+                      </button>
+
+                      <button
+                        onClick={openCreateModal}
+                        className="px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold transition-colors"
+                      >
+                        + Ký HĐ Mới
+                      </button>
+                    </div>
+                  )}
                 </div>
-                <div>
-                  <span className="text-slate-400 block mb-1">Ngày bắt đầu hiệu lực:</span>
-                  <span className="font-mono font-bold text-slate-900 text-sm">{employee.contract?.contractStartDate || employee.joinedDate}</span>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
+                  <div>
+                    <span className="text-slate-500 block mb-1 font-medium">Loại hợp đồng:</span>
+                    <span className="font-bold text-blue-900 text-sm">
+                      {employee.contract?.contractType === 'Indefinite'
+                        ? 'Không xác định thời hạn (Indefinite)'
+                        : employee.contract?.contractType === 'Fixed-term'
+                        ? 'Xác định thời hạn (Fixed-term)'
+                        : employee.contract?.contractType === 'Probation'
+                        ? 'Hợp đồng Thử việc (Probation)'
+                        : employee.contract?.contractType || 'Xác định thời hạn'}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="text-slate-500 block mb-1 font-medium">Ngày bắt đầu hiệu lực:</span>
+                    <span className="font-mono font-bold text-slate-900 text-sm">
+                      {employee.contract?.contractStartDate || employee.joinedDate}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="text-slate-500 block mb-1 font-medium">Ngày kết thúc hợp đồng:</span>
+                    <span className="font-mono font-bold text-slate-900 text-sm">
+                      {employee.contract?.contractEndDate || 'Vô thời hạn'}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-slate-400 block mb-1">Ngày kết thúc hợp đồng:</span>
-                  <span className="font-mono text-slate-800">{employee.contract?.contractEndDate || 'Vô thời hạn'}</span>
+              </div>
+
+              {/* Contract History Table */}
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-slate-500" />
+                    <span>Lịch Sử Ký Kết Hợp Đồng ({employee.contracts?.length || 1})</span>
+                  </h4>
+                </div>
+
+                <div className="overflow-x-auto border border-slate-200 rounded-xl bg-white">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200 uppercase tracking-wider text-[11px]">
+                      <tr>
+                        <th className="px-4 py-3">Loại Hợp Đồng</th>
+                        <th className="px-4 py-3">Ngày Bắt Đầu</th>
+                        <th className="px-4 py-3">Ngày Kết Thúc</th>
+                        <th className="px-4 py-3 text-center">Trạng Thái</th>
+                        {canEdit && <th className="px-4 py-3 text-right">Thao Tác</th>}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {(employee.contracts && employee.contracts.length > 0 ? employee.contracts : [employee.contract]).map((c, idx) => {
+                        if (!c) return null;
+                        const isCurrent = c.isActive !== false;
+                        return (
+                          <tr key={c.contractId || idx} className={`hover:bg-slate-50/80 transition-colors ${isCurrent ? 'bg-blue-50/30 font-medium' : ''}`}>
+                            <td className="px-4 py-3 text-slate-900">
+                              <span className="font-bold">
+                                {c.contractType === 'Indefinite'
+                                  ? 'Không xác định thời hạn'
+                                  : c.contractType === 'Fixed-term'
+                                  ? 'Xác định thời hạn'
+                                  : c.contractType === 'Probation'
+                                  ? 'Thử việc'
+                                  : c.contractType || '---'}
+                              </span>
+                              <span className="text-[10px] text-slate-400 block font-mono">({c.contractType})</span>
+                            </td>
+                            <td className="px-4 py-3 font-mono text-slate-700">{c.contractStartDate || '---'}</td>
+                            <td className="px-4 py-3 font-mono text-slate-700">{c.contractEndDate || 'Vô thời hạn'}</td>
+                            <td className="px-4 py-3 text-center">
+                              {isCurrent ? (
+                                <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                  Đang hiệu lực
+                                </span>
+                              ) : (
+                                <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-600">
+                                  Đã hết hạn
+                                </span>
+                              )}
+                            </td>
+                            {canEdit && (
+                              <td className="px-4 py-3 text-right">
+                                <button
+                                  onClick={() => openEditModal(c)}
+                                  className="text-blue-600 hover:text-blue-800 font-semibold text-xs"
+                                >
+                                  Sửa
+                                </button>
+                              </td>
+                            )}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -741,6 +974,113 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* Contract Modal (Renew / Create / Edit) */}
+        {contractModal.open && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
+            <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl border border-slate-100 space-y-4">
+              <button
+                onClick={() => setContractModal(prev => ({ ...prev, open: false }))}
+                className="absolute right-4 top-4 rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">
+                    {contractModal.mode === 'renew'
+                      ? 'Gia Hạn Hợp Đồng Lao Động'
+                      : contractModal.mode === 'create'
+                      ? 'Ký Hợp Đồng Lao Động Mới'
+                      : 'Chỉnh Sửa Thông Tin Hợp Đồng'}
+                  </h3>
+                  <p className="text-xs text-slate-500">{employee.fullName} ({employee.employeeCode})</p>
+                </div>
+              </div>
+
+              {contractModal.mode === 'renew' && (
+                <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-3 text-xs text-blue-800">
+                  ℹ️ Khi gia hạn, hợp đồng hiện tại sẽ tự động chuyển sang <strong>Đã hết hạn</strong>, và hợp đồng mới này sẽ trở thành <strong>Đang hiệu lực</strong>.
+                </div>
+              )}
+
+              <div className="space-y-3 text-xs">
+                <div>
+                  <label className="block font-semibold text-slate-700 mb-1">
+                    Loại hợp đồng <span className="text-rose-500">*</span>
+                  </label>
+                  <select
+                    value={contractModal.contractType}
+                    onChange={e => setContractModal(prev => ({ ...prev, contractType: e.target.value }))}
+                    className="w-full rounded-xl border border-slate-300 p-2.5 font-medium focus:border-blue-600 focus:outline-hidden"
+                  >
+                    <option value="Fixed-term">Hợp đồng Xác định thời hạn (Fixed-term)</option>
+                    <option value="Indefinite">Hợp đồng Không xác định thời hạn (Indefinite)</option>
+                    <option value="Probation">Hợp đồng Thử việc (Probation)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-semibold text-slate-700 mb-1">
+                    Ngày bắt đầu hiệu lực <span className="text-rose-500">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    value={contractModal.startDate}
+                    onChange={e => setContractModal(prev => ({ ...prev, startDate: e.target.value }))}
+                    className="w-full rounded-xl border border-slate-300 p-2.5 font-medium focus:border-blue-600 focus:outline-hidden"
+                  />
+                </div>
+
+                {contractModal.contractType !== 'Indefinite' && (
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">
+                      Ngày kết thúc hợp đồng
+                    </label>
+                    <input
+                      type="date"
+                      value={contractModal.endDate}
+                      onChange={e => setContractModal(prev => ({ ...prev, endDate: e.target.value }))}
+                      className="w-full rounded-xl border border-slate-300 p-2.5 font-medium focus:border-blue-600 focus:outline-hidden"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => setContractModal(prev => ({ ...prev, open: false }))}
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition"
+                >
+                  Hủy bỏ
+                </button>
+                <button
+                  type="button"
+                  disabled={contractLoading}
+                  onClick={handleSaveContract}
+                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-xs transition"
+                >
+                  {contractLoading ? (
+                    <>
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      <span>Đang lưu...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Save className="w-3.5 h-3.5" />
+                      <span>Xác nhận lưu</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         )}

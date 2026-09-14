@@ -191,10 +191,12 @@ export interface UserBankAccountData {
 }
 
 export interface UserContractData {
-  contractType: 'Thử việc' | 'Xác định thời hạn (1 năm)' | 'Xác định thời hạn (3 năm)' | 'Không xác định thời hạn';
+  contractId?: string;
+  contractType: 'Indefinite' | 'Fixed-term' | 'Probation' | string;
   contractStartDate: string; // YYYY-MM-DD
   contractEndDate?: string;   // YYYY-MM-DD
   probationEndDate?: string;  // YYYY-MM-DD
+  isActive?: boolean;
 }
 
 export interface SalaryData {
@@ -224,6 +226,7 @@ export interface EmployeeDetailed extends User {
   profile: UserProfileData;
   bankAccount: UserBankAccountData;
   contract: UserContractData;
+  contracts?: UserContractData[];
   salary: SalaryData;
   weeklySchedule: WorkShiftScheduleItem[];
 }

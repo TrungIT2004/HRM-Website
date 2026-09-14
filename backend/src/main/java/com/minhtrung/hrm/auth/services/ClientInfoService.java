@@ -35,16 +35,19 @@ public class ClientInfoService {
         clientMetaData.setDeviceType(deviceInfo.get("deviceType"));
         clientMetaData.setDeviceOS(deviceInfo.get("deviceOS"));
         clientMetaData.setBrowser(deviceInfo.get("browser"));
+        clientMetaData.setUserAgentRaw(userAgentString);
 
         if (isLocalAddr(ipAddr)) {
             clientMetaData.setIpAddr("LocalHost");
             clientMetaData.setCountry("LocalHost");
             clientMetaData.setCity("LocalHost");
+            clientMetaData.setIsp("Local Network");
         } else {
             Map<String, String> geoLocInfo = getGeoLoc(ipAddr);
             clientMetaData.setIpAddr(ipAddr);
             clientMetaData.setCountry(geoLocInfo.get("country"));
             clientMetaData.setCity(geoLocInfo.get("city"));
+            clientMetaData.setIsp(geoLocInfo.get("isp"));
         }
 
         log.info("Extract metadatas from headers");
@@ -116,7 +119,7 @@ public class ClientInfoService {
     }
     
     private Map<String, String> getGeoLoc(String ipAddr) {
-        String url = "http://ip-api.com/json/" + ipAddr + "?fields=status,country,city";
+        String url = "http://ip-api.com/json/" + ipAddr + "?fields=status,country,city,isp";
         ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
         Map<String, String> responseData = response.getBody();
 
@@ -125,12 +128,15 @@ public class ClientInfoService {
         if (responseData != null && "success".equals(responseData.get("status"))) {
             String country = responseData.get("country");
             String city = responseData.get("city");
+            String isp = responseData.get("isp");
 
             geoLocInfo.put("country", country);
             geoLocInfo.put("city", city);
+            geoLocInfo.put("isp", isp);
         } else {
             geoLocInfo.put("country", "UNKNOWN");
             geoLocInfo.put("city", "UNKNOWN");
+            geoLocInfo.put("isp", "UNKNOWN");
         }
 
         return geoLocInfo;

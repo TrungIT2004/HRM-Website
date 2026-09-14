@@ -35,6 +35,7 @@ public class EmployeeDetailResponse {
 
     // 3. Tab 2: Hợp đồng lao động (Me + Trưởng phòng cùng team + HR/Giám đốc)
     private ContractDto contract;
+    private java.util.List<ContractDto> contracts;
 
     // 4. Tab 3: Lương & Ngân hàng (Chỉ Me + HR/Giám đốc xem được)
     private PayrollDto payroll;
@@ -66,6 +67,7 @@ public class EmployeeDetailResponse {
     @AllArgsConstructor
     @Builder
     public static class ContractDto {
+        private java.util.UUID contractId;
         private String contractType;
 
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -73,6 +75,8 @@ public class EmployeeDetailResponse {
 
         @JsonFormat(pattern = "yyyy-MM-dd")
         private LocalDate contractEndDate;
+
+        private Boolean isActive;
     }
 
     @Getter

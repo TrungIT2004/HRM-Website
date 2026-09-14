@@ -109,7 +109,17 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     private UserBankAccount bankAccount;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private UserContract contract;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<UserContract> contracts;
 
+    public UserContract getContract() {
+        if (contracts == null || contracts.isEmpty()) {
+            return null;
+        }
+        return contracts.stream()
+                .filter(UserContract::isActive)
+                .findFirst()
+                .orElse(contracts.get(0));
+    }
 }

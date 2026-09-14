@@ -23,7 +23,7 @@ public interface ResignationRequestRepository extends JpaRepository<ResignationR
                    "JOIN FETCH r.user u " +
                    "LEFT JOIN FETCH u.department " +
                    "LEFT JOIN FETCH u.job " +
-                   "LEFT JOIN FETCH u.contract " +
+                   "LEFT JOIN FETCH u.contracts " +
                    "LEFT JOIN FETCH r.manager " +
                    "LEFT JOIN FETCH r.executive " +
                    "WHERE u.userId = :userId " +
@@ -36,7 +36,7 @@ public interface ResignationRequestRepository extends JpaRepository<ResignationR
                    "JOIN FETCH r.user u " +
                    "LEFT JOIN FETCH u.department d " +
                    "LEFT JOIN FETCH u.job " +
-                   "LEFT JOIN FETCH u.contract " +
+                   "LEFT JOIN FETCH u.contracts " +
                    "LEFT JOIN FETCH r.manager " +
                    "LEFT JOIN FETCH r.executive " +
                    "WHERE r.status = :status AND d.name = :departmentName AND u.userId != :currentUserId " +
@@ -53,7 +53,7 @@ public interface ResignationRequestRepository extends JpaRepository<ResignationR
                    "JOIN FETCH r.user u " +
                    "LEFT JOIN FETCH u.department d " +
                    "LEFT JOIN FETCH u.job j " +
-                   "LEFT JOIN FETCH u.contract " +
+                   "LEFT JOIN FETCH u.contracts " +
                    "LEFT JOIN FETCH r.manager " +
                    "LEFT JOIN FETCH r.executive " +
                    "WHERE u.userId != :currentUserId AND (" +
@@ -71,7 +71,7 @@ public interface ResignationRequestRepository extends JpaRepository<ResignationR
                    "JOIN FETCH r.user u " +
                    "LEFT JOIN FETCH u.department " +
                    "LEFT JOIN FETCH u.job " +
-                   "LEFT JOIN FETCH u.contract " +
+                   "LEFT JOIN FETCH u.contracts " +
                    "LEFT JOIN FETCH r.manager " +
                    "LEFT JOIN FETCH r.executive " +
                    "WHERE (:status IS NULL OR r.status = :status) " +

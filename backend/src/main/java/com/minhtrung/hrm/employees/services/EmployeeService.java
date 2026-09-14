@@ -21,13 +21,16 @@ import com.minhtrung.hrm.attendance.repositories.WorkShiftRepository;
 import com.minhtrung.hrm.attendance.repositories.WorkShiftScheduleRepository;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.employees.dtos.internals.UserDetailedInfo;
+import com.minhtrung.hrm.employees.dtos.requests.CreateContractRequest;
 import com.minhtrung.hrm.employees.dtos.requests.CreateEmployeeRequest;
+import com.minhtrung.hrm.employees.dtos.requests.RenewContractRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateAssignmentRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateBasicInfoRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateContractRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateLegalProfileRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdatePayrollRequest;
 import com.minhtrung.hrm.employees.dtos.requests.UpdateProfileRequest;
+import com.minhtrung.hrm.employees.dtos.responses.ContractResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDetailResponse;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDetailResponse.ContractDto;
 import com.minhtrung.hrm.employees.dtos.responses.EmployeeDetailResponse.LegalProfileDto;
@@ -44,6 +47,8 @@ import com.minhtrung.hrm.employees.entities.UserContract;
 import com.minhtrung.hrm.employees.entities.UserProfile;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.minhtrung.hrm.auth.entities.PendingUser;
+import com.minhtrung.hrm.auth.repositories.PendingUserRepository;
 import com.minhtrung.hrm.auth.entities.UserSession;
 import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
 import com.minhtrung.hrm.auth.services.SessionBlacklistService;
@@ -79,6 +84,7 @@ public class EmployeeService {
     private final UserSessionRepository userSessionRepository;
     private final SessionBlacklistService sessionBlacklistService;
     private final FileStorageService fileStorageService;
+    private final PendingUserRepository pendingUserRepository;
 
     // Dependency Injection qua Constructor
     public EmployeeService(
@@ -95,7 +101,8 @@ public class EmployeeService {
             PasswordEncoder passwordEncoder,
             UserSessionRepository userSessionRepository,
             SessionBlacklistService sessionBlacklistService,
-            FileStorageService fileStorageService
+            FileStorageService fileStorageService,
+            PendingUserRepository pendingUserRepository
     ) {
         this.userRepository = userRepository;
         this.userProfileRepository = userProfileRepository;
@@ -111,6 +118,7 @@ public class EmployeeService {
         this.userSessionRepository = userSessionRepository;
         this.sessionBlacklistService = sessionBlacklistService;
         this.fileStorageService = fileStorageService;
+        this.pendingUserRepository = pendingUserRepository;
     }
 
     /**
@@ -231,13 +239,31 @@ public class EmployeeService {
 
         // 2.3 Tab 2: Hợp đồng lao động (Me + Trưởng phòng cùng team + HR/Giám đốc)
         ContractDto contract = null;
+        List<ContractDto> contracts = null;
         if (isMe || isSameDeptHead || isHR || isExecutive) {
-            UserContract c = targetUser.getContract();
-            if (c != null) {
+            List<UserContract> allContracts = userContractRepository.findByUser_UserIdOrderByContractStartDateDesc(targetUserId);
+            contracts = allContracts.stream()
+                    .map(c -> ContractDto.builder()
+                            .contractId(c.getContractId())
+                            .contractType(c.getContractType())
+                            .contractStartDate(c.getContractStartDate())
+                            .contractEndDate(c.getContractEndDate())
+                            .isActive(c.isActive())
+                            .build())
+                    .toList();
+
+            UserContract activeContract = allContracts.stream()
+                    .filter(UserContract::isActive)
+                    .findFirst()
+                    .orElse(allContracts.isEmpty() ? null : allContracts.get(0));
+
+            if (activeContract != null) {
                 contract = ContractDto.builder()
-                        .contractType(c.getContractType())
-                        .contractStartDate(c.getContractStartDate())
-                        .contractEndDate(c.getContractEndDate())
+                        .contractId(activeContract.getContractId())
+                        .contractType(activeContract.getContractType())
+                        .contractStartDate(activeContract.getContractStartDate())
+                        .contractEndDate(activeContract.getContractEndDate())
+                        .isActive(activeContract.isActive())
                         .build();
             }
         }
@@ -266,6 +292,7 @@ public class EmployeeService {
                 .publicProfile(publicProfile)
                 .legalProfile(legalProfile)
                 .contract(contract)
+                .contracts(contracts)
                 .payroll(payroll)
                 .build();
     }
@@ -422,6 +449,136 @@ public class EmployeeService {
     }
 
     /**
+     * Gia hạn hợp đồng lao động:
+     * - Chuyển tất cả hợp đồng đang active thành active = false
+     * - Tạo record hợp đồng mới với is_active = true
+     */
+    @Transactional
+    public EmployeeDetailResponse renewContract(UUID targetUserId, RenewContractRequest request, TokenPayload currentUser) {
+        checkHRAccess(currentUser);
+
+        User user = userRepository.findById(targetUserId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
+
+        // Đóng tất cả hợp đồng đang active hiện tại
+        List<UserContract> activeContracts = userContractRepository.findByUser_UserIdAndIsActiveTrue(targetUserId);
+        for (UserContract oldContract : activeContracts) {
+            oldContract.setActive(false);
+            userContractRepository.save(oldContract);
+        }
+
+        // Tạo hợp đồng mới
+        UserContract newContract = new UserContract();
+        newContract.setUser(user);
+        newContract.setContractType(request.getContractType().trim());
+        newContract.setContractStartDate(request.getContractStartDate());
+        newContract.setContractEndDate(request.getContractEndDate());
+        newContract.setActive(true);
+        userContractRepository.save(newContract);
+
+        log.info("HR {} đã gia hạn hợp đồng cho nhân viên {}. Loại: {}, Bắt đầu: {}, Kết thúc: {}",
+                currentUser.getUserId(), targetUserId, request.getContractType(), request.getContractStartDate(), request.getContractEndDate());
+
+        return getEmployeeDetailedProfile(targetUserId, currentUser);
+    }
+
+    /**
+     * Ký hợp đồng mới (Create New Contract)
+     */
+    @Transactional
+    public EmployeeDetailResponse createContract(UUID targetUserId, CreateContractRequest request, TokenPayload currentUser) {
+        checkHRAccess(currentUser);
+
+        User user = userRepository.findById(targetUserId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
+
+        // Đóng tất cả hợp đồng đang active hiện tại
+        List<UserContract> activeContracts = userContractRepository.findByUser_UserIdAndIsActiveTrue(targetUserId);
+        for (UserContract oldContract : activeContracts) {
+            oldContract.setActive(false);
+            userContractRepository.save(oldContract);
+        }
+
+        // Tạo hợp đồng mới
+        UserContract newContract = new UserContract();
+        newContract.setUser(user);
+        newContract.setContractType(request.getContractType().trim());
+        newContract.setContractStartDate(request.getContractStartDate());
+        newContract.setContractEndDate(request.getContractEndDate());
+        newContract.setActive(true);
+        userContractRepository.save(newContract);
+
+        log.info("HR {} đã tạo hợp đồng mới cho nhân viên {}. Loại: {}, Bắt đầu: {}",
+                currentUser.getUserId(), targetUserId, request.getContractType(), request.getContractStartDate());
+
+        return getEmployeeDetailedProfile(targetUserId, currentUser);
+    }
+
+    /**
+     * Lấy toàn bộ lịch sử hợp đồng của nhân viên
+     */
+    @Transactional(readOnly = true)
+    public List<ContractResponse> getContractHistory(UUID targetUserId, TokenPayload currentUser) {
+        boolean isMe = currentUser != null && targetUserId.equals(currentUser.getUserId());
+        boolean isHR = currentUser != null && "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
+        boolean isExecutive = currentUser != null && "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
+
+        User targetUser = userRepository.findById(targetUserId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
+
+        boolean isSameDeptHead = currentUser != null 
+                && currentUser.getJob() != null 
+                && currentUser.getJob().startsWith("Department Head")
+                && targetUser.getDepartment() != null
+                && targetUser.getDepartment().getName().equalsIgnoreCase(currentUser.getDepartment());
+
+        if (!isMe && !isSameDeptHead && !isHR && !isExecutive) {
+            throw new AccessDeniedException("Bạn không có quyền xem lịch sử hợp đồng của nhân viên này!");
+        }
+
+        return userContractRepository.findByUser_UserIdOrderByContractStartDateDesc(targetUserId).stream()
+                .map(c -> ContractResponse.builder()
+                        .contractId(c.getContractId())
+                        .userId(targetUserId)
+                        .contractType(c.getContractType())
+                        .contractStartDate(c.getContractStartDate())
+                        .contractEndDate(c.getContractEndDate())
+                        .isActive(c.isActive())
+                        .build())
+                .toList();
+    }
+
+    /**
+     * Sửa thông tin 1 hợp đồng cụ thể (sửa lỗi chính tả / ngày tháng)
+     */
+    @Transactional
+    public EmployeeDetailResponse updateSpecificContract(UUID targetUserId, UUID contractId, UpdateContractRequest request, TokenPayload currentUser) {
+        checkHRAccess(currentUser);
+
+        UserContract contract = userContractRepository.findById(contractId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy hợp đồng với ID: " + contractId));
+
+        if (!contract.getUser().getUserId().equals(targetUserId)) {
+            throw new IllegalArgumentException("Hợp đồng này không thuộc về nhân viên chỉ định!");
+        }
+
+        if (request.getContractType() != null && !request.getContractType().isBlank()) {
+            contract.setContractType(request.getContractType().trim());
+        }
+        if (request.getContractStartDate() != null) {
+            contract.setContractStartDate(request.getContractStartDate());
+        }
+        if (request.getContractEndDate() != null) {
+            contract.setContractEndDate(request.getContractEndDate());
+        }
+
+        userContractRepository.save(contract);
+        log.info("HR {} đã chỉnh sửa hợp đồng {} của nhân viên {}", currentUser.getUserId(), contractId, targetUserId);
+
+        return getEmployeeDetailedProfile(targetUserId, currentUser);
+    }
+
+    /**
      * Cập nhật thông tin Lương & Ngân hàng (Tab 3: salaries & user_bank_accounts)
      */
     @Transactional
@@ -504,14 +661,15 @@ public class EmployeeService {
     }
 
     /**
-     * HR Tạo tài khoản và hồ sơ nhân viên mới trọn gói.
+     * HR Tạo hồ sơ Onboarding nhân viên mới (lưu vào pending_users chờ Admin cấp tài khoản).
      */
     @Transactional
     public EmployeeDetailResponse createEmployee(CreateEmployeeRequest request, TokenPayload currentUser) {
         checkHRAccess(currentUser);
 
-        if (userRepository.existsByEmail(request.getEmail().trim())) {
-            throw new IllegalArgumentException("Email " + request.getEmail() + " đã tồn tại trên hệ thống!");
+        String email = request.getEmail() != null ? request.getEmail().trim().toLowerCase() : "";
+        if (userRepository.existsByEmail(email) || pendingUserRepository.existsByPersonalEmail(email)) {
+            throw new IllegalArgumentException("Email " + email + " đã tồn tại trên hệ thống hoặc đang chờ duyệt!");
         }
 
         Department department = departmentRepository.findById(request.getDepartmentId())
@@ -525,67 +683,51 @@ public class EmployeeService {
             shift = workShiftRepository.findById(request.getShiftId())
                     .orElseThrow(() -> new IllegalArgumentException("Ca làm việc không tồn tại: " + request.getShiftId()));
         } else {
-            shift = workShiftRepository.findAll().stream().findFirst()
-                    .orElseThrow(() -> new IllegalStateException("Chưa cấu hình ca làm việc mặc định trong hệ thống"));
+            shift = workShiftRepository.findAll().stream().findFirst().orElse(null);
         }
 
-        String employeeCode = request.getEmployeeCode();
-        if (employeeCode == null || employeeCode.isBlank()) {
-            Long nextNumber = userRepository.getNextEmployeeNumber();
-            employeeCode = "EMP" + String.format("%03d", nextNumber);
-        }
+        User creator = currentUser != null ? userRepository.findById(currentUser.getUserId()).orElse(null) : null;
+        LocalDate startDate = request.getJoinedDate() != null ? request.getJoinedDate() : LocalDate.now();
 
-        User user = new User();
-        user.setEmail(request.getEmail().trim());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setFirstName(request.getFirstName().trim());
-        user.setLastName(request.getLastName().trim());
-        user.setGender(request.getGender() != null ? request.getGender() : "Nam");
-        user.setBirthDate(request.getBirthDate() != null ? request.getBirthDate() : LocalDate.of(1995, 1, 1));
-        user.setJoinedDate(request.getJoinedDate() != null ? request.getJoinedDate() : LocalDate.now());
-        user.setProfilePicUrl(request.getProfilePicUrl() != null && !request.getProfilePicUrl().isBlank()
-                ? request.getProfilePicUrl() : "https://ui-avatars.com/api/?name=" + request.getFirstName() + "+" + request.getLastName() + "&background=random");
-        user.setAnnualLeaveDays(12);
-        user.setUsedLeaveDays(0);
-        user.setEmployeeCode(employeeCode);
-        user.setDepartment(department);
-        user.setJob(job);
-        user.setShift(shift);
+        PendingUser pending = PendingUser.builder()
+                .firstName(request.getFirstName().trim())
+                .lastName(request.getLastName().trim())
+                .gender(request.getGender() != null ? request.getGender() : "Nam")
+                .birthDate(request.getBirthDate() != null ? request.getBirthDate() : LocalDate.of(1995, 1, 1))
+                .personalEmail(email)
+                .phoneNumber(request.getPhoneNumber() != null ? request.getPhoneNumber().trim() : null)
+                .citizenId(request.getCitizenId() != null ? request.getCitizenId().trim() : null)
+                .placeOfBirth(request.getAddress() != null ? request.getAddress().trim() : null)
+                .department(department)
+                .job(job)
+                .shift(shift)
+                .baseSalary(request.getBaseSalary())
+                .contractType("Fixed-term")
+                .contractStartDate(startDate)
+                .contractEndDate(startDate.plusYears(1))
+                .status("PENDING")
+                .createdBy(creator)
+                .build();
 
-        User savedUser = userRepository.save(user);
+        PendingUser saved = pendingUserRepository.save(pending);
+        log.info("HR {} đã tạo hồ sơ Onboarding chờ Admin duyệt. PendingId: {}, Tên: {} {}",
+                currentUser.getUserId(), saved.getPendingId(), saved.getFirstName(), saved.getLastName());
 
-        // Khởi tạo UserProfile
-        UserProfile profile = new UserProfile();
-        profile.setUser(savedUser);
-        if (request.getPhoneNumber() != null) profile.setPhoneNumber(request.getPhoneNumber().trim());
-        if (request.getCitizenId() != null) profile.setCitizenIdNumber(request.getCitizenId().trim());
-        if (request.getAddress() != null) profile.setPlaceOfBirth(request.getAddress().trim());
-        userProfileRepository.save(profile);
+        EmployeePublicProfile publicProfile = EmployeePublicProfile.builder()
+                .userId(saved.getPendingId())
+                .fullName((saved.getFirstName() + " " + saved.getLastName()).trim())
+                .workEmail(email + " (Đang chờ Admin cấp email công ty)")
+                .departmentName(department.getName())
+                .jobTitle(job.getTitle())
+                .joinedDate(startDate)
+                .isActive(false)
+                .employeeCode("PENDING")
+                .profilePicUrl("https://ui-avatars.com/api/?name=" + saved.getFirstName() + "+" + saved.getLastName() + "&background=random")
+                .build();
 
-        // Khởi tạo UserContract
-        UserContract contract = new UserContract();
-        contract.setUser(savedUser);
-        contract.setContractType("Hợp đồng xác định thời hạn");
-        contract.setContractStartDate(savedUser.getJoinedDate());
-        contract.setContractEndDate(savedUser.getJoinedDate().plusYears(1));
-        userContractRepository.save(contract);
-
-        // Khởi tạo Salary ban đầu nếu có baseSalary
-        if (request.getBaseSalary() != null) {
-            Salary salary = new Salary();
-            salary.setUser(savedUser);
-            salary.setBaseSalary(request.getBaseSalary().doubleValue());
-            salary.setPayFrequency(PayFrequency.MONTHLY);
-            salary.setWorkDays(22.0);
-            salary.setStartDate(savedUser.getJoinedDate());
-            salary.setActive(true);
-            salaryRepository.save(salary);
-        }
-
-        // Gửi email chào mừng kèm thông tin tài khoản & mật khẩu tạm (Tạm thời comment do email hiện tại là fake)
-        // emailService.sendWelcomeEmail(savedUser.getEmail(), savedUser.getFirstName(), request.getPassword());
-
-        return getEmployeeDetailedProfile(savedUser.getUserId(), currentUser);
+        return EmployeeDetailResponse.builder()
+                .publicProfile(publicProfile)
+                .build();
     }
 
     // ─── 4. HELPER METHODS ──────────────────────────────────────────
@@ -622,12 +764,20 @@ public class EmployeeService {
     }
 
     /**
-     * Khóa hoặc Mở khóa tài khoản nhân viên thôi việc (Chỉ HR hoặc Executive).
+     * Khóa hoặc Mở khóa tài khoản nhân viên (Chỉ System Admin hoặc Executive).
      * Khi khóa: Thu hồi toàn bộ phiên đăng nhập của nhân viên đó trong Redis & DB ngay lập tức.
      */
     @Transactional
     public EmployeeDetailResponse updateEmployeeStatus(UUID targetUserId, UpdateEmployeeStatusRequest request, TokenPayload currentUser) {
-        checkHRAccess(currentUser);
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
+        }
+        boolean isIT = "Information Technology".equalsIgnoreCase(currentUser.getDepartment());
+        boolean isSysAdmin = isIT && currentUser.getJob() != null && (currentUser.getJob().contains("System Administrator") || currentUser.getJob().contains("Admin"));
+        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
+        if (!isSysAdmin && !isExecutive) {
+            throw new AccessDeniedException("Chỉ Quản trị viên Hệ thống (System Administrator) hoặc Ban Giám Đốc mới có quyền khóa/mở khóa tài khoản!");
+        }
 
         if (currentUser.getUserId().equals(targetUserId)) {
             throw new IllegalArgumentException("Không thể tự thay đổi trạng thái hoạt động của chính tài khoản mình đang đăng nhập!");

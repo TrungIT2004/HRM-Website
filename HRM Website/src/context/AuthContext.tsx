@@ -11,6 +11,7 @@ interface AuthContextType {
   roleLevel: RoleLevel;
   isExecutive: boolean;
   isHR: boolean;
+  isAdmin: boolean;
   isManager: boolean;
   isStaff: boolean;
   login: (email: string, password?: string) => Promise<{ success: boolean; error?: string }>;
@@ -43,7 +44,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const roleLevel = getRoleLevel(currentUser);
   const isExecutive = roleLevel === 'EXECUTIVE';
   const isHR = roleLevel === 'HR' || isExecutive;
-  const isManager = roleLevel === 'MANAGER' || isHR || isExecutive;
+  const isSysAdmin = currentUser?.department === 'Information Technology' && (currentUser?.job?.includes('System Administrator') || currentUser?.job?.includes('Admin'));
+  const isAdmin = Boolean(isSysAdmin || isExecutive);
+  const isManager = roleLevel === 'MANAGER' || isHR || isExecutive || isAdmin;
   const isStaff = true;
 
   // Load active user session on app launch
@@ -188,6 +191,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         roleLevel,
         isExecutive,
         isHR,
+        isAdmin,
         isManager,
         isStaff,
         login,

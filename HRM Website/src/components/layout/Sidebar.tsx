@@ -14,12 +14,13 @@ import {
   CreditCard,
   Building2,
   ExternalLink,
-  ShieldAlert
+  ShieldAlert,
+  Shield
 } from 'lucide-react';
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { isHR, isExecutive, isManager, roleLevel, currentUser } = useAuth();
+  const { isHR, isExecutive, isManager, isAdmin, roleLevel, currentUser } = useAuth();
 
   const navItems = [
     {
@@ -63,7 +64,13 @@ export default function Sidebar() {
       href: '/payroll',
       icon: CreditCard,
       badge: isHR ? 'HR' : undefined
-    }
+    },
+    ...(isAdmin ? [{
+      name: 'Quản trị Hệ thống',
+      href: '/admin',
+      icon: Shield,
+      badge: 'Admin'
+    }] : [])
   ];
 
   return (

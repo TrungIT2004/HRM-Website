@@ -395,7 +395,7 @@ export default function EmployeeDirectoryPage() {
               const avatarSrc = user.profilePicUrl?.startsWith('http')
                 ? user.profilePicUrl
                 : user.profilePicUrl
-                ? `http://localhost:8080${user.profilePicUrl}`
+                ? user.profilePicUrl
                 : null;
 
               return (
