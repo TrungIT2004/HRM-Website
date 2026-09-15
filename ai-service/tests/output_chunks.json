@@ -1,0 +1,198 @@
+[
+  {
+    "chunk_id": "e450e968-06c8-4090-b499-7b0902bb3181",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx",
+    "chunk_type": "TEXT",
+    "page_number": 1,
+    "content": "QUY CHẾ KỶ LUẬT LAO ĐỘNG VÀ CHẾ ĐỘ PHÚC LỢI NĂM 2024",
+    "summary": "Quy định liên quan đến sample_policy.docx: QUY CHẾ KỶ LUẬT LAO ĐỘNG VÀ CHẾ ĐỘ PHÚC LỢI NĂM 2024...",
+    "keywords": [
+      "QUY",
+      "CHẾ",
+      "LUẬT",
+      "LAO",
+      "ĐỘNG",
+      "PHÚC"
+    ],
+    "hypothetical_questions": [
+      "Quy định về sample_policy.docx như thế nào?",
+      "Nhân viên cần lưu ý gì về sample_policy.docx?",
+      "Chính sách sample_policy.docx áp dụng cho đối tượng nào?"
+    ],
+    "allowed_roles": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "extra_metadata": {}
+  },
+  {
+    "chunk_id": "f9bbfd10-11d6-49d0-8552-8ab7102805c7",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG I: QUY ĐỊNH CHUNG VỀ THỜI GIAN LÀM VIỆC",
+    "chunk_type": "TEXT",
+    "page_number": 1,
+    "content": "Điều 1: Thời gian làm việc tiêu chuẩn và chấm công\n1. Toàn bộ cán bộ nhân viên làm việc 8 giờ/ngày từ Thứ 2 đến Thứ 6. Giờ làm việc buổi sáng từ 08:30 đến 12:00, buổi chiều từ 13:30 đến 18:00.\n2. Nhân viên có trách nhiệm chấm công bằng ứng dụng nhận diện khuôn mặt (Face Recognition) hoặc trên Website HRM khi đến văn phòng và trước khi ra về.",
+    "summary": "Quy định liên quan đến CHƯƠNG I: QUY ĐỊNH CHUNG VỀ THỜI GIAN LÀM VIỆC: Điều 1: Thời gian làm việc tiêu chuẩn và chấm công...",
+    "keywords": [
+      "Điều",
+      "Thời",
+      "gian",
+      "làm",
+      "việc",
+      "tiêu",
+      "chuẩn"
+    ],
+    "hypothetical_questions": [
+      "Quy định về CHƯƠNG I: QUY ĐỊNH CHUNG VỀ THỜI GIAN LÀM VIỆC như thế nào?",
+      "Nhân viên cần lưu ý gì về CHƯƠNG I: QUY ĐỊNH CHUNG VỀ THỜI GIAN LÀM VIỆC?",
+      "Chính sách CHƯƠNG I: QUY ĐỊNH CHUNG VỀ THỜI GIAN LÀM VIỆC áp dụng cho đối tượng nào?"
+    ],
+    "allowed_roles": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "extra_metadata": {}
+  },
+  {
+    "chunk_id": "ea780edc-bfc2-4dec-8c2e-d3bf818278b4",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT",
+    "chunk_type": "TEXT",
+    "page_number": 1,
+    "content": "Điều 2: Xử lý vi phạm đi làm muộn và nghỉ không phép\nNgười lao động đi muộn sau 08:35 sẽ bị tính là đi muộn. Mức độ xử lý vi phạm được quy định chi tiết trong bảng biểu dưới đây:",
+    "summary": "Quy định liên quan đến CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT: Điều 2: Xử lý vi phạm đi làm muộn và nghỉ không phép...",
+    "keywords": [
+      "Điều",
+      "phạm",
+      "làm",
+      "muộn",
+      "nghỉ",
+      "không",
+      "phép"
+    ],
+    "hypothetical_questions": [
+      "Quy định về CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT như thế nào?",
+      "Nhân viên cần lưu ý gì về CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT?",
+      "Chính sách CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT áp dụng cho đối tượng nào?"
+    ],
+    "allowed_roles": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "extra_metadata": {}
+  },
+  {
+    "chunk_id": "c35d0288-96cf-49af-b747-217781ed933a",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT (Bảng biểu)",
+    "chunk_type": "TABLE",
+    "page_number": 1,
+    "content": "**Bảng biểu quy định**\n\n| Hành vi vi phạm | Vi phạm lần 1 | Vi phạm lần 2 | Vi phạm từ lần 3 trở lên |\n| --- | --- | --- | --- |\n| Đi muộn từ 5 - 15 phút | Nhắc nhở nội bộ | Trừ 50.000 VNĐ vào phụ cấp | Trừ 100.000 VNĐ / lần |\n| Đi muộn trên 30 phút | Trừ 0.5 ngày công | Trừ 1 ngày công | Họp kỷ luật khiển trách |\n| Tự ý nghỉ việc không phép | Cắt thưởng tháng | Trừ 2 ngày lương | Xem xét sa thải theo luật |",
+    "summary": "Quy định liên quan đến CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT (Bảng biểu): **Bảng biểu quy định**...",
+    "keywords": [
+      "Bảng",
+      "biểu",
+      "quy",
+      "định",
+      "Hành",
+      "phạm"
+    ],
+    "hypothetical_questions": [
+      "Quy định về CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT (Bảng biểu) như thế nào?",
+      "Nhân viên cần lưu ý gì về CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT (Bảng biểu)?",
+      "Chính sách CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT (Bảng biểu) áp dụng cho đối tượng nào?"
+    ],
+    "allowed_roles": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "extra_metadata": {}
+  },
+  {
+    "chunk_id": "3d674f88-6f79-4873-9dc6-c2a276474087",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT",
+    "chunk_type": "TEXT",
+    "page_number": 1,
+    "content": "Điều 3: Chế độ kết hôn, thai sản và hiếu hỷ\n1. Nhân viên chính thức kết hôn được nghỉ 03 ngày có hưởng nguyên lương theo luật lao động.\n2. Công ty hỗ trợ tiền mừng và quà chúc mừng theo bảng phúc lợi ban hành:",
+    "summary": "Quy định liên quan đến CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT: Điều 3: Chế độ kết hôn, thai sản và hiếu hỷ...",
+    "keywords": [
+      "Điều",
+      "Chế",
+      "kết",
+      "hôn",
+      "thai",
+      "sản",
+      "hiếu"
+    ],
+    "hypothetical_questions": [
+      "Quy định về CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT như thế nào?",
+      "Nhân viên cần lưu ý gì về CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT?",
+      "Chính sách CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT áp dụng cho đối tượng nào?"
+    ],
+    "allowed_roles": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "extra_metadata": {}
+  },
+  {
+    "chunk_id": "598d2213-9999-45ae-9d87-4b336c04a797",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT (Bảng biểu)",
+    "chunk_type": "TABLE",
+    "page_number": 1,
+    "content": "**Bảng biểu quy định**\n\n| Sự kiện | Số ngày nghỉ có lương | Mức tiền mừng từ Quỹ Công đoàn |\n| --- | --- | --- |\n| Nhân viên kết hôn | 03 ngày | 2.000.000 VNĐ + Quà lưu niệm |\n| Con của nhân viên kết hôn | 01 ngày | 1.000.000 VNĐ |\n| Nhân viên nữ sinh con | 06 tháng (theo BHXH) | 3.000.000 VNĐ + 01 giỏ quà mẹ bé |",
+    "summary": "Quy định liên quan đến CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT (Bảng biểu): **Bảng biểu quy định**...",
+    "keywords": [
+      "Bảng",
+      "biểu",
+      "quy",
+      "định",
+      "kiện",
+      "ngày",
+      "nghỉ"
+    ],
+    "hypothetical_questions": [
+      "Quy định về CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT (Bảng biểu) như thế nào?",
+      "Nhân viên cần lưu ý gì về CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT (Bảng biểu)?",
+      "Chính sách CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT (Bảng biểu) áp dụng cho đối tượng nào?"
+    ],
+    "allowed_roles": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "extra_metadata": {}
+  }
+]
