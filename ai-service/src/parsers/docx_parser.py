@@ -33,6 +33,11 @@ class DOCXParser(BaseParser):
             return True, 3
 
         stripped = text.strip()
+        # Headings that are not explicitly styled should be concise (title-like, <= 100 chars)
+        # If longer, it's a paragraph that starts with 'Điều X...' containing actual policy text
+        if len(stripped) > 100 and not ("heading" in style or "tiêu đề" in style):
+            return False, 0
+
         for pattern, level in self.HEADING_PATTERNS:
             if pattern.match(stripped):
                 return True, level

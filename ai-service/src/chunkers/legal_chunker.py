@@ -35,13 +35,14 @@ class LegalChunker:
         current_buffer: List[str] = []
         current_page: int = 1
 
-        def flush_buffer():
-            nonlocal current_buffer, current_page
+        def flush_buffer(force: bool = False):
+            nonlocal current_buffer
             if not current_buffer:
                 return
 
             text_content = "\n\n".join(current_buffer).strip()
-            if len(text_content) >= self.min_chunk_chars:
+            min_limit = 20 if force else self.min_chunk_chars
+            if len(text_content) >= min_limit:
                 breadcrumb = self._build_breadcrumb(doc_name, current_h1, current_h2, current_h3)
                 chunks.append(ProcessedChunk(
                     document_name=doc_name,
@@ -112,6 +113,12 @@ class LegalChunker:
             current_buffer.append(text)
 
         # Flush any remaining text at the end of document
-        flush_buffer()
+        if not current_buffer and (current_h2 or current_h1):
+            if current_h2 and current_h2 not in [c.content for c in chunks]:
+                current_buffer.append(current_h2)
+            elif current_h1 and current_h1 not in [c.content for c in chunks]:
+                current_buffer.append(current_h1)
+
+        flush_buffer(force=True)
 
         return chunks

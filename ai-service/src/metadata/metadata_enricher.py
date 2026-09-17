@@ -3,6 +3,9 @@ Metadata Creation Module: Summary Generator, Keyword Extractor, and Question Gen
 Enriches raw document chunks to prepare for Multi-Vector and Hybrid Search.
 """
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 import json
 import re
 from typing import List, Optional
@@ -49,10 +52,13 @@ class MetadataEnricher:
         self.provider = provider or os.getenv("LLM_PROVIDER", "gemini").lower()
         self.gemini_key = os.getenv("GEMINI_API_KEY")
         self.openai_key = os.getenv("OPENAI_API_KEY")
+        self.ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+        self.ollama_api_key = os.getenv("OLLAMA_API_KEY", "ollama") # Cloud Ollama might require key
 
         # Initialize clients lazily or if keys exist
         self.gemini_client = None
         self.openai_client = None
+        self.ollama_client = None
 
         if self.provider == "gemini" and self.gemini_key and self.gemini_key != "your_gemini_api_key_here":
             try:
@@ -71,6 +77,17 @@ class MetadataEnricher:
                 self.openai_client = OpenAI(api_key=self.openai_key)
             except Exception as e:
                 print(f"[MetadataEnricher] Warning: Failed to init OpenAI client: {e}")
+                
+        elif self.provider == "ollama":
+            try:
+                from openai import OpenAI
+                # Ollama is compatible with the OpenAI API SDK
+                self.ollama_client = OpenAI(
+                    base_url=self.ollama_base_url,
+                    api_key=self.ollama_api_key
+                )
+            except Exception as e:
+                print(f"[MetadataEnricher] Warning: Failed to init Ollama client: {e}")
 
     def _fallback_enrichment(self, chunk: ProcessedChunk) -> ChunkEnrichmentResult:
         """Heuristic offline generator used if no API key is available or API calls fail."""
@@ -131,8 +148,32 @@ class MetadataEnricher:
                 result = ChunkEnrichmentResult(**parsed)
             except Exception as e:
                 print(f"[MetadataEnricher] OpenAI call failed for chunk {chunk.chunk_id}: {e}")
+                
+        # 3. Try Ollama (API compatible with OpenAI)
+        elif self.ollama_client:
+            try:
+                model_name = os.getenv("OLLAMA_MODEL", "gpt-oss:120B")
+                response = self.ollama_client.chat.completions.create(
+                    model=model_name,
+                    messages=[{"role": "user", "content": prompt}],
+                    # Not all Ollama models natively support json_object strictly, 
+                    # but specifying format helps. You might need to parse robustly.
+                    response_format={"type": "json_object"}
+                )
+                
+                # Sometime Ollama adds markdown ```json blocks
+                content = response.choices[0].message.content.strip()
+                if content.startswith("```json"):
+                    content = content[7:]
+                if content.endswith("```"):
+                    content = content[:-3]
+                    
+                parsed = json.loads(content.strip())
+                result = ChunkEnrichmentResult(**parsed)
+            except Exception as e:
+                print(f"[MetadataEnricher] Ollama call failed for chunk {chunk.chunk_id}: {e}")
 
-        # 3. Fallback
+        # 4. Fallback
         if not result:
             result = self._fallback_enrichment(chunk)
 
