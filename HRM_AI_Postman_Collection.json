@@ -1,0 +1,376 @@
+{
+  "info": {
+    "_postman_id": "hrm-ai-rag-collection-v1",
+    "name": "HRM - AI RAG Service & Gateway",
+    "description": "Bộ sưu tập API kiểm thử hệ thống AI RAG Quản lý Nhân sự (Spring Boot Gateway 8080 & FastAPI 8000)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "fastApiUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "dán_jwt_access_token_vào_đây",
+      "type": "string"
+    },
+    {
+      "key": "internalSecret",
+      "value": "hrm-internal-key-secure-2024",
+      "type": "string"
+    },
+    {
+      "key": "documentId",
+      "value": "972d3b49-e775-4eac-bf66-8f276e9a5806",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Spring Boot Gateway (Port 8080)",
+      "description": "Các API gọi qua Spring Boot. Yêu cầu có Access Token (Bearer Token).",
+      "item": [
+        {
+          "name": "0. Đăng nhập lấy AccessToken",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    var token = jsonData.accessToken || (jsonData.data && jsonData.data.accessToken) || jsonData.token;",
+                  "    if (token) {",
+                  "        pm.collectionVariables.set('accessToken', token);",
+                  "        console.log('Đã tự động lưu accessToken vào biến Collection!');",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@hrm.com\",\n  \"password\": \"Admin@123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            },
+            "description": "Đăng nhập để lấy accessToken tự động gán vào các request bên dưới."
+          }
+        },
+        {
+          "name": "1. Chatbot - Hỏi chế độ phúc lợi kết hôn",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Tôi kết hôn được nghỉ mấy ngày có lương và công ty mừng bao nhiêu tiền?\",\n  \"topK\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/chat",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "chat"]
+            },
+            "description": "Nhân viên hỏi câu hỏi thông thường về chế độ phúc lợi."
+          }
+        },
+        {
+          "name": "2. Chatbot - Hỏi mức phạt đi muộn (Bảng biểu)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Nếu tôi đi muộn trên 30 phút lần thứ hai thì bị xử phạt như thế nào?\",\n  \"topK\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/chat",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "chat"]
+            },
+            "description": "Truy vấn dữ liệu nằm trong Bảng biểu Markdown."
+          }
+        },
+        {
+          "name": "3. Chatbot - Hỏi điều khoản Remote Work (Quy chế mới)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Quy định làm việc tại nhà (Work from Home) của công ty như thế nào?\",\n  \"topK\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/chat",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "chat"]
+            },
+            "description": "Kiểm tra xem AI có đọc được điều khoản mới cập nhật không."
+          }
+        },
+        {
+          "name": "4. Chatbot - Test chống ảo giác (Hỏi ngoài quy định)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Công ty có chính sách thưởng Tết bằng xe máy SH cho nhân viên xuất sắc không?\",\n  \"topK\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/chat",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "chat"]
+            },
+            "description": "Câu hỏi không có trong quy chế, AI phải từ chối lịch sự và hướng dẫn liên hệ HR."
+          }
+        },
+        {
+          "name": "5. Danh sách tài liệu công ty",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/documents",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "documents"]
+            },
+            "description": "Lấy toàn bộ danh sách file Word/PDF kèm số chunk và đường dẫn tải."
+          }
+        },
+        {
+          "name": "6. Xem chi tiết các Chunk & Câu hỏi giả định",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/documents/{{documentId}}/chunks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "documents", "{{documentId}}", "chunks"]
+            },
+            "description": "Xem danh sách các đoạn bóc tách để kiểm duyệt chất lượng AI."
+          }
+        },
+        {
+          "name": "7. Upload tài liệu mới (Word, PDF, Excel)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Chọn file docx, pdf hoặc xlsx từ máy tính"
+                },
+                {
+                  "key": "allowedRoles",
+                  "value": "ROLE_EMPLOYEE,ROLE_MANAGER",
+                  "type": "text"
+                },
+                {
+                  "key": "allowedDepartments",
+                  "value": "ALL",
+                  "type": "text"
+                },
+                {
+                  "key": "overwrite",
+                  "value": "false",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/documents/upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "documents", "upload"]
+            },
+            "description": "Tải file lên để xử lý chạy ngầm (Background Task)."
+          }
+        },
+        {
+          "name": "8. Cập nhật / Thay thế tài liệu (In-Place Update)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Chọn file bản mới cần thay thế"
+                },
+                {
+                  "key": "allowedRoles",
+                  "value": "ROLE_EMPLOYEE,ROLE_MANAGER",
+                  "type": "text"
+                },
+                {
+                  "key": "allowedDepartments",
+                  "value": "ALL",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/documents/{{documentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "documents", "{{documentId}}"]
+            },
+            "description": "Thay thế tài liệu cũ: Xóa vector cũ và nạp vector mới vào đúng documentId."
+          }
+        },
+        {
+          "name": "9. Xóa tài liệu khỏi hệ thống",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/documents/{{documentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "documents", "{{documentId}}"]
+            },
+            "description": "Xóa file trên ổ cứng và tự động xóa toàn bộ vector liên quan trong Postgres."
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. FastAPI Internal (Port 8000 - Kiểm tra Bảo mật)",
+      "description": "Các API gọi trực tiếp vào FastAPI để kiểm tra lớp phòng thủ X-Internal-Secret.",
+      "item": [
+        {
+          "name": "1. Gọi FastAPI có X-Internal-Secret (Hợp lệ -> 200 OK)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Internal-Secret",
+                "value": "{{internalSecret}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Tôi kết hôn được nghỉ mấy ngày?\",\n  \"user_roles\": [\"ROLE_EMPLOYEE\"],\n  \"department\": \"ALL\",\n  \"top_k\": 3\n}"
+            },
+            "url": {
+              "raw": "{{fastApiUrl}}/api/v1/chat/query",
+              "host": ["{{fastApiUrl}}"],
+              "path": ["api", "v1", "chat", "query"]
+            },
+            "description": "Giả lập cuộc gọi từ Spring Boot sang FastAPI với Header hợp lệ."
+          }
+        },
+        {
+          "name": "2. Gọi FastAPI KHÔNG CÓ Secret (Từ chối -> 403 Forbidden)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Tôi kết hôn được nghỉ mấy ngày?\"\n}"
+            },
+            "url": {
+              "raw": "{{fastApiUrl}}/api/v1/chat/query",
+              "host": ["{{fastApiUrl}}"],
+              "path": ["api", "v1", "chat", "query"]
+            },
+            "description": "Giả lập kẻ lạ gọi trực tiếp vào FastAPI mà không có secret -> Chặn 403!"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -50,6 +50,10 @@ class ProcessedChunk(BaseModel):
     allowed_roles: List[str] = Field(default_factory=lambda: ["ROLE_EMPLOYEE", "ROLE_MANAGER", "ROLE_ADMIN"])
     allowed_departments: List[str] = Field(default_factory=lambda: ["ALL"])
     
+    # Vector Embeddings
+    content_vector: Optional[List[float]] = Field(default=None, description="Embedding of the content (768d)")
+    questions_vector: Optional[List[float]] = Field(default=None, description="Embedding of the hypothetical questions (768d)")
+    
     extra_metadata: Dict[str, Any] = Field(default_factory=dict)
 
     def to_formatted_markdown(self) -> str:

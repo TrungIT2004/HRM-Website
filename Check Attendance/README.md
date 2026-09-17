@@ -90,8 +90,8 @@ Ngưỡng so khớp khoảng cách Euclidean (**Tolerance**) là tham số quy�
 | :---: | :---: | :---: | :---: | :--- |
 | **0.40** | 65.00% | **0.00%** | 70.00% | Quá nghiêm ngặt, nhân viên khó quét |
 | **0.45** | 80.00% | **0.00%** | 40.00% | Bảo mật cao, chống chấm hộ tuyệt đối |
-| **0.50** | **95.00%** | **0.00%** | **10.00%** | ⭐️ Cân bằng tối ưu cho doanh nghiệp nhỏ |
-| **0.55** | **100.00%** | **0.00%** | **0.00%** | 🏆 Tuyệt đối (nhận đúng 100%, 0% nhận nhầm) |
+| **0.50** | **95.00%** | **0.00%** | **10.00%** | Cân bằng tối ưu cho doanh nghiệp nhỏ |
+| **0.55** | **100.00%** | **0.00%** | **0.00%** | Tuyệt đối (nhận đúng 100%, 0% nhận nhầm) |
 | **0.60** | **100.00%** | **0.00%** | **0.00%** | Nhận diện cực nhạy, không có lỗi |
 
 ---
@@ -104,9 +104,9 @@ Ngưỡng so khớp khoảng cách Euclidean (**Tolerance**) là tham số quy�
 | :---: | :---: | :---: | :---: | :--- |
 | **0.40** | 63.00% | **0.00%** | 74.00% | Quá nghiêm ngặt, FRR cao |
 | **0.45** | 79.00% | **0.00%** | 42.00% | Bảo mật cao, 0% nhận nhầm |
-| **0.50** | **92.00%** | **0.00%** | **16.00%** | ⭐️ Rất tốt cho môi trường công sở |
-| **0.55** | **97.00%** | **0.00%** | **6.00%** | 🏆 **Điểm ngọt (Sweet Spot): Độ chính xác đỉnh cao** |
-| **0.60** | **89.00%** | ⚠️ **18.00%** | **4.00%** | 🚨 Bắt đầu lọt 18% người lạ do nới lỏng ngưỡng |
+| **0.50** | **92.00%** | **0.00%** | **16.00%** | Rất tốt cho môi trường công sở |
+| **0.55** | **97.00%** | **0.00%** | **6.00%** | **Điểm ngọt (Sweet Spot): Độ chính xác đỉnh cao** |
+| **0.60** | **89.00%** | **18.00%** | **4.00%** | Bắt đầu lọt 18% người lạ do nới lỏng ngưỡng |
 
 ---
 
@@ -118,9 +118,9 @@ Ngưỡng so khớp khoảng cách Euclidean (**Tolerance**) là tham số quy�
 | :---: | :---: | :---: | :---: | :--- |
 | **0.40** | 45.82% | **0.00%** | 65.06% | Quá khắt khe, nhân viên rất khó chấm công |
 | **0.45** | 63.38% | **4.00%** | 43.17% | Bảo mật cao, nhận nhầm rất thấp |
-| **0.50** | **80.60%** | **9.00%** | **21.49%** | ⭐️ **Ngưỡng khuyến nghị tối ưu cho doanh nghiệp lớn** |
-| **0.55** | **87.63%** | ⚠️ **43.00%** | **6.22%** | Độ chính xác cao nhưng nguy cơ chấm hộ tăng |
-| **0.60** | **81.44%** | 🚨 **> 100%** | **0.60%** | ❌ **Vỡ trận: Người lạ & nhân viên bị nhận nhầm chéo** |
+| **0.50** | **80.60%** | **9.00%** | **21.49%** | **Ngưỡng khuyến nghị tối ưu cho doanh nghiệp lớn** |
+| **0.55** | **87.63%** | **43.00%** | **6.22%** | Độ chính xác cao nhưng nguy cơ chấm hộ tăng |
+| **0.60** | **81.44%** | **> 100%** | **0.60%** | **Vỡ trận: Người lạ & nhân viên bị nhận nhầm chéo** |
 
 ---
 
@@ -143,8 +143,6 @@ Ngưỡng 0.60 hoạt động hoàn hảo (Acc 100%)                   Ngưỡng
 2. **Khuyến nghị cấu hình cho hệ thống chấm công**:
    * **Doanh nghiệp vừa và nhỏ (< 50 nhân viên)**: Đặt Tolerance = **`0.55`** (vừa nhạy vừa không lo nhận nhầm).
    * **Doanh nghiệp lớn ($\ge 100$ nhân viên)**: Đặt Tolerance = **`0.50`** (ưu tiên an toàn chống chấm hộ).
-3. **Giải pháp nâng Accuracy lên >95% ở ngưỡng an toàn 0.50**:
-   * Thay vì chỉ chụp 1 ảnh duy nhất khi đăng ký, cho nhân viên chụp **3–5 ảnh chân dung** (nhìn thẳng, hơi nghiêng 15°, đeo kính). Khi đó FRR sẽ giảm từ $21\%$ xuống dưới $4\%$, đưa độ chính xác tổng thể lên trên $95\%$.
 
 ---
 
