@@ -9,9 +9,17 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-@Minhtrung1408}
     ports:
       - "5432:5432"
+    command: >
+      postgres
+      -c wal_level=replica
+      -c archive_mode=on
+      -c archive_command='cp %p /backups/wal/%f'
+      -c archive_timeout=300
+      -c restore_command='cp /backups/wal/%f "%p"'
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-db:/docker-entrypoint-initdb.d:ro
+      - ./backups:/backups
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-hrm}"]
       interval: 5s
@@ -91,9 +99,40 @@ services:
     networks:
       - hrm-network
 
+  # 6. Automation & Backup: n8n Workflow
+  hrm-n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: hrm-n8n
+    user: root
+    restart: unless-stopped
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=Asia/Ho_Chi_Minh
+      - TZ=Asia/Ho_Chi_Minh
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - NODES_EXCLUDE=[]
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./backups:/backups
+      - ./bin/docker:/usr/bin/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      hrm-database:
+        condition: service_healthy
+    networks:
+      - hrm-network
+
 volumes:
   postgres_data:
   redis_data:
+  n8n_data:
+    external: true
 
 networks:
   hrm-network:
