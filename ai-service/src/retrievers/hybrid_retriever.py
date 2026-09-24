@@ -108,7 +108,7 @@ class HybridRetriever:
                         keyword_bonus = min(0.08, len(overlap) * 0.02)
 
                 final_score = float(vector_score or 0.0) * 0.7 + float(text_rank or 0.0) * 0.3 + keyword_bonus
-                file_url = f"/static/documents/{Path(file_path).name}" if file_path else None
+                file_url = f"/api/ai/documents/{doc_id}/download" if doc_id else None
 
                 results.append({
                     "chunk_id": str(chunk_id),

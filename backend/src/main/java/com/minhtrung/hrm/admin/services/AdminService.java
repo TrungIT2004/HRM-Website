@@ -29,9 +29,6 @@ import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.entities.UserContract;
 import com.minhtrung.hrm.employees.entities.UserProfile;
 import com.minhtrung.hrm.employees.enums.PayFrequency;
-import com.minhtrung.hrm.attendance.repositories.WorkShiftRepository;
-import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
-import com.minhtrung.hrm.employees.repositories.JobRepository;
 import com.minhtrung.hrm.employees.repositories.SalaryRepository;
 import com.minhtrung.hrm.employees.repositories.UserContractRepository;
 import com.minhtrung.hrm.employees.repositories.UserProfileRepository;
@@ -51,9 +48,6 @@ public class AdminService {
     private final UserContractRepository userContractRepository;
     private final SalaryRepository salaryRepository;
     private final UserSessionRepository userSessionRepository;
-    private final DepartmentRepository departmentRepository;
-    private final JobRepository jobRepository;
-    private final WorkShiftRepository workShiftRepository;
     private final SessionBlacklistService sessionBlacklistService;
     private final PasswordEncoder passwordEncoder;
 
