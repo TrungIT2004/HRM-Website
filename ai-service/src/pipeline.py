@@ -51,28 +51,12 @@ class IngestionPipeline:
             parser = PDFParser()
         elif ext == ".docx":
             parser = DOCXParser()
-        elif ext == ".doc":
-            # Tự động chuyển đổi định dạng Word cũ (.doc) sang .docx
-            try:
-                import win32com.client
-                import tempfile
-                word = win32com.client.Dispatch("Word.Application")
-                word.Visible = False
-                doc = word.Documents.Open(str(path.resolve()))
-                temp_file = tempfile.NamedTemporaryFile(suffix=".docx", delete=False)
-                temp_docx_path = Path(temp_file.name)
-                temp_file.close()
-                doc.SaveAs2(str(temp_docx_path.resolve()), FileFormat=16) # wdFormatXMLDocument = 16
-                doc.Close()
-                word.Quit()
-                path = temp_docx_path
-                parser = DOCXParser()
-            except Exception as e:
-                raise ValueError(f"Không thể đọc file Word cũ .doc: {e}. Vui lòng chuyển sang định dạng .docx hiện đại.")
         elif ext in [".xlsx", ".xls"]:
             parser = ExcelParser()
+        elif ext == ".doc":
+            raise ValueError("Định dạng Word cũ (.doc) không được hỗ trợ trực tiếp. Vui lòng lưu/chuyển đổi file sang định dạng .docx trước khi tải lên.")
         else:
-            raise ValueError(f"Unsupported file format: {ext}. Supported: .pdf, .docx, .doc, .xlsx")
+            raise ValueError(f"Unsupported file format: {ext}. Supported: .pdf, .docx, .xlsx")
 
         try:
             parsed_doc: ParsedDocument = parser.parse(path)

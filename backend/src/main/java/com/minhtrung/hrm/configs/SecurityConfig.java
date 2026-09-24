@@ -81,19 +81,6 @@ public class SecurityConfig {
 
             
             .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-            
-            // // Route permissions
-            // .authorizeHttpRequests(auth -> auth
-            //     .requestMatchers(
-            //         "/auth/send-code",
-            //         "/auth/login",
-            //         "/auth/register",
-            //         "/auth/auto-login",
-            //         "/auth/logout",
-            //         "/api/v1/posts/**"
-            //     ).permitAll()
-            //     .anyRequest().authenticated()
-            // )
 
             .addFilterBefore(
                 jwtAuthFilter,

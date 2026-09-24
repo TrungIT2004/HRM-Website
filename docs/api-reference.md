@@ -172,6 +172,18 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 | `MEDIUM` | Độ tin cậy trung bình: Nội dung trích dẫn có độ tương đồng tương đối với câu hỏi |
 | `LOW` | Độ tin cậy thấp: Không tìm thấy tài liệu phù hợp hoặc câu hỏi ngoài phạm vi quy chế công ty |
 
+### `DepartmentName` (Phòng ban & Phân quyền tài liệu PBAC)
+| Giá trị | Mô tả |
+|---|---|
+| `ALL` | Áp dụng toàn công ty |
+| `Sales` | Khối Kinh doanh |
+| `Marketing & Communication` | Khối Truyền thông & Tiếp thị |
+| `Human Resources` | Khối Nhân sự |
+| `Finance & Accounting` | Khối Tài chính & Kế toán |
+| `Customer Support` | Khối Chăm sóc Khách hàng |
+| `Executive Leadership` | Ban Giám Đốc |
+| `Information Technology` | Khối Công nghệ Thông tin |
+
 ---
 
 ## 1. Authentication – `/auth`
@@ -2204,10 +2216,19 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
 ## 14. Trợ lý AI RAG (Chatbot & Quản lý Quy chế) – `/api/ai`
 
 > Tích hợp Kiến trúc **RAG (Retrieval-Augmented Generation)** doanh nghiệp:
-> - **Tìm kiếm kết hợp (Hybrid Search)**: Kết hợp PostgreSQL Full-Text Search (tsvector tiếng Việt) và Vector Similarity Search (Gemini 768 chiều).
-> - **Multi-turn Memory**: Tự động viết lại câu hỏi phụ thuộc thành câu hỏi độc lập (Query Condensation), nén lịch sử cuộc hội thoại khi vượt ngưỡng (12 tin nhắn) và duy trì bộ nhớ dài hạn.
+> - **Tìm kiếm kết hợp (Hybrid Search)**: Kết hợp PostgreSQL Full-Text Search (`tsvector` tiếng Việt) và Dense Vector Similarity Search 768 chiều (`bkai-foundation-models/vietnamese-bi-encoder` chạy GPU CUDA).
+> - **Cross-Encoder Reranker**: Sử dụng mô hình `bge-reranker-base` chấm điểm lại độ phù hợp theo ngữ cảnh (`relevance_score`), lọc bỏ triệt để các đoạn văn bản có điểm dưới ngưỡng 0.40 trước khi chuyển sang LLM.
+> - **Bộ nhớ đệm ngữ nghĩa (Semantic Cache)**: Sử dụng pgvector Cosine similarity search (ngưỡng khoảng cách < 0.08 / độ tương đồng > 0.92) để trả về phản hồi tức thì cho các câu hỏi trùng lặp mà không cần gọi lại LLM.
+> - **Multi-turn Memory**: Tự động viết lại câu hỏi phụ thuộc thành câu hỏi độc lập (Query Condensation), nén tóm tắt ngữ cảnh cuộc hội thoại khi vượt ngưỡng (12 tin nhắn) và duy trì bộ nhớ dài hạn.
 > - **Server-Sent Events (SSE)**: Hỗ trợ streaming token câu trả lời theo thời gian thực (First-Token Latency < 0.5s).
-> - **Phân quyền tài liệu (RBAC)**: Tự động trích xuất vai trò (`job`) và phòng ban (`department`) từ JWT Token của nhân viên để lọc tài liệu phù hợp quyền hạn (Role-Based Access Control).
+> - **Phân quyền tài liệu PBAC (Policy-Based Access Control)**:
+>   - Kiểm soát truy cập dựa trên 7 phòng ban chuẩn: `Sales`, `Marketing & Communication`, `Human Resources`, `Finance & Accounting`, `Customer Support`, `Executive Leadership`, `Information Technology` và toàn công ty `ALL`.
+>   - Ban Giám Đốc (Executive) & Quản trị viên (Admin): Toàn quyền tra cứu, tải file và đăng tải tài liệu cho `ALL` hoặc bất kỳ phòng ban nào.
+>   - Phòng Nhân Sự (HR): Tra cứu, tải file và đăng tải tài liệu cho `ALL` hoặc `Human Resources`.
+>   - Trưởng phòng chức năng (Department Head): Tra cứu tài liệu `ALL` và của phòng ban mình; CHỈ được đăng tải / chỉnh sửa tài liệu cho chính phòng ban mình.
+>   - Nhân viên thường: Chỉ được tra cứu và tải tài liệu toàn công ty (`ALL`) hoặc phòng ban của mình; không có quyền upload, chỉnh sửa hoặc xóa tài liệu.
+> - **Tải file bảo mật qua Gateway**: Đường dẫn tải file tài liệu gốc đều thông qua `/api/ai/documents/{documentId}/download` trên Spring Boot Gateway (8080) và được kiểm tra quyền PBAC nghiêm ngặt (không mở static public folder).
+> - **Phòng thủ Prompt Injection**: Bộ lọc Regex và cấu trúc thẻ XML `<user_question>` ngăn chặn jailbreak và hành vi can thiệp trái phép.
 > - **Bảo mật nội bộ**: Giao tiếp giữa Spring Boot Gateway và FastAPI AI Service được bảo vệ bởi khóa bí mật nội bộ `X-Internal-Secret`.
 
 ---
@@ -2248,7 +2269,7 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
       "document_name": "Quy_che_nhan_su_2024.pdf",
       "breadcrumb": "Chương III: Chế độ làm việc và nghỉ ngơi > Điều 12: Nghỉ phép năm",
       "page_number": 14,
-      "file_url": "/static/documents/e3b0c44298fc_Quy_che_nhan_su_2024.pdf",
+      "file_url": "/api/ai/documents/d1a2b3c4-e5f6-7890-abcd-ef1234567890/download",
       "chunk_type": "legal_clause",
       "relevance_score": 0.892
     }
@@ -2304,7 +2325,7 @@ Luồng dữ liệu SSE trả về gồm 4 dạng gói tin (event packets):
    ```
 3. **Event `citations`**: Trả về danh sách điều khoản trích dẫn, câu hỏi tái cấu trúc và mức độ tin cậy
    ```text
-   data: {"type": "citations", "citations": [{"document_name": "Noi_quy_lao_dong_2024.docx", "breadcrumb": "Chương VII: Chấm dứt HĐLĐ > Điều 28: Nghĩa vụ báo trước", "page_number": 22, "file_url": "/static/documents/9f83c211_Noi_quy_lao_dong_2024.docx", "chunk_type": "legal_clause", "relevance_score": 0.945}], "confidence": "HIGH", "rewritten_query": "Thời hạn báo trước khi người lao động nghỉ việc theo từng loại hợp đồng"}
+   data: {"type": "citations", "citations": [{"document_name": "Noi_quy_lao_dong_2024.docx", "breadcrumb": "Chương VII: Chấm dứt HĐLĐ > Điều 28: Nghĩa vụ báo trước", "page_number": 22, "file_url": "/api/ai/documents/9f83c211-11e2-33f4-55a6-778899aabbcc/download", "chunk_type": "legal_clause", "relevance_score": 0.945}], "confidence": "HIGH", "rewritten_query": "Thời hạn báo trước khi người lao động nghỉ việc theo từng loại hợp đồng"}
    ```
 4. **Event `done`**: Báo hiệu kết thúc luồng truyền thành công
    ```text
@@ -2400,7 +2421,7 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
           "document_name": "Noi_quy_lao_dong_2024.docx",
           "breadcrumb": "Chương VII: Chấm dứt HĐLĐ > Điều 28: Nghĩa vụ báo trước",
           "page_number": 22,
-          "file_url": "/static/documents/9f83c211_Noi_quy_lao_dong_2024.docx",
+          "file_url": "/api/ai/documents/9f83c211-11e2-33f4-55a6-778899aabbcc/download",
           "chunk_type": "legal_clause",
           "relevance_score": 0.945
         }
@@ -2514,7 +2535,10 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 
 #### `GET /api/ai/documents` 🔒 Authenticated
 
-> Lấy danh sách toàn bộ tài liệu chính sách, nội quy công ty đã được nạp vào cơ sở tri thức (Knowledge Base) kèm trạng thái xử lý, số lượng chunks và URL tải về.
+> Lấy danh sách toàn bộ tài liệu chính sách, nội quy công ty đã được nạp vào cơ sở tri thức (Knowledge Base) kèm trạng thái xử lý, số lượng chunks, phòng ban áp dụng và URL tải file an toàn.
+> - **Phân quyền PBAC**:
+>   - **Ban Giám Đốc (Executive) & Quản trị viên (Admin)**: Xem được toàn bộ tài liệu công ty hoặc lọc theo bất kỳ phòng ban nào.
+>   - **Trưởng phòng (Department Head) & Nhân viên**: Tự động chỉ xem tài liệu toàn công ty (`ALL`) hoặc tài liệu thuộc phòng ban của mình.
 
 **Query Params:**
 
@@ -2522,6 +2546,7 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 |---|---|---|---|
 | `status` | `String` | — | Lọc theo trạng thái xử lý: `PROCESSING`, `COMPLETED`, `FAILED` |
 | `search` | `String` | — | Tìm kiếm theo tên file tài liệu |
+| `department` | `String` | — | Lọc theo phòng ban: `ALL` hoặc 1 trong 7 phòng ban chuẩn (`Sales`, `Marketing & Communication`, `Human Resources`, `Finance & Accounting`, `Customer Support`, `Executive Leadership`, `Information Technology`) |
 
 **Response** `200`:
 
@@ -2537,11 +2562,14 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
       "file_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "uploaded_by": "Nguyễn Văn HR",
       "status": "COMPLETED",
-      "file_url": "/static/documents/e3b0c44298fc_Quy_che_nhan_su_2024.pdf",
+      "file_url": "/api/ai/documents/d1a2b3c4-e5f6-7890-abcd-ef1234567890/download",
       "error_message": null,
       "created_at": "2024-09-18T10:00:00",
       "updated_at": "2024-09-18T10:02:15",
-      "chunk_count": 28
+      "chunk_count": 28,
+      "allowed_departments": [
+        "ALL"
+      ]
     }
   ]
 }
@@ -2549,11 +2577,37 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 
 | Error | HTTP | errorCode |
 |---|---|---|
+| Phòng ban lọc không hợp lệ | `400` | `VALIDATION_FAILED` |
 | Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
 
 ---
 
-#### `GET /api/ai/documents/{documentId}/chunks` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+#### `GET /api/ai/documents/{documentId}/download` 🔒 Authenticated
+
+> Tải xuống file tài liệu gốc qua Spring Boot Gateway (Port 8080).
+> - **Cơ chế bảo mật PBAC**: Hệ thống tự động trích xuất thông tin phòng ban của nhân viên từ AccessToken và kiểm tra với danh sách `allowed_departments` của tài liệu trước khi trả về nội dung file.
+>   - **Ban Giám Đốc & Quản trị viên**: Tải được toàn bộ mọi tài liệu.
+>   - **Trưởng phòng & Nhân viên**: Chỉ được phép tải tài liệu áp dụng toàn công ty (`ALL`) hoặc tài liệu nội bộ thuộc phòng ban của mình. Nếu cố tình tải file của phòng ban khác sẽ bị chặn với mã lỗi `403 Forbidden`.
+> - **Stream nhị phân an toàn**: Trả về dữ liệu nhị phân kèm header `Content-Disposition: attachment; filename="<ten_file>"` giúp trình duyệt tải file trực tiếp.
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `documentId` | `String (UUID)` | ID tài liệu cần tải xuống |
+
+**Response** `200` – `application/octet-stream` (hoặc định dạng MIME gốc):
+> Trả về luồng dữ liệu nhị phân của tệp tin gốc (.pdf, .docx, .xlsx).
+
+| Error | HTTP | errorCode | Mô tả |
+|---|---|---|---|
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` | Yêu cầu đăng nhập trước khi tải |
+| Không thuộc phòng ban được phép tải | `403` | `FORBIDDEN` | Nhân viên phòng ban khác không có quyền tải tài liệu này |
+| Không tìm thấy tài liệu | `404` | `NOT_FOUND` | Document ID không tồn tại hoặc file vật lý đã bị xóa khỏi hệ thống |
+
+---
+
+#### `GET /api/ai/documents/{documentId}/chunks` 🟡 HR / 🔴 Executive / 🛠️ System Admin / 🔵 Manager
 
 > Dành cho người quản trị kiểm duyệt dữ liệu (Audit API): Xem chi tiết từng phân đoạn văn bản (`chunks`), cây phân cấp điều khoản (`breadcrumb`), tóm tắt ngắn, từ khóa và bộ câu hỏi giả định (Reverse HyDE) được AI tự động sinh cho tài liệu.
 
@@ -2588,9 +2642,8 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
         "Làm việc bao lâu thì được hưởng 12 ngày phép năm?",
         "Nghỉ phép năm có được hưởng nguyên lương không?"
       ],
-      "allowed_roles": [
-        "ROLE_EMPLOYEE",
-        "ROLE_MANAGER"
+      "allowed_jobs": [
+        "ALL"
       ],
       "allowed_departments": [
         "ALL"
@@ -2602,16 +2655,23 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 
 | Error | HTTP | errorCode |
 |---|---|---|
-| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Không đủ quyền Trưởng phòng / HR / Executive / System Admin | `403` | `FORBIDDEN` |
 | Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
 
 ---
 
-#### `POST /api/ai/documents/upload` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+#### `POST /api/ai/documents/upload` 🟡 HR / 🔴 Executive / 🛠️ System Admin / 🔵 Manager
 
-> Tải lên tài liệu chính sách, quy chế mới (hỗ trợ định dạng `.pdf`, `.docx`, `.xlsx`).
-> - **Cơ chế chống trùng lặp**: Hệ thống tính toán mã băm SHA-256 của file. Nếu trùng với tài liệu hiện có và `overwrite = false`, hệ thống báo trạng thái `DUPLICATE`.
-> - **Xử lý ngầm (Background Task)**: Lưu trữ file cục bộ, khởi tạo bản ghi `PROCESSING` và chuyển cho Worker ngầm xử lý: Bóc tách văn bản -> Cắt chunks pháp lý bảo toàn cấu trúc bảng biểu -> Gọi LLM Ollama sinh tóm tắt & câu hỏi giả định HyDE -> Gọi Google Gemini tạo vector embeddings 768 chiều -> Lưu vào CSDL pgvector.
+> Tải lên tài liệu chính sách, quy chế mới (hỗ trợ định dạng Word `.docx`, PDF `.pdf`, Excel `.xlsx`, `.xls`).
+> - **Ràng buộc phân quyền PBAC khi đăng tải**:
+>   - **🔴 Ban Giám Đốc (Executive) & 🛠️ Admin**: Toàn quyền đăng tải cho `ALL` hoặc bất kỳ phòng ban nào.
+>   - **🟡 Phòng Nhân Sự (HR)**: Đăng tải cho toàn công ty (`ALL`) hoặc tài liệu nội bộ phòng `Human Resources`.
+>   - **🔵 Trưởng phòng chức năng (Department Head)**: **CHỈ** được phép đăng tải tài liệu nội bộ cho chính phòng ban của mình (không được chọn `ALL` hay phòng ban khác).
+>   - **Nhân viên thường**: Không có quyền upload (bị từ chối `403 Forbidden`).
+> - **Cơ chế đặt tên file và chống trùng lặp**:
+>   - Giữ nguyên tên file gốc của người dùng. Nếu file trùng tên đã tồn tại trên đĩa mà khác nội dung (khác SHA-256), hệ thống tự động gắn thêm hậu tố `_v2`, `_v3`,...
+>   - Nếu nội dung file giống hoàn toàn bản hiện có (trùng mã SHA-256) và `overwrite = false`, hệ thống báo trạng thái `DUPLICATE`.
+> - **Xử lý ngầm (Background Task)**: Lưu trữ file cục bộ, khởi tạo bản ghi `PROCESSING` và chuyển cho Worker ngầm xử lý: Bóc tách văn bản -> Cắt chunks pháp lý bảo toàn cấu trúc bảng biểu -> Gọi LLM Ollama sinh tóm tắt & câu hỏi giả định HyDE -> Gọi mô hình Local 768 chiều (CUDA GPU) tạo vector embeddings -> Lưu vào CSDL pgvector.
 
 **Content-Type:** `multipart/form-data`
 
@@ -2619,9 +2679,8 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 
 | Field | Kiểu | Bắt buộc | Mặc định | Mô tả |
 |---|---|---|---|---|
-| `file` | `MultipartFile` | ✅ Có | — | Tệp tài liệu Word (.docx), PDF (.pdf) hoặc Excel (.xlsx) |
-| `allowedRoles` | `String` | Tuỳ chọn | `ROLE_EMPLOYEE,ROLE_MANAGER` | Danh sách vai trò được phép truy vấn tài liệu (phân cách bằng dấu phẩy) |
-| `allowedDepartments` | `String` | Tuỳ chọn | `ALL` | Danh sách phòng ban được phép tra cứu (`ALL` hoặc danh sách: `Human Resources,Information Technology`) |
+| `file` | `MultipartFile` | ✅ Có | — | Tệp tài liệu Word (.docx), PDF (.pdf) hoặc Excel (.xlsx, .xls). *Lưu ý: định dạng Word cũ (.doc) không hỗ trợ trực tiếp, cần lưu thành .docx trước khi upload.* |
+| `allowedDepartments` | `String` | Tuỳ chọn | `ALL` | Danh sách phòng ban được phép tra cứu (`ALL` hoặc danh sách các phòng ban chuẩn phân cách bằng dấu phẩy: `Sales`, `Marketing & Communication`, `Human Resources`, `Finance & Accounting`, `Customer Support`, `Executive Leadership`, `Information Technology`). *Lưu ý: Trưởng phòng chỉ được điền phòng ban của mình.* |
 | `overwrite` | `boolean` | Tuỳ chọn | `false` | Nếu `true`, cho phép ghi đè và nạp lại khi tệp trùng mã SHA-256 với tài liệu cũ |
 
 **Response** `200` – Tiếp nhận thành công (đang xử lý ngầm):
@@ -2634,7 +2693,7 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
   "file_name": "Quy_che_nhan_su_2024.pdf",
   "file_size": 2458120,
   "file_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "file_url": "/static/documents/e3b0c44298fc_Quy_che_nhan_su_2024.pdf"
+  "file_url": "/api/ai/documents/d1a2b3c4-e5f6-7890-abcd-ef1234567890/download"
 }
 ```
 
@@ -2652,17 +2711,20 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 
 | Error | HTTP | errorCode |
 |---|---|---|
-| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Không đủ quyền Trưởng phòng / HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Chọn phòng ban vượt quá quyền hạn cho phép | `403` | `FORBIDDEN` |
+| Định dạng file không hỗ trợ (.doc, .txt, .zip, ...) | `400` | `VALIDATION_FAILED` |
 | Thiếu file upload | `400` | `VALIDATION_FAILED` |
 | Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
 
 ---
 
-#### `PUT /api/ai/documents/{documentId}` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+#### `PUT /api/ai/documents/{documentId}` 🟡 HR / 🔴 Executive / 🛠️ System Admin / 🔵 Manager
 
 > Cập nhật / Thay thế file tài liệu cũ (In-Place Replacement).
 > - Nếu file mới có mã SHA-256 trùng khớp hoàn toàn với bản hiện tại: Hệ thống trả về `UNCHANGED` và không chạy lại pipeline.
-> - Nếu nội dung thay đổi: Lưu file mới, xóa file cũ trên đĩa, xóa sạch các vector và chunks cũ trong CSDL, chạy lại quy trình bóc tách và tạo vector embeddings mới.
+> - Nếu nội dung thay đổi: Lưu file mới, xóa sạch các vector và chunks cũ trong CSDL, chạy lại quy trình bóc tách và tạo vector embeddings mới; chỉ dọn dẹp file vật lý cũ khi phiên bản mới đã nạp thành công 100% (Atomic Replacement).
+> - Quy tắc phân quyền PBAC cho `allowedDepartments` tương tự như upload.
 
 **Content-Type:** `multipart/form-data`
 
@@ -2676,8 +2738,7 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 
 | Field | Kiểu | Bắt buộc | Mô tả |
 |---|---|---|---|
-| `file` | `MultipartFile` | ✅ Có | Tệp tài liệu phiên bản mới |
-| `allowedRoles` | `String` | Tuỳ chọn | Danh sách vai trò mới (để trống sẽ giữ nguyên cấu hình cũ) |
+| `file` | `MultipartFile` | ✅ Có | Tệp tài liệu phiên bản mới (.pdf, .docx, .xlsx) |
 | `allowedDepartments` | `String` | Tuỳ chọn | Danh sách phòng ban mới (để trống sẽ giữ nguyên cấu hình cũ) |
 
 **Response** `200` – Nội dung thay đổi (đang xử lý ngầm):
@@ -2691,7 +2752,7 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
   "new_file_name": "Quy_che_nhan_su_2024_v2.pdf",
   "new_file_size": 2510000,
   "new_file_hash": "b2c3d4e5...",
-  "new_file_url": "/static/documents/b2c3d4e5_Quy_che_nhan_su_2024_v2.pdf"
+  "new_file_url": "/api/ai/documents/d1a2b3c4-e5f6-7890-abcd-ef1234567890/download"
 }
 ```
 
@@ -2709,12 +2770,13 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 | Error | HTTP | errorCode |
 |---|---|---|
 | Không tìm thấy tài liệu cần cập nhật | `404` | `NOT_FOUND` |
-| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Không đủ quyền Trưởng phòng / HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Chọn phòng ban vượt quá quyền hạn cho phép | `403` | `FORBIDDEN` |
 | Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
 
 ---
 
-#### `DELETE /api/ai/documents/{documentId}` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+#### `DELETE /api/ai/documents/{documentId}` 🟡 HR / 🔴 Executive / 🛠️ System Admin / 🔵 Manager
 
 > Xóa vĩnh viễn tài liệu khỏi hệ thống.
 > CSDL tự động kích hoạt `ON DELETE CASCADE` xóa toàn bộ các chunks và vector liên quan trong bảng `document_chunks`, đồng thời xóa tệp vật lý tương ứng trên đĩa cứng.
@@ -2737,7 +2799,7 @@ data: {"type": "error", "message": "Không thể kết nối đến AI Service: 
 | Error | HTTP | errorCode |
 |---|---|---|
 | Không tìm thấy tài liệu để xóa | `404` | `NOT_FOUND` |
-| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Không đủ quyền Trưởng phòng / HR / Executive / System Admin | `403` | `FORBIDDEN` |
 | Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
 
 ---
