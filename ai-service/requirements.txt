@@ -1,3 +1,15 @@
+# Web Framework & API Server
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+
+# Database & Vector Storage
+psycopg2-binary>=2.9.9
+pgvector>=0.3.0
+
+# HTTP Client & Utilities
+requests>=2.31.0
+
 # Core Data Validation & Environment
 pydantic>=2.7.0
 python-dotenv>=1.0.0
@@ -12,9 +24,8 @@ openpyxl>=3.1.2          # Excel spreadsheet parser (.xlsx)
 google-generativeai>=0.8.0
 openai>=1.30.0
 
-# Local Vector Embeddings (100% Free, Offline, GPU/CPU)
-sentence-transformers>=6.0.0
-torch
+# Local Vector Embeddings
+sentence-transformers>=3.0.0
 
 # Testing & Utilities
 pytest>=8.0.0

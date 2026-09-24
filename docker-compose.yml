@@ -46,7 +46,33 @@ services:
     networks:
       - hrm-network
 
-  # 3. Core Backend: Spring Boot API Server
+  # 3. AI Microservice: FastAPI RAG Service (Port 8000)
+  hrm-ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: hrm-ai-service
+    ports:
+      - "${AI_SERVICE_PORT:-8000}:8000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/${POSTGRES_DB:-hrm}
+      INTERNAL_API_SECRET: ${AI_SERVICE_SECRET:-hrm-internal-key-secure-2024}
+      LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-1.5-flash}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434/v1}
+    volumes:
+      - ./ai-service/uploads:/app/uploads
+    depends_on:
+      hrm-database:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 4. Core Backend: Spring Boot API Server
   hrm-backend:
     build:
       context: ./backend
@@ -58,6 +84,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-@Minhtrung1408}
       SPRING_DATA_REDIS_HOST: hrm-cache
       SPRING_DATA_REDIS_PORT: ${REDIS_PORT:-6379}
+      AI_SERVICE_URL: http://hrm-ai-service:8000
+      AI_SERVICE_SECRET: ${AI_SERVICE_SECRET:-hrm-internal-key-secure-2024}
     ports:
       - "${BACKEND_PORT:-8080}:8080"
     volumes:
@@ -68,11 +96,13 @@ services:
         condition: service_healthy
       hrm-cache:
         condition: service_healthy
+      hrm-ai-service:
+        condition: service_started
     restart: unless-stopped
     networks:
       - hrm-network
 
-  # 4. Frontend Web: Next.js Standalone
+  # 5. Frontend Web: Next.js Standalone
   hrm-frontend:
     build:
       context: ./HRM Website
@@ -88,7 +118,7 @@ services:
     networks:
       - hrm-network
 
-  # 5. Đường hầm Cloudflare Quick Tunnel (TryCloudflare)
+  # 6. Đường hầm Cloudflare Quick Tunnel (TryCloudflare)
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: hrm-cloudflared
@@ -99,7 +129,7 @@ services:
     networks:
       - hrm-network
 
-  # 6. Automation & Backup: n8n Workflow
+  # 7. Automation & Backup: n8n Workflow
   hrm-n8n:
     image: docker.n8n.io/n8nio/n8n:latest
     container_name: hrm-n8n

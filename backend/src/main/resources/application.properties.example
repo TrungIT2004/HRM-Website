@@ -41,3 +41,7 @@ logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{traceId}] %-5l
 logging.pattern.file=%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{traceId}] %-5level %logger{36} - %msg%n
 logging.logback.rollingpolicy.max-history=7
 logging.logback.rollingpolicy.total-size-cap=100MB
+
+# ====================== AI RAG Service ======================
+ai.service.base-url=http://localhost:8000
+ai.service.internal-secret=hrm-internal-key-secure-2024
