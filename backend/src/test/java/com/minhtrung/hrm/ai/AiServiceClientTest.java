@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,6 +14,7 @@ import com.minhtrung.hrm.ai.dtos.responses.ChatQueryResponse;
 import com.minhtrung.hrm.ai.services.AiServiceClient;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 
+@Disabled("Integration test - yêu cầu server FastAPI AI và LLM thật đang chạy")
 public class AiServiceClientTest {
 
     @Test
