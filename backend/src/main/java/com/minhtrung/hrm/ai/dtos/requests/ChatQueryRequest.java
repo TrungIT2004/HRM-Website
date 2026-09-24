@@ -15,6 +15,8 @@ public class ChatQueryRequest {
     @NotBlank(message = "Câu hỏi không được để trống")
     private String question;
 
+    private String conversationId;
+
     @Builder.Default
     private Integer topK = 3;
 }

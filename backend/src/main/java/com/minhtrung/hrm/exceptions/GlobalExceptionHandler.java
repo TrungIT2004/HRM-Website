@@ -53,6 +53,21 @@ public class GlobalExceptionHandler {
         ));
     }
 
+    // ─── NO RESOURCE FOUND (404 STATIC / INVALID PATH) ───────
+    /**
+     * Xử lý trường hợp không tìm thấy tài nguyên tĩnh hoặc đường dẫn không hợp lệ (HTTP 404).
+     * Bắt chặn NoResourceFoundException (ví dụ các polling request ngầm từ LuaTools/DevTools tới /json)
+     * để tránh ghi log lỗi 500 [ERROR] hệ thống không xác định làm nhiễu console.
+     */
+    @ExceptionHandler(org.springframework.web.servlet.resource.NoResourceFoundException.class)
+    public ResponseEntity<?> handleNoResourceFound(org.springframework.web.servlet.resource.NoResourceFoundException ex) {
+        log.debug("Không tìm thấy tài nguyên tĩnh hoặc API: /{}", ex.getResourcePath());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
+                "errorCode", "RESOURCE_NOT_FOUND",
+                "msg", "Đường dẫn không tồn tại: /" + ex.getResourcePath()
+        ));
+    }
+
     // ─── GENERIC EXCEPTION ────────────────────────────────────
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception ex) {

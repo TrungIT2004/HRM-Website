@@ -47,8 +47,10 @@ class ExcelParser(BaseParser):
                     ))
 
         wb.close()
+        import re
+        clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
         return ParsedDocument(
-            document_name=path.name,
+            document_name=clean_name,
             file_type="xlsx",
             total_pages=len(wb.sheetnames),
             blocks=blocks

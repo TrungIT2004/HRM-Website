@@ -84,8 +84,9 @@ class DOCXParser(BaseParser):
                         page_number=1
                     ))
 
+        clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
         return ParsedDocument(
-            document_name=path.name,
+            document_name=clean_name,
             file_type="docx",
             total_pages=1,
             blocks=blocks

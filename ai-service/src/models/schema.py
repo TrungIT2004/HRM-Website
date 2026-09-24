@@ -46,9 +46,16 @@ class ProcessedChunk(BaseModel):
         description="3-5 hypothetical questions that this chunk answers (Reverse HyDE)"
     )
     
-    # Access Control (RBAC)
-    allowed_roles: List[str] = Field(default_factory=lambda: ["ROLE_EMPLOYEE", "ROLE_MANAGER", "ROLE_ADMIN"])
-    allowed_departments: List[str] = Field(default_factory=lambda: ["ALL"])
+    # Access Control (PBAC: Job & Department)
+    allowed_jobs: List[str] = Field(default_factory=lambda: ["ALL"], description="Danh sách chức danh được phép truy cập (Job titles), hoặc ['ALL']")
+    allowed_departments: List[str] = Field(default_factory=lambda: ["ALL"], description="Danh sách phòng ban được phép truy cập, hoặc ['ALL']")
+    allowed_roles: Optional[List[str]] = Field(default=None, description="Tương thích ngược với allowed_jobs")
+
+    def model_post_init(self, __context: Any) -> None:
+        if self.allowed_roles is not None and (not self.allowed_jobs or self.allowed_jobs == ["ALL"]):
+            self.allowed_jobs = self.allowed_roles
+        elif self.allowed_roles is None:
+            self.allowed_roles = self.allowed_jobs
     
     # Vector Embeddings
     content_vector: Optional[List[float]] = Field(default=None, description="Embedding of the content (768d)")

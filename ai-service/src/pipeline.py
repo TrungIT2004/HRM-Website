@@ -29,8 +29,9 @@ class IngestionPipeline:
     def process_file(
         self, 
         file_path: Path | str, 
-        allowed_roles: Optional[List[str]] = None,
-        allowed_departments: Optional[List[str]] = None
+        allowed_jobs: Optional[List[str]] = None,
+        allowed_departments: Optional[List[str]] = None,
+        allowed_roles: Optional[List[str]] = None
     ) -> List[ProcessedChunk]:
         """
         Full end-to-end ingestion:
@@ -45,26 +46,52 @@ class IngestionPipeline:
         ext = path.suffix.lower()
 
         # Step 1: Parsing
+        temp_docx_path = None
         if ext == ".pdf":
             parser = PDFParser()
-        elif ext in [".docx", ".doc"]:
+        elif ext == ".docx":
             parser = DOCXParser()
+        elif ext == ".doc":
+            # Tự động chuyển đổi định dạng Word cũ (.doc) sang .docx
+            try:
+                import win32com.client
+                import tempfile
+                word = win32com.client.Dispatch("Word.Application")
+                word.Visible = False
+                doc = word.Documents.Open(str(path.resolve()))
+                temp_file = tempfile.NamedTemporaryFile(suffix=".docx", delete=False)
+                temp_docx_path = Path(temp_file.name)
+                temp_file.close()
+                doc.SaveAs2(str(temp_docx_path.resolve()), FileFormat=16) # wdFormatXMLDocument = 16
+                doc.Close()
+                word.Quit()
+                path = temp_docx_path
+                parser = DOCXParser()
+            except Exception as e:
+                raise ValueError(f"Không thể đọc file Word cũ .doc: {e}. Vui lòng chuyển sang định dạng .docx hiện đại.")
         elif ext in [".xlsx", ".xls"]:
             parser = ExcelParser()
         else:
-            raise ValueError(f"Unsupported file format: {ext}. Supported: .pdf, .docx, .xlsx")
+            raise ValueError(f"Unsupported file format: {ext}. Supported: .pdf, .docx, .doc, .xlsx")
 
-        parsed_doc: ParsedDocument = parser.parse(path)
+        try:
+            parsed_doc: ParsedDocument = parser.parse(path)
+        finally:
+            if temp_docx_path and temp_docx_path.exists():
+                try:
+                    temp_docx_path.unlink()
+                except Exception:
+                    pass
 
         # Step 2: Structure-aware chunking
         chunks = self.chunker.chunk(parsed_doc)
 
-        # Apply RBAC overrides if provided
+        # Apply PBAC (Job & Department) overrides if provided
+        effective_jobs = allowed_jobs or allowed_roles or ["ALL"]
+        effective_depts = allowed_departments or ["ALL"]
         for c in chunks:
-            if allowed_roles:
-                c.allowed_roles = allowed_roles
-            if allowed_departments:
-                c.allowed_departments = allowed_departments
+            c.allowed_jobs = effective_jobs
+            c.allowed_departments = effective_depts
 
         # Step 3: Metadata creation & enrichment
         if self.enrich_with_llm and self.enricher:
