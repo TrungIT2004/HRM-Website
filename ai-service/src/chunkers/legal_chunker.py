@@ -15,7 +15,8 @@ class LegalChunker:
         self.min_chunk_chars = min_chunk_chars
 
     def _build_breadcrumb(self, doc_name: str, h1: Optional[str], h2: Optional[str], h3: Optional[str]) -> str:
-        parts = [doc_name]
+        clean_doc_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', doc_name)
+        parts = [clean_doc_name]
         if h1:
             parts.append(h1)
         if h2:
@@ -50,7 +51,7 @@ class LegalChunker:
                     chunk_type="TEXT",
                     page_number=current_page,
                     content=text_content,
-                    allowed_roles=["ROLE_EMPLOYEE", "ROLE_MANAGER", "ROLE_ADMIN"],
+                    allowed_jobs=["ALL"],
                     allowed_departments=["ALL"]
                 ))
             current_buffer = []
@@ -70,7 +71,7 @@ class LegalChunker:
                     chunk_type="TABLE",
                     page_number=current_page,
                     content=block.content,
-                    allowed_roles=["ROLE_EMPLOYEE", "ROLE_MANAGER", "ROLE_ADMIN"],
+                    allowed_jobs=["ALL"],
                     allowed_departments=["ALL"]
                 ))
                 continue

@@ -114,8 +114,9 @@ class PDFParser(BaseParser):
 
         total_pages = len(doc)
         doc.close()
+        clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
         return ParsedDocument(
-            document_name=path.name,
+            document_name=clean_name,
             file_type="pdf",
             total_pages=total_pages,
             blocks=blocks
@@ -150,8 +151,9 @@ class PDFParser(BaseParser):
                         page_number=page_num
                     ))
 
+        clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
         return ParsedDocument(
-            document_name=path.name,
+            document_name=clean_name,
             file_type="pdf",
             total_pages=len(reader.pages),
             blocks=blocks

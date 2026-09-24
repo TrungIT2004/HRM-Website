@@ -59,12 +59,22 @@ Hệ thống quản lý nhân sự toàn diện dành cho doanh nghiệp, bao g�
 | Library | OpenCV, face_recognition |
 | Thư mục | `Check Attendance/` |
 
+### AI RAG Service (Trợ lý thông minh & Quản lý tri thức)
+| Thành phần | Công nghệ |
+|---|---|
+| Framework | FastAPI, Python 3.11 |
+| Vector Database | PostgreSQL (`pgvector` – 768d vectors) |
+| LLM & Embeddings | Google Gemini + Ollama Cloud |
+| Search Engine | Hybrid Search (Full-Text Search tiếng Việt + Dense Vector) |
+| Thư mục | `ai-service/` |
+
 ---
 
 ## Tính năng chính
 
 - 👤 **Quản lý nhân viên & Onboarding** – HR tiếp nhận hồ sơ ứng viên (pending users), quản lý hợp đồng, lương, điều chuyển phòng ban & ca làm
 - 🛠️ **Quản trị hệ thống (Admin IT)** – Duyệt & cấp tài khoản chính thức (provisioning), khóa/mở khóa tài khoản, reset mật khẩu, giám sát & thu hồi phiên đăng nhập
+- 🤖 **Trợ lý AI RAG & Quản lý Quy chế** – Hỏi đáp chính sách, nội quy công ty qua Chatbot AI (hỗ trợ Streaming SSE & Multi-turn memory), quản lý nạp tài liệu quy chế (PDF, Word, Excel) với pgvector
 - 🕐 **Chấm công** – Clock in/out thủ công hoặc nhận diện khuôn mặt, tổng hợp bảng công tháng
 - 🏖️ **Nghỉ phép** – Đăng ký, phê duyệt, trừ phép năm tự động
 - ⏰ **Tăng ca** – Đăng ký, phê duyệt, tính giờ OT thực tế
@@ -173,6 +183,7 @@ curl http://localhost:8080/auth/login \
 backend/src/main/java/com/minhtrung/hrm/
 │
 ├── admin/                    # Quản trị hệ thống, cấp tài khoản, quản lý phiên
+├── ai/                       # Trợ lý AI RAG, tích hợp FastAPI microservice, streaming SSE
 ├── auth/                     # Đăng nhập, JWT, session
 ├── attendance/               # Chấm công, ca làm việc, bảng công tháng
 ├── leave/                    # Nghỉ phép

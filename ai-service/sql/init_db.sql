@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS knowledge_documents (
     file_size BIGINT,                        -- Dung lượng file (bytes)
     uploaded_by VARCHAR(100),                -- Người upload (User ID)
     status VARCHAR(50) DEFAULT 'PROCESSING', -- PROCESSING, COMPLETED, FAILED
-    allowed_roles VARCHAR[] DEFAULT ARRAY['ROLE_EMPLOYEE', 'ROLE_MANAGER'], -- Phân quyền vai trò
+    allowed_jobs VARCHAR[] DEFAULT ARRAY['ALL'],                            -- Phân quyền chức danh (Job Title)
     allowed_departments VARCHAR[] DEFAULT ARRAY['ALL'],                     -- Phân quyền phòng ban
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
@@ -30,12 +30,12 @@ CREATE TABLE IF NOT EXISTS document_chunks (
     content TEXT NOT NULL,                  -- Nội dung chữ gốc hoặc Markdown Table
     page_number INT,
     
-    -- Nhóm Siêu dữ liệu & Phân quyền (Metadata & RBAC)
+    -- Nhóm Siêu dữ liệu & Phân quyền (Metadata & PBAC)
     summary TEXT,
     keywords TEXT[],                        -- Mảng từ khóa để tìm kiếm Full-text
     hypothetical_questions TEXT[],          -- Câu hỏi giả định lưu dạng text để tham khảo
-    allowed_roles VARCHAR[] NOT NULL,       -- [ROLE_EMPLOYEE, ROLE_MANAGER]
-    allowed_departments VARCHAR[] NOT NULL, -- [IT, HR, ALL]
+    allowed_jobs VARCHAR[] NOT NULL DEFAULT ARRAY['ALL'],         -- Phân quyền chức vụ [Department Head, Software Engineer, ALL]
+    allowed_departments VARCHAR[] NOT NULL DEFAULT ARRAY['ALL'],  -- Phân quyền phòng ban [IT, HR, ALL]
     
     -- Nhóm Vector 768 chiều (Google Gemini text-embedding-004)
     content_vector VECTOR(768),            
@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS document_chunks (
 
 -- 4. Đánh Index (Chỉ mục) để tối ưu tốc độ truy vấn HÀNG TRIỆU DÒNG
 
--- 4.1. GIN Index cho mảng Quyền (RBAC) để chặn/lọc bảo mật siêu tốc
-CREATE INDEX IF NOT EXISTS idx_chunks_roles ON document_chunks USING GIN (allowed_roles);
+-- 4.1. GIN Index cho mảng Quyền (PBAC: Job & Department) để chặn/lọc bảo mật siêu tốc
+CREATE INDEX IF NOT EXISTS idx_chunks_jobs ON document_chunks USING GIN (allowed_jobs);
 CREATE INDEX IF NOT EXISTS idx_chunks_departments ON document_chunks USING GIN (allowed_departments);
 
 -- 4.2. GIN Index cho Keywords để tìm kiếm từ khóa (BM25 style)
@@ -61,3 +61,53 @@ WITH (m = 16, ef_construction = 64);
 CREATE INDEX IF NOT EXISTS idx_chunks_questions_vec ON document_chunks 
 USING hnsw (questions_vector vector_cosine_ops)
 WITH (m = 16, ef_construction = 64);
+
+-- 5. Bảng Quản lý Cuộc trò chuyện & Bộ nhớ ngữ cảnh (Conversational Memory)
+CREATE TABLE IF NOT EXISTS chat_conversations (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id VARCHAR(100) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    is_pinned BOOLEAN DEFAULT FALSE,
+    context_summary TEXT,                    -- Nén tóm tắt ngữ cảnh khi hội thoại dài (>12 tin nhắn)
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_chat_conv_user ON chat_conversations (user_id);
+CREATE INDEX IF NOT EXISTS idx_chat_conv_updated ON chat_conversations (updated_at DESC);
+
+-- 6. Bảng Quản lý Lịch sử Tin nhắn (Chat Messages)
+CREATE TABLE IF NOT EXISTS chat_messages (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    conversation_id UUID REFERENCES chat_conversations(id) ON DELETE CASCADE,
+    sender_role VARCHAR(20) NOT NULL,        -- USER hoặc ASSISTANT
+    content TEXT NOT NULL,
+    rewritten_query TEXT,                    -- Câu hỏi độc lập được viết lại (Query Condensation)
+    citations JSONB DEFAULT '[]'::jsonb,     -- Danh sách trích dẫn điều khoản/trang/tài liệu
+    confidence VARCHAR(20),                  -- HIGH, MEDIUM, LOW
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_chat_messages_conv ON chat_messages (conversation_id);
+CREATE INDEX IF NOT EXISTS idx_chat_messages_created ON chat_messages (created_at ASC);
+
+-- 7. Bảng Semantic Caching (Bộ nhớ đệm ngữ nghĩa siêu tốc <30ms)
+CREATE TABLE IF NOT EXISTS semantic_cache (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    query_text TEXT NOT NULL,
+    query_vector VECTOR(768) NOT NULL,
+    response_text TEXT NOT NULL,
+    citations JSONB DEFAULT '[]'::jsonb,
+    allowed_jobs VARCHAR[] DEFAULT ARRAY['ALL'],
+    allowed_departments VARCHAR[] DEFAULT ARRAY['ALL'],
+    hit_count INT DEFAULT 1,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_semantic_cache_vector ON semantic_cache 
+USING hnsw (query_vector vector_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+CREATE INDEX IF NOT EXISTS idx_semantic_cache_jobs ON semantic_cache USING GIN (allowed_jobs);
+CREATE INDEX IF NOT EXISTS idx_semantic_cache_depts ON semantic_cache USING GIN (allowed_departments);

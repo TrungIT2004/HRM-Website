@@ -158,6 +158,20 @@ Response thành công trả về trực tiếp dữ liệu theo từng endpoint 
 | `CANCELLED` | Nhân viên tự hủy |
 | `COMPLETED` | Hoàn tất thôi việc (tài khoản đã bị khóa) |
 
+### `DocumentStatus`
+| Giá trị | Mô tả |
+|---|---|
+| `PROCESSING` | Tài liệu vừa được tải lên, đang bóc tách nội dung, sinh câu hỏi giả định (Reverse HyDE) và tạo vector embeddings ngầm |
+| `COMPLETED` | Đã xử lý bóc tách và nạp vector embeddings thành công vào CSDL pgvector, sẵn sàng phục vụ tra cứu |
+| `FAILED` | Xử lý thất bại (lỗi định dạng file, lỗi mô hình AI hoặc lỗi CSDL) |
+
+### `AiConfidence`
+| Giá trị | Mô tả |
+|---|---|
+| `HIGH` | Độ tin cậy cao: Tìm thấy các điều khoản, văn bản trích dẫn khớp chính xác với câu hỏi |
+| `MEDIUM` | Độ tin cậy trung bình: Nội dung trích dẫn có độ tương đồng tương đối với câu hỏi |
+| `LOW` | Độ tin cậy thấp: Không tìm thấy tài liệu phù hợp hoặc câu hỏi ngoài phạm vi quy chế công ty |
+
 ---
 
 ## 1. Authentication – `/auth`
@@ -2187,7 +2201,548 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
 
 ---
 
-## 14. Request Body – HR Employee Update Endpoints
+## 14. Trợ lý AI RAG (Chatbot & Quản lý Quy chế) – `/api/ai`
+
+> Tích hợp Kiến trúc **RAG (Retrieval-Augmented Generation)** doanh nghiệp:
+> - **Tìm kiếm kết hợp (Hybrid Search)**: Kết hợp PostgreSQL Full-Text Search (tsvector tiếng Việt) và Vector Similarity Search (Gemini 768 chiều).
+> - **Multi-turn Memory**: Tự động viết lại câu hỏi phụ thuộc thành câu hỏi độc lập (Query Condensation), nén lịch sử cuộc hội thoại khi vượt ngưỡng (12 tin nhắn) và duy trì bộ nhớ dài hạn.
+> - **Server-Sent Events (SSE)**: Hỗ trợ streaming token câu trả lời theo thời gian thực (First-Token Latency < 0.5s).
+> - **Phân quyền tài liệu (RBAC)**: Tự động trích xuất vai trò (`job`) và phòng ban (`department`) từ JWT Token của nhân viên để lọc tài liệu phù hợp quyền hạn (Role-Based Access Control).
+> - **Bảo mật nội bộ**: Giao tiếp giữa Spring Boot Gateway và FastAPI AI Service được bảo vệ bởi khóa bí mật nội bộ `X-Internal-Secret`.
+
+---
+
+### 14.1. Trợ lý Hỏi - Đáp AI (Chatbot RAG)
+
+#### `POST /api/ai/chat` 🔒 Authenticated
+
+> Nhân viên gửi câu hỏi cho Chatbot RAG (chế độ phản hồi một lần - Non-streaming). Hệ thống tự động ghi nhớ lịch sử hội thoại, bóc tách câu hỏi độc lập, truy vấn tri thức nội bộ và trả về câu trả lời kèm trích dẫn văn bản, số trang và độ tin cậy.
+
+**Request Body (`ChatQueryRequest`):**
+
+| Trường | Kiểu | Bắt buộc | Mặc định | Mô tả |
+|---|---|---|---|---|
+| `question` | `String` | ✅ Có | — | Câu hỏi của nhân viên (không được để trống) |
+| `conversationId` | `String (UUID)` | Tuỳ chọn | `null` | ID cuộc trò chuyện để duy trì ngữ cảnh. Nếu để trống hoặc `null`, hệ thống sẽ tự khởi tạo cuộc trò chuyện mới |
+| `topK` | `Integer` | Tuỳ chọn | `3` | Số lượng đoạn trích dẫn (chunks) tối đa cần tìm kiếm (từ 1 đến 10) |
+
+```json
+{
+  "question": "Nhân viên thử việc có được hưởng chế độ nghỉ phép năm không?",
+  "conversationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "topK": 3
+}
+```
+
+**Response** `200` – `ChatQueryResponse`:
+
+```json
+{
+  "conversation_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "title": "Chế độ nghỉ phép nhân viên thử việc",
+  "question": "Nhân viên thử việc có được hưởng chế độ nghỉ phép năm không?",
+  "rewritten_query": "Quy định về chế độ nghỉ phép năm đối với nhân viên đang trong thời gian thử việc",
+  "answer": "Theo Điều 12 Quy chế Quản lý Nhân sự của công ty:\n- Trong thời gian thử việc, người lao động chưa được hưởng ngày nghỉ phép năm có hưởng nguyên lương.\n- Sau khi hoàn thành thời gian thử việc và ký hợp đồng lao động chính thức, thời gian thử việc sẽ được tính cộng dồn để xác định số ngày nghỉ phép năm của năm làm việc đó.",
+  "citations": [
+    {
+      "document_name": "Quy_che_nhan_su_2024.pdf",
+      "breadcrumb": "Chương III: Chế độ làm việc và nghỉ ngơi > Điều 12: Nghỉ phép năm",
+      "page_number": 14,
+      "file_url": "/static/documents/e3b0c44298fc_Quy_che_nhan_su_2024.pdf",
+      "chunk_type": "legal_clause",
+      "relevance_score": 0.892
+    }
+  ],
+  "retrieved_chunks_count": 3,
+  "confidence": "HIGH"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Câu hỏi để trống | `400` | `VALIDATION_FAILED` |
+| Chưa đăng nhập / Token hết hạn | `401` | `UNAUTHORIZED` |
+| AI Service gặp sự cố | `500` | `Internal Server Error` |
+
+---
+
+#### `POST /api/ai/chat/stream` 🔒 Authenticated
+
+> Nhân viên hỏi đáp với Chatbot RAG ở chế độ truyền luồng trực tiếp theo thời gian thực (**Server-Sent Events - SSE**).
+> - Giúp giao diện người dùng hiển thị hiệu ứng máy đánh chữ (typewriter effect) với độ trễ phản hồi ban đầu cực thấp (First-Token Latency < 0.5s).
+> - Sau khi luồng kết thúc, toàn bộ nội dung tin nhắn và trích dẫn được tự động lưu bền vững vào CSDL PostgreSQL.
+
+**Headers:**
+- `Content-Type: application/json`
+- `Accept: text/event-stream`
+
+**Request Body (`ChatQueryRequest`):**
+
+```json
+{
+  "question": "Quy trình xin thôi việc cần báo trước bao nhiêu ngày?",
+  "conversationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "topK": 3
+}
+```
+
+**Response** `200` – `text/event-stream;charset=UTF-8`:
+
+Luồng dữ liệu SSE trả về gồm 4 dạng gói tin (event packets):
+1. **Event `start`**: Khởi tạo phiên trò chuyện và tiêu đề
+   ```text
+   data: {"type": "start", "conversation_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "title": "Thời hạn báo trước thôi việc"}
+   ```
+2. **Event `token`**: Các token ký tự/từ ngữ sinh ra liên tục theo thời gian thực từ LLM
+   ```text
+   data: {"type": "token", "content": "Theo "}
+   data: {"type": "token", "content": "Quy chế "}
+   data: {"type": "token", "content": "nội bộ:\n"}
+   data: {"type": "token", "content": "- HĐLĐ không xác định thời hạn: Báo trước ít nhất 45 ngày.\n"}
+   data: {"type": "token", "content": "- HĐLĐ xác định thời hạn: Báo trước ít nhất 30 ngày.\n"}
+   data: {"type": "token", "content": "- Hợp đồng thử việc: Báo trước ít nhất 3 ngày làm việc."}
+   ```
+3. **Event `citations`**: Trả về danh sách điều khoản trích dẫn, câu hỏi tái cấu trúc và mức độ tin cậy
+   ```text
+   data: {"type": "citations", "citations": [{"document_name": "Noi_quy_lao_dong_2024.docx", "breadcrumb": "Chương VII: Chấm dứt HĐLĐ > Điều 28: Nghĩa vụ báo trước", "page_number": 22, "file_url": "/static/documents/9f83c211_Noi_quy_lao_dong_2024.docx", "chunk_type": "legal_clause", "relevance_score": 0.945}], "confidence": "HIGH", "rewritten_query": "Thời hạn báo trước khi người lao động nghỉ việc theo từng loại hợp đồng"}
+   ```
+4. **Event `done`**: Báo hiệu kết thúc luồng truyền thành công
+   ```text
+   data: {"type": "done"}
+   ```
+
+*(Trường hợp lỗi kết nối hoặc ngoại lệ trong luồng):*
+```text
+data: {"type": "error", "message": "Không thể kết nối đến AI Service: Connection refused"}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Câu hỏi để trống | `400` | `VALIDATION_FAILED` |
+| Chưa đăng nhập / Token hết hạn | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `GET /api/ai/conversations` 🔒 Authenticated
+
+> Lấy danh sách toàn bộ các cuộc hội thoại của nhân viên đang đăng nhập. Tự động sắp xếp các cuộc trò chuyện được ghim (`is_pinned=true`) lên trên, sau đó sắp xếp theo thời gian hoạt động mới nhất.
+
+**Response** `200`:
+
+```json
+{
+  "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "conversations": [
+    {
+      "id": "c1f7b8e9-22a4-4b5b-9c2d-112233445566",
+      "title": "Thời hạn báo trước thôi việc",
+      "is_pinned": false,
+      "created_at": "2024-09-20T08:30:00",
+      "updated_at": "2024-09-20T08:32:15",
+      "message_count": 2
+    },
+    {
+      "id": "a2b3c4d5-11e2-33f4-55a6-778899aabbcc",
+      "title": "Chế độ nghỉ phép năm 2024",
+      "is_pinned": true,
+      "created_at": "2024-09-18T14:10:00",
+      "updated_at": "2024-09-18T14:25:30",
+      "message_count": 6
+    }
+  ]
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `GET /api/ai/conversations/{conversationId}/messages` 🔒 Authenticated
+
+> Lấy chi tiết toàn bộ lịch sử tin nhắn trong một cuộc hội thoại của nhân viên hiện tại (bao gồm câu hỏi, câu trả lời, câu hỏi viết lại độc lập, trích dẫn tài liệu và mức độ tin cậy).
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `conversationId` | `String (UUID)` | ID cuộc trò chuyện |
+
+**Response** `200`:
+
+```json
+{
+  "id": "c1f7b8e9-22a4-4b5b-9c2d-112233445566",
+  "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "title": "Thời hạn báo trước thôi việc",
+  "is_pinned": false,
+  "created_at": "2024-09-20T08:30:00",
+  "updated_at": "2024-09-20T08:32:15",
+  "context_summary": null,
+  "messages": [
+    {
+      "id": "m1111111-2222-3333-4444-555555555555",
+      "sender_role": "USER",
+      "content": "Quy trình xin thôi việc cần báo trước bao nhiêu ngày?",
+      "rewritten_query": null,
+      "citations": null,
+      "confidence": null,
+      "created_at": "2024-09-20T08:30:00"
+    },
+    {
+      "id": "m2222222-3333-4444-5555-666666666666",
+      "sender_role": "ASSISTANT",
+      "content": "Theo quy chế hiện hành của công ty:\n- HĐLĐ không xác định thời hạn: Báo trước ít nhất 45 ngày.\n- HĐLĐ xác định thời hạn: Báo trước ít nhất 30 ngày.\n- Hợp đồng thử việc: Báo trước ít nhất 3 ngày làm việc.",
+      "rewritten_query": "Thời hạn báo trước khi người lao động nghỉ việc theo từng loại hợp đồng",
+      "citations": [
+        {
+          "document_name": "Noi_quy_lao_dong_2024.docx",
+          "breadcrumb": "Chương VII: Chấm dứt HĐLĐ > Điều 28: Nghĩa vụ báo trước",
+          "page_number": 22,
+          "file_url": "/static/documents/9f83c211_Noi_quy_lao_dong_2024.docx",
+          "chunk_type": "legal_clause",
+          "relevance_score": 0.945
+        }
+      ],
+      "confidence": "HIGH",
+      "created_at": "2024-09-20T08:30:05"
+    }
+  ]
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy cuộc trò chuyện | `404` | `NOT_FOUND` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `DELETE /api/ai/conversations/{conversationId}` 🔒 Authenticated
+
+> Xóa một cuộc hội thoại của nhân viên hiện tại. CSDL tự động xóa kèm toàn bộ tin nhắn bên trong theo cơ chế `CASCADE`.
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `conversationId` | `String (UUID)` | ID cuộc trò chuyện cần xóa |
+
+**Response** `200`:
+
+```json
+{
+  "status": "success",
+  "message": "Đã xóa cuộc trò chuyện thành công!"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy cuộc trò chuyện | `404` | `NOT_FOUND` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `PUT /api/ai/conversations/{conversationId}` 🔒 Authenticated
+
+> Đổi tên tiêu đề cuộc hội thoại thủ công theo mong muốn của nhân viên.
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `conversationId` | `String (UUID)` | ID cuộc trò chuyện |
+
+**Request Body (`UpdateConversationTitleRequest`):**
+
+```json
+{
+  "title": "Chế độ nghỉ phép và tiền mừng cưới (bắt buộc, tối đa 150 ký tự)"
+}
+```
+
+**Response** `200`:
+
+```json
+{
+  "status": "success",
+  "conversation_id": "c1f7b8e9-22a4-4b5b-9c2d-112233445566",
+  "title": "Chế độ nghỉ phép và tiền mừng cưới",
+  "message": "Đổi tên cuộc hội thoại thành công!"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Tiêu đề để trống / Quá dài | `400` | `VALIDATION_FAILED` |
+| Không tìm thấy cuộc trò chuyện | `404` | `NOT_FOUND` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `POST /api/ai/conversations/{conversationId}/generate-title` 🔒 Authenticated
+
+> Kích hoạt AI đọc câu hỏi đầu tiên của nhân viên trong cuộc hội thoại và tự động sinh lại một tiêu đề thông minh ngắn gọn (3-5 từ), chuẩn xác ngữ cảnh.
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `conversationId` | `String (UUID)` | ID cuộc trò chuyện cần sinh lại tiêu đề |
+
+**Response** `200`:
+
+```json
+{
+  "status": "success",
+  "conversation_id": "c1f7b8e9-22a4-4b5b-9c2d-112233445566",
+  "title": "Chế độ kết hôn",
+  "message": "AI đã tạo tiêu đề thông minh thành công!"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy cuộc trò chuyện hoặc chưa có tin nhắn | `404` | `NOT_FOUND` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+### 14.2. Quản lý Tài liệu & Cơ sở Tri thức Quy chế (Document Management & Ingestion)
+
+#### `GET /api/ai/documents` 🔒 Authenticated
+
+> Lấy danh sách toàn bộ tài liệu chính sách, nội quy công ty đã được nạp vào cơ sở tri thức (Knowledge Base) kèm trạng thái xử lý, số lượng chunks và URL tải về.
+
+**Query Params:**
+
+| Param | Kiểu | Default | Mô tả |
+|---|---|---|---|
+| `status` | `String` | — | Lọc theo trạng thái xử lý: `PROCESSING`, `COMPLETED`, `FAILED` |
+| `search` | `String` | — | Tìm kiếm theo tên file tài liệu |
+
+**Response** `200`:
+
+```json
+{
+  "total": 1,
+  "documents": [
+    {
+      "id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+      "file_name": "Quy_che_nhan_su_2024.pdf",
+      "file_type": "pdf",
+      "file_size": 2458120,
+      "file_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uploaded_by": "Nguyễn Văn HR",
+      "status": "COMPLETED",
+      "file_url": "/static/documents/e3b0c44298fc_Quy_che_nhan_su_2024.pdf",
+      "error_message": null,
+      "created_at": "2024-09-18T10:00:00",
+      "updated_at": "2024-09-18T10:02:15",
+      "chunk_count": 28
+    }
+  ]
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `GET /api/ai/documents/{documentId}/chunks` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+
+> Dành cho người quản trị kiểm duyệt dữ liệu (Audit API): Xem chi tiết từng phân đoạn văn bản (`chunks`), cây phân cấp điều khoản (`breadcrumb`), tóm tắt ngắn, từ khóa và bộ câu hỏi giả định (Reverse HyDE) được AI tự động sinh cho tài liệu.
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `documentId` | `String (UUID)` | ID tài liệu cần kiểm duyệt |
+
+**Response** `200`:
+
+```json
+{
+  "document_id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "id": "c111-uuid",
+      "chunk_index": 1,
+      "chunk_type": "legal_clause",
+      "breadcrumb": "Chương III: Chế độ làm việc và nghỉ ngơi > Điều 12: Nghỉ phép năm",
+      "content": "1. Người lao động làm việc đủ 12 tháng cho người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động: 12 ngày làm việc...",
+      "page_number": 14,
+      "summary": "Quy định số ngày nghỉ phép năm có lương (12 ngày/năm) cho người lao động làm đủ 12 tháng.",
+      "keywords": [
+        "nghỉ phép năm",
+        "12 ngày",
+        "hưởng nguyên lương",
+        "chế độ làm việc"
+      ],
+      "hypothetical_questions": [
+        "Làm việc bao lâu thì được hưởng 12 ngày phép năm?",
+        "Nghỉ phép năm có được hưởng nguyên lương không?"
+      ],
+      "allowed_roles": [
+        "ROLE_EMPLOYEE",
+        "ROLE_MANAGER"
+      ],
+      "allowed_departments": [
+        "ALL"
+      ]
+    }
+  ]
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `POST /api/ai/documents/upload` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+
+> Tải lên tài liệu chính sách, quy chế mới (hỗ trợ định dạng `.pdf`, `.docx`, `.xlsx`).
+> - **Cơ chế chống trùng lặp**: Hệ thống tính toán mã băm SHA-256 của file. Nếu trùng với tài liệu hiện có và `overwrite = false`, hệ thống báo trạng thái `DUPLICATE`.
+> - **Xử lý ngầm (Background Task)**: Lưu trữ file cục bộ, khởi tạo bản ghi `PROCESSING` và chuyển cho Worker ngầm xử lý: Bóc tách văn bản -> Cắt chunks pháp lý bảo toàn cấu trúc bảng biểu -> Gọi LLM Ollama sinh tóm tắt & câu hỏi giả định HyDE -> Gọi Google Gemini tạo vector embeddings 768 chiều -> Lưu vào CSDL pgvector.
+
+**Content-Type:** `multipart/form-data`
+
+**Form Data:**
+
+| Field | Kiểu | Bắt buộc | Mặc định | Mô tả |
+|---|---|---|---|---|
+| `file` | `MultipartFile` | ✅ Có | — | Tệp tài liệu Word (.docx), PDF (.pdf) hoặc Excel (.xlsx) |
+| `allowedRoles` | `String` | Tuỳ chọn | `ROLE_EMPLOYEE,ROLE_MANAGER` | Danh sách vai trò được phép truy vấn tài liệu (phân cách bằng dấu phẩy) |
+| `allowedDepartments` | `String` | Tuỳ chọn | `ALL` | Danh sách phòng ban được phép tra cứu (`ALL` hoặc danh sách: `Human Resources,Information Technology`) |
+| `overwrite` | `boolean` | Tuỳ chọn | `false` | Nếu `true`, cho phép ghi đè và nạp lại khi tệp trùng mã SHA-256 với tài liệu cũ |
+
+**Response** `200` – Tiếp nhận thành công (đang xử lý ngầm):
+
+```json
+{
+  "status": "PROCESSING",
+  "message": "Tài liệu đã được tiếp nhận và đang được xử lý ngầm (Background Task).",
+  "document_id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+  "file_name": "Quy_che_nhan_su_2024.pdf",
+  "file_size": 2458120,
+  "file_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "file_url": "/static/documents/e3b0c44298fc_Quy_che_nhan_su_2024.pdf"
+}
+```
+
+**Response** `200` – Trùng lặp (khi `overwrite = false`):
+
+```json
+{
+  "status": "DUPLICATE",
+  "message": "Tài liệu 'Quy_che_nhan_su_2024.pdf' đã tồn tại trong hệ thống (Trùng mã SHA-256)!",
+  "document_id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+  "current_status": "COMPLETED",
+  "file_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Thiếu file upload | `400` | `VALIDATION_FAILED` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `PUT /api/ai/documents/{documentId}` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+
+> Cập nhật / Thay thế file tài liệu cũ (In-Place Replacement).
+> - Nếu file mới có mã SHA-256 trùng khớp hoàn toàn với bản hiện tại: Hệ thống trả về `UNCHANGED` và không chạy lại pipeline.
+> - Nếu nội dung thay đổi: Lưu file mới, xóa file cũ trên đĩa, xóa sạch các vector và chunks cũ trong CSDL, chạy lại quy trình bóc tách và tạo vector embeddings mới.
+
+**Content-Type:** `multipart/form-data`
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `documentId` | `String (UUID)` | ID tài liệu cần cập nhật |
+
+**Form Data:**
+
+| Field | Kiểu | Bắt buộc | Mô tả |
+|---|---|---|---|
+| `file` | `MultipartFile` | ✅ Có | Tệp tài liệu phiên bản mới |
+| `allowedRoles` | `String` | Tuỳ chọn | Danh sách vai trò mới (để trống sẽ giữ nguyên cấu hình cũ) |
+| `allowedDepartments` | `String` | Tuỳ chọn | Danh sách phòng ban mới (để trống sẽ giữ nguyên cấu hình cũ) |
+
+**Response** `200` – Nội dung thay đổi (đang xử lý ngầm):
+
+```json
+{
+  "status": "PROCESSING",
+  "message": "Tài liệu 'Quy_che_nhan_su_2024_v2.pdf' đang được thay thế và cập nhật lại toàn bộ vector ngầm.",
+  "document_id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+  "old_file_name": "Quy_che_nhan_su_2024.pdf",
+  "new_file_name": "Quy_che_nhan_su_2024_v2.pdf",
+  "new_file_size": 2510000,
+  "new_file_hash": "b2c3d4e5...",
+  "new_file_url": "/static/documents/b2c3d4e5_Quy_che_nhan_su_2024_v2.pdf"
+}
+```
+
+**Response** `200` – Nội dung không thay đổi:
+
+```json
+{
+  "status": "UNCHANGED",
+  "message": "Nội dung file mới hoàn toàn trùng khớp với phiên bản hiện tại (SHA-256 không đổi). Không cần cập nhật!",
+  "document_id": "d1a2b3c4-e5f6-7890-abcd-ef1234567890",
+  "file_name": "Quy_che_nhan_su_2024.pdf"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy tài liệu cần cập nhật | `404` | `NOT_FOUND` |
+| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+#### `DELETE /api/ai/documents/{documentId}` 🟡 HR / 🔴 Executive / 🛠️ System Admin
+
+> Xóa vĩnh viễn tài liệu khỏi hệ thống.
+> CSDL tự động kích hoạt `ON DELETE CASCADE` xóa toàn bộ các chunks và vector liên quan trong bảng `document_chunks`, đồng thời xóa tệp vật lý tương ứng trên đĩa cứng.
+
+**Path Variables:**
+
+| Param | Kiểu | Mô tả |
+|---|---|---|
+| `documentId` | `String (UUID)` | ID tài liệu cần xóa |
+
+**Response** `200`:
+
+```json
+{
+  "status": "success",
+  "message": "Đã xóa vĩnh viễn tài liệu 'Quy_che_nhan_su_2024.pdf' và toàn bộ các vector liên quan khỏi CSDL!"
+}
+```
+
+| Error | HTTP | errorCode |
+|---|---|---|
+| Không tìm thấy tài liệu để xóa | `404` | `NOT_FOUND` |
+| Không đủ quyền HR / Executive / System Admin | `403` | `FORBIDDEN` |
+| Chưa đăng nhập / Token không hợp lệ | `401` | `UNAUTHORIZED` |
+
+---
+
+## 15. Request Body – HR Employee Update Endpoints
 
 > Tất cả trường trong các endpoint cập nhật hồ sơ đều là **tuỳ chọn** (partial update). Chỉ cần gửi những trường muốn thay đổi.
 
@@ -2308,7 +2863,7 @@ Trưởng phòng cùng phòng hoặc Ban Giám Đốc xử lý
 
 ---
 
-## 15. Hạ tầng & Bảo mật
+## 16. Hạ tầng & Bảo mật
 
 ### Authentication Flow
 
@@ -2417,13 +2972,15 @@ Retry-After: 45   (chỉ xuất hiện khi bị block)
 
 | Thành phần | Vai trò |
 |---|---|
-| **PostgreSQL** | Database chính |
+| **PostgreSQL** | Database chính & Vector Database (`pgvector` – lưu trữ embeddings 768 chiều & full-text search) |
+| **FastAPI (AI Service)** | Microservice AI chuyên trách bóc tách tài liệu (Docx, PDF, Excel), RAG, LLM Reasoning & Streaming SSE |
 | **Redis** | Session blacklist + Rate limiting |
-| **File system** | Lưu trữ avatar (`./uploads/`) |
+| **File system** | Lưu trữ avatar (`./uploads/avatars/`) và tài liệu quy chế (`./uploads/documents/`) |
+| **LLM & Embeddings** | Google Gemini (Embeddings 768d & Fallback LLM) + Ollama Cloud (Llama 3.1 70B/120B) |
 
 ---
 
-## 16. Tổng hợp Business Rules
+## 17. Tổng hợp Business Rules
 
 ### Chấm công & Ca làm việc
 

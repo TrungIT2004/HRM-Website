@@ -13,7 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChatQueryResponse {
 
+    @JsonProperty("conversation_id")
+    private String conversationId;
+
+    private String title;
+
     private String question;
+
+    @JsonProperty("rewritten_query")
+    private String rewrittenQuery;
+
     private String answer;
     private List<CitationResponse> citations;
 

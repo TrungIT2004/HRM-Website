@@ -90,30 +90,63 @@ class MetadataEnricher:
                 print(f"[MetadataEnricher] Warning: Failed to init Ollama client: {e}")
 
     def _fallback_enrichment(self, chunk: ProcessedChunk) -> ChunkEnrichmentResult:
-        """Heuristic offline generator used if no API key is available or API calls fail."""
+        """Heuristic offline generator used for fast enrichment or fallback without calling external LLM."""
         text = chunk.content.strip()
         lines = [line.strip() for line in text.split("\n") if line.strip()]
 
-        # Generate summary
-        first_line = lines[0] if lines else chunk.breadcrumb
-        summary = f"Quy định liên quan đến {chunk.breadcrumb.split('>')[-1].strip()}: {first_line[:120]}..."
+        # 1. Trích xuất tên Điều khoản / Mục quy định chính
+        dieu_match = re.search(r'(Điều\s+\d+[\.:\s]+[^\n\r>]+)', chunk.breadcrumb)
+        if not dieu_match:
+            dieu_match = re.search(r'(Điều\s+\d+[\.:\s]+[^\n\r]+)', text)
 
-        # Extract keywords using simple regex
-        words = re.findall(r'\b[A-Za-zÀ-ỹ0-9_/%-]{3,}\b', text)
-        keywords = list(dict.fromkeys(words[:7]))  # Deduplicate
+        main_topic = ""
+        article_title = ""
+        if dieu_match:
+            article_title = dieu_match.group(1).strip()
+            m_name = re.search(r'Điều\s+\d+[\.:\s]+(.+)', article_title)
+            if m_name:
+                main_topic = m_name.group(1).strip()
 
-        # Heuristic hypothetical questions
-        sub_title = chunk.breadcrumb.split('>')[-1].strip()
+        if not main_topic:
+            crumbs = [c.strip() for c in chunk.breadcrumb.split('>') if c.strip()]
+            main_topic = crumbs[-1] if crumbs else "quy định"
+
+        # 2. Sinh Tóm tắt (Summary)
+        first_content = lines[0] if lines else main_topic
+        summary = f"Quy định về {main_topic}: {first_content[:140]}"
+
+        # 3. Trích xuất Từ khóa sạch (bỏ stopwords & tên file)
+        stopwords = {
+            "bo", "luat", "docx", "pdf", "xlsx", "chuong", "chương", "dieu", "điều", "khoan", "khoản",
+            "muc", "mục", "cua", "của", "va", "và", "cac", "các", "nhung", "những", "trong", "cho",
+            "theo", "duoc", "được", "khong", "không", "phai", "phải", "nay", "này", "khi", "hoac", "hoặc",
+            "tren", "trên", "duoi", "dưới", "sau", "đây", "day", "nguoi", "người", "co", "có"
+        }
+        # Lấy văn bản bỏ qua phần tên file ban đầu trong breadcrumb
+        text_without_filename = re.sub(r'^[^\>]+>', '', chunk.breadcrumb) + " " + text
+        raw_words = re.findall(r'\b[A-Za-zÀ-ỹ0-9_/%-]{3,}\b', text_without_filename)
+        clean_keywords = []
+        for w in raw_words:
+            w_lower = w.lower()
+            if w_lower not in stopwords and not w.endswith(('.docx', '.pdf', '.xlsx')):
+                if w not in clean_keywords:
+                    clean_keywords.append(w)
+            if len(clean_keywords) >= 8:
+                break
+
+        # 4. Sinh Câu hỏi giả định tự nhiên (Reverse HyDE)
         questions = [
-            f"Quy định về {sub_title} như thế nào?",
-            f"Nhân viên cần lưu ý gì về {sub_title}?",
-            f"Chính sách {sub_title} áp dụng cho đối tượng nào?"
+            f"{main_topic} là gì?",
+            f"Quy định về {main_topic} như thế nào?",
+            f"Nội dung chi tiết của {main_topic} gồm những gì?"
         ]
+        if article_title:
+            questions.append(f"Nội dung theo {article_title} được áp dụng ra sao?")
 
         return ChunkEnrichmentResult(
             summary=summary,
-            keywords=keywords,
-            hypothetical_questions=questions
+            keywords=clean_keywords,
+            hypothetical_questions=questions[:5]
         )
 
     def enrich_chunk(self, chunk: ProcessedChunk) -> ProcessedChunk:
@@ -156,12 +189,9 @@ class MetadataEnricher:
                 response = self.ollama_client.chat.completions.create(
                     model=model_name,
                     messages=[{"role": "user", "content": prompt}],
-                    # Not all Ollama models natively support json_object strictly, 
-                    # but specifying format helps. You might need to parse robustly.
                     response_format={"type": "json_object"}
                 )
                 
-                # Sometime Ollama adds markdown ```json blocks
                 content = response.choices[0].message.content.strip()
                 if content.startswith("```json"):
                     content = content[7:]
@@ -184,8 +214,24 @@ class MetadataEnricher:
         return chunk
 
     def enrich_all(self, chunks: List[ProcessedChunk], show_progress: bool = True) -> List[ProcessedChunk]:
-        """Batch enriches a list of chunks."""
-        enriched: List[ProcessedChunk] = []
-        for c in chunks:
-            enriched.append(self.enrich_chunk(c))
+        """
+        Batch enriches a list of chunks.
+        For large documents (>20 chunks), uses fast rule-based enrichment to finish in milliseconds
+        and prevent timeouts, rate limits, or background task abortion.
+        """
+        if len(chunks) > 20:
+            print(f"[MetadataEnricher] Tài liệu lớn ({len(chunks)} chunks > 20). Kích hoạt bộ bóc tách quy phạm siêu tốc (0.1s)...")
+            for chunk in chunks:
+                res = self._fallback_enrichment(chunk)
+                chunk.summary = res.summary
+                chunk.keywords = res.keywords
+                chunk.hypothetical_questions = res.hypothetical_questions
+            print(f"[MetadataEnricher] Hoàn tất làm giàu siêu tốc {len(chunks)} chunks.")
+            return chunks
+
+        from concurrent.futures import ThreadPoolExecutor
+        print(f"[MetadataEnricher] Bắt đầu làm giàu {len(chunks)} chunks bằng LLM đa luồng...")
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            enriched = list(executor.map(self.enrich_chunk, chunks))
+        print(f"[MetadataEnricher] Hoàn tất làm giàu {len(enriched)} chunks.")
         return enriched

@@ -27,6 +27,7 @@ bin/
 !**/faces/.gitkeep
 **/embeddings/*
 !**/embeddings/.gitkeep
+!ai-service/src/embeddings/*.py
 
 # ==========================================
 # 2. RUNTIME & DỮ LIỆU UPLOAD & LOGS
