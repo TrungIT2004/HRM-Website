@@ -4,6 +4,8 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +31,8 @@ public class WorkShiftResponse {
         private UUID scheduleId;
         private Integer dayOfWeek;
         private String dayName;
+
+        @JsonProperty("isWorking")
         private boolean isWorking;
         private LocalTime startTime;
         private LocalTime endTime;

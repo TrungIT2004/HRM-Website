@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.minhtrung.hrm.attendance.dtos.requests.CreateWorkShiftRequest;
 import com.minhtrung.hrm.attendance.dtos.response.WorkShiftResponse;
@@ -17,9 +20,13 @@ import com.minhtrung.hrm.attendance.entities.WorkShift;
 import com.minhtrung.hrm.attendance.entities.WorkShiftSchedule;
 import com.minhtrung.hrm.attendance.enums.AttendanceErrorCode;
 import com.minhtrung.hrm.attendance.exceptions.AttendanceException;
+import com.minhtrung.hrm.attendance.repositories.AttendanceRepository;
 import com.minhtrung.hrm.attendance.repositories.WorkShiftRepository;
 import com.minhtrung.hrm.attendance.repositories.WorkShiftScheduleRepository;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
+import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +38,9 @@ public class WorkShiftService {
 
     private final WorkShiftRepository workShiftRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
+    private final PermissionService permissionService;
+    private final AttendanceRepository attendanceRepository;
+    private final UserRepository userRepository;
 
     /**
      * Lấy danh sách toàn bộ các ca làm việc đang hoạt động cùng lịch 7 ngày trong tuần.
@@ -45,13 +55,126 @@ public class WorkShiftService {
 
     /**
      * Tạo ca làm việc mới kèm lịch trình 7 ngày trong tuần (T2 - CN).
-     * Chỉ Trưởng phòng HR hoặc Ban Giám Đốc mới có quyền tạo.
      * Kiểm tra chặt chẽ: <= 8 giờ/ngày và <= 48 giờ/tuần theo Bộ luật Lao động Việt Nam.
      */
     @Transactional
     public WorkShiftResponse createWorkShift(CreateWorkShiftRequest request, TokenPayload currentUser) {
         checkCreateShiftPermission(currentUser);
 
+        List<WorkShiftSchedule> schedulesToSave = buildValidatedSchedules(request);
+
+        WorkShift shift = WorkShift.builder()
+                .name(request.getName().trim())
+                .build();
+        WorkShift savedShift = workShiftRepository.save(shift);
+
+        for (WorkShiftSchedule schedule : schedulesToSave) {
+            schedule.setWorkShift(savedShift);
+        }
+        List<WorkShiftSchedule> savedSchedules = workShiftScheduleRepository.saveAll(schedulesToSave);
+        savedShift.setSchedules(savedSchedules);
+
+        log.info("Người dùng {} đã tạo ca làm việc mới thành công: {} ({} ngày làm việc/tuần, tổng {:.1f} giờ/tuần)",
+                currentUser.getUserId(), savedShift.getName(),
+                countWorkingDays(schedulesToSave), sumWeeklyHours(schedulesToSave));
+
+        return mapToWorkShiftResponse(savedShift);
+    }
+
+    @Transactional
+    public WorkShiftResponse updateWorkShift(UUID shiftId, CreateWorkShiftRequest request, TokenPayload currentUser) {
+        checkCreateShiftPermission(currentUser);
+
+        WorkShift shift = workShiftRepository.findById(shiftId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy ca làm việc với ID: " + shiftId));
+
+        List<WorkShiftSchedule> schedulesToSave = buildValidatedSchedules(request);
+
+        // work_shift_schedules có UNIQUE (shift_id, day_of_week) và WorkShift.schedules có
+        // orphanRemoval = true. Xoá rồi insert sẽ đụng cả hai (unique violation hoặc
+        // "collection with orphan deletion was no longer referenced"). buildValidatedSchedules
+        // luôn trả đúng 7 ngày nên chỉ cần cập nhật tại chỗ — không xoá/insert gì cả.
+        Map<Integer, WorkShiftSchedule> existing = shift.getSchedules().stream()
+                .collect(Collectors.toMap(WorkShiftSchedule::getDayOfWeek, s -> s, (a, b) -> a));
+        for (WorkShiftSchedule incoming : schedulesToSave) {
+            WorkShiftSchedule current = existing.remove(incoming.getDayOfWeek());
+            if (current != null) {
+                current.setWorking(incoming.isWorking());
+                current.setStartTime(incoming.getStartTime());
+                current.setEndTime(incoming.getEndTime());
+                current.setRestStartTime(incoming.getRestStartTime());
+                current.setRestEndTime(incoming.getRestEndTime());
+            } else {
+                incoming.setWorkShift(shift);
+                workShiftScheduleRepository.save(incoming);
+            }
+        }
+        // ngày nào không còn trong lịch mới thì xoá (orphanRemoval lo phần còn lại khi xoá cả ca)
+        existing.values().forEach(workShiftScheduleRepository::delete);
+
+        shift.setName(request.getName().trim());
+        workShiftRepository.save(shift);
+        workShiftScheduleRepository.flush();
+
+        log.info("Người dùng {} đã cập nhật ca làm việc {}: {} ({} ngày làm việc/tuần, tổng {:.1f} giờ/tuần)",
+                currentUser.getUserId(), shiftId, shift.getName(),
+                countWorkingDays(schedulesToSave), sumWeeklyHours(schedulesToSave));
+
+        return mapToWorkShiftResponse(shift);
+    }
+
+    /**
+     * Xoá ca làm việc — chặn nếu còn nhân viên dùng hoặc đã có lịch sử chấm công.
+     * attendances tham chiếu work_shifts nên xoá ca sẽ mất dữ liệu chấm công.
+     */
+    @Transactional
+    public void deleteWorkShift(UUID shiftId, TokenPayload currentUser) {
+        checkCreateShiftPermission(currentUser);
+
+        WorkShift shift = workShiftRepository.findById(shiftId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy ca làm việc với ID: " + shiftId));
+
+        long attendanceCount = attendanceRepository.countByShift_ShiftId(shiftId);
+        if (attendanceCount > 0) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Không thể xoá ca '" + shift.getName() + "': đang có " + attendanceCount
+                            + " bản ghi chấm công tham chiếu tới ca này. Xoá sẽ mất lịch sử chấm công.");
+        }
+        int employeeCount = userRepository.countByShift_ShiftId(shiftId);
+        if (employeeCount > 0) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Không thể xoá ca '" + shift.getName() + "': còn " + employeeCount
+                            + " nhân viên đang được xếp vào ca này. Hãy chuyển họ sang ca khác trước.");
+        }
+
+        // orphanRemoval = true sẽ tự xoá các schedule con; clear() để Hibernate theo dõi
+        shift.getSchedules().clear();
+        workShiftScheduleRepository.flush();
+        workShiftRepository.delete(shift);
+
+        log.info("Người dùng {} đã xoá ca làm việc {}", currentUser.getUserId(), shiftId);
+    }
+
+    private long countWorkingDays(List<WorkShiftSchedule> schedules) {
+        return schedules.stream().filter(WorkShiftSchedule::isWorking).count();
+    }
+
+    private double sumWeeklyHours(List<WorkShiftSchedule> schedules) {
+        return schedules.stream()
+                .filter(WorkShiftSchedule::isWorking)
+                .mapToDouble(s -> {
+                    double total = Duration.between(s.getStartTime(), s.getEndTime()).toMinutes() / 60.0;
+                    double rest = (s.getRestStartTime() != null && s.getRestEndTime() != null)
+                            ? Duration.between(s.getRestStartTime(), s.getRestEndTime()).toMinutes() / 60.0
+                            : 0.0;
+                    return total - rest;
+                }).sum();
+    }
+
+    /**
+     * Dựng + kiểm tra lịch 7 ngày. Dùng chung cho create và update nên không lặp logic luật lao động.
+     */
+    private List<WorkShiftSchedule> buildValidatedSchedules(CreateWorkShiftRequest request) {
         // 1. Phân loại lịch trình theo dayOfWeek (1..7)
         Map<Integer, CreateWorkShiftRequest.DailyScheduleRequest> scheduleMap = request.getSchedules().stream()
                 .collect(Collectors.toMap(
@@ -164,22 +287,7 @@ public class WorkShiftService {
             );
         }
 
-        // 5. Lưu WorkShift và các WorkShiftSchedule
-        WorkShift shift = WorkShift.builder()
-                .name(request.getName().trim())
-                .build();
-        WorkShift savedShift = workShiftRepository.save(shift);
-
-        for (WorkShiftSchedule schedule : schedulesToSave) {
-            schedule.setWorkShift(savedShift);
-        }
-        List<WorkShiftSchedule> savedSchedules = workShiftScheduleRepository.saveAll(schedulesToSave);
-        savedShift.setSchedules(savedSchedules);
-
-        log.info("Người dùng {} đã tạo ca làm việc mới thành công: {} ({} ngày làm việc/tuần, tổng {:.1f} giờ/tuần)",
-                currentUser.getUserId(), savedShift.getName(), activeWorkingDays, totalWeeklyHours);
-
-        return mapToWorkShiftResponse(savedShift);
+        return schedulesToSave;
     }
 
     private WorkShiftResponse mapToWorkShiftResponse(WorkShift shift) {
@@ -218,20 +326,22 @@ public class WorkShiftService {
         };
     }
 
+    /**
+     * Quyền quản lý ca làm việc — dùng chung ORG_MANAGE với phòng ban / chức danh.
+     * Quyền gốc: phòng Human Resources. Ban Giám Đốc đã bị gỡ.
+     */
     private void checkCreateShiftPermission(TokenPayload currentUser) {
         if (currentUser == null) {
             throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION, "Yêu cầu đăng nhập trước khi thực hiện thao tác!");
         }
 
-        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
-        boolean isHRHead = "Human Resources".equalsIgnoreCase(currentUser.getDepartment())
-                && currentUser.getJob() != null
-                && currentUser.getJob().contains("Head");
+        boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
+        boolean hasGrant = permissionService.hasPermission(currentUser.getUserId(), PermissionKey.ORG_MANAGE);
 
-        if (!isExecutive && !isHRHead) {
+        if (!isHR && !hasGrant) {
             throw new AttendanceException(
                     AttendanceErrorCode.INSUFFICIENT_PERMISSION,
-                    "Chỉ có Trưởng phòng Nhân sự (HR Head) hoặc Ban Giám Đốc mới có quyền tạo ca làm việc mới!"
+                    "Chỉ có phòng Nhân sự (Human Resources) mới có quyền quản lý ca làm việc!"
             );
         }
     }

@@ -287,3 +287,72 @@ python src/attendance.py
 2. **Missing Entity Mapping for Biometrics**: The `face_embedding` column on the `users` table is not mapped in `User.java` (JPA Entity); it is currently read and updated only via raw SQL queries by the Python scripts.
 3. **Heavy User-Agent Dependency**: `ClientInfoService` uses `nl.basjes.parse.useragent:yauaa` (15MB+ dependency, heavy startup memory) solely to extract browser and OS strings.
 4. **Docker CLI Mount in n8n**: `docker-compose.yml` mounts `./bin/docker:/usr/bin/docker:ro` for container health monitoring, requiring a pre-existing host binary instead of packaging `docker-cli` inside a custom container image.
+5. **WSL vhdx Never Shrinks On Its Own**: Deleting Docker images frees space *inside* the ext4 filesystem but Windows never reclaims the host blocks. See the reclaim runbook below — prune alone will silently keep your disk full.
+
+---
+
+## Docker Disk Reclaim Runbook (Windows + WSL2)
+
+Trigger: free disk dropped, or `docker system df` shows multi-GB Build Cache / dangling images.
+
+**Mental model:** `docker system df` reports Docker's view. The thing that actually eats your C: drive is
+`C:\Users\ad\AppData\Local\Docker\wsl\disk\docker_data.vhdx` (a dynamic VHDX). It is **not sparse** and
+grows monotonically. Pruning marks blocks free inside ext4; only `fstrim` + host-side `compact` returns
+them to Windows.
+
+**The trap:** `docker builder prune -a` + `docker image prune -a` followed by `docker compose up -d --build`
+can cost ~16 GB of *never reclaimed* space, because every rebuild rewrites the full image chain.
+
+### Procedure
+
+1. **Stop containers, prune, rebuild once** (from repo root):
+   ```bash
+   docker compose down --remove-orphans
+   docker builder prune -a -f
+   docker image prune -a -f
+   docker compose up -d --build
+   ```
+2. **Run `fstrim` inside the guest.** Without this, step 4 is a no-op. Free ext4 blocks still contain
+   stale bytes, so `compact` sees nothing to trim.
+   ```powershell
+   wsl -d docker-desktop -u root -e sh -c "fstrim -av"
+   ```
+3. **Fully detach the VHDX** (needs Administrator):
+   ```powershell
+   Get-Process -Name 'Docker Desktop','com.docker.backend','com.docker.build' | Stop-Process -Force
+   wsl --shutdown
+   Dismount-DiskImage -ImagePath "C:\Users\ad\AppData\Local\Docker\wsl\disk\docker_data.vhdx"
+   ```
+4. **Compact:**
+   ```powershell
+   "select vdisk file=`"C:\Users\ad\AppData\Local\Docker\wsl\disk\docker_data.vhdx`"", 'compact vdisk', 'exit' |
+     Out-File "$env:TEMP\dp.txt" -Encoding ascii
+   diskpart /s "$env:TEMP\dp.txt"
+   ```
+5. **Restart:** `docker desktop start`, then `docker compose up -d`.
+
+Working script: `%TEMP%\opencode\compact-vhdx.ps1` (steps 2-4, must be launched elevated via
+`Start-Process powershell -Verb RunAs`).
+
+### Failure Modes
+
+| Symptom | Cause | Fix |
+| :--- | :--- | :--- |
+| DiskPart: `Virtual Disk Service error: The virtual disk is already attached` | VHDX still held by WSL/Docker | Do step 3 in full. `docker desktop stop` alone is not enough — it can fail silently with `processes still running` and leaves the disk attached. |
+| DiskPart: `successfully compacted` but file size unchanged | `fstrim` was skipped | Do step 2. Verify the size actually changed afterwards. |
+| `diskpart` produces no output at all | Session is not elevated | Launch with `-Verb RunAs`. |
+| `Optimize-VHD` not found | Hyper-V module absent | Use `diskpart`; the `diskpart` path works on this machine (Windows 11 26200, WSL 2.4.10). |
+
+### Do Not Bother With
+
+- `wsl --manage docker-desktop --set-sparse true` — applies to the distro VHDX (`wsl\main\ext4.vhdx`),
+  **not** the Docker data disk. Runs clean, reclaims nothing.
+- `wsl --unmount` — does not release the data disk.
+- Killing `WslService` / `LxssManager` / `vmcompute` / `hns` — not sufficient on its own; the disk stays
+  attached. `Dismount-DiskImage` is what actually detaches it.
+
+### Prevention
+
+- Avoid `docker compose build --no-cache` unless required. Use normal (cached) builds plus
+  `docker builder prune -f` (no `-a`) for routine cleanup.
+- After any large rebuild, re-run this runbook. Compact is safe and idempotent.

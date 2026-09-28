@@ -29,8 +29,13 @@ import com.minhtrung.hrm.leave.enums.LeaveRequestStatus;
 import com.minhtrung.hrm.leave.repositories.LeaveRequestRepository;
 import com.minhtrung.hrm.leave.specifications.LeaveRequestSpecification;
 import com.minhtrung.hrm.overtime.dtos.requests.OvertimeFilterRequest;
+import com.minhtrung.hrm.overtime.entities.OvertimeRecord;
+import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
 import com.minhtrung.hrm.overtime.specification.OvertimeSpecification;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.attendance.services.AttendanceService;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +50,7 @@ public class DashboardService {
     private final MonthlyTimesheetRepository monthlyTimesheetRepository;
     private final LeaveRequestRepository leaveRequestRepository;
     private final OvertimeRecordRepository overtimeRecordRepository;
+    private final PermissionService permissionService;
 
     @Transactional(readOnly = true)
     public DashboardSummaryResponse getDashboardSummary(UUID userId) {
@@ -110,7 +116,7 @@ public class DashboardService {
                     .year(currentYear)
                     .actualWorkDays(ts.getActualWorkedDays() != null ? ts.getActualWorkedDays().doubleValue() : 0.0)
                     .lateDays(ts.getLateCount())
-                    .totalOtHours(ts.getTotalActualOtHours() != null ? ts.getTotalActualOtHours().doubleValue() : 0.0)
+                    .totalOtHours(ts.getTotalPaidOtHours() != null ? ts.getTotalPaidOtHours().doubleValue() : 0.0)
                     .build();
         } else {
             LocalDate startOfMonth = today.withDayOfMonth(1);
@@ -140,6 +146,18 @@ public class DashboardService {
                     .build();
         }
 
+        // 3b. Tăng ca tháng này — đọc thẳng overtime_records (nguồn sự thật).
+        // Trước đây lấy monthly_timesheets.total_actual_ot_hours nên card luôn hiện 0 cho tới khi
+        // bảng công tháng được tổng hợp. Dùng GIỜ THỰC (không nhân hệ số) để khớp với
+        // cột "GIỜ OT" ở bảng tổng hợp công và "SỐ GIỜ (ĐK/TT)" ở trang đăng ký tăng ca.
+        LocalDate startOfMonth = today.withDayOfMonth(1);
+        LocalDate endOfMonth = today.withDayOfMonth(today.lengthOfMonth());
+        List<OvertimeRecord> monthOvertimes = overtimeRecordRepository
+                .findAcceptedOvertimesByUserIdAndDateRange(userId, OvertimeRecordStatus.accepted,
+                        startOfMonth, endOfMonth);
+        double actualOtHours = AttendanceService.sumOvertimeAmounts(monthOvertimes).actualHours().doubleValue();
+        monthlySummary.setTotalOtHours(actualOtHours);
+
         // 4. Số dư ngày phép
         int totalAnnualLeave = user.getAnnualLeaveDays();
         int usedLeave = user.getUsedLeaveDays();
@@ -154,7 +172,9 @@ public class DashboardService {
         boolean isExecutive = "Executive Leadership".equalsIgnoreCase(deptName);
         boolean isDepartmentHead = jobTitle != null && jobTitle.startsWith("Department Head");
         boolean isHR = "Human Resources".equalsIgnoreCase(deptName);
-        boolean isApprover = isExecutive || isDepartmentHead || isHR;
+        boolean isApprover = isExecutive || isDepartmentHead || isHR
+                || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE)
+                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE);
 
         long pendingLeaves = 0;
         long pendingOTs = 0;
@@ -163,11 +183,13 @@ public class DashboardService {
             UserRole userRole = new UserRole(userId, deptName, jobTitle);
             try {
                 LeaveFilterRequest leaveFilter = new LeaveFilterRequest(null, LeaveRequestStatus.pending, null, null, null);
-                pendingLeaves = leaveRequestRepository.count(LeaveRequestSpecification.forApprovals(userRole, leaveFilter));
+                pendingLeaves = leaveRequestRepository.count(LeaveRequestSpecification.forApprovals(userRole, leaveFilter,
+                        permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE)));
 
                 OvertimeFilterRequest otFilter = new OvertimeFilterRequest();
                 otFilter.setStatus("pending");
-                pendingOTs = overtimeRecordRepository.count(OvertimeSpecification.forApprovals(userRole, otFilter));
+                pendingOTs = overtimeRecordRepository.count(OvertimeSpecification.forApprovals(userRole, otFilter,
+                        permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE)));
             } catch (Exception ex) {
                 log.warn("Lỗi khi đếm số đơn chờ duyệt cho user: {}", userId, ex);
             }

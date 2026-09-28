@@ -26,9 +26,31 @@ export type JobTitle =
   | 'Department Head of IT'
   | 'Software Engineer';
 
-export type RoleLevel = 'EXECUTIVE' | 'HR' | 'MANAGER' | 'STAFF';
+export type RoleLevel = 'EXECUTIVE' | 'ADMIN' | 'HR' | 'MANAGER' | 'STAFF';
 
-export type TodayAttendanceStatus = 'WORKING' | 'ON_LEAVE' | 'NOT_CHECKED' | 'ABSENT';
+// Backend trả thẳng attendances.status (EmployeeService), nên phải bao đủ các giá trị
+// thực tế — trước đây chỉ liệt 4 giá trị nên "đã đi về" bị rơi vào fallback.
+export type TodayAttendanceStatus =
+  | 'WORKING'
+  | 'ON_LEAVE'
+  | 'NOT_CHECKED'
+  | 'ABSENT'
+  | 'SUFFICIENT'
+  | 'LATE'
+  | 'EARLY'
+  | 'LATE_AND_EARLY'
+  | 'MISSING'
+  | 'UNEXCUSED_ABSENCE'
+  | 'PAID_LEAVE'
+  | 'UNPAID_LEAVE'
+  | 'HOLIDAY'
+  | 'BUSINESS_TRIP'
+  | 'ADJUSTED'
+  // Không có bản ghi attendances hôm nay = ngày nghỉ (cron chỉ tạo record ngày làm việc)
+  | 'DAY_OFF';
+
+/** null = không tăng ca. OVERTIMING = đã quẹt vào OT, chưa quẹt ra. */
+export type TodayOvertimeStatus = 'OVERTIMING' | 'OVERTIME_DONE' | 'NONE' | null;
 
 export interface User {
   userId: string;
@@ -41,6 +63,7 @@ export interface User {
   job: JobTitle;
   profilePicUrl?: string;
   todayStatus: TodayAttendanceStatus;
+  todayOvertimeStatus?: TodayOvertimeStatus;
   isActive?: boolean;
   gender?: 'Nam' | 'Nữ' | 'Khác';
   birthDate?: string;
@@ -233,6 +256,7 @@ export interface EmployeeDetailed extends User {
 
 // Monthly Timesheet Summary matching MonthlyTimesheetSummaryResponse
 export interface MonthlyTimesheetSummary {
+  timesheetId?: string;
   userId: string;
   employeeCode: string;
   fullName: string;
@@ -252,9 +276,12 @@ export interface MonthlyTimesheetSummary {
   totalActualHours: number;
   totalPaidHours: number;
   overtimeHours: number;
+  // ponytail: backend CompanyMonthlyTimesheetResponse có sẵn — frontend trước đây bỏ qua nên UI không biết tháng chốt chưa
+  status?: 'DRAFT' | 'LOCKED' | string;
+  lockedAt?: string | null;
+  note?: string;
 }
 
-// Payroll calculation matching Spring Boot Payroll entity & PayrollDTO
 export interface PayrollRecord {
   payrollId: string;
   userId: string;
@@ -265,16 +292,26 @@ export interface PayrollRecord {
   periodMonth: number;
   periodYear: number;
   baseSalary: number; // Lương thỏa thuận
+  hourlyRate?: number; // Lương theo giờ
   standardDays: number; // Ngày công chuẩn (e.g. 26)
   actualWorkedDays: number; // Ngày làm việc thực tế
   actualWorkHours: number; // Giờ công thực tế
+  paidOvertimeHours?: number; // Số giờ làm thêm được tính lương
   basicPay: number; // Lương theo ngày công thực tế
   overtimePay: number; // Lương làm thêm giờ
   allowancePay: number; // Phụ cấp ăn trưa, điện thoại...
-  deductionPay: number; // Khấu trừ đi muộn, bảo hiểm...
+  bonusPay?: number; // Tiền thưởng
+  grossPay?: number; // Tổng thu nhập trước thuế
+  insuranceDeduction?: number; // Khấu trừ bảo hiểm
+  taxDeduction?: number; // Thuế TNCN
+  otherDeduction?: number; // Khấu trừ khác
+  deductionPay: number; // Tổng các khoản khấu trừ
   netPay: number; // Thực nhận = basicPay + overtimePay + allowancePay - deductionPay
   status: 'draft' | 'approved' | 'paid';
+  note?: string;
   calculatedAt: string;
+  approvedAt?: string;
+  paidAt?: string;
 }
 
 export interface HolidayItem {

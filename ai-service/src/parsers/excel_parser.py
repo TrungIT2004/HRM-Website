@@ -33,7 +33,6 @@ class ExcelParser(BaseParser):
                 blocks.append(DocumentBlock(
                     block_type="HEADING",
                     content=f"Bảng dữ liệu: {sheet_name}",
-                    page_number=1,
                     heading_level=1
                 ))
 
@@ -42,7 +41,6 @@ class ExcelParser(BaseParser):
                     blocks.append(DocumentBlock(
                         block_type="TABLE",
                         content=md_table,
-                        page_number=1,
                         metadata={"sheet_name": sheet_name}
                     ))
 
@@ -52,6 +50,7 @@ class ExcelParser(BaseParser):
         return ParsedDocument(
             document_name=clean_name,
             file_type="xlsx",
-            total_pages=len(wb.sheetnames),
+            # ponytail: sheets are not pages, so page numbers stay unknown for xlsx.
+            total_pages=0,
             blocks=blocks
         )

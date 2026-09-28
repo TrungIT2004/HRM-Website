@@ -3,11 +3,12 @@
 import React, { useState, useEffect, use, useRef } from 'react';
 import Link from 'next/link';
 import AppShell from '@/components/layout/AppShell';
+import TodayStatusBadge from '@/components/TodayStatusBadge';
 import { useAuth } from '@/context/AuthContext';
 import { useHRMData } from '@/context/HRMDataContext';
-import { getEmployeeDetail } from '@/mock/employeeDetails';
 import { EmployeeDetailed, TodayAttendanceStatus } from '@/types';
 import { employeeService } from '@/services/employeeService';
+import { formatDateVN } from '@/utils/format';
 import { 
   ArrowLeft, 
   Building2, 
@@ -30,14 +31,31 @@ import {
   Camera,
   UserX,
   Sparkles,
-  RefreshCw
+  RefreshCw,
+  Sun,
+  Moon,
+  Coffee,
+  CalendarDays
 } from 'lucide-react';
 
-export default function EmployeeDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = use(params);
-  const userId = resolvedParams.id;
+// ponytail: nhận thêm 2 prop để /settings tái dùng nguyên trang này (tab Bảo Mật đã chuyển sang
+// /settings) thay vì phải nhân bản ~1700 dòng sang component riêng.
+// EMPTY_PARAMS phải ở module scope: Promise tạo mới mỗi render sẽ khiến `use()` ném React #482.
+const EMPTY_PARAMS = Promise.resolve({ id: '' });
 
-  const { isHR, isExecutive, currentUser } = useAuth();
+export default function EmployeeDetailPage({
+  params,
+  userIdOverride,
+  embedded
+}: {
+  params?: Promise<{ id: string }>;
+  userIdOverride?: string;
+  embedded?: boolean;
+}) {
+  const resolvedParams = use(params ?? EMPTY_PARAMS);
+  const userId = userIdOverride || resolvedParams.id;
+
+  const { isHR, isExecutive, isSysAdmin, currentUser, can } = useAuth();
   const { employeeDetails } = useHRMData();
 
   const [activeTab, setActiveTab] = useState<'basic' | 'legal' | 'contract' | 'salary' | 'assignment'>('basic');
@@ -45,6 +63,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
   const [liveEmployee, setLiveEmployee] = useState<EmployeeDetailed | null>(null);
   const [toastMsg, setToastMsg] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
 
   // Contract Modal States
   const [contractModal, setContractModal] = useState<{
@@ -70,7 +89,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
 
   const openRenewModal = () => {
     let nextStart = '';
-    if (employee.contract?.contractEndDate) {
+    if (employee?.contract?.contractEndDate) {
       const d = new Date(employee.contract.contractEndDate);
       d.setDate(d.getDate() + 1);
       nextStart = d.toISOString().split('T')[0];
@@ -170,83 +189,38 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
   }, [userId]);
 
   // Retrieve target employee
-  const employee: EmployeeDetailed = liveEmployee || employeeDetails[userId] || getEmployeeDetail(userId);
+  const employee: EmployeeDetailed | null = liveEmployee || employeeDetails[userId] || null;
 
-  const isMe = currentUser?.userId === userId;
-  const isTargetSameDeptHead = !!(
-    currentUser?.job?.startsWith('Department Head') && 
-    currentUser?.department === employee.department
-  );
-
-  const canViewLegal = isMe || isHR || isExecutive;
-  const canViewContract = isMe || isTargetSameDeptHead || isHR || isExecutive;
-  const canViewSalary = isMe || isHR || isExecutive;
-  const canEdit = isHR || isExecutive;
-
-  const todayStatusBadge = (status?: TodayAttendanceStatus) => {
-    switch (status) {
-      case 'WORKING':
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 border border-emerald-200">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Đang làm việc (WORKING)</span>
-          </span>
-        );
-      case 'ON_LEAVE':
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700 border border-amber-200">
-            <span className="h-2 w-2 rounded-full bg-amber-500" />
-            <span>Nghỉ phép (ON_LEAVE)</span>
-          </span>
-        );
-      case 'ABSENT':
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-2.5 py-1 text-xs font-bold text-red-700 border border-red-200">
-            <span className="h-2 w-2 rounded-full bg-red-500" />
-            <span>Vắng mặt (ABSENT)</span>
-          </span>
-        );
-      case 'NOT_CHECKED':
-      default:
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 border border-slate-200">
-            <span className="h-2 w-2 rounded-full bg-slate-400" />
-            <span>Chưa chấm công (NOT_CHECKED)</span>
-          </span>
-        );
-    }
-  };
-
-  // Form states for modal editing
+  // Form states for modal editing (Must be declared before any conditional return)
   const [formData, setFormData] = useState({
-    firstName: employee.firstName,
-    lastName: employee.lastName,
-    phoneNumber: employee.profile?.phoneNumber || '',
-    personalEmail: employee.profile?.personalEmail || '',
-    placeOfBirth: employee.profile?.placeOfBirth || '',
-    maritalStatus: employee.profile?.maritalStatus || 'Độc thân',
-    nationality: employee.profile?.nationality || 'Việt Nam',
-    citizenIdNumber: employee.profile?.citizenIdNumber || '',
-    socialInsuranceNumber: employee.profile?.socialInsuranceNumber || '',
-    taxIdentificationNumber: employee.profile?.taxIdentificationNumber || '',
-    emergencyContactName: employee.profile?.emergencyContactName || '',
-    emergencyContactPhone: employee.profile?.emergencyContactPhone || '',
-    contractType: employee.contract?.contractType || 'Không xác định thời hạn',
-    contractStartDate: employee.contract?.contractStartDate || '2022-01-01',
-    contractEndDate: employee.contract?.contractEndDate || '',
-    baseSalary: employee.salary?.baseSalary || 20000000,
-    bankName: employee.bankAccount?.bankName || 'Vietcombank',
-    bankAccountNumber: employee.bankAccount?.bankAccountNumber || '',
-    department: employee.department,
-    job: employee.job,
-    shiftName: employee.shiftName
+    firstName: employee?.firstName || '',
+    lastName: employee?.lastName || '',
+    phoneNumber: employee?.profile?.phoneNumber || '',
+    personalEmail: employee?.profile?.personalEmail || '',
+    placeOfBirth: employee?.profile?.placeOfBirth || '',
+    maritalStatus: employee?.profile?.maritalStatus || 'Độc thân',
+    nationality: employee?.profile?.nationality || 'Việt Nam',
+    citizenIdNumber: employee?.profile?.citizenIdNumber || '',
+    socialInsuranceNumber: employee?.profile?.socialInsuranceNumber || '',
+    taxIdentificationNumber: employee?.profile?.taxIdentificationNumber || '',
+    emergencyContactName: employee?.profile?.emergencyContactName || '',
+    emergencyContactPhone: employee?.profile?.emergencyContactPhone || '',
+    contractType: employee?.contract?.contractType || 'Không xác định thời hạn',
+    contractStartDate: employee?.contract?.contractStartDate || '2022-01-01',
+    contractEndDate: employee?.contract?.contractEndDate || '',
+    baseSalary: employee?.salary?.baseSalary || 20000000,
+    bankName: employee?.bankAccount?.bankName || 'Vietcombank',
+    bankAccountNumber: employee?.bankAccount?.bankAccountNumber || '',
+    department: employee?.department || '',
+    job: employee?.job || '',
+    shiftName: employee?.shiftName || ''
   });
 
   useEffect(() => {
     if (employee) {
       setFormData({
-        firstName: employee.firstName,
-        lastName: employee.lastName,
+        firstName: employee.firstName || '',
+        lastName: employee.lastName || '',
         phoneNumber: employee.profile?.phoneNumber || '',
         personalEmail: employee.profile?.personalEmail || '',
         placeOfBirth: employee.profile?.placeOfBirth || '',
@@ -263,16 +237,61 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
         baseSalary: employee.salary?.baseSalary || 20000000,
         bankName: employee.bankAccount?.bankName || 'Vietcombank',
         bankAccountNumber: employee.bankAccount?.bankAccountNumber || '',
-        department: employee.department,
-        job: employee.job,
-        shiftName: employee.shiftName
+        department: employee.department || '',
+        job: employee.job || '',
+        shiftName: employee.shiftName || ''
       });
     }
   }, [employee]);
 
+  if (!employee) {
+    const loading = (
+        <div className="flex flex-col items-center justify-center min-h-[60vh] text-center p-8 space-y-4">
+          <div className="h-12 w-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+            <RefreshCw className="h-6 w-6 animate-spin" />
+          </div>
+          <div>
+            <h2 className="text-base font-bold text-slate-900">Đang tải hồ sơ nhân sự...</h2>
+            <p className="text-xs text-slate-500 mt-1">Đang đồng bộ dữ liệu hồ sơ từ máy chủ Backend.</p>
+          </div>
+          <Link
+            href="/employees"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 mt-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span>Quay lại Danh bạ nhân sự</span>
+          </Link>
+        </div>
+    );
+    return embedded ? loading : <AppShell>{loading}</AppShell>;
+  }
+
+  const isMe = currentUser?.userId === userId;
+  const isTargetSameDeptHead = !!(
+    currentUser?.job?.startsWith('Department Head') && 
+    currentUser?.department === employee.department
+  );
+
+  // ponytail: so sánh phòng ban thô, KHÔNG dùng cờ isHR — isHR đã bị OR isExecutive nên sẽ cho
+  // Executive thấy nút trong khi backend checkHRAccess (EmployeeService.java:743) chỉ cho HR
+  const isHRRaw = (currentUser?.department || '').toLowerCase() === 'human resources';
+  // 3 tab dưới chứa dữ liệu nhạy cảm nên backend tách EMPLOYEE_VIEW_ALL khỏi quyền gốc.
+  // Phải khai báo giống hệt ở đây, nếu không sẽ khóa tab trong khi API vẫn trả dữ liệu.
+  const canViewAllProfile = can('EMPLOYEE_VIEW_ALL');
+  const canViewLegal = isMe || isHR || isExecutive || canViewAllProfile;
+  const canViewContract = isMe || isTargetSameDeptHead || isHR || isExecutive || canViewAllProfile;
+  const canViewSalary = isMe || isHR || isExecutive || canViewAllProfile;
+  const canEdit = isHRRaw;
+  const canLockAccount = isSysAdmin || can('ACCOUNT_LOCK');
+  // ponytail: SoD hợp đồng — HR thật (khớp check backend equalsIgnoreCase) được sửa HĐ người khác, không bao giờ tự sửa; Executive view-only (backend 403 mọi write)
+  const canEditContract = isHRRaw && !isMe;
+
+
   const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    e.target.value = ''; // ponytail: reset để chọn lại cùng 1 file vẫn bắn onChange
+    setIsUploadingAvatar(true);
     try {
       if (isMe) {
         await employeeService.uploadMyAvatar(file);
@@ -283,6 +302,8 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
       await loadProfile();
     } catch (err: any) {
       showToast('Lỗi upload avatar: ' + (err.message || 'Không thể tải lên'));
+    } finally {
+      setIsUploadingAvatar(false);
     }
   };
 
@@ -354,8 +375,8 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
     ? employee.profilePicUrl
     : null;
 
-  return (
-    <AppShell>
+  // ponytail: /settings tái dùng nguyên trang này nên phải bỏ AppShell lần nữa, nếu không sẽ lồng 2 sidebar.
+  const body = (
       <div className="space-y-6">
         {toastMsg && (
           <div className="fixed top-20 right-6 z-50 rounded-2xl bg-slate-900 text-white px-5 py-3 shadow-xl flex items-center gap-2.5 text-xs font-bold animate-in slide-in-from-top-4">
@@ -366,6 +387,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
 
         {/* Back navigation & Edit Button */}
         <div className="flex flex-wrap items-center justify-between gap-3">
+          {!embedded && (
           <Link
             href="/employees"
             className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition"
@@ -373,9 +395,10 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
             <ArrowLeft className="h-4 w-4" />
             <span>Quay lại Danh bạ Nhân sự</span>
           </Link>
+          )}
 
           <div className="flex items-center gap-2">
-            {canEdit && !isMe && (
+            {canLockAccount && !isMe && (
               <button
                 onClick={handleToggleStatus}
                 className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold shadow-xs transition cursor-pointer ${
@@ -421,10 +444,15 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                   <>
                     <button
                       onClick={() => fileInputRef.current?.click()}
-                      className="absolute -bottom-1 -right-1 p-1.5 rounded-full bg-slate-900 text-white hover:bg-blue-600 shadow-md transition cursor-pointer"
+                      disabled={isUploadingAvatar}
+                      className="absolute -bottom-1 -right-1 p-1.5 rounded-full bg-slate-900 text-white hover:bg-blue-600 shadow-md transition cursor-pointer disabled:opacity-60"
                       title="Đổi ảnh đại diện"
                     >
-                      <Camera className="h-3.5 w-3.5" />
+                      {isUploadingAvatar ? (
+                        <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+                      ) : (
+                        <Camera className="h-3.5 w-3.5" />
+                      )}
                     </button>
                     <input
                       ref={fileInputRef}
@@ -464,7 +492,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                   {employee.profile?.phoneNumber && (
                     <span className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5 text-slate-400" /> {employee.profile.phoneNumber}</span>
                   )}
-                  <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-slate-400" /> Vào cty: {employee.joinedDate}</span>
+                  <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-slate-400" /> Vào cty: {formatDateVN(employee.joinedDate)}</span>
                 </div>
               </div>
             </div>
@@ -472,7 +500,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
             <div className="flex flex-col sm:items-end gap-2 w-full sm:w-auto">
               <div className="flex items-center gap-2">
                 <span className="text-xs text-slate-500 font-medium">Hôm nay:</span>
-                {todayStatusBadge(employee.todayStatus)}
+                <TodayStatusBadge status={employee.todayStatus} overtime={employee.todayOvertimeStatus} />
               </div>
               <div className="text-[11px] text-slate-400">
                 Ca làm việc: <strong className="text-slate-700 font-semibold">{employee.shiftName || 'Ca Hành Chính'}</strong>
@@ -482,18 +510,22 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Tab Navigation */}
-        <div className="rounded-2xl bg-white p-1.5 border border-slate-200 shadow-xs flex flex-wrap gap-1 text-xs font-bold">
+        <div role="tablist" className="rounded-2xl bg-white p-1.5 border border-slate-200 shadow-xs flex flex-wrap gap-1 text-sm font-extrabold">
           <button
+            role="tab"
+            aria-selected={activeTab === 'basic'}
             onClick={() => setActiveTab('basic')}
             className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 ${
-              activeTab === 'basic' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-50'
+              activeTab === 'basic' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <UserCheck className="h-4 w-4" />
-            <span>Tab 1: Thông tin Chung (Công khai)</span>
+            <UserCheck className="h-[18px] w-[18px]" aria-hidden="true" />
+            <span>Thông tin Chung</span>
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === 'legal'}
             onClick={() => setActiveTab('legal')}
             disabled={!canViewLegal}
             className={`px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
@@ -501,15 +533,17 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                 ? 'opacity-40 cursor-not-allowed text-slate-400'
                 : activeTab === 'legal'
                 ? 'bg-blue-600 text-white shadow-xs cursor-pointer'
-                : 'text-slate-600 hover:bg-slate-50 cursor-pointer'
+                : 'text-slate-700 hover:bg-slate-50 cursor-pointer'
             }`}
           >
-            <IdCard className="h-4 w-4" />
-            <span>Tab 2: Định danh & Pháp lý</span>
-            {!canViewLegal && <Lock className="h-3 w-3 ml-1" />}
+            <IdCard className="h-[18px] w-[18px]" aria-hidden="true" />
+            <span>Định danh & Pháp lý</span>
+            {!canViewLegal && <Lock className="h-3.5 w-3.5" aria-hidden="true" />}
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === 'contract'}
             onClick={() => setActiveTab('contract')}
             disabled={!canViewContract}
             className={`px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
@@ -517,15 +551,17 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                 ? 'opacity-40 cursor-not-allowed text-slate-400'
                 : activeTab === 'contract'
                 ? 'bg-blue-600 text-white shadow-xs cursor-pointer'
-                : 'text-slate-600 hover:bg-slate-50 cursor-pointer'
+                : 'text-slate-700 hover:bg-slate-50 cursor-pointer'
             }`}
           >
-            <FileText className="h-4 w-4" />
-            <span>Tab 3: Hợp đồng Lao động</span>
-            {!canViewContract && <Lock className="h-3 w-3 ml-1" />}
+            <FileText className="h-[18px] w-[18px]" aria-hidden="true" />
+            <span>Hợp đồng Lao động</span>
+            {!canViewContract && <Lock className="h-3.5 w-3.5" aria-hidden="true" />}
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === 'salary'}
             onClick={() => setActiveTab('salary')}
             disabled={!canViewSalary}
             className={`px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
@@ -533,23 +569,26 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                 ? 'opacity-40 cursor-not-allowed text-slate-400'
                 : activeTab === 'salary'
                 ? 'bg-blue-600 text-white shadow-xs cursor-pointer'
-                : 'text-slate-600 hover:bg-slate-50 cursor-pointer'
+                : 'text-slate-700 hover:bg-slate-50 cursor-pointer'
             }`}
           >
-            <CreditCard className="h-4 w-4" />
-            <span>Tab 4: Lương & Ngân hàng</span>
-            {!canViewSalary && <Lock className="h-3 w-3 ml-1" />}
+            <CreditCard className="h-[18px] w-[18px]" aria-hidden="true" />
+            <span>Lương & Ngân hàng</span>
+            {!canViewSalary && <Lock className="h-3.5 w-3.5" aria-hidden="true" />}
           </button>
 
           <button
+            role="tab"
+            aria-selected={activeTab === 'assignment'}
             onClick={() => setActiveTab('assignment')}
             className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 ${
-              activeTab === 'assignment' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-50'
+              activeTab === 'assignment' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <Clock className="h-4 w-4" />
-            <span>Tab 5: Lịch Trình & Ca Làm Việc</span>
+            <Clock className="h-[18px] w-[18px]" aria-hidden="true" />
+            <span>Lịch Trình & Ca Làm Việc</span>
           </button>
+
         </div>
 
         {/* Tab Content Display */}
@@ -591,11 +630,11 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                 </div>
                 <div>
                   <span className="text-slate-400 block mb-1">Ngày sinh:</span>
-                  <span className="font-mono text-slate-800">{employee.birthDate || 'Chưa cập nhật'}</span>
+                  <span className="font-mono text-slate-800">{formatDateVN(employee.birthDate) || 'Chưa cập nhật'}</span>
                 </div>
                 <div>
                   <span className="text-slate-400 block mb-1">Ngày gia nhập công ty:</span>
-                  <span className="font-mono text-slate-800 font-semibold">{employee.joinedDate}</span>
+                  <span className="font-mono text-slate-800 font-semibold">{formatDateVN(employee.joinedDate)}</span>
                 </div>
               </div>
             </div>
@@ -672,7 +711,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                     </div>
                   </div>
 
-                  {canEdit && (
+                  {canEditContract && (
                     <div className="flex items-center gap-2 flex-wrap">
                       <button
                         onClick={openRenewModal}
@@ -705,11 +744,11 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                     <span className="text-slate-500 block mb-1 font-medium">Loại hợp đồng:</span>
                     <span className="font-bold text-blue-900 text-sm">
                       {employee.contract?.contractType === 'Indefinite'
-                        ? 'Không xác định thời hạn (Indefinite)'
+                        ? 'Không xác định thời hạn'
                         : employee.contract?.contractType === 'Fixed-term'
-                        ? 'Xác định thời hạn (Fixed-term)'
+                        ? 'Xác định thời hạn'
                         : employee.contract?.contractType === 'Probation'
-                        ? 'Hợp đồng Thử việc (Probation)'
+                        ? 'Hợp đồng Thử việc'
                         : employee.contract?.contractType || 'Xác định thời hạn'}
                     </span>
                   </div>
@@ -717,14 +756,14 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                   <div>
                     <span className="text-slate-500 block mb-1 font-medium">Ngày bắt đầu hiệu lực:</span>
                     <span className="font-mono font-bold text-slate-900 text-sm">
-                      {employee.contract?.contractStartDate || employee.joinedDate}
+                      {formatDateVN(employee.contract?.contractStartDate) || formatDateVN(employee.joinedDate)}
                     </span>
                   </div>
 
                   <div>
                     <span className="text-slate-500 block mb-1 font-medium">Ngày kết thúc hợp đồng:</span>
                     <span className="font-mono font-bold text-slate-900 text-sm">
-                      {employee.contract?.contractEndDate || 'Vô thời hạn'}
+                      {formatDateVN(employee.contract?.contractEndDate) || 'Vô thời hạn'}
                     </span>
                   </div>
                 </div>
@@ -747,7 +786,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                         <th className="px-4 py-3">Ngày Bắt Đầu</th>
                         <th className="px-4 py-3">Ngày Kết Thúc</th>
                         <th className="px-4 py-3 text-center">Trạng Thái</th>
-                        {canEdit && <th className="px-4 py-3 text-right">Thao Tác</th>}
+                        {canEditContract && <th className="px-4 py-3 text-right">Thao Tác</th>}
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
@@ -766,10 +805,9 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                                   ? 'Thử việc'
                                   : c.contractType || '---'}
                               </span>
-                              <span className="text-[10px] text-slate-400 block font-mono">({c.contractType})</span>
                             </td>
-                            <td className="px-4 py-3 font-mono text-slate-700">{c.contractStartDate || '---'}</td>
-                            <td className="px-4 py-3 font-mono text-slate-700">{c.contractEndDate || 'Vô thời hạn'}</td>
+                            <td className="px-4 py-3 font-mono text-slate-700">{formatDateVN(c.contractStartDate) || '---'}</td>
+                            <td className="px-4 py-3 font-mono text-slate-700">{formatDateVN(c.contractEndDate) || 'Vô thời hạn'}</td>
                             <td className="px-4 py-3 text-center">
                               {isCurrent ? (
                                 <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
@@ -781,7 +819,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                                 </span>
                               )}
                             </td>
-                            {canEdit && (
+                            {canEditContract && (
                               <td className="px-4 py-3 text-right">
                                 <button
                                   onClick={() => openEditModal(c)}
@@ -806,15 +844,12 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <h3 className="text-sm font-bold text-slate-900">
-                  Lương & Tài khoản Ngân hàng (salaries & user_bank_accounts)
+                  Lương & Tài khoản Ngân hàng
                 </h3>
-                <span className="inline-flex items-center gap-1 text-[11px] text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-200 font-bold">
-                  <Shield className="h-3.5 w-3.5" /> Tuyệt mật: Trưởng phòng KHÔNG xem được
-                </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-xs">
                 <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
-                  <span className="text-emerald-700 block text-[11px] font-bold mb-1">Lương cơ bản (Base Salary):</span>
+                  <span className="text-emerald-700 block text-[11px] font-bold mb-1">Lương cơ bản:</span>
                   <span className="font-mono font-black text-emerald-900 text-xl">
                     {(employee.salary?.baseSalary || 20000000).toLocaleString('vi-VN')} ₫
                   </span>
@@ -832,26 +867,413 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
             </div>
           )}
 
-          {/* TAB 5: ASSIGNMENT & SHIFT */}
-          {activeTab === 'assignment' && (
-            <div className="space-y-6">
-              <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3">
-                Ca làm việc & Lịch trình tuần (work_shifts & work_shift_schedules)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
-                  <span className="text-blue-700 block text-[11px] font-bold mb-1">Ca làm việc áp dụng:</span>
-                  <span className="font-bold text-blue-950 text-base">{employee.shiftName || 'Ca Hành Chính Chuẩn'}</span>
-                  <p className="text-[11px] text-blue-600 mt-1">Thời gian: {employee.shiftStartTime || '08:00'} - {employee.shiftEndTime || '17:30'}</p>
+          {/* TAB 5: ASSIGNMENT & SHIFT (THỜI KHÓA BIỂU HỌC SINH / LỊCH LÀM VIỆC TUẦN) */}
+          {activeTab === 'assignment' && (() => {
+            const rawSchedules = (employee.weeklySchedule && employee.weeklySchedule.length > 0)
+              ? employee.weeklySchedule
+              : [
+                  { dayOfWeek: 1, dayName: 'Thứ 2', isWorking: true, startTime: employee.shiftStartTime || '08:00', endTime: employee.shiftEndTime || '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+                  { dayOfWeek: 2, dayName: 'Thứ 3', isWorking: true, startTime: employee.shiftStartTime || '08:00', endTime: employee.shiftEndTime || '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+                  { dayOfWeek: 3, dayName: 'Thứ 4', isWorking: true, startTime: employee.shiftStartTime || '08:00', endTime: employee.shiftEndTime || '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+                  { dayOfWeek: 4, dayName: 'Thứ 5', isWorking: true, startTime: employee.shiftStartTime || '08:00', endTime: employee.shiftEndTime || '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+                  { dayOfWeek: 5, dayName: 'Thứ 6', isWorking: true, startTime: employee.shiftStartTime || '08:00', endTime: employee.shiftEndTime || '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+                  { dayOfWeek: 6, dayName: 'Thứ 7', isWorking: false, startTime: '00:00', endTime: '00:00' },
+                  { dayOfWeek: 7, dayName: 'Chủ Nhật', isWorking: false, startTime: '00:00', endTime: '00:00' },
+                ];
+
+            // Ensure 7 days sorted Monday (1) to Sunday (7)
+            const sortedSchedules = [...rawSchedules].sort((a, b) => a.dayOfWeek - b.dayOfWeek);
+
+            const calcHours = (start?: string, end?: string): number => {
+              if (!start || !end) return 0;
+              const [sh, sm] = start.split(':').map(Number);
+              const [eh, em] = end.split(':').map(Number);
+              if (isNaN(sh) || isNaN(eh)) return 0;
+              const diffMin = (eh * 60 + (em || 0)) - (sh * 60 + (sm || 0));
+              return Math.max(0, Math.round((diffMin / 60) * 10) / 10);
+            };
+
+            const calcDayNet = (item: any): number => {
+              if (!item.isWorking || !item.startTime || !item.endTime) return 0;
+              const total = calcHours(item.startTime, item.endTime);
+              const rest = (item.restStartTime && item.restEndTime) ? calcHours(item.restStartTime, item.restEndTime) : 0;
+              return Math.max(0, Math.round((total - rest) * 10) / 10);
+            };
+
+            const workingDaysCount = sortedSchedules.filter(s => s.isWorking).length;
+            const totalWeeklyHours = sortedSchedules.reduce((acc, s) => acc + calcDayNet(s), 0);
+            const restDaysNames = sortedSchedules.filter(s => !s.isWorking).map(s => s.dayName).join(' & ') || 'Không có';
+
+            // Today highlight
+            const jsDay = new Date().getDay(); // 0 is Sun, 1 is Mon...
+            const todayDayOfWeek = jsDay === 0 ? 7 : jsDay;
+
+            return (
+              <div className="space-y-6">
+                {/* 1. Header Overview & KPI Chips */}
+                <div className="rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-slate-50 p-5 sm:p-6 shadow-xs">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-600 text-white shadow-xs">
+                          <CalendarDays className="w-3.5 h-3.5" />
+                          Thời Khóa Biểu Tuần
+                        </span>
+                        <span className="text-[11px] font-semibold text-blue-700 bg-blue-100/70 px-2.5 py-0.5 rounded-full border border-blue-200">
+                          Áp dụng chính thức
+                        </span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
+                        {employee.shiftName || 'Giờ hành chính (T2-T6)'}
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-1 flex flex-wrap items-center gap-2">
+                        <span>Khung giờ chuẩn: <strong>{employee.shiftStartTime || '08:00'} - {employee.shiftEndTime || '17:30'}</strong></span>
+                        <span className="text-slate-300">•</span>
+                        <span>Nghỉ trưa: <strong>12:00 - 13:30 (1h 30m)</strong></span>
+                      </p>
+                    </div>
+
+                    {/* Quick Metric Badges */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                      <div className="bg-white/90 border border-slate-200/80 rounded-2xl p-3 shadow-xs">
+                        <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Ngày làm việc</span>
+                        <span className="text-slate-900 font-black text-sm block mt-0.5">{workingDaysCount} ngày/tuần</span>
+                        <span className="text-[10px] text-blue-600 font-medium">Thứ 2 - {sortedSchedules.filter(s => s.isWorking).pop()?.dayName || 'Thứ 6'}</span>
+                      </div>
+
+                      <div className="bg-white/90 border border-slate-200/80 rounded-2xl p-3 shadow-xs">
+                        <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Tổng thời lượng</span>
+                        <span className="text-blue-900 font-black text-sm font-mono block mt-0.5">{totalWeeklyHours.toFixed(1)}h / tuần</span>
+                        <span className="text-[10px] text-emerald-600 font-medium">Bình quân {(totalWeeklyHours / (workingDaysCount || 1)).toFixed(1)}h/ngày</span>
+                      </div>
+
+                      <div className="bg-white/90 border border-slate-200/80 rounded-2xl p-3 shadow-xs">
+                        <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Luật Lao Động</span>
+                        <span className={`font-black text-sm block mt-0.5 ${totalWeeklyHours <= 48 ? 'text-emerald-700' : 'text-rose-600'}`}>
+                          {totalWeeklyHours <= 48 ? 'Đạt chuẩn' : 'Vượt trần'}
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-medium">≤ 48h/tuần, ≤ 8h/ngày</span>
+                      </div>
+
+                      <div className="bg-white/90 border border-slate-200/80 rounded-2xl p-3 shadow-xs">
+                        <span className="text-slate-400 block text-[10px] font-bold uppercase tracking-wider">Ngày nghỉ tuần</span>
+                        <span className="text-slate-800 font-bold text-xs truncate block mt-0.5" title={restDaysNames}>
+                          {restDaysNames}
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-medium">Nghỉ hưởng nguyên lương</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                  <span className="text-slate-500 block text-[11px] font-bold mb-1">Ngày nghỉ trong tuần:</span>
-                  <span className="font-bold text-slate-800 text-base">Thứ 7 & Chủ Nhật</span>
-                  <p className="text-[11px] text-slate-500 mt-1">Đảm bảo luật lao động: ≤ 8h/ngày và ≤ 48h/tuần</p>
+
+                {/* 2. THE STUDENT TIMETABLE (BẢNG THỜI KHÓA BIỂU HỌC ĐƯỜNG) */}
+                <div className="rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                  <div className="px-5 py-4 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3 bg-slate-50/50">
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-blue-600" />
+                        Thời Khóa Biểu Làm Việc Chi Tiết Theo Ngày
+                      </h4>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Phân bố tiết làm buổi sáng, nghỉ giữa ca và buổi chiều của từng ngày trong tuần.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+                        <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                        Cột có viền xanh là Hôm nay
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Timetable Matrix */}
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-xs text-left border-collapse min-w-[760px]">
+                      <thead>
+                        <tr className="border-b border-slate-200 bg-slate-100/70">
+                          <th className="p-3.5 font-bold text-slate-700 w-44 min-w-[170px] border-r border-slate-200">
+                            <div className="flex items-center gap-1.5 text-slate-800 uppercase tracking-wider text-[10px]">
+                              <CalendarDays className="w-3.5 h-3.5 text-slate-500" />
+                              Khung Giờ / Thứ
+                            </div>
+                          </th>
+                          {sortedSchedules.map((s) => {
+                            const isToday = s.dayOfWeek === todayDayOfWeek;
+                            return (
+                              <th
+                                key={s.dayOfWeek}
+                                className={`p-3 text-center border-r border-slate-200 last:border-r-0 transition ${
+                                  isToday
+                                    ? 'bg-blue-100/60 font-black text-blue-900'
+                                    : s.isWorking
+                                    ? 'bg-slate-50/70 text-slate-900'
+                                    : 'bg-slate-100/50 text-slate-500'
+                                }`}
+                              >
+                                <div className="flex flex-col items-center gap-1">
+                                  {isToday && (
+                                    <span className="px-2 py-0.5 rounded-full bg-blue-600 text-white text-[9px] font-black uppercase tracking-wider shadow-xs animate-bounce">
+                                      Hôm nay
+                                    </span>
+                                  )}
+                                  <span className="font-black text-sm">{s.dayName}</span>
+                                  <span
+                                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                                      s.isWorking
+                                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                        : 'bg-slate-100 text-slate-500 border-slate-200'
+                                    }`}
+                                  >
+                                    {s.isWorking ? 'Làm việc' : 'Nghỉ tuần'}
+                                  </span>
+                                </div>
+                              </th>
+                            );
+                          })}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {/* Hàng 1: Ca Sáng */}
+                        <tr className="hover:bg-slate-50/50 transition">
+                          <td className="p-3.5 font-bold text-slate-800 bg-slate-50/40 border-r border-slate-200">
+                            <div className="flex items-start gap-2.5">
+                              <div className="p-2 rounded-xl bg-blue-100/80 text-blue-700 shrink-0">
+                                <Sun className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <span className="font-black text-slate-900 block text-xs">🌅 Buổi Sáng</span>
+                                <span className="text-[10px] text-slate-500 block font-normal">Vào ca - Nghỉ trưa</span>
+                              </div>
+                            </div>
+                          </td>
+                          {sortedSchedules.map((s) => {
+                            const isToday = s.dayOfWeek === todayDayOfWeek;
+                            const morningEnd = s.restStartTime || '12:00';
+                            const morningHours = s.isWorking ? calcHours(s.startTime, morningEnd) : 0;
+                            return (
+                              <td
+                                key={s.dayOfWeek}
+                                className={`p-2.5 text-center border-r border-slate-100 last:border-r-0 ${
+                                  isToday ? 'bg-blue-50/30' : ''
+                                }`}
+                              >
+                                {s.isWorking ? (
+                                  <div className="rounded-xl border border-blue-200/90 bg-blue-50/60 p-2.5 shadow-2xs hover:shadow-xs transition">
+                                    <span className="font-mono font-black text-blue-950 text-xs block">
+                                      {s.startTime} - {morningEnd}
+                                    </span>
+                                    <span className="text-[10px] font-bold text-blue-600 block mt-1">
+                                      {morningHours.toFixed(1)} giờ làm
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50/50 p-2.5 text-slate-300">
+                                    <span className="font-bold text-sm block">—</span>
+                                    <span className="text-[10px] font-medium text-slate-400 block mt-0.5">Nghỉ ca</span>
+                                  </div>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+
+                        {/* Hàng 2: Nghỉ Giữa Ca (Ăn Trưa) */}
+                        <tr className="hover:bg-slate-50/50 transition">
+                          <td className="p-3.5 font-bold text-slate-800 bg-slate-50/40 border-r border-slate-200">
+                            <div className="flex items-start gap-2.5">
+                              <div className="p-2 rounded-xl bg-amber-100/80 text-amber-700 shrink-0">
+                                <Coffee className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <span className="font-black text-slate-900 block text-xs">🥪 Nghỉ Giữa Ca</span>
+                                <span className="text-[10px] text-slate-500 block font-normal">Ăn trưa & Tái tạo sức</span>
+                              </div>
+                            </div>
+                          </td>
+                          {sortedSchedules.map((s) => {
+                            const isToday = s.dayOfWeek === todayDayOfWeek;
+                            const restStart = s.restStartTime || '12:00';
+                            const restEnd = s.restEndTime || '13:30';
+                            const restH = (s.isWorking && s.restStartTime && s.restEndTime) ? calcHours(restStart, restEnd) : 0;
+                            return (
+                              <td
+                                key={s.dayOfWeek}
+                                className={`p-2.5 text-center border-r border-slate-100 last:border-r-0 ${
+                                  isToday ? 'bg-blue-50/30' : ''
+                                }`}
+                              >
+                                {s.isWorking && s.restStartTime && s.restEndTime ? (
+                                  <div className="rounded-xl border border-amber-200/90 bg-amber-50/60 p-2 shadow-2xs hover:shadow-xs transition">
+                                    <span className="font-mono font-black text-amber-950 text-xs block">
+                                      {restStart} - {restEnd}
+                                    </span>
+                                    <span className="text-[10px] font-bold text-amber-700 block mt-0.5">
+                                      {restH === 1.5 ? '1h 30m nghỉ' : `${restH}h nghỉ`}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50/50 p-2 text-slate-300">
+                                    <span className="font-bold text-sm block">—</span>
+                                    <span className="text-[10px] font-medium text-slate-400 block mt-0.5">Không có</span>
+                                  </div>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+
+                        {/* Hàng 3: Ca Chiều */}
+                        <tr className="hover:bg-slate-50/50 transition">
+                          <td className="p-3.5 font-bold text-slate-800 bg-slate-50/40 border-r border-slate-200">
+                            <div className="flex items-start gap-2.5">
+                              <div className="p-2 rounded-xl bg-indigo-100/80 text-indigo-700 shrink-0">
+                                <Clock className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <span className="font-black text-slate-900 block text-xs">🌇 Buổi Chiều</span>
+                                <span className="text-[10px] text-slate-500 block font-normal">Chiều - Tan ca về</span>
+                              </div>
+                            </div>
+                          </td>
+                          {sortedSchedules.map((s) => {
+                            const isToday = s.dayOfWeek === todayDayOfWeek;
+                            const afternoonStart = s.restEndTime || '13:30';
+                            const afternoonHours = s.isWorking ? calcHours(afternoonStart, s.endTime) : 0;
+                            return (
+                              <td
+                                key={s.dayOfWeek}
+                                className={`p-2.5 text-center border-r border-slate-100 last:border-r-0 ${
+                                  isToday ? 'bg-blue-50/30' : ''
+                                }`}
+                              >
+                                {s.isWorking ? (
+                                  <div className="rounded-xl border border-indigo-200/90 bg-indigo-50/60 p-2.5 shadow-2xs hover:shadow-xs transition">
+                                    <span className="font-mono font-black text-indigo-950 text-xs block">
+                                      {afternoonStart} - {s.endTime}
+                                    </span>
+                                    <span className="text-[10px] font-bold text-indigo-600 block mt-1">
+                                      {afternoonHours.toFixed(1)} giờ làm
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50/50 p-2.5 text-slate-300">
+                                    <span className="font-bold text-sm block">—</span>
+                                    <span className="text-[10px] font-medium text-slate-400 block mt-0.5">Nghỉ ca</span>
+                                  </div>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+
+                        {/* Hàng 4: Thực Làm Trong Ngày */}
+                        <tr className="hover:bg-slate-50/50 transition bg-slate-50/30">
+                          <td className="p-3.5 font-bold text-slate-800 bg-slate-100/50 border-r border-slate-200">
+                            <div className="flex items-start gap-2.5">
+                              <div className="p-2 rounded-xl bg-emerald-100/80 text-emerald-700 shrink-0">
+                                <CheckCircle2 className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <span className="font-black text-slate-900 block text-xs">⏱️ Thực Làm Ngày</span>
+                                <span className="text-[10px] text-slate-500 block font-normal">Trừ giờ nghỉ trưa</span>
+                              </div>
+                            </div>
+                          </td>
+                          {sortedSchedules.map((s) => {
+                            const isToday = s.dayOfWeek === todayDayOfWeek;
+                            const net = calcDayNet(s);
+                            return (
+                              <td
+                                key={s.dayOfWeek}
+                                className={`p-2.5 text-center border-r border-slate-100 last:border-r-0 ${
+                                  isToday ? 'bg-blue-50/40' : ''
+                                }`}
+                              >
+                                {s.isWorking ? (
+                                  <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-2 text-center shadow-xs">
+                                    <span className="font-mono font-black text-emerald-900 text-sm block">
+                                      {net.toFixed(1)}h
+                                    </span>
+                                    <span className="text-[9px] font-bold text-emerald-700 block uppercase">
+                                      Chuẩn 1 công
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <div className="rounded-xl border border-slate-200 bg-slate-100/70 p-2 text-center">
+                                    <span className="font-mono font-bold text-slate-400 text-sm block">0h</span>
+                                    <span className="text-[9px] font-medium text-slate-400 block uppercase">Nghỉ tuần</span>
+                                  </div>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+
+                        {/* Hàng 5: Trạng Thái Đi Làm */}
+                        <tr className="hover:bg-slate-50/50 transition">
+                          <td className="p-3.5 font-bold text-slate-800 bg-slate-50/40 border-r border-slate-200">
+                            <span className="font-black text-slate-900 block text-xs">🏷️ Trạng Thái Ca</span>
+                            <span className="text-[10px] text-slate-500 block font-normal">Quy định chấm công</span>
+                          </td>
+                          {sortedSchedules.map((s) => {
+                            const isToday = s.dayOfWeek === todayDayOfWeek;
+                            return (
+                              <td
+                                key={s.dayOfWeek}
+                                className={`p-2.5 text-center border-r border-slate-100 last:border-r-0 ${
+                                  isToday ? 'bg-blue-50/30' : ''
+                                }`}
+                              >
+                                {s.isWorking ? (
+                                  <span className="inline-flex items-center justify-center gap-1 w-full text-[11px] font-bold text-emerald-700 bg-emerald-50 py-1.5 px-2 rounded-xl border border-emerald-200">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                    Đi làm
+                                  </span>
+                                ) : (
+                                  <span className="inline-flex items-center justify-center gap-1 w-full text-[11px] font-bold text-slate-500 bg-slate-100 py-1.5 px-2 rounded-xl border border-slate-200">
+                                    <Moon className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                    Nghỉ ca
+                                  </span>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* 3. Timetable Legend & Labor Law Compliance */}
+                  <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wider">Chú thích màu:</span>
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 font-bold text-[11px]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Ca Sáng
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 font-bold text-[11px]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Nghỉ Giữa Ca
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-800 font-bold text-[11px]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-indigo-600"></span> Ca Chiều
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold text-[11px]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> Thực Làm (Công chuẩn)
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200 text-slate-600 font-bold text-[11px]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-slate-400"></span> Nghỉ Tuần (OFF)
+                      </span>
+                    </div>
+
+                    <div className="text-[11px] text-slate-500 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shrink-0">
+                      ⚖️ <strong>Điều 105 BLLĐ 2019</strong>: Ca làm ≤ 8h/ngày và ≤ 48h/tuần.
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
+
         </div>
 
         {/* Edit Modal (HR only) */}
@@ -1021,9 +1443,9 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
                     onChange={e => setContractModal(prev => ({ ...prev, contractType: e.target.value }))}
                     className="w-full rounded-xl border border-slate-300 p-2.5 font-medium focus:border-blue-600 focus:outline-hidden"
                   >
-                    <option value="Fixed-term">Hợp đồng Xác định thời hạn (Fixed-term)</option>
-                    <option value="Indefinite">Hợp đồng Không xác định thời hạn (Indefinite)</option>
-                    <option value="Probation">Hợp đồng Thử việc (Probation)</option>
+                    <option value="Fixed-term">Hợp đồng Xác định thời hạn</option>
+                    <option value="Indefinite">Hợp đồng Không xác định thời hạn</option>
+                    <option value="Probation">Hợp đồng Thử việc</option>
                   </select>
                 </div>
 
@@ -1085,6 +1507,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
           </div>
         )}
       </div>
-    </AppShell>
   );
+
+  return embedded ? body : <AppShell>{body}</AppShell>;
 }

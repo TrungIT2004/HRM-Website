@@ -25,6 +25,10 @@ public interface OvertimeRecordRepository
 
     boolean existsByRequestor_UserIdAndApprovedDate(UUID userId, LocalDate approvedDate);
 
+    /** Batch cho danh bạ: lấy OT hôm nay của nhiều người trong 1 query (tránh N+1). */
+    List<OvertimeRecord> findByRequestor_UserIdInAndApprovedDateAndStatus(
+            List<UUID> userIds, LocalDate approvedDate, OvertimeRecordStatus status);
+
     @Query(value = """
         SELECT COALESCE(SUM(EXTRACT(EPOCH FROM (approved_end_time - approved_start_time))/3600), 0)
         FROM overtime_records

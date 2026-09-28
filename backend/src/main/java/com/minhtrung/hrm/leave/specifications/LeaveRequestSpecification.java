@@ -63,6 +63,14 @@ public class LeaveRequestSpecification {
     // 2. ROUTE DUYỆT ĐƠN: GET /api/leave/approvals
     // =========================================================================
     public static Specification<LeaveRequest> forApprovals(UserRole userRole, LeaveFilterRequest filter) {
+        return forApprovals(userRole, filter, false);
+    }
+
+    // ponytail: grant APPROVE = bỏ qua chuỗi phân cấp, thấy MỌI đơn toàn công ty kể cả đã xử lý
+    // (chỉ trừ đơn của chính mình — filter status là optional nên không tự lọc pending).
+    // Trần: đây là cố ý, và UI /admin đã ghi rõ "toàn công ty" trong nhãn quyền. Nếu muốn siết thì
+    // thêm predicate status=PENDING vào nhánh này, hoặc tách LEAVE_APPROVE_ALL khỏi LEAVE_APPROVE.
+    public static Specification<LeaveRequest> forApprovals(UserRole userRole, LeaveFilterRequest filter, boolean hasApproveGrant) {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             Join<LeaveRequest, User> requestorJoin = root.join("requestor", JoinType.INNER);
@@ -79,7 +87,9 @@ public class LeaveRequestSpecification {
             boolean isExecutive = myDepartment.equals("Executive Leadership");
             boolean isDepartmentHead = myJob.startsWith("Department Head");
 
-            if (isExecutive && myJob.contains("Chairman")) {
+            if (hasApproveGrant) {
+                // grant: bỏ qua chuỗi phân cấp, chỉ giữ lọc ngày/trạng thái/keyword bên dưới
+            } else if (isExecutive && myJob.contains("Chairman")) {
                 Predicate isExecDept = cb.equal(deptJoin.get("name"), "Executive Leadership");
                 Predicate isDirectors = cb.or(
                     cb.like(jobJoin.get("title"), "%Director%"),

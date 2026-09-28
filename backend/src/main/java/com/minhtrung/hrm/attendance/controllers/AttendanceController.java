@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -234,11 +235,13 @@ public class AttendanceController {
     }
 
     // 6. Trưởng phòng HR / Ban Giám Đốc chốt sổ bảng công tháng (LOCKED)
+    // userIds rỗng = chốt cả tháng; có giá trị = chỉ chốt nhóm nhân viên đang tick trên bảng.
     @PutMapping("/summary/lock")
     public ResponseEntity<Map<String, Object>> lockMonthlySummary(
             @RequestParam int month,
-            @RequestParam int year) {
+            @RequestParam int year,
+            @RequestParam(required = false) List<UUID> userIds) {
         UserRole userRole = getCurrentUserRole();
-        return ResponseEntity.ok(attendanceService.lockMonthlyTimesheet(month, year, userRole));
+        return ResponseEntity.ok(attendanceService.lockMonthlyTimesheet(month, year, userRole, userIds));
     }
 }

@@ -53,16 +53,18 @@ services:
       dockerfile: Dockerfile
     container_name: hrm-ai-service
     ports:
-      - "${AI_SERVICE_PORT:-8000}:8000"
+      - "${AI_SERVICE_PORT:-8001}:8000"
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/${POSTGRES_DB:-hrm}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/hrm_ai # ponytail: password part hardcodes URL-encoded default (@Minhtrung1408); re-encode manually if POSTGRES_PASSWORD changes
       INTERNAL_API_SECRET: ${AI_SERVICE_SECRET:-hrm-internal-key-secure-2024}
       LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-1.5-flash}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434/v1}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-https://ollama.com/v1}
+      OLLAMA_API_KEY: ${OLLAMA_API_KEY:-}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-gpt-oss:120b}
     volumes:
       - ./ai-service/uploads:/app/uploads
     depends_on:
@@ -122,7 +124,7 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: hrm-cloudflared
-    command: tunnel --no-autoupdate --url http://hrm-frontend:3000
+    command: tunnel --no-autoupdate --protocol http2 --url http://hrm-frontend:3000
     depends_on:
       - hrm-frontend
     restart: unless-stopped
@@ -161,8 +163,7 @@ services:
 volumes:
   postgres_data:
   redis_data:
-  n8n_data:
-    external: true
+  n8n_data: # ponytail: plain volume, not external — fresh clones fail otherwise; split per-env only when multiple stacks share one host
 
 networks:
   hrm-network:

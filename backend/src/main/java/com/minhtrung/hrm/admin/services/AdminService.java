@@ -17,6 +17,7 @@ import com.minhtrung.hrm.admin.dtos.requests.RejectPendingUserRequest;
 import com.minhtrung.hrm.admin.dtos.responses.AdminAccountResponse;
 import com.minhtrung.hrm.admin.dtos.responses.AdminSessionResponse;
 import com.minhtrung.hrm.admin.dtos.responses.PendingUserResponse;
+import com.minhtrung.hrm.admin.dtos.responses.UserPermissionResponse;
 import com.minhtrung.hrm.auth.dtos.internals.ClientMetaData;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.auth.entities.PendingUser;
@@ -33,6 +34,9 @@ import com.minhtrung.hrm.employees.repositories.SalaryRepository;
 import com.minhtrung.hrm.employees.repositories.UserContractRepository;
 import com.minhtrung.hrm.employees.repositories.UserProfileRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.permissions.entities.PermissionGrant;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +54,44 @@ public class AdminService {
     private final UserSessionRepository userSessionRepository;
     private final SessionBlacklistService sessionBlacklistService;
     private final PasswordEncoder passwordEncoder;
+    private final PermissionService permissionService;
+
+    /** IT + System Administrator — định nghĩa sysadmin duy nhất của hệ thống. */
+    private boolean isSysAdmin(TokenPayload currentUser) {
+        if (currentUser == null) return false;
+        boolean isIT = "Information Technology".equalsIgnoreCase(currentUser.getDepartment())
+                || "IT".equalsIgnoreCase(currentUser.getDepartment());
+        return isIT && currentUser.getJob() != null
+                && (currentUser.getJob().contains("System Administrator") || currentUser.getJob().contains("Admin"));
+    }
+
+    private boolean isExecutive(TokenPayload currentUser) {
+        return currentUser != null && "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
+    }
+
+    /** Quyền phát quyền cho người khác: sysadmin, hoặc được cấp grant PERMISSION_GRANT. */
+    public boolean hasPermissionGrant(TokenPayload currentUser) {
+        return currentUser != null && (isSysAdmin(currentUser)
+                || permissionService.hasPermission(currentUser.getUserId(), PermissionKey.PERMISSION_GRANT));
+    }
+
+    /**
+     * Quyền "Tài khoản & Bảo Mật": xem danh sách tài khoản, khoá/mở khoá, xem & thu hồi phiên.
+     * ACCOUNT_LOCK đã mang nghĩa khoá tài khoản (khoá = thu hồi toàn bộ phiên), nên người được cấp
+     * key này cần cả bề mặt quản lý tài khoản + phiên, không chỉ một nút khoá.
+     * KHÔNG gồm: duyệt tài khoản onboarding và cấp lại mật khẩu — hai việc đó vẫn gọi checkAdminAccess.
+     */
+    private boolean canManageAccounts(TokenPayload currentUser) {
+        return currentUser != null && (isSysAdmin(currentUser) || isExecutive(currentUser)
+                || permissionService.hasPermission(currentUser.getUserId(), PermissionKey.ACCOUNT_LOCK));
+    }
+
+    private void checkAccountManagementAccess(TokenPayload currentUser) {
+        if (!canManageAccounts(currentUser)) {
+            throw new AccessDeniedException(
+                    "Bạn không có quyền quản lý tài khoản. Cần quyền \"Mở / khóa tài khoản nhân viên\" hoặc là quản trị viên hệ thống.");
+        }
+    }
 
     /**
      * Kiểm tra quyền System Admin (theo Hướng B: IT + System Administrator)
@@ -58,13 +100,24 @@ public class AdminService {
         if (currentUser == null) {
             throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác quản trị!");
         }
-
-        boolean isIT = "Information Technology".equalsIgnoreCase(currentUser.getDepartment());
-        boolean isSysAdmin = isIT && currentUser.getJob() != null && (currentUser.getJob().contains("System Administrator") || currentUser.getJob().contains("Admin"));
-        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
-
-        if (!isSysAdmin && !isExecutive) {
+        if (!isSysAdmin(currentUser) && !isExecutive(currentUser)) {
             throw new AccessDeniedException("Chỉ Quản trị viên Hệ thống (System Administrator) hoặc Ban Giám Đốc mới có quyền truy cập khu vực này!");
+        }
+    }
+
+    /**
+     * Quyền CẤP QUYỀN — cố ý KHÔNG gọi checkAdminAccess().
+     * Lý do: vào được /admin không đồng nghĩa được phát quyền cho người khác, và ngược lại —
+     * người được cấp PERMISSION_GRANT thường là trưởng phòng (không phải admin hệ thống) nên
+     * checkAdminAccess sẽ chặn họ trước khi tới đây. Hai vùng quyền tách bạch:
+     * phiên đăng nhập / duyệt tài khoản = checkAdminAccess, phân quyền = hàm này.
+     */
+    public void checkPermissionGrantAccess(TokenPayload currentUser) {
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác quản trị!");
+        }
+        if (!hasPermissionGrant(currentUser)) {
+            throw new AccessDeniedException("Bạn cần được cấp quyền \"Cấp quyền cho nhân viên khác\" để thực hiện thao tác này!");
         }
     }
 
@@ -178,9 +231,17 @@ public class AdminService {
 
     // ─── 2. QUẢN LÝ TÀI KHOẢN & KHÓA/MỞ KHÓA ──────────────────────────
 
+    /**
+     * Danh sách tài khoản (không có lương — chỉ mã NV, tên, email, phòng ban, chức danh, trạng thái,
+     * số phiên — không có lương). Người được cấp PERMISSION_GRANT cần danh sách này để chọn người
+     * cấp quyền; người có ACCOUNT_LOCK cần để quản lý tài khoản. Thao tác ghi cấp lại mật khẩu
+     * vẫn qua checkAdminAccess.
+     */
     @Transactional(readOnly = true)
     public List<AdminAccountResponse> getAllAccounts(TokenPayload currentUser) {
-        checkAdminAccess(currentUser);
+        if (!canManageAccounts(currentUser) && !hasPermissionGrant(currentUser)) {
+            throw new AccessDeniedException("Bạn không có quyền xem danh sách tài khoản!");
+        }
 
         return userRepository.findAll().stream()
                 .map(this::mapToAccountResponse)
@@ -189,7 +250,7 @@ public class AdminService {
 
     @Transactional
     public AdminAccountResponse updateAccountStatus(UUID targetUserId, AdminUpdateStatusRequest request, TokenPayload currentUser) {
-        checkAdminAccess(currentUser);
+        checkAccountManagementAccess(currentUser);
 
         if (currentUser.getUserId().equals(targetUserId)) {
             throw new IllegalArgumentException("Không thể tự thay đổi trạng thái hoạt động của chính tài khoản mình đang đăng nhập!");
@@ -246,7 +307,12 @@ public class AdminService {
 
     @Transactional(readOnly = true)
     public List<AdminSessionResponse> getAllSessions(TokenPayload currentUser, String keyword, UUID userId) {
-        checkAdminAccess(currentUser);
+        // Tự xem phiên của chính mình (trang /settings) — không cần quyền quản trị.
+        // Ưu tiên userId == chính mình: bỏ qua keyword để không lộ phiên người khác.
+        boolean isSelf = currentUser != null && userId != null && userId.equals(currentUser.getUserId());
+        if (!isSelf) {
+            checkAccountManagementAccess(currentUser);
+        }
 
         List<UserSession> sessions;
         if (userId != null) {
@@ -288,22 +354,34 @@ public class AdminService {
 
     @Transactional
     public void revokeSession(UUID sessionId, TokenPayload currentUser) {
-        checkAdminAccess(currentUser);
-
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác quản trị!");
+        }
         UserSession session = userSessionRepository.findById(sessionId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy phiên đăng nhập với ID: " + sessionId));
+
+        // Đuổi phiên của chính mình thì không cần quyền quản trị; phiên người khác thì cần.
+        if (!session.getUserId().equals(currentUser.getUserId())) {
+            checkAccountManagementAccess(currentUser);
+        }
 
         session.setRevoked(true);
         userSessionRepository.save(session);
         sessionBlacklistService.blacklistSession(sessionId, 15);
 
-        log.info("Admin {} đã thu hồi phiên đăng nhập {} của user {}", currentUser.getUserId(), sessionId, session.getUserId());
+        log.info("User {} đã thu hồi phiên đăng nhập {} của user {}", currentUser.getUserId(), sessionId, session.getUserId());
     }
 
     @Transactional
     public void revokeAllUserSessions(UUID targetUserId, TokenPayload currentUser) {
-        checkAdminAccess(currentUser);
+        if (!targetUserId.equals(currentUser.getUserId())) {
+            checkAccountManagementAccess(currentUser);
+        }
+        doRevokeAllUserSessions(targetUserId, currentUser);
+    }
 
+    /** Không check quyền — dùng nội bộ khi đổi grant cần đá phiên cũ (người gọi đã qua check riêng). */
+    private void doRevokeAllUserSessions(UUID targetUserId, TokenPayload actor) {
         List<UserSession> sessions = userSessionRepository.findByUserId(targetUserId);
         for (UserSession s : sessions) {
             s.setRevoked(true);
@@ -312,7 +390,51 @@ public class AdminService {
         }
 
         log.info("Admin {} đã thu hồi toàn bộ {} phiên đăng nhập của user {}",
-                currentUser.getUserId(), sessions.size(), targetUserId);
+                actor.getUserId(), sessions.size(), targetUserId);
+    }
+
+    // ─── 4. PHÂN QUYỀN THEO NGƯỜI (GRANTS) ────────────────────────────
+
+    @Transactional(readOnly = true)
+    public List<UserPermissionResponse> getUserPermissions(UUID targetUserId, TokenPayload currentUser) {
+        checkPermissionGrantAccess(currentUser);
+        return permissionService.listByUserId(targetUserId).stream()
+                .map(this::mapToPermissionResponse)
+                .toList();
+    }
+
+    @Transactional
+    public List<UserPermissionResponse> saveUserPermissions(UUID targetUserId, List<String> keys, TokenPayload currentUser) {
+        checkPermissionGrantAccess(currentUser);
+        if (currentUser.getUserId() != null && currentUser.getUserId().equals(targetUserId)) {
+            throw new IllegalArgumentException("Không thể tự cấp / tự gỡ quyền cho chính mình! Nhờ SysAdmin hoặc người được ủy quyền khác thực hiện.");
+        }
+        List<PermissionGrant> saved = permissionService.replaceGrants(targetUserId, keys, currentUser.getUserId());
+        // ponytail: hiệu lực ngay — đá văng sessions để JWT mới nhét grants mới
+        doRevokeAllUserSessions(targetUserId, currentUser);
+        String granterName = (currentUser.getFullName() != null ? currentUser.getFullName() : currentUser.getUserId().toString());
+        return saved.stream()
+                .map(g -> UserPermissionResponse.builder()
+                        .key(g.getPermission().name())
+                        .label(g.getPermission().getLabel())
+                        .grantedBy(g.getGrantedBy())
+                        .grantedByName(granterName)
+                        .grantedAt(g.getGrantedAt())
+                        .build())
+                .toList();
+    }
+
+    private UserPermissionResponse mapToPermissionResponse(PermissionGrant g) {
+        String granterName = userRepository.findById(g.getGrantedBy())
+                .map(u -> ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim())
+                .orElse(g.getGrantedBy().toString());
+        return UserPermissionResponse.builder()
+                .key(g.getPermission().name())
+                .label(g.getPermission().getLabel())
+                .grantedBy(g.getGrantedBy())
+                .grantedByName(granterName)
+                .grantedAt(g.getGrantedAt())
+                .build();
     }
 
     // ─── HELPER MAPPERS ──────────────────────────────────────────────

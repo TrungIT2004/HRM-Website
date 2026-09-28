@@ -39,6 +39,8 @@ import com.minhtrung.hrm.overtime.exceptions.OvertimeException;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
 import com.minhtrung.hrm.overtime.specification.OvertimeSpecification;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +54,7 @@ public class OvertimeService {
     private final UserRepository userRepository;
     private final HolidayRepository holidayRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
+    private final PermissionService permissionService;
 
     // ─── LẤY SCHEDULE ────────────────────────────────────────────────
     private WorkShiftSchedule getScheduleOrNull(UUID shiftId, LocalDate date) {
@@ -381,7 +384,8 @@ public class OvertimeService {
             }
         }
 
-        if (isRequestorsDepartmentHead || isExecutive) {
+        if (isRequestorsDepartmentHead || isExecutive
+                || permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_APPROVE)) {
             // 5. Gán người duyệt và cập nhật trạng thái mới
             User approverProxy = userRepository.getReferenceById(approverId);
             overtimeRecord.setApprover(approverProxy);
@@ -432,7 +436,8 @@ public class OvertimeService {
     // ─── XEM ĐƠN OT CẦN PHÊ DUYỆT ───────────────────────────────────
     @Transactional(readOnly = true)
     public Page<ManagerOvertimeResponse> getOvertimeRecordsToApprove(UserRole userRole, OvertimeFilterRequest filter, Pageable pageable) {
-        Specification<OvertimeRecord> spec = OvertimeSpecification.forApprovals(userRole, filter);
+        boolean hasGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_APPROVE);
+        Specification<OvertimeRecord> spec = OvertimeSpecification.forApprovals(userRole, filter, hasGrant);
         return overtimeRecordRepository.findAll(spec, pageable).map(this::mapToManagerResponse);
     }
 
@@ -440,8 +445,9 @@ public class OvertimeService {
     @Transactional(readOnly = true)
     public Page<HrOvertimeResponse> getCompanyOvertimeRecords(UserRole userRole, OvertimeFilterRequest filter, Pageable pageable) {
         String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-        if (!myDepartment.equals("Human Resources")) {
-            throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ nhân viên phòng Nhân sự mới có quyền xem toàn bộ bản ghi tăng ca công ty");
+        if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_VIEW_ALL)) {
+            throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xem toàn bộ bản ghi tăng ca công ty");
         }
 
         Specification<OvertimeRecord> spec = OvertimeSpecification.forCompanyWide(filter);
@@ -546,8 +552,9 @@ public class OvertimeService {
 @Transactional(readOnly = true)
 public byte[] exportOvertimeToExcel(UserRole userRole, OvertimeFilterRequest filter) {
     String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-    if (!myDepartment.equals("Human Resources")) {
-        throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ nhân viên phòng Nhân sự mới có quyền xuất báo cáo làm thêm giờ");
+    if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+            && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_VIEW_ALL)) {
+        throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xuất báo cáo làm thêm giờ");
     }
 
     // 1. Lấy toàn bộ dữ liệu khớp bộ lọc (không phân trang)

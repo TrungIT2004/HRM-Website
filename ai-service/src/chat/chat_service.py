@@ -20,6 +20,11 @@ from src.cache.semantic_cache import SemanticCache
 from src.db.session import get_db_connection
 
 
+def _page_label(page_number: Optional[int]) -> str:
+    """docx/xlsx have no real pagination, so their chunks carry NULL instead of a fake page 1."""
+    return f" (Trang {page_number})" if page_number is not None else ""
+
+
 # =========================================================================
 # 1. SYSTEM PROMPTS & INJECTION DEFENSE RULES
 # =========================================================================
@@ -44,7 +49,8 @@ Nhiệm vụ của bạn: Dựa vào [LỊCH SỬ HỘI THOẠI GẦN ĐÂY] và
 1. KHÔNG được trả lời câu hỏi. CHỈ viết lại câu hỏi.
 2. Nếu câu hỏi mới nhất đã độc lập và rõ nghĩa (không chứa đại từ thay thế như "nó", "tiền đó", "vậy còn...", "trường hợp này thì sao"), hãy GIỮ NGUYÊN câu hỏi đó.
 3. Thay thế các đại từ chỉ định, liên từ phụ thuộc bằng đối tượng cụ thể được nhắc đến trong lịch sử (ví dụ: "tiền đó" -> "phụ cấp cơm trưa", "sinh đôi thì sao" -> "thời gian nghỉ thai sản khi sinh đôi", "còn phạt thì sao" -> "mức xử phạt khi đi muộn").
-4. Trả về DUY NHẤT câu hỏi đã viết lại, không thêm lời chào hay giải thích nào.
+4. Ưu tiên GIỮ NGUYÊN từ ngữ gốc của nhân viên và của lịch sử (ví dụ giữ "hành vi", "bị cấm", "không hợp lệ"), HẠN CHẾ diễn đạt lại bằng từ đồng nghĩa (tránh đổi "hành vi" thành "hình thức", "bị cấm" thành "không được phép") vì hệ thống tìm kiếm phía sau khớp từ vựng.
+5. Trả về DUY NHẤT câu hỏi đã viết lại, không thêm lời chào hay giải thích nào.
 """
 
 # Regex patterns để phát hiện Prompt Injection (Lớp 1)
@@ -56,6 +62,17 @@ INJECTION_PATTERNS = [
     r"(?i)(you\s+are\s+now|act\s+as|pretend\s+to\s+be|roleplay\s+as)\s+(an?\s+)?(unrestricted|evil|hacker|dan|developer)",
     r"(?i)(từ\s*bây\s*giờ|từ\s*giờ)\s*(bạn\s*là|hãy\s*đóng\s*vai|hãy\s*là)\s*(hacker|dan|chế\s*độ\s*không\s*giới\s*hạn)"
 ]
+
+# Ngưỡng top-1 rerank: dưới ngưỡng thì fallback "liên hệ HR". Calibrate lại khi đổi model.
+# 2026-09-28, AITeamVN/Vietnamese_Reranker, 20 câu: junk<=0.0002, relevant>=0.3586.
+# Thử nghiệm 0.20: rewrite "hình thức... không được phép" đạt 0.256 mà chunk đúng thì giữ.
+RELEVANCE_THRESHOLD = 0.20
+
+SUMMARY_PROMPT = """Bạn tóm tắt lịch sử trao đổi giữa nhân viên và trợ lý AI.
+Nhiệm vụ: tổng hợp thành MỘT BẢN TÓM TẮT NGẮN GỌN (tối đa 80-100 từ) ghi nhớ:
+- Thông tin nhân thân/vị trí của người hỏi nếu có.
+- Các chủ đề/quy chế chính đã được tư vấn giải đáp.
+Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thích nào."""
 
 
 class ChatService:
@@ -156,7 +173,7 @@ Tiêu đề:"""
     # =========================================================================
     def summarize_context_background(self, conversation_id: str):
         """
-        Kích hoạt theo chu kỳ khi tin nhắn vượt mốc 12, 18, 24...
+        Kích hoạt theo chu kỳ khi tin nhắn vượt mốc 8, 14, 20...
         Nén tăng dần các tin nhắn cũ đã trôi ra ngoài vùng buffer 6 tin gần nhất.
         """
         conn = get_db_connection()
@@ -230,7 +247,69 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
     # =========================================================================
     # KỸ THUẬT 1: QUERY CONDENSATION / CONTEXTUAL REWRITING
     # =========================================================================
-    def condense_question(self, question: str, history: List[Dict[str, str]]) -> str:
+    def _llm_complete(self, system_content: str, user_content: str, tag: str) -> str:
+        """1 LLM call đồng bộ, Ollama trước Gemini sau. Trả chuỗi rỗng nếu cả hai lỗi."""
+        if self.ollama_client:
+            try:
+                res = self.ollama_client.chat.completions.create(
+                    model=self.ollama_model,
+                    messages=[
+                        {"role": "system", "content": system_content},
+                        {"role": "user", "content": user_content}
+                    ],
+                    temperature=0.0
+                )
+                text = res.choices[0].message.content.strip()
+                if text:
+                    return text
+            except Exception as e:
+                print(f"[ChatService] Ollama {tag} failed: {e}")
+
+        if self.gemini_client:
+            try:
+                res = self.gemini_client.generate_content(f"{system_content}\n\n{user_content}")
+                text = res.text.strip()
+                if text:
+                    return text
+            except Exception as e:
+                print(f"[ChatService] Gemini {tag} failed: {e}")
+
+        return ""
+
+    def ensure_context_summary(
+        self,
+        conversation_id: str,
+        context_summary: Optional[str],
+        history: List[Dict[str, str]]
+    ) -> Optional[str]:
+        """Từ lượt 2: chưa có summary thì dựng đồng bộ từ toàn bộ lịch sử và lưu DB."""
+        if context_summary or not history:
+            return context_summary
+        lines = []
+        for msg in history:
+            role_name = "Nhân viên" if msg["role"] == "USER" else "Trợ lý AI"
+            lines.append(f"- {role_name}: {msg['content'][:500].strip().replace(chr(10), ' ')}")
+        summary = self._llm_complete(
+            SUMMARY_PROMPT,
+            "Dưới đây là toàn bộ trao đổi từ đầu cuộc hội thoại:\n" + "\n".join(lines),
+            tag="ensure_summary"
+        )
+        if not summary:
+            return None
+        conn = get_db_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute(
+                "UPDATE chat_conversations SET context_summary = %s WHERE id = %s;",
+                (summary, conversation_id)
+            )
+            conn.commit()
+        finally:
+            cur.close()
+            conn.close()
+        return summary
+
+    def condense_question(self, question: str, history: List[Dict[str, str]], context_summary: Optional[str] = None) -> str:
         """Kỹ thuật 1: Viết lại câu hỏi phụ thuộc thành câu hỏi độc lập."""
         if not history:
             return question
@@ -242,7 +321,9 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
             history_lines.append(f"- {role_name}: {content_snippet}")
         history_text = "\n".join(history_lines)
 
-        prompt = f"""[LỊCH SỬ HỘI THOẠI GẦN ĐÂY]:
+        # ponytail: cho rewrite thấy trí nhớ xa, không thì từ lượt 4 trở đi là mù Q1.
+        summary_block = f"[BỐI CẢNH DÀI HẠN]:\n{context_summary}\n\n" if context_summary else ""
+        prompt = f"""{summary_block}[LỊCH SỬ HỘI THOẠI GẦN ĐÂY]:
 {history_text}
 
 [CÂU HỎI MỚI NHẤT]:
@@ -250,31 +331,10 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
 
 [CÂU HỎI ĐỘC LẬP]:"""
 
-        if self.ollama_client:
-            try:
-                res = self.ollama_client.chat.completions.create(
-                    model=self.ollama_model,
-                    messages=[
-                        {"role": "system", "content": CONDENSE_PROMPT},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.0
-                )
-                rewritten = res.choices[0].message.content.strip().strip('"').strip("'")
-                if rewritten and len(rewritten) > 5:
-                    return rewritten
-            except Exception as e:
-                print(f"[ChatService] Ollama condense query failed: {e}")
-
-        if self.gemini_client:
-            try:
-                full_prompt = f"{CONDENSE_PROMPT}\n\n{prompt}"
-                res = self.gemini_client.generate_content(full_prompt)
-                rewritten = res.text.strip().strip('"').strip("'")
-                if rewritten and len(rewritten) > 5:
-                    return rewritten
-            except Exception as e:
-                print(f"[ChatService] Gemini condense query failed: {e}")
+        rewritten = self._llm_complete(CONDENSE_PROMPT, prompt, tag="condense query")
+        rewritten = rewritten.strip('"').strip("'")
+        if rewritten and len(rewritten) > 5:
+            return rewritten
 
         return question
 
@@ -546,6 +606,42 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
             cursor.close()
             conn.close()
 
+    def toggle_pin_conversation(self, conversation_id: str, user_id: Optional[str] = None, is_pinned: Optional[bool] = None) -> Optional[bool]:
+        """Ghim hoặc bỏ ghim cuộc hội thoại (nếu is_pinned is None thì đảo ngược trạng thái hiện tại)."""
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        try:
+            if is_pinned is None:
+                query = "UPDATE chat_conversations SET is_pinned = NOT COALESCE(is_pinned, FALSE), updated_at = CURRENT_TIMESTAMP WHERE id = %s"
+                params = [conversation_id]
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                query += " RETURNING is_pinned;"
+                cursor.execute(query, tuple(params))
+                res = cursor.fetchone()
+                if not res:
+                    return None
+                conn.commit()
+                return res[0]
+            else:
+                query = "UPDATE chat_conversations SET is_pinned = %s, updated_at = CURRENT_TIMESTAMP WHERE id = %s"
+                params = [is_pinned, conversation_id]
+                if user_id:
+                    query += " AND user_id = %s"
+                    params.append(user_id)
+                query += " RETURNING is_pinned;"
+                cursor.execute(query, tuple(params))
+                res = cursor.fetchone()
+                if not res:
+                    return None
+                conn.commit()
+                return res[0]
+        finally:
+            cursor.close()
+            conn.close()
+
+
     def regenerate_conversation_title(self, conversation_id: str, user_id: Optional[str] = None) -> Optional[str]:
         """Kích hoạt AI đọc câu hỏi đầu tiên của hội thoại và sinh lại tiêu đề thông minh."""
         conn = get_db_connection()
@@ -577,6 +673,46 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
         finally:
             cursor.close()
             conn.close()
+
+    def _retrieve_lazy(
+        self,
+        question: str,
+        recent_history: List[Dict[str, str]],
+        context_summary: Optional[str],
+        conv_id: str,
+        user_jobs: List[str],
+        departments: Optional[List[str]],
+        top_k: int,
+        tag: str
+    ) -> Tuple[List[Dict[str, str]], str, Optional[str]]:
+        """Retrieve thẳng câu gốc; rớt + có history mới summary+rewrite rồi thử lại 1 lần."""
+        chunks = self.retriever.retrieve(
+            query=question,
+            jobs=user_jobs,
+            departments=departments,
+            top_k=top_k
+        )
+        top1 = chunks[0]["relevance_score"] if chunks else 0.0
+        print(f"[ChatService {tag}] Retrieve: query='{question}' top1={top1:.4f} n={len(chunks)}")
+        if (chunks and top1 >= RELEVANCE_THRESHOLD) or not recent_history:
+            return chunks, question, context_summary
+        # ponytail: rewrite là đường cứu hộ, không phải mặc định. Ceiling: tốn 2 retrieval khi miss.
+        context_summary = self.ensure_context_summary(conv_id, context_summary, recent_history) or context_summary
+        rewritten = self.condense_question(question, recent_history, context_summary)
+        print(f"[ChatService {tag}] Query Rewrite: '{question}' -> '{rewritten}'")
+        if rewritten == question:
+            return chunks, question, context_summary
+        retry = self.retriever.retrieve(
+            query=rewritten,
+            jobs=user_jobs,
+            departments=departments,
+            top_k=top_k
+        )
+        retry_top1 = retry[0]["relevance_score"] if retry else 0.0
+        print(f"[ChatService {tag}] Retry-rewrite: top1={retry_top1:.4f} n={len(retry)}")
+        if retry and retry_top1 >= RELEVANCE_THRESHOLD:
+            return retry, rewritten, context_summary
+        return chunks, rewritten, context_summary
 
     # =========================================================================
     # CORE PIPELINE: NON-STREAMING CHAT (Hỗ trợ BackgroundTasks)
@@ -618,14 +754,8 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
         if is_new:
             title_future = self.executor.submit(self.generate_smart_title_background, conv_id, question)
 
-        # 3. Kỹ thuật 1 - Tái tạo câu hỏi
+        # 3. Câu hỏi (rewrite lười nằm trong _retrieve_lazy ở bước 4)
         rewritten_query = question
-        if recent_history:
-            rewritten_query = self.condense_question(question, recent_history)
-            try:
-                print(f"[ChatService] Query Rewrite: '{question}' -> '{rewritten_query}'")
-            except Exception:
-                pass
 
         # 3.5. Kiểm tra Semantic Cache (Phản hồi <50ms nếu câu hỏi tương tự >= 95%)
         cached_entry = self.cache.check_cache(
@@ -667,16 +797,13 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
                 "cache_similarity": cached_entry["similarity"]
             }
 
-        # 4. Hybrid Retrieval
-        chunks = self.retriever.retrieve(
-            query=rewritten_query,
-            jobs=user_jobs,
-            departments=departments,
-            top_k=top_k
+        # 4. Hybrid Retrieval lười (thẳng câu gốc, rớt + có history mới rewrite)
+        chunks, rewritten_query, context_summary = self._retrieve_lazy(
+            question, recent_history, context_summary, conv_id, user_jobs, departments, top_k, tag="Query"
         )
 
         # Kiểm tra ngưỡng tương đồng
-        if not chunks or chunks[0]["relevance_score"] < 0.40:
+        if not chunks or chunks[0]["relevance_score"] < RELEVANCE_THRESHOLD:
             answer = "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết."
             
             # Lấy tiêu đề đã sinh nếu có
@@ -713,7 +840,7 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
 
         for idx, c in enumerate(chunks):
             context_parts.append(
-                f"[TÀI LIỆU {idx+1}]: {c['document_name']} (Trang {c['page_number']})\n"
+                f"[TÀI LIỆU {idx+1}]: {c['document_name']}{_page_label(c['page_number'])}\n"
                 f"[ĐƯỜNG DẪN]: {c['breadcrumb']}\n"
                 f"[NỘI DUNG]:\n{c['content']}\n"
             )
@@ -769,7 +896,7 @@ Hãy đọc kỹ các tài liệu trên kết hợp cùng lịch sử trao đổ
 
         # Kiểm tra chu kỳ nén ngữ cảnh (> 12 tin nhắn)
         msg_count = self.get_conversation_message_count(conv_id)
-        if background_tasks and msg_count >= 12 and (msg_count - 6) % 6 == 0:
+        if background_tasks and msg_count >= 8 and (msg_count - 8) % 6 == 0:
             background_tasks.add_task(self.summarize_context_background, conv_id)
 
         # Lấy kết quả tiêu đề thông minh đã sinh song song từ ThreadPool (chờ tối đa 2.0s)
@@ -858,14 +985,8 @@ Hãy đọc kỹ các tài liệu trên kết hợp cùng lịch sử trao đổ
         if is_new:
             title_future = self.executor.submit(self.generate_smart_title_background, conv_id, question)
 
-        # 3. Kỹ thuật 1 - Tái tạo câu hỏi
+        # 3. Câu hỏi (rewrite lười nằm trong _retrieve_lazy ở bước 4)
         rewritten_query = question
-        if recent_history:
-            rewritten_query = self.condense_question(question, recent_history)
-            try:
-                print(f"[ChatService Stream] Query Rewrite: '{question}' -> '{rewritten_query}'")
-            except Exception:
-                pass
 
         # 3.5. Kiểm tra Semantic Cache (Phản hồi <50ms)
         cached_entry = self.cache.check_cache(
@@ -912,15 +1033,12 @@ Hãy đọc kỹ các tài liệu trên kết hợp cùng lịch sử trao đổ
             )
             return
 
-        # 4. Hybrid Retrieval (Two-Stage: pgvector + Cross-Encoder Reranker)
-        chunks = self.retriever.retrieve(
-            query=rewritten_query,
-            jobs=user_jobs,
-            departments=departments,
-            top_k=top_k
+        # 4. Hybrid Retrieval lười (Two-Stage + rewrite cứu hộ khi rớt ngưỡng)
+        chunks, rewritten_query, context_summary = self._retrieve_lazy(
+            question, recent_history, context_summary, conv_id, user_jobs, departments, top_k, tag="Stream"
         )
 
-        if not chunks or chunks[0]["relevance_score"] < 0.40:
+        if not chunks or chunks[0]["relevance_score"] < RELEVANCE_THRESHOLD:
             if title_future:
                 try:
                     smart_title = title_future.result(timeout=1.0)
@@ -951,7 +1069,7 @@ Hãy đọc kỹ các tài liệu trên kết hợp cùng lịch sử trao đổ
         citations = []
         for idx, c in enumerate(chunks):
             context_parts.append(
-                f"[TÀI LIỆU {idx+1}]: {c['document_name']} (Trang {c['page_number']})\n"
+                f"[TÀI LIỆU {idx+1}]: {c['document_name']}{_page_label(c['page_number'])}\n"
                 f"[ĐƯỜNG DẪN]: {c['breadcrumb']}\n"
                 f"[NỘI DUNG]:\n{c['content']}\n"
             )
@@ -1077,5 +1195,5 @@ Hãy đọc kỹ các tài liệu trên kết hợp cùng lịch sử trao đổ
 
         # Kiểm tra chu kỳ tóm tắt
         msg_count = self.get_conversation_message_count(conv_id)
-        if background_tasks and msg_count >= 12 and (msg_count - 6) % 6 == 0:
+        if background_tasks and msg_count >= 8 and (msg_count - 8) % 6 == 0:
             background_tasks.add_task(self.summarize_context_background, conv_id)

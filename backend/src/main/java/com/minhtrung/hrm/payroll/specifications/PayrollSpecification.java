@@ -84,14 +84,11 @@ public class PayrollSpecification {
         };
     }
 
-    // ─── 2. TAB TOÀN CÔNG TY: CHỈ Kế toán & Ban Giám đốc xem toàn công ty (CHỪA MÌNH RA) ───
-    public static Specification<Payroll> filterForCompany(UUID currentUserId, CompanyPayrollFilterRequest filter) {
+    // ─── 2. TAB TOÀN CÔNG TY: CHỈ Kế toán & Ban Giám đốc xem toàn công ty ───
+    public static Specification<Payroll> filterForCompany(CompanyPayrollFilterRequest filter) {
         return (root, query, cb) -> {
             Join<Payroll, User> userJoin = setupJoins(root, query);
             List<Predicate> predicates = new ArrayList<>();
-
-            // 👉 Chừa chính người đang xem ra
-            predicates.add(cb.notEqual(userJoin.get("userId"), currentUserId));
 
             applyPeriodAndStatusFilters(predicates, root, cb, filter.getPeriodMonth(), filter.getPeriodYear(), filter.getStatus());
             applyKeywordSearch(predicates, userJoin, cb, filter.getKeyword());

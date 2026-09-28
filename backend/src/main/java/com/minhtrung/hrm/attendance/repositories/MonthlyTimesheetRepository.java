@@ -22,10 +22,14 @@ public interface MonthlyTimesheetRepository extends JpaRepository<MonthlyTimeshe
 
     List<MonthlyTimesheet> findByPeriodMonthAndPeriodYearAndStatus(int periodMonth, int periodYear, TimesheetStatus status);
 
+    /** Lấy đúng nhóm nhân viên được chọn trên bảng — dùng cho chốt sổ theo vùng chọn. */
+    List<MonthlyTimesheet> findByPeriodMonthAndPeriodYearAndUser_UserIdIn(int periodMonth, int periodYear, List<UUID> userIds);
+
     boolean existsByPeriodMonthAndPeriodYear(int periodMonth, int periodYear);
 
     long countByPeriodMonthAndPeriodYearAndStatus(int periodMonth, int periodYear, TimesheetStatus status);
 
+    @org.springframework.data.jpa.repository.Modifying
     void deleteByPeriodMonthAndPeriodYearAndStatus(int periodMonth, int periodYear, TimesheetStatus status);
 
     @org.springframework.data.jpa.repository.Modifying

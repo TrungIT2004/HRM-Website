@@ -1,0 +1,139 @@
+- generic [active] [ref=f3e1]:
+  - button "Open Next.js Dev Tools" [ref=f3e15] [cursor=pointer]
+  - alert [ref=f3e19]: Quản Lý Đơn Xin Nghỉ Phép
+  - generic [ref=f3e264]:
+    - banner [ref=f3e265]:
+      - link "ACT ACT HRM" [ref=f3e267] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f3e268]: ACT
+        - generic [ref=f3e269]: ACT HRM
+      - generic [ref=f3e271]:
+        - generic [ref=f3e272]:
+          - generic [ref=f3e276]: "Hôm nay:"
+          - generic [ref=f3e277]: Vào 08:00 • Ra 17:30
+        - button "T Phạm Thị Cúc Department Head of Human Resources" [ref=f3e279] [cursor=pointer]:
+          - generic [ref=f3e280]: T
+          - generic [ref=f3e281]:
+            - generic [ref=f3e282]: Phạm Thị Cúc
+            - generic [ref=f3e283]: Department Head of Human Resources
+    - generic [ref=f3e284]:
+      - complementary [ref=f3e285]:
+        - generic [ref=f3e287]:
+          - generic [ref=f3e288]: Menu Điều hướng
+          - link "Tổng quan" [ref=f3e290] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Trợ lý AI" [ref=f3e298] [cursor=pointer]:
+            - /url: /chat
+          - link "Kho Tài liệu & Quy chế" [ref=f3e304] [cursor=pointer]:
+            - /url: /documents
+          - link "Chấm công & Giờ làm" [ref=f3e310] [cursor=pointer]:
+            - /url: /attendance
+          - link "Quản lý Nghỉ phép" [ref=f3e316] [cursor=pointer]:
+            - /url: /leave
+          - link "Làm thêm giờ" [ref=f3e321] [cursor=pointer]:
+            - /url: /overtime
+          - link "Đơn Thôi việc" [ref=f3e327] [cursor=pointer]:
+            - /url: /resignations
+          - link "Danh bạ Nhân sự" [ref=f3e333] [cursor=pointer]:
+            - /url: /employees
+          - link "Tính lương & Thu nhập" [ref=f3e341] [cursor=pointer]:
+            - /url: /payroll
+          - link "Cơ cấu Tổ chức" [ref=f3e346] [cursor=pointer]:
+            - /url: /organization
+          - link "Cài đặt" [ref=f3e353] [cursor=pointer]:
+            - /url: /settings
+      - main [ref=f3e359]:
+        - generic [ref=f3e360]:
+          - generic [ref=f3e361]:
+            - generic [ref=f3e362]:
+              - generic [ref=f3e363]: Phân hệ Nghỉ Phép Tự Động
+              - heading "Quản Lý Đơn Xin Nghỉ Phép" [level=1] [ref=f3e367]
+              - paragraph [ref=f3e368]: Tính toán ngày nghỉ tự động trừ cuối tuần & ngày lễ, kiểm tra quỹ phép năm tức thời và quy trình duyệt phân cấp.
+            - generic [ref=f3e369]:
+              - button "Tạo đơn nghỉ phép mới" [ref=f3e370] [cursor=pointer]
+              - button "Xuất Báo Cáo (Excel)" [ref=f3e373] [cursor=pointer]
+          - generic [ref=f3e378]:
+            - generic [ref=f3e380]:
+              - text: Tổng Quỹ Phép Năm
+              - generic [ref=f3e381]: 12 ngày
+            - generic [ref=f3e386]:
+              - text: Phép Đã Sử Dụng
+              - generic [ref=f3e387]: 0 ngày
+            - generic [ref=f3e393]:
+              - text: Phép Còn Lại
+              - generic [ref=f3e394]: 12 ngày
+          - generic [ref=f3e399]:
+            - button "Đơn của tôi" [ref=f3e400] [cursor=pointer]
+            - button "Hộp thư Duyệt đơn" [ref=f3e401] [cursor=pointer]
+            - button "Toàn công ty" [ref=f3e403] [cursor=pointer]
+          - generic [ref=f3e404]:
+            - generic [ref=f3e405]: Bộ lọc đơn nghỉ phép
+            - generic [ref=f3e410]:
+              - generic [ref=f3e411]: "Xem nhanh:"
+              - button "Hôm nay" [ref=f3e412] [cursor=pointer]
+              - button "Tuần này" [ref=f3e413] [cursor=pointer]
+              - button "Tháng này" [ref=f3e414] [cursor=pointer]
+            - generic [ref=f3e415]:
+              - generic [ref=f3e416]:
+                - generic [ref=f3e417]: Từ ngày
+                - textbox [ref=f3e418]
+              - generic [ref=f3e419]:
+                - generic [ref=f3e420]: Đến ngày
+                - textbox [ref=f3e421]
+              - generic [ref=f3e422]:
+                - generic [ref=f3e423]: Trạng thái đơn
+                - combobox [ref=f3e424]:
+                  - option "Tất cả trạng thái" [selected]
+                  - option "Đang chờ duyệt"
+                  - option "Đã chấp thuận"
+                  - option "Đã từ chối"
+              - generic [ref=f3e425]:
+                - generic [ref=f3e426]: Tìm kiếm
+                - textbox "Tìm tên, mã, lý do..." [ref=f3e431]
+            - generic [ref=f3e432]:
+              - button "Đặt lại" [ref=f3e433] [cursor=pointer]
+              - button "Tìm kiếm & Lọc" [ref=f3e434] [cursor=pointer]
+          - generic [ref=f3e439]:
+            - generic [ref=f3e440]:
+              - heading "Lịch sử nộp đơn của tôi" [level=3] [ref=f3e441]
+              - generic [ref=f3e442]: 3 bản ghi
+            - table [ref=f3e444]:
+              - rowgroup [ref=f3e445]:
+                - row [ref=f3e446]:
+                  - columnheader "Thời gian nghỉ" [ref=f3e447]
+                  - columnheader "Số ngày trừ phép" [ref=f3e448]
+                  - columnheader "Lý do" [ref=f3e449]
+                  - columnheader "Người duyệt" [ref=f3e450]
+                  - columnheader "Trạng thái" [ref=f3e451]
+                  - columnheader "Thao tác" [ref=f3e452]
+              - rowgroup [ref=f3e453]:
+                - row [ref=f3e454]:
+                  - 'cell "14/05/2026 → 14/05/2026 Nộp: 11/05/2026 09:00" [ref=f3e455]':
+                    - generic [ref=f3e456]: 14/05/2026 → 14/05/2026
+                    - generic "cb058910-256b-4ed3-af08-cd8d02d6e65a" [ref=f3e457]: "Nộp: 11/05/2026 09:00"
+                  - cell "1 ngày" [ref=f3e458]
+                  - cell "Khám sức khỏe định kỳ" [ref=f3e460]
+                  - cell "Lê Văn C (HR Generalist)" [ref=f3e462]
+                  - cell "Đã duyệt" [ref=f3e463]
+                  - cell "—" [ref=f3e468]
+                - row [ref=f3e469]:
+                  - 'cell "09/02/2026 → 09/02/2026 Nộp: 06/02/2026 09:00" [ref=f3e470]':
+                    - generic [ref=f3e471]: 09/02/2026 → 09/02/2026
+                    - generic "ddfc8748-628c-4874-9e79-9bad22dc6883" [ref=f3e472]: "Nộp: 06/02/2026 09:00"
+                  - cell "1 ngày" [ref=f3e473]
+                  - cell "Nghỉ phép năm cá nhân" [ref=f3e475]
+                  - cell "Lê Văn C (HR Generalist)" [ref=f3e477]
+                  - cell "Đã duyệt" [ref=f3e478]
+                  - cell "—" [ref=f3e483]
+                - row [ref=f3e484]:
+                  - 'cell "04/02/2026 → 04/02/2026 Nộp: 01/02/2026 09:00" [ref=f3e485]':
+                    - generic [ref=f3e486]: 04/02/2026 → 04/02/2026
+                    - generic "51023d11-d254-43ea-a361-f4d5d2b0e96b" [ref=f3e487]: "Nộp: 01/02/2026 09:00"
+                  - cell "1 ngày" [ref=f3e488]
+                  - cell "Nghỉ giải quyết thủ tục hành chính" [ref=f3e490]
+                  - cell "Lê Văn C (HR Generalist)" [ref=f3e492]
+                  - cell "Đã duyệt" [ref=f3e493]
+                  - cell "—" [ref=f3e498]
+  - 'button "Đổi vai trò: Phạm Thị Cúc" [ref=f3e256] [cursor=pointer]':
+    - generic [ref=f3e260]: "Đổi vai trò:"
+    - generic [ref=f3e261]: Phạm Thị Cúc

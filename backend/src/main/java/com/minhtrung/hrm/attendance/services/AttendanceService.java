@@ -76,6 +76,8 @@ import com.minhtrung.hrm.overtime.entities.OvertimeRecord;
 import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -90,6 +92,7 @@ public class AttendanceService {
     private final HolidayRepository holidayRepository;
     private final WorkShiftRepository workShiftRepository;
     private final MonthlyTimesheetRepository monthlyTimesheetRepository;
+    private final PermissionService permissionService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public AttendanceService(
@@ -100,7 +103,8 @@ public class AttendanceService {
             OvertimeRecordRepository overtimeRecordRepository,
             HolidayRepository holidayRepository,
             WorkShiftRepository workShiftRepository,
-            MonthlyTimesheetRepository monthlyTimesheetRepository) {
+            MonthlyTimesheetRepository monthlyTimesheetRepository,
+            PermissionService permissionService) {
         this.userRepository = userRepository;
         this.attendanceRepository = attendanceRepository;
         this.workShiftScheduleRepository = workShiftScheduleRepository;
@@ -109,6 +113,7 @@ public class AttendanceService {
         this.holidayRepository = holidayRepository;
         this.workShiftRepository = workShiftRepository;
         this.monthlyTimesheetRepository = monthlyTimesheetRepository;
+        this.permissionService = permissionService;
     }
 
     @SuppressWarnings("null")
@@ -245,8 +250,10 @@ public class AttendanceService {
     @Transactional(readOnly = true)
     public Page<HrAttendanceResponse> getCompanyAttendances(UserRole userRole, AttendanceFilterRequest filter, Pageable pageable) {
         String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-        if (!myDepartment.equals("Human Resources")) {
-            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự mới có quyền xem chấm công toàn công ty");
+        if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_ALL)) {
+            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
+                "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xuất dữ liệu chấm công");
         }
 
         Specification<Attendance> spec = AttendanceSpecification.forCompanyWide(filter);
@@ -517,7 +524,7 @@ public class AttendanceService {
     @Transactional(readOnly = true)
     public Page<CompanyMonthlyTimesheetResponse> getCompanyMonthlyTimesheets(
             UserRole userRole, CompanyTimesheetFilterRequest filter, Pageable pageable) {
-        validateHROrExecutive(userRole);
+        validateCompanyTimesheetView(userRole);
         Specification<MonthlyTimesheet> spec = MonthlyTimesheetSpecification.filterForCompany(userRole.getUserId(), filter);
         return monthlyTimesheetRepository.findAll(spec, pageable).map(this::mapToCompanyResponse);
     }
@@ -546,7 +553,7 @@ public class AttendanceService {
     // 6. Xuất Excel bảng công toàn công ty (HR / Executive)
     @Transactional(readOnly = true)
     public byte[] exportCompanyMonthlyTimesheetsToExcel(UserRole userRole, CompanyTimesheetFilterRequest filter) {
-        validateHROrExecutive(userRole);
+        validateCompanyTimesheetView(userRole);
         Specification<MonthlyTimesheet> spec = MonthlyTimesheetSpecification.filterForCompany(userRole.getUserId(), filter);
         Sort sort = Sort.by(Sort.Direction.ASC, "user.department.name", "user.employeeCode", "periodYear", "periodMonth");
         List<MonthlyTimesheet> list = monthlyTimesheetRepository.findAll(spec, sort);
@@ -559,7 +566,22 @@ public class AttendanceService {
 
     @Transactional
     public Map<String, Object> generateMonthlyTimesheets(int month, int year, UserRole userRole) {
-        validateHROrExecutive(userRole);
+        String dept = userRole.getDepartment() != null ? userRole.getDepartment() : "";
+        boolean isHR = "Human Resources".equals(dept);
+        boolean isExecutive = "Executive Leadership".equals(dept);
+        if (!isHR && !isExecutive
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.TIMESHEET_LOCK)) {
+            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
+                    "Chỉ phòng Nhân sự (HR) hoặc Ban Giám Đốc mới có quyền thao tác dữ liệu chấm công toàn công ty");
+        }
+
+        // 0. Chỉ tổng hợp được kỳ ĐÃ KẾT THÚC: hôm 27/09 thì tháng 09 chưa được tổng hợp,
+        // phải chờ sang ngày 01/10. So sánh year*12+month để không cần parse ngày.
+        int currentPeriod = LocalDate.now().getYear() * 12 + LocalDate.now().getMonthValue();
+        if (year * 12 + month >= currentPeriod) {
+            throw new AttendanceException(AttendanceErrorCode.INVALID_TIMESHEET_PERIOD,
+                    "Kỳ " + month + "/" + year + " chưa kết thúc, chỉ tổng hợp bảng công cho kỳ đã qua.");
+        }
 
         // 1. Kiểm tra xem tháng này đã bị khóa (LOCKED) chưa
         boolean alreadyLocked = monthlyTimesheetRepository.existsByPeriodMonthAndPeriodYearAndStatus(month, year, TimesheetStatus.LOCKED);
@@ -723,57 +745,45 @@ public class AttendanceService {
             // 4. Tổng hợp Tăng ca (OT)
             List<OvertimeRecord> overtimes = overtimeRecordRepository.findAcceptedOvertimesByUserIdAndDateRange(
                     user.getUserId(), OvertimeRecordStatus.accepted, startOfMonth, endOfMonth);
-            BigDecimal totalActualOtHours = BigDecimal.ZERO;
-            BigDecimal totalPaidOtHours = BigDecimal.ZERO;
+            OvertimeAmounts otTotals = sumOvertimeAmounts(overtimes);
+            BigDecimal totalActualOtHours = otTotals.actualHours();
+            BigDecimal totalPaidOtHours = otTotals.paidHours();
             List<StaffMonthlyTimesheetResponse.OvertimeDetailDto> otDetailList = new ArrayList<>();
 
             for (OvertimeRecord ot : overtimes) {
-                double otHours = 0.0;
-                if (ot.getClockInTime() != null && ot.getClockOutTime() != null) {
-                    otHours = Duration.between(ot.getClockInTime(), ot.getClockOutTime()).toMinutes() / 60.0;
-                } else if (ot.getApprovedStartTime() != null && ot.getApprovedEndTime() != null) {
-                    otHours = Duration.between(ot.getApprovedStartTime(), ot.getApprovedEndTime()).toMinutes() / 60.0;
-                }
+                OvertimeAmounts a = calcOvertimeAmounts(ot);
+                double otHours = a.actualHours().doubleValue();
+                double paidOt = a.paidHours().doubleValue();
                 if (otHours <= 0) continue;
 
-                double multiplier;
                 String otTypeCode;
                 String otLabel;
+                double multiplier = a.multiplier();
                 if (ot.isHoliday()) {
                     if (ot.isNightTime()) {
-                        multiplier = 3.9;
                         otTypeCode = "HOLIDAY_NIGHT";
                         otLabel = "Ngày lễ - Ban đêm (390%)";
                     } else {
-                        multiplier = 3.0;
                         otTypeCode = "HOLIDAY_DAY";
                         otLabel = "Ngày lễ - Ban ngày (300%)";
                     }
                 } else if (ot.isWeekend()) {
                     if (ot.isNightTime()) {
-                        multiplier = 2.7;
                         otTypeCode = "WEEKEND_NIGHT";
                         otLabel = "Cuối tuần - Ban đêm (270%)";
                     } else {
-                        multiplier = 2.0;
                         otTypeCode = "WEEKEND_DAY";
                         otLabel = "Cuối tuần - Ban ngày (200%)";
                     }
                 } else {
                     if (ot.isNightTime()) {
-                        multiplier = 2.0;
                         otTypeCode = "NORMAL_NIGHT";
                         otLabel = "Ngày thường - Ban đêm (200%)";
                     } else {
-                        multiplier = 1.5;
                         otTypeCode = "NORMAL_DAY";
                         otLabel = "Ngày thường - Ban ngày (150%)";
                     }
                 }
-
-                double paidOt = otHours * multiplier;
-                totalActualOtHours = totalActualOtHours.add(BigDecimal.valueOf(otHours));
-                totalPaidOtHours = totalPaidOtHours.add(BigDecimal.valueOf(paidOt));
 
                 otDetailList.add(StaffMonthlyTimesheetResponse.OvertimeDetailDto.builder()
                         .type(otTypeCode)
@@ -889,18 +899,34 @@ public class AttendanceService {
 
     @Transactional
     public Map<String, Object> lockMonthlyTimesheet(int month, int year, UserRole userRole) {
+        return lockMonthlyTimesheet(month, year, userRole, null);
+    }
+
+    /**
+     * Chốt sổ bảng chấm công. {@code userIds} rỗng/null = chốt cả tháng (giữ hành vi cũ),
+     * có giá trị = chỉ chốt đúng nhóm nhân viên đang tick trên bảng.
+     */
+    @Transactional
+    public Map<String, Object> lockMonthlyTimesheet(int month, int year, UserRole userRole, List<UUID> userIds) {
         validateHeadOfHROrExecutive(userRole);
 
-        List<MonthlyTimesheet> list = monthlyTimesheetRepository.findByPeriodMonthAndPeriodYear(month, year);
+        boolean scoped = userIds != null && !userIds.isEmpty();
+        List<MonthlyTimesheet> list = scoped
+                ? monthlyTimesheetRepository.findByPeriodMonthAndPeriodYearAndUser_UserIdIn(month, year, userIds)
+                : monthlyTimesheetRepository.findByPeriodMonthAndPeriodYear(month, year);
         if (list.isEmpty()) {
             throw new AttendanceException(AttendanceErrorCode.TIMESHEET_NOT_FOUND,
-                    "Không tìm thấy dữ liệu bảng chấm công tháng " + month + "/" + year);
+                    scoped
+                            ? "Các nhân viên đã chọn không có bảng chấm công tháng " + month + "/" + year
+                            : "Không tìm thấy dữ liệu bảng chấm công tháng " + month + "/" + year);
         }
 
         boolean allLocked = list.stream().allMatch(t -> t.getStatus() == TimesheetStatus.LOCKED);
         if (allLocked) {
             throw new AttendanceException(AttendanceErrorCode.TIMESHEET_ALREADY_LOCKED,
-                    "Bảng chấm công tháng " + month + "/" + year + " đã được khóa sổ trước đó.");
+                    scoped
+                            ? "Các bảng công đã chọn đều được khóa sổ trước đó."
+                            : "Bảng chấm công tháng " + month + "/" + year + " đã được khóa sổ trước đó.");
         }
 
         LocalDateTime now = LocalDateTime.now();
@@ -911,14 +937,59 @@ public class AttendanceService {
         }
         monthlyTimesheetRepository.saveAll(list);
 
-        log.info("Trưởng phòng HR {} đã chốt sổ (LOCKED) bảng chấm công tháng {}/{} cho {} nhân viên",
-                userRole.getUserId(), month, year, list.size());
+        log.info("Trưởng phòng HR {} đã chốt sổ (LOCKED) bảng chấm công tháng {}/{} cho {} nhân viên (phạm vi: {})",
+                userRole.getUserId(), month, year, list.size(), scoped ? "vùng chọn" : "toàn tháng");
 
         return Map.of(
-                "msg", "Chốt sổ bảng chấm công tháng " + month + "/" + year + " thành công",
+                "msg", (scoped ? "Chốt sổ " + list.size() + " bảng công đã chọn tháng " : "Chốt sổ bảng chấm công tháng ")
+                        + month + "/" + year + " thành công",
                 "lockedCount", list.size(),
                 "status", TimesheetStatus.LOCKED.name()
         );
+    }
+
+    /**
+     * Số giờ OT của 1 bản ghi: giờ thực tế + giờ tính lương (sau hệ số theo ngày/đêm/lễ).
+     * Tách ra để DashboardService dùng đúng luật này thay vì copy lại bảng hệ số.
+     * ponytail: ceiling là chưa tính hệ số theo ca đêm/nghỉ trưa — thêm ở đây là cả 2 nơi được.
+     */
+    public record OvertimeAmounts(BigDecimal actualHours, BigDecimal paidHours, double multiplier) {}
+
+    public static OvertimeAmounts calcOvertimeAmounts(OvertimeRecord ot) {
+        double otHours = 0.0;
+        if (ot.getClockInTime() != null && ot.getClockOutTime() != null) {
+            otHours = Duration.between(ot.getClockInTime(), ot.getClockOutTime()).toMinutes() / 60.0;
+        } else if (ot.getApprovedStartTime() != null && ot.getApprovedEndTime() != null) {
+            otHours = Duration.between(ot.getApprovedStartTime(), ot.getApprovedEndTime()).toMinutes() / 60.0;
+        }
+        if (otHours <= 0) {
+            return new OvertimeAmounts(BigDecimal.ZERO, BigDecimal.ZERO, 0.0);
+        }
+
+        double multiplier;
+        if (ot.isHoliday()) {
+            multiplier = ot.isNightTime() ? 3.9 : 3.0;
+        } else if (ot.isWeekend()) {
+            multiplier = ot.isNightTime() ? 2.7 : 2.0;
+        } else {
+            multiplier = ot.isNightTime() ? 2.0 : 1.5;
+        }
+
+        return new OvertimeAmounts(
+                BigDecimal.valueOf(otHours),
+                BigDecimal.valueOf(otHours * multiplier),
+                multiplier);
+    }
+
+    public static OvertimeAmounts sumOvertimeAmounts(List<OvertimeRecord> overtimes) {
+        BigDecimal actual = BigDecimal.ZERO;
+        BigDecimal paid = BigDecimal.ZERO;
+        for (OvertimeRecord ot : overtimes) {
+            OvertimeAmounts a = calcOvertimeAmounts(ot);
+            actual = actual.add(a.actualHours());
+            paid = paid.add(a.paidHours());
+        }
+        return new OvertimeAmounts(actual.setScale(2, RoundingMode.HALF_UP), paid.setScale(2, RoundingMode.HALF_UP), 0.0);
     }
 
     // =================== HELPER & EXCEL BUILDERS ===================
@@ -929,9 +1000,22 @@ public class AttendanceService {
         boolean isExecutive = "Executive Leadership".equals(dept);
         boolean isHR = "Human Resources".equals(dept);
         boolean isHead = job.startsWith("Department Head") || job.contains("Head") || job.contains("Manager") || job.contains("Trưởng");
-        if (!isExecutive && !(isHR && isHead)) {
+        if (!isExecutive && !(isHR && isHead)
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.TIMESHEET_LOCK)) {
             throw new AttendanceException(AttendanceErrorCode.UNAUTHORIZED_ACTION,
                     "Chỉ Trưởng phòng Nhân sự hoặc Ban Giám Đốc mới có quyền chốt sổ bảng chấm công tháng");
+        }
+    }
+
+    // ponytail: HR/Executive theo role gốc + grant ATTENDANCE_VIEW_ALL (dùng cho xem + xuất bảng công company)
+    private void validateCompanyTimesheetView(UserRole userRole) {
+        String dept = userRole.getDepartment() != null ? userRole.getDepartment() : "";
+        boolean isHR = "Human Resources".equals(dept);
+        boolean isExecutive = "Executive Leadership".equals(dept);
+        if (!isHR && !isExecutive
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_ALL)) {
+            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
+                    "Chỉ phòng Nhân sự (HR) hoặc Ban Giám Đốc mới có quyền thao tác dữ liệu chấm công toàn công ty");
         }
     }
 

@@ -4,7 +4,8 @@ export interface WorkShiftScheduleDto {
   scheduleId?: string;
   dayOfWeek: number; // 1 = T2 ... 7 = CN
   dayOfWeekName?: string;
-  isWorking: boolean;
+  isWorking?: boolean;
+  working?: boolean;
   startTime?: string;
   endTime?: string;
   restStartTime?: string;
@@ -36,5 +37,14 @@ export const workShiftService = {
 
   createWorkShift: async (data: CreateWorkShiftRequest): Promise<WorkShiftResponse> => {
     return apiClient.post<WorkShiftResponse>('/api/work-shifts', data);
+  },
+
+  updateWorkShift: async (shiftId: string, data: CreateWorkShiftRequest): Promise<WorkShiftResponse> => {
+    return apiClient.put<WorkShiftResponse>(`/api/work-shifts/${shiftId}`, data);
+  },
+
+  /** Trả 409 nếu còn nhân viên dùng ca hoặc đã có lịch sử chấm công. */
+  deleteWorkShift: async (shiftId: string): Promise<{ message: string }> => {
+    return apiClient.delete<{ message: string }>(`/api/work-shifts/${shiftId}`);
   }
 };

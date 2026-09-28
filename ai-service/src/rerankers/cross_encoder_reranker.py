@@ -18,13 +18,14 @@ class CrossEncoderReranker:
         self.model_name = (
             model_name 
             or os.getenv("RERANKER_MODEL") 
-            or "BAAI/bge-reranker-base"
+            or "AITeamVN/Vietnamese_Reranker"
         )
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
         if CrossEncoderReranker._model is None:
             print(f"[CrossEncoderReranker] Loading reranker model '{self.model_name}' on {self.device.upper()}...")
-            CrossEncoderReranker._model = CrossEncoder(self.model_name, device=self.device)
+            # ponytail: 1024 bao hết chunk dài nhất (~700 tokens); 2304 gốc thì chậm mà không hơn.
+            CrossEncoderReranker._model = CrossEncoder(self.model_name, device=self.device, max_length=1024)
             print(f"[CrossEncoderReranker] Model ready on {self.device.upper()}!")
 
         self.model = CrossEncoderReranker._model

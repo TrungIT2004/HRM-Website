@@ -46,6 +46,8 @@ import com.minhtrung.hrm.leave.exceptions.LeaveException;
 import com.minhtrung.hrm.leave.repositories.LeaveRequestRepository;
 import com.minhtrung.hrm.leave.specifications.LeaveRequestSpecification;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -60,6 +62,7 @@ public class LeaveService {
     private final AttendanceRepository attendanceRepository;
     private final WorkShiftRepository workShiftRepository;
     private final HolidayRepository holidayRepository;
+    private final PermissionService permissionService;
 
     @Transactional(readOnly = true)
     public LeavePreviewResponse previewLeaveRequest(UUID userId, LocalDate fromDate, LocalDate toDate) {
@@ -240,7 +243,8 @@ public class LeaveService {
             }
         }
 
-        if (isRequestorsDepartmentHead || isExecutive) {
+        if (isRequestorsDepartmentHead || isExecutive
+                || permissionService.hasPermission(approverId, PermissionKey.LEAVE_APPROVE)) {
             User approverProxy = userRepository.getReferenceById(approverId);
 
             leaveRequest.setApprover(approverProxy);
@@ -329,7 +333,8 @@ public class LeaveService {
     // 2. Lấy đơn cần duyệt
     @Transactional(readOnly = true)
     public Page<ManagerLeaveResponse> getLeaveRequestsToApprove(UserRole userRole, LeaveFilterRequest filter, Pageable pageable) {
-        Specification<LeaveRequest> spec = LeaveRequestSpecification.forApprovals(userRole, filter);
+        boolean hasGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.LEAVE_APPROVE);
+        Specification<LeaveRequest> spec = LeaveRequestSpecification.forApprovals(userRole, filter, hasGrant);
         return leaveRequestRepository.findAll(spec, pageable)
             .map(this::mapToManagerResponse);
     }
@@ -339,8 +344,9 @@ public class LeaveService {
     @Transactional(readOnly = true)
     public Page<HrLeaveResponse> getCompanyLeaveRequests(UserRole userRole, LeaveFilterRequest filter, Pageable pageable) {
         String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-        if (!myDepartment.equals("Human Resources")) {
-            throw new LeaveException(LeaveErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự mới có quyền xem các yêu cầu nghỉ phép toàn công ty");
+        if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.LEAVE_VIEW_ALL)) {
+            throw new LeaveException(LeaveErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xem các yêu cầu nghỉ phép toàn công ty");
         }
 
         Specification<LeaveRequest> spec = LeaveRequestSpecification.forCompanyWide(filter);
@@ -433,8 +439,9 @@ public class LeaveService {
     @Transactional(readOnly = true)
     public byte[] exportLeaveRequestsToExcel(UserRole userRole, LeaveFilterRequest filter) {
         String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-        if (!myDepartment.equals("Human Resources")) {
-                throw new LeaveException(LeaveErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự mới có quyền xuất báo cáo nghỉ phép");
+        if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.LEAVE_VIEW_ALL)) {
+                throw new LeaveException(LeaveErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xuất báo cáo nghỉ phép");
         }
 
         // 1. Lấy toàn bộ danh sách đơn nghỉ phép theo bộ lọc

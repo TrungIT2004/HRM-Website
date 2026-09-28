@@ -6,11 +6,13 @@ import java.util.function.BiFunction;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.minhtrung.hrm.auth.enums.AuthErrorCode;
 import com.minhtrung.hrm.auth.exceptions.AuthenticationException;
@@ -68,6 +70,22 @@ public class GlobalExceptionHandler {
         ));
     }
 
+    /**
+     * ResponseStatusException mang sẵn HTTP status cụ thể (409 CONFLICT khi xoá master data
+     * còn bị tham chiếu, 400 BAD_REQUEST...). Phải khai báo trước {@code Exception.class}
+     * vì handler generic sẽ nuốt mất status và trả về 500.
+     */
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, Object>> handleResponseStatus(ResponseStatusException ex) {
+        HttpStatusCode status = ex.getStatusCode();
+        String reason = ex.getReason() != null ? ex.getReason() : status.toString();
+        log.warn("Request bị từ chối [{}]: {}", status.value(), reason);
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", "REQUEST_REJECTED",
+                "msg", reason
+        ));
+    }
+
     // ─── GENERIC EXCEPTION ────────────────────────────────────
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception ex) {
@@ -103,6 +121,7 @@ public class GlobalExceptionHandler {
             case UNAUTHORIZED_ACTION:
                 return HttpStatus.FORBIDDEN;
             case TIMESHEET_ALREADY_LOCKED:
+            case INVALID_TIMESHEET_PERIOD:
             case WORK_SHIFT_DAILY_HOURS_EXCEEDED:
             case WORK_SHIFT_WEEKLY_HOURS_EXCEEDED:
             case WORK_SHIFT_INVALID_TIME:

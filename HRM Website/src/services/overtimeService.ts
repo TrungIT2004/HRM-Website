@@ -35,6 +35,17 @@ export interface CreateOvertimeRequest {
   type?: 'normal' | 'weekend' | 'holiday';
 }
 
+const computeHoursFromTimes = (start: string, end: string): number => {
+  try {
+    const s = start.includes('T') ? start.split('T')[1] : start;
+    const e = end.includes('T') ? end.split('T')[1] : end;
+    const [sh, sm] = s.split(':').map(Number);
+    const [eh, em] = e.split(':').map(Number);
+    const diff = (eh * 60 + (em || 0)) - (sh * 60 + (sm || 0));
+    return diff > 0 ? Math.round(diff / 6) / 10 : 0;
+  } catch { return 0; }
+};
+
 function mapOtItem(item: any): OvertimeRecord {
   const startTime = item.approvedStartTime && item.approvedStartTime.includes('T')
     ? item.approvedStartTime.split('T')[1].substring(0, 5)
@@ -55,7 +66,8 @@ function mapOtItem(item: any): OvertimeRecord {
     approvedEndTime: endTime,
     clockInTime: clockIn,
     clockOutTime: clockOut,
-    registeredHours: item.totalApprovedHours || item.registeredHours || 0,
+    registeredHours: item.totalApprovedHours || item.registeredHours || 
+      computeHoursFromTimes(item.approvedStartTime || '', item.approvedEndTime || '') || 0,
     actualHours: item.totalActualHours || item.actualHours || 0,
     multiplier: item.multiplier || (item.isHoliday ? 3.0 : item.isWeekend ? 2.0 : 1.5),
     status: (item.status ? item.status.toLowerCase() : 'pending') as any
@@ -88,19 +100,27 @@ export const overtimeService = {
   },
 
   createOvertime: async (data: CreateOvertimeRequest): Promise<OvertimeRecord> => {
-    return apiClient.post<OvertimeRecord>('/api/overtime', data);
+    const date = data.approvedDate || new Date().toISOString().split('T')[0];
+    const startTime = data.approvedStartTime.includes('T') ? data.approvedStartTime : `${date}T${data.approvedStartTime}`;
+    const endTime = data.approvedEndTime.includes('T') ? data.approvedEndTime : `${date}T${data.approvedEndTime}`;
+    return apiClient.post<OvertimeRecord>('/api/overtime', {
+      approvedStartTime: startTime,
+      approvedEndTime: endTime,
+      reason: data.reason
+    });
   },
 
   approveOvertime: async (recordId: string): Promise<OvertimeRecord> => {
+    // ponytail: backend HandleOvertimeReqApiRequest cần {status, rejectionReason}
     return apiClient.patch<OvertimeRecord>(`/api/overtime/${recordId}/handle`, {
-      action: 'APPROVE'
+      status: 'accepted'
     });
   },
 
   rejectOvertime: async (recordId: string, reason: string): Promise<OvertimeRecord> => {
     return apiClient.patch<OvertimeRecord>(`/api/overtime/${recordId}/handle`, {
-      action: 'REJECT',
-      reason
+      status: 'rejected',
+      rejectionReason: reason
     });
   },
 

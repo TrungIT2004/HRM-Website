@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
@@ -42,6 +43,7 @@ public class CreateWorkShiftRequest {
         @Max(value = 7, message = "dayOfWeek phải từ 1 (Thứ 2) đến 7 (Chủ nhật)")
         private Integer dayOfWeek;
 
+        @JsonProperty("isWorking")
         @Builder.Default
         private boolean isWorking = true;
 

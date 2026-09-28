@@ -1,0 +1,11 @@
+{
+    "schema_version": 2,
+    "commit": "a5c029d182fc73eedf22aeb69d019bb77cd35147",
+    "indexed_at": "2026-09-25T09:03:31Z",
+    "project": "HRM",
+    "nodes": 5804,
+    "edges": 15882,
+    "original_size": 33161216,
+    "compressed_size": 1213784,
+    "compression_level": 9
+}

@@ -63,6 +63,14 @@ public class OvertimeSpecification {
 
     // 2. SPECIFICATION: Đơn OT cần phê duyệt (Theo cấp quản lý)
     public static Specification<OvertimeRecord> forApprovals(UserRole userRole, OvertimeFilterRequest filter) {
+        return forApprovals(userRole, filter, false);
+    }
+
+    // ponytail: grant APPROVE = bỏ qua chuỗi phân cấp, thấy MỌI đơn toàn công ty kể cả đã xử lý
+    // (chỉ trừ đơn của chính mình — filter status là optional nên không tự lọc pending).
+    // Trần: đây là cố ý, và UI /admin đã ghi rõ "toàn công ty" trong nhãn quyền. Nếu muốn siết thì
+    // thêm predicate status=PENDING vào nhánh này, hoặc tách OVERTIME_APPROVE_ALL khỏi OVERTIME_APPROVE.
+    public static Specification<OvertimeRecord> forApprovals(UserRole userRole, OvertimeFilterRequest filter, boolean hasApproveGrant) {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             Join<OvertimeRecord, User> requestorJoin = root.join("requestor", JoinType.INNER);
@@ -78,7 +86,9 @@ public class OvertimeSpecification {
             boolean isExecutive = myDepartment.equals("Executive Leadership");
             boolean isDepartmentHead = myJob.startsWith("Department Head");
 
-            if (isExecutive && myJob.contains("Chairman")) {
+            if (hasApproveGrant) {
+                // grant: bỏ qua chuỗi phân cấp, chỉ giữ lọc ngày/trạng thái/keyword bên dưới
+            } else if (isExecutive && myJob.contains("Chairman")) {
                 Predicate isExecDept = cb.equal(deptJoin.get("name"), "Executive Leadership");
                 Predicate isDirectors = cb.or(
                     cb.like(jobJoin.get("title"), "%Director%"),

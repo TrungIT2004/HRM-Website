@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -54,9 +55,11 @@ public class EmployeePublicProfile {
     private String workEmail;
     private String phoneNumber;
 
-    // 4. Trạng thái làm việc hôm nay (Từ bảng attendances / leave_requests)
-    // Giá trị: "WORKING" (Đang làm), "ON_LEAVE" (Nghỉ phép), "NOT_CHECKED" (Chưa chấm công), "ABSENT" (Vắng mặt)
+    // 4. Trạng thái làm việc hôm nay (Từ bảng attendances / overtime_records)
+    // todayStatus: truyền thẳng attendances.status; "DAY_OFF" = không có bản ghi (nghỉ).
     private String todayStatus;
+    // "OVERTIMING" = đang tăng ca, "OVERTIME_DONE" = đã kết thúc tăng ca, null = không tăng ca.
+    private String todayOvertimeStatus;
 
     // 5. Ca làm việc & Lịch làm việc tuần (Từ bảng work_shifts & work_shift_schedules)
     private String shiftName;
@@ -76,6 +79,8 @@ public class EmployeePublicProfile {
     public static class WorkShiftScheduleDto {
         private int dayOfWeek;       // 2 = Thứ Hai, ..., 7 = Thứ Bảy, 8 = Chủ Nhật
         private String dayName;      // "Thứ 2", "Thứ 3", ..., "Chủ Nhật"
+        
+        @JsonProperty("isWorking")
         private boolean isWorking;   // true: Có làm việc, false: Nghỉ (OFF)
 
         @JsonFormat(pattern = "HH:mm")

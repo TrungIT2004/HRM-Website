@@ -901,6 +901,36 @@ async def regenerate_conversation_title(conversation_id: str, user_id: Optional[
         raise HTTPException(status_code=500, detail=f"Lỗi khi sinh lại tiêu đề: {str(e)}")
 
 
+class PinConversationRequest(BaseModel):
+    is_pinned: Optional[bool] = Field(None, description="Trạng thái ghim (True/False hoặc None để đảo ngược)")
+    user_id: Optional[str] = Field(None, description="ID nhân viên")
+
+
+@app.put("/api/v1/chat/conversations/{conversation_id}/pin", dependencies=[Security(verify_internal_secret)])
+async def pin_conversation(conversation_id: str, request: Optional[PinConversationRequest] = None, user_id: Optional[str] = Query(None)):
+    """Ghim hoặc bỏ ghim 1 cuộc trò chuyện."""
+    try:
+        eff_user_id = (request.user_id if request else None) or user_id
+        eff_is_pinned = request.is_pinned if request else None
+        new_pinned = chat_service.toggle_pin_conversation(
+            conversation_id=conversation_id,
+            user_id=eff_user_id,
+            is_pinned=eff_is_pinned
+        )
+        if new_pinned is None:
+            raise HTTPException(status_code=404, detail="Không tìm thấy cuộc trò chuyện để ghim/bỏ ghim!")
+        return {
+            "status": "success",
+            "conversation_id": conversation_id,
+            "is_pinned": new_pinned,
+            "message": "Đã ghim cuộc trò chuyện lên đầu danh sách!" if new_pinned else "Đã bỏ ghim cuộc trò chuyện!"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi ghim hội thoại: {str(e)}")
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
