@@ -47,20 +47,25 @@ export const leaveService = {
     return apiClient.get<PageResponse<LeaveRequest>>(`/api/leave/company${buildQuery(params)}`);
   },
 
+  previewLeave: async (fromDate: string, toDate: string): Promise<any> => {
+    return apiClient.get<any>(`/api/leave/preview?fromDate=${fromDate}&toDate=${toDate}`);
+  },
+
   createLeave: async (data: CreateLeaveRequest): Promise<LeaveRequest> => {
     return apiClient.post<LeaveRequest>('/api/leave', data);
   },
 
   approveLeave: async (requestId: string): Promise<LeaveRequest> => {
+    // ponytail: backend HandleLeaveReqApiRequest cần {status, rejectionReason}
     return apiClient.patch<LeaveRequest>(`/api/leave/${requestId}/handle`, {
-      action: 'APPROVE'
+      status: 'accepted'
     });
   },
 
   rejectLeave: async (requestId: string, reason: string): Promise<LeaveRequest> => {
     return apiClient.patch<LeaveRequest>(`/api/leave/${requestId}/handle`, {
-      action: 'REJECT',
-      reason
+      status: 'rejected',
+      rejectionReason: reason
     });
   },
 

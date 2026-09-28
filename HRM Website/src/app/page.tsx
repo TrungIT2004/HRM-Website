@@ -24,6 +24,27 @@ import { useAuth } from '@/context/AuthContext';
 
 export default function LandingPage() {
   const { currentUser } = useAuth();
+  const [isRedirecting, setIsRedirecting] = React.useState(true);
+
+  React.useEffect(() => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('act_hrm_access_token') : null;
+    if (!token) {
+      window.location.replace('/login');
+    } else {
+      window.location.replace('/dashboard');
+    }
+  }, []);
+
+  if (isRedirecting) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-3 border-blue-600 border-t-transparent" />
+          <p className="text-xs text-slate-500 font-medium">Đang chuyển hướng...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-600 selection:text-white">

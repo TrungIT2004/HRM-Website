@@ -53,7 +53,7 @@ export async function request<T = any>(
     throw new ApiError(0, `Không thể kết nối đến máy chủ Backend (${API_BASE_URL || 'nội bộ'}). Vui lòng kiểm tra lại!`);
   }
 
-  if (response.status === 401 && !endpoint.includes('/auth/login') && !endpoint.includes('/auth/auto-login')) {
+  if (response.status === 401 && token && !endpoint.includes('/auth/login') && !endpoint.includes('/auth/auto-login')) {
     if (!isRefreshing) {
       isRefreshing = true;
       try {
@@ -82,6 +82,9 @@ export async function request<T = any>(
       if (typeof window !== 'undefined') {
         localStorage.removeItem('act_hrm_access_token');
         localStorage.removeItem('act_hrm_user_id');
+        if (window.location.pathname !== '/login') {
+          window.location.replace('/login');
+        }
       }
     } else {
       return new Promise<T>((resolve) => {
@@ -102,6 +105,9 @@ export async function request<T = any>(
         errorMsg = errData;
       } else if (errData && errData.message) {
         errorMsg = errData.message;
+      } else if (errData && errData.msg) {
+        // ponytail: backend GlobalExceptionHandler trả {errorCode, msg} — đọc msg kẻo toast chỉ còn "Mã lỗi 400"
+        errorMsg = errData.msg;
       } else if (errData && errData.error) {
         errorMsg = typeof errData.error === 'string' ? errData.error : JSON.stringify(errData.error);
       }

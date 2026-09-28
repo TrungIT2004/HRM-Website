@@ -29,6 +29,7 @@ import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
 import com.minhtrung.hrm.employees.repositories.JobRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +44,7 @@ public class AuthService {
     private final DepartmentRepository departmentRepository;
     private final JobRepository jobRepository;
     private final SessionBlacklistService sessionBlacklistService;
+    private final PermissionService permissionService;
 
     @Value("${jwt.secret.access}")
     private String accessSecret;
@@ -53,7 +55,7 @@ public class AuthService {
     AuthService(EmailService emailService, JwtService jwtService, UserRepository userRepository,
             UserSessionRepository userSessionRepository, PasswordEncoder passwordEncoder,
             DepartmentRepository departmentRepository, JobRepository jobRepository,
-            SessionBlacklistService sessionBlacklistService) {
+            SessionBlacklistService sessionBlacklistService, PermissionService permissionService) {
         this.emailService = emailService;
         this.jwtService = jwtService;
         this.userRepository = userRepository;
@@ -62,6 +64,7 @@ public class AuthService {
         this.departmentRepository = departmentRepository;
         this.jobRepository = jobRepository;
         this.sessionBlacklistService = sessionBlacklistService;
+        this.permissionService = permissionService;
     }
     
     public User register(SignUpRequest request) {
@@ -140,6 +143,8 @@ public class AuthService {
         tokenPayload.setFullName(fullName);
         tokenPayload.setDepartment(department);
         tokenPayload.setJob(job);
+        // ponytail: snapshot grants vào JWT cho frontend gating; refresh cũng đọc lại (khỏi stale 7 ngày)
+        tokenPayload.setPermissions(permissionService.findKeysByUserId(userId));
 
         String accessToken = jwtService.generateAccessToken(tokenPayload);
         String refreshToken = jwtService.generateRefreshToken(tokenPayload);
@@ -166,6 +171,9 @@ public class AuthService {
         String profilePicUrl = tokenPayload.getProfilePicUrl();
         String department = tokenPayload.getDepartment();
         String job = tokenPayload.getJob();
+
+        // ponytail: refresh đọc lại grants (payload cũ trong refresh token không có grants mới)
+        tokenPayload.setPermissions(permissionService.findKeysByUserId(tokenPayload.getUserId()));
 
         String accessToken = jwtService.generateAccessToken(tokenPayload);
         String refreshToken = jwtService.generateRefreshToken(tokenPayload);
@@ -323,7 +331,9 @@ public class AuthService {
                 .orElseThrow(() -> new AuthenticationException(AuthErrorCode.USER_NOT_FOUND, "Không tìm thấy người dùng"));
 
         if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
-            throw new AuthenticationException(AuthErrorCode.USER_CREDENTIALS_INVALID, "Mật khẩu cũ không chính xác");
+            // 400 chứ không phải 401: caller ĐÃ đăng nhập, chỉ là nhập sai mật khẩu cũ.
+            // Trả 401 sẽ bị apiClient hiểu nhầm là access token hết hạn và đá user ra trang login.
+            throw new IllegalArgumentException("Mật khẩu cũ không chính xác");
         }
 
         if (!request.getNewPassword().equals(request.getConfirmPassword())) {

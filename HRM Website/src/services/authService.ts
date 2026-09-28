@@ -21,7 +21,7 @@ export const authService = {
     return apiClient.post('/auth/logout');
   },
 
-  changePassword: async (oldPassword: string, newPassword: string): Promise<{ message: string }> => {
-    return apiClient.put('/auth/change-password', { oldPassword, newPassword });
+  changePassword: async (oldPassword: string, newPassword: string, confirmPassword: string): Promise<{ message: string }> => {
+    return apiClient.put('/auth/change-password', { oldPassword, newPassword, confirmPassword });
   }
 };

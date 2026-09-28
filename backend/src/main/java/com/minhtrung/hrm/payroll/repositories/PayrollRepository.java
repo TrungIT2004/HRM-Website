@@ -29,6 +29,10 @@ public interface PayrollRepository extends JpaRepository<Payroll, UUID>, JpaSpec
 
     void deleteByPeriodMonthAndPeriodYearAndStatus(int periodMonth, int periodYear, PayrollStatus status);
 
+    /** Xoá DRAFT chỉ trong nhóm nhân viên đang lọc — tránh mất bản ghi của phòng ban khác. */
+    void deleteByPeriodMonthAndPeriodYearAndStatusAndUser_UserIdIn(
+            int periodMonth, int periodYear, PayrollStatus status, List<UUID> userIds);
+
     @org.springframework.data.jpa.repository.Modifying
     @Query("DELETE FROM Payroll p WHERE p.periodYear = :periodYear AND p.periodMonth BETWEEN :fromMonth AND :toMonth")
     void deleteByPeriodYearAndPeriodMonthBetween(@Param("periodYear") int periodYear, @Param("fromMonth") int fromMonth, @Param("toMonth") int toMonth);

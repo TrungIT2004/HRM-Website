@@ -7,15 +7,9 @@ import {
   OvertimeRecord,
   PayrollRecord,
   EmployeeDetailed,
-  AttendanceStatus,
   LeaveRequestStatus,
   OvertimeStatus
 } from '@/types';
-import { MOCK_ATTENDANCES } from '@/mock/attendances';
-import { MOCK_LEAVE_REQUESTS } from '@/mock/leaves';
-import { MOCK_OVERTIMES } from '@/mock/overtimes';
-import { MOCK_PAYROLLS } from '@/mock/payrolls';
-import { MOCK_EMPLOYEE_DETAILS, getEmployeeDetail } from '@/mock/employeeDetails';
 import { useAuth } from './AuthContext';
 import { attendanceService } from '@/services/attendanceService';
 import { leaveService } from '@/services/leaveService';
@@ -30,121 +24,108 @@ interface HRMDataContextType {
   payrolls: PayrollRecord[];
   employeeDetails: Record<string, EmployeeDetailed>;
   isLoadingData: boolean;
+  dataError: string | null;
 
   // Attendance actions
   clockInAttendance: (method: 'FACE_SCAN' | 'MANUAL') => Promise<{ success: boolean; message: string }>;
   clockOutAttendance: (method: 'FACE_SCAN' | 'MANUAL') => Promise<{ success: boolean; message: string }>;
-  editAttendanceRecord: (attendanceId: string, updates: Partial<AttendanceRecord>, reason: string) => Promise<void>;
-  deleteAttendanceRecord: (attendanceId: string) => Promise<void>;
+  editAttendanceRecord: (attendanceId: string, updates: Partial<AttendanceRecord>, reason: string) => Promise<{ success: boolean; message: string }>;
+  deleteAttendanceRecord: (attendanceId: string) => Promise<{ success: boolean; message: string }>;
 
   // Leave actions
   submitLeaveRequest: (req: Omit<LeaveRequest, 'requestId' | 'status' | 'createdAt'>) => Promise<{ success: boolean; message?: string }>;
-  handleLeaveRequest: (requestId: string, status: LeaveRequestStatus, rejectionReason?: string) => Promise<void>;
-  cancelLeaveRequest: (requestId: string) => Promise<void>;
+  handleLeaveRequest: (requestId: string, status: LeaveRequestStatus, rejectionReason?: string) => Promise<{ success: boolean; message: string }>;
+  cancelLeaveRequest: (requestId: string) => Promise<{ success: boolean; message: string }>;
 
   // Overtime actions
   submitOvertimeRequest: (ot: Omit<OvertimeRecord, 'overtimeRecordId' | 'status' | 'createdAt'>) => Promise<{ success: boolean; message?: string }>;
-  handleOvertimeRequest: (recordId: string, status: OvertimeStatus, rejectionReason?: string) => Promise<void>;
-  cancelOvertimeRequest: (recordId: string) => Promise<void>;
+  handleOvertimeRequest: (recordId: string, status: OvertimeStatus, rejectionReason?: string) => Promise<{ success: boolean; message: string }>;
+  cancelOvertimeRequest: (recordId: string) => Promise<{ success: boolean; message: string }>;
 
   // Employee details update
-  updateEmployeeProfile: (userId: string, updates: Partial<EmployeeDetailed>) => Promise<void>;
+  updateEmployeeProfile: (userId: string, updates: Partial<EmployeeDetailed>) => Promise<{ success: boolean; message: string }>;
+  getEmployeeProfileById: (userId: string) => Promise<EmployeeDetailed | null>;
 
   // Payroll
-  generateMonthlyPayroll: (month: number, year: number) => Promise<void>;
+  generateMonthlyPayroll: (month: number, year: number) => Promise<{ success: boolean; message: string }>;
 
-  // Reload helpers
+  // Reload helper
   reloadAllData: () => Promise<void>;
 }
 
 const HRMDataContext = createContext<HRMDataContextType | undefined>(undefined);
 
 export function HRMDataProvider({ children }: { children: React.ReactNode }) {
-  const { currentUser, isHR, isManager, isExecutive } = useAuth();
+  const { currentUser, isHR, isManager, isExecutive, can } = useAuth();
 
-  const [attendances, setAttendances] = useState<AttendanceRecord[]>(MOCK_ATTENDANCES);
-  const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>(MOCK_LEAVE_REQUESTS);
-  const [overtimeRecords, setOvertimeRecords] = useState<OvertimeRecord[]>(MOCK_OVERTIMES);
-  const [payrolls, setPayrolls] = useState<PayrollRecord[]>(MOCK_PAYROLLS);
-  const [employeeDetails, setEmployeeDetails] = useState<Record<string, EmployeeDetailed>>(MOCK_EMPLOYEE_DETAILS);
+  const [attendances, setAttendances] = useState<AttendanceRecord[]>([]);
+  const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
+  const [overtimeRecords, setOvertimeRecords] = useState<OvertimeRecord[]>([]);
+  const [payrolls, setPayrolls] = useState<PayrollRecord[]>([]);
+  const [employeeDetails, setEmployeeDetails] = useState<Record<string, EmployeeDetailed>>({});
   const [isLoadingData, setIsLoadingData] = useState(false);
+  const [dataError, setDataError] = useState<string | null>(null);
 
-  // Load data from backend based on current user role
+  // Load live data from Spring Boot backend based on user RBAC permissions
   const loadData = useCallback(async () => {
-    if (!currentUser) return;
+    if (!currentUser) {
+      setAttendances([]);
+      setLeaveRequests([]);
+      setOvertimeRecords([]);
+      setPayrolls([]);
+      return;
+    }
+
     setIsLoadingData(true);
+    setDataError(null);
 
     try {
-      // 1. Attendances
-      try {
-        let attRes;
-        if (isHR || isExecutive) {
-          attRes = await attendanceService.getCompanyAttendances({ size: 100 });
-        } else if (isManager) {
-          attRes = await attendanceService.getDepartmentAttendances({ size: 100 });
-        } else {
-          attRes = await attendanceService.getMyAttendances({ size: 100 });
-        }
-        if (attRes && attRes.content) {
-          setAttendances(attRes.content);
-        }
-      } catch {
-        // Keep fallback
-      }
+      const results = await Promise.allSettled([
+        // 1. Attendances
+        (isHR || isExecutive || can('ATTENDANCE_VIEW_ALL'))
+          ? attendanceService.getCompanyAttendances({ size: 100 })
+          : isManager
+          ? attendanceService.getDepartmentAttendances({ size: 100 })
+          : attendanceService.getMyAttendances({ size: 100 }),
 
-      // 2. Leave Requests
-      try {
-        let leaveRes;
-        if (isHR) {
-          leaveRes = await leaveService.getCompanyLeaves({ size: 100 });
-        } else if (isManager || isExecutive) {
-          leaveRes = await leaveService.getDepartmentLeaves({ size: 100 });
-        } else {
-          leaveRes = await leaveService.getMyLeaves({ size: 100 });
-        }
-        if (leaveRes && leaveRes.content) {
-          setLeaveRequests(leaveRes.content);
-        }
-      } catch {
-        // Keep fallback
-      }
+        // 2. Leave Requests
+        (isHR || can('LEAVE_VIEW_ALL'))
+          ? leaveService.getCompanyLeaves({ size: 100 })
+          : (isManager || isExecutive)
+          ? leaveService.getDepartmentLeaves({ size: 100 })
+          : leaveService.getMyLeaves({ size: 100 }),
 
-      // 3. Overtime
-      try {
-        let otRes;
-        if (isHR) {
-          otRes = await overtimeService.getCompanyOvertimes({ size: 100 });
-        } else if (isManager || isExecutive) {
-          otRes = await overtimeService.getDepartmentOvertimes({ size: 100 });
-        } else {
-          otRes = await overtimeService.getMyOvertimes({ size: 100 });
-        }
-        if (otRes && otRes.content) {
-          setOvertimeRecords(otRes.content);
-        }
-      } catch {
-        // Keep fallback
-      }
+        // 3. Overtime Records
+        (isHR || can('OVERTIME_VIEW_ALL'))
+          ? overtimeService.getCompanyOvertimes({ size: 100 })
+          : (isManager || isExecutive)
+          ? overtimeService.getDepartmentOvertimes({ size: 100 })
+          : overtimeService.getMyOvertimes({ size: 100 }),
 
-      // 4. Payrolls
-      try {
-        let payRes;
-        const isFinanceOrExecutive = isExecutive || currentUser?.department === 'Finance & Accounting' || Boolean(currentUser?.job?.toLowerCase().includes('accountant'));
-        if (isFinanceOrExecutive) {
-          payRes = await payrollService.getCompanyPayrolls({ size: 100 });
-        } else {
-          payRes = await payrollService.getMyPayrolls({ size: 100 });
-        }
-        if (payRes && payRes.content) {
-          setPayrolls(payRes.content);
-        }
-      } catch {
-        // Keep fallback
+        // 4. Payrolls (backend chỉ cho Kế toán + BGĐ xem company; HR/Admin xem lương của chính mình)
+        (isExecutive || can('PAYROLL_MANAGE') || currentUser?.department === 'Finance & Accounting' || Boolean(currentUser?.job?.toLowerCase().includes('accountant')))
+          ? payrollService.getCompanyPayrolls({ size: 100 })
+          : payrollService.getMyPayrolls({ size: 100 })
+      ]);
+
+      if (results[0].status === 'fulfilled' && results[0].value?.content) {
+        setAttendances(results[0].value.content);
       }
+      if (results[1].status === 'fulfilled' && results[1].value?.content) {
+        setLeaveRequests(results[1].value.content);
+      }
+      if (results[2].status === 'fulfilled' && results[2].value?.content) {
+        setOvertimeRecords(results[2].value.content);
+      }
+      if (results[3].status === 'fulfilled' && results[3].value?.content) {
+        setPayrolls(results[3].value.content);
+      }
+    } catch (err: any) {
+      setDataError(err.message || 'Lỗi khi tải dữ liệu từ máy chủ Backend');
     } finally {
       setIsLoadingData(false);
     }
-  }, [currentUser, isHR, isManager, isExecutive]);
+  }, [currentUser, isHR, isManager, isExecutive, can]);
 
   useEffect(() => {
     loadData();
@@ -152,8 +133,7 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
 
   // 1. Chấm công
   const clockInAttendance = async (method: 'FACE_SCAN' | 'MANUAL') => {
-    if (!currentUser) return { success: false, message: 'Chưa đăng nhập' };
-    const nowTimeStr = new Date().toTimeString().split(' ')[0];
+    if (!currentUser) return { success: false, message: 'Bạn chưa đăng nhập vào hệ thống' };
 
     try {
       const res = await attendanceService.checkAttendance(currentUser.userId);
@@ -161,14 +141,13 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
       return {
         success: true,
         message: method === 'FACE_SCAN'
-          ? `Nhận diện khuôn mặt thành công: ${currentUser.fullName} (${currentUser.employeeCode}) - Ghi nhận ${res.action || 'vào ca'}`
-          : `Ghi nhận thành công: ${res.action || 'Chấm công'}`
+          ? `Nhận diện khuôn mặt thành công: ${currentUser.fullName} (${currentUser.employeeCode})`
+          : `Ghi nhận thành công: ${res?.action || 'Đã chấm công'}`
       };
     } catch (err: any) {
-      // Fallback in-memory
       return {
-        success: true,
-        message: `Chấm công thành công lúc ${nowTimeStr}`
+        success: false,
+        message: err.message || 'Lỗi khi ghi nhận chấm công với máy chủ'
       };
     }
   };
@@ -186,15 +165,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
         reason
       });
       await loadData();
-    } catch {
-      // Fallback local state
-      setAttendances(prev =>
-        prev.map(item =>
-          item.attendanceId === attendanceId
-            ? { ...item, ...updates, isEdited: true, editedReason: reason, status: 'ADJUSTED' }
-            : item
-        )
-      );
+      return { success: true, message: 'Điều chỉnh bản ghi chấm công thành công' };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi điều chỉnh bản ghi' };
     }
   };
 
@@ -202,8 +175,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
     try {
       await attendanceService.deleteAttendance(attendanceId);
       await loadData();
-    } catch {
-      setAttendances(prev => prev.filter(a => a.attendanceId !== attendanceId));
+      return { success: true, message: 'Đã xóa bản ghi chấm công' };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi khi xóa bản ghi' };
     }
   };
 
@@ -216,17 +190,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
         reason: req.reason
       });
       await loadData();
-      return { success: true, message: 'Gửi đơn nghỉ phép thành công!' };
+      return { success: true, message: 'Gửi đơn nghỉ phép lên hệ thống thành công!' };
     } catch (err: any) {
-      // Fallback local
-      const newReq: LeaveRequest = {
-        ...req,
-        requestId: `leave-live-${Date.now()}`,
-        status: 'pending',
-        createdAt: new Date().toISOString().replace('T', ' ').slice(0, 19)
-      };
-      setLeaveRequests([newReq, ...leaveRequests]);
-      return { success: true, message: 'Đã lưu đơn nghỉ phép' };
+      return { success: false, message: err.message || 'Không thể gửi đơn nghỉ phép' };
     }
   };
 
@@ -238,14 +204,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
         await leaveService.rejectLeave(requestId, rejectionReason || 'Không được phê duyệt');
       }
       await loadData();
-    } catch {
-      setLeaveRequests(prev =>
-        prev.map(r =>
-          r.requestId === requestId
-            ? { ...r, status, rejectionReason: status === 'rejected' ? rejectionReason : undefined }
-            : r
-        )
-      );
+      return { success: true, message: `Đã ${status === 'accepted' ? 'phê duyệt' : 'từ chối'} đơn nghỉ phép` };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi khi xử lý đơn nghỉ phép' };
     }
   };
 
@@ -253,8 +214,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
     try {
       await leaveService.cancelLeave(requestId);
       await loadData();
-    } catch {
-      setLeaveRequests(prev => prev.filter(r => r.requestId !== requestId));
+      return { success: true, message: 'Đã hủy đơn xin nghỉ phép' };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi khi hủy đơn nghỉ phép' };
     }
   };
 
@@ -270,14 +232,7 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
       await loadData();
       return { success: true, message: 'Gửi đơn đăng ký OT thành công!' };
     } catch (err: any) {
-      const newRecord: OvertimeRecord = {
-        ...ot,
-        overtimeRecordId: `ot-live-${Date.now()}`,
-        status: 'pending',
-        createdAt: new Date().toISOString().replace('T', ' ').slice(0, 19)
-      };
-      setOvertimeRecords([newRecord, ...overtimeRecords]);
-      return { success: true, message: 'Đã lưu đơn OT' };
+      return { success: false, message: err.message || 'Không thể gửi đơn đăng ký OT' };
     }
   };
 
@@ -289,14 +244,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
         await overtimeService.rejectOvertime(recordId, rejectionReason || 'Không được phê duyệt');
       }
       await loadData();
-    } catch {
-      setOvertimeRecords(prev =>
-        prev.map(r =>
-          r.overtimeRecordId === recordId
-            ? { ...r, status, rejectionReason: status === 'rejected' ? rejectionReason : undefined }
-            : r
-        )
-      );
+      return { success: true, message: `Đã ${status === 'accepted' ? 'phê duyệt' : 'từ chối'} đơn OT` };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi khi xử lý đơn OT' };
     }
   };
 
@@ -304,23 +254,44 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
     try {
       await overtimeService.cancelOvertime(recordId);
       await loadData();
-    } catch {
-      setOvertimeRecords(prev => prev.filter(r => r.overtimeRecordId !== recordId));
+      return { success: true, message: 'Đã hủy đơn đăng ký OT' };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi khi hủy đơn OT' };
     }
   };
 
-  // 4. Cập nhật hồ sơ nhân viên
+  // 4. Cập nhật hồ sơ & nạp chi tiết
+  const getEmployeeProfileById = async (userId: string): Promise<EmployeeDetailed | null> => {
+    if (employeeDetails[userId]) return employeeDetails[userId];
+    try {
+      const detailed = await employeeService.getDetailedProfile(userId);
+      if (detailed) {
+        setEmployeeDetails(prev => ({ ...prev, [userId]: detailed }));
+        return detailed;
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  };
+
   const updateEmployeeProfile = async (userId: string, updates: Partial<EmployeeDetailed>) => {
-    setEmployeeDetails(prev => {
-      const current = prev[userId] || getEmployeeDetail(userId);
-      return {
-        ...prev,
-        [userId]: {
-          ...current,
-          ...updates
-        }
-      };
-    });
+    try {
+      if (updates.phoneNumber || updates.birthDate || updates.gender) {
+        await employeeService.updateLegalProfile(userId, {
+          phoneNumber: updates.phoneNumber,
+          birthDate: updates.birthDate,
+          gender: updates.gender
+        });
+      }
+      const refreshed = await employeeService.getDetailedProfile(userId);
+      if (refreshed) {
+        setEmployeeDetails(prev => ({ ...prev, [userId]: refreshed }));
+      }
+      return { success: true, message: 'Cập nhật hồ sơ nhân sự thành công' };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi cập nhật hồ sơ' };
+    }
   };
 
   // 5. Tính lương
@@ -328,8 +299,9 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
     try {
       await payrollService.generatePayroll(month, year);
       await loadData();
-    } catch {
-      // Local fallback calculation
+      return { success: true, message: `Đã khởi tạo bảng lương tháng ${month}/${year}` };
+    } catch (err: any) {
+      return { success: false, message: err.message || 'Lỗi khi khởi tạo bảng lương' };
     }
   };
 
@@ -342,6 +314,7 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
         payrolls,
         employeeDetails,
         isLoadingData,
+        dataError,
         clockInAttendance,
         clockOutAttendance,
         editAttendanceRecord,
@@ -353,6 +326,7 @@ export function HRMDataProvider({ children }: { children: React.ReactNode }) {
         handleOvertimeRequest,
         cancelOvertimeRequest,
         updateEmployeeProfile,
+        getEmployeeProfileById,
         generateMonthlyPayroll,
         reloadAllData: loadData
       }}

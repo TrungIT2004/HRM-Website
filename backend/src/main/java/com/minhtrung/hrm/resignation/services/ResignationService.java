@@ -15,6 +15,8 @@ import com.minhtrung.hrm.auth.entities.UserSession;
 import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
 import com.minhtrung.hrm.auth.services.SessionBlacklistService;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.entities.UserContract;
 import com.minhtrung.hrm.employees.repositories.UserContractRepository;
@@ -42,6 +44,7 @@ public class ResignationService {
     private final UserRepository userRepository;
     private final UserSessionRepository userSessionRepository;
     private final SessionBlacklistService sessionBlacklistService;
+    private final PermissionService permissionService;
 
     /**
      * 1. Nhân viên tạo đơn xin thôi việc
@@ -130,7 +133,8 @@ public class ResignationService {
         boolean isDepartmentHead = approverDept.equals(requestorDept) && approverJob.startsWith("Department Head");
         boolean isExecutive = "Executive Leadership".equals(approverDept);
 
-        if (!isDepartmentHead && !isExecutive) {
+        if (!isDepartmentHead && !isExecutive
+                && !permissionService.hasPermission(approverId, PermissionKey.RESIGN_APPROVE)) {
             throw new ResignationException(ResignationErrorCode.UNAUTHORIZED_ACTION,
                     "Chỉ Trưởng phòng ban trực tiếp hoặc Ban Giám Đốc mới có quyền duyệt bàn giao đơn này");
         }
@@ -187,7 +191,8 @@ public class ResignationService {
         boolean isExecutive = "Executive Leadership".equals(approverDept);
         boolean isHR = "Human Resources".equals(approverDept);
 
-        if (!isExecutive && !isHR) {
+        if (!isExecutive && !isHR
+                && !permissionService.hasPermission(approverId, PermissionKey.RESIGN_APPROVE)) {
             throw new ResignationException(ResignationErrorCode.UNAUTHORIZED_ACTION,
                     "Chỉ Ban Giám Đốc hoặc Phòng Nhân sự (HR) mới có quyền phê duyệt chính thức đơn thôi việc");
         }
@@ -273,7 +278,8 @@ public class ResignationService {
         boolean isHR = "Human Resources".equals(dept);
         boolean isDeptHead = job.startsWith("Department Head");
 
-        if (isExecutive || isHR) {
+        if (isExecutive || isHR
+                || permissionService.hasPermission(userRole.getUserId(), PermissionKey.RESIGN_APPROVE)) {
             return resignationRequestRepository.findExecutiveApprovals(userRole.getUserId(), pageable)
                     .map(this::mapToResponse);
         } else if (isDeptHead) {
@@ -294,7 +300,8 @@ public class ResignationService {
         boolean isExecutive = "Executive Leadership".equals(dept);
         boolean isHR = "Human Resources".equals(dept);
 
-        if (!isExecutive && !isHR) {
+        if (!isExecutive && !isHR
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.RESIGN_VIEW_ALL)) {
             throw new ResignationException(ResignationErrorCode.UNAUTHORIZED_ACTION,
                     "Chỉ Ban Giám Đốc hoặc Phòng Nhân sự mới có quyền xem toàn bộ đơn thôi việc của công ty");
         }

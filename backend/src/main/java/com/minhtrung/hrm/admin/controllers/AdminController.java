@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +21,11 @@ import com.minhtrung.hrm.admin.dtos.requests.AdminResetPasswordRequest;
 import com.minhtrung.hrm.admin.dtos.requests.AdminUpdateStatusRequest;
 import com.minhtrung.hrm.admin.dtos.requests.ProvisionAccountRequest;
 import com.minhtrung.hrm.admin.dtos.requests.RejectPendingUserRequest;
+import com.minhtrung.hrm.admin.dtos.requests.SavePermissionsRequest;
 import com.minhtrung.hrm.admin.dtos.responses.AdminAccountResponse;
 import com.minhtrung.hrm.admin.dtos.responses.AdminSessionResponse;
 import com.minhtrung.hrm.admin.dtos.responses.PendingUserResponse;
+import com.minhtrung.hrm.admin.dtos.responses.UserPermissionResponse;
 import com.minhtrung.hrm.admin.services.AdminService;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.common.context.RequestContextHolder;
@@ -126,5 +129,24 @@ public class AdminController {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
         adminService.revokeAllUserSessions(userId, currentUser);
         return ResponseEntity.ok(Map.of("message", "Đã đăng xuất toàn bộ thiết bị của nhân viên thành công"));
+    }
+
+    // ─── 4. PHÂN QUYỀN THEO NGƯỜI ─────────────────────────────────────
+
+    @GetMapping("/users/{userId}/permissions")
+    public ResponseEntity<List<UserPermissionResponse>> getUserPermissions(@PathVariable UUID userId) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        return ResponseEntity.ok(adminService.getUserPermissions(userId, currentUser));
+    }
+
+    @PutMapping("/users/{userId}/permissions")
+    public ResponseEntity<List<UserPermissionResponse>> saveUserPermissions(
+            @PathVariable UUID userId,
+            @RequestBody SavePermissionsRequest request
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        List<UserPermissionResponse> saved = adminService.saveUserPermissions(
+                userId, request != null ? request.getPermissions() : null, currentUser);
+        return ResponseEntity.ok(saved);
     }
 }

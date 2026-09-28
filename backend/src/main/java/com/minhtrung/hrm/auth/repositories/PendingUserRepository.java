@@ -16,4 +16,8 @@ public interface PendingUserRepository extends JpaRepository<PendingUser, UUID> 
     boolean existsByPersonalEmail(String personalEmail);
 
     Optional<PendingUser> findByPersonalEmail(String personalEmail);
+
+    int countByDepartment_DepartmentId(UUID departmentId);
+    int countByJob_JobId(UUID jobId);
+    int countByShift_ShiftId(UUID shiftId);
 }

@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,8 @@ import com.minhtrung.hrm.attendance.entities.MonthlyTimesheet;
 import com.minhtrung.hrm.attendance.enums.TimesheetStatus;
 import com.minhtrung.hrm.attendance.repositories.MonthlyTimesheetRepository;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 import com.minhtrung.hrm.employees.entities.Salary;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.SalaryRepository;
@@ -61,16 +64,19 @@ public class PayrollService {
     private final MonthlyPayrollSummaryRepository monthlyPayrollSummaryRepository;
     private final MonthlyTimesheetRepository monthlyTimesheetRepository;
     private final SalaryRepository salaryRepository;
+    private final PermissionService permissionService;
 
     public PayrollService(
             PayrollRepository payrollRepository,
             MonthlyPayrollSummaryRepository monthlyPayrollSummaryRepository,
             MonthlyTimesheetRepository monthlyTimesheetRepository,
-            SalaryRepository salaryRepository) {
+            SalaryRepository salaryRepository,
+            PermissionService permissionService) {
         this.payrollRepository = payrollRepository;
         this.monthlyPayrollSummaryRepository = monthlyPayrollSummaryRepository;
         this.monthlyTimesheetRepository = monthlyTimesheetRepository;
         this.salaryRepository = salaryRepository;
+        this.permissionService = permissionService;
     }
 
     // =========================================================================
@@ -98,14 +104,14 @@ public class PayrollService {
     @Transactional(readOnly = true)
     public Page<CompanyPayrollResponse> getCompanyPayrolls(UserRole userRole, CompanyPayrollFilterRequest filter, Pageable pageable) {
         validatePayrollManagementPermission(userRole);
-        Specification<Payroll> spec = PayrollSpecification.filterForCompany(userRole.getUserId(), filter);
+        Specification<Payroll> spec = PayrollSpecification.filterForCompany(filter);
         return payrollRepository.findAll(spec, pageable).map(this::mapToCompanyResponse);
     }
 
     @Transactional(readOnly = true)
     public byte[] exportCompanyPayrollsToExcel(UserRole userRole, CompanyPayrollFilterRequest filter) {
         validatePayrollManagementPermission(userRole);
-        Specification<Payroll> spec = PayrollSpecification.filterForCompany(userRole.getUserId(), filter);
+        Specification<Payroll> spec = PayrollSpecification.filterForCompany(filter);
         Sort sort = Sort.by(Sort.Direction.ASC, "user.department.name", "user.employeeCode", "periodYear", "periodMonth");
         List<Payroll> list = payrollRepository.findAll(spec, sort);
         return generateCompanyPayrollExcel(list);
@@ -124,15 +130,48 @@ public class PayrollService {
     // 3. TÍNH TOÁN BẢNG LƯƠNG TỰ ĐỘNG (GENERATE / RE-CALCULATE)
     // =========================================================================
 
+    /**
+     * Tính lương một kỳ. Phạm vi theo thứ tự ưu tiên:
+     * {@code userIds} (vùng người dùng tick trên bảng) → {@code filter} (từ khoá / phòng ban)
+     * → toàn bộ tháng khi cả hai rỗng.
+     */
     @Transactional
-    public Map<String, Object> generatePayroll(int month, int year, UserRole userRole) {
+    public Map<String, Object> generatePayroll(int month, int year, UserRole userRole,
+                                               CompanyPayrollFilterRequest filter, List<UUID> userIds) {
         validatePayrollManagementPermission(userRole);
 
+        // Chỉ tính lương được kỳ ĐÃ KẾT THÚC: hôm 27/09 thì tháng 09 chưa tính lương được,
+        // phải chờ sang ngày 01/10. So sánh year*12+month để không cần parse ngày.
+        int currentPeriod = LocalDate.now().getYear() * 12 + LocalDate.now().getMonthValue();
+        if (year * 12 + month >= currentPeriod) {
+            throw new PayrollException(PayrollErrorCode.INVALID_PAYROLL_PERIOD,
+                    "Kỳ lương " + month + "/" + year + " chưa kết thúc, chỉ tính lương cho kỳ đã qua.");
+        }
+
         // 1. Kiểm tra bảng chấm công đã khóa chưa
-        List<MonthlyTimesheet> timesheets = monthlyTimesheetRepository.findByPeriodMonthAndPeriodYearAndStatus(month, year, TimesheetStatus.LOCKED);
-        if (timesheets == null || timesheets.isEmpty()) {
+        List<MonthlyTimesheet> allTimesheets = monthlyTimesheetRepository.findByPeriodMonthAndPeriodYearAndStatus(month, year, TimesheetStatus.LOCKED);
+        if (allTimesheets == null || allTimesheets.isEmpty()) {
             throw new PayrollException(PayrollErrorCode.TIMESHEET_NOT_LOCKED,
                     "Bảng chấm công tháng " + month + "/" + year + " chưa được khóa sổ (LOCKED). Vui lòng chốt và khóa chấm công trước khi tính lương.");
+        }
+
+        // Thu hẹp phạm vi tính theo vùng đang chọn, nếu không thì theo bộ lọc đang xem.
+        List<MonthlyTimesheet> timesheets;
+        String scope;
+        if (userIds != null && !userIds.isEmpty()) {
+            timesheets = allTimesheets.stream()
+                    .filter(ts -> ts.getUser() != null && userIds.contains(ts.getUser().getUserId()))
+                    .toList();
+            scope = "vùng chọn";
+        } else {
+            timesheets = allTimesheets.stream().filter(ts -> matchesFilter(ts.getUser(), filter)).toList();
+            boolean hasKeyword = filter != null && filter.getKeyword() != null && !filter.getKeyword().isBlank();
+            boolean hasDept = filter != null && filter.getDepartmentNames() != null && !filter.getDepartmentNames().isEmpty();
+            scope = (hasKeyword || hasDept) ? "bộ lọc" : "toàn tháng";
+        }
+        if (timesheets.isEmpty()) {
+            throw new PayrollException(PayrollErrorCode.TIMESHEET_NOT_LOCKED,
+                    "Không có nhân viên nào khớp phạm vi đang chọn có bảng chấm công đã khoá tháng " + month + "/" + year + ".");
         }
 
         // 2. Kiểm tra xem kỳ lương đã APPROVED hoặc PAID chưa
@@ -145,8 +184,14 @@ public class PayrollService {
                     "Bảng lương tháng " + month + "/" + year + " đã được phê duyệt hoặc chi trả, không thể tính toán lại.");
         }
 
-        // 3. Xóa dữ liệu DRAFT cũ nếu có để re-calculate sạch sẽ
-        payrollRepository.deleteByPeriodMonthAndPeriodYearAndStatus(month, year, PayrollStatus.DRAFT);
+        // 3. Xóa dữ liệu DRAFT cũ trong phạm vi lọc để re-calculate sạch sẽ.
+        // Chỉ xoá nhóm đang lọc — xoá cả tháng sẽ mất bản ghi DRAFT của các phòng ban khác.
+        List<UUID> scopedUserIds = timesheets.stream().map(ts -> ts.getUser().getUserId()).toList();
+        payrollRepository.deleteByPeriodMonthAndPeriodYearAndStatusAndUser_UserIdIn(
+                month, year, PayrollStatus.DRAFT, scopedUserIds);
+        // Bắt buộc: Hibernate xếp INSERT trước DELETE trong cùng một flush, nên nếu không flush
+        // thì bản ghi mới sẽ vi phạm uk_payroll_user_period trước khi bản ghi cũ được xoá.
+        payrollRepository.flush();
 
         LocalDateTime now = LocalDateTime.now();
         int calculatedCount = 0;
@@ -230,12 +275,13 @@ public class PayrollService {
         // Tạo / Cập nhật bản ghi MonthlyPayrollSummary
         recalculateSummary(month, year);
 
-        log.info("Tính toán bảng lương tháng {}/{} thành công cho {} nhân viên. Người thực hiện: {}",
-                month, year, calculatedCount, userRole.getUserId());
+        log.info("Tính toán bảng lương tháng {}/{} thành công cho {} nhân viên (phạm vi: {}). Người thực hiện: {}",
+                month, year, calculatedCount, scope, userRole.getUserId());
 
         return Map.of(
-                "msg", "Tính toán bảng lương tháng " + month + "/" + year + " thành công",
+                "msg", "Tính toán bảng lương tháng " + month + "/" + year + " thành công (" + calculatedCount + " nhân viên)",
                 "calculatedCount", calculatedCount,
+                "scope", scope,
                 "status", PayrollStatus.DRAFT.name()
         );
     }
@@ -470,6 +516,34 @@ public class PayrollService {
         monthlyPayrollSummaryRepository.save(summary);
     }
 
+    /**
+     * Nhân viên có khớp bộ lọc đang xem không. Dùng lại đúng luật của
+     * {@link PayrollSpecification#filterForCompany} (keyword + phòng ban) để
+     * "Tính bảng lương" khớp với những dòng đang hiển thị.
+     */
+    private boolean matchesFilter(User u, CompanyPayrollFilterRequest filter) {
+        if (u == null) return false;
+        if (filter == null) return true;
+
+        String keyword = filter.getKeyword();
+        if (keyword != null && !keyword.isBlank()) {
+            String kw = keyword.trim().toLowerCase();
+            String code = u.getEmployeeCode() != null ? u.getEmployeeCode().toLowerCase() : "";
+            String first = u.getFirstName() != null ? u.getFirstName().toLowerCase() : "";
+            String last = u.getLastName() != null ? u.getLastName().toLowerCase() : "";
+            if (!code.contains(kw) && !first.contains(kw) && !last.contains(kw)) return false;
+        }
+
+        List<String> departments = filter.getDepartmentNames();
+        if (departments != null && !departments.isEmpty()) {
+            String dept = (u.getDepartment() != null && u.getDepartment().getName() != null)
+                    ? u.getDepartment().getName() : "";
+            if (!departments.contains(dept)) return false;
+        }
+
+        return true;
+    }
+
     private void validatePayrollManagementPermission(UserRole userRole) {
         String dept = userRole.getDepartment() != null ? userRole.getDepartment().toLowerCase() : "";
         String job = userRole.getJob() != null ? userRole.getJob().toLowerCase() : "";
@@ -478,7 +552,8 @@ public class PayrollService {
         boolean isAccountingDept = dept.contains("accounting") || dept.contains("finance") || dept.contains("tài chính") || dept.contains("kế toán");
         boolean isAccountantJob = job.contains("accountant") || job.contains("kế toán");
 
-        if (!isExecutive && !isAccountingDept && !isAccountantJob) {
+        if (!isExecutive && !isAccountingDept && !isAccountantJob
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.PAYROLL_MANAGE)) {
             throw new PayrollException(PayrollErrorCode.INSUFFICIENT_PERMISSION,
                     "Chỉ nhân viên Kế toán hoặc Ban Giám Đốc mới có quyền quản lý bảng lương toàn công ty");
         }
@@ -495,7 +570,8 @@ public class PayrollService {
                 || job.contains("kế toán trưởng")
                 || (isHead && isFinanceOrAccounting);
 
-        if (!isExecutive && !isChiefAccountant) {
+        if (!isExecutive && !isChiefAccountant
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.PAYROLL_MANAGE)) {
             throw new PayrollException(PayrollErrorCode.INSUFFICIENT_PERMISSION,
                     "Chỉ Kế toán trưởng hoặc Ban Giám Đốc mới có quyền phê duyệt bảng lương toàn công ty");
         }

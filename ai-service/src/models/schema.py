@@ -11,7 +11,7 @@ class DocumentBlock(BaseModel):
     """Represents a structural block in a parsed document (Heading, Paragraph, Table)."""
     block_type: str = Field(description="'HEADING', 'PARAGRAPH', or 'TABLE'")
     content: str = Field(description="Text content or Markdown formatted table")
-    page_number: int = Field(default=1, description="1-based page number")
+    page_number: Optional[int] = Field(default=None, description="1-based page number; None when the format has no real pagination (docx, xlsx)")
     heading_level: Optional[int] = Field(default=None, description="1 for Chương/Title, 2 for Điều, 3 for Khoản")
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
@@ -35,7 +35,7 @@ class ProcessedChunk(BaseModel):
     document_id: Optional[str] = None
     breadcrumb: str = Field(description="Hierarchical path, e.g. 'Nội quy 2024 > Chương II > Điều 5'")
     chunk_type: str = Field(default="TEXT", description="'TEXT' or 'TABLE'")
-    page_number: int = 1
+    page_number: Optional[int] = None
     content: str = Field(description="The primary chunk content (text or markdown table)")
     
     # Enriched Metadata (from ByteMonk Architecture)

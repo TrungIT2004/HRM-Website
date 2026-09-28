@@ -1,43 +1,34 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AppShell from '@/components/layout/AppShell';
+import TodayStatusBadge from '@/components/TodayStatusBadge';
 import { useAuth } from '@/context/AuthContext';
 import { useHRMData } from '@/context/HRMDataContext';
 import { employeeService, CreateEmployeePayload } from '@/services/employeeService';
 import { organizationService, DepartmentDto, JobDto } from '@/services/organizationService';
+import { DEPARTMENTS } from '@/constants/departments';
 import { workShiftService, WorkShiftResponse } from '@/services/workShiftService';
-import { 
-  Users, 
-  Search, 
-  Filter, 
-  Building2, 
-  Mail, 
-  Phone, 
-  ArrowUpRight, 
-  LayoutGrid, 
+import {
+  Users,
+  Search,
+  Building2,
+  Mail,
+  ArrowUpRight,
+  LayoutGrid,
   Table as TableIcon,
-  ShieldCheck, 
-  CheckCircle2, 
-  Clock, 
-  UserCheck,
+  CheckCircle2,
   UserPlus,
-  Plus,
   X,
-  Save,
-  Briefcase,
-  AlertCircle
+  Briefcase
 } from 'lucide-react';
 import { DepartmentName, TodayAttendanceStatus, User } from '@/types';
 
 export default function EmployeeDirectoryPage() {
-  const { allUsers, isHR, isExecutive } = useAuth();
+  const { allUsers, isHR, isExecutive, currentUser, can } = useAuth();
   const { employeeDetails } = useHRMData();
 
-  const [keyword, setKeyword] = useState('');
-  const [selectedDept, setSelectedDept] = useState<string>('ALL');
-  const [selectedStatus, setSelectedStatus] = useState<string>('ALL');
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
   // Directory live state
@@ -46,7 +37,6 @@ export default function EmployeeDirectoryPage() {
 
   // Modals state
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
 
   // Org data state
   const [departments, setDepartments] = useState<DepartmentDto[]>([]);
@@ -69,21 +59,40 @@ export default function EmployeeDirectoryPage() {
   });
 
   // Org Management Form states
-  const [newDeptName, setNewDeptName] = useState('');
-  const [newJobTitle, setNewJobTitle] = useState('');
-  const [newJobDeptId, setNewJobDeptId] = useState('');
-  const [newShiftName, setNewShiftName] = useState('');
+
+  // Filter form ref — reads values on submit
+  const filterFormRef = useRef<HTMLFormElement>(null);
+  const [appliedFilters, setAppliedFilters] = useState({
+    keyword: '',
+    dept: 'ALL',
+    status: 'ALL'
+  });
+
+  const handleApplyFilter = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const fd = new FormData(filterFormRef.current!);
+    setAppliedFilters({
+      keyword: fd.get('keyword') as string || '',
+      dept: fd.get('dept') as string || 'ALL',
+      status: fd.get('status') as string || 'ALL'
+    });
+  };
+
+  const handleResetFilter = () => {
+    filterFormRef.current?.reset();
+    setAppliedFilters({ keyword: '', dept: 'ALL', status: 'ALL' });
+  };
 
   const showToast = (msg: string) => {
     setToastMsg(msg);
     setTimeout(() => setToastMsg(''), 4000);
   };
 
-  const loadDirectory = async () => {
+  const loadDirectory = async (filters = appliedFilters) => {
     try {
       const res = await employeeService.getEmployees({
-        keyword: keyword || undefined,
-        department: selectedDept !== 'ALL' ? selectedDept : undefined,
+        keyword: filters.keyword || undefined,
+        department: filters.dept !== 'ALL' ? filters.dept : undefined,
         size: 50
       });
       if (res && res.content) {
@@ -110,7 +119,6 @@ export default function EmployeeDirectoryPage() {
           ...prev,
           departmentId: prev.departmentId || deptRes[0].departmentId
         }));
-        setNewJobDeptId(prev => prev || deptRes[0].departmentId);
       }
       if (jobRes && jobRes.length > 0) {
         setNewEmp(prev => ({ ...prev, jobId: prev.jobId || jobRes[0].jobId }));
@@ -124,8 +132,8 @@ export default function EmployeeDirectoryPage() {
   };
 
   useEffect(() => {
-    loadDirectory();
-  }, [keyword, selectedDept]);
+    loadDirectory(appliedFilters);
+  }, [appliedFilters.keyword, appliedFilters.dept]);
 
   useEffect(() => {
     loadOrgData();
@@ -133,49 +141,21 @@ export default function EmployeeDirectoryPage() {
 
   const displayedUsers = liveUsers.length > 0 ? liveUsers : allUsers;
 
-  const todayStatusBadge = (status?: TodayAttendanceStatus) => {
-    switch (status) {
-      case 'WORKING':
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 border border-emerald-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Đang làm việc</span>
-          </span>
-        );
-      case 'ON_LEAVE':
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-[11px] font-bold text-amber-700 border border-amber-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-            <span>Nghỉ phép</span>
-          </span>
-        );
-      case 'ABSENT':
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 px-2.5 py-0.5 text-[11px] font-bold text-red-700 border border-red-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
-            <span>Vắng mặt</span>
-          </span>
-        );
-      case 'NOT_CHECKED':
-      default:
-        return (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-600 border border-slate-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
-            <span>Chưa chấm công</span>
-          </span>
-        );
-    }
-  };
+  // Quyền quản lý cơ cấu: mặc định phòng HR, hoặc được cấp ORG_MANAGE (backend: isHR || grant)
+  const isHRRaw = (currentUser?.department || '').toLowerCase() === 'human resources';
+  const canManageOrg = isHRRaw || can('ORG_MANAGE');
+
 
   const filteredUsers = displayedUsers.filter(user => {
     const matchKeyword = 
-      ((user.fullName || '')?.toLowerCase() || '').includes(keyword.toLowerCase()) ||
-      ((user.employeeCode || '')?.toLowerCase() || '').includes(keyword.toLowerCase()) ||
-      ((user.email || '')?.toLowerCase() || '').includes(keyword.toLowerCase()) ||
-      ((user.job || '')?.toLowerCase() || '').includes(keyword.toLowerCase());
+      !appliedFilters.keyword ||
+      ((user.fullName || '')?.toLowerCase() || '').includes(appliedFilters.keyword.toLowerCase()) ||
+      ((user.employeeCode || '')?.toLowerCase() || '').includes(appliedFilters.keyword.toLowerCase()) ||
+      ((user.email || '')?.toLowerCase() || '').includes(appliedFilters.keyword.toLowerCase()) ||
+      ((user.job || '')?.toLowerCase() || '').includes(appliedFilters.keyword.toLowerCase());
 
-    const matchDept = selectedDept === 'ALL' || user.department === selectedDept;
-    const matchStatus = selectedStatus === 'ALL' || user.todayStatus === selectedStatus;
+    const matchDept = appliedFilters.dept === 'ALL' || user.department === appliedFilters.dept;
+    const matchStatus = appliedFilters.status === 'ALL' || user.todayStatus === appliedFilters.status;
 
     return matchKeyword && matchDept && matchStatus;
   });
@@ -205,58 +185,6 @@ export default function EmployeeDirectoryPage() {
     }
   };
 
-  const handleCreateDepartment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newDeptName.trim()) return;
-    try {
-      await organizationService.createDepartment(newDeptName.trim());
-      showToast(`Đã tạo phòng ban ${newDeptName} thành công!`);
-      setNewDeptName('');
-      await loadOrgData();
-    } catch (err: any) {
-      showToast('Lỗi tạo phòng ban: ' + (err.message || 'Không thể tạo'));
-    }
-  };
-
-  const handleCreateJob = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newJobTitle.trim() || !newJobDeptId) return;
-    try {
-      await organizationService.createJob(newJobTitle.trim(), newJobDeptId);
-      showToast(`Đã tạo chức danh ${newJobTitle} thành công!`);
-      setNewJobTitle('');
-      await loadOrgData();
-    } catch (err: any) {
-      showToast('Lỗi tạo chức danh: ' + (err.message || 'Không thể tạo'));
-    }
-  };
-
-  const handleCreateShift = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newShiftName.trim()) return;
-    try {
-      // Standard 8h shift Mon-Fri, Sat-Sun off
-      const defaultSchedules = [
-        { dayOfWeek: 1, isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
-        { dayOfWeek: 2, isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
-        { dayOfWeek: 3, isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
-        { dayOfWeek: 4, isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
-        { dayOfWeek: 5, isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
-        { dayOfWeek: 6, isWorking: false },
-        { dayOfWeek: 7, isWorking: false }
-      ];
-      await workShiftService.createWorkShift({
-        name: newShiftName.trim(),
-        schedules: defaultSchedules
-      });
-      showToast(`Đã tạo ca làm việc mới "${newShiftName}" (Tuân thủ luật ≤8h/ngày, ≤48h/tuần)!`);
-      setNewShiftName('');
-      await loadOrgData();
-    } catch (err: any) {
-      showToast('Lỗi tạo ca: ' + (err.message || 'Không thể tạo ca'));
-    }
-  };
-
   return (
     <AppShell>
       <div className="space-y-6">
@@ -283,15 +211,17 @@ export default function EmployeeDirectoryPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {canManageOrg && (
+              <Link
+                href="/organization"
+                className="flex items-center gap-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2.5 text-xs font-bold transition"
+              >
+                <Building2 className="h-4 w-4 text-blue-600" aria-hidden="true" />
+                <span>Cơ cấu & Ca làm việc</span>
+              </Link>
+            )}
             {(isHR || isExecutive) && (
               <>
-                <button
-                  onClick={() => setIsOrgModalOpen(true)}
-                  className="flex items-center gap-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2.5 text-xs font-bold transition cursor-pointer"
-                >
-                  <Building2 className="h-4 w-4 text-blue-600" />
-                  <span>Cơ cấu & Ca làm việc</span>
-                </button>
                 <button
                   onClick={() => setIsCreateModalOpen(true)}
                   className="flex items-center gap-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-blue-500/20 transition cursor-pointer"
@@ -328,60 +258,79 @@ export default function EmployeeDirectoryPage() {
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
-          <div className="relative sm:col-span-6">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <Search className="h-4 w-4 text-slate-400" />
+        <form ref={filterFormRef} onSubmit={handleApplyFilter} className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+            <div className="relative sm:col-span-6">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <Search className="h-4 w-4 text-slate-400" />
+              </div>
+              <input
+                type="text"
+                name="keyword"
+                placeholder="Tìm kiếm theo Tên, Mã nhân viên (EMP...), Email hoặc Vị trí..."
+                className="block w-full rounded-xl border border-slate-300 py-2.5 pl-10 pr-4 text-xs placeholder:text-slate-400 focus:border-blue-600 focus:outline-hidden"
+              />
             </div>
-            <input
-              type="text"
-              value={keyword}
-              onChange={e => setKeyword(e.target.value)}
-              placeholder="Tìm kiếm theo Tên, Mã nhân viên (EMP...), Email hoặc Vị trí..."
-              className="block w-full rounded-xl border border-slate-300 py-2.5 pl-10 pr-4 text-xs placeholder:text-slate-400 focus:border-blue-600 focus:outline-hidden"
-            />
+
+            <div className="sm:col-span-3">
+              <select
+                name="dept"
+                defaultValue="ALL"
+                className="block w-full rounded-xl border border-slate-300 py-2.5 px-3 text-xs focus:border-blue-600 focus:outline-hidden bg-white"
+              >
+                <option value="ALL">Tất cả phòng ban</option>
+                {departments.length > 0 ? (
+                  departments.map(d => (
+                    <option key={d.departmentId} value={d.name}>
+                      {d.name} ({d.totalEmployees})
+                    </option>
+                  ))
+                ) : (
+                  <>
+                    <option value="ALL">Tất cả phòng ban</option>
+                    {DEPARTMENTS.map(d => (
+                      <option key={d.dbName} value={d.dbName}>{d.label}</option>
+                    ))}
+                  </>
+                )}
+              </select>
+            </div>
+
+            <div className="sm:col-span-3">
+              <select
+                name="status"
+                defaultValue="ALL"
+                className="block w-full rounded-xl border border-slate-300 py-2.5 px-3 text-xs focus:border-blue-600 focus:outline-hidden bg-white"
+              >
+                <option value="ALL">Tất cả trạng thái hôm nay</option>
+                <option value="WORKING">Đang làm việc</option>
+                <option value="ON_LEAVE">Nghỉ phép</option>
+                <option value="ABSENT">Vắng mặt</option>
+                <option value="NOT_CHECKED">Chưa chấm công</option>
+              </select>
+            </div>
           </div>
 
-          <div className="sm:col-span-3">
-            <select
-              value={selectedDept}
-              onChange={e => setSelectedDept(e.target.value)}
-              className="block w-full rounded-xl border border-slate-300 py-2.5 px-3 text-xs focus:border-blue-600 focus:outline-hidden bg-white"
+          <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+            {(appliedFilters.keyword || appliedFilters.dept !== 'ALL' || appliedFilters.status !== 'ALL') && (
+              <button
+                type="button"
+                onClick={handleResetFilter}
+                className="px-3.5 py-1.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs font-semibold transition cursor-pointer"
+              >
+                Đặt lại
+              </button>
+            )}
+            <button
+              type="submit"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition cursor-pointer"
             >
-              <option value="ALL">Tất cả phòng ban</option>
-              {departments.length > 0 ? (
-                departments.map(d => (
-                  <option key={d.departmentId} value={d.name}>
-                    {d.name} ({d.totalEmployees})
-                  </option>
-                ))
-              ) : (
-                <>
-                  <option value="Executive Leadership">Ban Giám Đốc</option>
-                  <option value="Human Resources">Phòng Nhân sự</option>
-                  <option value="Information Technology">Phòng IT</option>
-                  <option value="Sales & Marketing">Kinh doanh & Marketing</option>
-                  <option value="Finance & Accounting">Tài chính - Kế toán</option>
-                  <option value="Customer Support">Chăm sóc khách hàng</option>
-                </>
-              )}
-            </select>
+              <Search className="h-3.5 w-3.5" />
+              <span>Tìm kiếm & Lọc</span>
+            </button>
           </div>
+        </form>
 
-          <div className="sm:col-span-3">
-            <select
-              value={selectedStatus}
-              onChange={e => setSelectedStatus(e.target.value)}
-              className="block w-full rounded-xl border border-slate-300 py-2.5 px-3 text-xs focus:border-blue-600 focus:outline-hidden bg-white"
-            >
-              <option value="ALL">Tất cả trạng thái hôm nay</option>
-              <option value="WORKING">Đang làm việc</option>
-              <option value="ON_LEAVE">Nghỉ phép</option>
-              <option value="ABSENT">Vắng mặt</option>
-              <option value="NOT_CHECKED">Chưa chấm công</option>
-            </select>
-          </div>
-        </div>
 
         {/* Results Count */}
         <div className="flex items-center justify-between text-xs text-slate-500 px-1">
@@ -424,7 +373,7 @@ export default function EmployeeDirectoryPage() {
                           <span className="font-mono text-[11px] text-slate-400 font-semibold">{user.employeeCode}</span>
                         </div>
                       </div>
-                      {todayStatusBadge(user.todayStatus)}
+                      <TodayStatusBadge status={user.todayStatus} overtime={user.todayOvertimeStatus} />
                     </div>
 
                     <div className="space-y-1.5 text-xs text-slate-600 border-t border-slate-100 pt-3">
@@ -459,9 +408,10 @@ export default function EmployeeDirectoryPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 font-bold uppercase text-[10px] tracking-wider">
-                  <tr>
-                    <th className="py-3.5 px-4">Nhân sự</th>
-                    <th className="py-3.5 px-4">Phòng ban</th>
+                    <tr>
+                      <th className="py-3.5 px-4">Mã NV</th>
+                      <th className="py-3.5 px-4">Họ tên</th>
+                      <th className="py-3.5 px-4">Phòng ban</th>
                     <th className="py-3.5 px-4">Chức vụ</th>
                     <th className="py-3.5 px-4">Email</th>
                     <th className="py-3.5 px-4">Hôm nay</th>
@@ -469,16 +419,17 @@ export default function EmployeeDirectoryPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-slate-700">
-                  {filteredUsers.map(u => (
+                    {filteredUsers.length === 0 && (
+                      <tr><td colSpan={6} className="py-8 text-center text-xs text-slate-400">Không tìm thấy nhân sự phù hợp với bộ lọc.</td></tr>
+                    )}
+                    {filteredUsers.map(u => (
                     <tr key={u.userId} className="hover:bg-slate-50/80 transition">
-                      <td className="py-3 px-4">
-                        <div className="font-bold text-slate-900">{u.fullName}</div>
-                        <div className="text-[10px] font-mono text-slate-400">{u.employeeCode}</div>
-                      </td>
+                      <td className="py-3 px-4 font-mono text-[11px] text-slate-500">{u.employeeCode}</td>
+                      <td className="py-3 px-4 font-bold text-slate-900">{u.fullName}</td>
                       <td className="py-3 px-4 font-semibold text-slate-800">{u.department}</td>
                       <td className="py-3 px-4 text-blue-600 font-medium">{u.job}</td>
                       <td className="py-3 px-4 font-mono text-slate-500">{u.email}</td>
-                      <td className="py-3 px-4">{todayStatusBadge(u.todayStatus)}</td>
+                      <td className="py-3 px-4"><TodayStatusBadge status={u.todayStatus} overtime={u.todayOvertimeStatus} /></td>
                       <td className="py-3 px-4 text-right">
                         <Link
                           href={`/employees/${u.userId}`}
@@ -642,119 +593,6 @@ export default function EmployeeDirectoryPage() {
           </div>
         )}
 
-        {/* MODAL 2: QUẢN LÝ CƠ CẤU & CA LÀM VIỆC */}
-        {isOrgModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 overflow-y-auto">
-            <div className="relative w-full max-w-3xl rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200 my-8 max-h-[90vh] overflow-y-auto">
-              <button
-                onClick={() => setIsOrgModalOpen(false)}
-                className="absolute right-4 top-4 rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
-              >
-                <X className="h-5 w-5" />
-              </button>
-
-              <h2 className="text-lg font-black text-slate-900 mb-1 flex items-center gap-2">
-                <Building2 className="h-5 w-5 text-blue-600" />
-                <span>Quản Lý Cơ Cấu Tổ Chức & Ca Làm Việc</span>
-              </h2>
-              <p className="text-xs text-slate-500 mb-6">
-                Quyền hạn dành cho Trưởng Phòng Nhân Sự (HR Head) & Ban Giám Đốc (Executive Leadership).
-              </p>
-
-              <div className="space-y-6 text-xs">
-                {/* 1. Tạo phòng ban mới */}
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                    <Building2 className="h-4 w-4 text-blue-600" />
-                    <span>1. Thêm Phòng Ban Mới (POST /api/departments)</span>
-                  </h3>
-                  <form onSubmit={handleCreateDepartment} className="flex gap-2">
-                    <input
-                      type="text"
-                      value={newDeptName}
-                      onChange={e => setNewDeptName(e.target.value)}
-                      placeholder="Tên phòng ban mới (ví dụ: Phòng Nghiên cứu & Phát triển R&D)..."
-                      className="flex-1 rounded-xl border border-slate-300 p-2.5 bg-white text-xs focus:border-blue-600 focus:outline-hidden"
-                    />
-                    <button
-                      type="submit"
-                      className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition shrink-0"
-                    >
-                      <Plus className="h-4 w-4" />
-                      <span>Thêm phòng</span>
-                    </button>
-                  </form>
-                </div>
-
-                {/* 2. Tạo chức danh mới */}
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                    <Briefcase className="h-4 w-4 text-indigo-600" />
-                    <span>2. Thêm Chức Danh / Vị Trí Công Việc (POST /api/jobs)</span>
-                  </h3>
-                  <form onSubmit={handleCreateJob} className="grid grid-cols-1 sm:grid-cols-12 gap-2">
-                    <div className="sm:col-span-6">
-                      <input
-                        type="text"
-                        value={newJobTitle}
-                        onChange={e => setNewJobTitle(e.target.value)}
-                        placeholder="Tên chức danh (ví dụ: Kỹ sư Trí tuệ nhân tạo)..."
-                        className="w-full rounded-xl border border-slate-300 p-2.5 bg-white text-xs focus:border-blue-600 focus:outline-hidden"
-                      />
-                    </div>
-                    <div className="sm:col-span-4">
-                      <select
-                        value={newJobDeptId}
-                        onChange={e => setNewJobDeptId(e.target.value)}
-                        className="w-full rounded-xl border border-slate-300 p-2.5 bg-white text-xs focus:border-blue-600 focus:outline-hidden"
-                      >
-                        {departments.map(d => (
-                          <option key={d.departmentId} value={d.departmentId}>{d.name}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <button
-                        type="submit"
-                        className="w-full flex items-center justify-center gap-1 px-3 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition shrink-0"
-                      >
-                        <Plus className="h-4 w-4" />
-                        <span>Thêm</span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-
-                {/* 3. Tạo ca làm việc mới */}
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-emerald-600" />
-                    <span>3. Thêm Ca Làm Việc Mới (POST /api/work-shifts)</span>
-                  </h3>
-                  <p className="text-[11px] text-slate-500 mb-2">
-                    Tự động tạo lịch 7 ngày (T2-T6: 08:00 - 17:30, nghỉ trưa 12:00 - 13:30; T7 & CN nghỉ) đảm bảo luật ≤ 8h/ngày và ≤ 48h/tuần.
-                  </p>
-                  <form onSubmit={handleCreateShift} className="flex gap-2">
-                    <input
-                      type="text"
-                      value={newShiftName}
-                      onChange={e => setNewShiftName(e.target.value)}
-                      placeholder="Tên ca (ví dụ: Ca Sáng Tiêu Chuẩn 08:00 - 17:30)..."
-                      className="flex-1 rounded-xl border border-slate-300 p-2.5 bg-white text-xs focus:border-blue-600 focus:outline-hidden"
-                    />
-                    <button
-                      type="submit"
-                      className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shrink-0"
-                    >
-                      <Plus className="h-4 w-4" />
-                      <span>Thêm ca</span>
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </AppShell>
   );

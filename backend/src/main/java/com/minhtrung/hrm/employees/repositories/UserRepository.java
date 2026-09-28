@@ -21,6 +21,9 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     
     boolean existsByEmail(String email);
     int countByDepartment_DepartmentId(UUID departmentId);
+    // chặn xoá chức danh / ca làm việc khi còn nhân viên đang dùng
+    int countByJob_JobId(UUID jobId);
+    int countByShift_ShiftId(UUID shiftId);
 
     @Query("SELECT u FROM User u WHERE u.email = :email")
     User findByEmail(String email);

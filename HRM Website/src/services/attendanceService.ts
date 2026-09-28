@@ -52,11 +52,49 @@ function mapAttendanceItem(item: any): AttendanceRecord {
   };
 }
 
+// ponytail: backend bọc chỉ số trong attendance/leave/overtime (cả 3 scope me/dept/company)
+function mapTimesheetItem(item: any): MonthlyTimesheetSummary {
+  const att = item.attendance || {};
+  const leave = item.leave || {};
+  const ot = item.overtime || {};
+  return {
+    // timesheetId/note có sẵn ở CompanyMonthlyTimesheetResponse — bỏ qua là nút "Sửa"
+    // không biết gọi PUT /summary/{timesheetId} với id nào.
+    timesheetId: item.timesheetId || '',
+    userId: item.userId || '',
+    employeeCode: item.employeeCode || '',
+    fullName: item.fullName || '',
+    department: item.department || '',
+    job: item.job || '',
+    month: item.month || item.periodMonth || 0,
+    year: item.year || item.periodYear || 0,
+    standardWorkingDays: att.standardWorkingDays ?? item.standardWorkingDays ?? 0,
+    actualWorkedDays: att.actualWorkedDays ?? item.actualWorkedDays ?? 0,
+    lateCount: att.lateCount ?? item.lateCount ?? 0,
+    totalLateMinutes: att.totalLateMinutes ?? item.totalLateMinutes ?? 0,
+    earlyDepartureCount: att.earlyDepartureCount ?? item.earlyDepartureCount ?? 0,
+    absentDays: att.absentDays ?? item.absentDays ?? 0,
+    paidLeaveDays: leave.paidLeaveDays ?? item.paidLeaveDays ?? 0,
+    unpaidLeaveDays: leave.unpaidLeaveDays ?? item.unpaidLeaveDays ?? 0,
+    remainingAnnualLeaveDays: leave.remainingAnnualLeaveDays ?? item.remainingAnnualLeaveDays ?? 0,
+    totalActualHours: att.actualWorkHours ?? item.totalActualHours ?? 0,
+    totalPaidHours: ot.totalPaidHours ?? item.totalPaidHours ?? (att.actualWorkHours ?? 0),
+    overtimeHours: ot.totalActualHours ?? item.overtimeHours ?? 0,
+    status: item.status,
+    lockedAt: item.lockedAt ?? null,
+    note: item.note || ''
+  };
+}
+
 export const attendanceService = {
   getMyAttendances: async (params: AttendanceFilterParams = {}): Promise<PageResponse<AttendanceRecord>> => {
     const res = await apiClient.get<PageResponse<any>>(`/api/attendances/my-attendances${buildQuery(params)}`);
     if (res && Array.isArray(res.content)) {
-      res.content = res.content.map(mapAttendanceItem);
+      const myId = typeof window !== 'undefined' ? localStorage.getItem('act_hrm_user_id') : undefined;
+      res.content = res.content.map((item: any) => ({
+        ...mapAttendanceItem(item),
+        userId: item.userId || myId || ''
+      }));
     }
     return res;
   },
@@ -82,7 +120,13 @@ export const attendanceService = {
   },
 
   editAttendance: async (attendanceId: string, data: { clockInTime?: string; clockOutTime?: string; status?: string; reason: string }) => {
-    return apiClient.put(`/api/attendances/edit/${attendanceId}`, data);
+    // ponytail: backend EditAttendanceRequest dùng edited* keys + editedStatus @NotNull
+    return apiClient.put(`/api/attendances/edit/${attendanceId}`, {
+      editedClockInTime: data.clockInTime || null,
+      editedClockOutTime: data.clockOutTime || null,
+      editedStatus: data.status,
+      editedReason: data.reason
+    });
   },
 
   deleteAttendance: async (attendanceId: string) => {
@@ -95,15 +139,27 @@ export const attendanceService = {
 
   // Monthly Timesheets
   getMyMonthlySummary: async (params: TimesheetFilterParams = {}): Promise<PageResponse<MonthlyTimesheetSummary>> => {
-    return apiClient.get<PageResponse<MonthlyTimesheetSummary>>(`/api/attendances/summary/me${buildQuery(params)}`);
+    const res = await apiClient.get<PageResponse<any>>(`/api/attendances/summary/me${buildQuery(params)}`);
+    if (res && Array.isArray(res.content)) {
+      res.content = res.content.map(mapTimesheetItem);
+    }
+    return res;
   },
 
   getDepartmentMonthlySummary: async (params: TimesheetFilterParams = {}): Promise<PageResponse<MonthlyTimesheetSummary>> => {
-    return apiClient.get<PageResponse<MonthlyTimesheetSummary>>(`/api/attendances/summary/department${buildQuery(params)}`);
+    const res = await apiClient.get<PageResponse<any>>(`/api/attendances/summary/department${buildQuery(params)}`);
+    if (res && Array.isArray(res.content)) {
+      res.content = res.content.map(mapTimesheetItem);
+    }
+    return res;
   },
 
   getCompanyMonthlySummary: async (params: TimesheetFilterParams = {}): Promise<PageResponse<MonthlyTimesheetSummary>> => {
-    return apiClient.get<PageResponse<MonthlyTimesheetSummary>>(`/api/attendances/summary/company${buildQuery(params)}`);
+    const res = await apiClient.get<PageResponse<any>>(`/api/attendances/summary/company${buildQuery(params)}`);
+    if (res && Array.isArray(res.content)) {
+      res.content = res.content.map(mapTimesheetItem);
+    }
+    return res;
   },
 
   generateMonthlySummary: async (month: number, year: number) => {
@@ -114,8 +170,11 @@ export const attendanceService = {
     return apiClient.put(`/api/attendances/summary/${timesheetId}`, data);
   },
 
-  lockMonthlySummary: async (month: number, year: number) => {
-    return apiClient.put(`/api/attendances/summary/lock?month=${month}&year=${year}`);
+  /** userIds rỗng = chốt cả tháng; có giá trị = chỉ chốt nhóm nhân viên đang tick trên bảng. */
+  lockMonthlySummary: async (month: number, year: number, userIds: string[] = []) => {
+    const qs = new URLSearchParams({ month: String(month), year: String(year) });
+    userIds.forEach(id => qs.append('userIds', id));
+    return apiClient.put(`/api/attendances/summary/lock?${qs.toString()}`);
   },
 
   exportMyMonthlySummary: async (params: TimesheetFilterParams = {}) => {

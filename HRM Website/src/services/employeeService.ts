@@ -38,6 +38,13 @@ function buildQuery(params: Record<string, any>): string {
   return qs ? `?${qs}` : '';
 }
 
+function sanitizeVietnameseText(str?: string): string {
+  if (!str) return '';
+  return str
+    .replace(/Gi\?\s*h[…\.]*nh\s*ch[¡\?]nh/gi, 'Giờ hành chính')
+    .replace(/Nguy\?n/g, 'Nguyễn');
+}
+
 function mapDetailResponse(res: any): EmployeeDetailed {
   if (!res) return {} as any;
   const pub = res.publicProfile || res;
@@ -45,26 +52,32 @@ function mapDetailResponse(res: any): EmployeeDetailed {
   const contract = res.contract || {};
   const pay = res.payroll || res.salary || {};
 
+  const rawShiftName = pub.shiftName || res.shiftName || 'Giờ hành chính (T2-T6)';
+  const cleanShiftName = sanitizeVietnameseText(rawShiftName);
+
   return {
     userId: pub.userId || res.userId || '',
     employeeCode: pub.employeeCode || res.employeeCode || '',
     email: pub.workEmail || pub.email || res.email || '',
-    firstName: pub.firstName || res.firstName || '',
-    lastName: pub.lastName || res.lastName || '',
-    fullName: pub.fullName || res.fullName || `${pub.firstName || ''} ${pub.lastName || ''}`.trim(),
+    firstName: sanitizeVietnameseText(pub.firstName || res.firstName || ''),
+    lastName: sanitizeVietnameseText(pub.lastName || res.lastName || ''),
+    fullName: sanitizeVietnameseText(pub.fullName || res.fullName || `${pub.firstName || ''} ${pub.lastName || ''}`.trim()),
     department: pub.departmentName || pub.department || res.department || '',
     job: pub.jobTitle || pub.job || res.job || '',
     profilePicUrl: pub.profilePicUrl || res.profilePicUrl || '',
     todayStatus: pub.todayStatus || res.todayStatus || 'NOT_CHECKED',
-    isActive: pub.isActive !== undefined ? pub.isActive : (res.isActive !== undefined ? res.isActive : true),
+    // EmployeePublicProfile.isActive là `boolean` primitive + Lombok @Getter isActive() → Jackson
+    // đặt tên key là `active` (không phải `isActive` như các DTO dùng Boolean wrapper).
+    // Đọc `active` trước; nếu backend đổi lại thì `isActive` vẫn chạy.
+    isActive: (pub as any).active ?? pub.isActive ?? res.isActive ?? true,
     gender: (pub.gender === 'Female' ? 'Nữ' : pub.gender === 'Male' ? 'Nam' : pub.gender) || 'Nam',
     birthDate: pub.birthDate || res.birthDate || '',
     joinedDate: pub.joinedDate || res.joinedDate || '',
     phoneNumber: pub.phoneNumber || res.phoneNumber || '',
     annualLeaveDays: pub.annualLeaveDays || res.annualLeaveDays || 12,
     usedLeaveDays: pub.usedLeaveDays || res.usedLeaveDays || 0,
-    shiftName: pub.shiftName || res.shiftName || 'Giờ hành chính',
-    shiftStartTime: pub.shiftStartTime || '08:30',
+    shiftName: cleanShiftName,
+    shiftStartTime: pub.shiftStartTime || '08:00',
     shiftEndTime: pub.shiftEndTime || '17:30',
     restDays: pub.restDays || [6, 7],
     profile: {
@@ -112,7 +125,25 @@ function mapDetailResponse(res: any): EmployeeDetailed {
       endDate: pay.endDate || '',
       isActive: true
     },
-    weeklySchedule: pub.weeklySchedule || res.weeklySchedule || []
+    weeklySchedule: Array.isArray(pub.weeklySchedule || res.weeklySchedule) && (pub.weeklySchedule || res.weeklySchedule).length > 0
+      ? (pub.weeklySchedule || res.weeklySchedule).map((s: any) => ({
+          dayOfWeek: Number(s.dayOfWeek),
+          dayName: s.dayName || (Number(s.dayOfWeek) === 7 ? 'Chủ Nhật' : `Thứ ${Number(s.dayOfWeek) + 1}`),
+          isWorking: s.isWorking !== undefined ? Boolean(s.isWorking) : Boolean(s.working),
+          startTime: s.startTime ? String(s.startTime).substring(0, 5) : '08:00',
+          endTime: s.endTime ? String(s.endTime).substring(0, 5) : '17:30',
+          restStartTime: s.restStartTime ? String(s.restStartTime).substring(0, 5) : '12:00',
+          restEndTime: s.restEndTime ? String(s.restEndTime).substring(0, 5) : '13:30',
+        }))
+      : [
+          { dayOfWeek: 1, dayName: 'Thứ 2', isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+          { dayOfWeek: 2, dayName: 'Thứ 3', isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+          { dayOfWeek: 3, dayName: 'Thứ 4', isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+          { dayOfWeek: 4, dayName: 'Thứ 5', isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+          { dayOfWeek: 5, dayName: 'Thứ 6', isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },
+          { dayOfWeek: 6, dayName: 'Thứ 7', isWorking: false, startTime: '00:00', endTime: '00:00' },
+          { dayOfWeek: 7, dayName: 'Chủ Nhật', isWorking: false, startTime: '00:00', endTime: '00:00' },
+        ]
   };
 }
 
@@ -122,12 +153,15 @@ export const employeeService = {
     if (res && Array.isArray(res.content)) {
       res.content = res.content.map((item: any) => ({
         ...item,
+        firstName: sanitizeVietnameseText(item.firstName),
+        lastName: sanitizeVietnameseText(item.lastName),
+        fullName: sanitizeVietnameseText(item.fullName || `${item.firstName || ''} ${item.lastName || ''}`.trim()),
         department: item.departmentName || item.department || '',
         job: item.jobTitle || item.job || '',
         todayStatus: item.todayStatus || 'NOT_CHECKED',
         annualLeaveDays: item.annualLeaveDays ?? 12,
         usedLeaveDays: item.usedLeaveDays ?? 0,
-        shiftName: item.shiftName || 'Giờ hành chính',
+        shiftName: sanitizeVietnameseText(item.shiftName || 'Giờ hành chính (T2-T6)'),
         shiftStartTime: item.shiftStartTime || '08:30',
         shiftEndTime: item.shiftEndTime || '17:30',
         restDays: item.restDays || [6, 7]

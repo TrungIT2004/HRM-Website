@@ -11,7 +11,11 @@ import org.springframework.stereotype.Service;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -37,6 +41,8 @@ public class JwtService {
         String profilePicUrl = tokenPayload.getProfilePicUrl();
         String department = tokenPayload.getDepartment();
         String job = tokenPayload.getJob();
+        List<String> permissions = tokenPayload.getPermissions() != null
+                ? new ArrayList<>(tokenPayload.getPermissions()) : List.of();
 
         return Jwts.builder()
                 .setSubject(userId.toString())
@@ -47,6 +53,7 @@ public class JwtService {
                 .claim("profilePicUrl", profilePicUrl)
                 .claim("department", department)
                 .claim("job", job)
+                .claim("permissions", permissions)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15)) // 15 min
                 .signWith(getSignKey(accessSecret), SignatureAlgorithm.HS256)
@@ -94,6 +101,7 @@ public class JwtService {
         String profilePicUrl = (String) claims.get("profilePicUrl");
         String department = (String) claims.get("department");
         String job = (String) claims.get("job");
+        Object permissionsClaim = claims.get("permissions");
 
         TokenPayload tokenPayload = new TokenPayload();
         tokenPayload.setUserId(userId);
@@ -104,6 +112,13 @@ public class JwtService {
         tokenPayload.setProfilePicUrl(profilePicUrl);
         tokenPayload.setDepartment(department);
         tokenPayload.setJob(job);
+        if (permissionsClaim instanceof List) {
+            Set<String> permissions = new HashSet<>();
+            for (Object p : (List<?>) permissionsClaim) {
+                if (p != null) permissions.add(p.toString());
+            }
+            tokenPayload.setPermissions(permissions);
+        }
 
         return tokenPayload;
     }

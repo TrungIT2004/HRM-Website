@@ -17,8 +17,11 @@ export interface DashboardSummaryResponse {
     standardWorkDays: number;
     totalWorkHours: number;
     remainingLeaveDays: number;
+    lateDays: number;
+    totalOtHours: number;
   };
   management?: {
+    isApprover: boolean;
     pendingLeavesCount: number;
     pendingOvertimesCount: number;
     departmentEmployeeCount?: number;
@@ -63,9 +66,12 @@ function mapDashboardSummary(data: any): DashboardSummaryResponse {
       totalWorkDays: month.actualWorkDays ?? data.monthSummary?.totalWorkDays ?? 0,
       standardWorkDays: month.standardWorkDays ?? data.monthSummary?.standardWorkDays ?? 22,
       totalWorkHours: month.totalWorkHours ?? data.monthSummary?.totalWorkHours ?? 0,
-      remainingLeaveDays: leave.remainingLeaveDays ?? data.monthSummary?.remainingLeaveDays ?? 12
+      remainingLeaveDays: leave.remainingLeaveDays ?? data.monthSummary?.remainingLeaveDays ?? 12,
+      lateDays: month.lateDays ?? 0,
+      totalOtHours: month.totalOtHours ?? 0
     },
     management: {
+      isApprover: Boolean(approvals.isApprover ?? approvals.approver),
       pendingLeavesCount: approvals.pendingLeavesCount ?? data.management?.pendingLeavesCount ?? 0,
       pendingOvertimesCount: approvals.pendingOvertimesCount ?? data.management?.pendingOvertimesCount ?? 0,
       departmentEmployeeCount: data.management?.departmentEmployeeCount,

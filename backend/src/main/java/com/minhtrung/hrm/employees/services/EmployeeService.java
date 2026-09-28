@@ -2,7 +2,9 @@ package com.minhtrung.hrm.employees.services;
 
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,6 +19,9 @@ import com.minhtrung.hrm.attendance.entities.Attendance;
 import com.minhtrung.hrm.attendance.entities.WorkShift;
 import com.minhtrung.hrm.attendance.entities.WorkShiftSchedule;
 import com.minhtrung.hrm.attendance.repositories.AttendanceRepository;
+import com.minhtrung.hrm.overtime.entities.OvertimeRecord;
+import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
+import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
 import com.minhtrung.hrm.attendance.repositories.WorkShiftRepository;
 import com.minhtrung.hrm.attendance.repositories.WorkShiftScheduleRepository;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
@@ -63,6 +68,8 @@ import com.minhtrung.hrm.employees.repositories.UserBankAccountRepository;
 import com.minhtrung.hrm.employees.repositories.UserContractRepository;
 import com.minhtrung.hrm.employees.repositories.UserProfileRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -80,11 +87,13 @@ public class EmployeeService {
     private final WorkShiftRepository workShiftRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
     private final AttendanceRepository attendanceRepository;
+    private final OvertimeRecordRepository overtimeRecordRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserSessionRepository userSessionRepository;
     private final SessionBlacklistService sessionBlacklistService;
     private final FileStorageService fileStorageService;
     private final PendingUserRepository pendingUserRepository;
+    private final PermissionService permissionService;
 
     // Dependency Injection qua Constructor
     public EmployeeService(
@@ -98,11 +107,13 @@ public class EmployeeService {
             WorkShiftRepository workShiftRepository,
             WorkShiftScheduleRepository workShiftScheduleRepository,
             AttendanceRepository attendanceRepository,
+            OvertimeRecordRepository overtimeRecordRepository,
             PasswordEncoder passwordEncoder,
             UserSessionRepository userSessionRepository,
             SessionBlacklistService sessionBlacklistService,
             FileStorageService fileStorageService,
-            PendingUserRepository pendingUserRepository
+            PendingUserRepository pendingUserRepository,
+            PermissionService permissionService
     ) {
         this.userRepository = userRepository;
         this.userProfileRepository = userProfileRepository;
@@ -114,20 +125,28 @@ public class EmployeeService {
         this.workShiftRepository = workShiftRepository;
         this.workShiftScheduleRepository = workShiftScheduleRepository;
         this.attendanceRepository = attendanceRepository;
+        this.overtimeRecordRepository = overtimeRecordRepository;
         this.passwordEncoder = passwordEncoder;
         this.userSessionRepository = userSessionRepository;
         this.sessionBlacklistService = sessionBlacklistService;
         this.fileStorageService = fileStorageService;
         this.pendingUserRepository = pendingUserRepository;
+        this.permissionService = permissionService;
     }
 
     /**
      * 0. LẤY DANH SÁCH DANH BẠ NHÂN VIÊN (Tìm kiếm, lọc theo phòng ban & phân trang).
-     * Chỉ trả về đúng 6 trường tối giản.
+     * Trạng thái hôm nay lấy bằng 2 query batch cho cả trang (không N+1).
      */
     @Transactional(readOnly = true)
     public Page<EmployeeDirectoryItemResponse> getEmployeeDirectory(String keyword, String department, Pageable pageable) {
         Page<User> usersPage = userRepository.findUsersByDepartmentAndKeyword(department, keyword, pageable);
+        List<UUID> ids = usersPage.getContent().stream().map(User::getUserId).toList();
+
+        LocalDate today = LocalDate.now();
+        Map<UUID, String> statusByUser = resolveTodayStatuses(ids, today);
+        Map<UUID, String> otByUser = resolveTodayOvertime(ids, today);
+
         return usersPage.map(user -> EmployeeDirectoryItemResponse.builder()
                 .userId(user.getUserId())
                 .employeeCode(user.getEmployeeCode())
@@ -136,7 +155,39 @@ public class EmployeeService {
                 .departmentName(user.getDepartment() != null ? user.getDepartment().getName() : null)
                 .jobTitle(user.getJob() != null ? user.getJob().getTitle() : null)
                 .isActive(user.isActive())
+                .todayStatus(statusByUser.getOrDefault(user.getUserId(), "DAY_OFF"))
+                .todayOvertimeStatus(otByUser.get(user.getUserId()))
                 .build());
+    }
+
+    /**
+     * Trạng thái chấm công hôm nay theo user.
+     * Không có bản ghi = "DAY_OFF" (nghỉ) vì cron chỉ tạo record cho ngày làm việc.
+     */
+    private Map<UUID, String> resolveTodayStatuses(List<UUID> userIds, LocalDate today) {
+        if (userIds.isEmpty()) return Map.of();
+        Map<UUID, String> result = new HashMap<>();
+        for (Attendance att : attendanceRepository.findAttendancesByUserIdsAndDateRange(
+                userIds, today, today)) {
+            result.put(att.getUser().getUserId(),
+                    att.getStatus() != null ? att.getStatus().name() : "NOT_CHECKED");
+        }
+        return result;
+    }
+
+    /** "OVERTIMING" = đã quẹt vào OT nhưng chưa ra; "OVERTIME_DONE" = đã có cả hai mốc. */
+    private Map<UUID, String> resolveTodayOvertime(List<UUID> userIds, LocalDate today) {
+        if (userIds.isEmpty()) return Map.of();
+        Map<UUID, String> result = new HashMap<>();
+        for (OvertimeRecord ot : overtimeRecordRepository
+                .findByRequestor_UserIdInAndApprovedDateAndStatus(userIds, today, OvertimeRecordStatus.accepted)) {
+            if (ot.getRequestor() == null) continue;
+            boolean started = ot.getClockInTime() != null;
+            boolean finished = ot.getClockOutTime() != null;
+            String state = (started && finished) ? "OVERTIME_DONE" : started ? "OVERTIMING" : "NONE";
+            result.put(ot.getRequestor().getUserId(), state);
+        }
+        return result;
     }
 
     /**
@@ -147,12 +198,12 @@ public class EmployeeService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + userId));
 
-        // 1.1 Trạng thái chấm công hôm nay
+        // 1.1 Trạng thái chấm công hôm nay + tăng ca hôm nay
         LocalDate today = LocalDate.now();
-        Optional<Attendance> todayAttendance = attendanceRepository.findUsersTodayAttendance(userId, today);
-        String todayStatus = todayAttendance
-                .map(att -> att.getStatus().name())
-                .orElse("NOT_CHECKED");
+        UUID uid = user.getUserId();
+        // Không có bản ghi = "DAY_OFF" (nghỉ) vì cron chỉ tạo record cho ngày làm việc.
+        String todayStatus = resolveTodayStatuses(List.of(uid), today).getOrDefault(uid, "DAY_OFF");
+        String todayOvertimeStatus = resolveTodayOvertime(List.of(uid), today).get(uid);
 
         // 1.2 Lịch làm việc 7 ngày từ work_shift_schedules
         WorkShift shift = user.getShift();
@@ -190,6 +241,7 @@ public class EmployeeService {
                 .workEmail(user.getEmail())
                 .phoneNumber(user.getProfile() != null ? user.getProfile().getPhoneNumber() : null)
                 .todayStatus(todayStatus)
+                .todayOvertimeStatus(todayOvertimeStatus)
                 .shiftName(shiftName)
                 .weeklySchedule(weeklySchedule)
                 .isActive(user.isActive())
@@ -208,6 +260,10 @@ public class EmployeeService {
         boolean isMe = currentUser.getUserId().equals(targetUserId);
         boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
         boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
+        // EMPLOYEE_VIEW_ALL tách riêng EMPLOYEE_EDIT vì các tab dưới đây chứa dữ liệu nhạy cảm
+        // (lương, số tài khoản, CCCD) — có thể cấp cho người chỉ cần xem, không cần sửa.
+        boolean canViewAllProfile = isHR || isExecutive
+                || permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_VIEW_ALL);
 
         boolean isSameDeptHead = currentUser.getJob() != null 
                 && currentUser.getJob().startsWith("Department Head")
@@ -219,7 +275,7 @@ public class EmployeeService {
 
         // 2.2 Tab 1: Định danh & Pháp lý (Chỉ Me + HR/Giám đốc)
         LegalProfileDto legalProfile = null;
-        if (isMe || isHR || isExecutive) {
+        if (isMe || canViewAllProfile) {
             UserProfile p = targetUser.getProfile();
             if (p != null) {
                 legalProfile = LegalProfileDto.builder()
@@ -240,7 +296,7 @@ public class EmployeeService {
         // 2.3 Tab 2: Hợp đồng lao động (Me + Trưởng phòng cùng team + HR/Giám đốc)
         ContractDto contract = null;
         List<ContractDto> contracts = null;
-        if (isMe || isSameDeptHead || isHR || isExecutive) {
+        if (isMe || isSameDeptHead || canViewAllProfile) {
             List<UserContract> allContracts = userContractRepository.findByUser_UserIdOrderByContractStartDateDesc(targetUserId);
             contracts = allContracts.stream()
                     .map(c -> ContractDto.builder()
@@ -270,7 +326,7 @@ public class EmployeeService {
 
         // 2.4 Tab 3: Lương & Ngân hàng (Chỉ Me + HR/Giám đốc - Trưởng phòng bị ẩn null)
         PayrollDto payroll = null;
-        if (isMe || isHR || isExecutive) {
+        if (isMe || canViewAllProfile) {
             Optional<Salary> salaryOpt = salaryRepository.findByUser_UserIdAndIsActiveTrue(targetUserId)
                     .or(() -> salaryRepository.findByUser_UserId(targetUserId));
 
@@ -428,7 +484,7 @@ public class EmployeeService {
      */
     @Transactional
     public EmployeeDetailResponse updateContract(UUID targetUserId, UpdateContractRequest request, TokenPayload currentUser) {
-        checkHRAccess(currentUser);
+        checkContractEditAllowed(targetUserId, currentUser);
 
         User user = userRepository.findById(targetUserId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
@@ -455,7 +511,7 @@ public class EmployeeService {
      */
     @Transactional
     public EmployeeDetailResponse renewContract(UUID targetUserId, RenewContractRequest request, TokenPayload currentUser) {
-        checkHRAccess(currentUser);
+        checkContractEditAllowed(targetUserId, currentUser);
 
         User user = userRepository.findById(targetUserId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
@@ -487,7 +543,7 @@ public class EmployeeService {
      */
     @Transactional
     public EmployeeDetailResponse createContract(UUID targetUserId, CreateContractRequest request, TokenPayload currentUser) {
-        checkHRAccess(currentUser);
+        checkContractEditAllowed(targetUserId, currentUser);
 
         User user = userRepository.findById(targetUserId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
@@ -522,6 +578,8 @@ public class EmployeeService {
         boolean isMe = currentUser != null && targetUserId.equals(currentUser.getUserId());
         boolean isHR = currentUser != null && "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
         boolean isExecutive = currentUser != null && "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
+        boolean canViewAllProfile = isHR || isExecutive
+                || (currentUser != null && permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_VIEW_ALL));
 
         User targetUser = userRepository.findById(targetUserId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy nhân viên với ID: " + targetUserId));
@@ -532,7 +590,7 @@ public class EmployeeService {
                 && targetUser.getDepartment() != null
                 && targetUser.getDepartment().getName().equalsIgnoreCase(currentUser.getDepartment());
 
-        if (!isMe && !isSameDeptHead && !isHR && !isExecutive) {
+        if (!isMe && !isSameDeptHead && !canViewAllProfile) {
             throw new AccessDeniedException("Bạn không có quyền xem lịch sử hợp đồng của nhân viên này!");
         }
 
@@ -553,7 +611,7 @@ public class EmployeeService {
      */
     @Transactional
     public EmployeeDetailResponse updateSpecificContract(UUID targetUserId, UUID contractId, UpdateContractRequest request, TokenPayload currentUser) {
-        checkHRAccess(currentUser);
+        checkContractEditAllowed(targetUserId, currentUser);
 
         UserContract contract = userContractRepository.findById(contractId)
                 .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy hợp đồng với ID: " + contractId));
@@ -733,16 +791,37 @@ public class EmployeeService {
     // ─── 4. HELPER METHODS ──────────────────────────────────────────
 
     /**
-     * Kiểm tra người gọi có phải là HR hay không (Chỉ DUY NHẤT HR mới được quyền chỉnh sửa).
-     * Ban Giám Đốc chỉ có quyền xem (View-all), không trực tiếp chỉnh sửa dữ liệu tác vụ.
+     * Kiểm tra người gọi có phải là HR hay không (quyền gốc của EMPLOYEE_EDIT).
+     * Ban Giám Đốc chỉ có quyền xem, không trực tiếp chỉnh sửa dữ liệu tác vụ.
      */
     private void checkHRAccess(TokenPayload currentUser) {
         if (currentUser == null) {
             throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
         }
         boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
-        if (!isHR) {
+        boolean hasGrant = permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_EDIT);
+        if (!isHR && !hasGrant) {
             throw new AccessDeniedException("Chỉ có phòng Nhân Sự (Human Resources) mới có quyền điều chỉnh hồ sơ nhân viên!");
+        }
+    }
+
+    /** isSysAdmin theo đúng định nghĩa backend (IT + System Administrator). */
+    private boolean isSysAdmin(TokenPayload currentUser) {
+        if (currentUser == null) return false;
+        boolean isIT = "Information Technology".equalsIgnoreCase(currentUser.getDepartment())
+                || "IT".equalsIgnoreCase(currentUser.getDepartment());
+        return isIT && currentUser.getJob() != null
+                && (currentUser.getJob().contains("System Administrator") || currentUser.getJob().contains("Admin"));
+    }
+
+    /**
+     * Phân nhiệm (SoD) cho user_contracts: HR được sửa HĐ của người khác,
+     * nhưng không bao giờ được tự tạo/sửa/gia hạn HĐ của chính mình.
+     */
+    private void checkContractEditAllowed(UUID targetUserId, TokenPayload currentUser) {
+        checkHRAccess(currentUser);
+        if (targetUserId != null && targetUserId.equals(currentUser.getUserId())) {
+            throw new AccessDeniedException("Vì nguyên tắc phân nhiệm, bạn không được tự tạo/sửa/gia hạn hợp đồng của chính mình. Hãy nhờ một nhân sự HR khác thực hiện!");
         }
     }
 
@@ -764,7 +843,8 @@ public class EmployeeService {
     }
 
     /**
-     * Khóa hoặc Mở khóa tài khoản nhân viên (Chỉ System Admin hoặc Executive).
+     * Khóa hoặc Mở khóa tài khoản nhân viên. Quyền gốc: System Administrator.
+     * Có thể ủy quyền thêm qua grant ACCOUNT_LOCK (Ban Giám Đốc đã bị gỡ — không phải quản trị viên).
      * Khi khóa: Thu hồi toàn bộ phiên đăng nhập của nhân viên đó trong Redis & DB ngay lập tức.
      */
     @Transactional
@@ -772,11 +852,9 @@ public class EmployeeService {
         if (currentUser == null) {
             throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
         }
-        boolean isIT = "Information Technology".equalsIgnoreCase(currentUser.getDepartment());
-        boolean isSysAdmin = isIT && currentUser.getJob() != null && (currentUser.getJob().contains("System Administrator") || currentUser.getJob().contains("Admin"));
-        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
-        if (!isSysAdmin && !isExecutive) {
-            throw new AccessDeniedException("Chỉ Quản trị viên Hệ thống (System Administrator) hoặc Ban Giám Đốc mới có quyền khóa/mở khóa tài khoản!");
+        if (!isSysAdmin(currentUser)
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.ACCOUNT_LOCK)) {
+            throw new AccessDeniedException("Chỉ Quản trị viên Hệ thống (System Administrator) mới có quyền khóa/mở khóa tài khoản!");
         }
 
         if (currentUser.getUserId().equals(targetUserId)) {
@@ -819,10 +897,9 @@ public class EmployeeService {
         }
 
         boolean isSelf = currentUser.getUserId().equals(targetUserId);
-        boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
-        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment());
-
-        if (!isSelf && !isHR && !isExecutive) {
+        // ghi/chỉnh sửa dữ liệu → theo EMPLOYEE_EDIT, không phải VIEW
+        if (!isSelf && !"Human Resources".equalsIgnoreCase(currentUser.getDepartment())
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_EDIT)) {
             throw new AccessDeniedException("Bạn không có quyền cập nhật ảnh đại diện của nhân viên khác!");
         }
 

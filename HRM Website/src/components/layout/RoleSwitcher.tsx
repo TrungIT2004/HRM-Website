@@ -10,12 +10,23 @@ export default function RoleSwitcher() {
 
   // Group users by Tier
   const executiveUsers = allUsers.filter(u => u.department === 'Executive Leadership');
+  const adminUsers = allUsers.filter(u => 
+    (u.department === 'Information Technology' && (u.job.includes('System Administrator') || u.job.includes('Admin'))) || 
+    u.email === 'sysadmin@company.com'
+  );
   const hrUsers = allUsers.filter(u => u.department === 'Human Resources');
   const managerUsers = allUsers.filter(u => u.department !== 'Executive Leadership' && u.department !== 'Human Resources' && u.job.includes('Department Head'));
-  const staffUsers = allUsers.filter(u => !u.job.includes('Department Head') && u.department !== 'Executive Leadership' && u.department !== 'Human Resources');
+  const staffUsers = allUsers.filter(u => 
+    !u.job.includes('Department Head') && 
+    u.department !== 'Executive Leadership' && 
+    u.department !== 'Human Resources' &&
+    !adminUsers.some(a => a.userId === u.userId)
+  );
+
+  if (!currentUser) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-40">
+    <div className="fixed bottom-20 right-3.5 md:bottom-4 md:right-4 z-40">
       {/* Popover Card */}
       {isOpen && (
         <div className="mb-2 w-80 sm:w-96 rounded-2xl bg-white p-4 shadow-2xl border border-slate-200 animate-in slide-in-from-bottom-5 duration-200 max-h-[75vh] overflow-y-auto">
@@ -65,6 +76,37 @@ export default function RoleSwitcher() {
                 ))}
               </div>
             </div>
+
+            {/* 1.5. Quản Trị Hệ Thống (Admin) */}
+            {adminUsers.length > 0 && (
+              <div>
+                <div className="font-bold text-indigo-700 uppercase tracking-wider text-[10px] mb-1.5 flex items-center gap-1">
+                  <span>🛡️ Quản Trị Hệ Thống (System Admin)</span>
+                </div>
+                <div className="space-y-1">
+                  {adminUsers.map(u => (
+                    <button
+                      key={u.userId}
+                      onClick={() => {
+                        switchUser(u.userId);
+                        setIsOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between p-2 rounded-lg text-left transition cursor-pointer ${
+                        currentUser?.userId === u.userId
+                          ? 'bg-indigo-50 text-indigo-900 font-semibold ring-1 ring-indigo-300'
+                          : 'hover:bg-slate-50 text-slate-700'
+                      }`}
+                    >
+                      <div>
+                        <div className="font-medium text-xs">{u.fullName}</div>
+                        <div className="text-[10px] text-slate-400">{u.job} ({u.employeeCode})</div>
+                      </div>
+                      {currentUser?.userId === u.userId && <Check className="h-4 w-4 text-indigo-600" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* 2. Quản Trị Nhân Sự */}
             <div>

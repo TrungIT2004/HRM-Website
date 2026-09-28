@@ -1,11 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import AppShell from '@/components/layout/AppShell';
 import { useAuth } from '@/context/AuthContext';
-import { useHRMData } from '@/context/HRMDataContext';
-import { isHoliday } from '@/mock/holidays';
 import { OvertimeRecord, OvertimeStatus } from '@/types';
+import { overtimeService, OvertimeFilterParams } from '@/services/overtimeService';
+import { formatDateVN } from '@/utils/format';
+import { DATE_PRESETS, DatePreset, dateRangeFor, fillDateInputs } from '@/utils/dateRange';
+import { useTabFromUrl } from '@/utils/useTabFromUrl';
+import { DEPARTMENTS } from '@/constants/departments';
 import {
   Briefcase,
   Plus,
@@ -13,7 +16,6 @@ import {
   XCircle,
   Clock,
   AlertCircle,
-  FileSpreadsheet,
   Trash2,
   Sparkles,
   Building2,
@@ -23,30 +25,70 @@ import {
   Moon,
   Filter,
   Search,
-  RotateCcw,
-  Phone,
-  Mail
+  RefreshCw,
+  ChevronLeft,
+  ChevronRight,
+  Download
 } from 'lucide-react';
 
 export default function OvertimePage() {
-  const { currentUser, isHR, isManager, isExecutive } = useAuth();
-  const { overtimeRecords, submitOvertimeRequest, handleOvertimeRequest, cancelOvertimeRequest } = useHRMData();
+  const { currentUser, isHR, isManager, isExecutive, can, isLoading: isAuthLoading } = useAuth();
 
-  const [activeTab, setActiveTab] = useState<'my' | 'approvals' | 'company'>('my');
+  const [activeTab, setActiveTab] = useTabFromUrl(['my', 'approvals', 'company'] as const, 'my');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [exporting, setExporting] = useState(false);
+
+  // OT Records list & pagination
+  const [records, setRecords] = useState<OvertimeRecord[]>([]);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalElements, setTotalElements] = useState(0);
 
   // OT Request form states
-  const [otDate, setOtDate] = useState('2026-09-08');
-  const [startTime, setStartTime] = useState('18:30');
-  const [endTime, setEndTime] = useState('21:30');
+  const todayStr = new Date().toISOString().split('T')[0];
+  const [otDate, setOtDate] = useState(todayStr);
+  const [startTime, setStartTime] = useState('18:00');
+  const [endTime, setEndTime] = useState('21:00');
   const [reason, setReason] = useState('');
 
-  // Filter states matching OvertimeFilterRequest (status, fromDate, toDate, keyword)
-  const [filterStatus, setFilterStatus] = useState<string>('ALL');
-  const [filterFromDate, setFilterFromDate] = useState<string>('');
-  const [filterToDate, setFilterToDate] = useState<string>('');
-  const [filterKeyword, setFilterKeyword] = useState<string>('');
-  const [filterDept, setFilterDept] = useState<string>('ALL');
+  // Filter states — formRef reads values on submit
+  const filterFormRef = useRef<HTMLFormElement>(null);
+  const [appliedFilters, setAppliedFilters] = useState({
+    status: 'ALL',
+    fromDate: '',
+    toDate: '',
+    keyword: '',
+    dept: 'ALL'
+  });
+
+  const handleApplyFilters = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const fd = new FormData(filterFormRef.current!);
+    setPage(0);
+    setAppliedFilters({
+      status: fd.get('status') as string || 'ALL',
+      fromDate: fd.get('fromDate') as string || '',
+      toDate: fd.get('toDate') as string || '',
+      keyword: fd.get('keyword') as string || '',
+      dept: fd.get('dept') as string || 'ALL'
+    });
+  };
+
+  const handleResetFilters = () => {
+    filterFormRef.current?.reset();
+    setPage(0);
+    setAppliedFilters({ status: 'ALL', fromDate: '', toDate: '', keyword: '', dept: 'ALL' });
+  };
+
+  // Xem nhanh: Hôm nay / Tuần này / Tháng này — set luôn 2 input + áp dụng ngay.
+  const applyDatePreset = (preset: DatePreset) => {
+    const range = dateRangeFor(preset);
+    fillDateInputs(filterFormRef.current, range, ['fromDate', 'toDate']);
+    setPage(0);
+    setAppliedFilters(prev => ({ ...prev, fromDate: range.startDate, toDate: range.endDate }));
+  };
 
   // Rejection modal
   const [rejectingOT, setRejectingOT] = useState<OvertimeRecord | null>(null);
@@ -59,41 +101,32 @@ export default function OvertimePage() {
     setTimeout(() => setToastMsg(''), 4000);
   };
 
-  const handleResetFilters = () => {
-    setFilterStatus('ALL');
-    setFilterFromDate('');
-    setFilterToDate('');
-    setFilterKeyword('');
-    setFilterDept('ALL');
-  };
 
-  // Reset tab if role switches and tab is no longer permitted
-  React.useEffect(() => {
-    if (!isHR && activeTab === 'company') {
+  // Reset tab if role switches
+  useEffect(() => {
+    // ponytail: chờ isAuthLoading — xem giải thích ở leave/page.tsx (reset tab khi chưa có profile)
+    if (isAuthLoading) return;
+    if (!isHR && !can('OVERTIME_VIEW_ALL') && activeTab === 'company') {
       setActiveTab('my');
     }
-    if (!isManager && !isExecutive && activeTab === 'approvals') {
+    if (!isManager && !isExecutive && !can('OVERTIME_APPROVE') && activeTab === 'approvals') {
       setActiveTab('my');
     }
-  }, [isHR, isManager, isExecutive, activeTab]);
+  }, [isAuthLoading, isHR, isManager, isExecutive, can, activeTab]);
 
   // Helper calculating multiplier based on date & time
   const calculateMultiplier = (dateStr: string, sTime: string, eTime: string) => {
     const d = new Date(dateStr);
     const dayOfWeek = d.getDay();
-    const holiday = isHoliday(dateStr);
-
-    const isHoli = !!holiday;
     const isWknd = dayOfWeek === 0 || dayOfWeek === 6;
     const startHour = parseInt(sTime.split(':')[0] || '0', 10);
     const isNight = startHour >= 22 || startHour < 6;
 
     let mult = 1.5;
-    if (isHoli) mult = 3.0;
-    else if (isWknd) mult = 2.0;
+    if (isWknd) mult = 2.0;
     if (isNight) mult += 0.3;
 
-    return { multiplier: mult, isHoliday: isHoli, isWeekend: isWknd, isNightTime: isNight };
+    return { multiplier: mult, isHoliday: false, isWeekend: isWknd, isNightTime: isNight };
   };
 
   const currentRate = calculateMultiplier(otDate, startTime, endTime);
@@ -103,114 +136,167 @@ export default function OvertimePage() {
   const eH = parseInt(endTime.split(':')[0] || '0', 10) + parseInt(endTime.split(':')[1] || '0', 10) / 60;
   const totalHours = Math.max(0, Number((eH - sH).toFixed(1)));
 
-  // Helper applying OvertimeFilterRequest
-  const applyOTFilter = (records: OvertimeRecord[], allowDept: boolean = false) => {
-    return records.filter(o => {
-      const matchStatus = filterStatus === 'ALL' || o.status === filterStatus;
-      const matchFrom = !filterFromDate || o.approvedDate >= filterFromDate;
-      const matchTo = !filterToDate || o.approvedDate <= filterToDate;
-      const matchKeyword = !filterKeyword ||
-        (o.requestorName?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
-        (o.requestorCode?.toLowerCase() || '').includes(filterKeyword.toLowerCase()) ||
-        (o.reason?.toLowerCase() || '').includes(filterKeyword.toLowerCase());
-      const matchDept = !allowDept || filterDept === 'ALL' || o.requestorDepartment === filterDept;
+  // Fetch OT records from Backend
+  const fetchOvertimes = useCallback(async () => {
+    setLoading(true);
+    try {
+      const params: OvertimeFilterParams = {
+        page,
+        size: 10,
+        status: appliedFilters.status !== 'ALL' ? appliedFilters.status : undefined,
+        fromDate: appliedFilters.fromDate || undefined,
+        toDate: appliedFilters.toDate || undefined,
+        keyword: appliedFilters.keyword || undefined
+      };
 
-      return matchStatus && matchFrom && matchTo && matchKeyword && matchDept;
-    });
-  };
-
-  // Phân quyền theo chuẩn Spring Boot OvertimeService & OvertimeSpecification:
-  // 1. Đơn của tôi: Chỉ xem đơn của chính mình
-  const rawMyOTs = overtimeRecords.filter(o => o.requestorId === currentUser?.userId);
-  const myOTs = applyOTFilter(rawMyOTs);
-
-  // 2. Hộp thư Duyệt OT (approvals):
-  const rawApprovalOTs = overtimeRecords.filter(o => {
-    if (!currentUser) return false;
-    if (o.requestorId === currentUser.userId) return false; // Không tự duyệt đơn của mình
-
-    if (isExecutive) {
-      if (currentUser.job.includes('Chairman')) {
-        return o.requestorDepartment === 'Executive Leadership' && (o.requestorJob.includes('Director') || o.requestorJob.includes('Deputy'));
+      if (activeTab === 'company' && appliedFilters.dept !== 'ALL') {
+        params.departmentNames = [appliedFilters.dept];
       }
-      if (currentUser.job.includes('Director') && !currentUser.job.includes('Deputy')) {
-        return (o.requestorDepartment === 'Executive Leadership' && o.requestorJob.includes('Deputy')) || o.requestorJob.startsWith('Department Head');
+
+      let res: any;
+      if (activeTab === 'my') {
+        res = await overtimeService.getMyOvertimes(params);
+      } else if (activeTab === 'approvals') {
+        res = await overtimeService.getDepartmentOvertimes(params);
+      } else {
+        res = await overtimeService.getCompanyOvertimes(params);
       }
-      if (currentUser.job.includes('Deputy')) {
-        return o.requestorJob.startsWith('Department Head');
+
+      if (res && Array.isArray(res.content)) {
+        setRecords(res.content);
+        setTotalPages(res.totalPages || 1);
+        setTotalElements(res.totalElements || res.content.length);
+      } else if (Array.isArray(res)) {
+        setRecords(res);
+        setTotalPages(1);
+        setTotalElements(res.length);
+      } else {
+        setRecords([]);
       }
-      return o.status === 'pending';
+    } catch {
+      setRecords([]);
+    } finally {
+      setLoading(false);
     }
+  }, [activeTab, page, appliedFilters]);
 
-    if (isManager) {
-      return o.requestorDepartment === currentUser.department && !o.requestorJob.startsWith('Department Head') && o.status === 'pending';
-    }
+  useEffect(() => {
+    fetchOvertimes();
+  }, [fetchOvertimes]);
 
-    return false;
-  });
-  const approvalOTs = applyOTFilter(rawApprovalOTs);
-
-  // 3. Toàn công ty (company):
-  const rawCompanyOTs = isHR ? overtimeRecords : [];
-  const companyOTs = applyOTFilter(rawCompanyOTs, true);
-
-  const handleCreateSubmit = (e: React.FormEvent) => {
+  const handleCreateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) return;
 
     if (totalHours <= 0) {
-      showToast('Thời gian tăng ca kết thúc phải lớn hơn thời gian bắt đầu!');
+      showToast('Thời gian kết thúc phải sau thời gian bắt đầu!');
       return;
     }
 
-    submitOvertimeRequest({
-      requestorId: currentUser.userId,
-      requestorName: currentUser.fullName,
-      requestorCode: currentUser.employeeCode,
-      requestorDepartment: currentUser.department,
-      requestorJob: currentUser.job,
-      approvedDate: otDate,
-      approvedStartTime: startTime,
-      approvedEndTime: endTime,
-      registeredHours: totalHours,
-      reason: reason || 'Hoàn thành tiến độ dự án',
-      isHoliday: currentRate.isHoliday,
-      isWeekend: currentRate.isWeekend,
-      isNightTime: currentRate.isNightTime,
-      multiplier: currentRate.multiplier
-    });
-
-    setIsCreateModalOpen(false);
-    setReason('');
-    showToast('Đã nộp đơn đăng ký làm thêm giờ thành công!');
+    setSubmitting(true);
+    try {
+      await overtimeService.createOvertime({
+        approvedDate: otDate,
+        approvedStartTime: startTime,
+        approvedEndTime: endTime,
+        reason: reason || 'Tăng ca hoàn thành công việc theo dự án'
+      });
+      showToast('Đã gửi đơn đăng ký làm thêm giờ thành công! Đang chờ Quản lý phê duyệt.');
+      setIsCreateModalOpen(false);
+      setReason('');
+      fetchOvertimes();
+    } catch (err: any) {
+      showToast(err?.response?.data?.msg || err?.message || 'Có lỗi xảy ra khi tạo đơn');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  const handleApprove = (ot: OvertimeRecord) => {
-    handleOvertimeRequest(ot.overtimeRecordId, 'accepted');
-    showToast(`Đã duyệt đơn làm thêm giờ cho ${ot.requestorName}`);
+  const handleApprove = async (record: OvertimeRecord) => {
+    try {
+      await overtimeService.approveOvertime(record.overtimeRecordId);
+      showToast(`Đã duyệt đơn tăng ca cho ${record.requestorName || 'nhân viên'}`);
+      fetchOvertimes();
+    } catch (err: any) {
+      showToast(err?.response?.data?.msg || err?.message || 'Không thể phê duyệt đơn');
+    }
   };
 
-  const handleRejectSubmit = (e: React.FormEvent) => {
+  const handleRejectSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!rejectingOT) return;
-    handleOvertimeRequest(rejectingOT.overtimeRecordId, 'rejected', rejectionReason || 'Không có nhu cầu tăng ca');
-    setRejectingOT(null);
-    setRejectionReason('');
-    showToast(`Đã từ chối đơn làm thêm giờ của ${rejectingOT.requestorName}`);
+    try {
+      await overtimeService.rejectOvertime(rejectingOT.overtimeRecordId, rejectionReason || 'Kế hoạch không cần tăng ca');
+      showToast(`Đã từ chối đơn tăng ca của ${rejectingOT.requestorName || 'nhân viên'}`);
+      setRejectingOT(null);
+      setRejectionReason('');
+      fetchOvertimes();
+    } catch (err: any) {
+      showToast(err?.response?.data?.msg || err?.message || 'Không thể từ chối đơn');
+    }
   };
 
-  const handleExportExcel = () => {
-    showToast('Đã xuất file báo cáo OT: ACT_Bao_Cao_OT_Thang_9.xlsx thành công!');
+  const handleCancel = async (recordId: string) => {
+    if (!confirm('Bạn có chắc chắn muốn hủy đơn đăng ký làm thêm giờ này không?')) return;
+    try {
+      await overtimeService.cancelOvertime(recordId);
+      showToast('Đã hủy đơn làm thêm giờ thành công');
+      fetchOvertimes();
+    } catch (err: any) {
+      showToast(err?.response?.data?.msg || err?.message || 'Không thể hủy đơn');
+    }
   };
 
-  const statusBadge = (status: OvertimeStatus) => {
-    switch (status) {
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      const blob = await overtimeService.exportExcel({
+        fromDate: appliedFilters.fromDate || undefined,
+        toDate: appliedFilters.toDate || undefined,
+        status: appliedFilters.status !== 'ALL' ? appliedFilters.status : undefined,
+        keyword: appliedFilters.keyword || undefined
+      });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Bao_Cao_Tang_Ca_${new Date().toISOString().split('T')[0]}.xlsx`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+      showToast('Tải xuống báo cáo làm thêm giờ Excel thành công!');
+    } catch (err: any) {
+      showToast(err?.response?.data?.msg || err?.message || 'Xuất báo cáo thất bại');
+    } finally {
+      setExporting(false);
+    }
+  };
+
+  const statusBadge = (status: OvertimeStatus | string) => {
+    const s = String(status).toLowerCase();
+    switch (s) {
       case 'accepted':
-        return <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-0.5 text-[11px] font-bold">Đã duyệt</span>;
-      case 'pending':
-        return <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 text-amber-800 px-2.5 py-0.5 text-[11px] font-bold">Chờ duyệt</span>;
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[11px] font-bold">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+            Đã duyệt
+          </span>
+        );
       case 'rejected':
-        return <span className="inline-flex items-center gap-1 rounded-full bg-red-100 text-red-800 px-2.5 py-0.5 text-[11px] font-bold">Từ chối</span>;
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200 px-2.5 py-0.5 text-[11px] font-bold">
+            <XCircle className="w-3 h-3 text-rose-600" />
+            Từ chối
+          </span>
+        );
+      case 'pending':
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-0.5 text-[11px] font-bold">
+            <Clock className="w-3 h-3 text-amber-600" />
+            Chờ duyệt
+          </span>
+        );
     }
   };
 
@@ -230,228 +316,385 @@ export default function OvertimePage() {
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full border border-orange-200 mb-2">
               <Briefcase className="h-3.5 w-3.5" />
-              <span>Phân hệ Làm Thêm Giờ (Spring Boot /api/overtime)</span>
+              <span>Phân hệ Làm Thêm Giờ</span>
             </div>
             <h1 className="text-2xl font-black tracking-tight text-slate-900">
-              Quản Lý Làm Thêm Giờ (OT)
+              Quản Lý Làm Thêm Giờ
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
-              Hệ số đa tầng theo luật lao động: 1.5x ngày thường, 2.0x cuối tuần, 3.0x ngày lễ và phụ cấp ca đêm.
+              Đăng ký tăng ca, tự động áp dụng hệ số ngày thường 1.5x / cuối tuần 2.0x / ngày lễ 3.0x (+0.3x ban đêm) và đối soát quẹt thẻ thực tế.
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 flex-wrap">
             <button
               onClick={() => setIsCreateModalOpen(true)}
               className="inline-flex items-center gap-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-orange-500/20 transition cursor-pointer"
             >
               <Plus className="h-4 w-4" />
-              <span>Đăng ký tăng ca mới</span>
+              <span>Đăng ký làm thêm giờ</span>
             </button>
-            {isHR && (
+
+            {(isHR || can('OVERTIME_VIEW_ALL')) && (
               <button
-                onClick={handleExportExcel}
-                className="flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-emerald-500/20 transition cursor-pointer"
+                onClick={handleExport}
+                disabled={exporting}
+                className="flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-emerald-500/20 transition cursor-pointer disabled:opacity-60"
               >
-                <FileSpreadsheet className="h-4 w-4" />
-                <span>Xuất Excel</span>
+                {exporting ? (
+                  <RefreshCw className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Download className="h-4 w-4" />
+                )}
+                <span>Xuất Báo Cáo (Excel)</span>
               </button>
             )}
           </div>
         </div>
 
-        {/* Multiplier Info Card */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-          <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-slate-400 block font-medium">OT Ngày thường</span>
-            <span className="mt-1 text-xl font-black text-blue-600 block">150% (1.5x)</span>
-            <span className="text-[10px] text-slate-500">Sau giờ hành chính</span>
+        {/* Rate Information Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div className="rounded-2xl bg-white p-4 border border-slate-200 shadow-xs flex items-center justify-between">
+            <div>
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Ngày Thường</span>
+              <div className="mt-1 text-2xl font-black text-slate-900">1.5x</div>
+              <span className="text-[10px] text-slate-400">150% tiền lương cơ bản</span>
+            </div>
+            <div className="p-3 rounded-xl bg-blue-50 text-blue-600"><Clock className="h-5 w-5" /></div>
           </div>
-          <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-slate-400 block font-medium">OT Cuối tuần</span>
-            <span className="mt-1 text-xl font-black text-indigo-600 block">200% (2.0x)</span>
-            <span className="text-[10px] text-slate-500">Thứ 7 & Chủ Nhật</span>
+
+          <div className="rounded-2xl bg-white p-4 border border-slate-200 shadow-xs flex items-center justify-between">
+            <div>
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Cuối Tuần (T7/CN)</span>
+              <div className="mt-1 text-2xl font-black text-indigo-600">2.0x</div>
+              <span className="text-[10px] text-indigo-500">200% tiền lương cơ bản</span>
+            </div>
+            <div className="p-3 rounded-xl bg-indigo-50 text-indigo-600"><Calendar className="h-5 w-5" /></div>
           </div>
-          <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-slate-400 block font-medium">OT Ngày lễ tết</span>
-            <span className="mt-1 text-xl font-black text-orange-600 block">300% (3.0x)</span>
-            <span className="text-[10px] text-slate-500">Theo lịch nghỉ quốc gia</span>
+
+          <div className="rounded-2xl bg-white p-4 border border-slate-200 shadow-xs flex items-center justify-between">
+            <div>
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Ngày Lễ & Tết</span>
+              <div className="mt-1 text-2xl font-black text-orange-600">3.0x</div>
+              <span className="text-[10px] text-orange-500">300% tiền lương cơ bản</span>
+            </div>
+            <div className="p-3 rounded-xl bg-orange-50 text-orange-600"><Sparkles className="h-5 w-5" /></div>
           </div>
-          <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-slate-400 block font-medium">Phụ cấp ca đêm</span>
-            <span className="mt-1 text-xl font-black text-purple-600 block">+30% Lương</span>
-            <span className="text-[10px] text-slate-500">Từ 22:00 đến 06:00</span>
+
+          <div className="rounded-2xl bg-white p-4 border border-slate-200 shadow-xs flex items-center justify-between">
+            <div>
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Ban Đêm (22h - 06h)</span>
+              <div className="mt-1 text-2xl font-black text-purple-600">+0.3x</div>
+              <span className="text-[10px] text-purple-500">Cộng thêm 30% lương</span>
+            </div>
+            <div className="p-3 rounded-xl bg-purple-50 text-purple-600"><Moon className="h-5 w-5" /></div>
           </div>
         </div>
 
         {/* Tabs */}
         <div className="rounded-2xl bg-white p-1.5 border border-slate-200 shadow-xs flex flex-wrap gap-1 text-xs font-bold">
           <button
-            onClick={() => setActiveTab('my')}
+            onClick={() => { setActiveTab('my'); setPage(0); }}
             className={`px-4 py-2 rounded-xl transition cursor-pointer ${
               activeTab === 'my' ? 'bg-orange-600 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            Đơn tăng ca của tôi ({myOTs.length})
+            Đơn OT của tôi
           </button>
-          {(isManager || isExecutive) && (
+          {(isManager || isExecutive || can('OVERTIME_APPROVE')) && (
             <button
-              onClick={() => setActiveTab('approvals')}
+              onClick={() => { setActiveTab('approvals'); setPage(0); }}
               className={`px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5 ${
                 activeTab === 'approvals' ? 'bg-orange-600 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
-              <span>Hộp thư Duyệt OT</span>
-              {approvalOTs.length > 0 && (
-                <span className="rounded-full bg-amber-500 text-white text-[10px] px-1.5 py-0.2 font-bold">
-                  {approvalOTs.length}
-                </span>
-              )}
+              <span>Hộp thư Duyệt đơn</span>
             </button>
           )}
-          {isHR && (
+          {(isHR || can('OVERTIME_VIEW_ALL')) && (
             <button
-              onClick={() => setActiveTab('company')}
+              onClick={() => { setActiveTab('company'); setPage(0); }}
               className={`px-4 py-2 rounded-xl transition cursor-pointer ${
                 activeTab === 'company' ? 'bg-orange-600 text-white shadow-xs' : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
-              Toàn công ty ({companyOTs.length})
+              Toàn công ty
             </button>
           )}
         </div>
 
-        {/* Unified Filter Toolbar matching OvertimeFilterRequest */}
-        <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+        {/* Filter Toolbar */}
+        <form ref={filterFormRef} onSubmit={handleApplyFilters} className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
               <Filter className="h-4 w-4 text-orange-600" />
-              <span>Bộ lọc làm thêm giờ (DTO OvertimeFilterRequest: status, fromDate, toDate, keyword)</span>
+              <span>Bộ lọc đơn làm thêm giờ</span>
             </div>
-            {(filterStatus !== 'ALL' || filterFromDate || filterToDate || filterKeyword || filterDept !== 'ALL') && (
+            {(appliedFilters.status !== 'ALL' || appliedFilters.fromDate || appliedFilters.toDate || appliedFilters.keyword || appliedFilters.dept !== 'ALL') && (
               <button
+                type="button"
                 onClick={handleResetFilters}
-                className="text-xs text-slate-500 hover:text-orange-600 flex items-center gap-1 font-semibold cursor-pointer"
+                className="text-xs text-orange-600 hover:text-orange-800 font-semibold cursor-pointer"
               >
-                <RotateCcw className="h-3 w-3" />
-                <span>Đặt lại bộ lọc</span>
+                Xóa bộ lọc
               </button>
             )}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-            {/* Status */}
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Trạng thái (status)</label>
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <span className="text-[11px] font-medium text-slate-500">Xem nhanh:</span>
+            {DATE_PRESETS.map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => applyDatePreset(key)}
+                className="px-3 py-1 rounded-full border border-slate-200 text-slate-600 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-300 font-semibold transition cursor-pointer"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs">
+            <div className="sm:col-span-3">
+              <label className="block text-[11px] font-medium text-slate-500 mb-1">Từ ngày</label>
+              <input
+                type="date"
+                name="fromDate"
+                className="w-full rounded-xl border border-slate-200 p-2 text-xs text-slate-800 bg-white focus:border-orange-600 focus:outline-hidden font-mono"
+              />
+            </div>
+
+            <div className="sm:col-span-3">
+              <label className="block text-[11px] font-medium text-slate-500 mb-1">Đến ngày</label>
+              <input
+                type="date"
+                name="toDate"
+                className="w-full rounded-xl border border-slate-200 p-2 text-xs text-slate-800 bg-white focus:border-orange-600 focus:outline-hidden font-mono"
+              />
+            </div>
+
+            <div className="sm:col-span-3">
+              <label className="block text-[11px] font-medium text-slate-500 mb-1">Trạng thái đơn</label>
               <select
-                value={filterStatus}
-                onChange={e => setFilterStatus(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-3 py-2 bg-slate-50 font-medium text-slate-800 focus:bg-white focus:border-orange-500 transition"
+                name="status"
+                defaultValue="ALL"
+                className="w-full rounded-xl border border-slate-200 p-2 text-xs text-slate-800 bg-white focus:border-orange-600 focus:outline-hidden"
               >
                 <option value="ALL">Tất cả trạng thái</option>
-                <option value="pending">Chờ phê duyệt (pending)</option>
-                <option value="accepted">Đã phê duyệt (accepted)</option>
-                <option value="rejected">Bị từ chối (rejected)</option>
+                <option value="pending">Đang chờ duyệt</option>
+                <option value="accepted">Đã chấp thuận</option>
+                <option value="rejected">Đã từ chối</option>
               </select>
             </div>
 
-            {/* fromDate */}
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Từ ngày (fromDate)</label>
-              <input
-                type="date"
-                value={filterFromDate}
-                onChange={e => setFilterFromDate(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-3 py-2 bg-slate-50 font-medium text-slate-800 focus:bg-white focus:border-orange-500 transition"
-              />
-            </div>
-
-            {/* toDate */}
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Đến ngày (toDate)</label>
-              <input
-                type="date"
-                value={filterToDate}
-                onChange={e => setFilterToDate(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 px-3 py-2 bg-slate-50 font-medium text-slate-800 focus:bg-white focus:border-orange-500 transition"
-              />
-            </div>
-
-            {/* Keyword */}
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Từ khóa (keyword)</label>
-              <div className="relative">
-                <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Tên, mã NV, lý do..."
-                  value={filterKeyword}
-                  onChange={e => setFilterKeyword(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 pl-8 pr-3 py-2 bg-slate-50 font-medium text-slate-800 focus:bg-white focus:border-orange-500 transition"
-                />
-              </div>
-            </div>
-
-            {/* Department filter for HR company tab */}
-            {activeTab === 'company' && isHR && (
-              <div className="sm:col-span-2 md:col-span-4">
-                <label className="block text-[11px] font-bold text-slate-600 mb-1">Lọc theo phòng ban</label>
+            <div className="sm:col-span-3">
+              <label className="block text-[11px] font-medium text-slate-500 mb-1">
+                {activeTab === 'company' ? 'Phòng ban' : 'Tìm kiếm'}
+              </label>
+              {activeTab === 'company' ? (
                 <select
-                  value={filterDept}
-                  onChange={e => setFilterDept(e.target.value)}
-                  className="w-full sm:w-72 rounded-xl border border-slate-200 px-3 py-2 bg-slate-50 font-medium text-slate-800 focus:bg-white focus:border-orange-500 transition"
+                  name="dept"
+                  defaultValue="ALL"
+                  className="w-full rounded-xl border border-slate-200 p-2 text-xs text-slate-800 bg-white focus:border-orange-600 focus:outline-hidden"
                 >
                   <option value="ALL">Tất cả phòng ban</option>
-                  <option value="Executive Leadership">Ban Giám Đốc (Executive Leadership)</option>
-                  <option value="Human Resources">Phòng Nhân Sự (Human Resources)</option>
-                  <option value="Information Technology">Phòng Công Nghệ (Information Technology)</option>
-                  <option value="Sales & Marketing">Phòng Sales & Marketing</option>
-                  <option value="Finance & Accounting">Phòng Tài Chính - Kế Toán</option>
-                  <option value="Operations">Phòng Vận Hành (Operations)</option>
+                  {DEPARTMENTS.map(d => (
+                    <option key={d.dbName} value={d.dbName}>{d.label}</option>
+                  ))}
                 </select>
+              ) : (
+                <div className="relative">
+                  <Search className="h-4 w-4 text-slate-400 absolute left-2.5 top-2.5" />
+                  <input
+                    type="text"
+                    name="keyword"
+                    placeholder="Tìm tên, mã, lý do..."
+                    className="w-full rounded-xl border border-slate-200 py-2 pl-8 pr-3 text-xs text-slate-800 focus:border-orange-600 focus:outline-hidden"
+                  />
+                </div>
+              )}
+            </div>
+
+            {activeTab === 'company' && (
+              <div className="sm:col-span-12">
+                <div className="relative">
+                  <Search className="h-4 w-4 text-slate-400 absolute left-3 top-2.5" />
+                  <input
+                    type="text"
+                    name="keyword"
+                    placeholder="Tìm kiếm theo tên nhân viên, mã nhân viên, lý do..."
+                    className="w-full rounded-xl border border-slate-200 py-2 pl-9 pr-3 text-xs text-slate-800 focus:border-orange-600 focus:outline-hidden"
+                  />
+                </div>
               </div>
             )}
           </div>
-        </div>
 
-        {/* Tab 1: My OTs (StaffOvertimeResponse) */}
-        {activeTab === 'my' && (
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden">
-            <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <div>
-                <h3 className="text-xs font-bold text-slate-800">Lịch sử làm thêm giờ của tôi (DTO StaffOvertimeResponse)</h3>
-                <p className="text-[11px] text-slate-400">Hiển thị chi tiết giờ đăng ký, giờ thực tế, hệ số và người duyệt</p>
-              </div>
-              <span className="text-xs font-semibold text-slate-500">{myOTs.length} đơn</span>
+          <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              className="px-3.5 py-1.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs font-semibold transition cursor-pointer"
+            >
+              Đặt lại
+            </button>
+            <button
+              type="submit"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold shadow-xs transition cursor-pointer"
+            >
+              <Search className="h-3.5 w-3.5" />
+              <span>Tìm kiếm & Lọc</span>
+            </button>
+          </div>
+        </form>
+
+
+        {/* Content Container */}
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden">
+          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+            <h3 className="text-xs font-bold text-slate-800">
+              {activeTab === 'my' && 'Lịch sử đơn làm thêm giờ của tôi'}
+              {activeTab === 'approvals' && 'Danh sách đơn OT cần phê duyệt cấp quản lý'}
+              {activeTab === 'company' && 'Theo dõi làm thêm giờ toàn công ty'}
+            </h3>
+            <span className="text-xs font-semibold text-slate-500">
+              {loading ? 'Đang tải...' : `${totalElements} bản ghi`}
+            </span>
+          </div>
+
+          {loading ? (
+            <div className="py-12 flex flex-col items-center justify-center gap-2 text-slate-400 text-xs">
+              <RefreshCw className="h-6 w-6 animate-spin text-orange-600" />
+              <span>Đang tải danh sách đơn OT...</span>
             </div>
+          ) : records.length === 0 ? (
+            <div className="py-12 text-center text-slate-400 text-xs">
+              Không có đơn làm thêm giờ nào phù hợp với bộ lọc.
+            </div>
+          ) : (
+            <>
+              {/* MOBILE CARDS VIEW (block md:hidden) */}
+              <div className="block md:hidden divide-y divide-slate-100">
+                {records.map(ot => (
+                  <div key={ot.overtimeRecordId} className="p-4 space-y-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        {activeTab !== 'my' && (
+                          <div className="font-bold text-slate-900 text-sm">{ot.requestorName || 'Nhân viên'}</div>
+                        )}
+                        <div className="text-[11px] font-mono text-slate-500 font-semibold">
+                          Ngày {formatDateVN(ot.approvedDate)}: {ot.approvedStartTime} → {ot.approvedEndTime}
+                        </div>
+                      </div>
+                      <div>{statusBadge(ot.status)}</div>
+                    </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
-                  <tr>
-                    <th className="py-3 px-4">Ngày tăng ca</th>
-                    <th className="py-3 px-4">Khung giờ đăng ký</th>
-                    <th className="py-3 px-4">Giờ quẹt thẻ</th>
-                    <th className="py-3 px-4">Số giờ (ĐK / TT)</th>
-                    <th className="py-3 px-4">Hệ số & Chế độ</th>
-                    <th className="py-3 px-4">Người duyệt</th>
-                    <th className="py-3 px-4">Lý do & Phản hồi</th>
-                    <th className="py-3 px-4">Trạng thái</th>
-                    <th className="py-3 px-4 text-right">Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700">
-                  {myOTs.length === 0 ? (
+                    <div className="flex items-center gap-2 flex-wrap text-xs">
+                      <span className="font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded border border-orange-200">
+                        {ot.registeredHours}h đăng ký
+                      </span>
+                      {ot.actualHours ? (
+                        <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">
+                          {ot.actualHours}h thực tế
+                        </span>
+                      ) : null}
+                      <span className="font-mono font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded">
+                        Hệ số {ot.multiplier}x
+                      </span>
+                    </div>
+
+                    {ot.clockInTime && (
+                      <div className="text-[11px] text-slate-600 font-mono">
+                        Quẹt thẻ: {ot.clockInTime} → {ot.clockOutTime || 'Chưa quẹt ra'}
+                      </div>
+                    )}
+
+                    <div className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                      <span className="font-medium text-slate-700">Lý do: </span>
+                      {ot.reason}
+                      {ot.rejectionReason && (
+                        <div className="text-rose-600 font-semibold text-[11px] mt-1">
+                          Lý do từ chối: {ot.rejectionReason}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <div className="text-[10px] text-slate-400">
+                        {ot.approverName ? `Người duyệt: ${ot.approverName}` : 'Chờ phân công'}
+                      </div>
+
+                      {activeTab === 'approvals' && ot.status === 'pending' && (
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => handleApprove(ot)}
+                            className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs"
+                          >
+                            Duyệt
+                          </button>
+                          <button
+                            onClick={() => {
+                              setRejectingOT(ot);
+                              setRejectionReason('');
+                            }}
+                            className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200"
+                          >
+                            Từ chối
+                          </button>
+                        </div>
+                      )}
+
+                      {activeTab === 'my' && ot.status === 'pending' && (
+                        <button
+                          onClick={() => handleCancel(ot.overtimeRecordId)}
+                          className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200"
+                        >
+                          Hủy đơn
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* DESKTOP TABLE VIEW (hidden md:block) */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
                     <tr>
-                      <td colSpan={9} className="py-8 text-center text-slate-400">
-                        Không có đơn làm thêm giờ nào phù hợp với bộ lọc.
-                      </td>
+                      {activeTab !== 'my' && <th className="py-3 px-4">Mã NV</th>}
+                      {activeTab !== 'my' && <th className="py-3 px-4">Họ tên</th>}
+                      {activeTab !== 'my' && <th className="py-3 px-4">Vị trí</th>}
+                      {activeTab === 'company' && <th className="py-3 px-4">Phòng ban</th>}
+                      <th className="py-3 px-4">Ngày tăng ca</th>
+                      <th className="py-3 px-4">Khung giờ đăng ký</th>
+                      <th className="py-3 px-4">Giờ quẹt thẻ</th>
+                      <th className="py-3 px-4">Số giờ (ĐK / TT)</th>
+                      <th className="py-3 px-4">Hệ số & Chế độ</th>
+                      <th className="py-3 px-4">Người duyệt</th>
+                      <th className="py-3 px-4">Lý do & Phản hồi</th>
+                      <th className="py-3 px-4">Trạng thái</th>
+                      <th className="py-3 px-4 text-right">Thao tác</th>
                     </tr>
-                  ) : (
-                    myOTs.map(ot => (
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-slate-700">
+                    {records.map(ot => (
                       <tr key={ot.overtimeRecordId} className="hover:bg-slate-50/80 transition">
-                        <td className="py-3 px-4 font-mono font-bold text-slate-900 whitespace-nowrap">
-                          {ot.approvedDate}
+                        {activeTab !== 'my' && (
+                          <td className="py-3 px-4 font-mono text-[11px] text-slate-500">{ot.requestorCode}</td>
+                        )}
+                        {activeTab !== 'my' && (
+                          <td className="py-3 px-4 font-bold text-slate-900">{ot.requestorName}</td>
+                        )}
+                        {activeTab !== 'my' && (
+                          <td className="py-3 px-4 text-slate-600">{ot.requestorJob || '—'}</td>
+                        )}
+                        {activeTab === 'company' && (
+                          <td className="py-3 px-4 text-slate-600">{ot.requestorDepartment}</td>
+                        )}
+                        <td className="py-3 px-4 font-mono font-bold text-slate-900 whitespace-nowrap" title={ot.overtimeRecordId}>
+                          {formatDateVN(ot.approvedDate)}
                         </td>
                         <td className="py-3 px-4 font-mono text-slate-800 whitespace-nowrap">
                           {ot.approvedStartTime} → {ot.approvedEndTime}
@@ -467,8 +710,8 @@ export default function OvertimePage() {
                         </td>
                         <td className="py-3 px-4 whitespace-nowrap">
                           <span className="font-bold text-orange-600">{ot.registeredHours}h</span>
-                          {ot.totalActualHours ? (
-                            <span className="text-slate-500 text-[11px] ml-1">({ot.totalActualHours}h TT)</span>
+                          {ot.actualHours ? (
+                            <span className="text-slate-500 text-[11px] ml-1">({ot.actualHours}h TT)</span>
                           ) : null}
                         </td>
                         <td className="py-3 px-4 whitespace-nowrap">
@@ -489,7 +732,7 @@ export default function OvertimePage() {
                             )}
                           </div>
                         </td>
-                        <td className="py-3 px-4">
+                        <td className="py-3 px-4" title={ot.approverId || ''}>
                           {ot.approverName ? (
                             <div>
                               <div className="font-semibold text-slate-900">{ot.approverName}</div>
@@ -502,7 +745,7 @@ export default function OvertimePage() {
                         <td className="py-3 px-4 max-w-xs">
                           <div className="text-slate-700 truncate" title={ot.reason}>{ot.reason}</div>
                           {ot.rejectionReason && (
-                            <div className="text-[11px] text-red-600 font-semibold mt-0.5 bg-red-50 p-1 rounded">
+                            <div className="text-[11px] text-rose-600 font-semibold mt-0.5 bg-rose-50 p-1 rounded">
                               Từ chối: {ot.rejectionReason}
                             </div>
                           )}
@@ -511,232 +754,75 @@ export default function OvertimePage() {
                           {statusBadge(ot.status)}
                         </td>
                         <td className="py-3 px-4 text-right whitespace-nowrap">
-                          {ot.status === 'pending' ? (
+                          {activeTab === 'approvals' && ot.status === 'pending' && (
+                            <div className="flex items-center justify-end gap-2">
+                              <button
+                                onClick={() => handleApprove(ot)}
+                                className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-bold transition cursor-pointer shadow-xs"
+                              >
+                                Duyệt
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setRejectingOT(ot);
+                                  setRejectionReason('');
+                                }}
+                                className="rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 px-3 py-1.5 text-xs font-bold transition cursor-pointer border border-rose-200"
+                              >
+                                Từ chối
+                              </button>
+                            </div>
+                          )}
+                          {activeTab === 'my' && ot.status === 'pending' && (
                             <button
-                              onClick={() => cancelOvertimeRequest(ot.overtimeRecordId)}
-                              className="text-red-600 hover:text-red-800 font-bold text-xs cursor-pointer"
+                              onClick={() => handleCancel(ot.overtimeRecordId)}
+                              className="text-rose-600 hover:text-rose-800 font-bold text-xs cursor-pointer"
                             >
                               Hủy đơn
                             </button>
-                          ) : (
-                            <span className="text-slate-400">—</span>
                           )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 2: Approvals (ManagerOvertimeResponse) */}
-        {activeTab === 'approvals' && (isManager || isExecutive) && (
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden">
-            <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <div>
-                <h3 className="text-xs font-bold text-slate-800">Hộp thư Duyệt làm thêm giờ (DTO ManagerOvertimeResponse)</h3>
-                <p className="text-[11px] text-slate-400">Phê duyệt tăng ca theo cấp quản lý phòng ban / Ban Giám Đốc</p>
-              </div>
-              <span className="text-xs text-amber-700 font-semibold">{approvalOTs.length} đơn chờ xử lý</span>
-            </div>
-
-            {approvalOTs.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-500">
-                Hiện tại không có đơn làm thêm giờ nào phù hợp với bộ lọc.
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
-                    <tr>
-                      <th className="py-3 px-4">Nhân sự</th>
-                      <th className="py-3 px-4">Phòng ban & Vị trí</th>
-                      <th className="py-3 px-4">Ngày & Khung giờ</th>
-                      <th className="py-3 px-4">Giờ quẹt thẻ</th>
-                      <th className="py-3 px-4">Số giờ</th>
-                      <th className="py-3 px-4">Hệ số</th>
-                      <th className="py-3 px-4">Lý do tăng ca</th>
-                      <th className="py-3 px-4 text-right">Hành động</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 text-slate-700">
-                    {approvalOTs.map(ot => (
-                      <tr key={ot.overtimeRecordId} className="hover:bg-slate-50/80 transition">
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="font-bold text-slate-900">{ot.requestorName}</div>
-                          <div className="text-[10px] text-slate-400 font-mono">{ot.requestorCode}</div>
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="font-medium text-slate-800">{ot.requestorDepartment}</div>
-                          <div className="text-[10px] text-slate-400">{ot.requestorJob}</div>
-                        </td>
-                        <td className="py-3 px-4 font-mono whitespace-nowrap">
-                          <div className="font-bold text-slate-900">{ot.approvedDate}</div>
-                          <div className="text-[11px] text-slate-500">{ot.approvedStartTime} - {ot.approvedEndTime}</div>
-                        </td>
-                        <td className="py-3 px-4 font-mono whitespace-nowrap">
-                          {ot.clockInTime ? (
-                            <span className="text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                              {ot.clockInTime} - {ot.clockOutTime || 'Chưa ra'}
-                            </span>
-                          ) : (
-                            <span className="text-slate-400 italic">Chưa điểm danh</span>
-                          )}
-                        </td>
-                        <td className="py-3 px-4 font-bold text-orange-600 whitespace-nowrap">
-                          {ot.registeredHours}h
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="flex items-center gap-1">
-                            <span className="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded font-mono">
-                              {ot.multiplier}x
-                            </span>
-                            {ot.isHoliday && <span className="rounded bg-orange-100 text-orange-800 text-[10px] px-1 font-bold">Lễ</span>}
-                            {ot.isWeekend && <span className="rounded bg-indigo-100 text-indigo-800 text-[10px] px-1 font-bold">T7/CN</span>}
-                            {ot.isNightTime && <Moon className="h-3 w-3 text-purple-600" />}
-                          </div>
-                        </td>
-                        <td className="py-3 px-4 text-slate-600 max-w-xs">{ot.reason}</td>
-                        <td className="py-3 px-4 text-right whitespace-nowrap">
-                          <div className="flex items-center justify-end gap-2">
-                            <button
-                              onClick={() => handleApprove(ot)}
-                              className="rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-bold transition cursor-pointer"
-                            >
-                              Duyệt OT
-                            </button>
-                            <button
-                              onClick={() => {
-                                setRejectingOT(ot);
-                                setRejectionReason('');
-                              }}
-                              className="rounded-lg bg-red-50 hover:bg-red-100 text-red-700 px-3 py-1.5 text-xs font-bold transition cursor-pointer"
-                            >
-                              Từ chối
-                            </button>
-                          </div>
+                          {ot.status !== 'pending' && <span className="text-slate-400">—</span>}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            )}
-          </div>
-        )}
+            </>
+          )}
 
-        {/* Tab 3: Company All (HrOvertimeResponse) */}
-        {activeTab === 'company' && isHR && (
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden">
-            <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-              <div>
-                <h3 className="text-xs font-bold text-slate-800">Báo cáo làm thêm giờ toàn công ty (DTO HrOvertimeResponse)</h3>
-                <p className="text-[11px] text-slate-400">Đầy đủ thông tin liên lạc, giờ phê duyệt tổng, giờ thực tế, người phê duyệt</p>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="p-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span>Trang {page + 1} / {totalPages}</span>
+              <div className="flex items-center gap-1">
+                <button
+                  disabled={page === 0}
+                  onClick={() => setPage(p => Math.max(0, p - 1))}
+                  className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 disabled:opacity-40"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  disabled={page >= totalPages - 1}
+                  onClick={() => setPage(p => p + 1)}
+                  className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 disabled:opacity-40"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
               </div>
-              <span className="text-xs font-semibold text-slate-500">{companyOTs.length} bản ghi</span>
             </div>
+          )}
+        </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
-                  <tr>
-                    <th className="py-3 px-4">Nhân sự</th>
-                    <th className="py-3 px-4">Liên hệ (Email / SĐT)</th>
-                    <th className="py-3 px-4">Phòng ban & Vị trí</th>
-                    <th className="py-3 px-4">Ngày & Khung giờ</th>
-                    <th className="py-3 px-4">Quẹt thẻ thực tế</th>
-                    <th className="py-3 px-4">Giờ duyệt / Thực tế</th>
-                    <th className="py-3 px-4">Hệ số</th>
-                    <th className="py-3 px-4">Người duyệt</th>
-                    <th className="py-3 px-4">Lý do & Ghi chú</th>
-                    <th className="py-3 px-4">Trạng thái</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700">
-                  {companyOTs.length === 0 ? (
-                    <tr>
-                      <td colSpan={10} className="py-8 text-center text-slate-400">
-                        Không có dữ liệu tăng ca nào phù hợp với bộ lọc.
-                      </td>
-                    </tr>
-                  ) : (
-                    companyOTs.map(ot => (
-                      <tr key={ot.overtimeRecordId} className="hover:bg-slate-50/80 transition">
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="font-bold text-slate-900">{ot.requestorName}</div>
-                          <div className="text-[10px] text-slate-400 font-mono">{ot.requestorCode}</div>
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="flex items-center gap-1 text-[11px] text-slate-700">
-                            <Mail className="h-3 w-3 text-slate-400" />
-                            <span>{ot.requestorEmail || `${(ot.requestorCode || '').toLowerCase()}@act.com`}</span>
-                          </div>
-                          <div className="flex items-center gap-1 text-[10px] text-slate-500 font-mono mt-0.5">
-                            <Phone className="h-3 w-3 text-slate-400" />
-                            <span>{ot.requestorPhoneNumber || '0901234567'}</span>
-                          </div>
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="font-medium text-slate-800">{ot.requestorDepartment}</div>
-                          <div className="text-[10px] text-slate-400">{ot.requestorJob}</div>
-                        </td>
-                        <td className="py-3 px-4 font-mono whitespace-nowrap">
-                          <div className="font-semibold text-slate-900">{ot.approvedDate}</div>
-                          <div className="text-[10px] text-slate-500">{ot.approvedStartTime} - {ot.approvedEndTime}</div>
-                        </td>
-                        <td className="py-3 px-4 font-mono whitespace-nowrap">
-                          {ot.clockInTime ? (
-                            <span className="text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                              {ot.clockInTime} - {ot.clockOutTime || 'Chưa ra'}
-                            </span>
-                          ) : (
-                            <span className="text-slate-400 italic">Chưa điểm danh</span>
-                          )}
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="font-bold text-orange-600">{ot.totalApprovedHours ?? ot.registeredHours}h duyệt</div>
-                          <div className="text-[10px] text-slate-500">{ot.totalActualHours ?? ot.actualHours ?? 0}h thực tế</div>
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="flex items-center gap-1">
-                            <span className="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded font-mono">
-                              {ot.multiplier}x
-                            </span>
-                            {ot.isNightTime && <Moon className="h-3 w-3 text-purple-600" />}
-                          </div>
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">
-                          <div className="font-medium text-slate-800">{ot.approverName || '—'}</div>
-                          {ot.approverJob && <div className="text-[10px] text-slate-400">{ot.approverJob}</div>}
-                        </td>
-                        <td className="py-3 px-4 max-w-xs">
-                          <div className="text-slate-700 truncate" title={ot.reason}>{ot.reason}</div>
-                          {ot.rejectionReason && (
-                            <div className="text-[11px] text-red-600 font-semibold mt-0.5">
-                              Lý do từ chối: {ot.rejectionReason}
-                            </div>
-                          )}
-                        </td>
-                        <td className="py-3 px-4 whitespace-nowrap">{statusBadge(ot.status)}</td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Modal Đăng Ký Tăng Ca Mới */}
+        {/* Modal Tạo Đăng Ký OT Mới */}
         {isCreateModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
-            <div className="relative w-full max-w-xl rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 overflow-y-auto">
+            <div className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto my-8">
               <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
                   <Briefcase className="h-5 w-5" />
-                  <span>Đăng Ký Làm Thêm Giờ (Spring Boot /api/overtime)</span>
+                  <span>Đăng Ký Làm Thêm Giờ</span>
                 </div>
                 <button
                   onClick={() => setIsCreateModalOpen(false)}
@@ -781,40 +867,45 @@ export default function OvertimePage() {
                   </div>
                 </div>
 
-                {/* Rate preview calculation */}
-                <div className="rounded-2xl bg-orange-50/80 p-4 border border-orange-200/80 space-y-2">
+                {/* Live OT Calculation Box */}
+                <div className="rounded-2xl bg-orange-50/70 p-4 border border-orange-200/80 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-orange-900">Xem trước hệ số lương áp dụng:</span>
-                    <span className="font-black text-sm text-orange-700 bg-white px-2.5 py-0.5 rounded-lg border border-orange-200">
-                      Hệ số {currentRate.multiplier}x
+                    <span className="font-bold text-orange-900 flex items-center gap-1.5">
+                      <Sparkles className="h-4 w-4 text-orange-600" />
+                      <span>Dự tính thời gian & hệ số làm thêm</span>
+                    </span>
+                    <span className="font-black text-orange-700 text-sm font-mono">
+                      {totalHours} giờ
                     </span>
                   </div>
+
                   <div className="grid grid-cols-3 gap-2 text-[11px] pt-1">
                     <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
-                      <span className="text-slate-400 block">Thời lượng:</span>
-                      <span className="font-bold text-slate-900 text-xs">{totalHours} giờ</span>
+                      <span className="text-slate-400 block">Thời gian:</span>
+                      <span className="font-bold text-slate-900 text-xs">{totalHours}h</span>
                     </div>
                     <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
-                      <span className="text-slate-400 block">Phân loại ngày:</span>
-                      <span className="font-bold text-orange-700 text-xs">
-                        {currentRate.isHoliday ? 'Ngày Lễ (3.0x)' : currentRate.isWeekend ? 'Cuối tuần (2.0x)' : 'Ngày thường (1.5x)'}
+                      <span className="text-slate-400 block">Hệ số tính lương:</span>
+                      <span className="font-black text-orange-600 text-xs">{currentRate.multiplier}x</span>
+                    </div>
+                    <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
+                      <span className="text-slate-400 block">Phân loại:</span>
+                      <span className="font-bold text-slate-800 text-xs">
+                        {currentRate.isWeekend ? 'Cuối tuần' : 'Ngày thường'}
+                        {currentRate.isNightTime ? ' + Đêm' : ''}
                       </span>
-                    </div>
-                    <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
-                      <span className="text-slate-400 block">Phụ cấp ca đêm:</span>
-                      <span className="font-bold text-purple-700 text-xs">{currentRate.isNightTime ? '+30%' : 'Không'}</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Lý do tăng ca</label>
+                  <label className="block font-bold text-slate-700 mb-1">Lý do làm thêm giờ</label>
                   <textarea
                     rows={3}
                     value={reason}
                     onChange={e => setReason(e.target.value)}
                     required
-                    placeholder="Mô tả công việc cần làm thêm giờ (ví dụ: hoàn thành dự án gấp, trực ca kỹ thuật...)"
+                    placeholder="Nhập lý do chi tiết (ví dụ: hoàn thành sprint release đúng hạn, hỗ trợ triển khai hệ thống ngoài giờ...)"
                     className="w-full rounded-xl border border-slate-300 p-2.5 text-xs text-slate-800"
                   />
                 </div>
@@ -829,10 +920,20 @@ export default function OvertimePage() {
                   </button>
                   <button
                     type="submit"
-                    className="flex items-center gap-1.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 font-bold shadow-md shadow-orange-500/20 transition cursor-pointer"
+                    disabled={submitting || totalHours <= 0}
+                    className="flex items-center gap-1.5 rounded-xl bg-orange-600 hover:bg-orange-700 disabled:opacity-50 text-white px-5 py-2 font-bold shadow-md shadow-orange-500/20 transition cursor-pointer"
                   >
-                    <Send className="h-4 w-4" />
-                    <span>Nộp đơn đăng ký</span>
+                    {submitting ? (
+                      <>
+                        <RefreshCw className="h-4 w-4 animate-spin" />
+                        <span>Đang gửi đơn...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4" />
+                        <span>Gửi đơn làm thêm</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
@@ -840,16 +941,16 @@ export default function OvertimePage() {
           </div>
         )}
 
-        {/* Modal Từ Chối OT */}
+        {/* Modal Từ Chối Đơn OT */}
         {rejectingOT && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
             <div className="relative w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl border border-slate-200">
-              <h3 className="text-sm font-bold text-red-600 flex items-center gap-2 mb-2">
+              <h3 className="text-sm font-bold text-rose-600 flex items-center gap-2 mb-2">
                 <XCircle className="h-5 w-5" />
                 <span>Từ chối đơn làm thêm giờ</span>
               </h3>
               <p className="text-xs text-slate-600 mb-4">
-                Nhân viên: <strong>{rejectingOT.requestorName}</strong> ({rejectingOT.approvedDate} lúc {rejectingOT.approvedStartTime} - {rejectingOT.approvedEndTime})
+                Nhân viên: <strong>{rejectingOT.requestorName}</strong> ({formatDateVN(rejectingOT.approvedDate)} • {rejectingOT.approvedStartTime} - {rejectingOT.approvedEndTime})
               </p>
 
               <form onSubmit={handleRejectSubmit} className="space-y-4 text-xs">
@@ -860,7 +961,7 @@ export default function OvertimePage() {
                     value={rejectionReason}
                     onChange={e => setRejectionReason(e.target.value)}
                     required
-                    placeholder="Nhập lý do từ chối..."
+                    placeholder="Nhập lý do từ chối để thông báo lại cho nhân viên..."
                     className="w-full rounded-xl border border-slate-300 p-2.5 text-xs text-slate-800"
                   />
                 </div>
@@ -875,7 +976,7 @@ export default function OvertimePage() {
                   </button>
                   <button
                     type="submit"
-                    className="rounded-xl bg-red-600 hover:bg-red-700 text-white px-5 py-2 font-bold transition cursor-pointer"
+                    className="rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-5 py-2 font-bold transition cursor-pointer"
                   >
                     Xác nhận từ chối
                   </button>

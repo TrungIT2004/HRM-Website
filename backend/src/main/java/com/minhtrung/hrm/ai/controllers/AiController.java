@@ -3,8 +3,11 @@ package com.minhtrung.hrm.ai.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.minhtrung.hrm.employees.enums.DepartmentName;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -40,6 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AiController {
 
     private final AiServiceClient aiServiceClient;
+    private final PermissionService permissionService;
 
     /**
      * Nhân viên hỏi đáp với Chatbot RAG (hỗ trợ lưu lịch sử & Multi-turn Memory).
@@ -151,9 +155,34 @@ public class AiController {
     }
 
     /**
+     * Ghim hoặc bỏ ghim một cuộc hội thoại.
+     * PUT /api/ai/conversations/{conversationId}/pin
+     */
+    @PutMapping("/conversations/{conversationId}/pin")
+    public ResponseEntity<Object> pinConversation(
+            @PathVariable String conversationId,
+            @RequestBody(required = false) java.util.Map<String, Object> body
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        String userId = currentUser.getUserId() != null ? currentUser.getUserId().toString() : "ANONYMOUS";
+        Boolean isPinned = null;
+        if (body != null) {
+            if (body.containsKey("isPinned")) {
+                Object val = body.get("isPinned");
+                if (val instanceof Boolean) isPinned = (Boolean) val;
+            } else if (body.containsKey("is_pinned")) {
+                Object val = body.get("is_pinned");
+                if (val instanceof Boolean) isPinned = (Boolean) val;
+            }
+        }
+        return ResponseEntity.ok(aiServiceClient.pinConversation(conversationId, userId, isPinned));
+    }
+
+    /**
      * Lấy danh sách tài liệu công ty đã nạp.
      * Áp dụng phân quyền:
-     * - Ban Giám Đốc (Executive Leadership) & Admin: Có thể xem tất cả tài liệu hoặc lọc theo bất kỳ phòng ban nào.
+     * - Ban Giám Đốc (Executive Leadership): Có thể xem tất cả tài liệu hoặc lọc theo bất kỳ phòng ban nào.
+     * - Admin: như nhân viên thường (chỉ ALL + phòng mình); vẫn giữ quyền upload/xóa/chunks.
      * - Trưởng phòng & Nhân viên: Chỉ có thể xem tài liệu toàn công ty ('ALL') hoặc tài liệu thuộc phòng ban của mình.
      * GET /api/ai/documents
      */
@@ -166,14 +195,15 @@ public class AiController {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
         String userDept = currentUser != null ? currentUser.getDepartment() : null;
 
+        // Admin là nhân viên thường + quyền /admin: chỉ xem docs ALL + phòng mình (không bypass PBAC như Executive)
         boolean isExecutive = currentUser != null && (
                 "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment())
                 || (currentUser.getJob() != null && (currentUser.getJob().contains("CEO") || currentUser.getJob().contains("Director") || currentUser.getJob().contains("Chairman")))
-                || ("Information Technology".equalsIgnoreCase(currentUser.getDepartment()) && currentUser.getJob() != null && currentUser.getJob().contains("Admin"))
         );
 
-        // Ban Giám Đốc hoặc Quản trị viên không bị giới hạn phòng ban truy cập
-        String enforcementUserDept = isExecutive ? null : userDept;
+        // Chỉ Ban Giám Đốc không bị giới hạn phòng ban truy cập (Admin bị giới hạn như nhân viên thường)
+        // ponytail: chuẩn hóa "IT" -> "Information Technology" để khớp mảng allowed_departments trong AI DB
+        String enforcementUserDept = isExecutive ? null : normalizeDept(userDept);
 
         // Chuẩn hóa bộ lọc department nếu người dùng truyền lên (nếu là "ALL" hoặc để trống -> xem tất cả tài liệu có quyền xem)
         String filterDepartment = null;
@@ -196,13 +226,14 @@ public class AiController {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
         String userDept = currentUser != null ? currentUser.getDepartment() : null;
 
+        // Admin là nhân viên thường + quyền /admin: chỉ xem docs ALL + phòng mình (không bypass PBAC như Executive)
         boolean isExecutive = currentUser != null && (
                 "Executive Leadership".equalsIgnoreCase(currentUser.getDepartment())
                 || (currentUser.getJob() != null && (currentUser.getJob().contains("CEO") || currentUser.getJob().contains("Director") || currentUser.getJob().contains("Chairman")))
-                || ("Information Technology".equalsIgnoreCase(currentUser.getDepartment()) && currentUser.getJob() != null && currentUser.getJob().contains("Admin"))
         );
 
-        String enforcementUserDept = isExecutive ? null : userDept;
+        // ponytail: chuẩn hóa "IT" -> "Information Technology" để khớp mảng allowed_departments trong AI DB
+        String enforcementUserDept = isExecutive ? null : normalizeDept(userDept);
 
         try {
             ResponseEntity<byte[]> response = aiServiceClient.downloadDocument(documentId, enforcementUserDept);
@@ -230,15 +261,14 @@ public class AiController {
     @GetMapping("/documents/{documentId}/chunks")
     public ResponseEntity<Object> getDocumentChunks(@PathVariable String documentId) {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
-        checkAdminOrHrOrDeptHeadPermission(currentUser);
+        checkDocumentManagePermission(currentUser);
         return ResponseEntity.ok(aiServiceClient.getDocumentChunks(documentId));
     }
 
     /**
      * Tải lên tài liệu mới (Word, PDF, Excel).
      * Phân quyền:
-     * - Ban Giám Đốc (Executive Leadership) / Admin: Toàn quyền (upload cho ALL hoặc bất kỳ phòng ban nào).
-     * - Phòng Nhân Sự (Human Resources): Upload cho ALL hoặc phòng ban Human Resources.
+     * - Ban Giám Đốc (Executive Leadership) / Admin / Phòng Nhân Sự (Human Resources): Toàn quyền (upload cho ALL hoặc đa phòng ban).
      * - Trưởng phòng chức năng: CHỈ được upload tài liệu cho chính phòng ban của mình.
      * - Nhân viên thường: Không có quyền upload.
      * POST /api/ai/documents/upload
@@ -266,6 +296,7 @@ public class AiController {
 
     /**
      * Cập nhật / Thay thế file tài liệu cũ (In-Place Replacement).
+     * Chỉ người đăng gốc (hoặc Executive / SysAdmin cứu hộ) được sửa.
      * PUT /api/ai/documents/{documentId}
      */
     @PutMapping(value = "/documents/{documentId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -276,6 +307,7 @@ public class AiController {
     ) throws IOException {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
         String effectiveDepartments = validateAndAuthorizeDepartmentScope(currentUser, allowedDepartments);
+        checkDocumentOwnership(documentId, currentUser);
 
         log.info("User {} ({}) đang cập nhật tài liệu ID: {} (Phòng ban áp dụng: {})",
                 currentUser.getUserId(), currentUser.getFullName(), documentId, effectiveDepartments);
@@ -291,12 +323,14 @@ public class AiController {
 
     /**
      * Xóa tài liệu khỏi hệ thống và CSDL Vector.
+     * Chỉ người đăng gốc (hoặc Executive / SysAdmin cứu hộ) được xóa.
      * DELETE /api/ai/documents/{documentId}
      */
     @DeleteMapping("/documents/{documentId}")
     public ResponseEntity<Object> deleteDocument(@PathVariable String documentId) {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
-        checkAdminOrHrOrDeptHeadPermission(currentUser);
+        checkDocumentManagePermission(currentUser);
+        checkDocumentOwnership(documentId, currentUser);
         log.info("User {} ({}) đang xóa tài liệu ID: {}", currentUser.getUserId(), currentUser.getFullName(), documentId);
 
         Object result = aiServiceClient.deleteDocument(documentId);
@@ -304,9 +338,19 @@ public class AiController {
     }
 
     /**
-     * Kiểm tra phân quyền quản lý tài liệu (Executive Leadership, HR, IT Admin, hoặc Trưởng phòng).
+     * Chuẩn hóa tên phòng ban từ token về tên chuẩn enum (để khớp mảng allowed_departments).
+     * Giữ nguyên chuỗi gốc nếu không nhận diện được.
      */
-    private void checkAdminOrHrOrDeptHeadPermission(TokenPayload currentUser) {
+    private static String normalizeDept(String dept) {
+        String normalized = DepartmentName.fromString(dept);
+        return normalized != null ? normalized : dept;
+    }
+
+    /**
+     * Kiểm tra quyền quản lý tài liệu: Executive / SysAdmin / HR / Trưởng phòng,
+     * HOẶC được cấp grant DOCUMENT_UPLOAD trong trang /admin.
+     */
+    private void checkDocumentManagePermission(TokenPayload currentUser) {
         if (currentUser == null) {
             throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
         }
@@ -315,14 +359,54 @@ public class AiController {
 
         boolean isExecutive = "Executive Leadership".equalsIgnoreCase(userDept)
                 || userJob.contains("CEO") || userJob.contains("Director") || userJob.contains("Chairman");
-        boolean isSysAdmin = "Information Technology".equalsIgnoreCase(userDept)
+        boolean isSysAdmin = ("Information Technology".equalsIgnoreCase(userDept) || "IT".equalsIgnoreCase(userDept))
                 && (userJob.contains("System Administrator") || userJob.contains("Admin"));
         boolean isHR = "Human Resources".equalsIgnoreCase(userDept);
         boolean isDeptHead = userJob.startsWith("Department Head")
                 || userJob.contains("Head") || userJob.contains("Manager") || userJob.contains("Trưởng");
 
-        if (!isExecutive && !isSysAdmin && !isHR && !isDeptHead) {
-            throw new AccessDeniedException("Chỉ có Trưởng phòng, Phòng Nhân sự (HR), Ban Giám Đốc hoặc Quản trị viên hệ thống mới có quyền quản lý tài liệu!");
+        if (isExecutive || isSysAdmin || isHR || isDeptHead) {
+            return;
+        }
+        if (currentUser.getUserId() != null
+                && permissionService.hasPermission(currentUser.getUserId(), PermissionKey.DOCUMENT_UPLOAD)) {
+            return;
+        }
+        throw new AccessDeniedException("Chỉ có Trưởng phòng, Phòng Nhân sự (HR), Ban Giám Đốc, Quản trị viên hệ thống hoặc người được cấp quyền đăng tài liệu mới có quyền quản lý tài liệu!");
+    }
+
+    private void checkAdminOrHrOrDeptHeadPermission(TokenPayload currentUser) {
+        checkDocumentManagePermission(currentUser);
+    }
+
+    /**
+     * Chỉ người đăng gốc mới được sửa/xóa tài liệu của mình.
+     * Executive / SysAdmin được bypass để cứu hộ tài liệu mồ côi (người đăng đã nghỉ việc).
+     * So khớp theo fullName vì ai-service chỉ lưu chuỗi uploaded_by, không lưu userId.
+     */
+    private void checkDocumentOwnership(String documentId, TokenPayload currentUser) {
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
+        }
+        String userDept = currentUser.getDepartment();
+        String userJob = currentUser.getJob() != null ? currentUser.getJob() : "";
+        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(userDept)
+                || userJob.contains("CEO") || userJob.contains("Director") || userJob.contains("Chairman");
+        boolean isSysAdmin = ("Information Technology".equalsIgnoreCase(userDept) || "IT".equalsIgnoreCase(userDept))
+                && (userJob.contains("System Administrator") || userJob.contains("Admin"));
+        if (isExecutive || isSysAdmin) {
+            return;
+        }
+        Object detail = aiServiceClient.getDocumentDetail(documentId);
+        String uploadedBy = null;
+        if (detail instanceof Map<?, ?> map) {
+            Object val = map.get("uploaded_by");
+            uploadedBy = val != null ? val.toString() : null;
+        }
+        String mine = currentUser.getFullName() != null ? currentUser.getFullName().trim() : "";
+        if (uploadedBy == null || !uploadedBy.trim().equalsIgnoreCase(mine)) {
+            throw new AccessDeniedException("Chỉ người đăng tài liệu này ("
+                    + (uploadedBy != null ? uploadedBy : "không rõ") + ") mới có quyền sửa/xóa!");
         }
     }
 
@@ -344,13 +428,22 @@ public class AiController {
 
         boolean isExecutive = "Executive Leadership".equalsIgnoreCase(userDept)
                 || userJob.contains("CEO") || userJob.contains("Director") || userJob.contains("Chairman");
-        boolean isSysAdmin = "Information Technology".equalsIgnoreCase(userDept)
+        boolean isSysAdmin = ("Information Technology".equalsIgnoreCase(userDept) || "IT".equalsIgnoreCase(userDept))
                 && (userJob.contains("System Administrator") || userJob.contains("Admin"));
         boolean isHR = "Human Resources".equalsIgnoreCase(userDept);
         boolean isDeptHead = userJob.startsWith("Department Head")
                 || userJob.contains("Head") || userJob.contains("Manager") || userJob.contains("Trưởng");
 
         if (!isExecutive && !isSysAdmin && !isHR && !isDeptHead) {
+            // Grant DOCUMENT_UPLOAD: nhân viên thường được đăng nhưng CHỈ cho chính phòng mình (least privilege).
+            if (currentUser.getUserId() != null
+                    && permissionService.hasPermission(currentUser.getUserId(), PermissionKey.DOCUMENT_UPLOAD)) {
+                String officialDept = DepartmentName.fromString(userDept);
+                if (officialDept == null) {
+                    throw new AccessDeniedException("Phòng ban của bạn (" + userDept + ") không hợp lệ trong hệ thống!");
+                }
+                return officialDept;
+            }
             throw new AccessDeniedException("Bạn không có quyền đăng tải hoặc quản lý tài liệu quy chế!");
         }
 
@@ -373,7 +466,7 @@ public class AiController {
             return officialDept;
         }
 
-        // Trường hợp Nhân sự (HR): Được phép upload cho ALL hoặc phòng ban Human Resources
+        // Trường hợp Nhân sự (HR): được chọn đa phòng ban (mở rộng ngang Ban Giám Đốc)
         if (isHR && !isExecutive && !isSysAdmin) {
             if (requestedDepartments == null || requestedDepartments.isBlank()) {
                 return DepartmentName.ALL.getValue();
@@ -385,12 +478,7 @@ public class AiController {
                 if (!DepartmentName.isValid(trimmed)) {
                     throw new IllegalArgumentException("Tên phòng ban không hợp lệ: " + trimmed);
                 }
-                String normalized = DepartmentName.fromString(trimmed);
-                if (!normalized.equalsIgnoreCase(DepartmentName.ALL.getValue())
-                        && !normalized.equalsIgnoreCase(DepartmentName.HUMAN_RESOURCES.getValue())) {
-                    throw new AccessDeniedException("Phòng Nhân sự chỉ có quyền đăng tài liệu toàn công ty ('ALL') hoặc tài liệu nội bộ Phòng Nhân sự!");
-                }
-                validList.add(normalized);
+                validList.add(DepartmentName.fromString(trimmed));
             }
             return String.join(",", validList);
         }

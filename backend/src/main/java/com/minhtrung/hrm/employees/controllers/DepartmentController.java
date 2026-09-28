@@ -1,11 +1,16 @@
 package com.minhtrung.hrm.employees.controllers;
 
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +44,7 @@ public class DepartmentController {
 
     /**
      * Tạo phòng ban mới.
-     * Chỉ Trưởng phòng HR hoặc Ban Giám Đốc mới có quyền tạo.
+     * Quyền: phòng Human Resources, hoặc được cấp grant ORG_MANAGE.
      * POST /api/departments
      */
     @PostMapping
@@ -49,5 +54,28 @@ public class DepartmentController {
 
         DepartmentResponse created = organizationService.createDepartment(request, currentUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    /**
+     * Đổi tên phòng ban.
+     * PUT /api/departments/{departmentId}
+     */
+    @PutMapping("/{departmentId}")
+    public ResponseEntity<DepartmentResponse> updateDepartment(
+            @PathVariable UUID departmentId,
+            @Valid @RequestBody CreateDepartmentRequest request) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        return ResponseEntity.ok(organizationService.updateDepartment(departmentId, request, currentUser));
+    }
+
+    /**
+     * Xoá phòng ban. Trả 409 nếu còn chức danh hoặc nhân viên tham chiếu.
+     * DELETE /api/departments/{departmentId}
+     */
+    @DeleteMapping("/{departmentId}")
+    public ResponseEntity<Map<String, String>> deleteDepartment(@PathVariable UUID departmentId) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        organizationService.deleteDepartment(departmentId, currentUser);
+        return ResponseEntity.ok(Map.of("message", "Đã xoá phòng ban thành công"));
     }
 }

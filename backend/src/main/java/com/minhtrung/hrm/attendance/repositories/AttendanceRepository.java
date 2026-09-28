@@ -15,6 +15,9 @@ import com.minhtrung.hrm.attendance.entities.Attendance;
 public interface AttendanceRepository extends JpaRepository<Attendance, UUID>, JpaSpecificationExecutor<Attendance> {
     List<Attendance> findByWorkDate(LocalDate workDate);
 
+    /** attendances tham chiếu work_shifts — xoá ca sẽ mất lịch sử chấm công. */
+    long countByShift_ShiftId(UUID shiftId);
+
     @Query("""
         SELECT a
         FROM Attendance a

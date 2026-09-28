@@ -34,10 +34,10 @@ class LegalChunker:
         current_h3: Optional[str] = None  # Khoản / Tiêu đề phụ
 
         current_buffer: List[str] = []
-        current_page: int = 1
+        current_page: Optional[int] = None
 
         def flush_buffer(force: bool = False):
-            nonlocal current_buffer
+            nonlocal current_buffer, current_page
             if not current_buffer:
                 return
 
@@ -55,10 +55,9 @@ class LegalChunker:
                     allowed_departments=["ALL"]
                 ))
             current_buffer = []
+            current_page = None
 
         for block in parsed_doc.blocks:
-            current_page = block.page_number
-
             if block.block_type == "TABLE":
                 # Flush existing text buffer before recording the table
                 flush_buffer()
@@ -69,7 +68,7 @@ class LegalChunker:
                     document_name=doc_name,
                     breadcrumb=f"{breadcrumb} (Bảng biểu)",
                     chunk_type="TABLE",
-                    page_number=current_page,
+                    page_number=block.page_number,
                     content=block.content,
                     allowed_jobs=["ALL"],
                     allowed_departments=["ALL"]
@@ -96,6 +95,10 @@ class LegalChunker:
             text = block.content.strip()
             if not text:
                 continue
+
+            # Chunk is cited by the page it starts on, not the last block seen.
+            if current_page is None:
+                current_page = block.page_number
 
             # Check if this paragraph starts a new "Điều" or "Khoản" that wasn't tagged as heading
             dieu_match = re.match(r'^(ĐIỀU|Điều)\s+(\d+)[:\.\s]*(.*)$', text, re.IGNORECASE)

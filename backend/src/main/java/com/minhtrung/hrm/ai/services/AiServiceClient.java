@@ -43,6 +43,7 @@ public class AiServiceClient {
     private final ObjectMapper objectMapper;
 
     private final HttpClient httpClient = HttpClient.newBuilder()
+            .version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofSeconds(10))
             .build();
 
@@ -148,6 +149,7 @@ public class AiServiceClient {
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
+                    .version(HttpClient.Version.HTTP_1_1)
                     .timeout(Duration.ofMinutes(3)) // Hạn mức thời gian cho luồng sinh câu hỏi dài
                     .header("Content-Type", "application/json")
                     .header("X-Internal-Secret", aiConfig.getInternalSecret()) // Khóa bảo mật nội bộ
@@ -335,6 +337,18 @@ public class AiServiceClient {
     }
 
     /**
+     * Lấy chi tiết 1 tài liệu (để kiểm tra uploaded_by trước khi cho sửa/xóa).
+     */
+    public Object getDocumentDetail(String documentId) {
+        String url = aiConfig.getBaseUrl() + "/api/v1/documents/" + documentId;
+        HttpHeaders headers = createSecureHeaders();
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<Object> response = aiRestTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
+        return response.getBody();
+    }
+
+    /**
      * Xem chi tiết các chunk đã bóc tách của 1 tài liệu để kiểm duyệt.
      */
     public Object getDocumentChunks(String documentId) {
@@ -431,6 +445,27 @@ public class AiServiceClient {
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
         ResponseEntity<Object> response = aiRestTemplate.exchange(url, HttpMethod.POST, entity, Object.class);
+        return response.getBody();
+    }
+
+    /**
+     * Ghim hoặc bỏ ghim một cuộc hội thoại.
+     */
+    public Object pinConversation(String conversationId, String userId, Boolean isPinned) {
+        String url = aiConfig.getBaseUrl() + "/api/v1/chat/conversations/" + conversationId + "/pin";
+        HttpHeaders headers = createSecureHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> body = new HashMap<>();
+        if (userId != null && !userId.isBlank()) {
+            body.put("user_id", userId);
+        }
+        if (isPinned != null) {
+            body.put("is_pinned", isPinned);
+        }
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
+        ResponseEntity<Object> response = aiRestTemplate.exchange(url, HttpMethod.PUT, entity, Object.class);
         return response.getBody();
     }
 }

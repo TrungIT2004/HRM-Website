@@ -30,6 +30,10 @@ public enum DepartmentName {
             return false;
         }
         String trimmed = name.trim();
+        // ponytail: DB lưu tên ngắn "IT", enum dùng tên dài — chấp nhận cả hai
+        if ("IT".equalsIgnoreCase(trimmed)) {
+            return true;
+        }
         for (DepartmentName d : values()) {
             if (d.value.equalsIgnoreCase(trimmed) || d.name().equalsIgnoreCase(trimmed)) {
                 return true;
@@ -46,6 +50,9 @@ public enum DepartmentName {
             return null;
         }
         String trimmed = name.trim();
+        if ("IT".equalsIgnoreCase(trimmed)) {
+            return INFORMATION_TECHNOLOGY.value;
+        }
         for (DepartmentName d : values()) {
             if (d.value.equalsIgnoreCase(trimmed) || d.name().equalsIgnoreCase(trimmed)) {
                 return d.value;

@@ -70,11 +70,29 @@ class LocalEmbedder:
         )
         return vectors.tolist()
 
+    def _embed_questions(self, chunk: ProcessedChunk) -> Optional[List[float]]:
+        """
+        Vector đại diện cho hypothetical_questions: trung bình các vector câu hỏi
+        rồi chuẩn hoá lại (để cosine distance vẫn đúng).
+
+        KHÔNG được gán = content_vector: làm vậy thì GREATEST(content_sim, question_sim)
+        trong SQL thành vô nghĩa và câu hỏi diễn đạt khác văn bản luật không bao giờ
+        khớp được (ví dụ "sếp có được phạt tiền ko?" vs Điều 127).
+        """
+        if not chunk.hypothetical_questions:
+            return None
+        vecs = self.generate_embeddings_batch(list(chunk.hypothetical_questions))
+        if not vecs:
+            return None
+        mean = [sum(col) / len(vecs) for col in zip(*vecs)]
+        norm = sum(x * x for x in mean) ** 0.5
+        return [x / norm for x in mean] if norm else None
+
     def embed_chunk(self, chunk: ProcessedChunk) -> ProcessedChunk:
         """Generates 768d vectors for chunk content and hypothetical questions."""
         content_to_embed = f"{chunk.breadcrumb}\n{chunk.content}"
         chunk.content_vector = self.generate_embedding(content_to_embed)
-        chunk.questions_vector = chunk.content_vector
+        chunk.questions_vector = self._embed_questions(chunk) or chunk.content_vector
         return chunk
 
     def embed_chunks(self, chunks: List[ProcessedChunk], batch_size: int = 32) -> List[ProcessedChunk]:
@@ -89,9 +107,26 @@ class LocalEmbedder:
         contents = [f"{c.breadcrumb}\n{c.content}" for c in chunks]
         content_vectors = self.generate_embeddings_batch(contents, batch_size=batch_size)
 
+        flat_questions, owners = [], []
+        for i, c in enumerate(chunks):
+            for q in (c.hypothetical_questions or []):
+                flat_questions.append(q)
+                owners.append(i)
+        question_vectors = self.generate_embeddings_batch(flat_questions, batch_size=batch_size) if flat_questions else []
+
+        grouped: dict[int, list] = {}
+        for owner, vec in zip(owners, question_vectors):
+            grouped.setdefault(owner, []).append(vec)
+
         for i, chunk in enumerate(chunks):
             chunk.content_vector = content_vectors[i]
-            chunk.questions_vector = content_vectors[i]
+            vecs = grouped.get(i)
+            if vecs:
+                mean = [sum(col) / len(vecs) for col in zip(*vecs)]
+                norm = sum(x * x for x in mean) ** 0.5
+                chunk.questions_vector = [x / norm for x in mean] if norm else content_vectors[i]
+            else:
+                chunk.questions_vector = content_vectors[i]
 
         print(f"[LocalEmbedder] Successfully generated 768d vectors for all {len(chunks)} chunks in milliseconds.")
         return chunks

@@ -59,7 +59,7 @@ class HybridRetriever:
                         COALESCE(1 - (c.content_vector <=> %s::vector), 0.0),
                         COALESCE(1 - (c.questions_vector <=> %s::vector), 0.0)
                     ) AS vector_score,
-                    COALESCE(ts_rank_cd(to_tsvector('simple', c.content || ' ' || c.breadcrumb), plainto_tsquery('simple', %s)), 0.0) AS text_rank
+                    COALESCE(ts_rank_cd(to_tsvector('simple', c.content || ' ' || c.breadcrumb), to_tsquery('simple', array_to_string(ARRAY(SELECT w FROM unnest(regexp_split_to_array(lower(regexp_replace(%s, '[^[:alnum:]]', ' ', 'g')), '\s+')) w WHERE w <> ''), ' | '))), 0.0) AS text_rank
                 FROM document_chunks c
                 JOIN knowledge_documents d ON c.document_id = d.id
                 WHERE d.status = 'COMPLETED'
@@ -70,7 +70,11 @@ class HybridRetriever:
                         COALESCE(1 - (c.content_vector <=> %s::vector), 0.0),
                         COALESCE(1 - (c.questions_vector <=> %s::vector), 0.0)
                     ) * 0.7 +
-                    LEAST(COALESCE(ts_rank_cd(to_tsvector('simple', c.content || ' ' || c.breadcrumb), plainto_tsquery('simple', %s)), 0.0), 1.0) * 0.3
+                    -- ÉP OR thủ công. KHÔNG dùng plainto_tsquery (AND → thiếu 1 từ là mất
+                    -- hết) cũng KHÔNG dùng websearch_to_tsquery (cũng ra '&' trừ khi có
+                    -- chữ "or" rõ ràng — đã kiểm chứng: cả hai trả text_rank = 0.0000 cho
+                    -- câu hỏi có "phạt tiền" dù chunk chứa đúng cụm đó).
+                    LEAST(COALESCE(ts_rank_cd(to_tsvector('simple', c.content || ' ' || c.breadcrumb), to_tsquery('simple', array_to_string(ARRAY(SELECT w FROM unnest(regexp_split_to_array(lower(regexp_replace(%s, '[^[:alnum:]]', ' ', 'g')), '\s+')) w WHERE w <> ''), ' | '))), 0.0), 1.0) * 0.3
                 ) DESC
                 LIMIT %s;
             """
