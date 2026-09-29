@@ -246,60 +246,30 @@ async def resume_interrupted_documents():
 # ==========================================
 # 1. DOCUMENT INGESTION (UPLOAD) API
 # ==========================================
-@app.post("/api/v1/documents/upload")
+@app.post("/api/v1/documents/upload", dependencies=[Security(verify_internal_secret)])
 async def upload_document(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     allowed_jobs: Optional[str] = Form(None),
     allowed_roles: Optional[str] = Form(None),
     allowed_departments: str = Form("ALL"),
-    uploaded_by: str = Form("ADMIN"),
-    overwrite: bool = Form(False)
+    uploaded_by: str = Form("ADMIN")
 ):
     """
-    Receives file, verifies SHA-256 for deduplication, stores file locally,
-    registers DB record, and dispatches background worker.
+    Receives file, stores it locally, registers a DB record and dispatches the
+    background worker. Không chặn trùng SHA-256: cùng nội dung vẫn tạo bản ghi
+    mới (nếu trùng tên trên đĩa thì get_unique_filename tự thêm _v2, _v3...).
     """
     contents = await file.read()
     file_size = len(contents)
 
-    # 1. Calculate SHA-256 hash
-    hasher = hashlib.sha256()
-    hasher.update(contents)
-    file_hash = hasher.hexdigest()
+    file_hash = hashlib.sha256(contents).hexdigest()
 
     conn = get_db_connection()
     cursor = conn.cursor()
 
     try:
-        # 2. Check for duplicates
-        cursor.execute(
-            "SELECT id, file_name, status, file_path FROM knowledge_documents WHERE file_hash = %s;",
-            (file_hash,)
-        )
-        existing = cursor.fetchone()
-
-        if existing and not overwrite:
-            return {
-                "status": "DUPLICATE",
-                "message": f"Tài liệu '{existing[1]}' đã tồn tại trong hệ thống (Trùng mã SHA-256)!",
-                "document_id": str(existing[0]),
-                "current_status": existing[2],
-                "file_hash": file_hash
-            }
-
-        # If overwriting, remove existing entry and file
-        if existing and overwrite:
-            old_id, _, _, old_path = existing
-            cursor.execute("DELETE FROM knowledge_documents WHERE id = %s;", (old_id,))
-            conn.commit()
-            if old_path and os.path.exists(old_path):
-                try:
-                    os.remove(old_path)
-                except Exception:
-                    pass
-
-        # 3. Lưu file vào thư mục lưu trữ (giữ nguyên tên gốc, tự thêm _v2 nếu trùng tên mà khác hash)
+        # 1. Lưu file vào thư mục lưu trữ (giữ nguyên tên gốc, tự thêm _v2 nếu trùng tên mà khác hash)
         saved_filename = get_unique_filename(DOCS_STORAGE_DIR, file.filename, file_hash)
         saved_file_path = DOCS_STORAGE_DIR / saved_filename
         with open(saved_file_path, "wb") as f:
@@ -309,7 +279,7 @@ async def upload_document(
 
         depts = [d.strip() for d in allowed_departments.split(",") if d.strip()] or ["ALL"]
 
-        # 4. Insert into knowledge_documents with status PROCESSING (allowed_jobs removed)
+        # 2. Insert into knowledge_documents with status PROCESSING (allowed_jobs removed)
         cursor.execute(
             """
             INSERT INTO knowledge_documents (
@@ -322,7 +292,7 @@ async def upload_document(
         document_id = str(cursor.fetchone()[0])
         conn.commit()
 
-        # 5. Dispatch background task
+        # 3. Dispatch background task
         background_tasks.add_task(
             process_document_background,
             document_id=document_id,
@@ -347,7 +317,7 @@ async def upload_document(
         conn.close()
 
 
-@app.put("/api/v1/documents/{document_id}")
+@app.put("/api/v1/documents/{document_id}", dependencies=[Security(verify_internal_secret)])
 async def update_document(
     document_id: str,
     background_tasks: BackgroundTasks,
@@ -458,7 +428,7 @@ async def update_document(
 # ==========================================
 # 2. DOCUMENT MANAGEMENT (CRUD) APIS
 # ==========================================
-@app.get("/api/v1/documents")
+@app.get("/api/v1/documents", dependencies=[Security(verify_internal_secret)])
 async def list_documents(
     status: Optional[str] = Query(None, description="Filter by status (PROCESSING, COMPLETED, FAILED)"),
     search: Optional[str] = Query(None, description="Search by document name"),
@@ -547,7 +517,7 @@ async def list_documents(
         conn.close()
 
 
-@app.get("/api/v1/documents/{document_id}")
+@app.get("/api/v1/documents/{document_id}", dependencies=[Security(verify_internal_secret)])
 async def get_document_detail(document_id: str):
     """Get detail and processing status of a single document."""
     conn = get_db_connection()
@@ -642,7 +612,7 @@ async def download_document(
         conn.close()
 
 
-@app.get("/api/v1/documents/{document_id}/chunks")
+@app.get("/api/v1/documents/{document_id}/chunks", dependencies=[Security(verify_internal_secret)])
 async def get_document_chunks(document_id: str):
     """Audit API: View all chunks, summaries, tables, and hypothetical questions for a document."""
     conn = get_db_connection()
@@ -687,7 +657,7 @@ async def get_document_chunks(document_id: str):
         conn.close()
 
 
-@app.delete("/api/v1/documents/{document_id}")
+@app.delete("/api/v1/documents/{document_id}", dependencies=[Security(verify_internal_secret)])
 async def delete_document(document_id: str):
     """
     Deletes document record.
@@ -744,7 +714,7 @@ async def chat_query(request: ChatQueryRequest, background_tasks: BackgroundTask
     
     Quy trình xử lý:
     1. Xác thực bảo mật: Kiểm tra header X-Internal-Secret từ Spring Boot Gateway.
-    2. Phòng thủ Prompt Injection: Quét Regex phát hiện và chặn đứng câu lệnh can thiệp trái phép.
+    2. Phòng thủ Prompt Injection: Quét Regex phát hiện và chặn đứng câu lệnh can thiệp trái phép. 
     3. Nạp bộ nhớ hội thoại: Lấy ngữ cảnh dài hạn (context_summary) và 6 tin nhắn gần nhất từ PostgreSQL.
     4. Tái tạo câu hỏi (Kỹ thuật 1 - Query Condensation): LLM viết lại câu hỏi phụ thuộc thành câu hỏi độc lập.
     5. Hybrid Search: Tìm kiếm kết hợp Vector (Gemini 768d) và Full-Text Search (tsvector tiếng Việt).

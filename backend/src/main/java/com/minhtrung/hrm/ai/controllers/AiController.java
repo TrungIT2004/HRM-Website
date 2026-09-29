@@ -276,8 +276,7 @@ public class AiController {
     @PostMapping(value = "/documents/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> uploadDocument(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "allowedDepartments", required = false) String allowedDepartments,
-            @RequestParam(value = "overwrite", defaultValue = "false") boolean overwrite
+            @RequestParam(value = "allowedDepartments", required = false) String allowedDepartments
     ) throws IOException {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
         String effectiveDepartments = validateAndAuthorizeDepartmentScope(currentUser, allowedDepartments);
@@ -288,8 +287,7 @@ public class AiController {
         Object result = aiServiceClient.uploadDocument(
                 file,
                 effectiveDepartments,
-                currentUser,
-                overwrite
+                currentUser
         );
         return ResponseEntity.ok(result);
     }

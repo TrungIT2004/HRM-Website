@@ -215,8 +215,7 @@ public class AiServiceClient {
     public Object uploadDocument(
             MultipartFile file,
             String allowedDepartments,
-            TokenPayload currentUser,
-            boolean overwrite
+            TokenPayload currentUser
     ) throws IOException {
         String url = aiConfig.getBaseUrl() + "/api/v1/documents/upload";
 
@@ -235,7 +234,6 @@ public class AiServiceClient {
         body.add("file", fileResource);
         body.add("allowed_departments", allowedDepartments != null ? allowedDepartments : "ALL");
         body.add("uploaded_by", currentUser != null ? currentUser.getFullName() : "ADMIN");
-        body.add("overwrite", String.valueOf(overwrite));
 
         log.info("[AiServiceClient] Forward file upload: {} (Size: {} bytes, Depts: {})",
                 file.getOriginalFilename(), file.getSize(), allowedDepartments);

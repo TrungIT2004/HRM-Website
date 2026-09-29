@@ -583,21 +583,6 @@ export default function ChatPage() {
             )}
           </div>
 
-          {/* Manage Knowledge Docs Button (HR / Manager / Executive) */}
-          {(isHR || isManager || isExecutive) && (
-            <div className="p-3 border-t border-slate-200">
-              <button
-                onClick={() => {
-                  loadDocuments();
-                  setIsDocModalOpen(true);
-                }}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer"
-              >
-                <FolderOpen className="w-4 h-4 text-blue-600" />
-                <span>Quản lý Tri thức</span>
-              </button>
-            </div>
-          )}
         </aside>
 
         {/* Main Chat Area */}
@@ -618,11 +603,8 @@ export default function ChatPage() {
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <h1 className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2">
+                <h1 className="text-xs sm:text-sm font-bold text-slate-900">
                   Trợ lý AI Quy chế
-                  <span className="text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.2 rounded font-semibold">
-                    Live SSE
-                  </span>
                 </h1>
                 <p className="text-[10px] sm:text-[11px] text-slate-400">Tra cứu nội quy lao động, chính sách phúc lợi & thủ tục công ty</p>
               </div>
