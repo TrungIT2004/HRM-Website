@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import AppShell from '@/components/layout/AppShell';
 import { useAuth } from '@/context/AuthContext';
 import { OvertimeRecord, OvertimeStatus } from '@/types';
-import { overtimeService, OvertimeFilterParams } from '@/services/overtimeService';
+import { overtimeService, OvertimeFilterParams, OvertimePreview } from '@/services/overtimeService';
 import { formatDateVN } from '@/utils/format';
 import { DATE_PRESETS, DatePreset, dateRangeFor, fillDateInputs } from '@/utils/dateRange';
 import { useTabFromUrl } from '@/utils/useTabFromUrl';
@@ -30,6 +30,19 @@ import {
   ChevronRight,
   Download
 } from 'lucide-react';
+
+const OT_PRESETS = [
+  { label: '+1h', start: '18:00', end: '19:00' },
+  { label: '+2h', start: '18:00', end: '20:00' },
+  { label: '+3h', start: '18:00', end: '21:00' },
+  { label: 'Ca đêm 22h–06h', start: '22:00', end: '06:00' }
+];
+
+function otTypeLabel(p: OvertimePreview): string {
+  if (p.isHoliday) return p.isNightTime ? 'Lễ + Đêm' : 'Ngày lễ';
+  if (p.isWeekend) return p.isNightTime ? 'Cuối tuần + Đêm' : 'Cuối tuần';
+  return p.isNightTime ? 'Thường + Đêm' : 'Ngày thường';
+}
 
 export default function OvertimePage() {
   const { currentUser, isHR, isManager, isExecutive, can, isLoading: isAuthLoading } = useAuth();
@@ -114,27 +127,23 @@ export default function OvertimePage() {
     }
   }, [isAuthLoading, isHR, isManager, isExecutive, can, activeTab]);
 
-  // Helper calculating multiplier based on date & time
-  const calculateMultiplier = (dateStr: string, sTime: string, eTime: string) => {
-    const d = new Date(dateStr);
-    const dayOfWeek = d.getDay();
-    const isWknd = dayOfWeek === 0 || dayOfWeek === 6;
-    const startHour = parseInt(sTime.split(':')[0] || '0', 10);
-    const isNight = startHour >= 22 || startHour < 6;
+  // Hệ số & thời gian OT do backend tính (OvertimeRecord.setFlags + calcOvertimeAmounts).
+  // Frontend KHÔNG tự tính lại — trước đây làm sai ca xuyên đêm và thiếu hệ số ngày lễ.
+  const [preview, setPreview] = useState<OvertimePreview | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
 
-    let mult = 1.5;
-    if (isWknd) mult = 2.0;
-    if (isNight) mult += 0.3;
+  useEffect(() => {
+    if (!otDate || !startTime || !endTime) return;
+    let isMounted = true;
+    setPreviewLoading(true);
+    overtimeService.previewOvertime(otDate, startTime, endTime)
+      .then(res => { if (isMounted) setPreview(res); })
+      .catch(() => { if (isMounted) setPreview(null); })
+      .finally(() => { if (isMounted) setPreviewLoading(false); });
+    return () => { isMounted = false; };
+  }, [otDate, startTime, endTime]);
 
-    return { multiplier: mult, isHoliday: false, isWeekend: isWknd, isNightTime: isNight };
-  };
-
-  const currentRate = calculateMultiplier(otDate, startTime, endTime);
-
-  // Hours calculation
-  const sH = parseInt(startTime.split(':')[0] || '0', 10) + parseInt(startTime.split(':')[1] || '0', 10) / 60;
-  const eH = parseInt(endTime.split(':')[0] || '0', 10) + parseInt(endTime.split(':')[1] || '0', 10) / 60;
-  const totalHours = Math.max(0, Number((eH - sH).toFixed(1)));
+  const totalHours = preview?.totalHours ?? 0;
 
   // Fetch OT records from Backend
   const fetchOvertimes = useCallback(async () => {
@@ -322,7 +331,7 @@ export default function OvertimePage() {
               Quản Lý Làm Thêm Giờ
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
-              Đăng ký tăng ca, tự động áp dụng hệ số ngày thường 1.5x / cuối tuần 2.0x / ngày lễ 3.0x (+0.3x ban đêm) và đối soát quẹt thẻ thực tế.
+              Đăng ký tăng ca, hệ số áp dụng theo ngày thường 1.5x / cuối tuần 2.0x / ngày lễ 3.0x, ca ban đêm tính 2.0x / 2.7x / 3.9x và đối soát quẹt thẻ thực tế.
             </p>
           </div>
 
@@ -384,8 +393,8 @@ export default function OvertimePage() {
           <div className="rounded-2xl bg-white p-4 border border-slate-200 shadow-xs flex items-center justify-between">
             <div>
               <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Ban Đêm (22h - 06h)</span>
-              <div className="mt-1 text-2xl font-black text-purple-600">+0.3x</div>
-              <span className="text-[10px] text-purple-500">Cộng thêm 30% lương</span>
+              <div className="mt-1 text-2xl font-black text-purple-600">2.0 / 2.7 / 3.9x</div>
+              <span className="text-[10px] text-purple-500">Theo ngày thường / cuối tuần / lễ</span>
             </div>
             <div className="p-3 rounded-xl bg-purple-50 text-purple-600"><Moon className="h-5 w-5" /></div>
           </div>
@@ -834,10 +843,12 @@ export default function OvertimePage() {
 
               <form onSubmit={handleCreateSubmit} className="mt-4 space-y-4 text-xs">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Ngày làm thêm giờ</label>
+                  <label htmlFor="otDate" className="block font-bold text-slate-700 mb-1">Ngày làm thêm giờ</label>
                   <input
+                    id="otDate"
                     type="date"
                     value={otDate}
+                    min={todayStr}
                     onChange={e => setOtDate(e.target.value)}
                     required
                     className="w-full rounded-xl border border-slate-300 p-2 text-xs font-mono text-slate-800"
@@ -846,25 +857,50 @@ export default function OvertimePage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Giờ bắt đầu</label>
+                    <label htmlFor="startTime" className="block font-bold text-slate-700 mb-1">Giờ bắt đầu</label>
                     <input
+                      id="startTime"
                       type="time"
+                      step={900}
                       value={startTime}
                       onChange={e => setStartTime(e.target.value)}
                       required
-                      className="w-full rounded-xl border border-slate-300 p-2 text-xs font-mono text-slate-800"
+                      className="w-full rounded-xl border border-slate-300 p-2.5 text-sm font-mono text-slate-800 tabular-nums"
                     />
                   </div>
                   <div>
-                    <label className="block font-bold text-slate-700 mb-1">Giờ kết thúc</label>
+                    <label htmlFor="endTime" className="block font-bold text-slate-700 mb-1">
+                      Giờ kết thúc
+                      {preview?.endDate && (
+                        <span className="ml-1 font-semibold text-indigo-600">
+                          (hôm sau {formatDateVN(preview.endDate)})
+                        </span>
+                      )}
+                    </label>
                     <input
+                      id="endTime"
                       type="time"
+                      step={900}
                       value={endTime}
                       onChange={e => setEndTime(e.target.value)}
                       required
-                      className="w-full rounded-xl border border-slate-300 p-2 text-xs font-mono text-slate-800"
+                      className="w-full rounded-xl border border-slate-300 p-2.5 text-sm font-mono text-slate-800 tabular-nums"
                     />
                   </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-bold text-slate-500 mr-0.5">Ca nhanh:</span>
+                  {OT_PRESETS.map(p => (
+                    <button
+                      key={p.label}
+                      type="button"
+                      onClick={() => { setStartTime(p.start); setEndTime(p.end); }}
+                      className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-600 hover:border-orange-300 hover:bg-orange-50 hover:text-orange-700 transition"
+                    >
+                      {p.label}
+                    </button>
+                  ))}
                 </div>
 
                 {/* Live OT Calculation Box */}
@@ -874,25 +910,34 @@ export default function OvertimePage() {
                       <Sparkles className="h-4 w-4 text-orange-600" />
                       <span>Dự tính thời gian & hệ số làm thêm</span>
                     </span>
-                    <span className="font-black text-orange-700 text-sm font-mono">
-                      {totalHours} giờ
+                    <span className="font-black text-orange-700 text-sm font-mono tabular-nums">
+                      {previewLoading ? '…' : `${totalHours} giờ`}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 text-[11px] pt-1">
+                  <div className="grid grid-cols-4 gap-2 text-[11px] pt-1">
                     <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
-                      <span className="text-slate-400 block">Thời gian:</span>
-                      <span className="font-bold text-slate-900 text-xs">{totalHours}h</span>
+                      <span className="text-slate-400 block">Thực tế:</span>
+                      <span className="font-bold text-slate-900 text-xs tabular-nums">
+                        {previewLoading ? '…' : `${totalHours}h`}
+                      </span>
                     </div>
                     <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
-                      <span className="text-slate-400 block">Hệ số tính lương:</span>
-                      <span className="font-black text-orange-600 text-xs">{currentRate.multiplier}x</span>
+                      <span className="text-slate-400 block">Hệ số:</span>
+                      <span className="font-black text-orange-600 text-xs tabular-nums">
+                        {previewLoading ? '…' : `${preview?.multiplier ?? 0}x`}
+                      </span>
+                    </div>
+                    <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
+                      <span className="text-slate-400 block">Giờ tính tiền:</span>
+                      <span className="font-black text-emerald-600 text-xs tabular-nums">
+                        {previewLoading ? '…' : `${(preview?.paidHours ?? 0).toFixed(1)}h`}
+                      </span>
                     </div>
                     <div className="bg-white p-2 rounded-lg border border-orange-100 text-center">
                       <span className="text-slate-400 block">Phân loại:</span>
-                      <span className="font-bold text-slate-800 text-xs">
-                        {currentRate.isWeekend ? 'Cuối tuần' : 'Ngày thường'}
-                        {currentRate.isNightTime ? ' + Đêm' : ''}
+                      <span className="font-bold text-slate-800 text-xs leading-tight">
+                        {previewLoading ? '…' : preview ? otTypeLabel(preview) : 'Không tính được'}
                       </span>
                     </div>
                   </div>

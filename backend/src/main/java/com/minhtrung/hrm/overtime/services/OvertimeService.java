@@ -37,6 +37,9 @@ import com.minhtrung.hrm.overtime.enums.OvertimeErrorCode;
 import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
 import com.minhtrung.hrm.overtime.exceptions.OvertimeException;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
+import com.minhtrung.hrm.attendance.entities.WorkShiftSchedule;
+import com.minhtrung.hrm.attendance.services.AttendanceService;
+import com.minhtrung.hrm.overtime.dtos.responses.OvertimePreviewResponse;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
 import com.minhtrung.hrm.overtime.specification.OvertimeSpecification;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
@@ -55,6 +58,37 @@ public class OvertimeService {
     private final HolidayRepository holidayRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
     private final PermissionService permissionService;
+
+    /**
+     * Xem trước thời gian + hệ số OT. Tái dùng đúng luật đang áp dụng khi lưu đơn:
+     * OvertimeRecord.setFlags() (cuối tuần / ban đêm) + calcOvertimeAmounts() (hệ số theo ngày lễ).
+     * Frontend không tự tính lại để tránh lệch với bảng lương.
+     */
+    @Transactional(readOnly = true)
+    public OvertimePreviewResponse previewOvertime(LocalDateTime start, LocalDateTime end) {
+        LocalDateTime resolvedEnd = resolveEnd(start, end);
+        double hours = Duration.between(start, resolvedEnd).toMinutes() / 60.0;
+
+        OvertimeRecord probe = new OvertimeRecord();
+        probe.setApprovedStartTime(start);
+        probe.setApprovedEndTime(resolvedEnd);
+        probe.setFlags();
+        probe.setHoliday(isAnyDayHoliday(start, resolvedEnd));
+
+        double multiplier = 0.0;
+        if (hours > 0) {
+            multiplier = AttendanceService.calcOvertimeAmounts(probe).multiplier();
+        }
+
+        return new OvertimePreviewResponse(
+                resolvedEnd.toLocalDate().equals(start.toLocalDate()) ? null : resolvedEnd.toLocalDate(),
+                hours,
+                probe.isWeekend(),
+                probe.isHoliday(),
+                probe.isNightTime(),
+                multiplier,
+                hours * multiplier);
+    }
 
     // ─── LẤY SCHEDULE ────────────────────────────────────────────────
     private WorkShiftSchedule getScheduleOrNull(UUID shiftId, LocalDate date) {
@@ -137,23 +171,27 @@ public class OvertimeService {
     }
 
     // ─── TẠO ĐƠN TĂNG CA ─────────────────────────────────────────────
+    /**
+     * Chuẩn hoá cửa sổ OT: giờ kết thúc <= giờ bắt đầu nghĩa là làm xuyên đêm
+     * → kéo giờ kết thúc sang ngày hôm sau. Dùng chung cho preview và create
+     * để UI và DB luôn thống nhất.
+     */
+    public static LocalDateTime resolveEnd(LocalDateTime start, LocalDateTime end) {
+        return end.isAfter(start) ? end : end.plusDays(1);
+    }
+
     @Transactional
     public OvertimeRecord createOvertimeRequest(UUID requestorId, OvertimeWorkTimeRequest req) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime start = req.getApprovedStartTime();
-        LocalDateTime end = req.getApprovedEndTime();
+        // Ca xuyên đêm (vd 18:00 -> 01:00) phải tính sang ngày hôm sau, nếu không Duration.between ra số âm
+        LocalDateTime end = resolveEnd(start, req.getApprovedEndTime());
         LocalDate OTStartDate = start.toLocalDate();
         LocalDate OTEndDate = end.toLocalDate();
         double restTime = 0.0;
 
         if (start.isBefore(now)) {
             throw new OvertimeException(OvertimeErrorCode.INVALID_TIME, "Ngày làm việc đã trôi qua. Không thể đăng ký làm thêm giờ cho quá khứ");
-        }
-
-        if (OTStartDate.equals(OTEndDate)) {
-            if (end.isBefore(start)) {
-                throw new OvertimeException(OvertimeErrorCode.INVALID_TIME, "Giờ kết thúc phải sau giờ bắt đầu");
-            }
         }
 
         double requestedHours = Duration.between(start, end).toMinutes() / 60.0;
@@ -273,9 +311,17 @@ public class OvertimeService {
         record.setHoliday(isHoliday);
         record.setReason(req.getReason());
 
+        // Chairman là cấp cao nhất: không có ai duyệt được nên đơn tự động ở trạng thái accepted,
+        // approver ghi chính Chairman (giữ đúng mốc thời gian ai xử lý).
+        boolean isChairman = "Chairman".equals(userRepository.findUsersJob(requestorId));
+        if (isChairman) {
+            record.setApprover(userProxy);
+            record.setStatus(OvertimeRecordStatus.accepted);
+        }
+
         OvertimeRecord saved = overtimeRecordRepository.save(record);
-        log.info("Đơn tăng ca mới được tạo. RequestorId: {}, Thời gian bắt đầu: {}, Thời gian kết thúc: {}, Ngày lễ: {}, Số giờ đăng ký: {}",
-                requestorId, start, end, isHoliday, String.format("%.1f", requestedHours));
+        log.info("Đơn tăng ca mới được tạo. RequestorId: {}, Thời gian bắt đầu: {}, Thời gian kết thúc: {}, Ngày lễ: {}, Số giờ đăng ký: {}, Tự duyệt: {}",
+                requestorId, start, end, isHoliday, String.format("%.1f", requestedHours), isChairman);
         return saved;
     }
 

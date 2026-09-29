@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import AppShell from '@/components/layout/AppShell';
 import { useAuth } from '@/context/AuthContext';
 import { LeaveRequest, LeaveRequestStatus, User } from '@/types';
@@ -100,10 +100,16 @@ export default function LeavePage() {
   const [totalElements, setTotalElements] = useState(0);
 
   // Form states for creating leave request
-  const todayStr = new Date().toISOString().split('T')[0];
-  const [fromDate, setFromDate] = useState(todayStr);
-  const [toDate, setToDate] = useState(todayStr);
+  // Không cho xin nghỉ quá khứ hoặc hôm nay → mốc nhỏ nhất là ngày mai
+  const minLeaveDate = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().split('T')[0];
+  }, []);
+  const [fromDate, setFromDate] = useState(minLeaveDate);
+  const [toDate, setToDate] = useState(minLeaveDate);
   const [reason, setReason] = useState('');
+  const [paidLeaveDays, setPaidLeaveDays] = useState(1);
   const [previewData, setPreviewData] = useState<PreviewInfo | null>(null);
 
   // Filter states — formRef reads values directly on submit
@@ -186,12 +192,15 @@ export default function LeavePage() {
             remainingAfterThisRequest: res.remainingAfterThisRequest ?? (res.remainingAnnualLeaveDays - res.workDays),
             isSufficientAnnualLeave: res.isSufficientAnnualLeave ?? true
           });
+          setPaidLeaveDays(res.workDays);
         }
       })
       .catch(() => {
         if (!isMounted) return;
         // Fallback to local computation
-        setPreviewData(computeLocalPreview(currentUser, fromDate, toDate));
+        const local = computeLocalPreview(currentUser, fromDate, toDate);
+        setPreviewData(local);
+        setPaidLeaveDays(local.workDays);
       });
 
     return () => {
@@ -248,19 +257,13 @@ export default function LeavePage() {
     fetchLeaves();
   }, [fetchLeaves]);
 
-  const isChairman = currentUser?.job === 'Chairman';
-
   const handleCreateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) return;
 
-    if (isChairman) {
-      showToast('Quy định: Chủ tịch Hội đồng Quản trị không tạo đơn xin nghỉ phép!');
-      return;
-    }
-
-    if (previewData && !previewData.isSufficientAnnualLeave) {
-      showToast('Cảnh báo: Bạn không đủ quỹ phép năm để thực hiện yêu cầu này!');
+    // Chỉ ngày CÓ LƯƠNG mới tiêu quỹ phép năm → kiểm tra theo paidLeaveDays, không theo workDays
+    if (previewData && paidLeaveDays > previewData.remainingAnnualLeaveDays) {
+      showToast('Cảnh báo: Số ngày nghỉ có lương vượt quá quỹ phép năm còn lại của bạn!');
       return;
     }
 
@@ -270,7 +273,7 @@ export default function LeavePage() {
         fromDate,
         toDate,
         reason: reason || 'Nghỉ giải quyết công việc cá nhân',
-        paidLeaveDays: previewData?.workDays ?? 1
+        paidLeaveDays
       });
       showToast('Đã gửi đơn xin nghỉ phép thành công! Đang chờ Quản lý phê duyệt.');
       setIsCreateModalOpen(false);
@@ -398,19 +401,13 @@ export default function LeavePage() {
           </div>
 
           <div className="flex items-center gap-2.5 flex-wrap">
-            {isChairman ? (
-              <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3.5 py-2 rounded-xl border border-slate-200">
-                Chủ tịch HĐQT (Miễn chấm công & nghỉ phép)
-              </span>
-            ) : (
-              <button
-                onClick={() => setIsCreateModalOpen(true)}
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-blue-500/20 transition cursor-pointer"
-              >
-                <Plus className="h-4 w-4" />
-                <span>Tạo đơn nghỉ phép mới</span>
-              </button>
-            )}
+            <button
+              onClick={() => setIsCreateModalOpen(true)}
+              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-blue-500/20 transition cursor-pointer"
+            >
+              <Plus className="h-4 w-4" />
+              <span>Tạo đơn nghỉ phép mới</span>
+            </button>
 
             {(isHR || can('LEAVE_VIEW_ALL')) && (
               <button
@@ -857,7 +854,12 @@ export default function LeavePage() {
                     <input
                       type="date"
                       value={fromDate}
-                      onChange={e => setFromDate(e.target.value)}
+                      min={minLeaveDate}
+                      onChange={e => {
+                        const next = e.target.value;
+                        setFromDate(next);
+                        if (toDate < next) setToDate(next);
+                      }}
                       required
                       className="w-full rounded-xl border border-slate-300 p-2 text-xs font-mono text-slate-800"
                     />
@@ -867,6 +869,7 @@ export default function LeavePage() {
                     <input
                       type="date"
                       value={toDate}
+                      min={fromDate || minLeaveDate}
                       onChange={e => setToDate(e.target.value)}
                       required
                       className="w-full rounded-xl border border-slate-300 p-2 text-xs font-mono text-slate-800"
@@ -880,7 +883,7 @@ export default function LeavePage() {
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-blue-900 flex items-center gap-1.5">
                         <Sparkles className="h-4 w-4 text-blue-600" />
-                        <span>Xem trước tính toán ngày phép (LeavePreviewResponse)</span>
+                        <span>Xem trước tính toán ngày phép</span>
                       </span>
                     </div>
 
@@ -912,6 +915,33 @@ export default function LeavePage() {
                     )}
                   </div>
                 )}
+
+                <div>
+                  <label htmlFor="paidLeaveDays" className="block font-bold text-slate-700 mb-1">
+                    Số ngày nghỉ có lương
+                  </label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      id="paidLeaveDays"
+                      type="number"
+                      inputMode="numeric"
+                      min={0}
+                      max={previewData ? Math.min(previewData.workDays, previewData.remainingAnnualLeaveDays) : undefined}
+                      value={paidLeaveDays}
+                      onChange={e => {
+                        const n = Number(e.target.value);
+                        setPaidLeaveDays(Number.isFinite(n) ? Math.max(0, Math.trunc(n)) : 0);
+                      }}
+                      required
+                      className="w-24 rounded-xl border border-slate-300 p-2 text-xs font-mono text-slate-800"
+                    />
+                    <span className="text-[11px] text-slate-500">
+                      {previewData
+                        ? `Tối đa ${Math.min(previewData.workDays, previewData.remainingAnnualLeaveDays)} / ${previewData.workDays} ngày làm việc. Phần còn lại tính là nghỉ không lương.`
+                        : 'Chọn khoảng ngày nghỉ để xem số ngày làm việc.'}
+                    </span>
+                  </div>
+                </div>
 
                 <div>
                   <label className="block font-bold text-slate-700 mb-1">Lý do xin nghỉ</label>

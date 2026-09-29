@@ -13,6 +13,20 @@ class ExcelParser(BaseParser):
     Converts each sheet into structured markdown tables with sheet names as headers.
     """
 
+    # Số dòng dữ liệu tối đa trước khi cắt thành nhiều bảng con (mỗi bảng con lặp lại header).
+    # ponytail: ngưỡng này là cây chỉnh độ dài chunk, đổi được. Nhỏ quá -> mất ngữ cảnh dòng,
+    # lớn quá -> vector bị loãng. 20 dòng x ~23 cột ~= 3-4 KB.
+    MAX_DATA_ROWS_PER_SLICE = 20
+
+    @staticmethod
+    def _cell(val) -> str:
+        """openpyxl trả số nguyên qua nhiều đường dưới dạng float; str() sẽ ra '21.0'."""
+        if val is None:
+            return ""
+        if isinstance(val, float) and val.is_integer():
+            return str(int(val))
+        return str(val).strip()
+
     def parse(self, file_path: Path | str) -> ParsedDocument:
         path = Path(file_path)
         wb = openpyxl.load_workbook(path, data_only=True)
@@ -23,8 +37,7 @@ class ExcelParser(BaseParser):
             rows: List[List[str]] = []
 
             for row in sheet.iter_rows(values_only=True):
-                # Convert row values to string
-                str_row = [str(val).strip() if val is not None else "" for val in row]
+                str_row = [self._cell(val) for val in row]
                 if any(val != "" for val in str_row):
                     rows.append(str_row)
 
@@ -36,12 +49,22 @@ class ExcelParser(BaseParser):
                     heading_level=1
                 ))
 
-                md_table = TablePreserver.to_markdown(rows, caption=f"Bảng tra cứu - {sheet_name}")
-                if md_table:
+                # Bảng dài bị cắt thành nhiều TABLE block -> mỗi block thành 1 chunk riêng,
+                # thay vì 1 chunk khống lồ cho cả sheet.
+                for part_no, md_table in enumerate(
+                    TablePreserver.to_markdown_slices(
+                        rows,
+                        caption=f"Bảng tra cứu - {sheet_name}",
+                        max_data_rows=self.MAX_DATA_ROWS_PER_SLICE,
+                    ),
+                    start=1,
+                ):
+                    if not md_table:
+                        continue
                     blocks.append(DocumentBlock(
                         block_type="TABLE",
                         content=md_table,
-                        metadata={"sheet_name": sheet_name}
+                        metadata={"sheet_name": sheet_name, "part": part_no}
                     ))
 
         wb.close()

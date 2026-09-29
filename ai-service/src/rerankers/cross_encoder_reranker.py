@@ -24,8 +24,8 @@ class CrossEncoderReranker:
 
         if CrossEncoderReranker._model is None:
             print(f"[CrossEncoderReranker] Loading reranker model '{self.model_name}' on {self.device.upper()}...")
-            # ponytail: 1024 bao hết chunk dài nhất (~700 tokens); 2304 gốc thì chậm mà không hơn.
-            CrossEncoderReranker._model = CrossEncoder(self.model_name, device=self.device, max_length=1024)
+            # ponytail: 512 du cho chunk luat VN (~1200 ky tu); 1024 gap doi latency moi cap (~1.4s->~0.7s).
+            CrossEncoderReranker._model = CrossEncoder(self.model_name, device=self.device, max_length=512)
             print(f"[CrossEncoderReranker] Model ready on {self.device.upper()}!")
 
         self.model = CrossEncoderReranker._model

@@ -41,8 +41,10 @@ const computeHoursFromTimes = (start: string, end: string): number => {
     const e = end.includes('T') ? end.split('T')[1] : end;
     const [sh, sm] = s.split(':').map(Number);
     const [eh, em] = e.split(':').map(Number);
-    const diff = (eh * 60 + (em || 0)) - (sh * 60 + (sm || 0));
-    return diff > 0 ? Math.round(diff / 6) / 10 : 0;
+    let diff = (eh * 60 + (em || 0)) - (sh * 60 + (sm || 0));
+    // Kết thúc <= bắt đầu = ca xuyên đêm → sang ngày hôm sau
+    if (diff <= 0) diff += 24 * 60;
+    return Math.round(diff / 6) / 10;
   } catch { return 0; }
 };
 
@@ -69,9 +71,24 @@ function mapOtItem(item: any): OvertimeRecord {
     registeredHours: item.totalApprovedHours || item.registeredHours || 
       computeHoursFromTimes(item.approvedStartTime || '', item.approvedEndTime || '') || 0,
     actualHours: item.totalActualHours || item.actualHours || 0,
-    multiplier: item.multiplier || (item.isHoliday ? 3.0 : item.isWeekend ? 2.0 : 1.5),
+    // Bảng hệ số phải khớp AttendanceService.calcOvertimeAmounts
+    multiplier: item.multiplier ?? (
+      item.isHoliday ? (item.isNightTime ? 3.9 : 3.0)
+      : item.isWeekend ? (item.isNightTime ? 2.7 : 2.0)
+      : (item.isNightTime ? 2.0 : 1.5)
+    ),
     status: (item.status ? item.status.toLowerCase() : 'pending') as any
   };
+}
+
+export interface OvertimePreview {
+  endDate: string | null;      // ngày kết thúc nếu ca xuyên đêm, null nếu cùng ngày
+  totalHours: number;
+  isWeekend: boolean;
+  isHoliday: boolean;
+  isNightTime: boolean;
+  multiplier: number;
+  paidHours: number;
 }
 
 export const overtimeService = {
@@ -97,6 +114,11 @@ export const overtimeService = {
       res.content = res.content.map(mapOtItem);
     }
     return res;
+  },
+
+  previewOvertime: async (date: string, startTime: string, endTime: string): Promise<OvertimePreview> => {
+    const qs = new URLSearchParams({ date, startTime, endTime });
+    return apiClient.get<OvertimePreview>(`/api/overtime/preview?${qs.toString()}`);
   },
 
   createOvertime: async (data: CreateOvertimeRequest): Promise<OvertimeRecord> => {

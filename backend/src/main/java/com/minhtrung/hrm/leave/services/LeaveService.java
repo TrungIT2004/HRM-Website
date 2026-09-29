@@ -138,11 +138,9 @@ public class LeaveService {
         String reason = request.getReason();
         int paidLeaveDays = request.getPaidLeaveDays();
 
-        String userJob = userRepository.findUsersJob(userId);
-        if (userJob != null && userJob.equals("Chairman")) {
-            throw new LeaveException(LeaveErrorCode.CHAIRMAN_CANNOT_LEAVE,
-                    "Chủ tịch không thể tạo yêu cầu xin nghỉ phép");
-        }
+        // Chairman là cấp cao nhất: không có ai duyệt được nên đơn tự động ở trạng thái accepted,
+        // approver ghi chính Chairman (giữ đúng mốc thời gian ai xử lý).
+        boolean isChairman = "Chairman".equals(userRepository.findUsersJob(userId));
 
         // 1. Tái sử dụng previewLeaveRequest để validate toàn bộ (14 ngày, ngày lễ, ngày nghỉ ca)
         LeavePreviewResponse preview = previewLeaveRequest(userId, fromDate, toDate);
@@ -177,9 +175,19 @@ public class LeaveService {
         newLeaveRequest.setReason(reason);
         newLeaveRequest.setPaidLeaveDays(paidLeaveDays);
 
+        if (isChairman) {
+            newLeaveRequest.setApprover(userProxy);
+            newLeaveRequest.setStatus(LeaveRequestStatus.accepted);
+        }
+
         leaveRequestRepository.save(newLeaveRequest);
-        log.info("Đơn nghỉ phép mới được tạo. RequestorId: {}, Từ ngày: {}, Đến ngày: {}, Số ngày làm việc: {}, Số ngày có lương: {}, Lý do: {}",
-                userId, fromDate, toDate, preview.getWorkDays(), paidLeaveDays, reason);
+
+        if (isChairman) {
+            applyAcceptedLeave(newLeaveRequest, userId);
+        }
+
+        log.info("Đơn nghỉ phép mới được tạo. RequestorId: {}, Từ ngày: {}, Đến ngày: {}, Số ngày làm việc: {}, Số ngày có lương: {}, Lý do: {}, Tự duyệt: {}",
+                userId, fromDate, toDate, preview.getWorkDays(), paidLeaveDays, reason, isChairman);
         return newLeaveRequest;
     }
 
@@ -250,56 +258,7 @@ public class LeaveService {
             leaveRequest.setApprover(approverProxy);
 
             if (status.equals(LeaveRequestStatus.accepted)) {
-                User requestor = userRepository.findById(requestorId).orElse(null);
-
-                if (requestor != null) {
-                    WorkShift shift = userRepository.getUsersWorkShift(requestorId).orElse(null);
-                    List<Integer> weeklyRestDays = (shift != null)
-                            ? workShiftRepository.getWeeklyRestDays(shift.getShiftId())
-                            : List.of(DayOfWeek.SATURDAY.getValue(), DayOfWeek.SUNDAY.getValue());
-                    List<LocalDate> holidayDates = holidayRepository.getHolidayBetween(leaveRequest.getFromDate(), leaveRequest.getToDate());
-
-                    int remainingPaidDays = leaveRequest.getPaidLeaveDays();
-
-                    for (LocalDate d = leaveRequest.getFromDate(); !d.isAfter(leaveRequest.getToDate()); d = d.plusDays(1)) {
-                        boolean isHoliday = holidayDates.contains(d);
-                        boolean isRestDay = weeklyRestDays.contains(d.getDayOfWeek().getValue());
-
-                        // Chỉ cập nhật chấm công nghỉ phép cho các ngày làm việc thực tế
-                        if (!isHoliday && !isRestDay) {
-                            AttendanceStatus statusToSet;
-                            if (remainingPaidDays > 0) {
-                                statusToSet = AttendanceStatus.PAID_LEAVE;
-                                remainingPaidDays--;
-                            } else {
-                                statusToSet = AttendanceStatus.UNPAID_LEAVE;
-                            }
-
-                            Attendance requestorAttendanceOnLeaveDate = attendanceRepository
-                                    .findUsersTodayAttendance(requestorId, d).orElse(null);
-
-                            if (requestorAttendanceOnLeaveDate != null) {
-                                requestorAttendanceOnLeaveDate.setStatus(statusToSet);
-                                attendanceRepository.save(requestorAttendanceOnLeaveDate);
-                            } else {
-                                Attendance newRequestorAttendanceOnLeaveDate = new Attendance();
-                                User requestorProxy = userRepository.getReferenceById(requestorId);
-                                newRequestorAttendanceOnLeaveDate.setUser(requestorProxy);
-                                newRequestorAttendanceOnLeaveDate.setShift(shift);
-                                newRequestorAttendanceOnLeaveDate.setWorkDate(d);
-                                newRequestorAttendanceOnLeaveDate.setStatus(statusToSet);
-
-                                attendanceRepository.save(newRequestorAttendanceOnLeaveDate);
-                            }
-                        }
-                    }
-
-                    if (leaveRequest.getPaidLeaveDays() > 0) {
-                        int annualLeaveDays = requestor.getAnnualLeaveDays();
-                        int usedLeaveDays = requestor.getUsedLeaveDays();
-                        requestor.setUsedLeaveDays(Math.min(annualLeaveDays, usedLeaveDays + leaveRequest.getPaidLeaveDays()));
-                    }
-                }
+                applyAcceptedLeave(leaveRequest, requestorId);
             }
 
             leaveRequest.setStatus(status);
@@ -321,7 +280,66 @@ public class LeaveService {
                     "Bạn không có thẩm quyền phê duyệt yêu cầu nghỉ phép này");
         }
     }
-    
+
+    /**
+     * Side-effect khi một đơn nghỉ phép được ở trạng thái accepted: ghi chấm công
+     * PAID_LEAVE/UNPAID_LEAVE cho ngày làm việc thực tế và trừ quỹ phép năm.
+     * Dùng chung cho duyệt thủ công (handleLeaveRequest) và duyệt tự động của Chairman.
+     */
+    private void applyAcceptedLeave(LeaveRequest leaveRequest, UUID requestorId) {
+        User requestor = userRepository.findById(requestorId).orElse(null);
+        if (requestor == null) {
+            return;
+        }
+
+        WorkShift shift = userRepository.getUsersWorkShift(requestorId).orElse(null);
+        List<Integer> weeklyRestDays = (shift != null)
+                ? workShiftRepository.getWeeklyRestDays(shift.getShiftId())
+                : List.of(DayOfWeek.SATURDAY.getValue(), DayOfWeek.SUNDAY.getValue());
+        List<LocalDate> holidayDates = holidayRepository.getHolidayBetween(leaveRequest.getFromDate(), leaveRequest.getToDate());
+
+        int remainingPaidDays = leaveRequest.getPaidLeaveDays();
+
+        for (LocalDate d = leaveRequest.getFromDate(); !d.isAfter(leaveRequest.getToDate()); d = d.plusDays(1)) {
+            boolean isHoliday = holidayDates.contains(d);
+            boolean isRestDay = weeklyRestDays.contains(d.getDayOfWeek().getValue());
+
+            // Chỉ cập nhật chấm công nghỉ phép cho các ngày làm việc thực tế
+            if (!isHoliday && !isRestDay) {
+                AttendanceStatus statusToSet;
+                if (remainingPaidDays > 0) {
+                    statusToSet = AttendanceStatus.PAID_LEAVE;
+                    remainingPaidDays--;
+                } else {
+                    statusToSet = AttendanceStatus.UNPAID_LEAVE;
+                }
+
+                Attendance requestorAttendanceOnLeaveDate = attendanceRepository
+                        .findUsersTodayAttendance(requestorId, d).orElse(null);
+
+                if (requestorAttendanceOnLeaveDate != null) {
+                    requestorAttendanceOnLeaveDate.setStatus(statusToSet);
+                    attendanceRepository.save(requestorAttendanceOnLeaveDate);
+                } else {
+                    Attendance newRequestorAttendanceOnLeaveDate = new Attendance();
+                    User requestorProxy = userRepository.getReferenceById(requestorId);
+                    newRequestorAttendanceOnLeaveDate.setUser(requestorProxy);
+                    newRequestorAttendanceOnLeaveDate.setShift(shift);
+                    newRequestorAttendanceOnLeaveDate.setWorkDate(d);
+                    newRequestorAttendanceOnLeaveDate.setStatus(statusToSet);
+
+                    attendanceRepository.save(newRequestorAttendanceOnLeaveDate);
+                }
+            }
+        }
+
+        if (leaveRequest.getPaidLeaveDays() > 0) {
+            int annualLeaveDays = requestor.getAnnualLeaveDays();
+            int usedLeaveDays = requestor.getUsedLeaveDays();
+            requestor.setUsedLeaveDays(Math.min(annualLeaveDays, usedLeaveDays + leaveRequest.getPaidLeaveDays()));
+        }
+    }
+
     // 1. Lấy đơn cá nhân
     @Transactional(readOnly = true)
     public Page<StaffLeaveResponse> getMyLeaveRequests(UUID currentUserId, LeaveFilterRequest filter, Pageable pageable) {

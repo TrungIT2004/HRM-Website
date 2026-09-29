@@ -1,4 +1,4 @@
-import { apiClient, API_BASE_URL } from './apiClient';
+import { apiClient, API_BASE_URL, ApiError } from './apiClient';
 
 export interface Citation {
   document_name: string;
@@ -170,7 +170,14 @@ export const aiService = {
   },
 
   updateDocument: async (documentId: string, formData: FormData): Promise<{ status: string }> => {
-    return apiClient.put(`/api/ai/documents/${documentId}`, formData);
+    const res: any = await apiClient.put(`/api/ai/documents/${documentId}`, formData);
+    // FastAPI trả HTTP 200 kèm status:"UNCHANGED" khi SHA-256 không đổi
+    // (ai-service/main.py) → không hề chạy lại pipeline, chunk cũ giữ nguyên.
+    // Không check ở đây thì UI báo "đã cập nhật" sai.
+    if (res?.status === 'UNCHANGED') {
+      throw new ApiError(409, res.message || 'Nội dung file không thay đổi, hệ thống không xử lý lại', res);
+    }
+    return res;
   },
 
   deleteDocument: async (documentId: string): Promise<{ status: string }> => {
