@@ -1,6 +1,5 @@
-import { apiClient } from './apiClient';
+import { apiClient, PageResponse } from './apiClient';
 import { PayrollRecord } from '@/types';
-import { PageResponse } from './attendanceService';
 
 export interface PayrollFilterParams {
   month?: number;

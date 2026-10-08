@@ -115,6 +115,7 @@ def upload(path: Path) -> Optional[str]:
     with open(path, "rb") as f:
         resp = client.post(
             "/api/v1/documents/upload",
+            headers=HEADERS,
             files={"file": (path.name, f, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")},
             data={"allowed_jobs": "ALL", "allowed_departments": "ALL", "uploaded_by": "MEMEVAL"},
         )
@@ -133,11 +134,11 @@ def upload(path: Path) -> Optional[str]:
 def wait_ready(doc_id: str, max_wait: int = 600) -> bool:
     start = time.time()
     while time.time() - start < max_wait:
-        body = client.get(f"/api/v1/documents/{doc_id}").json()
-        if body["status"] == "COMPLETED":
+        body = client.get(f"/api/v1/documents/{doc_id}", headers=HEADERS).json()
+        if body.get("status") == "COMPLETED":
             print(f"  [ingest] {doc_id} COMPLETED, {body.get('chunk_count')} chunks")
             return True
-        if body["status"] == "FAILED":
+        if body.get("status") == "FAILED":
             print(f"  [ingest] {doc_id} FAILED: {body.get('error_message')}")
             return False
         time.sleep(3)
@@ -211,6 +212,10 @@ def run_session(sid: int, turns: List[Dict[str, str]]) -> Dict[str, Any]:
             "answer_score": round(a_score, 3),
             "citations": len(res.get("citations") or []),
             "cached": bool(res.get("cached")),
+            # Diem rerank top-1 (0 = bi chan RELEVANCE_THRESHOLD). De ve
+            # precision/recall theo nguong, khong doan.
+            "top1_score": (res.get("citations") or [{}])[0].get("relevance_score"),
+            "confidence": res.get("confidence"),
             "answer": ans,
         })
 

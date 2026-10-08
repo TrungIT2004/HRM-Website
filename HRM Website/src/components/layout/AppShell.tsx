@@ -8,6 +8,7 @@ import Sidebar from './Sidebar';
 import { useAuth } from '@/context/AuthContext';
 import {
   LayoutDashboard,
+  LayoutGrid,
   Clock,
   CalendarDays,
   Sparkles,
@@ -17,7 +18,7 @@ import {
   Loader2
 } from 'lucide-react';
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+export default function AppShell({ children, noSidebar = false, fullWidth = false }: { children: React.ReactNode; noSidebar?: boolean; fullWidth?: boolean }) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const pathname = usePathname();
   const { currentUser, isLoading } = useAuth();
@@ -49,18 +50,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const bottomNavItems = [
     {
-      name: 'Tổng quan',
-      href: '/dashboard',
-      icon: LayoutDashboard
+      name: 'Ứng dụng',
+      href: '/home',
+      icon: LayoutGrid
     },
     {
       name: 'Chấm công',
-      href: '/attendance',
+      href: '/attendance/overview',
       icon: Clock
     },
     {
       name: 'Nghỉ phép',
-      href: '/leave',
+      href: '/attendance/leave',
       icon: CalendarDays
     },
     {
@@ -71,20 +72,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     },
     {
       name: 'Cá nhân',
-      href: currentUser ? `/employees/${currentUser.userId}` : '/profile',
+      href: currentUser ? `/employees/${currentUser.userId}` : '/login',
       icon: User
     }
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
-      <Navbar onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)} />
+    // ponytail: fullWidth (chat) cần h-screen + overflow-hidden để chuỗi
+    // flex -> overflow-y-auto trong page có chiều cao giới hạn và tự scroll,
+    // nhờ đó Navbar sticky thật sự đứng yên. Trang thường vẫn min-h-screen
+    // (scroll cả trang, footer đuôi dài). Nếu sau này chat muốn footer dài
+    // hơn viewport thì bỏ h-screen, quay lại min-h-screen.
+    <div className={`${fullWidth ? 'h-screen overflow-hidden' : 'min-h-screen'} bg-slate-50 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900`}>
+      <Navbar onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)} showMenuButton={!noSidebar} />
       
-      <div className="flex flex-1">
-        <Sidebar isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />
+      <div className={`flex ${fullWidth ? 'flex-1 min-h-0' : 'flex-1'}`}>
+        {!noSidebar && <Sidebar isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />}
         
-        {/* Main Content Area - padded at bottom on mobile to accommodate sticky bottom bar */}
-        <main className="flex-1 p-3.5 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full overflow-x-hidden pb-24 md:pb-8">
+        {/* Main Content Area - padded at bottom on mobile to accommodate sticky bottom bar.
+            fullWidth (vd trang chat kiểu ChatGPT): tràn full màn hình, page tự chia padding */}
+        <main className={fullWidth
+          ? 'flex-1 w-full flex flex-col overflow-x-hidden pb-24 md:pb-0 min-h-0'
+          : 'flex-1 p-3.5 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full overflow-x-hidden pb-24 md:pb-8'}>
           {children}
         </main>
       </div>
@@ -97,7 +106,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         aria-label="Điều hướng di động nhanh"
       >
         {bottomNavItems.map(item => {
-          const isActive = pathname === item.href || (item.href !== '/dashboard' && pathname.startsWith(item.href));
+          const isActive = pathname === item.href || pathname.startsWith(item.href);
           const Icon = item.icon;
 
           return (

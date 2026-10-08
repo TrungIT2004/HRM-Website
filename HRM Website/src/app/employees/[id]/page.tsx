@@ -29,7 +29,6 @@ import {
   Lock,
   EyeOff,
   Camera,
-  UserX,
   Sparkles,
   RefreshCw,
   Sun,
@@ -38,8 +37,8 @@ import {
   CalendarDays
 } from 'lucide-react';
 
-// ponytail: nhận thêm 2 prop để /settings tái dùng nguyên trang này (tab Bảo Mật đã chuyển sang
-// /settings) thay vì phải nhân bản ~1700 dòng sang component riêng.
+// ponytail: nhận thêm 2 prop để /my-profile tái dùng nguyên trang này
+// thay vì phải nhân bản ~1700 dòng sang component riêng.
 // EMPTY_PARAMS phải ở module scope: Promise tạo mới mỗi render sẽ khiến `use()` ném React #482.
 const EMPTY_PARAMS = Promise.resolve({ id: '' });
 
@@ -55,7 +54,7 @@ export default function EmployeeDetailPage({
   const resolvedParams = use(params ?? EMPTY_PARAMS);
   const userId = userIdOverride || resolvedParams.id;
 
-  const { isHR, isExecutive, isSysAdmin, currentUser, can } = useAuth();
+  const { isHR, isExecutive, currentUser, can } = useAuth();
   const { employeeDetails } = useHRMData();
 
   const [activeTab, setActiveTab] = useState<'basic' | 'legal' | 'contract' | 'salary' | 'assignment'>('basic');
@@ -208,9 +207,10 @@ export default function EmployeeDetailPage({
     contractType: employee?.contract?.contractType || 'Không xác định thời hạn',
     contractStartDate: employee?.contract?.contractStartDate || '2022-01-01',
     contractEndDate: employee?.contract?.contractEndDate || '',
-    baseSalary: employee?.salary?.baseSalary || 20000000,
-    bankName: employee?.bankAccount?.bankName || 'Vietcombank',
-    bankAccountNumber: employee?.bankAccount?.bankAccountNumber || '',
+    // Không có dữ liệu thì để trống, không bịa số tiền/tài khoản giả
+    baseSalary: employee?.salary?.baseSalary || 0,
+    bankName: employee?.payroll?.bankName || employee?.bankAccount?.bankName || '',
+    bankAccountNumber: employee?.payroll?.bankAccountNumber || employee?.bankAccount?.accountNumber || '',
     department: employee?.department || '',
     job: employee?.job || '',
     shiftName: employee?.shiftName || ''
@@ -234,9 +234,9 @@ export default function EmployeeDetailPage({
         contractType: employee.contract?.contractType || 'Không xác định thời hạn',
         contractStartDate: employee.contract?.contractStartDate || '2022-01-01',
         contractEndDate: employee.contract?.contractEndDate || '',
-        baseSalary: employee.salary?.baseSalary || 20000000,
-        bankName: employee.bankAccount?.bankName || 'Vietcombank',
-        bankAccountNumber: employee.bankAccount?.bankAccountNumber || '',
+        baseSalary: employee.salary?.baseSalary || 0,
+        bankName: employee.payroll?.bankName || employee.bankAccount?.bankName || '',
+        bankAccountNumber: employee.payroll?.bankAccountNumber || employee.bankAccount?.accountNumber || '',
         department: employee.department || '',
         job: employee.job || '',
         shiftName: employee.shiftName || ''
@@ -282,7 +282,6 @@ export default function EmployeeDetailPage({
   const canViewContract = isMe || isTargetSameDeptHead || isHR || isExecutive || canViewAllProfile;
   const canViewSalary = isMe || isHR || isExecutive || canViewAllProfile;
   const canEdit = isHRRaw;
-  const canLockAccount = isSysAdmin || can('ACCOUNT_LOCK');
   // ponytail: SoD hợp đồng — HR thật (khớp check backend equalsIgnoreCase) được sửa HĐ người khác, không bao giờ tự sửa; Executive view-only (backend 403 mọi write)
   const canEditContract = isHRRaw && !isMe;
 
@@ -304,23 +303,6 @@ export default function EmployeeDetailPage({
       showToast('Lỗi upload avatar: ' + (err.message || 'Không thể tải lên'));
     } finally {
       setIsUploadingAvatar(false);
-    }
-  };
-
-  const handleToggleStatus = async () => {
-    const currentActive = employee.isActive !== false;
-    const nextActive = !currentActive;
-    const actionText = nextActive ? 'kích hoạt lại' : 'KHÓA';
-    if (!confirm(`Bạn có chắc chắn muốn ${actionText} tài khoản của nhân viên ${employee.fullName}?`)) {
-      return;
-    }
-
-    try {
-      await employeeService.updateStatus(userId, nextActive, nextActive ? 'HR kích hoạt lại' : 'Nhân viên thôi việc');
-      showToast(nextActive ? 'Đã kích hoạt lại tài khoản thành công!' : 'Đã khóa tài khoản và hủy toàn bộ phiên đăng nhập!');
-      await loadProfile();
-    } catch (err: any) {
-      showToast('Lỗi thay đổi trạng thái: ' + (err.message || 'Thao tác thất bại'));
     }
   };
 
@@ -375,7 +357,7 @@ export default function EmployeeDetailPage({
     ? employee.profilePicUrl
     : null;
 
-  // ponytail: /settings tái dùng nguyên trang này nên phải bỏ AppShell lần nữa, nếu không sẽ lồng 2 sidebar.
+  // ponytail: /my-profile tái dùng nguyên trang này nên phải bỏ AppShell lần nữa, nếu không sẽ lồng 2 sidebar.
   const body = (
       <div className="space-y-6">
         {toastMsg && (
@@ -397,21 +379,8 @@ export default function EmployeeDetailPage({
           </Link>
           )}
 
+          {/* Khóa / mở tài khoản chỉ làm ở tab Quản lý tài khoản của /admin — bỏ nút ở đây. */}
           <div className="flex items-center gap-2">
-            {canLockAccount && !isMe && (
-              <button
-                onClick={handleToggleStatus}
-                className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold shadow-xs transition cursor-pointer ${
-                  employee.isActive !== false
-                    ? 'bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100'
-                    : 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100'
-                }`}
-              >
-                {employee.isActive !== false ? <UserX className="h-3.5 w-3.5" /> : <UserCheck className="h-3.5 w-3.5" />}
-                <span>{employee.isActive !== false ? 'Khóa tài khoản (Thôi việc)' : 'Kích hoạt lại tài khoản'}</span>
-              </button>
-            )}
-
             {canEdit && (
               <button
                 onClick={() => setIsEditModalOpen(true)}
@@ -707,7 +676,7 @@ export default function EmployeeDetailPage({
                           <CheckCircle2 className="w-3 h-3" /> Đang hiệu lực
                         </span>
                       </div>
-                      <p className="text-xs text-slate-500">Mã hợp đồng: {employee.contract?.contractId || 'HĐ-HIEN-HANH'}</p>
+                      {/* <p className="text-xs text-slate-500">Mã hợp đồng: {employee.contract?.contractId || 'HĐ-HIEN-HANH'}</p> */}
                     </div>
                   </div>
 
@@ -851,18 +820,33 @@ export default function EmployeeDetailPage({
                 <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
                   <span className="text-emerald-700 block text-[11px] font-bold mb-1">Lương cơ bản:</span>
                   <span className="font-mono font-black text-emerald-900 text-xl">
-                    {(employee.salary?.baseSalary || 20000000).toLocaleString('vi-VN')} ₫
+                    {employee.salary?.baseSalary
+                      ? employee.salary.baseSalary.toLocaleString('vi-VN') + ' ₫'
+                      : <span className="text-sm font-bold text-slate-400">Chưa cấu hình</span>}
                   </span>
                   <span className="text-[10px] text-emerald-600 block mt-1">Chuẩn 22 ngày công thực tế</span>
                 </div>
                 <div>
                   <span className="text-slate-400 block mb-1">Ngân hàng thụ hưởng:</span>
-                  <span className="font-bold text-slate-900 text-sm">{employee.bankAccount?.bankName || 'Ngân hàng Vietcombank'}</span>
+                  <span className="font-bold text-slate-900 text-sm">{employee.payroll?.bankName || <span className="text-slate-400">Chưa cấu hình</span>}</span>
+                  {employee.payroll?.bankCode && (
+                    <span className="block text-[10px] text-slate-400 font-mono mt-0.5">BIN {employee.payroll.bankCode}</span>
+                  )}
                 </div>
                 <div>
                   <span className="text-slate-400 block mb-1">Số tài khoản ngân hàng:</span>
-                  <span className="font-mono font-bold text-slate-900 text-sm">{employee.bankAccount?.bankAccountNumber || '012345678901'}</span>
+                  <span className="font-mono font-bold text-slate-900 text-sm">{employee.payroll?.bankAccountNumber || <span className="text-slate-400">Chưa cấu hình</span>}</span>
+                  {employee.payroll?.accountHolderName && (
+                    <span className="block text-[10px] text-slate-500 mt-0.5">Chủ tài khoản: {employee.payroll.accountHolderName}</span>
+                  )}
                 </div>
+                {employee.payroll?.isDefaultBank && (
+                  <div className="sm:col-span-2 lg:col-span-3">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-2.5 py-1">
+                      Tài khoản nhận lương
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           )}

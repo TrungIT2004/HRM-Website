@@ -14,6 +14,9 @@ import com.minhtrung.hrm.employees.dtos.requests.CreateDepartmentRequest;
 import com.minhtrung.hrm.employees.dtos.requests.CreateJobRequest;
 import com.minhtrung.hrm.employees.dtos.responses.DepartmentResponse;
 import com.minhtrung.hrm.employees.dtos.responses.JobResponse;
+import com.minhtrung.hrm.employees.dtos.responses.OrganizationOverviewResponse;
+import com.minhtrung.hrm.employees.dtos.responses.OrganizationOverviewResponse.ContractSliceDto;
+import com.minhtrung.hrm.employees.dtos.responses.OrganizationOverviewResponse.DeptSliceDto;
 import com.minhtrung.hrm.employees.entities.Department;
 import com.minhtrung.hrm.employees.entities.Job;
 import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
@@ -34,6 +37,88 @@ public class OrganizationService {
     private final JobRepository jobRepository;
     private final UserRepository userRepository;
     private final PermissionService permissionService;
+    private final com.minhtrung.hrm.employees.repositories.UserContractRepository userContractRepository;
+    private final com.minhtrung.hrm.resignation.repositories.ResignationRequestRepository resignationRequestRepository;
+
+    @Transactional(readOnly = true)
+    public OrganizationOverviewResponse getOrganizationOverview(Integer year) {
+        int targetYear = year != null ? year : java.time.LocalDate.now().getYear();
+        // ponytail: 3 full-table scan trong Java (< 1k rows). Chuyển sang GROUP BY DB khi > 100k.
+        var users = userRepository.findAll();
+        long totalEmployees = users.size();
+        long totalDepartments = departmentRepository.count();
+        long totalJobs = jobRepository.count();
+
+        var deptGroups = users.stream()
+                .collect(java.util.stream.Collectors.groupingBy(
+                        u -> u.getDepartment() != null ? u.getDepartment().getName() : "Chưa phân phòng",
+                        java.util.stream.Collectors.counting()));
+        var deptBreakdown = deptGroups.entrySet().stream()
+                .sorted(java.util.Map.Entry.<String, Long>comparingByValue(java.util.Comparator.reverseOrder()))
+                .map(e -> DeptSliceDto.builder()
+                        .name(e.getKey())
+                        .count(e.getValue())
+                        .percent(totalEmployees > 0 ? Math.round(e.getValue() * 1000.0 / totalEmployees) / 10.0 : 0.0)
+                        .build())
+                .toList();
+
+        var contracts = userContractRepository.findAll().stream()
+                .filter(c -> c.isActive())
+                .toList();
+        long contractTotal = contracts.isEmpty() ? totalEmployees : contracts.size();
+        var contractGroups = contracts.stream()
+                .collect(java.util.stream.Collectors.groupingBy(
+                        c -> c.getContractType() != null ? c.getContractType() : "Chưa rõ",
+                        java.util.stream.Collectors.counting()));
+        var contractBreakdown = contractGroups.entrySet().stream()
+                .map(e -> ContractSliceDto.builder()
+                        .type(e.getKey())
+                        .count(e.getValue())
+                        .percent(contractTotal > 0 ? Math.round(e.getValue() * 1000.0 / contractTotal) / 10.0 : 0.0)
+                        .build())
+                .toList();
+
+        var hires = new java.util.ArrayList<Integer>(java.util.Collections.nCopies(12, 0));
+        for (var u : users) {
+            if (u.getJoinedDate() != null && u.getJoinedDate().getYear() == targetYear) {
+                int m = u.getJoinedDate().getMonthValue() - 1;
+                hires.set(m, hires.get(m) + 1);
+            }
+        }
+        var leavers = new java.util.ArrayList<Integer>(java.util.Collections.nCopies(12, 0));
+        for (var r : resignationRequestRepository.findAll()) {
+            java.time.LocalDate d = r.getLastWorkingDate() != null ? r.getLastWorkingDate()
+                    : (r.getCreatedAt() != null ? r.getCreatedAt().toLocalDate() : null);
+            if (d != null && d.getYear() == targetYear
+                    && (r.getStatus() == com.minhtrung.hrm.resignation.enums.ResignationStatus.APPROVED
+                            || r.getStatus() == com.minhtrung.hrm.resignation.enums.ResignationStatus.COMPLETED
+                            || r.getStatus() == com.minhtrung.hrm.resignation.enums.ResignationStatus.MANAGER_APPROVED)) {
+                int m = d.getMonthValue() - 1;
+                leavers.set(m, leavers.get(m) + 1);
+            }
+        }
+        // Tăng trưởng = cộng dồn hires - leavers từ đầu năm, neo từ (tổng hiện tại - tăng ròng cả năm).
+        int netYear = 0;
+        for (int i = 0; i < 12; i++) netYear += hires.get(i) - leavers.get(i);
+        long base = totalEmployees - netYear;
+        var trend = new java.util.ArrayList<Integer>();
+        long running = base;
+        for (int i = 0; i < 12; i++) {
+            running += hires.get(i) - leavers.get(i);
+            trend.add((int) Math.max(0, running));
+        }
+
+        return OrganizationOverviewResponse.builder()
+                .totalEmployees(totalEmployees)
+                .totalDepartments(totalDepartments)
+                .totalJobs(totalJobs)
+                .deptBreakdown(deptBreakdown)
+                .contractBreakdown(contractBreakdown)
+                .monthlyHires(hires)
+                .monthlyLeavers(leavers)
+                .headcountTrend(trend)
+                .build();
+    }
 
     @Transactional(readOnly = true)
     public List<DepartmentResponse> getAllDepartments() {

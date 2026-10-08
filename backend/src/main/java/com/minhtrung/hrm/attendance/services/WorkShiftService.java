@@ -2,6 +2,8 @@ package com.minhtrung.hrm.attendance.services;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -51,6 +53,17 @@ public class WorkShiftService {
         return shifts.stream()
                 .map(this::mapToWorkShiftResponse)
                 .toList();
+    }
+
+    /**
+     * Ca làm việc của chính nhân viên đang đăng nhập (dùng cho trang /attendance/schedule).
+     */
+    @Transactional(readOnly = true)
+    public WorkShiftResponse getMyWorkShift(UUID userId) {
+        WorkShift shift = userRepository.getUsersWorkShift(userId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Tài khoản chưa được phân ca làm việc. Vui lòng liên hệ phòng Nhân sự."));
+        return mapToWorkShiftResponse(shift);
     }
 
     /**
@@ -199,10 +212,10 @@ public class WorkShiftService {
             LocalTime restEnd = null;
 
             if (isWorking) {
-                startTime = dayReq.getStartTime();
-                endTime = dayReq.getEndTime();
-                restStart = dayReq.getRestStartTime();
-                restEnd = dayReq.getRestEndTime();
+                startTime = parseTime(dayReq.getStartTime(), dayName, "giờ bắt đầu làm việc");
+                endTime = parseTime(dayReq.getEndTime(), dayName, "giờ kết thúc làm việc");
+                restStart = parseTime(dayReq.getRestStartTime(), dayName, "giờ bắt đầu nghỉ");
+                restEnd = parseTime(dayReq.getRestEndTime(), dayName, "giờ kết thúc nghỉ");
 
                 // Giờ bắt đầu và kết thúc làm việc bắt buộc có
                 if (startTime == null || endTime == null) {
@@ -288,6 +301,28 @@ public class WorkShiftService {
         }
 
         return schedulesToSave;
+    }
+
+    /**
+     * Parse giờ từ browser (<input type=time> gửi "HH:mm", dữ liệu cũ "HH:mm:ss").
+     * Chuỗi rỗng/thiếu = null (ngày không nghỉ trưa). Sai format -> 400 kèm msg rõ ràng
+     * thay vì để Jackson nổ HttpMessageNotReadable rồi rơi vào 500 generic.
+     */
+    private LocalTime parseTime(String raw, String dayName, String fieldLabel) {
+        if (raw == null || raw.isBlank()) {
+            return null;
+        }
+        String t = raw.trim();
+        try {
+            return t.length() == 5
+                    ? LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm"))
+                    : LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        } catch (DateTimeParseException e) {
+            throw new AttendanceException(
+                    AttendanceErrorCode.WORK_SHIFT_INVALID_TIME,
+                    "Ngày " + dayName + ": " + fieldLabel + " ('" + t + "') sai định dạng, dùng HH:mm (ví dụ 08:00)!"
+            );
+        }
     }
 
     private WorkShiftResponse mapToWorkShiftResponse(WorkShift shift) {

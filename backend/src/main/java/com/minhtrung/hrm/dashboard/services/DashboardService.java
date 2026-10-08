@@ -4,14 +4,17 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.minhtrung.hrm.attendance.entities.Attendance;
 import com.minhtrung.hrm.attendance.entities.MonthlyTimesheet;
+import com.minhtrung.hrm.attendance.entities.WorkShiftSchedule;
 import com.minhtrung.hrm.attendance.enums.AttendanceStatus;
 import com.minhtrung.hrm.attendance.repositories.AttendanceRepository;
 import com.minhtrung.hrm.attendance.repositories.MonthlyTimesheetRepository;
@@ -115,6 +118,8 @@ public class DashboardService {
                     .month(currentMonth)
                     .year(currentYear)
                     .actualWorkDays(ts.getActualWorkedDays() != null ? ts.getActualWorkedDays().doubleValue() : 0.0)
+                    .standardWorkDays(ts.getStandardWorkingDays())
+                    .totalWorkHours(ts.getActualWorkHours() != null ? ts.getActualWorkHours().doubleValue() : 0.0)
                     .lateDays(ts.getLateCount())
                     .totalOtHours(ts.getTotalPaidOtHours() != null ? ts.getTotalPaidOtHours().doubleValue() : 0.0)
                     .build();
@@ -122,10 +127,27 @@ public class DashboardService {
             LocalDate startOfMonth = today.withDayOfMonth(1);
             LocalDate endOfMonth = today.withDayOfMonth(today.lengthOfMonth());
             List<Attendance> attendances = attendanceRepository.findByUserIdAndDateRange(userId, startOfMonth, endOfMonth);
+            // Lịch tuần của ca để trừ giờ nghỉ trưa — thiếu timesheet thì vẫn phải ra giờ thật.
+            Map<Integer, WorkShiftSchedule> week = (user.getShift() != null && user.getShift().getShiftId() != null)
+                    ? user.getShift().getSchedules().stream()
+                            .collect(Collectors.toMap(WorkShiftSchedule::getDayOfWeek, s -> s, (a, b) -> a))
+                    : Map.of();
+            int standardWorkDays = week.isEmpty() ? 22 : 0;
+            if (!week.isEmpty()) {
+                for (LocalDate d = startOfMonth; !d.isAfter(endOfMonth); d = d.plusDays(1)) {
+                    WorkShiftSchedule s = week.get(d.getDayOfWeek().getValue());
+                    if (s != null && s.isWorking()) standardWorkDays++;
+                }
+            }
             double actualWorkDays = 0.0;
+            double actualWorkHours = 0.0;
             int lateDays = 0;
             for (Attendance a : attendances) {
                 AttendanceStatus st = a.getStatus();
+                if (st == null) continue;
+                WorkShiftSchedule daySchedule = a.getWorkDate() != null
+                        ? week.get(a.getWorkDate().getDayOfWeek().getValue())
+                        : null;
                 if (st == AttendanceStatus.SUFFICIENT || st == AttendanceStatus.ADJUSTED || st == AttendanceStatus.BUSINESS_TRIP) {
                     actualWorkDays += 1.0;
                 } else if (st == AttendanceStatus.LATE || st == AttendanceStatus.EARLY || st == AttendanceStatus.LATE_AND_EARLY) {
@@ -136,11 +158,28 @@ public class DashboardService {
                 } else if (st == AttendanceStatus.MISSING) {
                     actualWorkDays += 0.5;
                 }
+                // Giờ làm thực tế: clockIn→clockOut trừ giờ nghỉ của ca nếu có; MISSING 4h,
+                // công tác/điều chỉnh/phép có lương 8h. Cùng công thức với generateMonthlyTimesheet.
+                if (a.getClockInTime() != null && a.getClockOutTime() != null) {
+                    long minutes = Duration.between(a.getClockInTime(), a.getClockOutTime()).toMinutes();
+                    if (daySchedule != null && daySchedule.getRestStartTime() != null && daySchedule.getRestEndTime() != null
+                            && !a.getClockInTime().isAfter(daySchedule.getRestStartTime())
+                            && !a.getClockOutTime().isBefore(daySchedule.getRestEndTime())) {
+                        minutes = Math.max(0, minutes - Duration.between(daySchedule.getRestStartTime(), daySchedule.getRestEndTime()).toMinutes());
+                    }
+                    actualWorkHours += Math.max(0, minutes / 60.0);
+                } else if (st == AttendanceStatus.MISSING) {
+                    actualWorkHours += 4.0;
+                } else if (st == AttendanceStatus.BUSINESS_TRIP || st == AttendanceStatus.ADJUSTED || st == AttendanceStatus.PAID_LEAVE) {
+                    actualWorkHours += 8.0;
+                }
             }
             monthlySummary = MonthlySummaryDto.builder()
                     .month(currentMonth)
                     .year(currentYear)
                     .actualWorkDays(actualWorkDays)
+                    .standardWorkDays(standardWorkDays)
+                    .totalWorkHours(Math.round(actualWorkHours * 10.0) / 10.0)
                     .lateDays(lateDays)
                     .totalOtHours(0.0)
                     .build();
@@ -174,7 +213,9 @@ public class DashboardService {
         boolean isHR = "Human Resources".equalsIgnoreCase(deptName);
         boolean isApprover = isExecutive || isDepartmentHead || isHR
                 || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE)
-                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE);
+                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE)
+                || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE_DEPT)
+                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE_DEPT);
 
         long pendingLeaves = 0;
         long pendingOTs = 0;
@@ -184,12 +225,16 @@ public class DashboardService {
             try {
                 LeaveFilterRequest leaveFilter = new LeaveFilterRequest(null, LeaveRequestStatus.pending, null, null, null);
                 pendingLeaves = leaveRequestRepository.count(LeaveRequestSpecification.forApprovals(userRole, leaveFilter,
-                        permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE)));
+                        permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE),
+                        permissionService.hasPermission(userId, PermissionKey.LEAVE_VIEW_DEPT)
+                                || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE_DEPT)));
 
                 OvertimeFilterRequest otFilter = new OvertimeFilterRequest();
                 otFilter.setStatus("pending");
                 pendingOTs = overtimeRecordRepository.count(OvertimeSpecification.forApprovals(userRole, otFilter,
-                        permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE)));
+                        permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE),
+                        permissionService.hasPermission(userId, PermissionKey.OVERTIME_VIEW_DEPT)
+                                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE_DEPT)));
             } catch (Exception ex) {
                 log.warn("Lỗi khi đếm số đơn chờ duyệt cho user: {}", userId, ex);
             }

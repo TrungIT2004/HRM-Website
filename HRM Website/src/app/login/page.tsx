@@ -21,6 +21,14 @@ import {
 
 const QUICK_ACCOUNTS = [
   {
+    name: 'Super Admin',
+    email: 'superadmin@company.com',
+    role: 'Quản trị viên Tối cao (IT)',
+    dept: 'IT',
+    badge: '⚡ SUPER ADMIN',
+    badgeColor: 'bg-purple-50 text-purple-700 border-purple-200'
+  },
+  {
     name: 'Nguyễn Minh Đức',
     email: 'nguyenminhduc@company.com',
     role: 'Chủ tịch (Ban Giám Đốc)',
@@ -93,11 +101,11 @@ export default function LoginPage() {
   useEffect(() => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('act_hrm_access_token') : null;
     if (token) {
-      router.replace('/dashboard');
+      router.replace('/home');
     }
   }, [router]);
 
-  const [email, setEmail] = useState('phamthicuc@company.com');
+  const [email, setEmail] = useState('superadmin@company.com');
   const [password, setPassword] = useState('test@123');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -111,7 +119,7 @@ export default function LoginPage() {
     try {
       const res = await login(email, password);
       if (res.success) {
-        router.push('/dashboard');
+        router.push('/home');
       } else {
         setErrorMsg(res.error || 'Email hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!');
       }

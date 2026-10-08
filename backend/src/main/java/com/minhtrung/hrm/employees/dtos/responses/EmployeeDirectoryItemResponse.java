@@ -21,6 +21,7 @@ public class EmployeeDirectoryItemResponse {
     private UUID userId;
     private String employeeCode;
     private String fullName;
+    private String email;
     private String profilePicUrl;
     private String departmentName;
     private String jobTitle;

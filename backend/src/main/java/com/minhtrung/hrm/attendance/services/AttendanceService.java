@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -26,6 +27,7 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.data.domain.Page;
@@ -242,7 +244,8 @@ public class AttendanceService {
     // 2. Lấy dữ liệu chấm công quản lý cấp dưới (TP IT, TP HR, Giám đốc...)
     @Transactional(readOnly = true)
     public Page<ManagerAttendanceResponse> getDepartmentAttendances(UserRole userRole, AttendanceFilterRequest filter, Pageable pageable) {
-        Specification<Attendance> spec = AttendanceSpecification.forManagement(userRole, filter);
+        boolean hasDeptGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_DEPT);
+        Specification<Attendance> spec = AttendanceSpecification.forManagement(userRole, filter, hasDeptGrant);
         return attendanceRepository.findAll(spec, pageable).map(this::mapToManagerResponse);
     }
 
@@ -436,15 +439,34 @@ public class AttendanceService {
         // 2. Khởi tạo Workbook và định dạng Header
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet("Bang Cham Cong");
+            // ponytail: tat luoi mac dinh + cot A lam le trai — chi giu vien minh ke
+            sheet.setDisplayGridlines(false);
+            final int OFF = 1;
+            sheet.setColumnWidth(0, 6 * 256);
 
-            // Style Header: In đậm, nền xanh ngọc nhạt, căn giữa
+            // Style Header: In đậm TNR, nền xanh đậm chữ trắng, căn giữa
             CellStyle headerStyle = workbook.createCellStyle();
             Font headerFont = workbook.createFont();
             headerFont.setBold(true);
+            headerFont.setFontName("Times New Roman");
+            headerFont.setColor(IndexedColors.WHITE.getIndex());
             headerStyle.setFont(headerFont);
-            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());
+            headerStyle.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
             headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
             headerStyle.setAlignment(HorizontalAlignment.CENTER);
+            headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            // ponytail: Excel khong co padding — gia lap bang indent + nang cao dong 28pt
+            CellStyle bordered = workbook.createCellStyle();
+            bordered.setBorderTop(BorderStyle.THIN);
+            bordered.setBorderBottom(BorderStyle.THIN);
+            bordered.setBorderLeft(BorderStyle.THIN);
+            bordered.setBorderRight(BorderStyle.THIN);
+            bordered.setIndention((short) 1);
+            bordered.setVerticalAlignment(VerticalAlignment.CENTER);
+            Font bodyFont = workbook.createFont();
+            bodyFont.setFontName("Times New Roman");
+            bordered.setFont(bodyFont);
 
             // Danh sách tiêu đề cột
             String[] columns = {
@@ -453,43 +475,66 @@ public class AttendanceService {
                 "Đã Chỉnh Sửa", "Lý Do Chỉnh Sửa", "Người Chỉnh Sửa", "Mã NV Người Sửa"
             };
 
-            Row headerRow = sheet.createRow(0);
+            String range = "";
+            if (filter.getStartDate() != null || filter.getEndDate() != null) {
+                range = " (" + (filter.getStartDate() != null ? filter.getStartDate().toString() : "...")
+                        + " - " + (filter.getEndDate() != null ? filter.getEndDate().toString() : "...") + ")";
+            }
+            int rowIdx = 3;
+            Row headerRow = sheet.createRow(rowIdx++);
+            headerRow.setHeightInPoints(28);
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                Cell cell = headerRow.createCell(OFF + i);
                 cell.setCellValue(columns[i]);
                 cell.setCellStyle(headerStyle);
             }
 
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            int rowIdx = 1;
+            int stt = 1;
 
             // 3. Ghi dữ liệu từng dòng theo đúng DTO HrAttendanceResponse
             for (HrAttendanceResponse rowData : dtoList) {
-                Row row = sheet.createRow(rowIdx);
+                Row row = sheet.createRow(rowIdx++);
+                row.setHeightInPoints(28);
 
-                row.createCell(0).setCellValue(rowIdx);
-                row.createCell(1).setCellValue(rowData.getEmployeeCode() != null ? rowData.getEmployeeCode() : "");
-                row.createCell(2).setCellValue(rowData.getFullName() != null ? rowData.getFullName() : "");
-                row.createCell(3).setCellValue(rowData.getDepartment() != null ? rowData.getDepartment() : "");
-                row.createCell(4).setCellValue(rowData.getJob() != null ? rowData.getJob() : "");
-                row.createCell(5).setCellValue(rowData.getWorkDate() != null ? rowData.getWorkDate().toString() : "");
-                row.createCell(6).setCellValue(
+                row.createCell(OFF + 0).setCellValue(stt++);
+                row.createCell(OFF + 1).setCellValue(rowData.getEmployeeCode() != null ? rowData.getEmployeeCode() : "");
+                row.createCell(OFF + 2).setCellValue(rowData.getFullName() != null ? rowData.getFullName() : "");
+                row.createCell(OFF + 3).setCellValue(rowData.getDepartment() != null ? rowData.getDepartment() : "");
+                row.createCell(OFF + 4).setCellValue(rowData.getJob() != null ? rowData.getJob() : "");
+                row.createCell(OFF + 5).setCellValue(rowData.getWorkDate() != null ? rowData.getWorkDate().toString() : "");
+                row.createCell(OFF + 6).setCellValue(
                         rowData.getClockInTime() != null ? rowData.getClockInTime().format(timeFormatter) : "");
-                row.createCell(7).setCellValue(
+                row.createCell(OFF + 7).setCellValue(
                         rowData.getClockOutTime() != null ? rowData.getClockOutTime().format(timeFormatter) : "");
-                row.createCell(8).setCellValue(rowData.getStatus() != null ? rowData.getStatus().name() : "");
-                row.createCell(9).setCellValue(rowData.isEdited() ? "Có" : "Không");
-                row.createCell(10).setCellValue(rowData.getEditedReason() != null ? rowData.getEditedReason() : "");
-                row.createCell(11).setCellValue(rowData.getEditorName() != null ? rowData.getEditorName() : "");
-                row.createCell(12).setCellValue(rowData.getEditorEmpCode() != null ? rowData.getEditorEmpCode() : "");
-
-                rowIdx++;
+                row.createCell(OFF + 8).setCellValue(attendanceStatusVi(rowData.getStatus()));
+                row.createCell(OFF + 9).setCellValue(rowData.isEdited() ? "Có" : "Không");
+                row.createCell(OFF + 10).setCellValue(rowData.getEditedReason() != null ? rowData.getEditedReason() : "");
+                row.createCell(OFF + 11).setCellValue(rowData.getEditorName() != null ? rowData.getEditorName() : "");
+                row.createCell(OFF + 12).setCellValue(rowData.getEditorEmpCode() != null ? rowData.getEditorEmpCode() : "");
+                for (int i = 0; i < columns.length; i++) {
+                    row.getCell(OFF + i).setCellStyle(bordered);
+                }
             }
 
             // Tự động căn chỉnh độ rộng cột
             for (int i = 0; i < columns.length; i++) {
-                sheet.autoSizeColumn(i);
+                sheet.autoSizeColumn(OFF + i);
             }
+            sheet.setColumnWidth(OFF, 8 * 256);
+
+            // ponytail: tieu de viet CUOI (sau autoSize) de chu dai khong lam phong cot
+            Row titleRow = sheet.createRow(0);
+            Cell titleCell = titleRow.createCell(OFF + 4);
+            titleCell.setCellValue("BẢNG CHẤM CÔNG" + range);
+            CellStyle titleStyle = workbook.createCellStyle();
+            Font titleFont = workbook.createFont();
+            titleFont.setBold(true);
+            titleFont.setFontName("Times New Roman");
+            titleFont.setFontHeightInPoints((short) 22);
+            titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+            titleStyle.setFont(titleFont);
+            titleCell.setCellStyle(titleStyle);
 
             workbook.write(out);
             return out.toByteArray();
@@ -497,6 +542,26 @@ public class AttendanceService {
             log.error("Failed to generate Attendance Excel file", e);
             throw new RuntimeErrorException(null);
         }
+    }
+
+    private String attendanceStatusVi(Object status) {
+        if (status == null) return "";
+        return switch (status.toString()) {
+            case "SUFFICIENT" -> "Đúng giờ";
+            case "WORKING" -> "Đang làm việc";
+            case "LATE" -> "Đi trễ";
+            case "EARLY" -> "Về sớm";
+            case "LATE_AND_EARLY" -> "Đi trễ & Về sớm";
+            case "MISSING" -> "Quên chấm công";
+            case "NOT_CHECKED" -> "Chưa điểm danh";
+            case "UNEXCUSED_ABSENCE" -> "Nghỉ không phép";
+            case "PAID_LEAVE" -> "Nghỉ phép có lương";
+            case "UNPAID_LEAVE" -> "Nghỉ không lương";
+            case "HOLIDAY" -> "Nghỉ Lễ";
+            case "BUSINESS_TRIP" -> "Đi công tác";
+            case "ADJUSTED" -> "Đã điều chỉnh";
+            default -> status.toString();
+        };
     }
 
     // =========================================================================
@@ -1024,9 +1089,10 @@ public class AttendanceService {
         String dept = userRole.getDepartment() != null ? userRole.getDepartment() : "";
         boolean isExecutive = "Executive Leadership".equals(dept);
         boolean isHead = job.startsWith("Department Head") || job.contains("Head") || job.contains("Manager");
-        if (!isHead && !isExecutive) {
+        boolean hasDeptGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_DEPT);
+        if (!isHead && !isExecutive && !hasDeptGrant) {
             throw new AttendanceException(AttendanceErrorCode.UNAUTHORIZED_ACTION,
-                    "Chỉ Trưởng phòng ban hoặc Ban Giám Đốc mới có quyền thao tác dữ liệu chấm công phòng ban");
+                    "Chỉ Trưởng phòng ban, Ban Giám Đốc hoặc người được cấp quyền xem chấm công phòng ban mới có quyền thao tác dữ liệu này");
         }
     }
 
@@ -1139,8 +1205,21 @@ public class AttendanceService {
     private byte[] generateStaffTimesheetExcel(List<MonthlyTimesheet> list) {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet("Bang Cong Ca Nhan");
+            sheet.setDisplayGridlines(false);
+            final int OFF = 1;
+            sheet.setColumnWidth(0, 6 * 256);
 
             CellStyle headerStyle = createHeaderCellStyle(workbook);
+            CellStyle bordered = workbook.createCellStyle();
+            bordered.setBorderTop(BorderStyle.THIN);
+            bordered.setBorderBottom(BorderStyle.THIN);
+            bordered.setBorderLeft(BorderStyle.THIN);
+            bordered.setBorderRight(BorderStyle.THIN);
+            bordered.setIndention((short) 1);
+            bordered.setVerticalAlignment(VerticalAlignment.CENTER);
+            Font bodyFont = workbook.createFont();
+            bodyFont.setFontName("Times New Roman");
+            bordered.setFont(bodyFont);
             String[] columns = {
                 "STT", "Tháng/Năm", "Trạng Thái", "Ngày Chuẩn", "Ngày Làm Thực Tế",
                 "Giờ Làm Thực Tế", "Đi Muộn (lần)", "Phút Đi Muộn", "Về Sớm (lần)",
@@ -1148,36 +1227,61 @@ public class AttendanceService {
                 "Giờ OT Thực Tế", "Giờ OT Tính Lương", "Ghi Chú"
             };
 
-            Row headerRow = sheet.createRow(0);
+            String period = "";
+            if (!list.isEmpty()) {
+                MonthlyTimesheet first = list.get(0);
+                period = "T" + first.getPeriodMonth() + "/" + first.getPeriodYear();
+            }
+            int rowIdx = 3;
+            Row headerRow = sheet.createRow(rowIdx++);
+            headerRow.setHeightInPoints(28);
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                Cell cell = headerRow.createCell(OFF + i);
                 cell.setCellValue(columns[i]);
                 cell.setCellStyle(headerStyle);
             }
 
-            int rowIdx = 1;
+            int stt = 1;
             for (MonthlyTimesheet t : list) {
-                Row row = sheet.createRow(rowIdx);
-                row.createCell(0).setCellValue(rowIdx);
-                row.createCell(1).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
-                row.createCell(2).setCellValue(t.getStatus() != null ? t.getStatus().name() : "");
-                row.createCell(3).setCellValue(t.getStandardWorkingDays());
-                row.createCell(4).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
-                row.createCell(5).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
-                row.createCell(6).setCellValue(t.getLateCount());
-                row.createCell(7).setCellValue(t.getTotalLateMinutes());
-                row.createCell(8).setCellValue(t.getEarlyDepartureCount());
-                row.createCell(9).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
-                row.createCell(10).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(11).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(12).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
-                row.createCell(13).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
-                row.createCell(14).setCellValue(t.getNote() != null ? t.getNote() : "");
-                rowIdx++;
+                Row row = sheet.createRow(rowIdx++);
+                row.setHeightInPoints(28);
+                row.createCell(OFF + 0).setCellValue(stt++);
+                row.createCell(OFF + 1).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
+                row.createCell(OFF + 2).setCellValue(t.getStatus() == TimesheetStatus.LOCKED ? "Đã chốt" : "Nháp");
+                row.createCell(OFF + 3).setCellValue(t.getStandardWorkingDays());
+                row.createCell(OFF + 4).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
+                row.createCell(OFF + 5).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
+                row.createCell(OFF + 6).setCellValue(t.getLateCount());
+                row.createCell(OFF + 7).setCellValue(t.getTotalLateMinutes());
+                row.createCell(OFF + 8).setCellValue(t.getEarlyDepartureCount());
+                row.createCell(OFF + 9).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
+                row.createCell(OFF + 10).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 11).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 12).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 13).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 14).setCellValue(t.getNote() != null ? t.getNote() : "");
+                for (int i = 0; i < columns.length; i++) {
+                    row.getCell(OFF + i).setCellStyle(bordered);
+                }
             }
 
             for (int i = 0; i < columns.length; i++) {
-                sheet.autoSizeColumn(i);
+                sheet.autoSizeColumn(OFF + i);
+            }
+            sheet.setColumnWidth(OFF, 8 * 256);
+
+            if (!period.isEmpty()) {
+                Row titleRow = sheet.createRow(0);
+                Cell titleCell = titleRow.createCell(OFF + 4);
+                titleCell.setCellValue("BẢNG CÔNG CÁ NHÂN " + period);
+                CellStyle titleStyle = workbook.createCellStyle();
+                Font titleFont = workbook.createFont();
+                titleFont.setBold(true);
+                titleFont.setFontName("Times New Roman");
+                titleFont.setFontHeightInPoints((short) 22);
+                titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+                titleStyle.setFont(titleFont);
+                titleCell.setCellStyle(titleStyle);
             }
 
             workbook.write(out);
@@ -1191,8 +1295,24 @@ public class AttendanceService {
     private byte[] generateCompanyTimesheetExcel(List<MonthlyTimesheet> list, String sheetName) {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet(sheetName.length() > 30 ? sheetName.substring(0, 30) : sheetName);
+            // ponytail: tat luoi mac dinh — chi giu vien minh ke
+            sheet.setDisplayGridlines(false);
 
+            // ponytail: cot A bo trong lam le trai (~6 don vi); muon rong/hep hon doi OFF
+            final int OFF = 1;
+            sheet.setColumnWidth(0, 6 * 256);
             CellStyle headerStyle = createHeaderCellStyle(workbook);
+            CellStyle bordered = workbook.createCellStyle();
+            bordered.setBorderTop(BorderStyle.THIN);
+            bordered.setBorderBottom(BorderStyle.THIN);
+            bordered.setBorderLeft(BorderStyle.THIN);
+            bordered.setBorderRight(BorderStyle.THIN);
+            // ponytail: Excel khong co padding — gia lap bang indent trai + nang chieu cao dong (28pt)
+            bordered.setIndention((short) 1);
+            bordered.setVerticalAlignment(org.apache.poi.ss.usermodel.VerticalAlignment.CENTER);
+            Font bodyFont = workbook.createFont();
+            bodyFont.setFontName("Times New Roman");
+            bordered.setFont(bodyFont);
             String[] columns = {
                 "STT", "Mã NV", "Họ và Tên", "Phòng Ban", "Chức Vụ",
                 "Tháng/Năm", "Trạng Thái", "Ngày Chuẩn", "Ngày Làm Thực Tế",
@@ -1201,42 +1321,69 @@ public class AttendanceService {
                 "Giờ OT Thực Tế", "Giờ OT Tính Lương", "Ghi Chú"
             };
 
-            Row headerRow = sheet.createRow(0);
+            // ponytail: tieu de viet CUOI (sau autoSize) de chu dai khong lam phong cot; STT dem rieng tu 1
+            String period = "";
+            if (!list.isEmpty()) {
+                MonthlyTimesheet first = list.get(0);
+                period = "T" + first.getPeriodMonth() + "/" + first.getPeriodYear();
+            }
+            int rowIdx = 3;
+            Row headerRow = sheet.createRow(rowIdx++);
+            headerRow.setHeightInPoints(28);
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                Cell cell = headerRow.createCell(OFF + i);
                 cell.setCellValue(columns[i]);
                 cell.setCellStyle(headerStyle);
             }
 
-            int rowIdx = 1;
+            int stt = 1;
             for (MonthlyTimesheet t : list) {
-                Row row = sheet.createRow(rowIdx);
+                Row row = sheet.createRow(rowIdx++);
                 User u = t.getUser();
 
-                row.createCell(0).setCellValue(rowIdx);
-                row.createCell(1).setCellValue(u != null && u.getEmployeeCode() != null ? u.getEmployeeCode() : "");
-                row.createCell(2).setCellValue(u != null ? ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim() : "");
-                row.createCell(3).setCellValue(u != null && u.getDepartment() != null ? u.getDepartment().getName() : "");
-                row.createCell(4).setCellValue(u != null && u.getJob() != null ? u.getJob().getTitle() : "");
-                row.createCell(5).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
-                row.createCell(6).setCellValue(t.getStatus() != null ? t.getStatus().name() : "");
-                row.createCell(7).setCellValue(t.getStandardWorkingDays());
-                row.createCell(8).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
-                row.createCell(9).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
-                row.createCell(10).setCellValue(t.getLateCount());
-                row.createCell(11).setCellValue(t.getTotalLateMinutes());
-                row.createCell(12).setCellValue(t.getEarlyDepartureCount());
-                row.createCell(13).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
-                row.createCell(14).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(15).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(16).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
-                row.createCell(17).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
-                row.createCell(18).setCellValue(t.getNote() != null ? t.getNote() : "");
-                rowIdx++;
+                row.createCell(OFF + 0).setCellValue(stt++);
+                row.createCell(OFF + 1).setCellValue(u != null && u.getEmployeeCode() != null ? u.getEmployeeCode() : "");
+                row.createCell(OFF + 2).setCellValue(u != null ? ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim() : "");
+                row.createCell(OFF + 3).setCellValue(u != null && u.getDepartment() != null ? u.getDepartment().getName() : "");
+                row.createCell(OFF + 4).setCellValue(u != null && u.getJob() != null ? u.getJob().getTitle() : "");
+                row.createCell(OFF + 5).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
+                row.createCell(OFF + 6).setCellValue(t.getStatus() == TimesheetStatus.LOCKED ? "Đã chốt" : "Nháp");
+                row.createCell(OFF + 7).setCellValue(t.getStandardWorkingDays());
+                row.createCell(OFF + 8).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
+                row.createCell(OFF + 9).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
+                row.createCell(OFF + 10).setCellValue(t.getLateCount());
+                row.createCell(OFF + 11).setCellValue(t.getTotalLateMinutes());
+                row.createCell(OFF + 12).setCellValue(t.getEarlyDepartureCount());
+                row.createCell(OFF + 13).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
+                row.createCell(OFF + 14).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 15).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 16).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 17).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 18).setCellValue(t.getNote() != null ? t.getNote() : "");
+                for (int i = 0; i < columns.length; i++) {
+                    if (row.getCell(OFF + i) == null) row.createCell(OFF + i);
+                    row.getCell(OFF + i).setCellStyle(bordered);
+                }
+                // ponytail: row da +1 luc createRow — dong thua o day tao ra dong trang xen ke
+                row.setHeightInPoints(28);
             }
 
             for (int i = 0; i < columns.length; i++) {
-                sheet.autoSizeColumn(i);
+                sheet.autoSizeColumn(OFF + i);
+            }
+            sheet.setColumnWidth(OFF, 8 * 256);
+            if (!period.isEmpty()) {
+                Row titleRow = sheet.createRow(0);
+                Cell titleCell = titleRow.createCell(OFF + 4);
+                titleCell.setCellValue("BẢNG TỔNG HỢP CÔNG " + period);
+                CellStyle titleStyle = workbook.createCellStyle();
+                Font titleFont = workbook.createFont();
+                titleFont.setBold(true);
+                titleFont.setFontName("Times New Roman");
+                titleFont.setFontHeightInPoints((short) 22);
+                titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+                titleStyle.setFont(titleFont);
+                titleCell.setCellStyle(titleStyle);
             }
 
             workbook.write(out);
@@ -1251,10 +1398,13 @@ public class AttendanceService {
         CellStyle headerStyle = workbook.createCellStyle();
         Font headerFont = workbook.createFont();
         headerFont.setBold(true);
+        headerFont.setFontName("Times New Roman");
+        headerFont.setColor(IndexedColors.WHITE.getIndex());
         headerStyle.setFont(headerFont);
-        headerStyle.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());
+        headerStyle.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
         headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         headerStyle.setAlignment(HorizontalAlignment.CENTER);
+        headerStyle.setVerticalAlignment(org.apache.poi.ss.usermodel.VerticalAlignment.CENTER);
         return headerStyle;
     }
 }

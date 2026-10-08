@@ -1,5 +1,35 @@
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? '';
 
+export interface PageResponse<T> {
+  content: T[];
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
+}
+
+export function buildQuery(params: Record<string, any>): string {
+  const q = new URLSearchParams();
+  Object.entries(params).forEach(([key, val]) => {
+    if (val !== undefined && val !== null && val !== '' && val !== 'ALL') {
+      if (Array.isArray(val)) {
+        val.forEach(v => q.append(key, String(v)));
+      } else {
+        q.append(key, String(val));
+      }
+    }
+  });
+  const qs = q.toString();
+  return qs ? `?${qs}` : '';
+}
+
+export function toHHmm(v: any, fallback: any = ''): string {
+  if (!v) return fallback;
+  const s = String(v);
+  const t = s.includes('T') ? (s.split('T')[1] ?? s) : s;
+  return t.substring(0, 5);
+}
+
 export class ApiError extends Error {
   status: number;
   data: any;

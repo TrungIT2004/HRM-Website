@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.minhtrung.hrm.admin.dtos.requests.AdminResetPasswordRequest;
 import com.minhtrung.hrm.admin.dtos.requests.AdminUpdateStatusRequest;
+import com.minhtrung.hrm.admin.dtos.requests.CreatePendingUserRequest;
 import com.minhtrung.hrm.admin.dtos.requests.ProvisionAccountRequest;
 import com.minhtrung.hrm.admin.dtos.requests.RejectPendingUserRequest;
 import com.minhtrung.hrm.admin.dtos.responses.AdminAccountResponse;
@@ -37,6 +38,9 @@ import com.minhtrung.hrm.employees.repositories.UserRepository;
 import com.minhtrung.hrm.permissions.entities.PermissionGrant;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
+import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
+import com.minhtrung.hrm.employees.repositories.JobRepository;
+import com.minhtrung.hrm.attendance.repositories.WorkShiftRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -55,14 +59,20 @@ public class AdminService {
     private final SessionBlacklistService sessionBlacklistService;
     private final PasswordEncoder passwordEncoder;
     private final PermissionService permissionService;
+    private final DepartmentRepository departmentRepository;
+    private final JobRepository jobRepository;
+    private final WorkShiftRepository workShiftRepository;
 
     /** IT + System Administrator — định nghĩa sysadmin duy nhất của hệ thống. */
     private boolean isSysAdmin(TokenPayload currentUser) {
         if (currentUser == null) return false;
         boolean isIT = "Information Technology".equalsIgnoreCase(currentUser.getDepartment())
                 || "IT".equalsIgnoreCase(currentUser.getDepartment());
-        return isIT && currentUser.getJob() != null
-                && (currentUser.getJob().contains("System Administrator") || currentUser.getJob().contains("Admin"));
+        if (!isIT || currentUser.getJob() == null) return false;
+        String job = currentUser.getJob();
+        // ponytail: SUPER_ADMIN là sysadmin gieo sẵn (so sánh hoa/thường — "SUPER_ADMIN".contains("Admin") là false)
+        return job.contains("System Administrator") || job.contains("Admin")
+                || job.equalsIgnoreCase("SUPER_ADMIN") || job.toLowerCase().contains("super admin");
     }
 
     private boolean isExecutive(TokenPayload currentUser) {
@@ -94,13 +104,17 @@ public class AdminService {
     }
 
     /**
-     * Kiểm tra quyền System Admin (theo Hướng B: IT + System Administrator)
+     * Kiểm tra quyền System Admin (theo Hướng B: IT + System Administrator).
+     * Người được cấp PERMISSION_GRANT / ACCOUNT_LOCK cũng qua được — khớp gate frontend
+     * (canEnterAdmin) và đúng ý "SUPER_ADMIN + nhân viên được cấp".
      */
     public void checkAdminAccess(TokenPayload currentUser) {
         if (currentUser == null) {
             throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác quản trị!");
         }
-        if (!isSysAdmin(currentUser) && !isExecutive(currentUser)) {
+        if (!isSysAdmin(currentUser) && !isExecutive(currentUser)
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.PERMISSION_GRANT)
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.ACCOUNT_LOCK)) {
             throw new AccessDeniedException("Chỉ Quản trị viên Hệ thống (System Administrator) hoặc Ban Giám Đốc mới có quyền truy cập khu vực này!");
         }
     }
@@ -123,9 +137,69 @@ public class AdminService {
 
     // ─── 1. ONBOARDING & CẤP TÀI KHOẢN (PROVISIONING) ────────────────
 
+    /**
+     * HR nhập hồ sơ nhân viên sắp vào làm (bước 1 của onboarding).
+     * Quyền: phòng Human Resources, sysadmin, Ban Giám Đốc, hoặc được cấp EMPLOYEE_EDIT.
+     */
+    @Transactional
+    public PendingUserResponse createPendingUser(CreatePendingUserRequest request, TokenPayload currentUser) {
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
+        }
+        boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
+        if (!isHR && !isSysAdmin(currentUser) && !isExecutive(currentUser)
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_EDIT)) {
+            throw new AccessDeniedException("Chỉ phòng Nhân sự (hoặc người được cấp quyền sửa hồ sơ) mới được tạo hồ sơ tuyển dụng!");
+        }
+
+        String personalEmail = request.getPersonalEmail().trim().toLowerCase();
+        if (pendingUserRepository.findByPersonalEmail(personalEmail).isPresent()) {
+            throw new IllegalArgumentException("Email cá nhân " + personalEmail + " đã có hồ sơ chờ duyệt!");
+        }
+
+        PendingUser pending = PendingUser.builder()
+                .firstName(request.getFirstName().trim())
+                .lastName(request.getLastName().trim())
+                .gender(request.getGender())
+                .birthDate(request.getBirthDate())
+                .personalEmail(personalEmail)
+                .phoneNumber(request.getPhoneNumber())
+                .citizenId(request.getCitizenId())
+                .placeOfBirth(request.getPlaceOfBirth())
+                .department(departmentRepository.findById(request.getDepartmentId())
+                        .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy phòng ban!")))
+                .job(jobRepository.findById(request.getJobId())
+                        .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy chức danh!")))
+                .shift(request.getShiftId() != null
+                        ? workShiftRepository.findById(request.getShiftId()).orElse(null)
+                        : null)
+                .baseSalary(request.getBaseSalary())
+                .contractType(request.getContractType())
+                .contractStartDate(request.getContractStartDate())
+                .contractEndDate(request.getContractEndDate())
+                .status("PENDING")
+                .build();
+        // createdBy không có trong builder @AllArgsConstructor? gán trực tiếp cho chắc
+        userRepository.findById(currentUser.getUserId()).ifPresent(pending::setCreatedBy);
+        PendingUser saved = pendingUserRepository.save(pending);
+
+        log.info("User {} đã tạo hồ sơ tuyển dụng {} ({} {})", currentUser.getUserId(),
+                saved.getPendingId(), saved.getFirstName(), saved.getLastName());
+        return mapToPendingResponse(saved);
+    }
+
     @Transactional(readOnly = true)
     public List<PendingUserResponse> getPendingUsers(TokenPayload currentUser, String status) {
-        checkAdminAccess(currentUser);
+        // Xem danh sach cho phep rong hon tao/duyet: HR duoc xem de theo doi ho so minh tao
+        if (currentUser == null) {
+            throw new AccessDeniedException("Yêu cầu đăng nhập trước khi thực hiện thao tác!");
+        }
+        boolean isHR = "Human Resources".equalsIgnoreCase(currentUser.getDepartment());
+        if (!isHR && !isSysAdmin(currentUser) && !isExecutive(currentUser)
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_EDIT)
+                && !permissionService.hasPermission(currentUser.getUserId(), PermissionKey.EMPLOYEE_VIEW_ALL)) {
+            throw new AccessDeniedException("Bạn không có quyền xem hồ sơ tuyển dụng!");
+        }
         String filterStatus = (status != null && !status.isBlank()) ? status.toUpperCase() : "PENDING";
 
         return pendingUserRepository.findByStatusOrderByCreatedAtDesc(filterStatus).stream()
@@ -150,10 +224,22 @@ public class AdminService {
         }
 
         // 1. Tạo User chính thức
+        // ponytail: sequence employee_number_seq trôi sau dữ liệu seed tay → dò tới mã trống
+        // thay vì tin sequence tuyệt đối (lỗi duplicate EMP022 đã từng sập provision)
         String employeeCode = request.getEmployeeCode();
         if (employeeCode == null || employeeCode.isBlank()) {
             Long nextNumber = userRepository.getNextEmployeeNumber();
-            employeeCode = "EMP" + String.format("%03d", nextNumber);
+            for (int i = 0; i < 1000 && (employeeCode == null || employeeCode.isBlank()); i++) {
+                String candidate = "EMP" + String.format("%03d", nextNumber + i);
+                if (!userRepository.existsByEmployeeCode(candidate)) {
+                    employeeCode = candidate;
+                }
+            }
+            if (employeeCode == null || employeeCode.isBlank()) {
+                throw new IllegalStateException("Không sinh được mã nhân viên mới!");
+            }
+        } else if (userRepository.existsByEmployeeCode(employeeCode)) {
+            throw new IllegalArgumentException("Mã nhân viên " + employeeCode + " đã tồn tại trên hệ thống!");
         }
 
         User user = new User();
@@ -171,7 +257,20 @@ public class AdminService {
         user.setActive(true);
         user.setDepartment(pending.getDepartment());
         user.setJob(pending.getJob());
-        user.setShift(pending.getShift());
+        // ponytail: users.shift_id NOT NULL nhưng HR được để trống ca — mặc định ca hành chính,
+        // rớt về ca đầu tiên. Không có ca nào thì báo rõ thay vì 500 constraint.
+        com.minhtrung.hrm.attendance.entities.WorkShift shift = pending.getShift();
+        if (shift == null) {
+            java.util.List<com.minhtrung.hrm.attendance.entities.WorkShift> allShifts = workShiftRepository.findAll();
+            shift = allShifts.stream()
+                    .filter(s -> s.getName() != null && s.getName().toLowerCase().contains("hành chính"))
+                    .findFirst()
+                    .orElse(allShifts.stream().findFirst().orElse(null));
+            if (shift == null) {
+                throw new IllegalStateException("Chưa có ca làm việc nào trong hệ thống — hãy tạo ca trước khi cấp tài khoản!");
+            }
+        }
+        user.setShift(shift);
 
         User savedUser = userRepository.save(user);
 

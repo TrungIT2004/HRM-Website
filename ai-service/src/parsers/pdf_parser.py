@@ -3,26 +3,14 @@ from typing import List
 import re
 
 from src.models.schema import DocumentBlock, ParsedDocument
-from src.parsers.base_parser import BaseParser
 from src.chunkers.table_preserver import TablePreserver
 
-try:
-    import fitz  # PyMuPDF
-    HAS_PYMUPDF = True
-except ImportError:
-    HAS_PYMUPDF = False
-
-try:
-    import pypdf
-    HAS_PYPDF = True
-except ImportError:
-    HAS_PYPDF = False
+import fitz  # PyMuPDF (requirements.txt pins pymupdf — no fallback needed)
 
 
-class PDFParser(BaseParser):
+class PDFParser:
     """
     Advanced PDF parser that preserves headings, paragraphs, and tables intact.
-    Supports PyMuPDF (fitz) for table detection and pypdf as a reliable fallback.
     """
 
     HEADING_PATTERNS = [
@@ -43,14 +31,7 @@ class PDFParser(BaseParser):
         return False, 0
 
     def parse(self, file_path: Path | str) -> ParsedDocument:
-        path = Path(file_path)
-
-        if HAS_PYMUPDF:
-            return self._parse_with_pymupdf(path)
-        elif HAS_PYPDF:
-            return self._parse_with_pypdf(path)
-        else:
-            raise ImportError("Neither PyMuPDF nor pypdf is installed. Please install pypdf or PyMuPDF.")
+        return self._parse_with_pymupdf(Path(file_path))
 
     def _parse_with_pymupdf(self, path: Path) -> ParsedDocument:
         doc = fitz.open(path)
@@ -76,14 +57,14 @@ class PDFParser(BaseParser):
                             blocks.append(DocumentBlock(
                                 block_type="TABLE",
                                 content=md_table,
-                                page_number=page_num,
-                                metadata={"bbox": list(table.bbox)}
+                                page_number=page_num
                             ))
             except Exception:
                 pass
 
             # 2. Extract text blocks
             text_page = page.get_text("blocks")
+            page_blocks = 0
             for b in text_page:
                 x0, y0, x1, y1, text, block_no, block_type = b
                 if block_type != 0:
@@ -111,50 +92,61 @@ class PDFParser(BaseParser):
                         content=cleaned_text,
                         page_number=page_num
                     ))
+                page_blocks += 1
 
-        total_pages = len(doc)
+            # 3. OCR fallback cho trang scan (không bóc được chữ nào nhưng có ảnh)
+            if page_blocks == 0 and page.get_images():
+                ocr_text = _ocr_page_to_text(page)
+                if ocr_text:
+                    blocks.append(DocumentBlock(
+                        block_type="PARAGRAPH",
+                        content=ocr_text,
+                        page_number=page_num
+                    ))
+
         doc.close()
         clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
         return ParsedDocument(
             document_name=clean_name,
             file_type="pdf",
-            total_pages=total_pages,
             blocks=blocks
         )
 
-    def _parse_with_pypdf(self, path: Path) -> ParsedDocument:
-        reader = pypdf.PdfReader(path)
-        blocks: List[DocumentBlock] = []
 
-        for page_idx, page in enumerate(reader.pages):
-            page_num = page_idx + 1
-            raw_text = page.extract_text() or ""
-            paragraphs = raw_text.split("\n\n")
-
-            for p in paragraphs:
-                cleaned = p.strip()
-                if not cleaned:
-                    continue
-
-                is_head, level = self._is_heading(cleaned)
-                if is_head:
-                    blocks.append(DocumentBlock(
-                        block_type="HEADING",
-                        content=cleaned,
-                        page_number=page_num,
-                        heading_level=level
-                    ))
-                else:
-                    blocks.append(DocumentBlock(
-                        block_type="PARAGRAPH",
-                        content=cleaned,
-                        page_number=page_num
-                    ))
-
-        clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
-        return ParsedDocument(
-            document_name=clean_name,
-            file_type="pdf",
-            total_pages=len(reader.pages),
-            blocks=blocks
-        )
+def _ocr_page_to_text(page) -> str:
+    """OCR một trang scan bằng Tesseract local (vie+eng). Cải thiện: psm 6, dpi 400, config tiếng Việt."""
+    try:
+        import io
+        import os
+        import shutil
+        import pytesseract
+        from PIL import Image, ImageFilter, ImageEnhance
+    except ImportError:
+        return ""
+    if not shutil.which("tesseract"):
+        win_default = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+        if os.path.exists(win_default):
+            pytesseract.pytesseract.tesseract_cmd = win_default
+        else:
+            return ""
+    try:
+        # DPI 400 cho chất lượng tốt hơn
+        png = page.get_pixmap(dpi=400).tobytes("png")
+        img = Image.open(io.BytesIO(png))
+        
+        # Tiền xử lý nhẹ: tăng độ tương phản, làm nét
+        img = ImageEnhance.Contrast(img).enhance(1.2)
+        img = ImageEnhance.Sharpness(img).enhance(1.5)
+        
+        # Config Tesseract tối ưu tiếng Việt:
+        # --psm 6: Assume a single uniform block of text
+        # --oem 1: LSTM engine only (tốt hơn cho tiếng Việt)
+        # -c preserve_interword_spaces=1: Giữ khoảng cách từ
+        config = "--psm 6 --oem 1 -c preserve_interword_spaces=1"
+        
+        return (
+            pytesseract.image_to_string(img, lang="vie", config=config)
+            or ""
+        ).strip()
+    except Exception:
+        return ""

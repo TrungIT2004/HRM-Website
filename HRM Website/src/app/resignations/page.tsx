@@ -10,6 +10,7 @@ import {
 } from '@/services/resignationService';
 import { formatDateVN } from '@/utils/format';
 import { useTabFromUrl } from '@/utils/useTabFromUrl';
+import ConfirmDialog from '@/components/ConfirmDialog';
 import {
   UserMinus,
   Calendar,
@@ -60,6 +61,10 @@ export default function ResignationsPage() {
     status: '',
     comment: ''
   });
+
+  // Cancel-confirm dialog state (thay confirm() native)
+  const [cancelTarget, setCancelTarget] = useState<string | null>(null);
+  const [isCancelling, setIsCancelling] = useState(false);
 
   const showToast = (text: string, type: 'success' | 'error' = 'success') => {
     setToastMsg({ text, type });
@@ -120,15 +125,19 @@ export default function ResignationsPage() {
     }
   };
 
-  // Handle Cancel My Resignation
-  const handleCancel = async (resignationId: string) => {
-    if (!confirm('Bạn có chắc chắn muốn hủy đơn xin thôi việc này không?')) return;
+  // Handle Cancel My Resignation (xác nhận qua popup, không dùng confirm() native)
+  const handleCancelConfirm = async () => {
+    if (!cancelTarget) return;
+    setIsCancelling(true);
     try {
-      await resignationService.cancelResignation(resignationId);
+      await resignationService.cancelResignation(cancelTarget);
       showToast('Đã hủy đơn xin thôi việc thành công!', 'success');
+      setCancelTarget(null);
       await loadData();
     } catch (err: any) {
       showToast(err.message || 'Lỗi hủy đơn', 'error');
+    } finally {
+      setIsCancelling(false);
     }
   };
 
@@ -244,7 +253,7 @@ export default function ResignationsPage() {
               {/* If viewing own pending request -> can Cancel */}
               {!isApprovalView && item.status === 'PENDING' && (
                 <button
-                  onClick={() => handleCancel(item.resignationId)}
+                  onClick={() => setCancelTarget(item.resignationId)}
                   className="w-full sm:w-auto px-3.5 py-1.5 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 text-xs font-bold transition"
                 >
                   Hủy đơn
@@ -541,6 +550,16 @@ export default function ResignationsPage() {
             </div>
           </div>
         )}
+        {/* MODAL 3: XÁC NHẬN HỦY ĐƠN THÔI VIỆC */}
+        <ConfirmDialog
+          open={cancelTarget !== null}
+          title="Hủy đơn xin thôi việc?"
+          body="Đơn của bạn sẽ bị rút lại và quy trình phê duyệt đang chạy sẽ dừng hẳn. Bạn có thể nộp đơn mới sau nếu đổi ý."
+          confirmLabel="Hủy đơn"
+          busy={isCancelling}
+          onConfirm={handleCancelConfirm}
+          onClose={() => !isCancelling && setCancelTarget(null)}
+        />
       </div>
     </AppShell>
   );

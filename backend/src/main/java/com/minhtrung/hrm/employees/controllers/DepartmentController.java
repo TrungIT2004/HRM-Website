@@ -42,6 +42,12 @@ public class DepartmentController {
         return ResponseEntity.ok(organizationService.getAllDepartments());
     }
 
+    @GetMapping("/overview")
+    public ResponseEntity<com.minhtrung.hrm.employees.dtos.responses.OrganizationOverviewResponse> getOrganizationOverview(
+            @org.springframework.web.bind.annotation.RequestParam(required = false) Integer year) {
+        return ResponseEntity.ok(organizationService.getOrganizationOverview(year));
+    }
+
     /**
      * Tạo phòng ban mới.
      * Quyền: phòng Human Resources, hoặc được cấp grant ORG_MANAGE.

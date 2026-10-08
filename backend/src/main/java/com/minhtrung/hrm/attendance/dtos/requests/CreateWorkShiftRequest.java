@@ -1,9 +1,7 @@
 package com.minhtrung.hrm.attendance.dtos.requests;
 
-import java.time.LocalTime;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.Valid;
@@ -47,16 +45,15 @@ public class CreateWorkShiftRequest {
         @Builder.Default
         private boolean isWorking = true;
 
-        @JsonFormat(pattern = "HH:mm:ss")
-        private LocalTime startTime;
+        // String thay vì LocalTime: MVC dùng Jackson 3 (tools.jackson) nên annotation
+        // com.fasterxml bị ngó lơ — parse "HH:mm" từ <input type=time> rớt thành 500.
+        // Nhận raw string rồi parse lenient trong service, sai thì trả 400 kèm msg tiếng Việt.
+        private String startTime;
 
-        @JsonFormat(pattern = "HH:mm:ss")
-        private LocalTime endTime;
+        private String endTime;
 
-        @JsonFormat(pattern = "HH:mm:ss")
-        private LocalTime restStartTime;
+        private String restStartTime;
 
-        @JsonFormat(pattern = "HH:mm:ss")
-        private LocalTime restEndTime;
+        private String restEndTime;
     }
 }

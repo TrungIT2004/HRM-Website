@@ -46,7 +46,6 @@ class IngestionPipeline:
         ext = path.suffix.lower()
 
         # Step 1: Parsing
-        temp_docx_path = None
         if ext == ".pdf":
             parser = PDFParser()
         elif ext == ".docx":
@@ -58,14 +57,7 @@ class IngestionPipeline:
         else:
             raise ValueError(f"Unsupported file format: {ext}. Supported: .pdf, .docx, .xlsx")
 
-        try:
-            parsed_doc: ParsedDocument = parser.parse(path)
-        finally:
-            if temp_docx_path and temp_docx_path.exists():
-                try:
-                    temp_docx_path.unlink()
-                except Exception:
-                    pass
+        parsed_doc: ParsedDocument = parser.parse(path)
 
         # Step 2: Structure-aware chunking
         chunks = self.chunker.chunk(parsed_doc)

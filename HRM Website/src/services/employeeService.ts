@@ -1,6 +1,5 @@
-import { apiClient } from './apiClient';
+import { apiClient, buildQuery, PageResponse, toHHmm } from './apiClient';
 import { EmployeeDetailed, User } from '@/types';
-import { PageResponse } from './attendanceService';
 
 export interface EmployeeFilterParams {
   keyword?: string;
@@ -25,17 +24,6 @@ export interface CreateEmployeePayload {
   shiftId?: string;
   baseSalary?: number;
   profilePicUrl?: string;
-}
-
-function buildQuery(params: Record<string, any>): string {
-  const q = new URLSearchParams();
-  Object.entries(params).forEach(([key, val]) => {
-    if (val !== undefined && val !== null && val !== '' && val !== 'ALL') {
-      q.append(key, String(val));
-    }
-  });
-  const qs = q.toString();
-  return qs ? `?${qs}` : '';
 }
 
 function sanitizeVietnameseText(str?: string): string {
@@ -94,10 +82,23 @@ function mapDetailResponse(res: any): EmployeeDetailed {
       emergencyContactPhone: legal.emergencyContactPhone || '',
       address: legal.address || ''
     },
+    // payroll = tài khoản ngân hàng is_default (nguồn chuẩn cho tab Lương & Ngân hàng)
+    payroll: {
+      baseSalary: pay.baseSalary ?? null,
+      bankName: pay.bankName || null,
+      bankCode: pay.bankCode || null,
+      bankAccountNumber: pay.bankAccountNumber || null,
+      accountHolderName: pay.accountHolderName || null,
+      isDefaultBank: pay.isDefaultBank ?? false
+    },
     bankAccount: {
       bankName: pay.bankName || res.bankAccount?.bankName || '',
-      bankAccountNumber: pay.bankAccountNumber || res.bankAccount?.bankAccountNumber || res.bankAccount?.accountNumber || '',
-      accountHolder: pay.bankAccountHolder || res.bankAccount?.accountHolder || pub.fullName || ''
+      bankCode: pay.bankCode || res.bankAccount?.bankCode,
+      accountNumber: pay.bankAccountNumber || res.bankAccount?.accountNumber,
+      accountHolderName: pay.accountHolderName || res.bankAccount?.accountHolderName,
+      isDefault: pay.isDefaultBank ?? false,
+      bankAccountNumber: pay.bankAccountNumber || res.bankAccount?.accountNumber || '',
+      accountHolder: pay.accountHolderName || pub.fullName || ''
     },
     contract: {
       contractId: contract.contractId,
@@ -130,10 +131,10 @@ function mapDetailResponse(res: any): EmployeeDetailed {
           dayOfWeek: Number(s.dayOfWeek),
           dayName: s.dayName || (Number(s.dayOfWeek) === 7 ? 'Chủ Nhật' : `Thứ ${Number(s.dayOfWeek) + 1}`),
           isWorking: s.isWorking !== undefined ? Boolean(s.isWorking) : Boolean(s.working),
-          startTime: s.startTime ? String(s.startTime).substring(0, 5) : '08:00',
-          endTime: s.endTime ? String(s.endTime).substring(0, 5) : '17:30',
-          restStartTime: s.restStartTime ? String(s.restStartTime).substring(0, 5) : '12:00',
-          restEndTime: s.restEndTime ? String(s.restEndTime).substring(0, 5) : '13:30',
+          startTime: toHHmm(s.startTime, '08:00'),
+          endTime: toHHmm(s.endTime, '17:30'),
+          restStartTime: toHHmm(s.restStartTime, '12:00'),
+          restEndTime: toHHmm(s.restEndTime, '13:30'),
         }))
       : [
           { dayOfWeek: 1, dayName: 'Thứ 2', isWorking: true, startTime: '08:00', endTime: '17:30', restStartTime: '12:00', restEndTime: '13:30' },

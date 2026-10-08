@@ -18,14 +18,9 @@ if sys.stdout.encoding != 'utf-8':
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import docx
-from rich.console import Console
-from rich.panel import Panel
 import json
 
 from src.pipeline import IngestionPipeline
-
-
-console = Console(force_terminal=True, legacy_windows=False)
 
 
 def create_sample_policy_docx(file_path: Path):

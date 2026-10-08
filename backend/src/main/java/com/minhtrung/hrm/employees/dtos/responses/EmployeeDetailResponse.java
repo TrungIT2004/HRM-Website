@@ -97,6 +97,9 @@ public class EmployeeDetailResponse {
 
         private Boolean isActive;
         private String bankName;
+        private String bankCode;
         private String bankAccountNumber;
+        private String accountHolderName;
+        private boolean isDefaultBank;
     }
 }

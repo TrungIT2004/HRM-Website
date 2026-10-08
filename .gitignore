@@ -197,3 +197,27 @@ $RECYCLE.BIN/
 
 # Test Dataset (Biometrics LFW benchmark)
 Check Attendance/test/
+
+# ==========================================
+# 7. LOCAL TOOLING & GENERATED TEST ARTIFACTS
+# ==========================================
+# Playwright MCP snapshots & HTML reports (local debug only)
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Ad-hoc scratch scripts
+scratch/
+
+# Local codebase graph cache (binary, auto-regenerated)
+.codebase-memory/graph.db*
+
+# Backup / merge leftovers
+*.bak
+*.unused-bak
+*.orig
+*.rej
+
+# Generated AI eval outputs (regenerable via test scripts)
+ai-service/tests/results/
+**/generated_testset.*

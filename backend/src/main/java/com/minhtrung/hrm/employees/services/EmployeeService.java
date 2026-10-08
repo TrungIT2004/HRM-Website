@@ -151,6 +151,7 @@ public class EmployeeService {
                 .userId(user.getUserId())
                 .employeeCode(user.getEmployeeCode())
                 .fullName(user.getFirstName() + " " + user.getLastName())
+                .email(user.getEmail())
                 .profilePicUrl(user.getProfilePicUrl())
                 .departmentName(user.getDepartment() != null ? user.getDepartment().getName() : null)
                 .jobTitle(user.getJob() != null ? user.getJob().getTitle() : null)
@@ -340,7 +341,10 @@ public class EmployeeService {
                     .endDate(salaryOpt.map(Salary::getEndDate).orElse(null))
                     .isActive(salaryOpt.map(Salary::isActive).orElse(null))
                     .bankName(b != null ? b.getBankName() : null)
-                    .bankAccountNumber(b != null ? b.getBankAccountNumber() : null)
+                    .bankCode(b != null ? b.getBankCode() : null)
+                    .bankAccountNumber(b != null ? b.getAccountNumber() : null)
+                    .accountHolderName(b != null ? b.getAccountHolderName() : null)
+                    .isDefaultBank(b != null && Boolean.TRUE.equals(b.getIsDefault()))
                     .build();
         }
 
@@ -671,14 +675,39 @@ public class EmployeeService {
         salaryRepository.save(salary);
 
         // Cập nhật bảng user_bank_accounts
-        UserBankAccount bank = userBankAccountRepository.findById(targetUserId).orElseGet(() -> {
-            UserBankAccount b = new UserBankAccount();
-            b.setUser(user);
-            return b;
-        });
+        // Cập nhật tài khoản ngân hàng nhận lương (is_default = true).
+        // Số tài khoản khác số hiện tại -> tạo tài khoản MỚI và chuyển mặc định sang nó,
+        // giữ nguyên lịch sử tài khoản cũ (phục vụ đối soát lương các kỳ trước).
+        List<UserBankAccount> accounts =
+                userBankAccountRepository.findByUser_UserIdOrderByIsDefaultDesc(targetUserId);
+        UserBankAccount bank = UserBankAccount.pickDefault(accounts);
+
+        String newAccount = request.getBankAccountNumber() != null
+                ? request.getBankAccountNumber().trim() : null;
+        boolean numberChanged = newAccount != null && !newAccount.isBlank()
+                && (bank == null || !newAccount.equals(bank.getAccountNumber()));
+
+        if (numberChanged) {
+            userBankAccountRepository.findByUser_UserIdOrderByIsDefaultDesc(targetUserId)
+                    .forEach(b -> {
+                        b.setIsDefault(false);
+                        userBankAccountRepository.save(b);
+                    });
+            bank = new UserBankAccount();
+            bank.setUser(user);
+            bank.setIsDefault(true);
+        } else if (bank == null) {
+            bank = new UserBankAccount();
+            bank.setUser(user);
+            bank.setIsDefault(true);
+        }
 
         if (request.getBankName() != null) bank.setBankName(request.getBankName().trim());
-        if (request.getBankAccountNumber() != null) bank.setBankAccountNumber(request.getBankAccountNumber().trim());
+        if (request.getBankCode() != null) bank.setBankCode(request.getBankCode().trim());
+        if (newAccount != null && !newAccount.isBlank()) bank.setAccountNumber(newAccount);
+        if (request.getAccountHolderName() != null) {
+            bank.setAccountHolderName(request.getAccountHolderName().trim());
+        }
 
         userBankAccountRepository.save(bank);
 

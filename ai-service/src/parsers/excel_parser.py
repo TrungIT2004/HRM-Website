@@ -3,11 +3,10 @@ from typing import List
 import openpyxl
 
 from src.models.schema import DocumentBlock, ParsedDocument
-from src.parsers.base_parser import BaseParser
 from src.chunkers.table_preserver import TablePreserver
 
 
-class ExcelParser(BaseParser):
+class ExcelParser:
     """
     Parser for Excel (.xlsx) files (salary tiers, KPI coefficients, leave matrices).
     Converts each sheet into structured markdown tables with sheet names as headers.
@@ -63,8 +62,7 @@ class ExcelParser(BaseParser):
                         continue
                     blocks.append(DocumentBlock(
                         block_type="TABLE",
-                        content=md_table,
-                        metadata={"sheet_name": sheet_name, "part": part_no}
+                        content=md_table
                     ))
 
         wb.close()
@@ -73,7 +71,5 @@ class ExcelParser(BaseParser):
         return ParsedDocument(
             document_name=clean_name,
             file_type="xlsx",
-            # ponytail: sheets are not pages, so page numbers stay unknown for xlsx.
-            total_pages=0,
             blocks=blocks
         )

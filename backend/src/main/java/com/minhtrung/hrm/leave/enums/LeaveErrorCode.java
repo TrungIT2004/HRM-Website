@@ -1,7 +1,6 @@
 package com.minhtrung.hrm.leave.enums;
 
 public enum LeaveErrorCode {
-    CHAIRMAN_CANNOT_LEAVE,
     OUT_OF_ANNUAL_LEAVE_DAYS,
     USER_NOT_FOUND,
     REQUEST_NOT_FOUND,

@@ -1,8 +1,6 @@
 package com.minhtrung.hrm.auth.enums;
 
 public enum AuthErrorCode {
-    INVALID_CODE,
-    EXPIRED_CODE,
     SESSION_NOT_FOUND,
     SESSION_REVOKED,
     SESSION_COMPROMISED,

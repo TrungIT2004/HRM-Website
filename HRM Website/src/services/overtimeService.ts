@@ -1,6 +1,5 @@
-import { apiClient } from './apiClient';
+import { apiClient, buildQuery, PageResponse, toHHmm } from './apiClient';
 import { OvertimeRecord } from '@/types';
-import { PageResponse } from './attendanceService';
 
 export interface OvertimeFilterParams {
   fromDate?: string;
@@ -10,21 +9,6 @@ export interface OvertimeFilterParams {
   departmentNames?: string[];
   page?: number;
   size?: number;
-}
-
-function buildQuery(params: Record<string, any>): string {
-  const q = new URLSearchParams();
-  Object.entries(params).forEach(([key, val]) => {
-    if (val !== undefined && val !== null && val !== '' && val !== 'ALL') {
-      if (Array.isArray(val)) {
-        val.forEach(v => q.append(key, String(v)));
-      } else {
-        q.append(key, String(val));
-      }
-    }
-  });
-  const qs = q.toString();
-  return qs ? `?${qs}` : '';
 }
 
 export interface CreateOvertimeRequest {
@@ -49,18 +33,10 @@ const computeHoursFromTimes = (start: string, end: string): number => {
 };
 
 function mapOtItem(item: any): OvertimeRecord {
-  const startTime = item.approvedStartTime && item.approvedStartTime.includes('T')
-    ? item.approvedStartTime.split('T')[1].substring(0, 5)
-    : (item.approvedStartTime || '08:30');
-  const endTime = item.approvedEndTime && item.approvedEndTime.includes('T')
-    ? item.approvedEndTime.split('T')[1].substring(0, 5)
-    : (item.approvedEndTime || '17:30');
-  const clockIn = item.clockInTime && item.clockInTime.includes('T')
-    ? item.clockInTime.split('T')[1].substring(0, 5)
-    : item.clockInTime;
-  const clockOut = item.clockOutTime && item.clockOutTime.includes('T')
-    ? item.clockOutTime.split('T')[1].substring(0, 5)
-    : item.clockOutTime;
+  const startTime = toHHmm(item.approvedStartTime, '08:30');
+  const endTime = toHHmm(item.approvedEndTime, '17:30');
+  const clockIn = toHHmm(item.clockInTime, item.clockInTime);
+  const clockOut = toHHmm(item.clockOutTime, item.clockOutTime);
 
   return {
     ...item,

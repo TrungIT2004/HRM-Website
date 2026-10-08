@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.minhtrung.hrm.auth.entities.UserSession;
 import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
 import com.minhtrung.hrm.auth.services.SessionBlacklistService;
+import com.minhtrung.hrm.asset.services.AssetService;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
@@ -45,6 +46,7 @@ public class ResignationService {
     private final UserSessionRepository userSessionRepository;
     private final SessionBlacklistService sessionBlacklistService;
     private final PermissionService permissionService;
+    private final AssetService assetService;
 
     /**
      * 1. Nhân viên tạo đơn xin thôi việc
@@ -201,6 +203,12 @@ public class ResignationService {
         if (newStatus != ResignationStatus.APPROVED && newStatus != ResignationStatus.REJECTED) {
             throw new ResignationException(ResignationErrorCode.INVALID_STATUS_TRANSITION,
                     "Trạng thái phê duyệt cấp cao chỉ có thể là Duyệt (APPROVED) hoặc Từ chối (REJECTED)");
+        }
+
+        // Chặn duyệt nghỉ khi còn giữ tài sản chưa trả (active / pending_return / overdue)
+        if (newStatus == ResignationStatus.APPROVED && assetService.hasActiveHoldings(requestorId)) {
+            throw new ResignationException(ResignationErrorCode.INVALID_STATUS_TRANSITION,
+                    "Nhân viên còn giữ tài sản chưa trả hết — thu hồi xong mới được duyệt thôi việc");
         }
 
         User executiveProxy = userRepository.getReferenceById(approverId);

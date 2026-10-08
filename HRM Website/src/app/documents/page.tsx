@@ -3,10 +3,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AppShell from '@/components/layout/AppShell';
 import { useAuth } from '@/context/AuthContext';
-import { 
-  aiService, 
-  KnowledgeDocument 
+import {
+  aiService,
+  KnowledgeDocument
 } from '@/services/aiService';
+import {
+  documentService,
+  TemplateDocument,
+  TemplateCategory,
+  TEMPLATE_CATEGORY_LABELS
+} from '@/services/documentService';
 import { formatDateVN } from '@/utils/format';
 import { DEPARTMENTS } from '@/constants/departments';
 import {
@@ -35,6 +41,94 @@ import {
   Plus
 } from 'lucide-react';
 
+const formatFileSize = (bytes: number) => {
+  if (!bytes || bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+};
+
+function FileDropzone({
+  inputRef,
+  file,
+  onPick,
+  emptyTitle,
+  emptyHint
+}: {
+  inputRef: React.RefObject<HTMLInputElement | null>;
+  file: File | null;
+  onPick: (f: File) => void;
+  emptyTitle: string;
+  emptyHint: string;
+}) {
+  const [isDragOver, setIsDragOver] = useState(false);
+
+  const take = (files: FileList | null) => {
+    const f = files?.[0];
+    if (f) onPick(f);
+  };
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => inputRef.current?.click()}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          inputRef.current?.click();
+        }
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setIsDragOver(true);
+      }}
+      onDragLeave={(e) => {
+        e.preventDefault();
+        if (e.currentTarget.contains(e.relatedTarget as Node)) return;
+        setIsDragOver(false);
+      }}
+      onDrop={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragOver(false);
+        take(e.dataTransfer.files);
+      }}
+      className={`border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition-colors ${
+        isDragOver
+          ? 'border-blue-500 bg-blue-50'
+          : 'border-slate-300 hover:border-blue-500 bg-slate-50/50 hover:bg-blue-50/30'
+      }`}
+    >
+      <input
+        ref={inputRef}
+        type="file"
+        accept=".pdf,.docx,.doc,.xlsx,.xls"
+        className="hidden"
+        onClick={(e) => e.stopPropagation()}
+        onChange={(e) => {
+          take(e.target.files);
+          e.target.value = '';
+        }}
+      />
+      {file ? (
+        <div className="flex items-center justify-center gap-2 text-sm font-bold text-blue-700">
+          <FileCheck className="w-5 h-5 text-blue-600" />
+          <span className="truncate max-w-xs">{file.name}</span>
+          <span className="text-xs text-slate-500 font-normal">({formatFileSize(file.size)})</span>
+        </div>
+      ) : (
+        <div className="space-y-1">
+          <Upload className="w-8 h-8 text-slate-400 mx-auto" />
+          <div className="text-sm font-semibold text-slate-700">{emptyTitle}</div>
+          <div className="text-xs text-slate-400">{emptyHint}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function DocumentsPage() {
   const { currentUser, isHR, isExecutive, isManager, isAdmin, can } = useAuth();
   const canUpload = isHR || isExecutive || isManager || isAdmin || can('DOCUMENT_UPLOAD');
@@ -51,6 +145,12 @@ export default function DocumentsPage() {
   const [deptFilter, setDeptFilter] = useState<string>('ALL');
   // ponytail: lọc client-side trên list đã tải, khỏi API mới
   const [showMineOnly, setShowMineOnly] = useState(false);
+
+  // Tab Mẫu đơn & Biểu mẫu (bảng documents — public toàn công ty, gate write bằng DOCUMENT_UPLOAD)
+  const [activeTab, setActiveTab] = useState<'policy' | 'templates'>('policy');
+  const [templates, setTemplates] = useState<TemplateDocument[]>([]);
+  const [isTplLoading, setIsTplLoading] = useState(false);
+  const [tplCategory, setTplCategory] = useState<string>('ALL');
 
   // Upload Modal State
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
@@ -70,6 +170,88 @@ export default function DocumentsPage() {
   const [updateFile, setUpdateFile] = useState<File | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
   const updateFileInputRef = useRef<HTMLInputElement>(null);
+
+  // Template modals (mẫu đơn): metadata nhập tay vì title/summary do người đăng đặt
+  const [isTplUploadOpen, setIsTplUploadOpen] = useState(false);
+  const [tplFile, setTplFile] = useState<File | null>(null);
+  const [tplTitle, setTplTitle] = useState('');
+  const [tplCat, setTplCat] = useState<TemplateCategory>('LEAVE');
+  const [tplSummary, setTplSummary] = useState('');
+  const [isTplSaving, setIsTplSaving] = useState(false);
+  const tplInputRef = useRef<HTMLInputElement>(null);
+  const [tplEdit, setTplEdit] = useState<TemplateDocument | null>(null);
+  const [tplDelete, setTplDelete] = useState<TemplateDocument | null>(null);
+  const [isTplDeleting, setIsTplDeleting] = useState(false);
+
+  const handleTplSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const isEdit = !!tplEdit;
+    if (!isEdit && !tplFile) {
+      showToast('Vui lòng chọn file mẫu đơn (.pdf, .docx, .doc, .xlsx)', 'error');
+      return;
+    }
+    if (!tplTitle.trim()) {
+      showToast('Vui lòng nhập tiêu đề hiển thị', 'error');
+      return;
+    }
+    const formData = new FormData();
+    if (tplFile) formData.append('file', tplFile);
+    formData.append('documentTitle', tplTitle.trim());
+    formData.append('category', tplCat);
+    formData.append('summary', tplSummary.trim());
+
+    setIsTplSaving(true);
+    try {
+      if (isEdit && tplEdit) {
+        await documentService.update(tplEdit.documentId, formData);
+        showToast(`Đã cập nhật "${tplTitle.trim()}"!`, 'success');
+      } else {
+        await documentService.upload(formData);
+        showToast(`Đã đăng mẫu đơn "${tplTitle.trim()}"!`, 'success');
+      }
+      setIsTplUploadOpen(false);
+      setTplEdit(null);
+      setTplFile(null);
+      await fetchTemplates();
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi lưu mẫu đơn', 'error');
+    } finally {
+      setIsTplSaving(false);
+    }
+  };
+
+  const openTplCreate = () => {
+    setTplEdit(null);
+    setTplFile(null);
+    setTplTitle('');
+    setTplCat('LEAVE');
+    setTplSummary('');
+    setIsTplUploadOpen(true);
+  };
+
+  const openTplEdit = (doc: TemplateDocument) => {
+    setTplEdit(doc);
+    setTplFile(null);
+    setTplTitle(doc.documentTitle);
+    setTplCat(doc.category);
+    setTplSummary(doc.summary || '');
+    setIsTplUploadOpen(true);
+  };
+
+  const handleTplConfirmDelete = async () => {
+    if (!tplDelete) return;
+    setIsTplDeleting(true);
+    try {
+      await documentService.delete(tplDelete.documentId);
+      showToast(`Đã xóa mẫu đơn "${tplDelete.documentTitle}"!`, 'success');
+      setTemplates((prev) => prev.filter((d) => d.documentId !== tplDelete.documentId));
+      setTplDelete(null);
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi xóa mẫu đơn', 'error');
+    } finally {
+      setIsTplDeleting(false);
+    }
+  };
 
   // Toast Notification
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
@@ -99,6 +281,42 @@ export default function DocumentsPage() {
   useEffect(() => {
     fetchDocuments();
   }, [deptFilter]);
+
+  // ─── Mẫu đơn & Biểu mẫu ───
+  const fetchTemplates = async () => {
+    setIsTplLoading(true);
+    try {
+      const list = await documentService.list(tplCategory === 'ALL' ? undefined : tplCategory);
+      setTemplates(Array.isArray(list) ? list : []);
+    } catch (err: any) {
+      showToast(err.message || 'Không thể tải danh sách mẫu đơn', 'error');
+      setTemplates([]);
+    } finally {
+      setIsTplLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab === 'templates') fetchTemplates();
+  }, [activeTab, tplCategory]);
+
+  const handleTplDownload = async (doc: TemplateDocument) => {
+    try {
+      showToast(`Đang chuẩn bị tải xuống "${doc.documentTitle}"...`, 'info');
+      await documentService.download(doc);
+      showToast(`Đã tải xuống "${doc.documentName}" thành công!`, 'success');
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi tải xuống file', 'error');
+    }
+  };
+
+  const filteredTemplates = templates.filter((doc) => {
+    const q = searchTerm.toLowerCase();
+    return !q
+      || doc.documentTitle.toLowerCase().includes(q)
+      || (doc.summary && doc.summary.toLowerCase().includes(q))
+      || (doc.uploaderName && doc.uploaderName.toLowerCase().includes(q));
+  });
 
   // Handle Download
   const handleDownload = async (doc: KnowledgeDocument) => {
@@ -210,17 +428,14 @@ export default function DocumentsPage() {
     return <File className="w-6 h-6 text-indigo-600" />;
   };
 
-  const formatFileSize = (bytes: number) => {
-    if (!bytes || bytes === 0) return '0 B';
-    const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
-  };
-
+  // ponytail: trang đơn nội dung — bỏ sidemenu 1 mục thừa, full-width
   return (
-    <AppShell>
-      <div className="space-y-6 pb-12">
+    <AppShell noSidebar>
+      <div
+        className="space-y-6 pb-12"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => e.preventDefault()}
+      >
         {/* Toast Notification */}
         {toast && (
           <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-5 duration-300">
@@ -243,21 +458,44 @@ export default function DocumentsPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl font-black tracking-tight text-slate-900">
-              Tài liệu & Quy chế
+              {activeTab === 'policy' ? 'Tài liệu & Quy chế' : 'Mẫu đơn & Biểu mẫu'}
             </h1>
             <p className="text-xs text-slate-500 mt-0.5">
-              Tra cứu chính sách nội bộ, quy chế lao động và tài liệu hướng dẫn.
+              {activeTab === 'policy'
+                ? 'Tra cứu chính sách nội bộ, quy chế lao động và tài liệu hướng dẫn.'
+                : 'Tải biểu mẫu đơn xin nghỉ, nghỉ việc, hợp đồng và biên bản dùng chung toàn công ty.'}
             </p>
           </div>
           {canManage && (
             <button
-              onClick={() => setIsUploadModalOpen(true)}
+              onClick={() => (activeTab === 'policy' ? setIsUploadModalOpen(true) : openTplCreate())}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md transition-all cursor-pointer shrink-0"
             >
               <Plus className="w-4 h-4" />
-              <span>Nạp tài liệu mới</span>
+              <span>{activeTab === 'policy' ? 'Nạp tài liệu mới' : 'Đăng mẫu đơn mới'}</span>
             </button>
           )}
+        </div>
+
+        {/* Tabs: Quy chế (RAG) | Mẫu đơn (bảng documents) */}
+        <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 border border-slate-200/80 w-fit">
+          {([
+            { key: 'policy', label: 'Tài liệu & Quy chế' },
+            { key: 'templates', label: `Mẫu đơn & Biểu mẫu${templates.length ? ` (${templates.length})` : ''}` },
+          ] as const).map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setActiveTab(t.key)}
+              aria-pressed={activeTab === t.key}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                activeTab === t.key
+                  ? 'bg-white text-blue-700 shadow-sm border border-slate-200/80'
+                  : 'text-slate-500 hover:text-slate-700'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
         {/* Filter and Search Bar */}
@@ -268,7 +506,7 @@ export default function DocumentsPage() {
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Tìm kiếm theo tên tài liệu, người tải lên..."
+                placeholder={activeTab === 'policy' ? 'Tìm kiếm theo tên tài liệu, người tải lên...' : 'Tìm kiếm theo tiêu đề, nội dung tóm tắt, người đăng...'}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-800 placeholder-slate-400"
@@ -285,44 +523,72 @@ export default function DocumentsPage() {
 
             {/* Department Filter (backend là nguồn chân lý cho phạm vi) */}
             <div className="flex items-center gap-2">
-              {canUpload && (
-                <button
-                  onClick={() => setShowMineOnly(v => !v)}
-                  title="Chỉ hiện tài liệu do chính bạn đăng"
-                  aria-pressed={showMineOnly}
-                  className={`px-3 py-2.5 rounded-xl border text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 ${
-                    showMineOnly
-                      ? 'bg-blue-600 border-blue-600 text-white shadow-md'
-                      : 'border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-50'
-                  }`}
-                >
-                  Của tôi
-                </button>
-              )}
-              <span className="text-xs font-semibold text-slate-500 shrink-0 hidden sm:inline">Phòng ban:</span>
-              <select
-                value={deptFilter}
-                onChange={(e) => setDeptFilter(e.target.value)}
-                className="px-3 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-medium text-slate-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all cursor-pointer"
-              >
-                <option value="ALL">Toàn công ty (Tất cả)</option>
-                {DEPARTMENTS.map(d => (
-                  <option key={d.value} value={d.value}>{d.label}</option>
-                ))}
-              </select>
+              {activeTab === 'policy' ? (
+                <>
+                  {canUpload && (
+                    <button
+                      onClick={() => setShowMineOnly(v => !v)}
+                      title="Chỉ hiện tài liệu do chính bạn đăng"
+                      aria-pressed={showMineOnly}
+                      className={`px-3 py-2.5 rounded-xl border text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0 ${
+                        showMineOnly
+                          ? 'bg-blue-600 border-blue-600 text-white shadow-md'
+                          : 'border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-50'
+                      }`}
+                    >
+                      Của tôi
+                    </button>
+                  )}
+                  <span className="text-xs font-semibold text-slate-500 shrink-0 hidden sm:inline">Phòng ban:</span>
+                  <select
+                    value={deptFilter}
+                    onChange={(e) => setDeptFilter(e.target.value)}
+                    className="px-3 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-medium text-slate-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all cursor-pointer"
+                  >
+                    <option value="ALL">Toàn công ty (Tất cả)</option>
+                    {DEPARTMENTS.map(d => (
+                      <option key={d.value} value={d.value}>{d.label}</option>
+                    ))}
+                  </select>
 
-              <button
-                onClick={fetchDocuments}
-                title="Làm mới danh sách"
-                className="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors cursor-pointer shrink-0"
-              >
-                <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-blue-600' : ''}`} />
-              </button>
+                  <button
+                    onClick={fetchDocuments}
+                    title="Làm mới danh sách"
+                    className="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors cursor-pointer shrink-0"
+                  >
+                    <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-blue-600' : ''}`} />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className="text-xs font-semibold text-slate-500 shrink-0 hidden sm:inline">Nhóm đơn:</span>
+                  <select
+                    value={tplCategory}
+                    onChange={(e) => setTplCategory(e.target.value)}
+                    className="px-3 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-medium text-slate-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all cursor-pointer"
+                  >
+                    <option value="ALL">Tất cả nhóm đơn</option>
+                    {(Object.keys(TEMPLATE_CATEGORY_LABELS) as TemplateCategory[]).map((c) => (
+                      <option key={c} value={c}>{TEMPLATE_CATEGORY_LABELS[c]}</option>
+                    ))}
+                  </select>
+
+                  <button
+                    onClick={fetchTemplates}
+                    title="Làm mới danh sách"
+                    className="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors cursor-pointer shrink-0"
+                  >
+                    <RefreshCw className={`w-4 h-4 ${isTplLoading ? 'animate-spin text-blue-600' : ''}`} />
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
 
         {/* Documents Grid */}
+        {activeTab === 'policy' && (
+        <>
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -458,6 +724,127 @@ export default function DocumentsPage() {
             })}
           </div>
         )}
+        </>
+        )}
+
+        {/* Template Grid: hiện tiêu đề + tóm tắt, ẩn tên file (chỉ dùng lúc tải xuống) */}
+        {activeTab === 'templates' && (
+        <>
+        {isTplLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="bg-white rounded-2xl border border-slate-200/80 p-5 space-y-4 animate-pulse">
+                <div className="h-4 bg-slate-100 rounded-md w-3/4" />
+                <div className="h-3 bg-slate-100 rounded-md w-full" />
+                <div className="h-3 bg-slate-100 rounded-md w-1/2" />
+              </div>
+            ))}
+          </div>
+        ) : filteredTemplates.length === 0 ? (
+          <div className="bg-white rounded-2xl border border-slate-200/80 p-12 text-center space-y-4">
+            <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto">
+              <FolderOpen className="w-8 h-8" />
+            </div>
+            <div className="max-w-md mx-auto space-y-1">
+              <h3 className="text-base font-bold text-slate-900">Không tìm thấy mẫu đơn phù hợp</h3>
+              <p className="text-sm text-slate-500">
+                {searchTerm
+                  ? 'Thử thay đổi từ khóa tìm kiếm để xem thêm mẫu đơn.'
+                  : 'Chưa có mẫu đơn nào trong nhóm này.'}
+              </p>
+            </div>
+            {canManage && (
+              <button
+                onClick={openTplCreate}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-all cursor-pointer shadow-sm"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Đăng mẫu đơn đầu tiên</span>
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {filteredTemplates.map((doc) => (
+              <div
+                key={doc.documentId}
+                className="bg-white rounded-2xl border border-slate-200/80 hover:border-blue-300 hover:shadow-md transition-all p-5 flex flex-col justify-between group"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 shrink-0 group-hover:scale-105 transition-transform">
+                      {getFileIcon(doc.fileType)}
+                    </div>
+                    <div className="min-w-0 pt-0.5">
+                      <h3
+                        className="font-bold text-slate-900 text-sm leading-snug line-clamp-2"
+                        title={doc.documentTitle}
+                      >
+                        {doc.documentTitle}
+                      </h3>
+                      <span className="inline-block mt-1.5 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold">
+                        {doc.categoryLabel || TEMPLATE_CATEGORY_LABELS[doc.category]} • {doc.fileType}
+                      </span>
+                    </div>
+                  </div>
+                  {doc.summary && (
+                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-3" title={doc.summary}>
+                      {doc.summary}
+                    </p>
+                  )}
+
+                  <div className="text-xs text-slate-500 space-y-1 pt-1">
+                    <div className="flex items-center justify-between">
+                      <span>Người đăng:</span>
+                      <span className="font-semibold text-slate-700 truncate max-w-[140px]">{doc.uploaderName || 'Hệ thống'}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Ngày đăng:</span>
+                      <span className="font-medium text-slate-600">
+                        {doc.createdAt ? formatDateVN(doc.createdAt) : 'Mới'}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Dung lượng:</span>
+                      <span className="font-semibold text-slate-700">{formatFileSize(doc.fileSize)}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                  <button
+                    onClick={() => handleTplDownload(doc)}
+                    title={`Tải xuống ${doc.documentName}`}
+                    className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer border border-slate-200/80"
+                  >
+                    <Download className="w-4 h-4" />
+                  </button>
+
+                  {canManage && (
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={() => openTplEdit(doc)}
+                        title="Sửa tiêu đề, nhóm hoặc thay file"
+                        className="p-2 rounded-xl text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer"
+                      >
+                        <Pencil className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setTplDelete(doc)}
+                        title="Xóa mẫu đơn"
+                        className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        </>
+        )}
 
         {/* Modal: Tải lên tài liệu mới */}
         {isUploadModalOpen && (
@@ -487,35 +874,13 @@ export default function DocumentsPage() {
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                     Tệp đính kèm (.PDF, .DOCX, .DOC, .XLSX)
                   </label>
-                  <div
-                    onClick={() => fileInputRef.current?.click()}
-                    className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-50/50 hover:bg-blue-50/30"
-                  >
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept=".pdf,.docx,.doc,.xlsx,.xls"
-                      className="hidden"
-                      onChange={(e) => {
-                        if (e.target.files?.[0]) {
-                          setUploadFile(e.target.files[0]);
-                        }
-                      }}
-                    />
-                    {uploadFile ? (
-                      <div className="flex items-center justify-center gap-2 text-sm font-bold text-blue-700">
-                        <FileCheck className="w-5 h-5 text-blue-600" />
-                        <span className="truncate max-w-xs">{uploadFile.name}</span>
-                        <span className="text-xs text-slate-500 font-normal">({formatFileSize(uploadFile.size)})</span>
-                      </div>
-                    ) : (
-                      <div className="space-y-1">
-                        <Upload className="w-8 h-8 text-slate-400 mx-auto" />
-                        <div className="text-sm font-semibold text-slate-700">Nhấp để duyệt file hoặc kéo thả vào đây</div>
-                        <div className="text-xs text-slate-400">Dung lượng tối đa khuyến nghị: 25MB</div>
-                      </div>
-                    )}
-                  </div>
+                  <FileDropzone
+                    inputRef={fileInputRef}
+                    file={uploadFile}
+                    onPick={setUploadFile}
+                    emptyTitle="Nhấp để duyệt file hoặc kéo thả vào đây"
+                    emptyHint="Dung lượng tối đa khuyến nghị: 25MB"
+                  />
                 </div>
 
                 {/* Scope Selection: đa chọn, backend đã hỗ trợ chuỗi phẩy */}
@@ -684,35 +1049,13 @@ export default function DocumentsPage() {
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                     File thay thế (.PDF, .DOCX, .DOC, .XLSX)
                   </label>
-                  <div
-                    onClick={() => updateFileInputRef.current?.click()}
-                    className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-50/50 hover:bg-blue-50/30"
-                  >
-                    <input
-                      ref={updateFileInputRef}
-                      type="file"
-                      accept=".pdf,.docx,.doc,.xlsx,.xls"
-                      className="hidden"
-                      onChange={(e) => {
-                        if (e.target.files?.[0]) {
-                          setUpdateFile(e.target.files[0]);
-                        }
-                      }}
-                    />
-                    {updateFile ? (
-                      <div className="flex items-center justify-center gap-2 text-sm font-bold text-blue-700">
-                        <FileCheck className="w-5 h-5 text-blue-600" />
-                        <span className="truncate max-w-xs">{updateFile.name}</span>
-                        <span className="text-xs text-slate-500 font-normal">({formatFileSize(updateFile.size)})</span>
-                      </div>
-                    ) : (
-                      <div className="space-y-1">
-                        <Upload className="w-8 h-8 text-slate-400 mx-auto" />
-                        <div className="text-sm font-semibold text-slate-700">Nhấp để chọn file thay thế</div>
-                        <div className="text-xs text-slate-400">Phạm vi phân quyền cũ được giữ nguyên</div>
-                      </div>
-                    )}
-                  </div>
+                  <FileDropzone
+                    inputRef={updateFileInputRef}
+                    file={updateFile}
+                    onPick={setUpdateFile}
+                    emptyTitle="Nhấp để chọn file thay thế"
+                    emptyHint="Phạm vi phân quyền cũ được giữ nguyên"
+                  />
                 </div>
 
                 <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
@@ -742,6 +1085,168 @@ export default function DocumentsPage() {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* Modal: Đăng / Sửa mẫu đơn (tiêu đề + nhóm + tóm tắt do người đăng đặt) */}
+        {isTplUploadOpen && (
+          <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-orange-50 text-orange-600">
+                    <Upload className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-extrabold text-slate-900">
+                      {tplEdit ? 'Sửa mẫu đơn' : 'Đăng mẫu đơn mới'}
+                    </h3>
+                    <p className="text-xs text-slate-500">Hiển thị cho toàn công ty</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => { setIsTplUploadOpen(false); setTplEdit(null); setTplFile(null); }}
+                  className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleTplSubmit} className="space-y-4 pt-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Tệp mẫu đơn (.PDF, .DOCX, .DOC, .XLSX){tplEdit && ' — để trống nếu giữ file cũ'}
+                  </label>
+                  <FileDropzone
+                    inputRef={tplInputRef}
+                    file={tplFile}
+                    onPick={setTplFile}
+                    emptyTitle="Nhấp để duyệt file hoặc kéo thả vào đây"
+                    emptyHint="Dung lượng tối đa: 10MB"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Tiêu đề hiển thị
+                  </label>
+                  <input
+                    type="text"
+                    value={tplTitle}
+                    onChange={(e) => setTplTitle(e.target.value)}
+                    placeholder="VD: Đơn xin nghỉ phép năm"
+                    maxLength={255}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-800 placeholder-slate-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Nhóm đơn
+                  </label>
+                  <select
+                    value={tplCat}
+                    onChange={(e) => setTplCat(e.target.value as TemplateCategory)}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all cursor-pointer"
+                  >
+                    {(Object.keys(TEMPLATE_CATEGORY_LABELS) as TemplateCategory[]).map((c) => (
+                      <option key={c} value={c}>{TEMPLATE_CATEGORY_LABELS[c]}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Tóm tắt nội dung
+                  </label>
+                  <textarea
+                    value={tplSummary}
+                    onChange={(e) => setTplSummary(e.target.value)}
+                    placeholder="Mô tả ngắn gọn để nhân viên tìm đúng mẫu đơn..."
+                    rows={3}
+                    maxLength={2000}
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-800 placeholder-slate-400 resize-none"
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+                  <button
+                    type="button"
+                    onClick={() => { setIsTplUploadOpen(false); setTplEdit(null); setTplFile(null); }}
+                    className="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
+                  >
+                    Hủy
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isTplSaving || (!tplEdit && !tplFile)}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-bold shadow-md shadow-blue-500/20 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isTplSaving ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        <span>Đang lưu...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="w-4 h-4" />
+                        <span>{tplEdit ? 'Xác nhận sửa' : 'Đăng mẫu đơn'}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Modal: Xác nhận xóa mẫu đơn */}
+        {tplDelete && (
+          <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+              <div className="flex items-start gap-3">
+                <div className="p-2.5 rounded-xl bg-rose-50 text-rose-600 shrink-0">
+                  <AlertTriangle className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-base font-extrabold text-slate-900">Xóa mẫu đơn này?</h3>
+                  <p className="text-sm font-semibold text-slate-700 truncate mt-0.5" title={tplDelete.documentTitle}>
+                    {tplDelete.documentTitle}
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs text-slate-500 mt-3 leading-relaxed">
+                Mẫu đơn sẽ bị ẩn khỏi trang. File gốc vẫn giữ trên máy chủ.
+              </p>
+              <div className="flex items-center justify-end gap-3 pt-4 mt-4 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => !isTplDeleting && setTplDelete(null)}
+                  disabled={isTplDeleting}
+                  className="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="button"
+                  onClick={handleTplConfirmDelete}
+                  disabled={isTplDeleting}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 active:bg-rose-800 text-white text-sm font-bold shadow-md shadow-rose-500/20 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isTplDeleting ? (
+                    <>
+                      <RefreshCw className="w-4 h-4 animate-spin" />
+                      <span>Đang xóa...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Trash2 className="w-4 h-4" />
+                      <span>Xóa mẫu đơn</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         )}
