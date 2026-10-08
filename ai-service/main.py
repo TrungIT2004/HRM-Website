@@ -433,7 +433,8 @@ async def list_documents(
     status: Optional[str] = Query(None, description="Filter by status (PROCESSING, COMPLETED, FAILED)"),
     search: Optional[str] = Query(None, description="Search by document name"),
     department: Optional[str] = Query(None, description="Filter by specific department"),
-    user_dept: Optional[str] = Query(None, description="Current employee department for access control")
+    user_dept: Optional[str] = Query(None, description="Current employee department for access control"),
+    owner_name: Optional[str] = Query(None, description="Uploader full name: owner always sees own documents")
 ):
     """List all ingested documents with chunk counts, allowed departments, and download URLs."""
     def clean_param(val: Optional[str]) -> Optional[str]:
@@ -452,6 +453,7 @@ async def list_documents(
     search = clean_param(search)
     department = clean_param(department)
     user_dept = clean_param(user_dept)
+    owner_name = clean_param(owner_name)
 
     print(f"[DEBUG FASTAPI list_documents] status={status}, search={search}, department={department}, user_dept={user_dept}")
     conn = get_db_connection()
@@ -476,11 +478,16 @@ async def list_documents(
             query += " AND d.file_name ILIKE %s"
             params.append(f"%{search}%")
 
-        # Ràng buộc phân quyền PBAC: Nhân viên chỉ được xem tài liệu ALL hoặc phòng ban của mình
+        # Ràng buộc phân quyền PBAC: Nhân viên chỉ được xem tài liệu ALL hoặc phòng ban của mình.
+        # Owner luôn thấy file của mình kể cả khi scope không chứa phòng mình.
         if user_dept and user_dept.strip():
             clean_user_dept = user_dept.strip()
-            query += " AND (d.allowed_departments && %s::varchar[] OR 'ALL' = ANY(d.allowed_departments))"
-            params.append([clean_user_dept, "ALL"])
+            if owner_name and owner_name.strip():
+                query += " AND (d.allowed_departments && %s::varchar[] OR 'ALL' = ANY(d.allowed_departments) OR d.uploaded_by ILIKE %s)"
+                params.extend([[clean_user_dept, "ALL"], owner_name.strip()])
+            else:
+                query += " AND (d.allowed_departments && %s::varchar[] OR 'ALL' = ANY(d.allowed_departments))"
+                params.append([clean_user_dept, "ALL"])
 
         # Bộ lọc tìm kiếm theo phòng ban do người dùng chọn trên UI (nếu là 'ALL' hoặc để trống -> xem tất cả tài liệu có quyền xem)
         if department and department.strip() and department.strip().upper() != "ALL":

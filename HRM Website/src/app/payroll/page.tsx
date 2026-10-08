@@ -36,10 +36,12 @@ export default function PayrollPage() {
   // Kỳ lương (tháng/năm) là biến toàn cục dùng chung cho cả 2 tab + bộ lọc bảng lương.
   // Riêng phòng ban / từ khoá có 2 lớp: `draft` là form đang sửa, `filters` mới là giá trị
   // đã áp dụng — nút "Tra cứu" mới copy draft sang filters.
-  // Mặc định là kỳ lương hiện tại (tháng dương lịch 1-12 của năm đang tại).
+  // Mặc định là kỳ lương vừa qua (tháng dương lịch 1-12 của năm đang tại) —
+  // kỳ hiện tại chưa chốt công nên không có dữ liệu để hiện.
   const [filters, setFilters] = useState(() => {
-    const now = new Date();
-    return { month: now.getMonth() + 1, year: now.getFullYear(), dept: 'ALL', keyword: '' };
+    const prev = new Date();
+    prev.setMonth(prev.getMonth() - 1);
+    return { month: prev.getMonth() + 1, year: prev.getFullYear(), dept: 'ALL', keyword: '' };
   });
   const [draft, setDraft] = useState({ dept: 'ALL', keyword: '' });
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -461,33 +463,35 @@ export default function PayrollPage() {
                 {/* Net Salary Highlight Banner */}
                 <div className="my-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-6 text-white text-center shadow-lg shadow-emerald-500/20">
                   <span className="text-xs font-semibold text-emerald-100 uppercase tracking-wider">
-                    Lương Thực Nhận (NET PAY)
+                    Lương Thực Nhận
                   </span>
                   <div className="mt-1 text-3xl sm:text-4xl font-black">
                     {formatVND(myPayslip.netPay)}
                   </div>
-                  <p className="mt-1 text-xs text-emerald-200">
-                    Đã chuyển vào số tài khoản ngân hàng đã đăng ký
-                  </p>
+                  {String(myPayslip.status).toUpperCase() === 'PAID' && (
+                    <p className="mt-1 text-xs text-emerald-200">
+                      Đã chuyển vào số tài khoản ngân hàng đã đăng ký
+                    </p>
+                  )}
                 </div>
 
                 {/* Breakdown Table */}
                 <div className="space-y-4 text-xs">
                   <h4 className="font-bold text-slate-800 uppercase tracking-wider text-[11px]">
-                    1. Chi tiết Thu Nhập (Earnings)
+                    1. Chi tiết Thu Nhập
                   </h4>
                   <div className="divide-y divide-slate-100 bg-slate-50 rounded-2xl p-4 border border-slate-200/80">
                     <div className="flex justify-between py-2">
-                      <span className="text-slate-600">Lương thỏa thuận cơ bản (Base Salary):</span>
+                      <span className="text-slate-600">Lương thỏa thuận cơ bản:</span>
                       <span className="font-bold text-slate-800">{formatVND(myPayslip.baseSalary)}</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-slate-600">Lương công nhật thực tế ({myPayslip.actualWorkedDays}/{myPayslip.standardDays} ngày):</span>
+                      <span className="text-slate-600">Lương công nhật thực tế:</span>
                       <span className="font-bold text-slate-800">{formatVND(myPayslip.basicPay)}</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-slate-600">Tiền làm thêm giờ (Overtime OT):</span>
-                      <span className="font-bold text-orange-600">+{formatVND(myPayslip.overtimePay)}</span>
+                      <span className="text-slate-600">Tiền làm thêm giờ:</span>
+                      <span className="font-bold text-emerald-600">+{formatVND(myPayslip.overtimePay)}</span>
                     </div>
                     <div className="flex justify-between py-2">
                       <span className="text-slate-600">Phụ cấp ăn trưa, điện thoại & xăng xe:</span>
@@ -501,20 +505,20 @@ export default function PayrollPage() {
                     )}
                     {(myPayslip.grossPay || 0) > 0 && (
                       <div className="flex justify-between py-2">
-                        <span className="text-slate-600">Tổng thu nhập trước thuế (Gross):</span>
+                        <span className="text-slate-600">Tổng thu nhập trước thuế:</span>
                         <span className="font-bold text-slate-800">{formatVND(myPayslip.grossPay)}</span>
                       </div>
                     )}
                     {(myPayslip.hourlyRate || 0) > 0 && (
                       <div className="flex justify-between py-2">
-                        <span className="text-slate-600">Lương theo giờ (Hourly rate):</span>
+                        <span className="text-slate-600">Lương theo giờ:</span>
                         <span className="font-bold text-slate-800">{formatVND(myPayslip.hourlyRate)}</span>
                       </div>
                     )}
                   </div>
 
                   <h4 className="font-bold text-slate-800 uppercase tracking-wider text-[11px] pt-2">
-                    2. Các Khoản Khấu Trừ (Deductions)
+                    2. Các Khoản Khấu Trừ
                   </h4>
                   <div className="divide-y divide-slate-100 bg-slate-50 rounded-2xl p-4 border border-slate-200/80">
                     <div className="flex justify-between py-2">

@@ -21,6 +21,17 @@ public enum PermissionKey {
     RESIGN_APPROVE("Duyệt đơn thôi việc"),
     TIMESHEET_LOCK("Tính toán + chốt sổ bảng công"),
     PAYROLL_MANAGE("Tính + duyệt bảng lương"),
+    // ─── Quyền phạm vi phòng ban (chỉ thấy/duyệt dữ liệu phòng mình, cấp cho Trưởng phòng) ───
+    ATTENDANCE_VIEW_DEPT("Xem chấm công phòng ban"),
+    LEAVE_VIEW_DEPT("Xem nghỉ phép phòng ban"),
+    OVERTIME_VIEW_DEPT("Xem tăng ca phòng ban"),
+    LEAVE_APPROVE_DEPT("Duyệt / từ chối đơn nghỉ phép phòng ban"),
+    OVERTIME_APPROVE_DEPT("Duyệt / từ chối đơn tăng ca phòng ban"),
+    // ─── Quyền đánh giá hiệu suất (Form 6, 10 tiêu chí 1-5) ───
+    EVALUATION_VIEW_ALL("Xem đánh giá hiệu suất toàn công ty"),
+    EVALUATION_VIEW_DEPT("Xem đánh giá hiệu suất phòng ban"),
+    EVALUATION_APPROVE("Chấm + khóa sổ đánh giá toàn công ty"),
+    EVALUATION_APPROVE_DEPT("Chấm đánh giá hiệu suất phòng ban"),
 
     // ─── Quyền quản trị hệ thống (mặc định: System Administrator, trừ ORG_MANAGE = HR) ───
     // Quyền gốc: isSysAdmin. Gỡ isExecutive — Ban Giám Đốc không phải quản trị viên hệ thống.
@@ -34,7 +45,12 @@ public enum PermissionKey {
     // Quyền gốc: phòng Human Resources.
     EMPLOYEE_EDIT("Chỉnh sửa hồ sơ nhân viên"),
     // Quyền gốc: Executive / SysAdmin / HR / Trưởng phòng (xem AiController). Grant thêm cho nhân viên thường.
-    DOCUMENT_UPLOAD("Đăng tải tài liệu & quy chế");
+    DOCUMENT_UPLOAD("Đăng tải tài liệu & quy chế"),
+    // ─── Quyền tài sản (không hardcode dept/job — chỉ check bảng grants, SUPER_ADMIN bypass) ───
+    VIEW_ASSETS("Xem tài sản toàn công ty"),
+    MANAGE_ASSETS("Nhập / cấp / thu hồi tài sản"),
+    // ─── Quyền IT ticket — chỉ người được cấp mới thấy hàng chờ / nhận / xử lý ───
+    IT_TICKET_HANDLE("Nhận và xử lý IT ticket");
 
     private final String label;
 }

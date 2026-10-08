@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.domain.Specification;
 
+import com.minhtrung.hrm.common.specifications.SpecificationScopes;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
 import com.minhtrung.hrm.employees.entities.Department;
 import com.minhtrung.hrm.employees.entities.Job;
@@ -71,6 +72,11 @@ public class OvertimeSpecification {
     // Trần: đây là cố ý, và UI /admin đã ghi rõ "toàn công ty" trong nhãn quyền. Nếu muốn siết thì
     // thêm predicate status=PENDING vào nhánh này, hoặc tách OVERTIME_APPROVE_ALL khỏi OVERTIME_APPROVE.
     public static Specification<OvertimeRecord> forApprovals(UserRole userRole, OvertimeFilterRequest filter, boolean hasApproveGrant) {
+        return forApprovals(userRole, filter, hasApproveGrant, false);
+    }
+
+    // hasDeptGrant (OVERTIME_VIEW_DEPT / OVERTIME_APPROVE_DEPT): chỉ thấy đơn OT phòng mình.
+    public static Specification<OvertimeRecord> forApprovals(UserRole userRole, OvertimeFilterRequest filter, boolean hasApproveGrant, boolean hasDeptGrant) {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             Join<OvertimeRecord, User> requestorJoin = root.join("requestor", JoinType.INNER);
@@ -83,38 +89,9 @@ public class OvertimeSpecification {
 
             predicates.add(cb.notEqual(requestorJoin.get("userId"), currentUserId));
 
-            boolean isExecutive = myDepartment.equals("Executive Leadership");
-            boolean isDepartmentHead = myJob.startsWith("Department Head");
-
-            if (hasApproveGrant) {
-                // grant: bỏ qua chuỗi phân cấp, chỉ giữ lọc ngày/trạng thái/keyword bên dưới
-            } else if (isExecutive && myJob.contains("Chairman")) {
-                Predicate isExecDept = cb.equal(deptJoin.get("name"), "Executive Leadership");
-                Predicate isDirectors = cb.or(
-                    cb.like(jobJoin.get("title"), "%Director%"),
-                    cb.like(jobJoin.get("title"), "%Deputy%")
-                );
-                predicates.add(cb.and(isExecDept, isDirectors));
-            } 
-            else if (isExecutive && myJob.contains("Director") && !myJob.contains("Deputy") && !myJob.contains("Vice")) {
-                Predicate isViceDirector = cb.and(
-                    cb.equal(deptJoin.get("name"), "Executive Leadership"),
-                    cb.or(cb.like(jobJoin.get("title"), "%Deputy%"), cb.like(jobJoin.get("title"), "%Vice%"))
-                );
-                Predicate isDepartmentHeads = cb.like(jobJoin.get("title"), "Department Head%");
-                predicates.add(cb.or(isViceDirector, isDepartmentHeads));
-            } 
-            else if (isExecutive && (myJob.contains("Deputy") || myJob.contains("Vice"))) {
-                predicates.add(cb.like(jobJoin.get("title"), "Department Head%"));
-            } 
-            else if (isDepartmentHead) {
-                Predicate sameDept = cb.equal(deptJoin.get("name"), myDepartment);
-                Predicate notAnotherHead = cb.notLike(jobJoin.get("title"), "Department Head%");
-                predicates.add(cb.and(sameDept, notAnotherHead));
-            } 
-            else {
-                predicates.add(cb.disjunction());
-            }
+            // Chung 1 luật phân cấp với attendance/leave (SpecificationScopes) — lệch là rò dữ liệu
+            SpecificationScopes.applyManagementHierarchy(
+                    predicates, deptJoin, jobJoin, cb, myDepartment, myJob, hasDeptGrant, hasApproveGrant);
 
             applyDateAndStatusFilters(predicates, root, cb, filter);
             applyManagerKeywordSearch(predicates, requestorJoin, cb, filter);

@@ -213,7 +213,7 @@ export default function EmployeeDirectoryPage() {
           <div className="flex flex-wrap items-center gap-2">
             {canManageOrg && (
               <Link
-                href="/organization"
+                href="/organization/manage"
                 className="flex items-center gap-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2.5 text-xs font-bold transition"
               >
                 <Building2 className="h-4 w-4 text-blue-600" aria-hidden="true" />

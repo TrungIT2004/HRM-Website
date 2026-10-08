@@ -88,13 +88,6 @@ class LocalEmbedder:
         norm = sum(x * x for x in mean) ** 0.5
         return [x / norm for x in mean] if norm else None
 
-    def embed_chunk(self, chunk: ProcessedChunk) -> ProcessedChunk:
-        """Generates 768d vectors for chunk content and hypothetical questions."""
-        content_to_embed = f"{chunk.breadcrumb}\n{chunk.content}"
-        chunk.content_vector = self.generate_embedding(content_to_embed)
-        chunk.questions_vector = self._embed_questions(chunk) or chunk.content_vector
-        return chunk
-
     def embed_chunks(self, chunks: List[ProcessedChunk], batch_size: int = 32) -> List[ProcessedChunk]:
         """
         Batch embeds all chunks locally.

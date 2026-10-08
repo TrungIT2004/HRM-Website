@@ -13,6 +13,7 @@ class CrossEncoderReranker:
     """
     _instance: Optional["CrossEncoderReranker"] = None
     _model: Optional[CrossEncoder] = None
+    _load_failed: bool = False
 
     def __init__(self, model_name: Optional[str] = None):
         self.model_name = (
@@ -22,11 +23,21 @@ class CrossEncoderReranker:
         )
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
-        if CrossEncoderReranker._model is None:
+        if CrossEncoderReranker._model is None and not CrossEncoderReranker._load_failed:
             print(f"[CrossEncoderReranker] Loading reranker model '{self.model_name}' on {self.device.upper()}...")
-            # ponytail: 512 du cho chunk luat VN (~1200 ky tu); 1024 gap doi latency moi cap (~1.4s->~0.7s).
-            CrossEncoderReranker._model = CrossEncoder(self.model_name, device=self.device, max_length=512)
-            print(f"[CrossEncoderReranker] Model ready on {self.device.upper()}!")
+            try:
+                # ponytail: 512 du cho chunk luat VN (~1200 ky tu); 1024 gap doi latency moi cap (~1.4s->~0.7s).
+                CrossEncoderReranker._model = CrossEncoder(self.model_name, device=self.device, max_length=512)
+                # fp16 tren GPU: do duoc 40 cap chunk that dai 2003ms -> 587ms (3.4x).
+                # Cross-encoder chi dung de RANK (khong sinh van ban) -> mat precision khong quan trong.
+                if self.device == "cuda":
+                    CrossEncoderReranker._model.model.half()
+                print(f"[CrossEncoderReranker] Model ready on {self.device.upper()} (fp16={self.device == 'cuda'})!")
+            except Exception as e:
+                # Model tren HF thieu file tokenizer/processor hoac khong tai duoc:
+                # tat rerank, giu retrieval hybrid (vector + BM25) thay vi crash ca service.
+                CrossEncoderReranker._load_failed = True
+                print(f"[CrossEncoderReranker] WARNING: could not load '{self.model_name}' ({e}). Reranking disabled.")
 
         self.model = CrossEncoderReranker._model
 
@@ -42,6 +53,9 @@ class CrossEncoderReranker:
         """
         if not chunks or not query:
             return chunks[:top_k]
+        if self.model is None:
+            # Reranker khong load duoc luc startup: giu nguyen thu tu hybrid scores.
+            return chunks[:top_k]
 
         # Prepare pairs: [query, chunk_content_with_breadcrumb]
         pairs = []
@@ -53,14 +67,15 @@ class CrossEncoderReranker:
             # Batch inference on CUDA in milliseconds
             scores = self.model.predict(pairs, show_progress_bar=False)
 
-            # Assign rerank scores
+            # Assign rerank scores; KEEP original relevance_score (hybrid) for gating.
+            # Rerank score only used for ordering. ponytail: hybrid calibrated for threshold.
             for i, chunk in enumerate(chunks):
                 score = round(float(scores[i]), 4)
                 chunk["rerank_score"] = score
-                chunk["relevance_score"] = score
+                # relevance_score unchanged = hybrid score
 
-            # Sort descending by rerank score
-            reranked_chunks = sorted(chunks, key=lambda x: x["relevance_score"], reverse=True)
+            # Sort by rerank_score for ordering; original relevance_score preserved
+            reranked_chunks = sorted(chunks, key=lambda x: x["rerank_score"], reverse=True)
             return reranked_chunks[:top_k]
 
         except Exception as e:

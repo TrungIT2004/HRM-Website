@@ -1,13 +1,5 @@
-import { apiClient } from './apiClient';
+import { apiClient, buildQuery, PageResponse } from './apiClient';
 import { AttendanceRecord, MonthlyTimesheetSummary } from '@/types';
-
-export interface PageResponse<T> {
-  content: T[];
-  totalElements: number;
-  totalPages: number;
-  size: number;
-  number: number;
-}
 
 export interface AttendanceFilterParams {
   startDate?: string;
@@ -26,21 +18,6 @@ export interface TimesheetFilterParams {
   departmentNames?: string[];
   page?: number;
   size?: number;
-}
-
-function buildQuery(params: Record<string, any>): string {
-  const q = new URLSearchParams();
-  Object.entries(params).forEach(([key, val]) => {
-    if (val !== undefined && val !== null && val !== '' && val !== 'ALL') {
-      if (Array.isArray(val)) {
-        val.forEach(v => q.append(key, String(v)));
-      } else {
-        q.append(key, String(val));
-      }
-    }
-  });
-  const qs = q.toString();
-  return qs ? `?${qs}` : '';
 }
 
 function mapAttendanceItem(item: any): AttendanceRecord {
@@ -187,5 +164,9 @@ export const attendanceService = {
 
   exportCompanyMonthlySummary: async (params: TimesheetFilterParams = {}) => {
     return apiClient.downloadBlob(`/api/attendances/summary/company/export${buildQuery(params)}`, 'company_timesheets.xlsx');
+  },
+
+  getOverview: async (params: { startDate?: string; endDate?: string; scope?: 'dept' | 'company' } = {}) => {
+    return apiClient.get<any>(`/api/attendances/overview${buildQuery(params)}`);
   }
 };

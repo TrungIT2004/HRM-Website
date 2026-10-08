@@ -47,6 +47,24 @@ public interface AttendanceRepository extends JpaRepository<Attendance, UUID>, J
         @Param("endOfMonth") LocalDate endOfMonth
     );
 
+    @Query("""
+        SELECT a FROM Attendance a
+        JOIN FETCH a.user u
+        LEFT JOIN FETCH u.department d
+        WHERE a.workDate BETWEEN :startDate AND :endDate
+    """)
+    List<Attendance> findAllByWorkDateBetween(
+        @Param("startDate") LocalDate startDate,
+        @Param("endDate") LocalDate endDate
+    );
+
+    @Query("SELECT MAX(a.workDate) FROM Attendance a")
+    java.util.Optional<LocalDate> findMaxWorkDate();
+
+    // ponytail: ngày công mới nhất đã có dữ liệu thật (bỏ qua dòng NOT_CHECKED cron tạo sẵn)
+    @Query("SELECT MAX(a.workDate) FROM Attendance a WHERE a.status <> com.minhtrung.hrm.attendance.enums.AttendanceStatus.NOT_CHECKED")
+    java.util.Optional<LocalDate> findMaxCheckedWorkDate();
+
     @org.springframework.data.jpa.repository.Modifying
     @Query("DELETE FROM Attendance a WHERE a.workDate BETWEEN :startDate AND :endDate")
     void deleteByWorkDateBetween(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);

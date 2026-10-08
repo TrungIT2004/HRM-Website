@@ -48,5 +48,10 @@ export const organizationService = {
   /** Trả 409 nếu còn nhân viên giữ chức danh này. */
   deleteJob: async (jobId: string): Promise<{ message: string }> => {
     return apiClient.delete<{ message: string }>(`/api/jobs/${jobId}`);
+  },
+
+  getOverview: async (year?: number): Promise<any> => {
+    const q = year ? `?year=${year}` : '';
+    return apiClient.get<any>(`/api/departments/overview${q}`);
   }
 };

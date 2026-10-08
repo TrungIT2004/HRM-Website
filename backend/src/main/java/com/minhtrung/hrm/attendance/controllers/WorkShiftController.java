@@ -44,6 +44,17 @@ public class WorkShiftController {
     }
 
     /**
+     * Ca làm việc của chính nhân viên đang đăng nhập. Trả 404 nếu chưa được phân ca.
+     *
+     * GET /api/work-shifts/my-shift
+     */
+    @GetMapping("/my-shift")
+    public ResponseEntity<WorkShiftResponse> getMyWorkShift() {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        return ResponseEntity.ok(workShiftService.getMyWorkShift(currentUser.getUserId()));
+    }
+
+    /**
      * Tạo ca làm việc mới kèm lịch 7 ngày trong tuần.
      * Chỉ Trưởng phòng HR hoặc Ban Giám Đốc mới có quyền tạo.
      * 

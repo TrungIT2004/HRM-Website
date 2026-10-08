@@ -1,6 +1,5 @@
-import { apiClient } from './apiClient';
+import { apiClient, buildQuery, PageResponse } from './apiClient';
 import { LeaveRequest } from '@/types';
-import { PageResponse } from './attendanceService';
 
 export interface LeaveFilterParams {
   fromDate?: string;
@@ -10,21 +9,6 @@ export interface LeaveFilterParams {
   departmentNames?: string[];
   page?: number;
   size?: number;
-}
-
-function buildQuery(params: Record<string, any>): string {
-  const q = new URLSearchParams();
-  Object.entries(params).forEach(([key, val]) => {
-    if (val !== undefined && val !== null && val !== '' && val !== 'ALL') {
-      if (Array.isArray(val)) {
-        val.forEach(v => q.append(key, String(v)));
-      } else {
-        q.append(key, String(val));
-      }
-    }
-  });
-  const qs = q.toString();
-  return qs ? `?${qs}` : '';
 }
 
 export interface CreateLeaveRequest {

@@ -1,5 +1,4 @@
-import { apiClient } from './apiClient';
-import { PageResponse } from './attendanceService';
+import { apiClient, PageResponse } from './apiClient';
 
 export interface ResignationResponse {
   resignationId: string;

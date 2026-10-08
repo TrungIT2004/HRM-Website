@@ -120,13 +120,34 @@ services:
     networks:
       - hrm-network
 
-  # 6. Đường hầm Cloudflare Quick Tunnel (TryCloudflare)
-  cloudflared:
+  # 6. Cloudflare Quick Tunnels (TryCloudflare, URL random) — 1 tunnel/service
+  # Xem URL public trong logs: docker logs hrm-cloudflared-web|api|ai
+  cloudflared-web:
     image: cloudflare/cloudflared:latest
-    container_name: hrm-cloudflared
+    container_name: hrm-cloudflared-web
     command: tunnel --no-autoupdate --protocol http2 --url http://hrm-frontend:3000
     depends_on:
       - hrm-frontend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  cloudflared-api:
+    image: cloudflare/cloudflared:latest
+    container_name: hrm-cloudflared-api
+    command: tunnel --no-autoupdate --protocol http2 --url http://hrm-backend:8080
+    depends_on:
+      - hrm-backend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  cloudflared-ai:
+    image: cloudflare/cloudflared:latest
+    container_name: hrm-cloudflared-ai
+    command: tunnel --no-autoupdate --protocol http2 --url http://hrm-ai-service:8000
+    depends_on:
+      - hrm-ai-service
     restart: unless-stopped
     networks:
       - hrm-network

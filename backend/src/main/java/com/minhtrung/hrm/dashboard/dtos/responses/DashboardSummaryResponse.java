@@ -63,6 +63,8 @@ public class DashboardSummaryResponse {
         private int month;
         private int year;
         private double actualWorkDays;
+        private int standardWorkDays;
+        private double totalWorkHours;
         private int lateDays;
         private double totalOtHours;
     }

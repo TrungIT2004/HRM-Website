@@ -2,6 +2,7 @@ package com.minhtrung.hrm.auth.services;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,19 +12,15 @@ import com.minhtrung.hrm.auth.dtos.internals.ClientMetaData;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import nl.basjes.parse.useragent.UserAgent;
-import nl.basjes.parse.useragent.UserAgentAnalyzer;
 
 @Slf4j
 @Service
 public class ClientInfoService {
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private static final UserAgentAnalyzer USER_AGENT_ANALYZER = UserAgentAnalyzer
-            .newBuilder()
-            .hideMatcherLoadStats()
-            .withCache(10000) 
-            .build();
+    // Cache IP -> geo (giong UA cache 10k ben tren): user goi 10 req/phut
+    // nhung chi ton 1 call ip-api cho den khi restart.
+    private final Map<String, Map<String, String>> geoCache = new ConcurrentHashMap<>();
 
     public ClientMetaData getClientMetaData(HttpServletRequest request) {
         String userAgentString = request.getHeader("User-Agent");
@@ -90,55 +87,110 @@ public class ClientInfoService {
         return false;
     }
     
+    // ponytail: contains() thay Yauaa 15MB — session UI chỉ cần browser/OS
+    // tên + deviceType chứa phone|mobile|tablet (AdminWorkspace soi chuỗi này
+    // để chọn icon). Ceiling: UA lạ/nhúng version chi tiết -> nâng cấp parser
+    // khi admin báo "Unknown" nhiều.
     private Map<String, String> getDeviceInfo(String userAgentString) {
-        UserAgent agent = USER_AGENT_ANALYZER.parse(userAgentString);
+        String ua = userAgentString == null ? "" : userAgentString;
+        String low = ua.toLowerCase();
+
+        String browser;
+        if (low.contains("edg"))
+            browser = "Edge";
+        else if (low.contains("chrome") || low.contains("crios"))
+            browser = "Chrome";
+        else if (low.contains("firefox") || low.contains("fxios"))
+            browser = "Firefox";
+        else if (low.contains("safari"))
+            browser = "Safari";
+        else
+            browser = "UNKNOWN";
+
+        String deviceOS;
+        if (low.contains("windows nt"))
+            deviceOS = withVersion("Windows", versionAfter(low, "windows nt "));
+        else if (low.contains("android"))
+            deviceOS = withVersion("Android", versionAfter(low, "android "));
+        else if (low.contains("iphone") || low.contains("ipad"))
+            deviceOS = withVersion("iOS", versionAfter(low, "os "));
+        else if (low.contains("mac os x"))
+            deviceOS = withVersion("Mac OS X", versionAfter(low, "mac os x "));
+        else if (low.contains("linux"))
+            deviceOS = "Linux";
+        else
+            deviceOS = "UNKNOWN";
+
+        String deviceType;
+        if (low.contains("tablet") || low.contains("ipad"))
+            deviceType = "Tablet";
+        else if (low.contains("mobile") || low.contains("phone")
+                || low.contains("android") || low.contains("iphone"))
+            deviceType = "Mobile";
+        else
+            deviceType = "Desktop";
 
         Map<String, String> deviceInfo = new HashMap<>();
-
-        String deviceOS = agent.getValue("OperatingSystemNameVersion");
-        String browser = agent.getValue("AgentName");
-        String deviceType = agent.getValue("DeviceClass");
-
-        if (deviceOS == null || deviceOS.isEmpty())
-            deviceInfo.put("deviceOS", "UNKNOWN");
-        else
-            deviceInfo.put("deviceOS", deviceOS);
-
-
-        if (browser == null || browser.isEmpty())
-            deviceInfo.put("browser", "UNKNOWN");
-        else
-            deviceInfo.put("browser", browser);
-
-        if (deviceType == null || deviceType.isEmpty())
-            deviceInfo.put("deviceType", "UNKNOWN");
-        else
-            deviceInfo.put("deviceType", deviceType);
-
+        deviceInfo.put("deviceOS", deviceOS);
+        deviceInfo.put("browser", browser);
+        deviceInfo.put("deviceType", deviceType);
         return deviceInfo;
+    }
+
+    private static String withVersion(String name, String version) {
+        return version.isEmpty() ? name : name + " " + version;
+    }
+
+    private static String versionAfter(String low, String token) {
+        int i = low.indexOf(token);
+        if (i < 0)
+            return "";
+        int s = i + token.length();
+        int e = s;
+        while (e < low.length()
+                && (Character.isDigit(low.charAt(e)) || low.charAt(e) == '.'
+                    || low.charAt(e) == '_'))
+            e++;
+        String v = low.substring(s, e).replace('_', '.');
+        int dot = v.indexOf('.');
+        if (dot >= 0)
+            dot = v.indexOf('.', dot + 1);
+        return dot >= 0 ? v.substring(0, dot) : v;
     }
     
     private Map<String, String> getGeoLoc(String ipAddr) {
-        String url = "http://ip-api.com/json/" + ipAddr + "?fields=status,country,city,isp";
-        ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
-        Map<String, String> responseData = response.getBody();
+        Map<String, String> cached = geoCache.get(ipAddr);
+        if (cached != null)
+            return cached;
 
         Map<String, String> geoLocInfo = new HashMap<>();
+        try {
+            String url = "http://ip-api.com/json/" + ipAddr + "?fields=status,country,city,isp";
+            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+            Map<String, String> responseData = response.getBody();
 
-        if (responseData != null && "success".equals(responseData.get("status"))) {
-            String country = responseData.get("country");
-            String city = responseData.get("city");
-            String isp = responseData.get("isp");
-
-            geoLocInfo.put("country", country);
-            geoLocInfo.put("city", city);
-            geoLocInfo.put("isp", isp);
-        } else {
+            if (responseData != null && "success".equals(responseData.get("status"))) {
+                geoLocInfo.put("country", responseData.get("country"));
+                geoLocInfo.put("city", responseData.get("city"));
+                geoLocInfo.put("isp", responseData.get("isp"));
+            } else {
+                geoLocInfo.put("country", "UNKNOWN");
+                geoLocInfo.put("city", "UNKNOWN");
+                geoLocInfo.put("isp", "UNKNOWN");
+            }
+        } catch (Exception e) {
+            // GeoIP chi la metadata session (best-effort): 429/timeout
+            // khong bao gio duoc lam fail request chinh.
+            log.warn("GeoIP lookup failed for {}: {}", ipAddr, e.getMessage());
             geoLocInfo.put("country", "UNKNOWN");
             geoLocInfo.put("city", "UNKNOWN");
             geoLocInfo.put("isp", "UNKNOWN");
         }
 
+        // ponytail: clear thay vi LRU that — du cho restart cycle ngan cua demo; dung Caffeine khi can TTL that.
+        if (geoCache.size() >= 10000)
+            geoCache.clear();
+        geoCache.put(ipAddr, geoLocInfo);
         return geoLocInfo;
     }
 }

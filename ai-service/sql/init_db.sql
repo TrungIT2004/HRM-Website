@@ -40,9 +40,28 @@ CREATE TABLE IF NOT EXISTS document_chunks (
     -- Nhóm Vector 768 chiều (Google Gemini text-embedding-004)
     content_vector VECTOR(768),            
     questions_vector VECTOR(768),
-    
+
+    -- Tsvector tinh san luc ingest (co trigger), dung cho lexical scoring.
+    -- Khong tinh lai to_tsvector(simple, unaccent(...)) trong query: 4039ms -> 177ms tren 248 chunk.
+    tsv tsvector,
+
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 3.1. Trigger tu dong tinh tsv moi khi insert/update content| breadcrumb.
+-- Moi duong ghi (main.py, tests, script backfill) deu duoc tsv tu dong -> khong the quen.
+CREATE OR REPLACE FUNCTION document_chunks_tsv() RETURNS trigger AS $$
+BEGIN
+  NEW.tsv := to_tsvector('simple', unaccent(coalesce(NEW.content,'') || ' ' || coalesce(NEW.breadcrumb,'')));
+  RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trg_chunks_tsv ON document_chunks;
+
+CREATE TRIGGER trg_chunks_tsv
+  BEFORE INSERT OR UPDATE OF content, breadcrumb ON document_chunks
+  FOR EACH ROW EXECUTE FUNCTION document_chunks_tsv();
 
 -- 4. Đánh Index (Chỉ mục) để tối ưu tốc độ truy vấn HÀNG TRIỆU DÒNG
 
@@ -52,6 +71,9 @@ CREATE INDEX IF NOT EXISTS idx_chunks_departments ON document_chunks USING GIN (
 
 -- 4.2. GIN Index cho Keywords để tìm kiếm từ khóa (BM25 style)
 CREATE INDEX IF NOT EXISTS idx_chunks_keywords ON document_chunks USING GIN (keywords);
+
+-- 4.2b. GIN Index cho tsv (dung boi df/IDF + ts_rank trong HybridRetriever)
+CREATE INDEX IF NOT EXISTS idx_chunks_tsv ON document_chunks USING GIN (tsv);
 
 -- 4.3. HNSW Index cho Vector (Thuật toán xịn nhất của pgvector để tìm kiếm ngữ nghĩa siêu tốc)
 CREATE INDEX IF NOT EXISTS idx_chunks_content_vec ON document_chunks 

@@ -14,7 +14,9 @@ import java.security.Key;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -31,59 +33,41 @@ public class JwtService {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
+    private String buildToken(TokenPayload tokenPayload, Map<String, Object> extraClaims, String secret, long ttlMillis) {
+        Map<String, Object> claims = new LinkedHashMap<>();
+        claims.put("sessionId", tokenPayload.getSessionId().toString());
+        claims.put("deviceId", tokenPayload.getDeviceId());
+        claims.put("email", tokenPayload.getEmail());
+        claims.put("profilePicUrl", tokenPayload.getProfilePicUrl());
+        claims.put("department", tokenPayload.getDepartment());
+        claims.put("job", tokenPayload.getJob());
+        claims.putAll(extraClaims);
+
+        var builder = Jwts.builder()
+                .setSubject(tokenPayload.getUserId().toString())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + ttlMillis));
+        claims.forEach(builder::claim);
+        return builder.signWith(getSignKey(secret), SignatureAlgorithm.HS256).compact();
+    }
+
     // 🔹 Access Token (short-lived)
     public String generateAccessToken(TokenPayload tokenPayload) {
-        UUID userId = tokenPayload.getUserId();
-        UUID sessionId = tokenPayload.getSessionId();
-        UUID deviceId = tokenPayload.getDeviceId();
-        String email = tokenPayload.getEmail();
-        String fullName = tokenPayload.getFullName();
-        String profilePicUrl = tokenPayload.getProfilePicUrl();
-        String department = tokenPayload.getDepartment();
-        String job = tokenPayload.getJob();
         List<String> permissions = tokenPayload.getPermissions() != null
                 ? new ArrayList<>(tokenPayload.getPermissions()) : List.of();
 
-        return Jwts.builder()
-                .setSubject(userId.toString())
-                .claim("sessionId", sessionId.toString())
-                .claim("deviceId", deviceId)
-                .claim("email", email)
-                .claim("fullName", fullName)
-                .claim("profilePicUrl", profilePicUrl)
-                .claim("department", department)
-                .claim("job", job)
-                .claim("permissions", permissions)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15)) // 15 min
-                .signWith(getSignKey(accessSecret), SignatureAlgorithm.HS256)
-                .compact();
+        Map<String, Object> extraClaims = new LinkedHashMap<>();
+        extraClaims.put("fullName", tokenPayload.getFullName());
+        extraClaims.put("permissions", permissions);
+        return buildToken(tokenPayload, extraClaims, accessSecret, 1000 * 60 * 15); // 15 min
     }
 
     // 🔹 Refresh Token (long-lived)
     public String generateRefreshToken(TokenPayload tokenPayload) {
-        UUID userId = tokenPayload.getUserId();
-        UUID sessionId = tokenPayload.getSessionId();
-        UUID deviceId = tokenPayload.getDeviceId();
-        String fullName = tokenPayload.getFullName();
-        String email = tokenPayload.getEmail();
-        String profilePicUrl = tokenPayload.getProfilePicUrl();
-        String department = tokenPayload.getDepartment();
-        String job = tokenPayload.getJob();
-
-        return Jwts.builder()
-                .setSubject(userId.toString())
-                .claim("sessionId", sessionId.toString())
-                .claim("deviceId", deviceId)
-                .claim("email", email)
-                .claim("fullnName", fullName)
-                .claim("profilePicUrl", profilePicUrl)
-                .claim("department", department)
-                .claim("job", job)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 7)) // 7 days
-                .signWith(getSignKey(refreshSecret), SignatureAlgorithm.HS256)
-                .compact();
+        // ponytail: giữ nguyên key "fullnName" (typo cũ) để không đổi behavior token đang lưu
+        Map<String, Object> extraClaims = new LinkedHashMap<>();
+        extraClaims.put("fullnName", tokenPayload.getFullName());
+        return buildToken(tokenPayload, extraClaims, refreshSecret, 1000L * 60 * 60 * 24 * 7); // 7 days
     }
 
     public TokenPayload extractAll(String token, String secret) {

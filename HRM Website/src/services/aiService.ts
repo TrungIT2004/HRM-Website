@@ -70,19 +70,34 @@ export const aiService = {
       onError?: (err: Error) => void;
     }
   ): Promise<void> => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('act_hrm_access_token') : null;
     const url = `${API_BASE_URL}/api/ai/chat/stream`;
+    const post = (token: string | null) => fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'text/event-stream',
+        ...(token ? { Authorization: `Bearer ${token}` } : {})
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const token = () => (typeof window !== 'undefined'
+      ? localStorage.getItem('act_hrm_access_token')
+      : null);
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'text/event-stream',
-          ...(token ? { Authorization: `Bearer ${token}` } : {})
-        },
-        body: JSON.stringify(payload)
-      });
+      let response = await post(token());
+
+      // Access token hết hạn (15 phút): stream gọi fetch thẳng nên không qua
+      // interceptor của apiClient -> phải tự refresh rồi thử lại 1 lần.
+      if (response.status === 401) {
+        const refreshed = await apiClient.post<any>('/auth/auto-login').catch(() => null);
+        const newToken = refreshed?.accessToken || refreshed?.token;
+        if (newToken) {
+          localStorage.setItem('act_hrm_access_token', newToken);
+          response = await post(newToken);
+        }
+      }
 
       if (!response.ok) {
         throw new Error(`Lỗi kết nối AI Service (Mã ${response.status})`);

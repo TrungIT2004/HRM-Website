@@ -214,7 +214,10 @@ public class AiController {
             filterDepartment = DepartmentName.fromString(department);
         }
 
-        return ResponseEntity.ok(aiServiceClient.listDocuments(status, search, filterDepartment, enforcementUserDept));
+        // Owner luôn thấy file của mình: truyền fullName để AI service bypass PBAC cho file do chính mình đăng.
+        String ownerName = currentUser != null ? currentUser.getFullName() : null;
+
+        return ResponseEntity.ok(aiServiceClient.listDocuments(status, search, filterDepartment, enforcementUserDept, ownerName));
     }
 
     /**
@@ -234,6 +237,11 @@ public class AiController {
 
         // ponytail: chuẩn hóa "IT" -> "Information Technology" để khớp mảng allowed_departments trong AI DB
         String enforcementUserDept = isExecutive ? null : normalizeDept(userDept);
+
+        // Owner luôn tải được file của mình kể cả khi scope không chứa phòng mình.
+        if (enforcementUserDept != null && isDocumentOwner(documentId, currentUser)) {
+            enforcementUserDept = null;
+        }
 
         try {
             ResponseEntity<byte[]> response = aiServiceClient.downloadDocument(documentId, enforcementUserDept);
@@ -375,6 +383,26 @@ public class AiController {
 
     private void checkAdminOrHrOrDeptHeadPermission(TokenPayload currentUser) {
         checkDocumentManagePermission(currentUser);
+    }
+
+    /**
+     * Owner-blind check dùng cho fetch (list/download): true nếu tài liệu do chính user đăng.
+     * So khớp theo fullName vì ai-service chỉ lưu chuỗi uploaded_by, không lưu userId.
+     */
+    private boolean isDocumentOwner(String documentId, TokenPayload currentUser) {
+        if (currentUser == null || currentUser.getFullName() == null) {
+            return false;
+        }
+        try {
+            Object detail = aiServiceClient.getDocumentDetail(documentId);
+            if (detail instanceof Map<?, ?> map) {
+                Object val = map.get("uploaded_by");
+                return val != null && val.toString().trim().equalsIgnoreCase(currentUser.getFullName().trim());
+            }
+        } catch (Exception e) {
+            log.warn("Không kiểm tra được ownership của tài liệu {}: {}", documentId, e.getMessage());
+        }
+        return false;
     }
 
     /**

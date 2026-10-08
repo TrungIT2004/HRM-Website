@@ -39,25 +39,6 @@ import {
   Check
 } from 'lucide-react';
 
-const SUGGESTIONS = [
-  {
-    title: 'Quy chế nghỉ phép năm',
-    desc: 'Số ngày phép, cách bảo lưu và thủ tục xin nghỉ',
-  },
-  {
-    title: 'Chính sách làm thêm giờ (OT)',
-    desc: 'Hệ số lương OT ngày lễ, cuối tuần và hạn mức tối đa',
-  },
-  {
-    title: 'Quy định giờ giấc & Chấm công',
-    desc: 'Khung giờ chuẩn, quy định đi muộn/về sớm và phạt',
-  },
-  {
-    title: 'Quy trình thôi việc & Bàn giao',
-    desc: 'Thời hạn báo trước theo luật và thủ tục bàn giao tài sản',
-  },
-];
-
 /**
  * Render markdown cơ bản của LLM: **đậm**, gạch đầu dòng "- ", tiêu đề "### ",
  * và ngắt dòng đơn. Dựng thẳng React element, KHÔNG dangerouslySetInnerHTML
@@ -408,9 +389,11 @@ export default function ChatPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
+  // ponytail: bỏ sidemenu chung 1 mục — lịch sử chat (aside nội trang) giữ nguyên
   return (
-    <AppShell>
-      <div className="flex h-[calc(100dvh-11.5rem)] md:h-[calc(100vh-7rem)] bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden relative">
+    <AppShell noSidebar fullWidth>
+      {/* ponytail: full-bleed kiểu ChatGPT — messages/input đã tự max-w-3xl ở trong */}
+      <div className="flex flex-1 min-h-0 bg-white overflow-hidden relative">
         {/* Mobile History Backdrop */}
         {isHistoryOpen && (
           <div 
@@ -654,25 +637,9 @@ export default function ChatPage() {
                 <h2 className="text-base sm:text-xl font-extrabold text-slate-900 mb-1.5">
                   Tôi có thể hỗ trợ gì cho bạn hôm nay?
                 </h2>
-                <p className="text-xs text-slate-500 mb-6 max-w-md">
+                <p className="text-xs text-slate-500 max-w-md">
                   Đặt câu hỏi về ngày phép, giờ giấc làm việc, hệ số tăng ca OT, bảo hiểm xã hội hoặc quy trình bàn giao thôi việc.
                 </p>
-
-                {/* Prompt Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full text-left">
-                  {SUGGESTIONS.map((item, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleSend(item.title)}
-                      className="p-3 rounded-2xl border border-slate-200/90 hover:border-blue-400 hover:bg-blue-50/50 text-left transition-all group cursor-pointer shadow-2xs"
-                    >
-                      <div className="font-bold text-xs text-slate-800 group-hover:text-blue-700">
-                        {item.title}
-                      </div>
-                      <div className="text-[11px] text-slate-400 mt-0.5 line-clamp-1">{item.desc}</div>
-                    </button>
-                  ))}
-                </div>
               </div>
             ) : isFetchingHistory ? (
               <div className="h-full flex items-center justify-center text-slate-400 text-xs gap-2">
@@ -703,45 +670,25 @@ export default function ChatPage() {
                     >
                       {m.sender_role === 'user' ? (
                         <p className="whitespace-pre-wrap">{m.content}</p>
-                      ) : (
+                      ) : m.content ? (
                         <MarkdownLite text={m.content} />
+                      ) : (
+                        // Chờ token đầu tiên: 3 chấm nhảy, nhãn trực quan cho
+                        // người dùng biết đã gửi và đang xử lý (chờ route + retrieval + LLM).
+                        <span className="flex items-center gap-1 py-0.5" role="status" aria-label="Đang trả lời">
+                          {[0, 1, 2].map(i => (
+                            <span
+                              key={i}
+                              className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce"
+                              style={{ animationDelay: `${i * 160}ms` }}
+                            />
+                          ))}
+                        </span>
                       )}
                     </div>
 
-                    {/* Citations & Confidence Badge */}
-                    {m.citations && m.citations.length > 0 && (
-                      <div className="space-y-1.5 pt-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-                            <FileText className="w-3 h-3" /> Trích dẫn quy chế:
-                          </span>
-                          {m.confidence && (
-                            <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded border ${
-                              m.confidence === 'HIGH' 
-                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
-                                : m.confidence === 'MEDIUM'
-                                ? 'bg-amber-50 text-amber-700 border-amber-200'
-                                : 'bg-red-50 text-red-700 border-red-200'
-                            }`}>
-                              Độ tin cậy: {m.confidence}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex flex-wrap gap-1.5">
-                          {m.citations.map((c, i) => (
-                            <span
-                              key={i}
-                              className="text-[11px] bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-lg truncate max-w-full flex items-center gap-1"
-                              title={c.breadcrumb || c.document_name}
-                            >
-                              📄 {c.document_name || 'Văn bản nội bộ'}
-                              {c.page_number ? ` (Trang ${c.page_number})` : ''}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    {/* ponytail: đã bỏ block citations + confidence (theo yêu cầu). Backend vẫn
+                        trả và lưu vào DB, chỉ không render ra UI nữa. */}
                   </div>
                 </div>
               ))

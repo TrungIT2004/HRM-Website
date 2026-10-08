@@ -12,16 +12,18 @@ import {
   Sparkles,
   ShieldCheck,
   Building2,
-  Settings as SettingsIcon
+  Settings as SettingsIcon,
+  LayoutGrid
 } from 'lucide-react';
 
 import { attendanceService } from '@/services/attendanceService';
 
 interface NavbarProps {
   onToggleMobileMenu?: () => void;
+  showMenuButton?: boolean;
 }
 
-export default function Navbar({ onToggleMobileMenu }: NavbarProps) {
+export default function Navbar({ onToggleMobileMenu, showMenuButton = true }: NavbarProps) {
   const { currentUser, roleLevel, isAdmin, logout } = useAuth();
   const { attendances, isLoadingData } = useHRMData();
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -63,6 +65,7 @@ export default function Navbar({ onToggleMobileMenu }: NavbarProps) {
       {/* Left: Mobile Menu Toggle + Brand */}
       <div className="flex items-center gap-3">
         {/* Mobile Hamburger Button */}
+        {showMenuButton && (
         <button
           onClick={onToggleMobileMenu}
           className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition cursor-pointer"
@@ -70,8 +73,18 @@ export default function Navbar({ onToggleMobileMenu }: NavbarProps) {
         >
           <Menu className="h-5 w-5" />
         </button>
+        )}
 
-        <Link href="/dashboard" className="flex items-center gap-2.5">
+        {/* App Switcher (9 dots / Waffle icon to return to /home) */}
+        <Link
+          href="/home"
+          title="Quay về Cổng Ứng Dụng (/home)"
+          className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition cursor-pointer"
+        >
+          <LayoutGrid className="h-5 w-5" />
+        </Link>
+
+        <Link href="/home" className="flex items-center gap-2.5">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 font-bold text-white shadow-md shadow-blue-500/20 text-sm">
             ACT
           </div>
@@ -144,7 +157,7 @@ export default function Navbar({ onToggleMobileMenu }: NavbarProps) {
 
                 <div className="py-1.5 space-y-0.5">
                   <Link
-                    href="/settings"
+                    href="/security/password"
                     onClick={() => setShowUserMenu(false)}
                     className="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 rounded-xl transition"
                   >
@@ -152,7 +165,7 @@ export default function Navbar({ onToggleMobileMenu }: NavbarProps) {
                     Cài đặt
                   </Link>
                   <Link
-                    href="/attendance"
+                    href="/attendance/daily"
                     onClick={() => setShowUserMenu(false)}
                     className="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 rounded-xl transition"
                   >

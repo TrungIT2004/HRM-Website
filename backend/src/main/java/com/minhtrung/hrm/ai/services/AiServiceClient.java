@@ -281,7 +281,7 @@ public class AiServiceClient {
     /**
      * Lấy danh sách tài liệu hiện có kèm trạng thái xử lý và bộ lọc phòng ban.
      */
-    public Object listDocuments(String status, String search, String department, String userDept) {
+    public Object listDocuments(String status, String search, String department, String userDept, String ownerName) {
         String baseUrl = aiConfig.getBaseUrl() + "/api/v1/documents";
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(baseUrl);
         if (status != null && !status.isBlank()) {
@@ -295,6 +295,9 @@ public class AiServiceClient {
         }
         if (userDept != null && !userDept.isBlank()) {
             builder.queryParam("user_dept", userDept);
+        }
+        if (ownerName != null && !ownerName.isBlank()) {
+            builder.queryParam("owner_name", ownerName);
         }
 
         HttpHeaders headers = createSecureHeaders();

@@ -26,6 +26,14 @@ import com.minhtrung.hrm.payroll.enums.PayrollErrorCode;
 import com.minhtrung.hrm.payroll.exceptions.PayrollException;
 import com.minhtrung.hrm.resignation.enums.ResignationErrorCode;
 import com.minhtrung.hrm.resignation.exceptions.ResignationException;
+import com.minhtrung.hrm.documents.enums.DocumentErrorCode;
+import com.minhtrung.hrm.documents.exceptions.DocumentException;
+import com.minhtrung.hrm.asset.enums.AssetErrorCode;
+import com.minhtrung.hrm.asset.exceptions.AssetException;
+import com.minhtrung.hrm.itticket.enums.ItTicketErrorCode;
+import com.minhtrung.hrm.itticket.exceptions.ItTicketException;
+import com.minhtrung.hrm.performance.enums.PerformanceErrorCode;
+import com.minhtrung.hrm.performance.exceptions.PerformanceException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 
@@ -83,6 +91,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(Map.of(
                 "errorCode", "REQUEST_REJECTED",
                 "msg", reason
+        ));
+    }
+
+    // ─── MALFORMED JSON / TYPE MISMATCH (400, không phải 500) ───────
+    @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> handleNotReadable(org.springframework.http.converter.HttpMessageNotReadableException ex) {
+        log.warn("Dữ liệu JSON không đọc được: {}", ex.getMostSpecificCause().getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "errorCode", "MALFORMED_REQUEST",
+                "msg", "Dữ liệu gửi lên sai định dạng (ví dụ giờ làm việc phải là HH:mm)."
         ));
     }
 
@@ -152,7 +170,6 @@ public class GlobalExceptionHandler {
                 return HttpStatus.NOT_FOUND;
             case INSUFFICIENT_PERMISSION:
                 return HttpStatus.FORBIDDEN;
-            case CHAIRMAN_CANNOT_LEAVE:
             case OUT_OF_ANNUAL_LEAVE_DAYS:
             case ALREADY_PROCESSED_REQUEST:
             case OVERLAPPING_LEAVE_REQUEST:
@@ -183,14 +200,12 @@ public class GlobalExceptionHandler {
 
         switch (errorCode) {
             // 404 Not Found
-            case SHIFT_NOT_FOUND:
             case RECORD_NOT_FOUND:
                 return HttpStatus.NOT_FOUND;
 
             // 403 Forbidden
             case NOT_RECORD_OWNER:
             case INSUFFICIENT_PERMISSION:
-            case INVALID_STATUS:
                 return HttpStatus.FORBIDDEN;
 
             // 400 Bad Request – lỗi dữ liệu đầu vào (giới hạn OT, thời gian, nghỉ...)
@@ -203,13 +218,11 @@ public class GlobalExceptionHandler {
             case EXCEED_MONTHLY_OVERTIME:
             case EXCEED_YEARLY_OVERTIME:
             case INVALID_TIME:
-            case INVALID_TIME_RANGE:
             case ALREADY_PROCESSED_REQUEST:
             case INSUFFICIENT_TIME:
                 return HttpStatus.BAD_REQUEST;
 
             // 500 Internal Server Error
-            case GENERIC:
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -250,23 +263,19 @@ public class GlobalExceptionHandler {
         }
 
         switch (errorCode) {
-            case TIMESHEET_NOT_FOUND:
             case PAYROLL_NOT_FOUND:
             case SUMMARY_NOT_FOUND:
-            case SALARY_NOT_CONFIGURED:
                 return HttpStatus.NOT_FOUND;
 
             case INSUFFICIENT_PERMISSION:
                 return HttpStatus.FORBIDDEN;
 
             case TIMESHEET_NOT_LOCKED:
-            case PAYROLL_ALREADY_EXISTS:
             case PAYROLL_ALREADY_APPROVED:
             case PAYROLL_ALREADY_PAID:
             case INVALID_PAYROLL_PERIOD:
                 return HttpStatus.BAD_REQUEST;
 
-            case GENERIC:
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -332,9 +341,6 @@ public class GlobalExceptionHandler {
             case DEVICE_MISMATCH:
             case DEVICE_COOKIE_MISMATCH:
                 return HttpStatus.FORBIDDEN;
-            case INVALID_CODE:
-            case EXPIRED_CODE:
-                return HttpStatus.BAD_REQUEST;
             case SESSION_COMPROMISED:
             case SESSION_NOT_FOUND:
             case SESSION_REVOKED:
@@ -368,10 +374,6 @@ public class GlobalExceptionHandler {
             case DEVICE_MISMATCH:
             case DEVICE_COOKIE_MISMATCH:
                 return "Thông tin thiết bị hoặc phiên không khớp.";
-            case INVALID_CODE:
-                return "Mã xác thực không chính xác";
-            case EXPIRED_CODE:
-                return "Mã xác thực đã hết hạn";
             default:
                 return "Xác thực thất bại";
         }
@@ -401,6 +403,112 @@ public class GlobalExceptionHandler {
                 return HttpStatus.BAD_REQUEST;
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
+
+    // ─── DOCUMENT EXCEPTION ─────────────────────────────────
+    @ExceptionHandler(DocumentException.class)
+    public ResponseEntity<Map<String, Object>> handleDocumentException(DocumentException ex) {
+        HttpStatus status = mapDocumentECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ mẫu đơn: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapDocumentECToStatus(DocumentErrorCode errorCode) {
+        switch (errorCode) {
+            case DOCUMENT_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case UNAUTHORIZED_ACTION:
+                return HttpStatus.FORBIDDEN;
+            case INVALID_FILE_TYPE:
+            case FILE_TOO_LARGE:
+                return HttpStatus.BAD_REQUEST;
+            default:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
+
+    // ─── ASSET EXCEPTION ────────────────────────────────────
+    @ExceptionHandler(AssetException.class)
+    public ResponseEntity<Map<String, Object>> handleAssetException(AssetException ex) {
+        HttpStatus status = mapAssetECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ tài sản: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapAssetECToStatus(AssetErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        switch (errorCode) {
+            case ASSET_NOT_FOUND:
+            case CATEGORY_NOT_FOUND:
+            case REQUEST_NOT_FOUND:
+            case ASSIGNMENT_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case NOT_RECORD_OWNER:
+            case INSUFFICIENT_PERMISSION:
+            case SELF_APPROVAL_NOT_ALLOWED:
+                return HttpStatus.FORBIDDEN;
+            default:
+                return HttpStatus.BAD_REQUEST;
+        }
+    }
+
+    // ─── IT TICKET EXCEPTION ─────────────────────────────────
+    @ExceptionHandler(ItTicketException.class)
+    public ResponseEntity<Map<String, Object>> handleItTicketException(ItTicketException ex) {
+        HttpStatus status = mapItTicketECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ IT ticket: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapItTicketECToStatus(ItTicketErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        switch (errorCode) {
+            case TICKET_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case NOT_RECORD_OWNER:
+            case INSUFFICIENT_PERMISSION:
+                return HttpStatus.FORBIDDEN;
+            default:
+                return HttpStatus.BAD_REQUEST;
+        }
+    }
+
+    // ─── PERFORMANCE EXCEPTION ───────────────────────────────
+    @ExceptionHandler(PerformanceException.class)
+    public ResponseEntity<Map<String, Object>> handlePerformanceException(PerformanceException ex) {
+        HttpStatus status = mapPerformanceECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ đánh giá hiệu suất: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapPerformanceECToStatus(PerformanceErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        switch (errorCode) {
+            case REVIEW_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case INTERNAL_SERVER_ERROR:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+            case NOT_RECORD_OWNER:
+            case INSUFFICIENT_PERMISSION:
+            case SELF_APPROVAL_NOT_ALLOWED:
+                return HttpStatus.FORBIDDEN;
+            default:
+                return HttpStatus.BAD_REQUEST;
         }
     }
 }

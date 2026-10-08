@@ -2,7 +2,7 @@
 Data schemas for the Ingestion Pipeline.
 Defines models for raw parsed blocks, documents, and enriched chunks.
 """
-from typing import List, Dict, Any, Optional
+from typing import List, Any, Optional
 from pydantic import BaseModel, Field
 import uuid
 
@@ -13,16 +13,13 @@ class DocumentBlock(BaseModel):
     content: str = Field(description="Text content or Markdown formatted table")
     page_number: Optional[int] = Field(default=None, description="1-based page number; None when the format has no real pagination (docx, xlsx)")
     heading_level: Optional[int] = Field(default=None, description="1 for Chương/Title, 2 for Điều, 3 for Khoản")
-    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
 class ParsedDocument(BaseModel):
     """Complete document extracted into structured blocks."""
     document_name: str
     file_type: str
-    total_pages: int = 1
     blocks: List[DocumentBlock] = Field(default_factory=list)
-    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
 class ProcessedChunk(BaseModel):
@@ -60,12 +57,3 @@ class ProcessedChunk(BaseModel):
     # Vector Embeddings
     content_vector: Optional[List[float]] = Field(default=None, description="Embedding of the content (768d)")
     questions_vector: Optional[List[float]] = Field(default=None, description="Embedding of the hypothetical questions (768d)")
-    
-    extra_metadata: Dict[str, Any] = Field(default_factory=dict)
-
-    def to_formatted_markdown(self) -> str:
-        """Returns chunk with breadcrumb header for downstream LLM context."""
-        header = f"[{self.breadcrumb}]"
-        if self.summary:
-            header += f"\n[Ngữ cảnh tóm tắt: {self.summary}]"
-        return f"{header}\n\n{self.content}"

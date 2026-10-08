@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.minhtrung.hrm.admin.dtos.requests.AdminResetPasswordRequest;
 import com.minhtrung.hrm.admin.dtos.requests.AdminUpdateStatusRequest;
+import com.minhtrung.hrm.admin.dtos.requests.CreatePendingUserRequest;
 import com.minhtrung.hrm.admin.dtos.requests.ProvisionAccountRequest;
 import com.minhtrung.hrm.admin.dtos.requests.RejectPendingUserRequest;
 import com.minhtrung.hrm.admin.dtos.requests.SavePermissionsRequest;
@@ -50,6 +51,19 @@ public class AdminController {
     ) {
         TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
         return ResponseEntity.ok(adminService.getPendingUsers(currentUser, status));
+    }
+
+    /**
+     * HR nhập hồ sơ nhân viên sắp vào làm (bước 1 onboarding).
+     * POST /api/admin/pending-users
+     */
+    @PostMapping("/pending-users")
+    public ResponseEntity<PendingUserResponse> createPendingUser(
+            @Valid @RequestBody CreatePendingUserRequest request
+    ) {
+        TokenPayload currentUser = RequestContextHolder.get().getTokenPayload();
+        PendingUserResponse created = adminService.createPendingUser(request, currentUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PostMapping("/pending-users/{pendingId}/provision")

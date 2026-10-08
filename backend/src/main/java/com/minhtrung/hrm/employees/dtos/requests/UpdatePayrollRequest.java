@@ -30,7 +30,11 @@ public class UpdatePayrollRequest {
 
     private Boolean isActive;
 
-    // Tài khoản ngân hàng (user_bank_accounts)
+    // Tài khoản ngân hàng (user_bank_accounts). Gửi bankAccountNumber để SỬA tài khoản
+    // đang mặc định; isDefault=false để chuyển sang tài khoản khác đã có.
     private String bankName;
+    private String bankCode;
     private String bankAccountNumber;
+    private String accountHolderName;
+    private Boolean isDefault;
 }

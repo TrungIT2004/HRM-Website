@@ -19,7 +19,6 @@ interface AuthContextType {
   isStaff: boolean;
   login: (email: string, password?: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
-  switchUser: (userId: string) => Promise<void>;
   allUsers: User[];
   refreshProfile: () => Promise<void>;
   isLoading: boolean;
@@ -59,9 +58,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const isExecutive = roleLevel === 'EXECUTIVE';
   
   // System Admin: IT dept with System Administrator/Admin in job, OR Executive, OR sysadmin email
+  // ponytail: so sánh hoa/thường — job "SUPER_ADMIN".includes('Admin') là false nên check riêng
   const isSysAdmin = Boolean(
     roleLevel === 'ADMIN' ||
     currentUser?.email?.toLowerCase() === 'sysadmin@company.com' ||
+    (currentUser?.job || '').toLowerCase() === 'super_admin' ||
+    (currentUser?.job || '').toLowerCase().includes('super admin') ||
     ((currentUser?.department === 'Information Technology' || currentUser?.department === ('IT' as any)) &&
       (currentUser?.job?.includes('System Administrator') || currentUser?.job?.includes('Admin')))
   );
@@ -225,25 +227,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const switchUser = async (userId: string) => {
-    const target = allUsers.find(u => u.userId === userId);
-    if (!target) return;
-
-    setIsLoading(true);
-    try {
-      const res = await authService.login(target.email, 'test@123');
-      if (res && res.accessToken && typeof window !== 'undefined') {
-        localStorage.setItem('act_hrm_access_token', res.accessToken);
-        localStorage.setItem('act_hrm_user_id', target.userId);
-        await refreshProfile();
-      }
-    } catch {
-      // In case password was modified
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -260,7 +243,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isStaff,
         login,
         logout,
-        switchUser,
         allUsers,
         refreshProfile,
         isLoading,
