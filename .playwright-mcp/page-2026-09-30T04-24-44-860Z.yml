@@ -1,0 +1,122 @@
+- generic [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - banner [ref=f2e20]:
+      - link "ACT ACT HRM" [ref=f2e22] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f2e23]: ACT
+        - generic [ref=f2e24]: ACT HRM
+      - generic [ref=f2e26]:
+        - generic [ref=f2e27]:
+          - generic [ref=f2e31]: "Hôm nay:"
+          - generic [ref=f2e32]: Vào 08:00 • Ra 17:30
+        - button "T Phạm Thị Cúc Department Head of Human Resources" [ref=f2e34] [cursor=pointer]:
+          - generic [ref=f2e35]: T
+          - generic [ref=f2e36]:
+            - generic [ref=f2e37]: Phạm Thị Cúc
+            - generic [ref=f2e38]: Department Head of Human Resources
+    - generic [ref=f2e39]:
+      - complementary [ref=f2e40]:
+        - generic [ref=f2e42]:
+          - generic [ref=f2e43]: Menu Điều hướng
+          - link "Tổng quan" [ref=f2e45] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Trợ lý AI" [ref=f2e53] [cursor=pointer]:
+            - /url: /chat
+          - link "Kho Tài liệu & Quy chế" [ref=f2e59] [cursor=pointer]:
+            - /url: /documents
+          - link "Chấm công & Giờ làm" [ref=f2e65] [cursor=pointer]:
+            - /url: /attendance
+          - link "Quản lý Nghỉ phép" [ref=f2e71] [cursor=pointer]:
+            - /url: /leave
+          - link "Làm thêm giờ" [ref=f2e76] [cursor=pointer]:
+            - /url: /overtime
+          - link "Đơn Thôi việc" [ref=f2e82] [cursor=pointer]:
+            - /url: /resignations
+          - link "Danh bạ Nhân sự" [ref=f2e88] [cursor=pointer]:
+            - /url: /employees
+          - link "Tính lương & Thu nhập" [ref=f2e96] [cursor=pointer]:
+            - /url: /payroll
+          - link "Cơ cấu Tổ chức" [ref=f2e101] [cursor=pointer]:
+            - /url: /organization
+          - link "Cài đặt" [ref=f2e108] [cursor=pointer]:
+            - /url: /settings
+      - main [ref=f2e114]:
+        - generic [ref=f2e115]:
+          - generic [ref=f2e116]:
+            - generic [ref=f2e117]: Master Data
+            - heading "Quản Trị Cơ Cấu Tổ Chức" [level=1] [ref=f2e123]
+            - paragraph [ref=f2e124]: Thiết lập phòng ban, chức danh và ca làm việc — dữ liệu này dùng chung cho toàn hệ thống.
+          - generic [ref=f2e125]:
+            - generic [ref=f2e126]:
+              - tablist [ref=f2e127]:
+                - tab "Phòng Ban (7)" [ref=f2e128]
+                - tab "Chức Danh (43)" [ref=f2e133]
+                - tab "Ca Làm Việc (2)" [active] [selected] [ref=f2e137]
+              - generic [ref=f2e141]:
+                - searchbox "Tìm kiếm" [ref=f2e143]
+                - button "Tạo Ca Mới" [ref=f2e277]
+            - paragraph [ref=f2e147]: 2 / 2 bản ghi
+          - generic [ref=f2e278]:
+            - generic [ref=f2e279]:
+              - generic [ref=f2e280]:
+                - heading "Ca Kỹ Thuật & Vận Hành (T2-T7)" [level=3] [ref=f2e282]
+                - generic [ref=f2e283]: 6 ngày · 44.0h/tuần
+              - generic [ref=f2e284]:
+                - generic [ref=f2e285]:
+                  - generic [ref=f2e286]: T2
+                  - generic [ref=f2e287]: 08:0017:30
+                - generic [ref=f2e288]:
+                  - generic [ref=f2e289]: T3
+                  - generic [ref=f2e290]: 08:0017:30
+                - generic [ref=f2e291]:
+                  - generic [ref=f2e292]: T4
+                  - generic [ref=f2e293]: 08:0017:30
+                - generic [ref=f2e294]:
+                  - generic [ref=f2e295]: T5
+                  - generic [ref=f2e296]: 08:0017:30
+                - generic [ref=f2e297]:
+                  - generic [ref=f2e298]: T6
+                  - generic [ref=f2e299]: 08:0017:30
+                - generic [ref=f2e300]:
+                  - generic [ref=f2e301]: T7
+                  - generic [ref=f2e302]: 08:0012:00
+                - generic [ref=f2e303]:
+                  - generic [ref=f2e304]: CN
+                  - generic [ref=f2e305]: Nghỉ
+              - generic [ref=f2e306]:
+                - button "Sửa" [ref=f2e307]
+                - button "Xoá" [ref=f2e312]
+            - generic [ref=f2e317]:
+              - generic [ref=f2e318]:
+                - heading "Giờ hành chính (T2-T6)" [level=3] [ref=f2e320]
+                - generic [ref=f2e321]: 5 ngày · 40.0h/tuần
+              - generic [ref=f2e322]:
+                - generic [ref=f2e323]:
+                  - generic [ref=f2e324]: T2
+                  - generic [ref=f2e325]: 08:0017:30
+                - generic [ref=f2e326]:
+                  - generic [ref=f2e327]: T3
+                  - generic [ref=f2e328]: 08:0017:30
+                - generic [ref=f2e329]:
+                  - generic [ref=f2e330]: T4
+                  - generic [ref=f2e331]: 08:0017:30
+                - generic [ref=f2e332]:
+                  - generic [ref=f2e333]: T5
+                  - generic [ref=f2e334]: 08:0017:30
+                - generic [ref=f2e335]:
+                  - generic [ref=f2e336]: T6
+                  - generic [ref=f2e337]: 08:0017:30
+                - generic [ref=f2e338]:
+                  - generic [ref=f2e339]: T7
+                  - generic [ref=f2e340]: Nghỉ
+                - generic [ref=f2e341]:
+                  - generic [ref=f2e342]: CN
+                  - generic [ref=f2e343]: Nghỉ
+              - generic [ref=f2e344]:
+                - button "Sửa" [ref=f2e345]
+                - button "Xoá" [ref=f2e350]
+  - button "Open Next.js Dev Tools" [ref=f2e15] [cursor=pointer]
+  - alert [ref=f2e19]
+  - 'button "Đổi vai trò: Phạm Thị Cúc" [ref=f2e269] [cursor=pointer]':
+    - generic [ref=f2e273]: "Đổi vai trò:"
+    - generic [ref=f2e274]: Phạm Thị Cúc

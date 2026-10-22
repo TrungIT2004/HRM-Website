@@ -1,0 +1,9 @@
+- generic [active] [ref=f10e1]:
+  - generic [ref=f10e7]:
+    - paragraph [ref=f10e8]: ACT HRM
+    - paragraph [ref=f10e9]: Đang kiểm tra quyền truy cập hệ thống...
+  - button "Open Next.js Dev Tools" [ref=f10e15] [cursor=pointer]
+  - alert [ref=f10e19]
+  - 'button "Đổi vai trò: Phạm Thị Cúc" [ref=f10e21] [cursor=pointer]':
+    - generic [ref=f10e25]: "Đổi vai trò:"
+    - generic [ref=f10e26]: Phạm Thị Cúc

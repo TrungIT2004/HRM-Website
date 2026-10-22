@@ -1,0 +1,57 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e20]:
+      - generic [ref=f1e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f1e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f1e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f1e29]: ACT
+          - generic [ref=f1e30]: ACT HRM
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]:
+          - generic [ref=f1e37]: "Hôm nay:"
+          - generic [ref=f1e38]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f1e40] [cursor=pointer]:
+          - generic [ref=f1e41]: A
+          - generic [ref=f1e42]:
+            - generic [ref=f1e43]: Super Admin
+            - generic [ref=f1e44]: SUPER_ADMIN
+    - generic [ref=f1e45]:
+      - complementary [ref=f1e46]:
+        - generic [ref=f1e47]:
+          - generic [ref=f1e48]:
+            - generic [ref=f1e49]: Không gian làm việc
+            - link "Tài sản của tôi" [ref=f1e52] [cursor=pointer]:
+              - /url: /assets
+            - link "Đơn của tôi" [ref=f1e58] [cursor=pointer]:
+              - /url: /assets/requests
+            - link "Kho tài sản" [ref=f1e64] [cursor=pointer]:
+              - /url: /assets/management/storage
+            - link "Duyệt đơn" [ref=f1e71] [cursor=pointer]:
+              - /url: /assets/management/forms
+            - link "Nhắc việc" [ref=f1e78] [cursor=pointer]:
+              - /url: /assets/management/reminders
+            - link "Vòng đời" [ref=f1e84] [cursor=pointer]:
+              - /url: /assets/management/life-cycle
+          - generic [ref=f1e91]: ACT HRM Enterprise v2.4
+      - main [ref=f1e92]:
+        - generic [ref=f1e93]:
+          - heading "Vòng đời tài sản" [level=1] [ref=f1e94]
+          - combobox "Tìm tài sản" [ref=f1e101]: LT-0001 — ThinkPad T14 Gen3
+          - generic [ref=f1e104]:
+            - generic [ref=f1e105]:
+              - generic [ref=f1e107]: Thu hồi · 04/10/2026 12:33
+              - generic [ref=f1e108]: Thu hồi (returned)
+              - generic [ref=f1e109]: Đỗ Thị F
+              - generic [ref=f1e110]: Máy còn tốt, pin 90%
+            - generic [ref=f1e111]:
+              - generic [ref=f1e113]: Cấp phát · 04/10/2026 12:32
+              - generic [ref=f1e114]: Cấp phát
+              - generic [ref=f1e115]: Đỗ Thị F
+            - generic [ref=f1e116]:
+              - generic [ref=f1e118]: Nhập kho · 04/10/2026 12:25
+              - generic [ref=f1e119]: Nhập kho
+              - generic [ref=f1e120]: Máy còn tốt, pin 90%
+  - button "Open Next.js Dev Tools" [ref=f1e15] [cursor=pointer]
+  - alert [ref=f1e19]

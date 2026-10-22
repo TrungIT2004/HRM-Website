@@ -1,0 +1,157 @@
+- generic [active] [ref=f37e1]:
+  - generic [ref=f37e2]:
+    - banner [ref=f37e19]:
+      - generic [ref=f37e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f37e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f37e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f37e28]: ACT
+          - generic [ref=f37e29]: ACT HRM
+      - generic [ref=f37e31]:
+        - generic [ref=f37e32]:
+          - generic [ref=f37e36]: "Hôm nay:"
+          - generic [ref=f37e37]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f37e39] [cursor=pointer]:
+          - generic [ref=f37e40]: A
+          - generic [ref=f37e41]:
+            - generic [ref=f37e42]: Super Admin
+            - generic [ref=f37e43]: SUPER_ADMIN
+    - generic [ref=f37e44]:
+      - complementary [ref=f37e45]:
+        - generic [ref=f37e46]:
+          - generic [ref=f37e47]:
+            - link "Tổng quan & Báo cáo" [ref=f37e50] [cursor=pointer]:
+              - /url: /management/overview
+            - link "Chấm công" [ref=f37e56] [cursor=pointer]:
+              - /url: /management/daily
+            - link "Bảng tổng hợp công" [ref=f37e62] [cursor=pointer]:
+              - /url: /management/summary
+            - link "Quản lý đơn (Nghỉ/OT)" [ref=f37e68] [cursor=pointer]:
+              - /url: /management/requests
+            - link "Đơn Nghỉ phép chi tiết" [ref=f37e75] [cursor=pointer]:
+              - /url: /leave
+            - link "Làm thêm giờ (OT) chi tiết" [ref=f37e80] [cursor=pointer]:
+              - /url: /overtime
+          - generic [ref=f37e86]: ACT HRM Enterprise v2.4
+      - main [ref=f37e87]:
+        - generic [ref=f37e89]:
+          - generic [ref=f37e90]:
+            - generic [ref=f37e91]: "Kỳ báo cáo:"
+            - combobox [ref=f37e92]:
+              - option "Tháng 1"
+              - option "Tháng 2"
+              - option "Tháng 3"
+              - option "Tháng 4"
+              - option "Tháng 5"
+              - option "Tháng 6"
+              - option "Tháng 7"
+              - option "Tháng 8"
+              - option "Tháng 9"
+              - option "Tháng 10" [selected]
+              - option "Tháng 11"
+              - option "Tháng 12"
+            - combobox [ref=f37e93]:
+              - option "Năm 2024"
+              - option "Năm 2025"
+              - option "Năm 2026" [selected]
+              - option "Năm 2027"
+              - option "Năm 2028"
+          - generic [ref=f37e94]:
+            - generic [ref=f37e95]:
+              - generic [ref=f37e96]:
+                - generic [ref=f37e97]: Đi muộn, về sớm
+                - generic [ref=f37e98]: Tháng 10/2026
+              - generic [ref=f37e99]: "0"
+              - paragraph [ref=f37e105]: Lượt LATE / EARLY / LATE_AND_EARLY trong kỳ
+            - generic [ref=f37e106]:
+              - generic [ref=f37e107]:
+                - generic [ref=f37e108]: Thực tế nghỉ
+                - generic [ref=f37e109]: Tháng 10/2026
+              - generic [ref=f37e110]: "0"
+              - paragraph [ref=f37e115]: Ngày nghỉ từ đơn duyệt + quên/vắng không đơn
+            - generic [ref=f37e116]:
+              - generic [ref=f37e117]:
+                - generic [ref=f37e118]: Kế hoạch nghỉ
+                - generic [ref=f37e119]: Đơn pending giao kỳ
+              - generic [ref=f37e120]: "0"
+              - paragraph [ref=f37e125]: Số đơn nghỉ phép đang chờ duyệt
+          - generic [ref=f37e126]:
+            - generic [ref=f37e127]:
+              - heading "Tình hình nghỉ theo phòng ban" [level=3] [ref=f37e128]
+              - paragraph [ref=f37e129]: "Tháng 10/2026 — Đơn vị: ngày nghỉ"
+              - paragraph [ref=f37e130]: Kỳ này chưa có ngày nghỉ nào.
+              - generic [ref=f37e131]:
+                - text: "Tổng:"
+                - generic [ref=f37e132]: 0 ngày nghỉ
+            - generic [ref=f37e133]:
+              - heading "Tình hình nghỉ theo thời gian" [level=3] [ref=f37e134]
+              - paragraph [ref=f37e135]: "Bucket 7 ngày trong kỳ — Đơn vị: ngày nghỉ"
+              - img [ref=f37e138]:
+                - generic [ref=f37e139]: "0"
+                - generic [ref=f37e141]: "0"
+                - generic [ref=f37e143]: "1"
+                - generic [ref=f37e145]: "1"
+                - generic [ref=f37e147]: "1"
+                - generic [ref=f37e149]:
+                  - generic [ref=f37e150]: "0"
+                  - generic [ref=f37e151]: Tuần 1
+                - generic [ref=f37e152]:
+                  - generic [ref=f37e153]: "0"
+                  - generic [ref=f37e154]: Tuần 2
+                - generic [ref=f37e155]:
+                  - generic [ref=f37e156]: "0"
+                  - generic [ref=f37e157]: Tuần 3
+                - generic [ref=f37e158]:
+                  - generic [ref=f37e159]: "0"
+                  - generic [ref=f37e160]: Tuần 4
+                - generic [ref=f37e161]:
+                  - generic [ref=f37e162]: "0"
+                  - generic [ref=f37e163]: Tuần 5
+              - generic [ref=f37e164]: "Cao nhất: 0 ngày nghỉ/tuần"
+            - generic [ref=f37e165]:
+              - heading "Phân tích loại nghỉ" [level=3] [ref=f37e166]
+              - paragraph [ref=f37e167]: Từ trạng thái chấm công thật
+              - generic [ref=f37e168]:
+                - generic [ref=f37e169]:
+                  - generic:
+                    - generic: "0"
+                    - generic: Ngày nghỉ
+                - generic [ref=f37e177]:
+                  - generic [ref=f37e178]:
+                    - generic [ref=f37e179]: Nghỉ phép có lương
+                    - generic [ref=f37e182]:
+                      - generic [ref=f37e183]: "0"
+                      - generic [ref=f37e184]: (0%)
+                  - generic [ref=f37e185]:
+                    - generic [ref=f37e186]: Nghỉ không lương
+                    - generic [ref=f37e189]:
+                      - generic [ref=f37e190]: "0"
+                      - generic [ref=f37e191]: (0%)
+                  - generic [ref=f37e192]:
+                    - generic [ref=f37e193]: Quên chấm công
+                    - generic [ref=f37e196]:
+                      - generic [ref=f37e197]: "0"
+                      - generic [ref=f37e198]: (0%)
+                  - generic [ref=f37e199]:
+                    - generic [ref=f37e200]: Vắng không phép
+                    - generic [ref=f37e203]:
+                      - generic [ref=f37e204]: "0"
+                      - generic [ref=f37e205]: (0%)
+                  - generic [ref=f37e206]:
+                    - generic [ref=f37e207]: Công tác
+                    - generic [ref=f37e210]:
+                      - generic [ref=f37e211]: "0"
+                      - generic [ref=f37e212]: (0%)
+              - button "Xem chi tiết đơn →" [ref=f37e214] [cursor=pointer]
+            - generic [ref=f37e215]:
+              - generic [ref=f37e217]:
+                - heading "Nhân viên nghỉ nhiều nhất" [level=3] [ref=f37e218]
+                - paragraph [ref=f37e219]: Tháng 10/2026 — Top 7
+              - paragraph [ref=f37e223]: Kỳ này chưa có ngày nghỉ nào.
+              - generic [ref=f37e224]: Dữ liệu tổng hợp từ bảng attendances kỳ hiện tại
+  - button "Open Next.js Dev Tools" [ref=f37e15] [cursor=pointer]
+  - alert [ref=f37e225]
+  - 'button "Đổi vai trò: Super Admin" [ref=f37e227] [cursor=pointer]':
+    - generic [ref=f37e231]: "Đổi vai trò:"
+    - generic [ref=f37e232]: Super Admin

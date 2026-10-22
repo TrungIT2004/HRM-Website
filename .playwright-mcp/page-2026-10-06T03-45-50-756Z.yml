@@ -1,0 +1,97 @@
+- generic [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - banner [ref=f4e20]:
+      - generic [ref=f4e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f4e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f4e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f4e29]: ACT
+          - generic [ref=f4e30]: ACT HRM
+      - generic [ref=f4e32]:
+        - generic [ref=f4e33]:
+          - generic [ref=f4e37]: "Hôm nay:"
+          - generic [ref=f4e38]: Ngày nghỉ
+        - button "T Đỗ Thị F Software Engineer" [ref=f4e40] [cursor=pointer]:
+          - generic [ref=f4e41]: T
+          - generic [ref=f4e42]:
+            - generic [ref=f4e43]: Đỗ Thị F
+            - generic [ref=f4e44]: Software Engineer
+    - generic [ref=f4e45]:
+      - complementary [ref=f4e46]:
+        - generic [ref=f4e47]:
+          - generic [ref=f4e48]:
+            - generic [ref=f4e49]: Xử lý IT
+            - link "Hàng chờ xử lý" [ref=f4e52] [cursor=pointer]:
+              - /url: /tickets/manage/queues
+            - link "Tổng quan" [ref=f4e58] [cursor=pointer]:
+              - /url: /tickets/manage/overview
+          - generic [ref=f4e64]: ACT HRM Enterprise v2.4
+      - main [ref=f4e65]:
+        - generic [ref=f4e66]:
+          - heading "Hàng chờ xử lý" [level=1] [ref=f4e67]
+          - generic [ref=f4e71]:
+            - button "Cần xử lý" [ref=f4e72] [cursor=pointer]
+            - button "Đã xử lý" [ref=f4e73] [cursor=pointer]
+            - combobox "Lọc loại sự cố" [ref=f4e74]:
+              - option "Tất cả loại" [selected]
+              - option "Máy tính (Laptop / PC)"
+              - option "Mạng / Internet / WiFi"
+              - option "Máy in / Photocopy / Scan"
+              - option "Tài khoản / Email"
+              - option "Phần mềm / Ứng dụng"
+              - option "Bàn phím / Chuột / Màn hình"
+              - option "Khác"
+          - generic [ref=f4e130]:
+            - generic [ref=f4e131]:
+              - button "Mạng wifi tầng 4 Wifi chậm bất thường giờ cao điểm, speedtest còn 5Mbps Mạng / Internet / WiFi · 05/09/2026 14:00 · Đang xử lý" [ref=f4e132] [cursor=pointer]:
+                - generic [ref=f4e133]: Mạng wifi tầng 4
+                - generic [ref=f4e134]: Wifi chậm bất thường giờ cao điểm, speedtest còn 5Mbps
+                - generic [ref=f4e135]: Mạng / Internet / WiFi · 05/09/2026 14:00 · Đang xử lý
+              - generic [ref=f4e136]:
+                - button "Hoàn thành" [ref=f4e137] [cursor=pointer]
+                - button "Hủy" [ref=f4e141] [cursor=pointer]
+            - generic [ref=f4e146]:
+              - button "[GẤP]Laptop HP EliteBook Bật không lên nguồn, cắm sạc đèn không sáng Máy tính (Laptop / PC) · 04/09/2026 09:30 · Chờ nhận" [ref=f4e147] [cursor=pointer]:
+                - generic [ref=f4e148]: "[GẤP]Laptop HP EliteBook"
+                - generic [ref=f4e149]: Bật không lên nguồn, cắm sạc đèn không sáng
+                - generic [ref=f4e150]: Máy tính (Laptop / PC) · 04/09/2026 09:30 · Chờ nhận
+              - generic [ref=f4e151]:
+                - button "Nhận ticket" [ref=f4e152] [cursor=pointer]
+                - button "Hủy" [ref=f4e153] [cursor=pointer]
+            - generic [ref=f4e158]:
+              - button "[GẤP]Máy in Epson P.Marketing Màu đỏ in ra thành cam, sai màu catalogue Máy in / Photocopy / Scan · 03/09/2026 10:00 · Đang xử lý" [active] [ref=f4e159] [cursor=pointer]:
+                - generic [ref=f4e160]: "[GẤP]Máy in Epson P.Marketing"
+                - generic [ref=f4e161]: Màu đỏ in ra thành cam, sai màu catalogue
+                - generic [ref=f4e162]: Máy in / Photocopy / Scan · 03/09/2026 10:00 · Đang xử lý
+              - generic [ref=f4e163]:
+                - button "Hoàn thành" [ref=f4e164] [cursor=pointer]
+                - button "Hủy" [ref=f4e168] [cursor=pointer]
+            - generic [ref=f4e173]:
+              - button "[GẤP]Máy lạnh phòng server Điều hòa phòng server chảy nước, nhiệt độ lên 32 độ Khác · 02/09/2026 08:15 · Đang xử lý" [ref=f4e174] [cursor=pointer]:
+                - generic [ref=f4e175]: "[GẤP]Máy lạnh phòng server"
+                - generic [ref=f4e176]: Điều hòa phòng server chảy nước, nhiệt độ lên 32 độ
+                - generic [ref=f4e177]: Khác · 02/09/2026 08:15 · Đang xử lý
+              - generic [ref=f4e178]:
+                - button "Hoàn thành" [ref=f4e179] [cursor=pointer]
+                - button "Hủy" [ref=f4e183] [cursor=pointer]
+          - generic [ref=f4e190]:
+            - generic [ref=f4e191]:
+              - heading "Máy in Epson P.Marketing" [level=2] [ref=f4e192]
+              - button "Đóng" [ref=f4e193] [cursor=pointer]
+            - generic [ref=f4e197]:
+              - generic [ref=f4e198]:
+                - generic [ref=f4e199]: Máy in / Photocopy / Scan
+                - generic [ref=f4e200]: Gấp
+                - generic [ref=f4e201]: Đang xử lý
+              - generic [ref=f4e202]:
+                - paragraph [ref=f4e203]: Mô tả
+                - paragraph [ref=f4e204]: Màu đỏ in ra thành cam, sai màu catalogue
+              - generic [ref=f4e205]:
+                - paragraph [ref=f4e206]: Vị trí
+                - paragraph [ref=f4e207]: P.Marketing - tầng 4
+              - generic [ref=f4e209]:
+                - paragraph [ref=f4e210]: Ngày gửi
+                - paragraph [ref=f4e211]: 03/09/2026 10:00
+  - button "Open Next.js Dev Tools" [ref=f4e15] [cursor=pointer]
+  - alert [ref=f4e19]

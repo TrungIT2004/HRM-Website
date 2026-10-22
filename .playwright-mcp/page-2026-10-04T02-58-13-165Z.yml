@@ -1,0 +1,507 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e20]:
+      - generic [ref=f1e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f1e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f1e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f1e29]: ACT
+          - generic [ref=f1e30]: ACT HRM
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]:
+          - generic [ref=f1e37]: "Hôm nay:"
+          - generic [ref=f1e38]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f1e40] [cursor=pointer]:
+          - generic [ref=f1e41]: A
+          - generic [ref=f1e42]:
+            - generic [ref=f1e43]: Super Admin
+            - generic [ref=f1e44]: SUPER_ADMIN
+    - main [ref=f1e46]:
+      - generic [ref=f1e47]:
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]:
+            - heading "Mẫu đơn & Biểu mẫu" [level=1] [ref=f1e704]
+            - paragraph [ref=f1e51]: Tải biểu mẫu đơn xin nghỉ, nghỉ việc, hợp đồng và biên bản dùng chung toàn công ty.
+          - button "Đăng mẫu đơn mới" [ref=f1e705] [cursor=pointer]
+        - generic [ref=f1e55]:
+          - button "Tài liệu & Quy chế" [ref=f1e56] [cursor=pointer]
+          - button "Mẫu đơn & Biểu mẫu (22)" [active] [pressed] [ref=f1e706] [cursor=pointer]
+        - generic [ref=f1e59]:
+          - textbox "Tìm kiếm theo tiêu đề, nội dung tóm tắt, người đăng..." [ref=f1e707]
+          - generic [ref=f1e65]:
+            - generic [ref=f1e708]: "Nhóm đơn:"
+            - combobox [ref=f1e709] [cursor=pointer]:
+              - option "Tất cả nhóm đơn" [selected]
+              - option "Bàn giao công việc"
+              - option "Biên bản cuộc họp"
+              - option "Bổ sung nhân sự"
+              - option "Đơn xin nghỉ"
+              - option "Đơn xin nghỉ việc"
+              - option "Hợp đồng lao động"
+            - button "Làm mới danh sách" [ref=f1e710] [cursor=pointer]
+        - generic [ref=f1e716]:
+          - generic [ref=f1e717]:
+            - generic [ref=f1e718]:
+              - generic [ref=f1e725]:
+                - heading "Biên bản bàn giao công việc khi chuyển công tác" [level=3] [ref=f1e726]
+                - generic [ref=f1e727]: Biên bản bàn giao công việc
+              - paragraph [ref=f1e728]: Biểu mẫu biên bản bàn giao công việc, tài sản khi chuyển công tác, nghỉ việc.
+              - generic [ref=f1e729]:
+                - generic [ref=f1e730]:
+                  - generic [ref=f1e731]: "Người đăng:"
+                  - generic [ref=f1e732]: Nguyễn Văn Admin
+                - generic [ref=f1e733]:
+                  - generic [ref=f1e734]: "Ngày đăng:"
+                  - generic [ref=f1e735]: 04/10/2026 09:50
+                - generic [ref=f1e736]:
+                  - generic [ref=f1e737]: "Dung lượng:"
+                  - generic [ref=f1e738]: 44.5 KB
+            - generic [ref=f1e739]:
+              - button "Tải xuống Biên bản bàn giao công việc khi chuyển công tác.docx" [ref=f1e740] [cursor=pointer]
+              - generic [ref=f1e744]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e745] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e749] [cursor=pointer]
+          - generic [ref=f1e753]:
+            - generic [ref=f1e754]:
+              - generic [ref=f1e761]:
+                - heading "Biên bản bàn giao khi nhân sự nghỉ việc" [level=3] [ref=f1e762]
+                - generic [ref=f1e763]: Biên bản bàn giao công việc
+              - paragraph [ref=f1e764]: Biểu mẫu biên bản bàn giao công việc, tài sản khi chuyển công tác, nghỉ việc.
+              - generic [ref=f1e765]:
+                - generic [ref=f1e766]:
+                  - generic [ref=f1e767]: "Người đăng:"
+                  - generic [ref=f1e768]: Nguyễn Văn Admin
+                - generic [ref=f1e769]:
+                  - generic [ref=f1e770]: "Ngày đăng:"
+                  - generic [ref=f1e771]: 04/10/2026 09:50
+                - generic [ref=f1e772]:
+                  - generic [ref=f1e773]: "Dung lượng:"
+                  - generic [ref=f1e774]: 3.3 MB
+            - generic [ref=f1e775]:
+              - button "Tải xuống Biên bản bàn giao khi nhân sự nghỉ việc.docx" [ref=f1e776] [cursor=pointer]
+              - generic [ref=f1e780]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e781] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e785] [cursor=pointer]
+          - generic [ref=f1e789]:
+            - generic [ref=f1e790]:
+              - generic [ref=f1e797]:
+                - heading "Mẫu biên bản bàn giao công việc của lãnh đạo" [level=3] [ref=f1e798]
+                - generic [ref=f1e799]: Biên bản bàn giao công việc
+              - paragraph [ref=f1e800]: Biểu mẫu biên bản bàn giao công việc, tài sản khi chuyển công tác, nghỉ việc.
+              - generic [ref=f1e801]:
+                - generic [ref=f1e802]:
+                  - generic [ref=f1e803]: "Người đăng:"
+                  - generic [ref=f1e804]: Nguyễn Văn Admin
+                - generic [ref=f1e805]:
+                  - generic [ref=f1e806]: "Ngày đăng:"
+                  - generic [ref=f1e807]: 04/10/2026 09:50
+                - generic [ref=f1e808]:
+                  - generic [ref=f1e809]: "Dung lượng:"
+                  - generic [ref=f1e810]: 79.1 KB
+            - generic [ref=f1e811]:
+              - button "Tải xuống Mẫu biên bản bàn giao công việc của lãnh đạo.docx" [ref=f1e812] [cursor=pointer]
+              - generic [ref=f1e816]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e817] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e821] [cursor=pointer]
+          - generic [ref=f1e825]:
+            - generic [ref=f1e826]:
+              - generic [ref=f1e833]:
+                - heading "Mẫu biên bản bàn giao công việc khi nghỉ thai sản" [level=3] [ref=f1e834]
+                - generic [ref=f1e835]: Biên bản bàn giao công việc
+              - paragraph [ref=f1e836]: Biểu mẫu biên bản bàn giao công việc, tài sản khi chuyển công tác, nghỉ việc.
+              - generic [ref=f1e837]:
+                - generic [ref=f1e838]:
+                  - generic [ref=f1e839]: "Người đăng:"
+                  - generic [ref=f1e840]: Nguyễn Văn Admin
+                - generic [ref=f1e841]:
+                  - generic [ref=f1e842]: "Ngày đăng:"
+                  - generic [ref=f1e843]: 04/10/2026 09:50
+                - generic [ref=f1e844]:
+                  - generic [ref=f1e845]: "Dung lượng:"
+                  - generic [ref=f1e846]: 44.6 KB
+            - generic [ref=f1e847]:
+              - button "Tải xuống Mẫu biên bản bàn giao công việc khi nghỉ thai sản.docx" [ref=f1e848] [cursor=pointer]
+              - generic [ref=f1e852]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e853] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e857] [cursor=pointer]
+          - generic [ref=f1e861]:
+            - generic [ref=f1e862]:
+              - generic [ref=f1e869]:
+                - heading "Mẫu biên bản bàn giao công việc kế toán" [level=3] [ref=f1e870]
+                - generic [ref=f1e871]: Biên bản bàn giao công việc
+              - paragraph [ref=f1e872]: Biểu mẫu biên bản bàn giao công việc, tài sản khi chuyển công tác, nghỉ việc.
+              - generic [ref=f1e873]:
+                - generic [ref=f1e874]:
+                  - generic [ref=f1e875]: "Người đăng:"
+                  - generic [ref=f1e876]: Nguyễn Văn Admin
+                - generic [ref=f1e877]:
+                  - generic [ref=f1e878]: "Ngày đăng:"
+                  - generic [ref=f1e879]: 04/10/2026 09:50
+                - generic [ref=f1e880]:
+                  - generic [ref=f1e881]: "Dung lượng:"
+                  - generic [ref=f1e882]: 227.7 KB
+            - generic [ref=f1e883]:
+              - button "Tải xuống Mẫu biên bản bàn giao công việc kế toán.docx" [ref=f1e884] [cursor=pointer]
+              - generic [ref=f1e888]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e889] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e893] [cursor=pointer]
+          - generic [ref=f1e897]:
+            - generic [ref=f1e898]:
+              - generic [ref=f1e905]:
+                - heading "Mẫu biên bản bàn giao tài sản" [level=3] [ref=f1e906]
+                - generic [ref=f1e907]: Biên bản bàn giao công việc
+              - paragraph [ref=f1e908]: Biểu mẫu biên bản bàn giao công việc, tài sản khi chuyển công tác, nghỉ việc.
+              - generic [ref=f1e909]:
+                - generic [ref=f1e910]:
+                  - generic [ref=f1e911]: "Người đăng:"
+                  - generic [ref=f1e912]: Nguyễn Văn Admin
+                - generic [ref=f1e913]:
+                  - generic [ref=f1e914]: "Ngày đăng:"
+                  - generic [ref=f1e915]: 04/10/2026 09:50
+                - generic [ref=f1e916]:
+                  - generic [ref=f1e917]: "Dung lượng:"
+                  - generic [ref=f1e918]: 44.3 KB
+            - generic [ref=f1e919]:
+              - button "Tải xuống Mẫu biên bản bàn giao tài sản.docx" [ref=f1e920] [cursor=pointer]
+              - generic [ref=f1e924]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e925] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e929] [cursor=pointer]
+          - generic [ref=f1e933]:
+            - generic [ref=f1e934]:
+              - generic [ref=f1e941]:
+                - heading "1. Mẫu Biên bản cuộc họp chung" [level=3] [ref=f1e942]
+                - generic [ref=f1e943]: Biên bản cuộc họp
+              - paragraph [ref=f1e944]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e945]:
+                - generic [ref=f1e946]:
+                  - generic [ref=f1e947]: "Người đăng:"
+                  - generic [ref=f1e948]: Nguyễn Văn Admin
+                - generic [ref=f1e949]:
+                  - generic [ref=f1e950]: "Ngày đăng:"
+                  - generic [ref=f1e951]: 04/10/2026 09:50
+                - generic [ref=f1e952]:
+                  - generic [ref=f1e953]: "Dung lượng:"
+                  - generic [ref=f1e954]: 32.5 KB
+            - generic [ref=f1e955]:
+              - button "Tải xuống 1. Mẫu Biên bản cuộc họp chung.doc" [ref=f1e956] [cursor=pointer]
+              - generic [ref=f1e960]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e961] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e965] [cursor=pointer]
+          - generic [ref=f1e969]:
+            - generic [ref=f1e970]:
+              - generic [ref=f1e977]:
+                - heading "2. Mẫu biên bản cuộc họp cổ đông" [level=3] [ref=f1e978]
+                - generic [ref=f1e979]: Biên bản cuộc họp
+              - paragraph [ref=f1e980]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e981]:
+                - generic [ref=f1e982]:
+                  - generic [ref=f1e983]: "Người đăng:"
+                  - generic [ref=f1e984]: Nguyễn Văn Admin
+                - generic [ref=f1e985]:
+                  - generic [ref=f1e986]: "Ngày đăng:"
+                  - generic [ref=f1e987]: 04/10/2026 09:50
+                - generic [ref=f1e988]:
+                  - generic [ref=f1e989]: "Dung lượng:"
+                  - generic [ref=f1e990]: 15.8 KB
+            - generic [ref=f1e991]:
+              - button "Tải xuống 2. Mẫu biên bản cuộc họp cổ đông.docx" [ref=f1e992] [cursor=pointer]
+              - generic [ref=f1e996]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e997] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1001] [cursor=pointer]
+          - generic [ref=f1e1005]:
+            - generic [ref=f1e1006]:
+              - generic [ref=f1e1013]:
+                - heading "3. Mẫu biên bản cuộc họp chi bộ" [level=3] [ref=f1e1014]
+                - generic [ref=f1e1015]: Biên bản cuộc họp
+              - paragraph [ref=f1e1016]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e1017]:
+                - generic [ref=f1e1018]:
+                  - generic [ref=f1e1019]: "Người đăng:"
+                  - generic [ref=f1e1020]: Nguyễn Văn Admin
+                - generic [ref=f1e1021]:
+                  - generic [ref=f1e1022]: "Ngày đăng:"
+                  - generic [ref=f1e1023]: 04/10/2026 09:50
+                - generic [ref=f1e1024]:
+                  - generic [ref=f1e1025]: "Dung lượng:"
+                  - generic [ref=f1e1026]: 16 KB
+            - generic [ref=f1e1027]:
+              - button "Tải xuống 3. Mẫu biên bản cuộc họp chi bộ.docx" [ref=f1e1028] [cursor=pointer]
+              - generic [ref=f1e1032]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1033] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1037] [cursor=pointer]
+          - generic [ref=f1e1041]:
+            - generic [ref=f1e1042]:
+              - generic [ref=f1e1049]:
+                - heading "4. Mẫu biên bản cuộc họp giao ban" [level=3] [ref=f1e1050]
+                - generic [ref=f1e1051]: Biên bản cuộc họp
+              - paragraph [ref=f1e1052]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e1053]:
+                - generic [ref=f1e1054]:
+                  - generic [ref=f1e1055]: "Người đăng:"
+                  - generic [ref=f1e1056]: Nguyễn Văn Admin
+                - generic [ref=f1e1057]:
+                  - generic [ref=f1e1058]: "Ngày đăng:"
+                  - generic [ref=f1e1059]: 04/10/2026 09:50
+                - generic [ref=f1e1060]:
+                  - generic [ref=f1e1061]: "Dung lượng:"
+                  - generic [ref=f1e1062]: 14 KB
+            - generic [ref=f1e1063]:
+              - button "Tải xuống 4. Mẫu biên bản cuộc họp giao ban.docx" [ref=f1e1064] [cursor=pointer]
+              - generic [ref=f1e1068]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1069] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1073] [cursor=pointer]
+          - generic [ref=f1e1077]:
+            - generic [ref=f1e1078]:
+              - generic [ref=f1e1085]:
+                - heading "5. Biên bản họp hội đồng thành viên" [level=3] [ref=f1e1086]
+                - generic [ref=f1e1087]: Biên bản cuộc họp
+              - paragraph [ref=f1e1088]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e1089]:
+                - generic [ref=f1e1090]:
+                  - generic [ref=f1e1091]: "Người đăng:"
+                  - generic [ref=f1e1092]: Nguyễn Văn Admin
+                - generic [ref=f1e1093]:
+                  - generic [ref=f1e1094]: "Ngày đăng:"
+                  - generic [ref=f1e1095]: 04/10/2026 09:50
+                - generic [ref=f1e1096]:
+                  - generic [ref=f1e1097]: "Dung lượng:"
+                  - generic [ref=f1e1098]: 18.9 KB
+            - generic [ref=f1e1099]:
+              - button "Tải xuống 5. Biên bản họp hội đồng thành viên.docx" [ref=f1e1100] [cursor=pointer]
+              - generic [ref=f1e1104]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1105] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1109] [cursor=pointer]
+          - generic [ref=f1e1113]:
+            - generic [ref=f1e1114]:
+              - generic [ref=f1e1121]:
+                - heading "6. Biên bản họp công đoàn" [level=3] [ref=f1e1122]
+                - generic [ref=f1e1123]: Biên bản cuộc họp
+              - paragraph [ref=f1e1124]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e1125]:
+                - generic [ref=f1e1126]:
+                  - generic [ref=f1e1127]: "Người đăng:"
+                  - generic [ref=f1e1128]: Nguyễn Văn Admin
+                - generic [ref=f1e1129]:
+                  - generic [ref=f1e1130]: "Ngày đăng:"
+                  - generic [ref=f1e1131]: 04/10/2026 09:50
+                - generic [ref=f1e1132]:
+                  - generic [ref=f1e1133]: "Dung lượng:"
+                  - generic [ref=f1e1134]: 13.1 KB
+            - generic [ref=f1e1135]:
+              - button "Tải xuống 6. Biên bản họp công đoàn.docx" [ref=f1e1136] [cursor=pointer]
+              - generic [ref=f1e1140]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1141] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1145] [cursor=pointer]
+          - generic [ref=f1e1149]:
+            - generic [ref=f1e1150]:
+              - generic [ref=f1e1157]:
+                - heading "7. Mẫu biên bản cuộc họp tiếng Anh" [level=3] [ref=f1e1158]
+                - generic [ref=f1e1159]: Biên bản cuộc họp
+              - paragraph [ref=f1e1160]: Biểu mẫu biên bản cuộc họp chung, giao ban, công đoàn, hội đồng thành viên.
+              - generic [ref=f1e1161]:
+                - generic [ref=f1e1162]:
+                  - generic [ref=f1e1163]: "Người đăng:"
+                  - generic [ref=f1e1164]: Nguyễn Văn Admin
+                - generic [ref=f1e1165]:
+                  - generic [ref=f1e1166]: "Ngày đăng:"
+                  - generic [ref=f1e1167]: 04/10/2026 09:50
+                - generic [ref=f1e1168]:
+                  - generic [ref=f1e1169]: "Dung lượng:"
+                  - generic [ref=f1e1170]: 8.4 KB
+            - generic [ref=f1e1171]:
+              - button "Tải xuống 7. Mẫu biên bản cuộc họp tiếng Anh.docx" [ref=f1e1172] [cursor=pointer]
+              - generic [ref=f1e1176]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1177] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1181] [cursor=pointer]
+          - generic [ref=f1e1185]:
+            - generic [ref=f1e1186]:
+              - generic [ref=f1e1193]:
+                - heading "HĐLĐ có thời hạn" [level=3] [ref=f1e1194]
+                - generic [ref=f1e1195]: Hợp đồng lao động
+              - paragraph [ref=f1e1196]: Mẫu hợp đồng lao động có thời hạn, không xác định thời hạn, thời vụ.
+              - generic [ref=f1e1197]:
+                - generic [ref=f1e1198]:
+                  - generic [ref=f1e1199]: "Người đăng:"
+                  - generic [ref=f1e1200]: Nguyễn Văn Admin
+                - generic [ref=f1e1201]:
+                  - generic [ref=f1e1202]: "Ngày đăng:"
+                  - generic [ref=f1e1203]: 04/10/2026 09:50
+                - generic [ref=f1e1204]:
+                  - generic [ref=f1e1205]: "Dung lượng:"
+                  - generic [ref=f1e1206]: 81.5 KB
+            - generic [ref=f1e1207]:
+              - button "Tải xuống HĐLĐ có thời hạn.docx" [ref=f1e1208] [cursor=pointer]
+              - generic [ref=f1e1212]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1213] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1217] [cursor=pointer]
+          - generic [ref=f1e1221]:
+            - generic [ref=f1e1222]:
+              - generic [ref=f1e1229]:
+                - heading "HĐLĐ không xác định thời hạn" [level=3] [ref=f1e1230]
+                - generic [ref=f1e1231]: Hợp đồng lao động
+              - paragraph [ref=f1e1232]: Mẫu hợp đồng lao động có thời hạn, không xác định thời hạn, thời vụ.
+              - generic [ref=f1e1233]:
+                - generic [ref=f1e1234]:
+                  - generic [ref=f1e1235]: "Người đăng:"
+                  - generic [ref=f1e1236]: Nguyễn Văn Admin
+                - generic [ref=f1e1237]:
+                  - generic [ref=f1e1238]: "Ngày đăng:"
+                  - generic [ref=f1e1239]: 04/10/2026 09:50
+                - generic [ref=f1e1240]:
+                  - generic [ref=f1e1241]: "Dung lượng:"
+                  - generic [ref=f1e1242]: 83.5 KB
+            - generic [ref=f1e1243]:
+              - button "Tải xuống HĐLĐ không xác định thời hạn.docx" [ref=f1e1244] [cursor=pointer]
+              - generic [ref=f1e1248]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1249] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1253] [cursor=pointer]
+          - generic [ref=f1e1257]:
+            - generic [ref=f1e1258]:
+              - generic [ref=f1e1265]:
+                - heading "HĐLĐ thời vụ" [level=3] [ref=f1e1266]
+                - generic [ref=f1e1267]: Hợp đồng lao động
+              - paragraph [ref=f1e1268]: Mẫu hợp đồng lao động có thời hạn, không xác định thời hạn, thời vụ.
+              - generic [ref=f1e1269]:
+                - generic [ref=f1e1270]:
+                  - generic [ref=f1e1271]: "Người đăng:"
+                  - generic [ref=f1e1272]: Nguyễn Văn Admin
+                - generic [ref=f1e1273]:
+                  - generic [ref=f1e1274]: "Ngày đăng:"
+                  - generic [ref=f1e1275]: 04/10/2026 09:50
+                - generic [ref=f1e1276]:
+                  - generic [ref=f1e1277]: "Dung lượng:"
+                  - generic [ref=f1e1278]: 81.2 KB
+            - generic [ref=f1e1279]:
+              - button "Tải xuống HĐLĐ thời vụ.docx" [ref=f1e1280] [cursor=pointer]
+              - generic [ref=f1e1284]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1285] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1289] [cursor=pointer]
+          - generic [ref=f1e1293]:
+            - generic [ref=f1e1294]:
+              - generic [ref=f1e1301]:
+                - heading "Tờ trình bổ sung nhân sự" [level=3] [ref=f1e1302]
+                - generic [ref=f1e1303]: Đơn xin bổ sung nhân sự
+              - paragraph [ref=f1e1304]: Tờ trình đề xuất bổ sung nhân sự cho phòng ban.
+              - generic [ref=f1e1305]:
+                - generic [ref=f1e1306]:
+                  - generic [ref=f1e1307]: "Người đăng:"
+                  - generic [ref=f1e1308]: Nguyễn Văn Admin
+                - generic [ref=f1e1309]:
+                  - generic [ref=f1e1310]: "Ngày đăng:"
+                  - generic [ref=f1e1311]: 04/10/2026 09:50
+                - generic [ref=f1e1312]:
+                  - generic [ref=f1e1313]: "Dung lượng:"
+                  - generic [ref=f1e1314]: 14.9 KB
+            - generic [ref=f1e1315]:
+              - button "Tải xuống Tờ trình bổ sung nhân sự.docx" [ref=f1e1316] [cursor=pointer]
+              - generic [ref=f1e1320]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1321] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1325] [cursor=pointer]
+          - generic [ref=f1e1329]:
+            - generic [ref=f1e1330]:
+              - generic [ref=f1e1337]:
+                - heading "Đơn xin nghỉ không lương thông thường" [level=3] [ref=f1e1338]
+                - generic [ref=f1e1339]: Đơn xin nghỉ
+              - paragraph [ref=f1e1340]: Mẫu đơn xin nghỉ phép năm, nghỉ không lương, nghỉ thai sản.
+              - generic [ref=f1e1341]:
+                - generic [ref=f1e1342]:
+                  - generic [ref=f1e1343]: "Người đăng:"
+                  - generic [ref=f1e1344]: Nguyễn Văn Admin
+                - generic [ref=f1e1345]:
+                  - generic [ref=f1e1346]: "Ngày đăng:"
+                  - generic [ref=f1e1347]: 04/10/2026 09:50
+                - generic [ref=f1e1348]:
+                  - generic [ref=f1e1349]: "Dung lượng:"
+                  - generic [ref=f1e1350]: 47.1 KB
+            - generic [ref=f1e1351]:
+              - button "Tải xuống Đơn xin nghỉ không lương thông thường.docx" [ref=f1e1352] [cursor=pointer]
+              - generic [ref=f1e1356]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1357] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1361] [cursor=pointer]
+          - generic [ref=f1e1365]:
+            - generic [ref=f1e1366]:
+              - generic [ref=f1e1373]:
+                - heading "Đơn xin nghỉ phép năm" [level=3] [ref=f1e1374]
+                - generic [ref=f1e1375]: Đơn xin nghỉ
+              - paragraph [ref=f1e1376]: Mẫu đơn xin nghỉ phép năm, nghỉ không lương, nghỉ thai sản.
+              - generic [ref=f1e1377]:
+                - generic [ref=f1e1378]:
+                  - generic [ref=f1e1379]: "Người đăng:"
+                  - generic [ref=f1e1380]: Nguyễn Văn Admin
+                - generic [ref=f1e1381]:
+                  - generic [ref=f1e1382]: "Ngày đăng:"
+                  - generic [ref=f1e1383]: 04/10/2026 09:50
+                - generic [ref=f1e1384]:
+                  - generic [ref=f1e1385]: "Dung lượng:"
+                  - generic [ref=f1e1386]: 2.2 MB
+            - generic [ref=f1e1387]:
+              - button "Tải xuống Đơn xin nghỉ phép năm.docx" [ref=f1e1388] [cursor=pointer]
+              - generic [ref=f1e1392]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1393] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1397] [cursor=pointer]
+          - generic [ref=f1e1401]:
+            - generic [ref=f1e1402]:
+              - generic [ref=f1e1409]:
+                - heading "Đơn xin nghỉ thai sản hưởng chế độ theo quy định" [level=3] [ref=f1e1410]
+                - generic [ref=f1e1411]: Đơn xin nghỉ
+              - paragraph [ref=f1e1412]: Mẫu đơn xin nghỉ phép năm, nghỉ không lương, nghỉ thai sản.
+              - generic [ref=f1e1413]:
+                - generic [ref=f1e1414]:
+                  - generic [ref=f1e1415]: "Người đăng:"
+                  - generic [ref=f1e1416]: Nguyễn Văn Admin
+                - generic [ref=f1e1417]:
+                  - generic [ref=f1e1418]: "Ngày đăng:"
+                  - generic [ref=f1e1419]: 04/10/2026 09:50
+                - generic [ref=f1e1420]:
+                  - generic [ref=f1e1421]: "Dung lượng:"
+                  - generic [ref=f1e1422]: 1.6 MB
+            - generic [ref=f1e1423]:
+              - button "Tải xuống Đơn xin nghỉ thai sản hưởng chế độ theo quy định.docx" [ref=f1e1424] [cursor=pointer]
+              - generic [ref=f1e1428]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1429] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1433] [cursor=pointer]
+          - generic [ref=f1e1437]:
+            - generic [ref=f1e1438]:
+              - generic [ref=f1e1445]:
+                - heading "Đơn xin nghỉ việc 1" [level=3] [ref=f1e1446]
+                - generic [ref=f1e1447]: Đơn xin nghỉ việc
+              - paragraph [ref=f1e1448]: Mẫu đơn xin nghỉ việc dành cho nhân viên.
+              - generic [ref=f1e1449]:
+                - generic [ref=f1e1450]:
+                  - generic [ref=f1e1451]: "Người đăng:"
+                  - generic [ref=f1e1452]: Nguyễn Văn Admin
+                - generic [ref=f1e1453]:
+                  - generic [ref=f1e1454]: "Ngày đăng:"
+                  - generic [ref=f1e1455]: 04/10/2026 09:50
+                - generic [ref=f1e1456]:
+                  - generic [ref=f1e1457]: "Dung lượng:"
+                  - generic [ref=f1e1458]: 49.5 KB
+            - generic [ref=f1e1459]:
+              - button "Tải xuống Đơn xin nghỉ việc 1.docx" [ref=f1e1460] [cursor=pointer]
+              - generic [ref=f1e1464]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1465] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1469] [cursor=pointer]
+          - generic [ref=f1e1473]:
+            - generic [ref=f1e1474]:
+              - generic [ref=f1e1481]:
+                - heading "Đơn xin nghỉ việc 2" [level=3] [ref=f1e1482]
+                - generic [ref=f1e1483]: Đơn xin nghỉ việc
+              - paragraph [ref=f1e1484]: Mẫu đơn xin nghỉ việc dành cho nhân viên.
+              - generic [ref=f1e1485]:
+                - generic [ref=f1e1486]:
+                  - generic [ref=f1e1487]: "Người đăng:"
+                  - generic [ref=f1e1488]: Nguyễn Văn Admin
+                - generic [ref=f1e1489]:
+                  - generic [ref=f1e1490]: "Ngày đăng:"
+                  - generic [ref=f1e1491]: 04/10/2026 09:50
+                - generic [ref=f1e1492]:
+                  - generic [ref=f1e1493]: "Dung lượng:"
+                  - generic [ref=f1e1494]: 49 KB
+            - generic [ref=f1e1495]:
+              - button "Tải xuống Đơn xin nghỉ việc 2.docx" [ref=f1e1496] [cursor=pointer]
+              - generic [ref=f1e1500]:
+                - button "Sửa tiêu đề, nhóm hoặc thay file" [ref=f1e1501] [cursor=pointer]
+                - button "Xóa mẫu đơn" [ref=f1e1505] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f1e15] [cursor=pointer]
+  - alert [ref=f1e19]

@@ -1,0 +1,38 @@
+- generic [active] [ref=f13e1]:
+  - generic [ref=f13e2]:
+    - banner [ref=f13e20]:
+      - generic [ref=f13e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f13e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f13e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f13e29]: ACT
+          - generic [ref=f13e30]: ACT HRM
+      - generic [ref=f13e32]:
+        - generic [ref=f13e33]:
+          - generic [ref=f13e37]: "Hôm nay:"
+          - generic [ref=f13e38]: Ngày nghỉ
+        - button "T Đỗ Thị F Software Engineer" [ref=f13e40] [cursor=pointer]:
+          - generic [ref=f13e41]: T
+          - generic [ref=f13e42]:
+            - generic [ref=f13e43]: Đỗ Thị F
+            - generic [ref=f13e44]: Software Engineer
+    - generic [ref=f13e45]:
+      - complementary [ref=f13e46]:
+        - generic [ref=f13e47]:
+          - generic [ref=f13e48]:
+            - generic [ref=f13e49]: Không gian làm việc
+            - link "Tài sản của tôi" [ref=f13e52] [cursor=pointer]:
+              - /url: /assets
+          - generic [ref=f13e58]: ACT HRM Enterprise v2.4
+      - main [ref=f13e59]:
+        - generic [ref=f13e60]:
+          - generic [ref=f13e61]:
+            - heading "Tài sản của tôi" [level=1] [ref=f13e62]
+            - button "Xin tài sản" [ref=f13e66] [cursor=pointer]
+          - generic [ref=f13e68]:
+            - button "Đang sử dụng" [ref=f13e69] [cursor=pointer]
+            - button "Đơn của tôi" [ref=f13e70] [cursor=pointer]
+          - paragraph [ref=f13e71]: Bạn chưa được cấp tài sản nào.
+  - button "Open Next.js Dev Tools" [ref=f13e15] [cursor=pointer]
+  - alert [ref=f13e19]

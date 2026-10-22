@@ -1,0 +1,84 @@
+- generic [ref=f21e1]:
+  - generic [ref=f21e2]:
+    - banner [ref=f21e19]:
+      - generic [ref=f21e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f21e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f21e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f21e28]: ACT
+          - generic [ref=f21e29]: ACT HRM
+      - generic [ref=f21e31]:
+        - generic [ref=f21e32]:
+          - generic [ref=f21e36]: "Hôm nay:"
+          - generic [ref=f21e37]: Ngày nghỉ
+        - button "T Đỗ Thị F Software Engineer" [ref=f21e39] [cursor=pointer]:
+          - generic [ref=f21e40]: T
+          - generic [ref=f21e41]:
+            - generic [ref=f21e42]: Đỗ Thị F
+            - generic [ref=f21e43]: Software Engineer
+    - generic [ref=f21e44]:
+      - complementary [ref=f21e45]:
+        - generic [ref=f21e46]:
+          - generic [ref=f21e47]:
+            - generic [ref=f21e48]: Xử lý IT
+            - link "Tổng quan" [ref=f21e51] [cursor=pointer]:
+              - /url: /tickets/manage/overview
+            - link "Hàng chờ xử lý" [ref=f21e57] [cursor=pointer]:
+              - /url: /tickets/manage/queues
+            - link "Đã xử lý" [ref=f21e63] [cursor=pointer]:
+              - /url: /tickets/manage/done
+          - generic [ref=f21e70]: ACT HRM Enterprise v2.4
+      - main [ref=f21e71]:
+        - generic [ref=f21e72]:
+          - heading "Hàng chờ xử lý" [level=1] [ref=f21e73]
+          - generic [ref=f21e77]:
+            - combobox "Lọc trạng thái" [ref=f21e78]:
+              - option "Chờ nhận" [selected]
+              - option "Đang xử lý"
+              - option "Tất cả"
+            - combobox "Lọc loại sự cố" [ref=f21e79]:
+              - option "Tất cả loại" [selected]
+              - option "Máy tính (Laptop / PC)"
+              - option "Mạng / Internet / WiFi"
+              - option "Máy in / Photocopy / Scan"
+              - option "Tài khoản / Email"
+              - option "Phần mềm / Ứng dụng"
+              - option "Bàn phím / Chuột / Màn hình"
+              - option "Khác"
+          - generic [ref=f21e81]:
+            - generic [ref=f21e82]:
+              - generic [ref=f21e83]: Máy tính (Laptop / PC)
+              - generic [ref=f21e85]: GẤP
+              - generic [ref=f21e86]: Chờ nhận
+              - generic [ref=f21e87]: 04/09/2026 09:30
+            - button "Laptop HP EliteBook Bật không lên nguồn, cắm sạc đèn không sáng" [active] [ref=f21e90] [cursor=pointer]:
+              - generic [ref=f21e91]: Laptop HP EliteBook
+              - generic [ref=f21e92]: Bật không lên nguồn, cắm sạc đèn không sáng
+            - generic [ref=f21e93]: Phạm Bá Hà
+            - generic [ref=f21e98]:
+              - button "Nhận ticket" [ref=f21e99] [cursor=pointer]
+              - button "Hủy" [ref=f21e105] [cursor=pointer]
+          - generic [ref=f21e113]:
+            - generic [ref=f21e114]:
+              - heading "Laptop HP EliteBook" [level=2] [ref=f21e115]
+              - button "Đóng" [ref=f21e116] [cursor=pointer]
+            - generic [ref=f21e120]:
+              - generic [ref=f21e121]:
+                - img "Ảnh hiện trạng thiết bị" [ref=f21e122]
+                - paragraph [ref=f21e123]: Ảnh hiện trạng thiết bị
+              - generic [ref=f21e124]:
+                - generic [ref=f21e125]: Máy tính (Laptop / PC)
+                - generic [ref=f21e126]: Gấp
+                - generic [ref=f21e127]: Chờ nhận
+              - generic [ref=f21e128]:
+                - paragraph [ref=f21e129]: Mô tả
+                - paragraph [ref=f21e130]: Bật không lên nguồn, cắm sạc đèn không sáng
+              - generic [ref=f21e131]:
+                - paragraph [ref=f21e132]: Vị trí
+                - paragraph [ref=f21e133]: P.Sales - tầng 4
+              - generic [ref=f21e135]:
+                - paragraph [ref=f21e136]: Ngày gửi
+                - paragraph [ref=f21e137]: 04/09/2026 09:30
+  - button "Open Next.js Dev Tools" [ref=f21e15] [cursor=pointer]
+  - alert [ref=f21e110]

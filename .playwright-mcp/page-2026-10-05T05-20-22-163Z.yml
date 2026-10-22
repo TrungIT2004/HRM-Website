@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e138] [cursor=pointer]
+  - alert [ref=e142]
+  - generic [ref=e274]:
+    - banner [ref=e276]:
+      - generic [ref=e277]:
+        - generic [ref=e278]: ACT
+        - generic [ref=e279]:
+          - generic [ref=e280]: ACT HRM PORTAL
+          - generic [ref=e281]: Cổng Dịch vụ Nhân sự Doanh nghiệp
+      - generic [ref=e282]:
+        - textbox "Tìm ứng dụng..." [ref=e287]
+        - button "A Super Admin SUPER_ADMIN" [ref=e289] [cursor=pointer]:
+          - generic [ref=e290]: A
+          - generic [ref=e291]:
+            - paragraph [ref=e292]: Super Admin
+            - paragraph [ref=e293]: SUPER_ADMIN
+    - main [ref=e296]:
+      - generic [ref=e297]:
+        - generic [ref=e298]:
+          - heading "Cá nhân" [level=2] [ref=e299]
+          - generic [ref=e300]:
+            - link "Thông tin nhân sự" [ref=e301] [cursor=pointer]:
+              - /url: /my-profile
+            - link "Chấm công" [ref=e314] [cursor=pointer]:
+              - /url: /attendance/overview
+            - link "Tiền lương" [ref=e332] [cursor=pointer]:
+              - /url: /payroll
+            - link "Danh bạ nhân sự" [ref=e344] [cursor=pointer]:
+              - /url: /employees
+            - link "Đơn thôi việc" [ref=e358] [cursor=pointer]:
+              - /url: /resignations
+            - link "Kho tài liệu & Quy chế" [ref=e370] [cursor=pointer]:
+              - /url: /documents
+            - link "Trợ lý AI" [ref=e382] [cursor=pointer]:
+              - /url: /chat
+            - link "Cài đặt" [ref=e394] [cursor=pointer]:
+              - /url: /security/password
+            - link "Tài sản của tôi" [ref=e406] [cursor=pointer]:
+              - /url: /assets
+            - link "Đánh giá hiệu suất" [ref=e418] [cursor=pointer]:
+              - /url: /performance-reviews
+        - generic [ref=e430]:
+          - heading "Quản lý" [level=2] [ref=e431]
+          - generic [ref=e432]:
+            - link "Quản lý công & Duyệt đơn" [ref=e433] [cursor=pointer]:
+              - /url: /management/overview
+            - link "Cơ cấu tổ chức" [ref=e445] [cursor=pointer]:
+              - /url: /organization/overview
+            - link "Nhân viên mới & Tuyển dụng" [ref=e459] [cursor=pointer]:
+              - /url: /recruitment
+            - link "Quản trị hệ thống" [ref=e471] [cursor=pointer]:
+              - /url: /admin
+            - link "Quản lý tài sản" [ref=e483] [cursor=pointer]:
+              - /url: /assets/management/storage
+            - link "QL Hiệu suất" [ref=e495] [cursor=pointer]:
+              - /url: /performance-reviews/management/overview
+    - contentinfo [ref=e507]: © 2026 ACT Corporation • Nền tảng Quản trị Doanh nghiệp & Nhân sự Thông minh ACT HRM
