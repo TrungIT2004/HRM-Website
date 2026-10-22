@@ -81,9 +81,15 @@ cd ai-service
 python tests/retrieval_db_only/seed_db_eval.py            # seed (1 lần; --cleanup để xóa)
 python tests/retrieval_db_only/eval_db_retrieval.py --n 187
 # Output: tests/retrieval_db_only/db_retrieval_eval.json
+python tests/retrieval_db_only/eval_db_generation.py --n 187  # projection SQL vs gold
+# Output: tests/retrieval_db_only/db_generation_eval.json
 python tests/retrieval_db_only/eval_db_answer.py --n 187  # answer-level
 # Output: tests/retrieval_db_only/db_answer_eval.json
 ```
+
+Mỗi row 3 script trên đều có `elapsed`/`latency_ms` + `prompt_tokens` /
+`completion_tokens` / `llm_calls` (usage provider thật, gom theo từng câu) —
+cộng trung bình là ra latency + cost/turn, khỏi đo riêng.
 
 ---
 
@@ -115,3 +121,18 @@ LLM (paraphrase đáp án + SQL khác nhau mỗi run). Mổ tay các miss cho th
 **Khuyến nghị:** không gate production bằng con số này; dùng sql_ok (96–100%
 ổn định) + spot-check tay mẫu câu trả lời. Ngưỡng tham khảo:
 fact_recall ≥ 0.70, answer_ok ≥ 0.60 (vùng ổn định quan sát được).
+
+---
+
+## Generation Projection (SQL hệ sinh vs gold, `db_generation_eval.json`, n=187)
+
+| Metric | Giá trị | Ngưỡng | Trạng thái |
+|---|---|---|---|
+| sql_ok (sinh + execute được) | 0.9947 | > 0.80 | ✅ PASS |
+| rows_match (multiset rows khớp gold) | 0.7005 | — | ❌ FAIL (tham khảo) |
+| n_gold_bad (gold execute hỏng) | 0 | — | — |
+| latency_mean_ms | 6391 | tham khảo | LLM sinh SQL ~6.4s/câu |
+
+Cùng câu chuyện như answer-level: SQL chạy được gần tuyệt đối, khớp rows gold
+thấp do projection khác nhau vẫn đúng (thứ tự cột, cột thêm, tolerance float)
+chứ không phải sai nghiệp vụ. Dùng sql_ok làm gate, rows_match chỉ để soi.

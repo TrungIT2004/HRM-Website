@@ -56,6 +56,7 @@ services:
       - "${AI_SERVICE_PORT:-8001}:8000"
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/hrm_ai # ponytail: password part hardcodes URL-encoded default (@Minhtrung1408); re-encode manually if POSTGRES_PASSWORD changes
+      HRM_DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/${POSTGRES_DB:-hrm} # same encoding caveat as above (Text-to-SQL business DB)
       INTERNAL_API_SECRET: ${AI_SERVICE_SECRET:-hrm-internal-key-secure-2024}
       LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}

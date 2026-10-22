@@ -3,7 +3,8 @@
 **Ngày test:** 2026-10-07  
 **Dataset:** `generated_testset.csv` (239 câu) → lọc DOC_ONLY = **146 câu**  
 **Corpus:** 7 file PDF/DOCX từ `RAG-Test-Docs/Tài liệu doanh nghiệp thực tế` (OCR scan + docx)  
-**Threshold hệ thống:** `RELEVANCE_THRESHOLD = 0.15`
+**Threshold hệ thống:** `RELEVANCE_THRESHOLD = 0.64` (calib 2026-10-11, xem Update cuối file;
+số bảng dưới đo ở 0.15)
 
 ---
 
@@ -187,3 +188,18 @@ python tests/retrieval_doc_only/eval_retrieval.py --n 30 --reuse
 3. **OCR mất dấu** (Tesseract default settings) → tinh settings 1 hàm.
 
 Hệ thống **sẵn sàng production retrieval**. Các metric RAGAS (context_precision/recall) và rewrite metrics đo riêng ở test end-to-end.
+
+---
+
+## Update 2026-10-11: rerun ở T=0.64 (113q, `retrieval_eval.json`)
+
+| Metric | Ở 0.15 (07/10) | Ở 0.64 (11/10) |
+|---|---|---|
+| Hit@5 / MRR@5 | 1.0000 / 0.9825 | 1.0000 / 0.9956 |
+| top1_mean | 0.5789 | 0.6061 |
+| fallback_rate | 0.0000 PASS | **0.5841 FAIL** (gate <0.20) |
+
+Phân bố top1 legit (n=113): min 0.362, p25 0.517, med 0.608. Trong khi 30 câu âm calib
+nằm 0.37–0.63 (max 0.627) — **2 phân bố chồng nhau, không có ngưỡng nào vừa chặn hết bẫy
+vừa không chặn oan**. T=0.64 = chọn an toàn (0 hallucination đã đo, giá là từ chối nhiều).
+Không tự hạ ngưỡng: xem tradeoff ở `EVAL_SUMMARY.md` mục threshold.

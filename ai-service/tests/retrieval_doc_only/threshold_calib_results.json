@@ -1,0 +1,423 @@
+{
+ "neg": [
+  {
+   "question": "Thủ đô của Úc là thành phố nào?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Cách tính diện tích hình tròn bán kính 5cm?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Chiến tranh thế giới thứ hai kết thúc năm nào?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Ai là người đầu tiên đặt chân lên mặt trăng?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Nhiệt độ sôi của nước ở mực nước biển là bao nhiêu độ C?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Ngôn ngữ lập trình Python do ai tạo ra?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Cách làm bánh mì baguette cần những nguyên liệu gì?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Thủ tục xin visa công tác nước ngoài cho nhân viên gồm những bước nào?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Tỷ lệ đóng bảo hiểm xã hội của người lao động năm nay là bao nhiêu phần trăm?",
+   "top1": 0.6691,
+   "refused_at_current": false,
+   "answer_head": "Tỷ lệ đóng bảo hiểm của người lao động là 10.5%.\n\nCăn cứ: [TÀI LIỆU 3]: company_payrolls.xlsx > Bảng dữ liệu: Bang Luong Toan Cong Ty (Cột Bảo Hiểm NLĐ)."
+  },
+  {
+   "question": "Quy trình tuyển dụng nhân viên mới của công ty có mấy vòng phỏng vấn?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Nhân viên mới được cấp laptop loại gì khi vào làm?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về việc nhân viên mới được cấp laptop l"
+  },
+  {
+   "question": "Đăng ký giảm trừ gia cảnh thuế thu nhập cá nhân cần giấy tờ gì?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Mật khẩu wifi văn phòng thay đổi bao lâu một lần?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Quy định về đặt cơm trưa văn phòng và mức hỗ trợ tiền ăn?",
+   "top1": 0.7069,
+   "refused_at_current": false,
+   "answer_head": "Về vấn đề tiền ăn trưa, công ty có quy định như sau:\n\n- **Quy định chung:** Trong thời gian làm việc 8 giờ, tất cả CBCNV đều được hưởng phụ cấp ăn trưa. Tiền ăn trưa sẽ được trả bằng tiền mặt và cộng "
+  },
+  {
+   "question": "Thủ tục thanh toán công tác phí sau chuyến đi gồm những gì?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về thủ tục thanh toán công tác phí sau chuyến đi. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.\n\nCăn cứ tài l"
+  },
+  {
+   "question": "Điều kiện để được xét danh hiệu nhân viên xuất sắc quý?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Xe công ty có được dùng để đi đám cưới cá nhân vào cuối tuần không?",
+   "top1": 0.7403,
+   "refused_at_current": false,
+   "answer_head": "Không, xe công ty không được dùng để đi đám cưới cá nhân.\n\nTheo Điều 4, mục 4a của Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT: \"Tuyệt đối không sử dụ"
+  },
+  {
+   "question": "Quy định về nuôi mèo trong văn phòng làm việc như thế nào?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Nhân viên có được hút thuốc lá điện tử trong phòng làm việc không?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Công ty có phụ cấp tập gym hàng tháng cho nhân viên không?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Nhân viên có được nghỉ làm vào ngày sinh nhật của mình không?",
+   "top1": null,
+   "refused_at_current": false,
+   "answer_head": "Tôi chưa tra được dữ liệu của bạn lúc này. Bạn thử lại sau hoặc liên hệ Phòng Nhân sự (HR)."
+  },
+  {
+   "question": "Mức lì xì Tết của công ty cho mỗi nhân viên là bao nhiêu?",
+   "top1": 0.7037,
+   "refused_at_current": false,
+   "answer_head": "Về mức thưởng Tết Âm lịch, công ty quy định như sau:\n\nNếu kinh doanh có lãi, Công ty sẽ trích lợi nhuận để thưởng tặng quà cho nhân viên, mức thưởng tùy thuộc vào lợi nhuận của từng năm.\n\nCăn cứ: MauQ"
+  },
+  {
+   "question": "Quy định về trang trí bàn làm việc cá nhân?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Điều 312 Bộ luật Lao động quy định về vấn đề gì?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Mức phạt đi muộn 15 phút theo quy chế là bao nhiêu?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Hồ sơ xin việc cần công chứng những giấy tờ gì?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trự"
+  },
+  {
+   "question": "Công ty có xe đưa đón nhân viên tuyến nào?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Quy định về sử dụng điều hòa trong văn phòng mùa hè?",
+   "top1": null,
+   "refused_at_current": true,
+   "answer_head": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể."
+  },
+  {
+   "question": "Đồng phục công ty phát mấy bộ mỗi năm?",
+   "top1": 0.595,
+   "refused_at_current": false,
+   "answer_head": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nNhân viên kỹ thuật được cấp 4 bộ đồng phục/năm, chia làm 2 đợt vào tháng 01 và tháng 07 hàng năm."
+  },
+  {
+   "question": "Quy định về tổ chức tiệc tất niên cuối năm?",
+   "top1": 0.6686,
+   "refused_at_current": false,
+   "answer_head": "Căn cứ vào tài liệu được cung cấp, quy định về việc tổ chức liên hoan (bao gồm các dịp như Tết Dương lịch, Âm lịch) như sau:\n\n- Mục đích: Để nâng cao tinh thần đoàn kết, động viên kịp thời sự phấn đấu"
+  }
+ ],
+ "pos": [
+  {
+   "question": "Người lao động được nghỉ làm việc hưởng nguyên lương vào những ngày lễ, tết nào?",
+   "top1": 0.8046,
+   "refused_at_current": false,
+   "answer_head": "Người lao động được nghỉ làm việc và hưởng nguyên lương vào các ngày lễ, tết sau:\n\n*   Tết Dương lịch: 01 ngày (ngày 01 tháng 01 dương lịch).\n*   Tết Âm lịch: 05 ngày.\n*   Ngày Chiến thắng: 01 ngày (n"
+  },
+  {
+   "question": "Tuổi nghỉ hưu của lao động nam trong điều kiện bình thường là bao nhiêu?",
+   "top1": 0.8439,
+   "refused_at_current": false,
+   "answer_head": "Tuổi nghỉ hưu của lao động nam trong điều kiện lao động bình thường được quy định như sau:\n\n*   **Lộ trình điều chỉnh:** Tuổi nghỉ hưu được điều chỉnh theo lộ trình cho đến khi đủ 62 tuổi vào năm 2028"
+  },
+  {
+   "question": "Thời giờ làm việc bình thường không quá bao nhiêu giờ mỗi ngày?",
+   "top1": 0.9063,
+   "refused_at_current": false,
+   "answer_head": "Thời giờ làm việc bình thường được quy định như sau:\n- Không quá 08 giờ trong 01 ngày và không quá 48 giờ trong 01 tuần.\n- Trường hợp người sử dụng lao động quy định thời giờ làm việc theo tuần thì th"
+  },
+  {
+   "question": "Hợp đồng lao động xác định thời hạn có thời hạn bao lâu?",
+   "top1": 0.7923,
+   "refused_at_current": false,
+   "answer_head": "Hợp đồng lao động xác định thời hạn là hợp đồng mà trong đó hai bên xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng trong thời gian không quá 36 tháng kể từ thời điểm có hiệu lực của hợp đ"
+  },
+  {
+   "question": "Người lao động có bao nhiêu ngày nghỉ hằng năm?",
+   "top1": 0.7861,
+   "refused_at_current": false,
+   "answer_head": "Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động với số ngày cụ thể như sau:\n\n*   12 ngày làm việc đối với người làm côn"
+  }
+ ],
+ "recommend_T": 0.76,
+ "grid": {
+  "0.0": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.02": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.04": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.06": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.08": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.1": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.12": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.14": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.16": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.18": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.2": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.22": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.24": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.26": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.28": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.3": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.32": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.34": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.36": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.38": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.4": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.42": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.44": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.46": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.48": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.5": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.52": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.54": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.56": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.58": {
+   "neg_blocked": 24,
+   "pos_blocked": 0
+  },
+  "0.6": {
+   "neg_blocked": 25,
+   "pos_blocked": 0
+  },
+  "0.62": {
+   "neg_blocked": 25,
+   "pos_blocked": 0
+  },
+  "0.64": {
+   "neg_blocked": 25,
+   "pos_blocked": 0
+  },
+  "0.66": {
+   "neg_blocked": 25,
+   "pos_blocked": 0
+  },
+  "0.68": {
+   "neg_blocked": 27,
+   "pos_blocked": 0
+  },
+  "0.7": {
+   "neg_blocked": 27,
+   "pos_blocked": 0
+  },
+  "0.72": {
+   "neg_blocked": 29,
+   "pos_blocked": 0
+  },
+  "0.74": {
+   "neg_blocked": 29,
+   "pos_blocked": 0
+  },
+  "0.76": {
+   "neg_blocked": 30,
+   "pos_blocked": 0
+  },
+  "0.78": {
+   "neg_blocked": 30,
+   "pos_blocked": 0
+  },
+  "0.8": {
+   "neg_blocked": 30,
+   "pos_blocked": 2
+  },
+  "0.82": {
+   "neg_blocked": 30,
+   "pos_blocked": 3
+  },
+  "0.84": {
+   "neg_blocked": 30,
+   "pos_blocked": 3
+  },
+  "0.86": {
+   "neg_blocked": 30,
+   "pos_blocked": 4
+  },
+  "0.88": {
+   "neg_blocked": 30,
+   "pos_blocked": 4
+  },
+  "0.9": {
+   "neg_blocked": 30,
+   "pos_blocked": 4
+  },
+  "0.92": {
+   "neg_blocked": 30,
+   "pos_blocked": 5
+  },
+  "0.94": {
+   "neg_blocked": 30,
+   "pos_blocked": 5
+  },
+  "0.96": {
+   "neg_blocked": 30,
+   "pos_blocked": 5
+  },
+  "0.98": {
+   "neg_blocked": 30,
+   "pos_blocked": 5
+  },
+  "1.0": {
+   "neg_blocked": 30,
+   "pos_blocked": 5
+  }
+ }
+}

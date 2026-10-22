@@ -1,0 +1,5184 @@
+{
+  "configs": {
+    "vw=0.5_rerank=off": {
+      "hit@1": 0.45,
+      "recall@1": 0.45,
+      "precision@1": 0.45,
+      "mrr@1": 0.45,
+      "hit@3": 0.675,
+      "recall@3": 0.675,
+      "precision@3": 0.225,
+      "mrr@3": 0.5514,
+      "hit@5": 0.825,
+      "recall@5": 0.825,
+      "precision@5": 0.165,
+      "mrr@5": 0.5856,
+      "hit@10": 0.9333,
+      "recall@10": 0.9333,
+      "precision@10": 0.0933,
+      "mrr@10": 0.6002,
+      "lat_mean_ms": 2748.7,
+      "lat_p50_ms": 2720.5,
+      "lat_p95_ms": 4277.3,
+      "top1_mean": 0.8149,
+      "n": 120
+    },
+    "vw=0.5_rerank=on": {
+      "hit@1": 0.4917,
+      "recall@1": 0.4917,
+      "precision@1": 0.4917,
+      "mrr@1": 0.4917,
+      "hit@3": 0.775,
+      "recall@3": 0.775,
+      "precision@3": 0.2583,
+      "mrr@3": 0.6153,
+      "hit@5": 0.9167,
+      "recall@5": 0.9167,
+      "precision@5": 0.1833,
+      "mrr@5": 0.6482,
+      "hit@10": 0.975,
+      "recall@10": 0.975,
+      "precision@10": 0.0975,
+      "mrr@10": 0.656,
+      "lat_mean_ms": 5058.5,
+      "lat_p50_ms": 5015.8,
+      "lat_p95_ms": 6839.1,
+      "top1_mean": 0.8141,
+      "n": 120
+    },
+    "vw=0.7_rerank=off": {
+      "hit@1": 0.4917,
+      "recall@1": 0.4917,
+      "precision@1": 0.4917,
+      "mrr@1": 0.4917,
+      "hit@3": 0.6667,
+      "recall@3": 0.6667,
+      "precision@3": 0.2222,
+      "mrr@3": 0.5653,
+      "hit@5": 0.7833,
+      "recall@5": 0.7833,
+      "precision@5": 0.1567,
+      "mrr@5": 0.5928,
+      "hit@10": 0.9,
+      "recall@10": 0.9,
+      "precision@10": 0.09,
+      "mrr@10": 0.6085,
+      "lat_mean_ms": 2773.0,
+      "lat_p50_ms": 2749.2,
+      "lat_p95_ms": 4337.5,
+      "top1_mean": 0.7822,
+      "n": 120
+    },
+    "vw=0.7_rerank=on": {
+      "hit@1": 0.5083,
+      "recall@1": 0.5083,
+      "precision@1": 0.5083,
+      "mrr@1": 0.5083,
+      "hit@3": 0.7833,
+      "recall@3": 0.7833,
+      "precision@3": 0.2611,
+      "mrr@3": 0.6278,
+      "hit@5": 0.9,
+      "recall@5": 0.9,
+      "precision@5": 0.18,
+      "mrr@5": 0.654,
+      "hit@10": 0.9833,
+      "recall@10": 0.9833,
+      "precision@10": 0.0983,
+      "mrr@10": 0.6669,
+      "lat_mean_ms": 4939.0,
+      "lat_p50_ms": 4881.9,
+      "lat_p95_ms": 6739.5,
+      "top1_mean": 0.7792,
+      "n": 120
+    },
+    "vw=0.9_rerank=off": {
+      "hit@1": 0.4583,
+      "recall@1": 0.4583,
+      "precision@1": 0.4583,
+      "mrr@1": 0.4583,
+      "hit@3": 0.6333,
+      "recall@3": 0.6333,
+      "precision@3": 0.2111,
+      "mrr@3": 0.5333,
+      "hit@5": 0.7417,
+      "recall@5": 0.7417,
+      "precision@5": 0.1483,
+      "mrr@5": 0.5579,
+      "hit@10": 0.8333,
+      "recall@10": 0.8333,
+      "precision@10": 0.0833,
+      "mrr@10": 0.5695,
+      "lat_mean_ms": 2726.3,
+      "lat_p50_ms": 2707.9,
+      "lat_p95_ms": 4202.8,
+      "top1_mean": 0.7501,
+      "n": 120
+    },
+    "vw=0.9_rerank=on": {
+      "hit@1": 0.4917,
+      "recall@1": 0.4917,
+      "precision@1": 0.4917,
+      "mrr@1": 0.4917,
+      "hit@3": 0.7,
+      "recall@3": 0.7,
+      "precision@3": 0.2333,
+      "mrr@3": 0.5833,
+      "hit@5": 0.8833,
+      "recall@5": 0.8833,
+      "precision@5": 0.1767,
+      "mrr@5": 0.6242,
+      "hit@10": 0.975,
+      "recall@10": 0.975,
+      "precision@10": 0.0975,
+      "mrr@10": 0.6379,
+      "lat_mean_ms": 4841.0,
+      "lat_p50_ms": 4759.4,
+      "lat_p95_ms": 6702.1,
+      "top1_mean": 0.7472,
+      "n": 120
+    }
+  },
+  "rows": [
+    {
+      "id": "D001",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8689,
+      "lat_ms": 1814.0
+    },
+    {
+      "id": "D002",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8769,
+      "lat_ms": 1280.4
+    },
+    {
+      "id": "D003",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8364,
+      "lat_ms": 1226.4
+    },
+    {
+      "id": "D004",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8493,
+      "lat_ms": 3271.4
+    },
+    {
+      "id": "D005",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8084,
+      "lat_ms": 3263.3
+    },
+    {
+      "id": "D006",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8705,
+      "lat_ms": 2077.2
+    },
+    {
+      "id": "D007",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8536,
+      "lat_ms": 2663.9
+    },
+    {
+      "id": "D008",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8031,
+      "lat_ms": 3479.5
+    },
+    {
+      "id": "D009",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7623,
+      "lat_ms": 1881.9
+    },
+    {
+      "id": "D010",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.9104,
+      "lat_ms": 5001.0
+    },
+    {
+      "id": "D011",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8408,
+      "lat_ms": 2918.7
+    },
+    {
+      "id": "D012",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.8307,
+      "lat_ms": 3374.5
+    },
+    {
+      "id": "D013",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7905,
+      "lat_ms": 2711.9
+    },
+    {
+      "id": "D014",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8152,
+      "lat_ms": 2045.9
+    },
+    {
+      "id": "D015",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8044,
+      "lat_ms": 2532.7
+    },
+    {
+      "id": "D016",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.7482,
+      "lat_ms": 1929.6
+    },
+    {
+      "id": "D017",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7609,
+      "lat_ms": 1613.5
+    },
+    {
+      "id": "D019",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7304,
+      "lat_ms": 2312.0
+    },
+    {
+      "id": "D020",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7635,
+      "lat_ms": 1879.2
+    },
+    {
+      "id": "D021",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.7509,
+      "lat_ms": 1515.7
+    },
+    {
+      "id": "D025",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8066,
+      "lat_ms": 1433.3
+    },
+    {
+      "id": "D026",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7059,
+      "lat_ms": 1701.8
+    },
+    {
+      "id": "D027",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8829,
+      "lat_ms": 3376.2
+    },
+    {
+      "id": "D028",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8041,
+      "lat_ms": 3317.9
+    },
+    {
+      "id": "D029",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7702,
+      "lat_ms": 794.4
+    },
+    {
+      "id": "D030",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8221,
+      "lat_ms": 2027.5
+    },
+    {
+      "id": "D031",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7484,
+      "lat_ms": 2596.3
+    },
+    {
+      "id": "D032",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.7816,
+      "lat_ms": 3436.2
+    },
+    {
+      "id": "D033",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8676,
+      "lat_ms": 4274.3
+    },
+    {
+      "id": "D035",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.7938,
+      "lat_ms": 2578.0
+    },
+    {
+      "id": "D036",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.888,
+      "lat_ms": 2456.9
+    },
+    {
+      "id": "D037",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.7504,
+      "lat_ms": 3189.6
+    },
+    {
+      "id": "D039",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8594,
+      "lat_ms": 1921.9
+    },
+    {
+      "id": "D041",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7184,
+      "lat_ms": 2335.6
+    },
+    {
+      "id": "D042",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8176,
+      "lat_ms": 3206.1
+    },
+    {
+      "id": "D043",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.846,
+      "lat_ms": 3995.7
+    },
+    {
+      "id": "D044",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8001,
+      "lat_ms": 2677.1
+    },
+    {
+      "id": "D045",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.784,
+      "lat_ms": 2449.4
+    },
+    {
+      "id": "D046",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.787,
+      "lat_ms": 1512.9
+    },
+    {
+      "id": "D047",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7185,
+      "lat_ms": 1671.0
+    },
+    {
+      "id": "D048",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.757,
+      "lat_ms": 1428.2
+    },
+    {
+      "id": "D049",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7602,
+      "lat_ms": 1627.3
+    },
+    {
+      "id": "D050",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7189,
+      "lat_ms": 1287.4
+    },
+    {
+      "id": "D051",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7332,
+      "lat_ms": 1390.1
+    },
+    {
+      "id": "D052",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7165,
+      "lat_ms": 1448.9
+    },
+    {
+      "id": "D053",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7341,
+      "lat_ms": 1683.3
+    },
+    {
+      "id": "D054",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7257,
+      "lat_ms": 1735.6
+    },
+    {
+      "id": "D055",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7334,
+      "lat_ms": 1428.9
+    },
+    {
+      "id": "D056",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7611,
+      "lat_ms": 2443.9
+    },
+    {
+      "id": "D057",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.638,
+      "lat_ms": 883.2
+    },
+    {
+      "id": "D058",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7948,
+      "lat_ms": 3503.3
+    },
+    {
+      "id": "D059",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.811,
+      "lat_ms": 3022.3
+    },
+    {
+      "id": "D060",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.822,
+      "lat_ms": 2206.0
+    },
+    {
+      "id": "D061",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8376,
+      "lat_ms": 2229.2
+    },
+    {
+      "id": "D062",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.8623,
+      "lat_ms": 3363.9
+    },
+    {
+      "id": "D063",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8265,
+      "lat_ms": 2326.1
+    },
+    {
+      "id": "D064",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8502,
+      "lat_ms": 3473.0
+    },
+    {
+      "id": "D065",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8296,
+      "lat_ms": 4307.6
+    },
+    {
+      "id": "D066",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8118,
+      "lat_ms": 3849.8
+    },
+    {
+      "id": "D067",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8886,
+      "lat_ms": 2291.9
+    },
+    {
+      "id": "D068",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7989,
+      "lat_ms": 3227.4
+    },
+    {
+      "id": "D069",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.8384,
+      "lat_ms": 4563.8
+    },
+    {
+      "id": "D071",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8917,
+      "lat_ms": 4232.8
+    },
+    {
+      "id": "D073",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8366,
+      "lat_ms": 2356.4
+    },
+    {
+      "id": "D074",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7296,
+      "lat_ms": 3950.3
+    },
+    {
+      "id": "D075",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8779,
+      "lat_ms": 3500.3
+    },
+    {
+      "id": "D076",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8966,
+      "lat_ms": 4070.1
+    },
+    {
+      "id": "D077",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.8403,
+      "lat_ms": 3517.5
+    },
+    {
+      "id": "D078",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8332,
+      "lat_ms": 3664.5
+    },
+    {
+      "id": "D079",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8708,
+      "lat_ms": 3823.5
+    },
+    {
+      "id": "D080",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8884,
+      "lat_ms": 2590.4
+    },
+    {
+      "id": "D081",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.8539,
+      "lat_ms": 3679.2
+    },
+    {
+      "id": "D082",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8517,
+      "lat_ms": 2841.0
+    },
+    {
+      "id": "D083",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8666,
+      "lat_ms": 3456.2
+    },
+    {
+      "id": "D084",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8858,
+      "lat_ms": 2898.0
+    },
+    {
+      "id": "D085",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8255,
+      "lat_ms": 1689.4
+    },
+    {
+      "id": "D086",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8541,
+      "lat_ms": 3479.2
+    },
+    {
+      "id": "D087",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.8629,
+      "lat_ms": 3060.7
+    },
+    {
+      "id": "D088",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.7913,
+      "lat_ms": 4674.1
+    },
+    {
+      "id": "D089",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8282,
+      "lat_ms": 3742.3
+    },
+    {
+      "id": "D090",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8118,
+      "lat_ms": 2553.9
+    },
+    {
+      "id": "D091",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8684,
+      "lat_ms": 2707.1
+    },
+    {
+      "id": "D092",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8182,
+      "lat_ms": 1345.9
+    },
+    {
+      "id": "D093",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8425,
+      "lat_ms": 4277.3
+    },
+    {
+      "id": "D094",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8286,
+      "lat_ms": 3413.0
+    },
+    {
+      "id": "D095",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.9123,
+      "lat_ms": 4215.8
+    },
+    {
+      "id": "D096",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8082,
+      "lat_ms": 3269.3
+    },
+    {
+      "id": "D097",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8354,
+      "lat_ms": 4134.9
+    },
+    {
+      "id": "D098",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.8369,
+      "lat_ms": 3533.4
+    },
+    {
+      "id": "D099",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8349,
+      "lat_ms": 2994.1
+    },
+    {
+      "id": "D100",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8382,
+      "lat_ms": 2605.7
+    },
+    {
+      "id": "D101",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8451,
+      "lat_ms": 2417.8
+    },
+    {
+      "id": "D102",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7263,
+      "lat_ms": 4199.7
+    },
+    {
+      "id": "D103",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8327,
+      "lat_ms": 4302.9
+    },
+    {
+      "id": "D105",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.6545,
+      "lat_ms": 1314.4
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8576,
+      "lat_ms": 3000.7
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.882,
+      "lat_ms": 4196.2
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8125,
+      "lat_ms": 824.2
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.894,
+      "lat_ms": 1903.2
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8251,
+      "lat_ms": 3315.6
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8967,
+      "lat_ms": 3141.7
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8868,
+      "lat_ms": 3296.1
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8685,
+      "lat_ms": 3633.6
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8087,
+      "lat_ms": 2804.8
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.785,
+      "lat_ms": 1586.6
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.74,
+      "lat_ms": 2897.6
+    },
+    {
+      "id": "D107",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7797,
+      "lat_ms": 1578.3
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8599,
+      "lat_ms": 2664.4
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8103,
+      "lat_ms": 1983.9
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.84,
+      "lat_ms": 2214.9
+    },
+    {
+      "id": "D111",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.7485,
+      "lat_ms": 2353.1
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.6939,
+      "lat_ms": 2757.7
+    },
+    {
+      "id": "D113",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8359,
+      "lat_ms": 4548.4
+    },
+    {
+      "id": "D114",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8429,
+      "lat_ms": 3253.3
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7835,
+      "lat_ms": 2099.4
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8905,
+      "lat_ms": 3084.9
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7541,
+      "lat_ms": 2729.1
+    },
+    {
+      "id": "D118",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8531,
+      "lat_ms": 2159.0
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8679,
+      "lat_ms": 2985.6
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.5_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.9198,
+      "lat_ms": 2850.2
+    },
+    {
+      "id": "D001",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8689,
+      "lat_ms": 4640.9
+    },
+    {
+      "id": "D002",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8769,
+      "lat_ms": 4450.3
+    },
+    {
+      "id": "D003",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8364,
+      "lat_ms": 3233.1
+    },
+    {
+      "id": "D004",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8493,
+      "lat_ms": 5949.0
+    },
+    {
+      "id": "D005",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8084,
+      "lat_ms": 5898.5
+    },
+    {
+      "id": "D006",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8705,
+      "lat_ms": 4449.5
+    },
+    {
+      "id": "D007",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8536,
+      "lat_ms": 5008.3
+    },
+    {
+      "id": "D008",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8031,
+      "lat_ms": 5962.8
+    },
+    {
+      "id": "D009",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.6787,
+      "lat_ms": 4109.0
+    },
+    {
+      "id": "D010",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.9104,
+      "lat_ms": 7595.9
+    },
+    {
+      "id": "D011",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8408,
+      "lat_ms": 5143.8
+    },
+    {
+      "id": "D012",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8198,
+      "lat_ms": 5906.2
+    },
+    {
+      "id": "D013",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7905,
+      "lat_ms": 4912.0
+    },
+    {
+      "id": "D014",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8019,
+      "lat_ms": 4292.6
+    },
+    {
+      "id": "D015",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 10,
+      "top1_score": 0.8044,
+      "lat_ms": 4718.2
+    },
+    {
+      "id": "D016",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7482,
+      "lat_ms": 3900.9
+    },
+    {
+      "id": "D017",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7609,
+      "lat_ms": 3961.5
+    },
+    {
+      "id": "D019",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.6874,
+      "lat_ms": 4808.3
+    },
+    {
+      "id": "D020",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7635,
+      "lat_ms": 4064.8
+    },
+    {
+      "id": "D021",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.742,
+      "lat_ms": 3424.4
+    },
+    {
+      "id": "D025",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8066,
+      "lat_ms": 3525.0
+    },
+    {
+      "id": "D026",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.6193,
+      "lat_ms": 4016.2
+    },
+    {
+      "id": "D027",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8829,
+      "lat_ms": 5726.2
+    },
+    {
+      "id": "D028",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8041,
+      "lat_ms": 5497.1
+    },
+    {
+      "id": "D029",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7702,
+      "lat_ms": 2456.9
+    },
+    {
+      "id": "D030",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8221,
+      "lat_ms": 4176.7
+    },
+    {
+      "id": "D031",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8201,
+      "lat_ms": 4837.1
+    },
+    {
+      "id": "D032",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7785,
+      "lat_ms": 5655.5
+    },
+    {
+      "id": "D033",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8676,
+      "lat_ms": 6678.5
+    },
+    {
+      "id": "D035",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 9,
+      "top1_score": 0.7938,
+      "lat_ms": 4597.9
+    },
+    {
+      "id": "D036",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.888,
+      "lat_ms": 4732.1
+    },
+    {
+      "id": "D037",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7504,
+      "lat_ms": 5633.4
+    },
+    {
+      "id": "D039",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8594,
+      "lat_ms": 4094.5
+    },
+    {
+      "id": "D041",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7184,
+      "lat_ms": 4762.9
+    },
+    {
+      "id": "D042",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8176,
+      "lat_ms": 5886.5
+    },
+    {
+      "id": "D043",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 9,
+      "top1_score": 0.846,
+      "lat_ms": 6839.1
+    },
+    {
+      "id": "D044",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8001,
+      "lat_ms": 5272.3
+    },
+    {
+      "id": "D045",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.784,
+      "lat_ms": 5023.4
+    },
+    {
+      "id": "D046",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.787,
+      "lat_ms": 3922.6
+    },
+    {
+      "id": "D047",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7185,
+      "lat_ms": 3881.2
+    },
+    {
+      "id": "D048",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.757,
+      "lat_ms": 3955.5
+    },
+    {
+      "id": "D049",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7602,
+      "lat_ms": 3870.5
+    },
+    {
+      "id": "D050",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7189,
+      "lat_ms": 3452.2
+    },
+    {
+      "id": "D051",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7332,
+      "lat_ms": 3706.7
+    },
+    {
+      "id": "D052",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7165,
+      "lat_ms": 3784.5
+    },
+    {
+      "id": "D053",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7341,
+      "lat_ms": 3992.7
+    },
+    {
+      "id": "D054",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7257,
+      "lat_ms": 4106.4
+    },
+    {
+      "id": "D055",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7334,
+      "lat_ms": 3456.5
+    },
+    {
+      "id": "D056",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7611,
+      "lat_ms": 4706.8
+    },
+    {
+      "id": "D057",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.638,
+      "lat_ms": 3026.1
+    },
+    {
+      "id": "D058",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.784,
+      "lat_ms": 5860.1
+    },
+    {
+      "id": "D059",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.811,
+      "lat_ms": 5525.9
+    },
+    {
+      "id": "D060",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.822,
+      "lat_ms": 4471.5
+    },
+    {
+      "id": "D061",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8376,
+      "lat_ms": 4543.9
+    },
+    {
+      "id": "D062",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8623,
+      "lat_ms": 5714.1
+    },
+    {
+      "id": "D063",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8265,
+      "lat_ms": 4632.8
+    },
+    {
+      "id": "D064",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8502,
+      "lat_ms": 5841.0
+    },
+    {
+      "id": "D065",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8296,
+      "lat_ms": 6778.9
+    },
+    {
+      "id": "D066",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8118,
+      "lat_ms": 6288.8
+    },
+    {
+      "id": "D067",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8886,
+      "lat_ms": 4426.2
+    },
+    {
+      "id": "D068",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7989,
+      "lat_ms": 5588.9
+    },
+    {
+      "id": "D069",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8384,
+      "lat_ms": 7192.6
+    },
+    {
+      "id": "D071",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8917,
+      "lat_ms": 6644.1
+    },
+    {
+      "id": "D073",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8366,
+      "lat_ms": 4609.3
+    },
+    {
+      "id": "D074",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8012,
+      "lat_ms": 6487.3
+    },
+    {
+      "id": "D075",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8779,
+      "lat_ms": 6047.6
+    },
+    {
+      "id": "D076",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8966,
+      "lat_ms": 6605.3
+    },
+    {
+      "id": "D077",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8403,
+      "lat_ms": 5886.9
+    },
+    {
+      "id": "D078",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8332,
+      "lat_ms": 6155.0
+    },
+    {
+      "id": "D079",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8708,
+      "lat_ms": 6135.2
+    },
+    {
+      "id": "D080",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8884,
+      "lat_ms": 4824.7
+    },
+    {
+      "id": "D081",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8539,
+      "lat_ms": 6103.4
+    },
+    {
+      "id": "D082",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8503,
+      "lat_ms": 5173.6
+    },
+    {
+      "id": "D083",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8666,
+      "lat_ms": 5878.8
+    },
+    {
+      "id": "D084",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8858,
+      "lat_ms": 5253.4
+    },
+    {
+      "id": "D085",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8255,
+      "lat_ms": 3679.3
+    },
+    {
+      "id": "D086",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.8369,
+      "lat_ms": 5723.6
+    },
+    {
+      "id": "D087",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8629,
+      "lat_ms": 5451.0
+    },
+    {
+      "id": "D088",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7913,
+      "lat_ms": 7071.3
+    },
+    {
+      "id": "D089",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8282,
+      "lat_ms": 5971.0
+    },
+    {
+      "id": "D090",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8118,
+      "lat_ms": 4924.3
+    },
+    {
+      "id": "D091",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8684,
+      "lat_ms": 5219.2
+    },
+    {
+      "id": "D092",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8045,
+      "lat_ms": 3363.0
+    },
+    {
+      "id": "D093",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8425,
+      "lat_ms": 7059.7
+    },
+    {
+      "id": "D094",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8286,
+      "lat_ms": 5940.1
+    },
+    {
+      "id": "D095",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.9123,
+      "lat_ms": 6784.4
+    },
+    {
+      "id": "D096",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8075,
+      "lat_ms": 5732.1
+    },
+    {
+      "id": "D097",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8354,
+      "lat_ms": 6703.0
+    },
+    {
+      "id": "D098",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8247,
+      "lat_ms": 6026.3
+    },
+    {
+      "id": "D099",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8349,
+      "lat_ms": 5356.0
+    },
+    {
+      "id": "D100",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8382,
+      "lat_ms": 4818.4
+    },
+    {
+      "id": "D101",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8451,
+      "lat_ms": 4709.4
+    },
+    {
+      "id": "D102",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7263,
+      "lat_ms": 6718.8
+    },
+    {
+      "id": "D103",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8327,
+      "lat_ms": 6930.6
+    },
+    {
+      "id": "D105",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 9,
+      "top1_score": 0.6997,
+      "lat_ms": 3296.2
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8576,
+      "lat_ms": 5045.8
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.882,
+      "lat_ms": 6349.9
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8125,
+      "lat_ms": 2548.4
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.894,
+      "lat_ms": 3597.5
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8251,
+      "lat_ms": 5461.9
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8967,
+      "lat_ms": 5325.4
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8868,
+      "lat_ms": 5457.2
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8685,
+      "lat_ms": 5799.7
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8087,
+      "lat_ms": 4694.9
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.785,
+      "lat_ms": 3969.7
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.74,
+      "lat_ms": 5263.1
+    },
+    {
+      "id": "D107",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7797,
+      "lat_ms": 3824.5
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8599,
+      "lat_ms": 4770.4
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8103,
+      "lat_ms": 4084.1
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.84,
+      "lat_ms": 4386.6
+    },
+    {
+      "id": "D111",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.7485,
+      "lat_ms": 4665.1
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.6939,
+      "lat_ms": 5116.7
+    },
+    {
+      "id": "D113",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8359,
+      "lat_ms": 7170.9
+    },
+    {
+      "id": "D114",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8429,
+      "lat_ms": 5438.4
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7835,
+      "lat_ms": 4125.4
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8905,
+      "lat_ms": 5120.3
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7738,
+      "lat_ms": 4914.3
+    },
+    {
+      "id": "D118",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8531,
+      "lat_ms": 4063.8
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8679,
+      "lat_ms": 5084.6
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.5_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.9198,
+      "lat_ms": 4896.6
+    },
+    {
+      "id": "D001",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8448,
+      "lat_ms": 2269.6
+    },
+    {
+      "id": "D002",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8524,
+      "lat_ms": 2017.5
+    },
+    {
+      "id": "D003",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7868,
+      "lat_ms": 1212.8
+    },
+    {
+      "id": "D004",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8183,
+      "lat_ms": 3213.0
+    },
+    {
+      "id": "D005",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7503,
+      "lat_ms": 3235.0
+    },
+    {
+      "id": "D006",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8403,
+      "lat_ms": 2027.1
+    },
+    {
+      "id": "D007",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8107,
+      "lat_ms": 2646.9
+    },
+    {
+      "id": "D008",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7549,
+      "lat_ms": 3391.7
+    },
+    {
+      "id": "D009",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7393,
+      "lat_ms": 1797.9
+    },
+    {
+      "id": "D010",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.9025,
+      "lat_ms": 4900.2
+    },
+    {
+      "id": "D011",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8193,
+      "lat_ms": 2898.9
+    },
+    {
+      "id": "D012",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.8061,
+      "lat_ms": 3406.3
+    },
+    {
+      "id": "D013",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7513,
+      "lat_ms": 2805.4
+    },
+    {
+      "id": "D014",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8206,
+      "lat_ms": 2052.3
+    },
+    {
+      "id": "D015",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.833,
+      "lat_ms": 2522.2
+    },
+    {
+      "id": "D016",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.7173,
+      "lat_ms": 1882.5
+    },
+    {
+      "id": "D017",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7181,
+      "lat_ms": 1602.1
+    },
+    {
+      "id": "D019",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7345,
+      "lat_ms": 2391.3
+    },
+    {
+      "id": "D020",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7097,
+      "lat_ms": 1868.7
+    },
+    {
+      "id": "D021",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.7186,
+      "lat_ms": 1502.2
+    },
+    {
+      "id": "D025",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7655,
+      "lat_ms": 1470.8
+    },
+    {
+      "id": "D026",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.6346,
+      "lat_ms": 1690.0
+    },
+    {
+      "id": "D027",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8722,
+      "lat_ms": 3424.0
+    },
+    {
+      "id": "D028",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.7715,
+      "lat_ms": 3315.7
+    },
+    {
+      "id": "D029",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7905,
+      "lat_ms": 750.5
+    },
+    {
+      "id": "D030",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7882,
+      "lat_ms": 1985.9
+    },
+    {
+      "id": "D031",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7646,
+      "lat_ms": 2594.7
+    },
+    {
+      "id": "D032",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.7568,
+      "lat_ms": 3404.0
+    },
+    {
+      "id": "D033",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8394,
+      "lat_ms": 4267.4
+    },
+    {
+      "id": "D035",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.7829,
+      "lat_ms": 2607.6
+    },
+    {
+      "id": "D036",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8631,
+      "lat_ms": 2516.8
+    },
+    {
+      "id": "D037",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7862,
+      "lat_ms": 3033.6
+    },
+    {
+      "id": "D039",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8343,
+      "lat_ms": 1937.9
+    },
+    {
+      "id": "D041",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7324,
+      "lat_ms": 2373.9
+    },
+    {
+      "id": "D042",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7687,
+      "lat_ms": 3201.4
+    },
+    {
+      "id": "D043",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.8024,
+      "lat_ms": 4037.0
+    },
+    {
+      "id": "D044",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7409,
+      "lat_ms": 2664.9
+    },
+    {
+      "id": "D045",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7164,
+      "lat_ms": 2491.7
+    },
+    {
+      "id": "D046",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7137,
+      "lat_ms": 1492.8
+    },
+    {
+      "id": "D047",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6269,
+      "lat_ms": 1616.6
+    },
+    {
+      "id": "D048",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6702,
+      "lat_ms": 1396.0
+    },
+    {
+      "id": "D049",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.6781,
+      "lat_ms": 1494.7
+    },
+    {
+      "id": "D050",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6253,
+      "lat_ms": 1266.9
+    },
+    {
+      "id": "D051",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.651,
+      "lat_ms": 1368.8
+    },
+    {
+      "id": "D052",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6143,
+      "lat_ms": 1470.1
+    },
+    {
+      "id": "D053",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6486,
+      "lat_ms": 1684.1
+    },
+    {
+      "id": "D054",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6372,
+      "lat_ms": 1761.8
+    },
+    {
+      "id": "D055",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6448,
+      "lat_ms": 1317.3
+    },
+    {
+      "id": "D056",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6964,
+      "lat_ms": 2186.4
+    },
+    {
+      "id": "D057",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.5671,
+      "lat_ms": 868.5
+    },
+    {
+      "id": "D058",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.7597,
+      "lat_ms": 3427.0
+    },
+    {
+      "id": "D059",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7687,
+      "lat_ms": 3058.7
+    },
+    {
+      "id": "D060",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8139,
+      "lat_ms": 2230.0
+    },
+    {
+      "id": "D061",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8304,
+      "lat_ms": 2230.8
+    },
+    {
+      "id": "D062",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8443,
+      "lat_ms": 3316.8
+    },
+    {
+      "id": "D063",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7877,
+      "lat_ms": 2304.8
+    },
+    {
+      "id": "D064",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8452,
+      "lat_ms": 3388.0
+    },
+    {
+      "id": "D065",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7873,
+      "lat_ms": 4292.1
+    },
+    {
+      "id": "D066",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.7598,
+      "lat_ms": 3796.2
+    },
+    {
+      "id": "D067",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8708,
+      "lat_ms": 2305.3
+    },
+    {
+      "id": "D068",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7756,
+      "lat_ms": 3215.2
+    },
+    {
+      "id": "D069",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7974,
+      "lat_ms": 4604.3
+    },
+    {
+      "id": "D071",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.876,
+      "lat_ms": 4105.6
+    },
+    {
+      "id": "D073",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8165,
+      "lat_ms": 2353.0
+    },
+    {
+      "id": "D074",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7461,
+      "lat_ms": 3957.3
+    },
+    {
+      "id": "D075",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8543,
+      "lat_ms": 3743.4
+    },
+    {
+      "id": "D076",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8763,
+      "lat_ms": 6229.0
+    },
+    {
+      "id": "D077",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.8074,
+      "lat_ms": 4738.2
+    },
+    {
+      "id": "D078",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7909,
+      "lat_ms": 3592.1
+    },
+    {
+      "id": "D079",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.8673,
+      "lat_ms": 3748.7
+    },
+    {
+      "id": "D080",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.8797,
+      "lat_ms": 2581.4
+    },
+    {
+      "id": "D081",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8418,
+      "lat_ms": 3655.9
+    },
+    {
+      "id": "D082",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8297,
+      "lat_ms": 2772.6
+    },
+    {
+      "id": "D083",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.838,
+      "lat_ms": 3499.4
+    },
+    {
+      "id": "D084",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8613,
+      "lat_ms": 2899.4
+    },
+    {
+      "id": "D085",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7958,
+      "lat_ms": 1711.7
+    },
+    {
+      "id": "D086",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8347,
+      "lat_ms": 3368.7
+    },
+    {
+      "id": "D087",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.8606,
+      "lat_ms": 3026.4
+    },
+    {
+      "id": "D088",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7452,
+      "lat_ms": 4675.9
+    },
+    {
+      "id": "D089",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7956,
+      "lat_ms": 3679.6
+    },
+    {
+      "id": "D090",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8016,
+      "lat_ms": 2605.8
+    },
+    {
+      "id": "D091",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.863,
+      "lat_ms": 2721.4
+    },
+    {
+      "id": "D092",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7916,
+      "lat_ms": 1337.8
+    },
+    {
+      "id": "D093",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7989,
+      "lat_ms": 4337.5
+    },
+    {
+      "id": "D094",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.791,
+      "lat_ms": 3472.2
+    },
+    {
+      "id": "D095",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8988,
+      "lat_ms": 4231.0
+    },
+    {
+      "id": "D096",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 10,
+      "top1_score": 0.7761,
+      "lat_ms": 3326.9
+    },
+    {
+      "id": "D097",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7961,
+      "lat_ms": 4052.9
+    },
+    {
+      "id": "D098",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.802,
+      "lat_ms": 3489.1
+    },
+    {
+      "id": "D099",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.795,
+      "lat_ms": 2982.3
+    },
+    {
+      "id": "D100",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8066,
+      "lat_ms": 2557.8
+    },
+    {
+      "id": "D101",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8121,
+      "lat_ms": 2324.2
+    },
+    {
+      "id": "D102",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.6669,
+      "lat_ms": 4129.7
+    },
+    {
+      "id": "D103",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.7857,
+      "lat_ms": 4207.5
+    },
+    {
+      "id": "D105",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.6694,
+      "lat_ms": 1301.0
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8405,
+      "lat_ms": 2950.3
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8542,
+      "lat_ms": 4185.6
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.805,
+      "lat_ms": 825.0
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8883,
+      "lat_ms": 1870.6
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7888,
+      "lat_ms": 3376.8
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8768,
+      "lat_ms": 3221.0
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8644,
+      "lat_ms": 3309.2
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8342,
+      "lat_ms": 3651.8
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8282,
+      "lat_ms": 2773.0
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7278,
+      "lat_ms": 1587.7
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6938,
+      "lat_ms": 2831.2
+    },
+    {
+      "id": "D107",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7387,
+      "lat_ms": 1563.3
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8339,
+      "lat_ms": 2666.6
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.7668,
+      "lat_ms": 1950.5
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8066,
+      "lat_ms": 2176.2
+    },
+    {
+      "id": "D111",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.6785,
+      "lat_ms": 2303.8
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.6022,
+      "lat_ms": 2725.8
+    },
+    {
+      "id": "D113",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7984,
+      "lat_ms": 4557.7
+    },
+    {
+      "id": "D114",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8216,
+      "lat_ms": 3248.2
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7472,
+      "lat_ms": 2098.3
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8757,
+      "lat_ms": 3091.7
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.698,
+      "lat_ms": 2785.0
+    },
+    {
+      "id": "D118",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8216,
+      "lat_ms": 2136.8
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8335,
+      "lat_ms": 3035.7
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.7_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.9078,
+      "lat_ms": 2920.3
+    },
+    {
+      "id": "D001",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8448,
+      "lat_ms": 4194.3
+    },
+    {
+      "id": "D002",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8524,
+      "lat_ms": 4343.6
+    },
+    {
+      "id": "D003",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7868,
+      "lat_ms": 3114.4
+    },
+    {
+      "id": "D004",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8183,
+      "lat_ms": 5941.8
+    },
+    {
+      "id": "D005",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7503,
+      "lat_ms": 5945.6
+    },
+    {
+      "id": "D006",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8403,
+      "lat_ms": 4335.6
+    },
+    {
+      "id": "D007",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8107,
+      "lat_ms": 4990.6
+    },
+    {
+      "id": "D008",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7549,
+      "lat_ms": 5876.4
+    },
+    {
+      "id": "D009",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.6582,
+      "lat_ms": 4061.9
+    },
+    {
+      "id": "D010",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.9025,
+      "lat_ms": 7545.8
+    },
+    {
+      "id": "D011",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8193,
+      "lat_ms": 5060.1
+    },
+    {
+      "id": "D012",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8015,
+      "lat_ms": 5755.4
+    },
+    {
+      "id": "D013",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7513,
+      "lat_ms": 4842.0
+    },
+    {
+      "id": "D014",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8206,
+      "lat_ms": 4015.0
+    },
+    {
+      "id": "D015",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.833,
+      "lat_ms": 4586.9
+    },
+    {
+      "id": "D016",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.7173,
+      "lat_ms": 3805.8
+    },
+    {
+      "id": "D017",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7181,
+      "lat_ms": 3785.8
+    },
+    {
+      "id": "D019",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7345,
+      "lat_ms": 4528.8
+    },
+    {
+      "id": "D020",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7097,
+      "lat_ms": 3899.9
+    },
+    {
+      "id": "D021",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.6784,
+      "lat_ms": 3348.7
+    },
+    {
+      "id": "D025",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7655,
+      "lat_ms": 3422.2
+    },
+    {
+      "id": "D026",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.5465,
+      "lat_ms": 3906.4
+    },
+    {
+      "id": "D027",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8722,
+      "lat_ms": 5554.4
+    },
+    {
+      "id": "D028",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.7715,
+      "lat_ms": 5304.9
+    },
+    {
+      "id": "D029",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7905,
+      "lat_ms": 2199.1
+    },
+    {
+      "id": "D030",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7882,
+      "lat_ms": 3979.0
+    },
+    {
+      "id": "D031",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7646,
+      "lat_ms": 4735.7
+    },
+    {
+      "id": "D032",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7568,
+      "lat_ms": 5490.5
+    },
+    {
+      "id": "D033",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8394,
+      "lat_ms": 6692.5
+    },
+    {
+      "id": "D035",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.7829,
+      "lat_ms": 4464.5
+    },
+    {
+      "id": "D036",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8631,
+      "lat_ms": 4564.0
+    },
+    {
+      "id": "D037",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7862,
+      "lat_ms": 5370.4
+    },
+    {
+      "id": "D039",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8343,
+      "lat_ms": 3864.8
+    },
+    {
+      "id": "D041",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7324,
+      "lat_ms": 4468.8
+    },
+    {
+      "id": "D042",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7687,
+      "lat_ms": 5848.3
+    },
+    {
+      "id": "D043",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 9,
+      "top1_score": 0.8024,
+      "lat_ms": 6694.3
+    },
+    {
+      "id": "D044",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7409,
+      "lat_ms": 4948.0
+    },
+    {
+      "id": "D045",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7164,
+      "lat_ms": 4980.2
+    },
+    {
+      "id": "D046",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7137,
+      "lat_ms": 3786.5
+    },
+    {
+      "id": "D047",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6269,
+      "lat_ms": 3878.6
+    },
+    {
+      "id": "D048",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6702,
+      "lat_ms": 3710.6
+    },
+    {
+      "id": "D049",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.6781,
+      "lat_ms": 3826.0
+    },
+    {
+      "id": "D050",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6253,
+      "lat_ms": 3435.6
+    },
+    {
+      "id": "D051",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.651,
+      "lat_ms": 3673.3
+    },
+    {
+      "id": "D052",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6143,
+      "lat_ms": 3689.4
+    },
+    {
+      "id": "D053",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6486,
+      "lat_ms": 3891.9
+    },
+    {
+      "id": "D054",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6372,
+      "lat_ms": 4060.2
+    },
+    {
+      "id": "D055",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6448,
+      "lat_ms": 3491.7
+    },
+    {
+      "id": "D056",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6964,
+      "lat_ms": 4738.3
+    },
+    {
+      "id": "D057",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5387,
+      "lat_ms": 2916.8
+    },
+    {
+      "id": "D058",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.739,
+      "lat_ms": 5741.7
+    },
+    {
+      "id": "D059",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7687,
+      "lat_ms": 5213.8
+    },
+    {
+      "id": "D060",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8139,
+      "lat_ms": 4340.7
+    },
+    {
+      "id": "D061",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8304,
+      "lat_ms": 4286.7
+    },
+    {
+      "id": "D062",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8443,
+      "lat_ms": 5469.6
+    },
+    {
+      "id": "D063",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7877,
+      "lat_ms": 4501.4
+    },
+    {
+      "id": "D064",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8452,
+      "lat_ms": 5645.4
+    },
+    {
+      "id": "D065",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.7873,
+      "lat_ms": 6781.6
+    },
+    {
+      "id": "D066",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 7,
+      "top1_score": 0.7598,
+      "lat_ms": 6332.8
+    },
+    {
+      "id": "D067",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8708,
+      "lat_ms": 4562.4
+    },
+    {
+      "id": "D068",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7571,
+      "lat_ms": 5624.1
+    },
+    {
+      "id": "D069",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7974,
+      "lat_ms": 7067.8
+    },
+    {
+      "id": "D071",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.876,
+      "lat_ms": 6452.0
+    },
+    {
+      "id": "D073",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8165,
+      "lat_ms": 4440.7
+    },
+    {
+      "id": "D074",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7461,
+      "lat_ms": 6275.0
+    },
+    {
+      "id": "D075",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8543,
+      "lat_ms": 5906.3
+    },
+    {
+      "id": "D076",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8763,
+      "lat_ms": 6525.8
+    },
+    {
+      "id": "D077",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8074,
+      "lat_ms": 5852.6
+    },
+    {
+      "id": "D078",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7909,
+      "lat_ms": 6152.9
+    },
+    {
+      "id": "D079",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8673,
+      "lat_ms": 6208.6
+    },
+    {
+      "id": "D080",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8797,
+      "lat_ms": 4737.8
+    },
+    {
+      "id": "D081",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 8,
+      "top1_score": 0.8418,
+      "lat_ms": 6031.3
+    },
+    {
+      "id": "D082",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8256,
+      "lat_ms": 4898.0
+    },
+    {
+      "id": "D083",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.838,
+      "lat_ms": 5776.2
+    },
+    {
+      "id": "D084",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8613,
+      "lat_ms": 5182.3
+    },
+    {
+      "id": "D085",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7958,
+      "lat_ms": 3668.0
+    },
+    {
+      "id": "D086",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.8337,
+      "lat_ms": 5616.8
+    },
+    {
+      "id": "D087",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8606,
+      "lat_ms": 5278.0
+    },
+    {
+      "id": "D088",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7452,
+      "lat_ms": 6924.0
+    },
+    {
+      "id": "D089",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7956,
+      "lat_ms": 5655.7
+    },
+    {
+      "id": "D090",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8016,
+      "lat_ms": 4752.6
+    },
+    {
+      "id": "D091",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.863,
+      "lat_ms": 4768.9
+    },
+    {
+      "id": "D092",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7617,
+      "lat_ms": 3170.7
+    },
+    {
+      "id": "D093",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7989,
+      "lat_ms": 6719.9
+    },
+    {
+      "id": "D094",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.791,
+      "lat_ms": 5789.8
+    },
+    {
+      "id": "D095",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8988,
+      "lat_ms": 6715.3
+    },
+    {
+      "id": "D096",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7761,
+      "lat_ms": 5596.3
+    },
+    {
+      "id": "D097",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7961,
+      "lat_ms": 6640.4
+    },
+    {
+      "id": "D098",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7905,
+      "lat_ms": 5792.4
+    },
+    {
+      "id": "D099",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.795,
+      "lat_ms": 5254.2
+    },
+    {
+      "id": "D100",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8066,
+      "lat_ms": 4741.1
+    },
+    {
+      "id": "D101",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8121,
+      "lat_ms": 4565.3
+    },
+    {
+      "id": "D102",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.6669,
+      "lat_ms": 6739.5
+    },
+    {
+      "id": "D103",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7857,
+      "lat_ms": 6856.5
+    },
+    {
+      "id": "D105",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6338,
+      "lat_ms": 3147.7
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8405,
+      "lat_ms": 4991.5
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8542,
+      "lat_ms": 6296.6
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.805,
+      "lat_ms": 2609.7
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8883,
+      "lat_ms": 3598.7
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7888,
+      "lat_ms": 5482.6
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8768,
+      "lat_ms": 5339.4
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8644,
+      "lat_ms": 5288.6
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8342,
+      "lat_ms": 5772.9
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8282,
+      "lat_ms": 4622.2
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7278,
+      "lat_ms": 3814.5
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6938,
+      "lat_ms": 4957.2
+    },
+    {
+      "id": "D107",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7387,
+      "lat_ms": 3642.2
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8339,
+      "lat_ms": 4688.2
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.7668,
+      "lat_ms": 3928.3
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8066,
+      "lat_ms": 4203.4
+    },
+    {
+      "id": "D111",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.6785,
+      "lat_ms": 4416.9
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.6022,
+      "lat_ms": 4925.3
+    },
+    {
+      "id": "D113",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7984,
+      "lat_ms": 7036.8
+    },
+    {
+      "id": "D114",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8216,
+      "lat_ms": 5433.6
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7472,
+      "lat_ms": 3949.0
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8757,
+      "lat_ms": 5055.0
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7101,
+      "lat_ms": 4865.8
+    },
+    {
+      "id": "D118",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8216,
+      "lat_ms": 4016.0
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8335,
+      "lat_ms": 4995.0
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.7_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.9078,
+      "lat_ms": 4779.1
+    },
+    {
+      "id": "D001",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8206,
+      "lat_ms": 2193.1
+    },
+    {
+      "id": "D002",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.828,
+      "lat_ms": 2082.8
+    },
+    {
+      "id": "D003",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7372,
+      "lat_ms": 1229.8
+    },
+    {
+      "id": "D004",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7874,
+      "lat_ms": 3253.3
+    },
+    {
+      "id": "D005",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6923,
+      "lat_ms": 3252.8
+    },
+    {
+      "id": "D006",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8102,
+      "lat_ms": 2151.4
+    },
+    {
+      "id": "D007",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7678,
+      "lat_ms": 2686.5
+    },
+    {
+      "id": "D008",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7068,
+      "lat_ms": 3446.8
+    },
+    {
+      "id": "D009",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7234,
+      "lat_ms": 1803.4
+    },
+    {
+      "id": "D010",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8945,
+      "lat_ms": 4999.6
+    },
+    {
+      "id": "D011",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7978,
+      "lat_ms": 2869.3
+    },
+    {
+      "id": "D012",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.7833,
+      "lat_ms": 3328.9
+    },
+    {
+      "id": "D013",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7159,
+      "lat_ms": 2699.6
+    },
+    {
+      "id": "D014",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.8445,
+      "lat_ms": 2008.2
+    },
+    {
+      "id": "D015",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8617,
+      "lat_ms": 2470.3
+    },
+    {
+      "id": "D016",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.7,
+      "lat_ms": 1886.2
+    },
+    {
+      "id": "D017",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.6966,
+      "lat_ms": 1595.6
+    },
+    {
+      "id": "D019",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7036,
+      "lat_ms": 2354.9
+    },
+    {
+      "id": "D020",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.656,
+      "lat_ms": 1868.8
+    },
+    {
+      "id": "D021",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.6863,
+      "lat_ms": 1425.2
+    },
+    {
+      "id": "D025",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7244,
+      "lat_ms": 1417.6
+    },
+    {
+      "id": "D026",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.5562,
+      "lat_ms": 1660.0
+    },
+    {
+      "id": "D027",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.8614,
+      "lat_ms": 3329.4
+    },
+    {
+      "id": "D028",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.7435,
+      "lat_ms": 3247.9
+    },
+    {
+      "id": "D029",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8108,
+      "lat_ms": 750.6
+    },
+    {
+      "id": "D030",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7544,
+      "lat_ms": 1974.2
+    },
+    {
+      "id": "D031",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7092,
+      "lat_ms": 2552.0
+    },
+    {
+      "id": "D032",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.735,
+      "lat_ms": 3413.1
+    },
+    {
+      "id": "D033",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8112,
+      "lat_ms": 4202.8
+    },
+    {
+      "id": "D035",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.8846,
+      "lat_ms": 2613.1
+    },
+    {
+      "id": "D036",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8382,
+      "lat_ms": 2463.2
+    },
+    {
+      "id": "D037",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7388,
+      "lat_ms": 3078.2
+    },
+    {
+      "id": "D039",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8093,
+      "lat_ms": 1883.5
+    },
+    {
+      "id": "D041",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6712,
+      "lat_ms": 2345.0
+    },
+    {
+      "id": "D042",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7202,
+      "lat_ms": 3223.0
+    },
+    {
+      "id": "D043",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 9,
+      "top1_score": 0.7588,
+      "lat_ms": 3933.0
+    },
+    {
+      "id": "D044",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6817,
+      "lat_ms": 2672.7
+    },
+    {
+      "id": "D045",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 7,
+      "top1_score": 0.6498,
+      "lat_ms": 2470.7
+    },
+    {
+      "id": "D046",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6404,
+      "lat_ms": 1483.6
+    },
+    {
+      "id": "D047",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.5353,
+      "lat_ms": 1619.4
+    },
+    {
+      "id": "D048",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.5834,
+      "lat_ms": 1471.3
+    },
+    {
+      "id": "D049",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.6068,
+      "lat_ms": 1589.8
+    },
+    {
+      "id": "D050",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.5316,
+      "lat_ms": 1227.4
+    },
+    {
+      "id": "D051",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.5687,
+      "lat_ms": 1402.9
+    },
+    {
+      "id": "D052",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.512,
+      "lat_ms": 1391.4
+    },
+    {
+      "id": "D053",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.5631,
+      "lat_ms": 1641.2
+    },
+    {
+      "id": "D054",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.5537,
+      "lat_ms": 1739.2
+    },
+    {
+      "id": "D055",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.5563,
+      "lat_ms": 1280.5
+    },
+    {
+      "id": "D056",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6318,
+      "lat_ms": 2180.5
+    },
+    {
+      "id": "D057",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.5281,
+      "lat_ms": 915.8
+    },
+    {
+      "id": "D058",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7247,
+      "lat_ms": 3452.8
+    },
+    {
+      "id": "D059",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7264,
+      "lat_ms": 2902.0
+    },
+    {
+      "id": "D060",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8057,
+      "lat_ms": 2114.4
+    },
+    {
+      "id": "D061",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8231,
+      "lat_ms": 2321.7
+    },
+    {
+      "id": "D062",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8262,
+      "lat_ms": 3313.3
+    },
+    {
+      "id": "D063",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7489,
+      "lat_ms": 2298.4
+    },
+    {
+      "id": "D064",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8402,
+      "lat_ms": 3437.4
+    },
+    {
+      "id": "D065",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 5,
+      "top1_score": 0.745,
+      "lat_ms": 4189.4
+    },
+    {
+      "id": "D066",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7194,
+      "lat_ms": 3782.6
+    },
+    {
+      "id": "D067",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8531,
+      "lat_ms": 2271.3
+    },
+    {
+      "id": "D068",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7554,
+      "lat_ms": 3216.3
+    },
+    {
+      "id": "D069",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7563,
+      "lat_ms": 4520.9
+    },
+    {
+      "id": "D071",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8603,
+      "lat_ms": 4042.0
+    },
+    {
+      "id": "D073",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7964,
+      "lat_ms": 2343.8
+    },
+    {
+      "id": "D074",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6909,
+      "lat_ms": 3903.9
+    },
+    {
+      "id": "D075",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8307,
+      "lat_ms": 3560.0
+    },
+    {
+      "id": "D076",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.856,
+      "lat_ms": 4018.7
+    },
+    {
+      "id": "D077",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7745,
+      "lat_ms": 3505.5
+    },
+    {
+      "id": "D078",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7486,
+      "lat_ms": 3646.2
+    },
+    {
+      "id": "D079",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8638,
+      "lat_ms": 3691.6
+    },
+    {
+      "id": "D080",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 10,
+      "top1_score": 0.871,
+      "lat_ms": 2596.7
+    },
+    {
+      "id": "D081",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.8296,
+      "lat_ms": 3675.2
+    },
+    {
+      "id": "D082",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8078,
+      "lat_ms": 2767.8
+    },
+    {
+      "id": "D083",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8093,
+      "lat_ms": 3457.8
+    },
+    {
+      "id": "D084",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.8368,
+      "lat_ms": 2924.5
+    },
+    {
+      "id": "D085",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7662,
+      "lat_ms": 1701.6
+    },
+    {
+      "id": "D086",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8306,
+      "lat_ms": 3360.9
+    },
+    {
+      "id": "D087",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 10,
+      "top1_score": 0.8584,
+      "lat_ms": 3041.8
+    },
+    {
+      "id": "D088",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7026,
+      "lat_ms": 4677.2
+    },
+    {
+      "id": "D089",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.763,
+      "lat_ms": 3690.4
+    },
+    {
+      "id": "D090",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7915,
+      "lat_ms": 2566.0
+    },
+    {
+      "id": "D091",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8577,
+      "lat_ms": 2804.4
+    },
+    {
+      "id": "D092",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.7715,
+      "lat_ms": 1310.7
+    },
+    {
+      "id": "D093",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7554,
+      "lat_ms": 4281.2
+    },
+    {
+      "id": "D094",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7534,
+      "lat_ms": 3539.4
+    },
+    {
+      "id": "D095",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 6,
+      "top1_score": 0.8852,
+      "lat_ms": 4185.8
+    },
+    {
+      "id": "D096",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 8,
+      "top1_score": 0.7447,
+      "lat_ms": 3269.5
+    },
+    {
+      "id": "D097",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7567,
+      "lat_ms": 4190.7
+    },
+    {
+      "id": "D098",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7679,
+      "lat_ms": 3553.2
+    },
+    {
+      "id": "D099",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7646,
+      "lat_ms": 3042.7
+    },
+    {
+      "id": "D100",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.775,
+      "lat_ms": 2632.3
+    },
+    {
+      "id": "D101",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7797,
+      "lat_ms": 2158.7
+    },
+    {
+      "id": "D102",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.6076,
+      "lat_ms": 4191.3
+    },
+    {
+      "id": "D103",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 10,
+      "top1_score": 0.7387,
+      "lat_ms": 4296.3
+    },
+    {
+      "id": "D105",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.681,
+      "lat_ms": 1311.6
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8235,
+      "lat_ms": 2964.4
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8265,
+      "lat_ms": 4128.7
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7975,
+      "lat_ms": 815.8
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8827,
+      "lat_ms": 1834.6
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7525,
+      "lat_ms": 3321.3
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8569,
+      "lat_ms": 3082.4
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.842,
+      "lat_ms": 3234.4
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.8059,
+      "lat_ms": 3547.4
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8526,
+      "lat_ms": 2716.2
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6706,
+      "lat_ms": 1556.0
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6505,
+      "lat_ms": 2792.3
+    },
+    {
+      "id": "D107",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6977,
+      "lat_ms": 1470.1
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.808,
+      "lat_ms": 2548.9
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.7232,
+      "lat_ms": 1905.8
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 3,
+      "top1_score": 0.7732,
+      "lat_ms": 2167.2
+    },
+    {
+      "id": "D111",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 4,
+      "top1_score": 0.6085,
+      "lat_ms": 2223.5
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.6349,
+      "lat_ms": 2661.2
+    },
+    {
+      "id": "D113",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": null,
+      "top1_score": 0.761,
+      "lat_ms": 4506.9
+    },
+    {
+      "id": "D114",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 10,
+      "top1_score": 0.8003,
+      "lat_ms": 3248.2
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7109,
+      "lat_ms": 2054.6
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8609,
+      "lat_ms": 3101.0
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.6419,
+      "lat_ms": 2790.4
+    },
+    {
+      "id": "D118",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 2,
+      "top1_score": 0.7957,
+      "lat_ms": 2146.4
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.7991,
+      "lat_ms": 2976.4
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.9_rerank=off",
+      "gold_rank": 1,
+      "top1_score": 0.8958,
+      "lat_ms": 2823.2
+    },
+    {
+      "id": "D001",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8206,
+      "lat_ms": 4202.0
+    },
+    {
+      "id": "D002",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.828,
+      "lat_ms": 4055.0
+    },
+    {
+      "id": "D003",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7372,
+      "lat_ms": 3051.0
+    },
+    {
+      "id": "D004",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7874,
+      "lat_ms": 5732.7
+    },
+    {
+      "id": "D005",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6923,
+      "lat_ms": 5862.7
+    },
+    {
+      "id": "D006",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8102,
+      "lat_ms": 4105.0
+    },
+    {
+      "id": "D007",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.7678,
+      "lat_ms": 4717.0
+    },
+    {
+      "id": "D008",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7068,
+      "lat_ms": 5889.1
+    },
+    {
+      "id": "D009",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.6378,
+      "lat_ms": 3736.7
+    },
+    {
+      "id": "D010",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8945,
+      "lat_ms": 7170.5
+    },
+    {
+      "id": "D011",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7978,
+      "lat_ms": 4764.1
+    },
+    {
+      "id": "D012",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7833,
+      "lat_ms": 5517.4
+    },
+    {
+      "id": "D013",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7159,
+      "lat_ms": 4581.5
+    },
+    {
+      "id": "D014",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8445,
+      "lat_ms": 3699.4
+    },
+    {
+      "id": "D015",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8617,
+      "lat_ms": 4293.0
+    },
+    {
+      "id": "D016",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7,
+      "lat_ms": 3562.1
+    },
+    {
+      "id": "D017",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6753,
+      "lat_ms": 3574.1
+    },
+    {
+      "id": "D019",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7036,
+      "lat_ms": 4346.5
+    },
+    {
+      "id": "D020",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.656,
+      "lat_ms": 3594.8
+    },
+    {
+      "id": "D021",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.6231,
+      "lat_ms": 3116.5
+    },
+    {
+      "id": "D025",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7244,
+      "lat_ms": 3380.9
+    },
+    {
+      "id": "D026",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.5744,
+      "lat_ms": 3728.6
+    },
+    {
+      "id": "D027",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8614,
+      "lat_ms": 5272.0
+    },
+    {
+      "id": "D028",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.7435,
+      "lat_ms": 5189.9
+    },
+    {
+      "id": "D029",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8108,
+      "lat_ms": 2144.4
+    },
+    {
+      "id": "D030",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7544,
+      "lat_ms": 3603.8
+    },
+    {
+      "id": "D031",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7092,
+      "lat_ms": 4407.7
+    },
+    {
+      "id": "D032",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.735,
+      "lat_ms": 5227.9
+    },
+    {
+      "id": "D033",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8112,
+      "lat_ms": 6302.4
+    },
+    {
+      "id": "D035",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.8846,
+      "lat_ms": 4333.6
+    },
+    {
+      "id": "D036",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8382,
+      "lat_ms": 4232.2
+    },
+    {
+      "id": "D037",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7388,
+      "lat_ms": 5172.9
+    },
+    {
+      "id": "D039",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8093,
+      "lat_ms": 3622.8
+    },
+    {
+      "id": "D041",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6712,
+      "lat_ms": 4470.1
+    },
+    {
+      "id": "D042",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7202,
+      "lat_ms": 5583.3
+    },
+    {
+      "id": "D043",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 9,
+      "top1_score": 0.7588,
+      "lat_ms": 6702.1
+    },
+    {
+      "id": "D044",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6817,
+      "lat_ms": 4971.7
+    },
+    {
+      "id": "D045",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.6498,
+      "lat_ms": 4754.6
+    },
+    {
+      "id": "D046",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6404,
+      "lat_ms": 3848.9
+    },
+    {
+      "id": "D047",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5353,
+      "lat_ms": 3786.5
+    },
+    {
+      "id": "D048",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5834,
+      "lat_ms": 3744.6
+    },
+    {
+      "id": "D049",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.6068,
+      "lat_ms": 3801.9
+    },
+    {
+      "id": "D050",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5316,
+      "lat_ms": 3282.6
+    },
+    {
+      "id": "D051",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5687,
+      "lat_ms": 3403.6
+    },
+    {
+      "id": "D052",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.512,
+      "lat_ms": 3536.1
+    },
+    {
+      "id": "D053",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5631,
+      "lat_ms": 3903.5
+    },
+    {
+      "id": "D054",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.5537,
+      "lat_ms": 3917.7
+    },
+    {
+      "id": "D055",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.5563,
+      "lat_ms": 3379.8
+    },
+    {
+      "id": "D056",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6318,
+      "lat_ms": 4372.7
+    },
+    {
+      "id": "D057",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.4395,
+      "lat_ms": 2925.7
+    },
+    {
+      "id": "D058",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.6985,
+      "lat_ms": 5643.2
+    },
+    {
+      "id": "D059",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7264,
+      "lat_ms": 5051.6
+    },
+    {
+      "id": "D060",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.8057,
+      "lat_ms": 4128.0
+    },
+    {
+      "id": "D061",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8231,
+      "lat_ms": 4441.4
+    },
+    {
+      "id": "D062",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8262,
+      "lat_ms": 5771.9
+    },
+    {
+      "id": "D063",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7489,
+      "lat_ms": 4705.8
+    },
+    {
+      "id": "D064",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8402,
+      "lat_ms": 6357.1
+    },
+    {
+      "id": "D065",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.745,
+      "lat_ms": 6825.5
+    },
+    {
+      "id": "D066",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 8,
+      "top1_score": 0.7194,
+      "lat_ms": 6215.8
+    },
+    {
+      "id": "D067",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8531,
+      "lat_ms": 4423.3
+    },
+    {
+      "id": "D068",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7269,
+      "lat_ms": 5464.0
+    },
+    {
+      "id": "D069",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7563,
+      "lat_ms": 7096.5
+    },
+    {
+      "id": "D071",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8603,
+      "lat_ms": 6427.6
+    },
+    {
+      "id": "D073",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7964,
+      "lat_ms": 4444.6
+    },
+    {
+      "id": "D074",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6909,
+      "lat_ms": 6396.5
+    },
+    {
+      "id": "D075",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8307,
+      "lat_ms": 5793.2
+    },
+    {
+      "id": "D076",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.856,
+      "lat_ms": 6405.5
+    },
+    {
+      "id": "D077",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7745,
+      "lat_ms": 5951.9
+    },
+    {
+      "id": "D078",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7486,
+      "lat_ms": 6098.9
+    },
+    {
+      "id": "D079",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8638,
+      "lat_ms": 6072.6
+    },
+    {
+      "id": "D080",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.871,
+      "lat_ms": 4724.7
+    },
+    {
+      "id": "D081",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 8,
+      "top1_score": 0.8296,
+      "lat_ms": 5959.3
+    },
+    {
+      "id": "D082",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8064,
+      "lat_ms": 4827.4
+    },
+    {
+      "id": "D083",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8093,
+      "lat_ms": 5724.0
+    },
+    {
+      "id": "D084",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8368,
+      "lat_ms": 5084.1
+    },
+    {
+      "id": "D085",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7662,
+      "lat_ms": 3738.8
+    },
+    {
+      "id": "D086",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": null,
+      "top1_score": 0.8306,
+      "lat_ms": 5551.2
+    },
+    {
+      "id": "D087",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 6,
+      "top1_score": 0.8584,
+      "lat_ms": 5232.7
+    },
+    {
+      "id": "D088",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.6991,
+      "lat_ms": 6915.5
+    },
+    {
+      "id": "D089",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.763,
+      "lat_ms": 5722.9
+    },
+    {
+      "id": "D090",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7915,
+      "lat_ms": 4624.0
+    },
+    {
+      "id": "D091",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8577,
+      "lat_ms": 4811.9
+    },
+    {
+      "id": "D092",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7189,
+      "lat_ms": 3181.0
+    },
+    {
+      "id": "D093",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7554,
+      "lat_ms": 6801.1
+    },
+    {
+      "id": "D094",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7534,
+      "lat_ms": 5757.8
+    },
+    {
+      "id": "D095",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.8852,
+      "lat_ms": 6576.3
+    },
+    {
+      "id": "D096",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7447,
+      "lat_ms": 5569.9
+    },
+    {
+      "id": "D097",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7567,
+      "lat_ms": 6450.9
+    },
+    {
+      "id": "D098",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 7,
+      "top1_score": 0.7679,
+      "lat_ms": 5758.6
+    },
+    {
+      "id": "D099",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7646,
+      "lat_ms": 5174.7
+    },
+    {
+      "id": "D100",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.775,
+      "lat_ms": 4656.5
+    },
+    {
+      "id": "D101",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.779,
+      "lat_ms": 4350.0
+    },
+    {
+      "id": "D102",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.6076,
+      "lat_ms": 6577.3
+    },
+    {
+      "id": "D103",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.7387,
+      "lat_ms": 6642.5
+    },
+    {
+      "id": "D105",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.681,
+      "lat_ms": 2891.5
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8235,
+      "lat_ms": 5004.1
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8265,
+      "lat_ms": 6446.4
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7975,
+      "lat_ms": 2536.9
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8827,
+      "lat_ms": 3496.6
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7525,
+      "lat_ms": 5310.5
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8569,
+      "lat_ms": 5378.2
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.842,
+      "lat_ms": 5284.6
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.8059,
+      "lat_ms": 5862.3
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8526,
+      "lat_ms": 4597.5
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6706,
+      "lat_ms": 3698.5
+    },
+    {
+      "id": "D106",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6505,
+      "lat_ms": 4912.7
+    },
+    {
+      "id": "D107",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6977,
+      "lat_ms": 3615.2
+    },
+    {
+      "id": "D108",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.808,
+      "lat_ms": 4470.6
+    },
+    {
+      "id": "D109",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 5,
+      "top1_score": 0.7232,
+      "lat_ms": 3594.2
+    },
+    {
+      "id": "D110",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 3,
+      "top1_score": 0.7732,
+      "lat_ms": 4004.2
+    },
+    {
+      "id": "D111",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.6085,
+      "lat_ms": 4356.1
+    },
+    {
+      "id": "D112",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6349,
+      "lat_ms": 4920.7
+    },
+    {
+      "id": "D113",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 7,
+      "top1_score": 0.761,
+      "lat_ms": 6895.7
+    },
+    {
+      "id": "D114",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 4,
+      "top1_score": 0.8003,
+      "lat_ms": 5530.8
+    },
+    {
+      "id": "D115",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7109,
+      "lat_ms": 3801.5
+    },
+    {
+      "id": "D116",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8609,
+      "lat_ms": 5036.2
+    },
+    {
+      "id": "D117",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.6464,
+      "lat_ms": 4906.1
+    },
+    {
+      "id": "D118",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 2,
+      "top1_score": 0.7957,
+      "lat_ms": 3978.9
+    },
+    {
+      "id": "D119",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.7991,
+      "lat_ms": 4989.0
+    },
+    {
+      "id": "D120",
+      "config": "vw=0.9_rerank=on",
+      "gold_rank": 1,
+      "top1_score": 0.8958,
+      "lat_ms": 4696.0
+    }
+  ]
+}

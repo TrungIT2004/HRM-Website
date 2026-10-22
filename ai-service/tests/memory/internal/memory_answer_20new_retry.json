@@ -1,0 +1,1724 @@
+[
+ {
+  "session_id": 1037,
+  "conversation_id": "58aa4416-895f-4ac7-90bb-fd0ecac244b6",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Hội đồng quản trị MWG mấy người, nhiệm kỳ?",
+    "gold_answer": "Không ít hơn năm người, không quá mười một người; nhiệm kỳ không quá bốn năm, bầu lại không hạn chế trừ pháp luật khác; Chủ tịch không kiêm Tổng Giám đốc.",
+    "actual_answer": "Theo quy định tại Điều 14.1 của tài liệu QuyCheQuanTri-MWG.pdf:\n\n*   **Số lượng thành viên Hội đồng quản trị:** Không ít hơn năm (5) người và không vượt quá mười một (11) người.\n*   **Nhiệm kỳ:** Không quá bốn (04) năm; thành viên Hội đồng quản trị có thể được bầu lại với số nhiệm kỳ không hạn chế, trừ trường hợp pháp luật có quy định khác.\n\nCăn cứ: Điều 14.1 - QuyCheQuanTri-MWG.pdf",
+    "rewritten": "Hội đồng quản trị MWG có bao nhiêu người và nhiệm kỳ như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-EVNFinance.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.6,
+    "latency_s": 1228.13,
+    "tok_in": 5075,
+    "tok_out": 163,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "Ai được đề cử?",
+    "gold_answer": "Cổ đông hoặc nhóm cổ đông nắm giữ từ 10% trở lên được đề cử ứng viên; được gộp phiếu để đề cử. Không đủ ứng viên thì Hội đồng quản trị đương nhiệm đề cử thêm hoặc chọn người điều hành, công ty con; công bố chứng khoán; thành viên có thể không phải cổ đông, ngoại quốc.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nDựa trên nội dung về cơ cấu quản trị của MWG mà chúng ta đang trao đổi, những đối tượng được quyền đề cử ứng viên vào Hội đồng quản trị (HĐQT) bao gồm:\n\n*   **Cổ đông hoặc nhóm Cổ đông:**\n    *   Được quyền gộp số quyền biểu quyết của từng người lại với nhau để đề cử ứng viên.\n    *   Cổ đông hoặc nhóm Cổ đông nắm giữ từ 10% trở lên được quyền đề cử ứng viên theo quy định của pháp luật (Điều 15.1).\n    *   Cổ đông hoặc nhóm Cổ đông sở hữu số lượng cổ phần phổ thông theo quy định tại Điều lệ có quyền đề cử ứng viên theo quy định của Luật Doanh nghiệp và Điều lệ công ty (Điều 19.2).\n*   **Hội đồng quản trị đương nhiệm:** Trong trường hợp số lượng ứng viên qua đề cử và ứng cử vẫn không đủ số lượng cần thiết, HĐQT đương nhiệm có thể:\n    *   Đề cử thêm ứng cử viên.\n    *   Hoặc tổ chức đề cử theo cơ chế lựa chọn các cá nhân giữ chức danh Người điều hành hoặc trong Ban điều hành của Công ty hoặc công ty con (Điều 15.2).\n\nCăn cứ: Điều 15.1, 15.2 và Điều 19.2 của tài liệu QuyCheQuanTri-MWG.pdf.",
+    "rewritten": "Ai được đề cử vào Hội đồng quản trị MWG?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.75,
+    "latency_s": 9.0,
+    "tok_in": 6632,
+    "tok_out": 420,
+    "llm_calls": 3
+   },
+   {
+    "turn": 2,
+    "question": "10% đó tính sao?",
+    "gold_answer": "Cổ đông hoặc nhóm cổ đông nắm giữ từ 10% cổ phần có quyền biểu quyết trở lên.",
+    "actual_answer": "Rất tiếc, quy chế hiện tại của công ty (QuyCheQuanTri-MWG.pdf) không có thông tin về con số \"10%\" trong việc đề cử ứng viên Hội đồng quản trị. \n\nThông tin về tỷ lệ sở hữu cổ phần để đề cử ứng viên của MWG được quy định tại Điều 19.2 là: Cổ đông hoặc nhóm Cổ đông sở hữu số lượng cổ phần phổ thông theo quy định tại Điều lệ có quyền đề cử ứng viên Hội đồng quản trị theo quy định của Luật Doanh nghiệp và Điều lệ công ty (không nêu con số cụ thể).\n\nBạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể về tỷ lệ này theo Điều lệ công ty.\n\nCăn cứ: Điều 19.2 - QuyCheQuanTri-MWG.pdf.",
+    "rewritten": "10% đối tượng được quyền đề cử ứng viên vào Hội đồng quản trị của MWG được tính như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": true,
+    "db_ok": null,
+    "overlap": 0.667,
+    "latency_s": 8.64,
+    "tok_in": 6058,
+    "tok_out": 228,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Bầu kiểu gì?",
+    "gold_answer": "Bầu dồn phiếu: mỗi cổ đông có tổng phiếu bằng cổ phần sở hữu nhân số thành viên được bầu, dồn hết hoặc một phần cho một hoặc một số ứng viên; trúng từ cao xuống thấp; ngang phiếu ghế cuối thì bầu lại hoặc theo tiêu chí quy chế, Điều lệ.",
+    "actual_answer": "Việc bầu thành viên Hội đồng quản trị (HĐQT) được thực hiện như sau:\n\n*   **Phương thức bầu:** Thực hiện theo phương thức bầu dồn phiếu.\n*   **Cách tính phiếu:** Mỗi Cổ đông có tổng số phiếu biểu quyết = (Tổng số cổ phần sở hữu) x (Số thành viên được bầu của HĐQT).\n*   **Quyền sử dụng phiếu:** Cổ đông có quyền dồn hết hoặc một phần tổng số phiếu bầu của mình cho một hoặc một số ứng cử viên.\n*   **Xác định người trúng cử:** \n    *   Người trúng cử được xác định theo số phiếu bầu tính từ cao xuống thấp cho đến khi đủ số thành viên quy định tại Điều lệ công ty.\n    *   Trường hợp có từ 02 ứng cử viên trở lên đạt cùng số phiếu bầu cho thành viên cuối cùng của HĐQT: Sẽ tiến hành bầu lại trong số các ứng cử viên có số phiếu ngang nhau hoặc lựa chọn theo tiêu chí quy chế bầu cử hoặc Điều lệ công ty.\n\nCăn cứ: Điều 16, QuyCheQuanTri-MWG.pdf.",
+    "rewritten": "Việc bầu thành viên Hội đồng quản trị của MWG được thực hiện theo hình thức nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.875,
+    "latency_s": 9.54,
+    "tok_in": 6502,
+    "tok_out": 286,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "Miễn nhiệm khi nào?",
+    "gold_answer": "Mất tư cách theo luật, Điều lệ; xin từ chức; rối loạn tâm thần có bằng chứng chuyên môn; vắng họp liên tục sáu tháng không chấp thuận thì bỏ trống; Đại hội bãi nhiệm; bị phá sản.",
+    "actual_answer": "Thành viên Hội đồng quản trị bị miễn nhiệm, bãi nhiệm tư cách thành viên trong các trường hợp sau:\n\n*   Không đủ tư cách làm thành viên Hội đồng quản trị theo quy định của Luật Doanh nghiệp và Điều lệ hoặc bị luật pháp cấm không được làm thành viên Hội đồng quản trị.\n*   Gửi đơn bằng văn bản xin từ chức đến trụ sở chính của Công ty.\n*   Bị rối loạn tâm thần và thành viên khác của Hội đồng quản trị có những bằng chứng chuyên môn chứng tỏ người đó không còn năng lực hành vi.\n*   Không tham dự các cuộc họp của Hội đồng quản trị liên tục trong vòng sáu (06) tháng mà không có sự chấp thuận của Hội đồng quản trị và Hội đồng quản trị quyết định chức vụ của người này bị bỏ trống.\n*   Bị bãi nhiệm theo quyết định của Đại hội đồng cổ đông.\n*   Bị phá sản.\n\nCăn cứ: Điều 17, QuyCheQuanTri-MWG.pdf.",
+    "rewritten": "Thành viên Hội đồng quản trị của MWG bị miễn nhiệm khi nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.941,
+    "latency_s": 7.06,
+    "tok_in": 5307,
+    "tok_out": 254,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Vắng họp thì sao?",
+    "gold_answer": "Không dự họp liên tục sáu tháng mà không được chấp thuận thì Hội đồng quản trị quyết định chức vụ bị bỏ trống.",
+    "actual_answer": "Nếu thành viên Hội đồng quản trị vắng họp, tùy vào trường hợp sẽ có các quy định sau:\n\n*   **Về việc tham gia họp:** Thành viên không thể dự họp có thể gửi phiếu bầu (Điều 20). Ngoài ra, việc tham gia bằng hình thức điện tử qua Phương tiện trực tuyến hoặc gửi phiếu biểu quyết thông qua thư bảo đảm hoặc thư điện tử được tính có giá trị như tham gia trực tiếp tại cuộc họp (Điều 21.1).\n*   **Về chế tài miễn nhiệm:** Thành viên Hội đồng quản trị sẽ bị miễn nhiệm, bãi nhiệm tư cách thành viên nếu không tham dự các cuộc họp của Hội đồng quản trị liên tục trong vòng sáu (06) tháng mà không có sự chấp thuận của Hội đồng quản trị và Hội đồng quản trị quyết định chức vụ của người này bị bỏ trống (Điều 17.4).\n\nCăn cứ: Điều 20, Điều 21.1 và Điều 17.4 của QuyCheQuanTri-MWG.pdf.",
+    "rewritten": "Thành viên Hội đồng quản trị của MWG vắng họp thì sao?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.04,
+    "tok_in": 6436,
+    "tok_out": 257,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "Bầu, miễn xong công bố đâu?",
+    "gold_answer": "Công bố ra công chúng theo pháp luật chứng khoán; thông tin ứng viên công bố tối thiểu mười ngày trước khai mạc trên web kèm cam kết văn bản về tính trung thực và thực hiện nhiệm vụ.",
+    "actual_answer": "Thông báo về việc bầu, miễn nhiệm, bãi nhiệm thành viên Hội đồng quản trị phải được công bố ra công chúng theo các quy định của pháp luật về chứng khoán và thị trường chứng khoán.\n\nCăn cứ: Điều 18 Quy chế Quản trị MWG.",
+    "rewritten": "Việc bầu và miễn nhiệm thành viên Hội đồng quản trị của MWG xong thì công bố ở đâu?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.5,
+    "latency_s": 10.27,
+    "tok_in": 5250,
+    "tok_out": 102,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Ứng viên cần công bố gì?",
+    "gold_answer": "Họ tên, ngày sinh; trình độ; quá trình công tác; công ty đang giữ chức và chức danh quản lý khác; lợi ích liên quan; cổ đông đề cử; thông tin khác.",
+    "actual_answer": "Thông tin liên quan đến ứng viên Hội đồng quản trị (HĐQT) phải được công bố tối thiểu mười (10) ngày trước ngày khai mạc cuộc họp ĐHĐCĐ trên trang thông tin điện tử của Công ty.\n\nCác nội dung tối thiểu cần công bố bao gồm:\n*   Họ tên, ngày, tháng, năm sinh;\n*   Trình độ học vấn;\n*   Quá trình công tác;\n*   Các công ty mà ứng viên đang nắm giữ chức vụ thành viên HĐQT và các chức danh quản lý khác;\n*   Các lợi ích có liên quan tới công ty (nếu có);\n*   Họ, tên của Cổ đông hoặc nhóm Cổ đông đề cử ứng viên đó (nếu có);\n*   Các thông tin khác (nếu có).\n\nNgoài ra, ứng viên HĐQT phải có cam kết bằng văn bản về tính trung thực, chính xác và hợp lý của các thông tin cá nhân được công bố, đồng thời cam kết thực hiện nhiệm vụ một cách trung thực nếu được bầu làm thành viên HĐQT.\n\nCăn cứ: Điều 19 QuyCheQuanTri-MWG.pdf",
+    "rewritten": "Ứng viên đề cử thành viên Hội đồng quản trị của MWG cần công bố những thông tin gì?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 10.26,
+    "tok_in": 5252,
+    "tok_out": 295,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "Nhiệm kỳ 4 năm lúc nãy, bầu lại được không?",
+    "gold_answer": "Được, thành viên Hội đồng quản trị có thể được bầu lại với số nhiệm kỳ không hạn chế, trừ pháp luật có quy định khác.",
+    "actual_answer": "Thành viên Hội đồng quản trị có thể được bầu lại với số nhiệm kỳ không hạn chế, trừ trường hợp pháp luật có quy định khác.\n\nCăn cứ: Điều 14.1 QuyCheQuanTri-MWG.pdf",
+    "rewritten": "Đối với nhiệm kỳ không quá 4 năm của thành viên Hội đồng quản trị MWG, có được bầu lại không?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-EVNFinance.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 9.99,
+    "tok_in": 5684,
+    "tok_out": 95,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Họp thì báo trước mấy ngày?",
+    "gold_answer": "Ít nhất năm ngày, văn bản tiếng Việt đủ chương trình, thời gian, địa điểm, tài liệu và phiếu bầu vắng mặt; gửi bưu điện, fax, thư điện tử hoặc phương tiện khác đến địa chỉ đăng ký; được từ chối thông báo bằng văn bản.",
+    "actual_answer": "Vì bạn không nói rõ là họp cấp nào, tôi xin cung cấp thời hạn thông báo cho cả hai loại cuộc họp theo quy định:\n\n*   **Họp Hội đồng quản trị (HĐQT):** Thông báo họp phải được gửi trước ít nhất năm (05) ngày trước khi tổ chức họp. (Căn cứ: Điều 20 QuyCheQuanTri-MWG.pdf)\n*   **Họp Đại hội đồng cổ đông (ĐHĐCĐ):** Thông báo mời họp phải được gửi chậm nhất là hai mươi mốt (21) ngày trước ngày khai mạc Đại hội đồng cổ đông. (Căn cứ: Điều 5.1 QuyCheQuanTri-MWG.pdf)\n\nTóm tắt điều khoản sử dụng: Điều 20 và Điều 5.1 QuyCheQuanTri-MWG.pdf.",
+    "rewritten": "Cuộc họp ĐHĐCĐ để bầu Hội đồng quản trị của MWG thì cần báo trước mấy ngày?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-MWG.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.15,
+    "latency_s": 11.08,
+    "tok_in": 6625,
+    "tok_out": 229,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "Không đủ người thì sao?",
+    "gold_answer": "Lần đầu cần ít nhất ba phần tư thành viên có mặt trực tiếp, tham gia online hoặc gửi phiếu tính như trực tiếp; thiếu thì triệu tập lại trong bảy ngày, cần hơn một nửa dự họp.",
+    "actual_answer": "Tiếp nối nội dung về cuộc họp Hội đồng quản trị (HĐQT) của MWG, trường hợp không đủ số thành viên dự họp theo quy định, quy trình xử lý như sau:\n\n*   **Triệu tập lại:** Cuộc họp phải được triệu tập lại trong thời hạn bảy (07) ngày kể từ ngày dự định họp lần thứ nhất.\n*   **Điều kiện tiến hành cuộc họp triệu tập lại:** Cuộc họp này sẽ được tiến hành nếu có hơn một nửa (1/2) số thành viên Hội đồng quản trị dự họp.\n\nCăn cứ: Điều 21.2 QuyCheQuanTri-MWG.pdf",
+    "rewritten": "Nếu cuộc họp Hội đồng quản trị (HĐQT) không đủ số người tham dự thì sẽ như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-EVNFinance.pdf",
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.462,
+    "latency_s": 13.18,
+    "tok_in": 5431,
+    "tok_out": 183,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Ngang phiếu thì sao?",
+    "gold_answer": "Phiếu của Chủ tịch là phiếu quyết định; mỗi thành viên một phiếu, chọn một trong ba: tán thành, không tán thành, không ý kiến; xung đột lợi ích thì không được biểu quyết và không tính vào quorum.",
+    "actual_answer": "Tiếp nối nội dung về quản trị Hội đồng quản trị (HĐQT) của MWG, trường hợp số phiếu bầu hoặc ý kiến ngang nhau được xử lý tùy theo từng tình huống cụ thể như sau:\n\n*   **Khi bầu thành viên HĐQT:** Trường hợp có từ 02 ứng cử viên trở lên đạt cùng số phiếu bầu như nhau cho thành viên cuối cùng của HĐQT, công ty sẽ tiến hành bầu lại trong số các ứng cử viên có số phiếu bầu ngang nhau hoặc lựa chọn theo tiêu chí quy chế bầu cử hoặc Điều lệ công ty.\n*   **Khi thông qua nghị quyết, quyết định của HĐQT:** Nghị quyết, quyết định được thông qua nếu được đa số thành viên dự họp tán thành; trường hợp số phiếu ngang nhau thì quyết định cuối cùng thuộc về phía có ý kiến của Chủ tịch Hội đồng quản trị.\n*   **Khi triệu tập cuộc họp đầu tiên để bầu Chủ tịch HĐQT:** Trường hợp có nhiều hơn một thành viên có số phiếu bầu hoặc tỷ lệ phiếu bầu cao nhất và ngang nhau, các thành viên sẽ bầu theo nguyên tắc đa số để chọn ra 01 người triệu tập họp Hội đồng quản trị.\n\nCăn cứ:\n- Điều 16, QuyCheQuanTri-MWG.pdf.\n- Điều 62, QuyCheQuanTri-Petrolimex-PMSC.pdf.\n- Điều 57, QuyCheQuanTri-Petrolimex-PMSC.pdf.",
+    "rewritten": "Trong cuộc họp Hội đồng quản trị (HĐQT) của MWG, trường hợp số phiếu ngang nhau thì xử lý như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-MWG.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.667,
+    "latency_s": 11.58,
+    "tok_in": 5215,
+    "tok_out": 361,
+    "llm_calls": 2
+   }
+  ]
+ },
+ {
+  "session_id": 1039,
+  "conversation_id": "c76fd0a2-ceca-4077-bde3-8e0c6dccc47f",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Đếm phiếu sao?",
+    "gold_answer": "Phiếu tán thành đếm trước, rồi không tán thành, không ý kiến, cuối cùng tổng; ghi đầy đủ số lượng và tỷ lệ từng vấn đề vào biên bản kiểm phiếu; được dùng phương tiện điện tử.",
+    "actual_answer": "Vì bạn không nói rõ đang hỏi về quy chế của công ty nào, tôi xin cung cấp cách thức đếm/kiểm phiếu theo từng tài liệu như sau:\n\n**1. Theo Quy chế Quản trị Petrolimex-PMSC:**\n*   **Cách thức kiểm phiếu:** Tiến hành bằng cách tổng hợp phiếu thẻ/phiếu biểu quyết tán thành, không tán thành và không có ý kiến (Điều 15).\n*   **Trường hợp đặc biệt:** Đối với những vấn đề nhạy cảm và nếu cổ đông có yêu cầu, Công ty phải chỉ định tổ chức độc lập thực hiện việc thu thập và kiểm phiếu (Điều 15).\n\n**2. Theo Quy chế Quản trị MWG:**\n*   **Thứ tự đếm phiếu:** Khi biểu quyết tại cuộc họp, số phiếu được đếm theo thứ tự: Tán thành $\\rightarrow$ Không tán thành $\\rightarrow$ Không có ý kiến $\\rightarrow$ Tổng số phiếu biểu quyết để quyết định (Khoản 8.2).\n*   **Ghi nhận:** Ban kiểm phiếu ghi nhận đầy đủ tổng số phiếu tán thành, không tán thành, không có ý kiến hoặc không hợp lệ tương ứng với tỷ lệ biểu quyết theo từng vấn đề vào biên bản kiểm phiếu (Khoản 8.2).\n*   **Công cụ hỗ trợ:** Ban kiểm phiếu được quyền sử dụng các phương tiện điện tử phù hợp để kiểm đếm (Khoản 8.3).\n*   **Bầu thành viên HĐQT:** Thực hiện theo phương thức bầu dồn phiếu theo quy định tại khoản 3 Điều 148 Luật Doanh nghiệp; Ban kiểm phiếu thu toàn bộ và kiểm phiếu biểu quyết (Khoản 8.4).\n\n**Trích dẫn:**\n- QuyCheQuanTri-Petrolimex-PMSC.pdf: Điều 15.\n- QuyCheQuanTri-MWG.pdf: Khoản 8.2, 8.3, 8.4.",
+    "rewritten": "Cách đếm phiếu như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-MWG.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.667,
+    "latency_s": 5.92,
+    "tok_in": 4800,
+    "tok_out": 447,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "Bầu Hội đồng quản trị thì sao?",
+    "gold_answer": "Bầu theo phương thức bầu dồn phiếu theo khoản 3 Điều 148 Luật Doanh nghiệp; thu toàn bộ phiếu, kiểm và ghi nhận kết quả.",
+    "actual_answer": "Việc bầu thành viên Hội đồng quản trị (HĐQT) theo Quy chế Quản trị Petrolimex-PMSC được quy định như sau:\n\n**1. Phương thức bầu cử:**\n*   **Phương thức bầu dồn phiếu:** Đây là phương thức bắt buộc. Mỗi cổ đông có tổng số phiếu biểu quyết = (Tổng số cổ phần sở hữu) x (Số thành viên được bầu của HĐQT). Cổ đông có quyền dồn hết hoặc một phần tổng số phiếu bầu của mình cho một hoặc một số ứng cử viên.\n*   **Trường hợp đặc biệt:** Nếu số ứng viên nhỏ hơn hoặc bằng số thành viên HĐQT cần bầu, có thể chọn một trong hai cách:\n    *   Thực hiện theo phương thức bầu dồn phiếu như trên.\n    *   Thực hiện theo phương thức biểu quyết (tán thành, không tán thành, không có ý kiến). Tỷ lệ biểu quyết thông qua thực hiện theo Khoản 2 Điều 21 Điều lệ công ty.\n\n**2. Xác định người trúng cử:**\n*   Người trúng cử được xác định theo số phiếu bầu tính từ cao xuống thấp, bắt đầu từ ứng cử viên có số phiếu bầu cao nhất cho đến khi đủ số thành viên quy định tại Điều lệ công ty.\n*   **Xử lý khi bằng phiếu:** Nếu có từ 02 ứng cử viên trở lên đạt cùng số phiếu bầu cho thành viên cuối cùng của HĐQT, sẽ tiến hành:\n    *   Bầu lại trong số các ứng cử viên có số phiếu bầu ngang nhau; hoặc\n    *   Lựa chọn theo tiêu chí quy định tại quy chế bầu cử hoặc Điều lệ công ty.\n\n**3. Sau khi bầu cử:**\n*   Trong thời hạn 07 ngày làm việc kể từ ngày kết thúc bầu cử HĐQT, cuộc họp đầu tiên của HĐQT sẽ được tổ chức để bầu Chủ tịch HĐQT.\n*   Cuộc họp này do thành viên có số phiếu bầu cao nhất hoặc tỷ lệ phiếu bầu cao nhất triệu tập và chủ trì.\n*   Nếu có nhiều hơn một thành viên có số phiếu bầu hoặc tỷ lệ phiếu bầu cao nhất và ngang nhau, các thành viên sẽ bầu theo nguyên tắc đa số để chọn ra 01 người triệu tập họp HĐQT.\n\nCăn cứ: Điều 51 và Điều 57, Chương 3 - Quy chế Quản trị Petrolimex-PMSC.",
+    "rewritten": "Cách thức đếm phiếu khi bầu Hội đồng quản trị theo Quy chế Quản trị Petrolimex-PMSC như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.545,
+    "latency_s": 12.77,
+    "tok_in": 5032,
+    "tok_out": 650,
+    "llm_calls": 3
+   },
+   {
+    "turn": 2,
+    "question": "Xong công bố gì?",
+    "gold_answer": "Thông báo trực tiếp tại cuộc họp: số phiếu tán thành, không tán thành, không có ý kiến, không hợp lệ và tỷ lệ từng vấn đề.",
+    "actual_answer": "Tiếp nối nội dung về việc bầu thành viên Hội đồng quản trị (HĐQT), việc công bố thông tin được quy định như sau:\n\nSau khi có quyết định bầu, miễn nhiệm, bãi nhiệm thành viên HĐQT, Công ty có trách nhiệm công bố thông tin tại các kênh sau:\n*   Trong nội bộ Công ty.\n*   Cho các cơ quan hữu quan.\n*   Trên các phương tiện thông tin đại chúng.\n*   Trên trang website của Công ty.\n\nViệc công bố này phải thực hiện theo trình tự và quy định của Luật hiện hành.\n\nCăn cứ: Điều 53, Chương 3 - Quy chế Quản trị Petrolimex-PMSC.",
+    "rewritten": "Sau khi bầu Hội đồng quản trị theo Quy chế Quản trị Petrolimex-PMSC xong thì công bố những gì?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.375,
+    "latency_s": 9.27,
+    "tok_in": 4992,
+    "tok_out": 197,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Cổ đông phản đối thì sao?",
+    "gold_answer": "Được yêu cầu Công ty mua lại cổ phần bằng văn bản ghi tên, địa chỉ, số lượng, giá, lý do, gửi trong 10 ngày từ ngày Đại hội thông qua nghị quyết; Công ty mua trong 90 ngày theo giá thị trường hoặc Điều lệ; không thỏa thuận được thì thẩm định giá độc lập.",
+    "actual_answer": "Tiếp nối nội dung về việc bầu thành viên Hội đồng quản trị (HĐQT), trường hợp cổ đông phản đối (không tán thành) được xử lý tùy theo phương thức bầu cử như sau:\n\n*   **Đối với phương thức bầu dồn phiếu (Phương thức bắt buộc):** Cổ đông không thực hiện \"phản đối\" theo cách biểu quyết tán thành/không tán thành, mà thực hiện quyền thông qua việc phân bổ phiếu bầu. Cổ đông có quyền dồn hết hoặc một phần tổng số phiếu bầu của mình cho một hoặc một số ứng cử viên. Người trúng cử được xác định theo số phiếu bầu từ cao xuống thấp cho đến khi đủ số thành viên quy định tại Điều lệ công ty.\n*   **Đối với phương thức biểu quyết (Chỉ áp dụng khi số ứng viên nhỏ hơn hoặc bằng số thành viên HĐQT cần bầu):** Việc bầu cử có thể thực hiện theo phương thức biểu quyết với các lựa chọn: tán thành, không tán thành, không có ý kiến. Tỷ lệ biểu quyết thông qua trong trường hợp này được thực hiện theo Khoản 2 Điều 21 Điều lệ công ty.\n\nCăn cứ: Điều 51 QuyCheQuanTri-Petrolimex-PMSC.pdf.",
+    "rewritten": "Trong trường hợp cổ đông phản đối việc bầu thành viên Hội đồng quản trị (HĐQT) theo Quy chế Quản trị Petrolimex-PMSC thì sẽ được xử lý như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.6,
+    "latency_s": 14.57,
+    "tok_in": 5588,
+    "tok_out": 325,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "10 ngày đó tính từ khi nào?",
+    "gold_answer": "Từ ngày Đại hội đồng cổ đông thông qua nghị quyết về các vấn đề đó.",
+    "actual_answer": "Tiếp nối nội dung về việc bầu, miễn nhiệm và bãi nhiệm thành viên Hội đồng Quản trị (HĐQT) và Ban Kiểm soát (BKS), thời hạn 10 ngày được quy định cho hai trường hợp khác nhau như sau:\n\n*   **Đối với việc công bố thông tin ứng viên:** Thông tin liên quan đến các ứng viên HĐQT và ứng viên BKS được công bố tối thiểu mười (10) ngày **trước ngày khai mạc họp ĐHĐCĐ** trên trang thông tin điện tử của Công ty.\n*   **Đối với việc báo cáo Ngân hàng Nhà nước khi miễn nhiệm, bãi nhiệm:** Trong thời hạn 10 ngày làm việc, **kể từ ngày thông qua quyết định miễn nhiệm, bãi nhiệm** đối với các thành viên HĐQT hoặc thành viên BKS, Hội đồng Quản trị phải có văn bản kèm tài liệu liên quan để báo cáo Ngân hàng Nhà nước.\n\nCăn cứ: QuyCheQuanTri-EVNFinance.pdf (Trang 13 và Trang 15).",
+    "rewritten": "10 ngày công bố thông tin sau khi có quyết định bầu, miễn nhiệm, bãi nhiệm thành viên HĐQT được tính từ khi nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-EVNFinance.pdf",
+     "QuyCheQuanTri-EVNFinance.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.667,
+    "latency_s": 10.35,
+    "tok_in": 5175,
+    "tok_out": 282,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Biên bản họp thì sao?",
+    "gold_answer": "Ghi đầy đủ, trung thực bằng tiếng Việt; chủ tọa và thư ký ký, chịu trách nhiệm liên đới; từ chối ký nhưng tất cả thành viên khác ký và đủ nội dung Luật Doanh nghiệp thì vẫn hiệu lực; công bố trên web trong 24 giờ; là bằng chứng xác thực trừ khi phản đối đúng thủ tục trong 10 ngày từ khi gửi.",
+    "actual_answer": "Tiếp nối nội dung về các cuộc họp và biểu quyết, quy định về việc lập biên bản họp được chia thành hai trường hợp như sau:\n\n**1. Đối với biên bản họp Đại hội đồng cổ đông:**\n*   **Thời hạn:** Phải được lập xong và thông qua trước khi kết thúc cuộc họp.\n*   **Trách nhiệm:** Chủ tọa, thư ký cuộc họp hoặc người khác ký tên trong biên bản phải liên đới chịu trách nhiệm về tính trung thực, chính xác của nội dung.\n*   **Ngôn ngữ:** Lập bằng tiếng Việt và tiếng nước ngoài đều có hiệu lực pháp lý như nhau. Nếu có sự khác biệt, nội dung tiếng Việt sẽ được áp dụng.\n\n**2. Đối với biên bản họp Hội đồng quản trị:**\n*   **Hình thức:** Phải được ghi biên bản; có thể ghi âm, ghi và lưu giữ dưới hình thức điện tử khác.\n*   **Nội dung chủ yếu bao gồm:**\n    *   Tên, địa chỉ trụ sở chính, mã số doanh nghiệp.\n    *   Thời gian, địa điểm họp.\n    *   Mục đích, chương trình và nội dung họp.\n    *   Họ, tên từng thành viên dự họp hoặc người được ủy quyền dự họp và cách thức dự họp; họ, tên các thành viên không dự họp và lý do.\n    *   Vấn đề được thảo luận và biểu quyết tại cuộc họp.\n    *   Tóm tắt phát biểu ý kiến của từng thành viên dự họp theo trình tự diễn biến của cuộc họp.\n    *   Kết quả biểu quyết (ghi rõ thành viên tán thành, không tán thành và không có ý kiến).\n    *   Vấn đề đã được thông qua và tỷ lệ biểu quyết thông qua tương ứng.\n    *   Họ, tên, chữ ký chủ tọa và người ghi biên bản (trừ trường hợp quy định tại Điều 65).\n*   **Lưu trữ:** Biên bản và tài liệu sử dụng trong cuộc họp phải được lưu giữ tại trụ sở chính của công ty.\n*   **Ngôn ngữ:** Lập bằng tiếng Việt và có thể lập thêm bằng tiếng nước ngoài. Nếu có sự khác biệt, nội dung tiếng Việt sẽ được áp dụng.\n*   **Trách nhiệm:** Chủ tọa, người ghi biên bản và những người ký tên trong biên bản phải chịu trách nhiệm về tính trung thực và chính xác của nội dung.\n\nCăn cứ: \n- Điều 19, Chương 2 - QuyCheQuanTri-Petrolimex-PMSC.pdf.\n- Điều 64, Chương 3 - QuyCheQuanTri-Petrolimex-PMSC.pdf.",
+    "rewritten": "Quy định về biên bản họp trong việc bầu, miễn nhiệm và bãi nhiệm thành viên Hội đồng Quản trị (HĐQT) và Ban Kiểm soát (BKS) của Petrolimex-PMSC như thế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.68,
+    "latency_s": 15.26,
+    "tok_in": 4751,
+    "tok_out": 638,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "Mua lại 90 ngày, ai trả?",
+    "gold_answer": "Công ty phải mua lại cổ phần theo yêu cầu của cổ đông.",
+    "actual_answer": "Tiếp nối nội dung về việc phản đối quyết định của Đại hội đồng cổ đông, quy định về việc mua lại cổ phần như sau:\n\n*   **Đơn vị thực hiện mua lại:** Công ty phải mua lại cổ phần theo yêu cầu của cổ đông (đối với trường hợp cổ đông biểu quyết không thông qua nghị quyết về việc tổ chức lại công ty hoặc thay đổi quyền, nghĩa vụ của cổ đông).\n*   **Thời hạn thực hiện:** Trong thời hạn 90 ngày kể từ ngày nhận được yêu cầu.\n*   **Giá mua lại:** Theo giá thị trường hoặc giá được tính theo nguyên tắc quy định tại Điều lệ công ty. Trong trường hợp không thỏa thuận được về giá, các bên có thể yêu cầu một tổ chức thẩm định giá định giá (Công ty giới thiệu ít nhất 03 tổ chức thẩm định giá để cổ đông lựa chọn và lựa chọn đó là quyết định cuối cùng).\n\nCăn cứ: QuyCheQuanTri-Petrolimex-PMSC.pdf > Chương 2 > Điều 18, khoản 2.",
+    "rewritten": "Trong quy định về biên bản họp, việc mua lại 90 ngày thì ai là người trả?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 10.11,
+    "tok_in": 4893,
+    "tok_out": 265,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Lập tiểu ban để làm gì?",
+    "gold_answer": "Giúp việc cho Hội đồng quản trị, không có quyền quyết định; gồm thành viên Hội đồng quản trị và bên ngoài; độc lập hoặc không điều hành chiếm đa số, một người làm Trưởng; ít nhất một người chuyên môn lĩnh vực phụ trách.",
+    "actual_answer": "Hội đồng quản trị có thể thành lập tiểu ban trực thuộc để phụ trách các nội dung sau:\n*   Chính sách phát triển.\n*   Nhân sự.\n*   Lương thưởng.\n*   Kiểm toán nội bộ.\n*   Quản lý rủi ro.\n\nCăn cứ: Điều 67, Chương 3 - QuyCheQuanTri-Petrolimex-PMSC.pdf.",
+    "rewritten": "Việc lập tiểu ban trong quy trình biểu quyết và bầu cử theo Quy chế Quản trị của Petrolimex-PMSC là để làm gì?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.25,
+    "latency_s": 10.93,
+    "tok_in": 5589,
+    "tok_out": 142,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "Quy chế này thay thế cái nào?",
+    "gold_answer": "Thay Quy chế Quản trị Nội bộ được Đại hội thông qua ngày 15 tháng 05 năm 2021, hiệu lực từ 08 tháng 04 năm 2023; mâu thuẫn với Điều lệ thì Điều lệ ưu tiên.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "rewritten": "Quy chế Quản trị của Petrolimex-PMSC thay thế quy chế nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": true,
+    "db_ok": null,
+    "overlap": 0.091,
+    "latency_s": 6.71,
+    "tok_in": 4342,
+    "tok_out": 81,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Ai ký?",
+    "gold_answer": "Chủ tịch Hội đồng quản trị Nguyễn Đức Tài ký thay mặt Hội đồng quản trị.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nCác bản sao hoặc trích lục Quy chế về quản trị công ty phải có chữ ký của Chủ tịch HĐQT.\n\nCăn cứ: Điều 99, khoản 3, Chương 8 - Quy chế nội bộ về quản trị Công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC.",
+    "rewritten": "Ai là người ký QuyCheQuanTri-Petrolimex-PMSC.pdf?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.4,
+    "latency_s": 6.53,
+    "tok_in": 4699,
+    "tok_out": 105,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "24 giờ công bố tính từ khi nào?",
+    "gold_answer": "Từ ngày kết thúc cuộc họp Đại hội đồng cổ đông.",
+    "actual_answer": "Thời hạn 24 giờ để đăng tải biên bản kiểm phiếu và nghị quyết trên trang thông tin điện tử của Công ty được tính kể từ thời điểm kết thúc kiểm phiếu.\n\nCăn cứ: QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 23, mục 5a.",
+    "rewritten": "Thời hạn 24 giờ công bố thông tin sau bầu cử/miễn nhiệm/bãi nhiệm trong Quy chế Quản trị của Petrolimex-PMSC được tính từ khi nào?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.6,
+    "latency_s": 12.03,
+    "tok_in": 4476,
+    "tok_out": 146,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Nghị quyết công bố đâu?",
+    "gold_answer": "Trên website Công ty và công bố thông tin theo Điều lệ và pháp luật chứng khoán.",
+    "actual_answer": "Tùy vào loại Nghị quyết, địa điểm công bố được quy định như sau:\n\n*   **Đối với Nghị quyết của Đại hội đồng cổ đông (thông qua hình thức lấy ý kiến bằng văn bản):**\n    *   Gửi đến các cổ đông trong thời hạn 15 ngày kể từ ngày kết thúc kiểm phiếu.\n    *   Hoặc đăng tải trên trang thông tin điện tử của Công ty trong thời hạn 24 giờ kể từ thời điểm kết thúc kiểm phiếu.\n*   **Đối với Nghị quyết/Quyết định của Hội đồng quản trị:**\n    *   Công bố trong nội bộ Công ty.\n    *   Công bố cho các cơ quan hữu quan.\n    *   Công bố trên các phương tiện thông tin đại chúng.\n    *   Công bố trên trang website của Công ty.\n\nCăn cứ: \n- QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 > Điều 23 (mục 5a).\n- QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 3 > Điều 66.",
+    "rewritten": "Nghị quyết công bố trên trang thông tin điện tử của Công ty Petrolimex-PMSC ở đâu?",
+    "route": "",
+    "citations": [
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.5,
+    "latency_s": 8.61,
+    "tok_in": 4627,
+    "tok_out": 287,
+    "llm_calls": 2
+   }
+  ]
+ },
+ {
+  "session_id": 1040,
+  "conversation_id": "87bfd5fb-fabe-4cbb-ac60-e665c30b59e6",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Quyết định 917 của ai, khi nào?",
+    "gold_answer": "Tổng Giám đốc Phạm Tuấn Anh ký ngày 08 tháng 9 năm 2025, theo đề nghị của Giám đốc Khối Dịch vụ kỹ thuật; Giám đốc các khối, Trưởng Phòng, Ban và đơn vị trực thuộc thi hành.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nQuyết định số 917/QĐ-ACT do Tổng Giám đốc Phạm Tuấn Anh ký ngày 08 tháng 9 năm 2025.\n\nCăn cứ: [TÀI LIỆU 1]",
+    "rewritten": "Quyết định 917 do ai ban hành và ban hành khi nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.471,
+    "latency_s": 7.46,
+    "tok_in": 4756,
+    "tok_out": 89,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "Số 217 là sao?",
+    "gold_answer": "Quy định về đăng ký, điều phối xe ban hành kèm theo Quyết định số 217/QĐ-ACT ngày 08 tháng 9 năm 2025 của Tổng Giám đốc.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nTrong ngữ cảnh bạn đang tìm hiểu về Quyết định 917, số 217 xuất hiện tại [TÀI LIỆU 1] như sau:\n\nQuy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT được ban hành kèm theo **Quyết định số 217/QĐ-ACT ngày 08 tháng 9 năm 2025** của Tổng Giám đốc Công ty Cổ phần Viễn thông ACT.\n\nCăn cứ: [TÀI LIỆU 1] - Trang 3.",
+    "rewritten": "Quyết định số 217 là quyết định về vấn đề gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 12.54,
+    "tok_in": 7363,
+    "tok_out": 281,
+    "llm_calls": 4
+   },
+   {
+    "turn": 2,
+    "question": "Mục đích của nó?",
+    "gold_answer": "Làm cơ sở tổ chức, quản lý, điều phối, kiểm soát vận chuyển phục vụ sản xuất, kinh doanh; dùng hiệu quả tài nguyên, hạn chế chi phí; hạn chế rủi ro sai mục đích, trễ tiến độ, lãng phí nhiên liệu; chủ động kế hoạch, phối hợp nhịp nhàng; tối ưu tuyến, phương tiện, thời gian.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nMục đích của Quy định về công tác đăng ký, điều phối xe và sử dụng xe (ban hành kèm theo Quyết định số 917/QĐ-ACT) bao gồm:\n\n*   Làm cơ sở cho việc tổ chức, quản lý, điều phối và kiểm soát toàn bộ hoạt động công tác, vận chuyển hàng hóa, vật tư, thiết bị, công cụ dụng cụ, tài liệu... phục vụ cho hoạt động sản xuất – kinh doanh và vận hành nội bộ của công ty.\n*   Đảm bảo sử dụng hiệu quả tài nguyên sẵn có (phương tiện, nhân sự), hạn chế chi phí phát sinh không cần thiết trong công tác vận chuyển.\n*   Hạn chế rủi ro phát sinh như: vận chuyển sai mục đích, trễ tiến độ, lãng phí nhiên liệu, không theo dõi được lịch trình.\n*   Tăng tính chủ động cho các đơn vị trong việc lập kế hoạch vận chuyển, đồng thời đảm bảo công tác vận chuyển được phối hợp nhịp nhàng, không chồng chéo.\n*   Nâng cao năng suất làm việc thông qua việc tối ưu tuyến đường, phương tiện, thời gian vận chuyển, và hạn chế trùng lặp nhu cầu giữa các bộ phận.\n\nCăn cứ: Điều 1, Quy định ban hành kèm theo Quyết định số 917/QĐ-ACT [TÀI LIỆU 2].",
+    "rewritten": "Mục đích của Quyết định 917 là gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.963,
+    "latency_s": 5.62,
+    "tok_in": 5775,
+    "tok_out": 331,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Áp dụng cho ai?",
+    "gold_answer": "Toàn thể đơn vị trực thuộc và cá nhân liên quan đến yêu cầu, điều phối, thực hiện hoặc phê duyệt vận chuyển.",
+    "actual_answer": "Đối tượng áp dụng của Quy định về công tác đăng ký, điều phối xe và sử dụng xe (ban hành kèm theo Quyết định số 217/QĐ-ACT) bao gồm:\n\nToàn thể các đơn vị trực thuộc, các cá nhân có liên quan đến hoạt động yêu cầu, điều phối, thực hiện hoặc phê duyệt công tác vận chuyển.\n\nCăn cứ: Điều 2, Mục 1 - [TÀI LIỆU 2]",
+    "rewritten": "Quy định về công tác đăng ký, điều phối xe và sử dụng xe ban hành kèm theo Quyết định số 917/QĐ-ACT áp dụng cho ai?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 11.95,
+    "tok_in": 5739,
+    "tok_out": 158,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "Loại hình nào?",
+    "gold_answer": "Nội thành, ngoại thành, liên tỉnh giữa văn phòng, kho, dự án; định kỳ hoặc đột xuất; một chiều, hai chiều, nhiều điểm; xe công tác phục vụ họp, hội thảo, công tác cơ quan, đối tác, đoàn kiểm tra, khảo sát và nhiệm vụ đột xuất của lãnh đạo.",
+    "actual_answer": "Tiếp nối nội dung về đối tượng áp dụng, các loại hình vận chuyển theo Quy định ban hành kèm theo Quyết định số 917/QĐ-ACT (trong văn bản ghi số 217/QĐ-ACT) bao gồm:\n\n*   **Phạm vi vận chuyển:** Vận chuyển nội thành, ngoại thành, liên tỉnh, bao gồm cả vận chuyển giữa các văn phòng, kho, dự án,...\n*   **Kế hoạch vận chuyển:** Vận chuyển định kỳ theo kế hoạch (lịch giao nhận thường xuyên) hoặc vận chuyển phát sinh, đột xuất.\n*   **Hình thức vận chuyển:** Vận chuyển một chiều, hai chiều, hoặc nhiều điểm giao/nhận kết hợp.\n*   **Xe ô tô phục vụ công tác:** Đáp ứng nhu cầu đi lại chính đáng, đã được phê duyệt, bao gồm:\n    *   Tham dự các cuộc họp, hội nghị, hội thảo.\n    *   Đi công tác tại các cơ quan quản lý, đối tác, khách hàng.\n    *   Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án.\n    *   Các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty.\n\nCăn cứ: Điều 2, Quy định về công tác đăng ký, điều phối xe và sử dụng xe (ban hành kèm theo Quyết định số 917/QĐ-ACT).",
+    "rewritten": "Quy định về công tác đăng ký, điều phối xe và sử dụng xe ban hành kèm theo Quyết định số 917/QĐ-ACT áp dụng cho những loại hình nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 10.95,
+    "tok_in": 5707,
+    "tok_out": 363,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Chở gì?",
+    "gold_answer": "Vật tư kỹ thuật, thiết bị, máy móc, linh kiện; hàng mẫu, hàng thương mại; tài sản cố định, tồn kho điều chuyển nội bộ; hàng đặc biệt về bảo quản, an toàn, dễ vỡ, giá trị cao.",
+    "actual_answer": "Tiếp nối nội dung về loại hình vận chuyển theo Quy định ban hành kèm theo Quyết định số 917/QĐ-ACT (trong văn bản ghi số 217/QĐ-ACT), các loại hàng hóa áp dụng để vận chuyển bao gồm:\n\n*   Vật tư kỹ thuật, thiết bị, máy móc, công cụ dụng cụ, linh kiện;\n*   Hàng mẫu, hàng hóa thương mại;\n*   Tài sản cố định, hàng tồn kho điều chuyển nội bộ;\n*   Các loại hàng hóa có yêu cầu đặc biệt về bảo quản, an toàn, dễ vỡ hoặc có giá trị cao...\n\nCăn cứ: Điều 2, Khoản 3 (Tài liệu 3) và nội dung tiếp nối tại Trang 4 (Tài liệu 1).",
+    "rewritten": "Quyết định số 917/QĐ-ACT quy định vận chuyển những loại hàng hóa hoặc đối tượng nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.7,
+    "tok_in": 5978,
+    "tok_out": 220,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "5 mục đích lúc nãy gồm gì?",
+    "gold_answer": "Cơ sở tổ chức, quản lý, điều phối, kiểm soát; hiệu quả tài nguyên, hạn chế chi phí; hạn chế rủi ro; chủ động kế hoạch, phối hợp nhịp nhàng; tối ưu tuyến, phương tiện, thời gian, năng suất.",
+    "actual_answer": "Tiếp nối nội dung về Quy định ban hành kèm theo Quyết định số 917/QĐ-ACT (trong văn bản ghi số 217/QĐ-ACT), 5 mục đích của quy định này bao gồm:\n\n*   Làm cơ sở cho việc tổ chức, quản lý, điều phối và kiểm soát toàn bộ hoạt động công tác, vận chuyển hàng hóa, vật tư, thiết bị, công cụ dụng cụ, tài liệu... phục vụ cho hoạt động sản xuất – kinh doanh và vận hành nội bộ của công ty.\n*   Đảm bảo sử dụng hiệu quả tài nguyên sẵn có (phương tiện, nhân sự), hạn chế chi phí phát sinh không cần thiết trong công tác vận chuyển.\n*   Hạn chế rủi ro phát sinh như: vận chuyển sai mục đích, trễ tiến độ, lãng phí nhiên liệu, không theo dõi được lịch trình.\n*   Tăng tính chủ động cho các đơn vị trong việc lập kế hoạch vận chuyển, đồng thời đảm bảo công tác vận chuyển được phối hợp nhịp nhàng, không chồng chéo.\n*   Nâng cao năng suất làm việc thông qua việc tối ưu tuyến đường, phương tiện, thời gian vận chuyển, và hạn chế trùng lặp nhu cầu giữa các bộ phận.\n\nCăn cứ: Điều 1, Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT (thuộc Quyết định số 917/QĐ-ACT).",
+    "rewritten": "5 mục đích trong Quy định ban hành kèm theo Quyết định số 917/QĐ-ACT vừa liệt kê gồm những gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 9.65,
+    "tok_in": 5730,
+    "tok_out": 365,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Xe công ty là xe gì?",
+    "gold_answer": "Xe ô tô con, bán tải hoặc tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài, do Phòng Hành chính, Phòng Tổng hợp hoặc Bộ phận điều phối quản lý.",
+    "actual_answer": "Theo Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT (trong văn bản ghi số 917/QĐ-ACT), xe công ty được định nghĩa như sau:\n\nXe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài, được quản lý và điều phối bởi Phòng Hành chính, Phòng Tổng hợp hoặc Bộ phận điều phối phương tiện.\n\nCăn cứ: Điều 3, Mục 1 - Quy định về công tác đăng ký, điều phối xe và sử dụng xe.",
+    "rewritten": "Xe công ty theo Quyết định số 917/QĐ-ACT (trong văn bản ghi số 217/QĐ-ACT) là xe gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 8.36,
+    "tok_in": 6127,
+    "tok_out": 183,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "Ưu tiên khi nào?",
+    "gold_answer": "Quãng đường dưới hoặc bằng 30km; hàng nhỏ lẻ dưới hoặc bằng 500kg dễ xếp dỡ; nằm trong lộ trình có sẵn hoặc ghép tuyến được; phù hợp vận hành; xe sẵn trong khung giờ yêu cầu.",
+    "actual_answer": "Tiếp nối nội dung về xe công ty theo Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT (trong văn bản ghi số 917/QĐ-ACT), việc ưu tiên sử dụng được quy định cụ thể như sau:\n\n**1. Ưu tiên sử dụng xe công ty trong các trường hợp:**\n*   Quãng đường ngắn (nhỏ hơn hoặc bằng 30km).\n*   Khối lượng hàng hóa nhỏ/lẻ, trọng lượng nhỏ hơn hoặc bằng 500kg, dễ xếp dỡ.\n*   Điểm đến nằm trong lộ trình hiện có hoặc có thể ghép tuyến.\n*   Phù hợp với điều kiện vận hành (đường cấm tải, giờ cấm, thời tiết...).\n*   Xe có sẵn trong khung thời gian yêu cầu.\n\n**2. Ưu tiên sử dụng dịch vụ vận chuyển thuê ngoài trong các trường hợp:**\n*   Quãng đường dài (trên 30km), liên tỉnh.\n*   Hàng hóa số lượng lớn, cồng kềnh hoặc có yêu cầu xe chuyên dụng.\n*   Xe công ty không có sẵn hoặc không phù hợp.\n*   Nhu cầu khẩn cấp, phát sinh ngoài giờ hành chính hoặc ngày nghỉ.\n*   Yêu cầu nhiều điểm giao nhận trong thời gian ngắn.\n\n**3. Nguyên tắc ưu tiên chung:**\n*   Ưu tiên sử dụng xe công ty nếu có thể đáp ứng được yêu cầu về thời gian, địa điểm, khối lượng và đặc tính hàng hóa.\n*   Về thứ tự phục vụ: Ưu tiên yêu cầu phục vụ hoạt động SXKD, sau đó đến nhu cầu hành chính thường xuyên.\n\nCăn cứ: Điều 3 và Điều 4, Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT.",
+    "rewritten": "Khi nào thì được ưu tiên sử dụng xe công ty theo Quyết định số 217/QĐ-ACT?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.923,
+    "latency_s": 8.54,
+    "tok_in": 6135,
+    "tok_out": 444,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Còn thuê ngoài?",
+    "gold_answer": "Hợp đồng theo chuyến hoặc định kỳ: quãng dài trên 30km, liên tỉnh; hàng lớn, cồng kềnh, xe chuyên dụng; xe công ty không có hoặc không phù hợp; khẩn cấp ngoài giờ, ngày nghỉ; nhiều điểm giao nhận gấp.",
+    "actual_answer": "Tiếp nối nội dung về phương thức vận chuyển theo Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT, dịch vụ vận chuyển thuê ngoài (bao gồm hợp đồng dịch vụ theo chuyến hoặc định kỳ với đơn vị vận tải ngoài, có thể là xe tải lớn, xe chuyên dụng...) được ưu tiên sử dụng trong các trường hợp sau:\n\n*   Quãng đường dài (trên 30km), liên tỉnh.\n*   Hàng hóa số lượng lớn, cồng kềnh hoặc có yêu cầu xe chuyên dụng.\n*   Xe công ty không có sẵn hoặc không phù hợp.\n*   Nhu cầu khẩn cấp, phát sinh ngoài giờ hành chính hoặc ngày nghỉ.\n*   Yêu cầu nhiều điểm giao nhận trong thời gian ngắn.\n\nCăn cứ: Điều 3, Khoản 2 - Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT.",
+    "rewritten": "Trong trường hợp thuê xe ngoài thì quy định như thế nào theo Quyết định số 217/QĐ-ACT?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 8.51,
+    "tok_in": 6120,
+    "tok_out": 249,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "500kg đó là điều kiện gì?",
+    "gold_answer": "Là ngưỡng hàng nhỏ lẻ, dễ xếp dỡ để ưu tiên dùng xe công ty.",
+    "actual_answer": "Tiếp nối nội dung về phương thức vận chuyển theo Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT, con số 500kg là một trong các điều kiện để **ưu tiên sử dụng xe công ty**.\n\nCụ thể, xe công ty được ưu tiên sử dụng khi: Khối lượng hàng hóa nhỏ/lẻ, trọng lượng nhỏ hơn hoặc bằng 500kg và dễ xếp dỡ.\n\nCăn cứ: Điều 3, Khoản 1, Điểm b - Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT.",
+    "rewritten": "Trong Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT, điều kiện 500kg là điều kiện gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "QuyCheQuanTri-Petrolimex-PMSC.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.6,
+    "latency_s": 7.83,
+    "tok_in": 6183,
+    "tok_out": 187,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Đề xuất gửi khi nào?",
+    "gold_answer": "Trước 15h00 ngày hôm trước với kế hoạch đã phê duyệt; đột xuất nêu rõ lý do, quản lý cấp phòng trở lên phê duyệt, gửi trước ít nhất 4 giờ.",
+    "actual_answer": "Thời hạn gửi đề xuất vận chuyển/đăng ký xe được quy định tùy theo từng trường hợp và tài liệu hướng dẫn như sau:\n\n**1. Theo Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT:**\n*   **Kế hoạch đã được phê duyệt trước đó:** Gửi đề xuất cụ thể về đơn vị điều phối trước **15h00 ngày hôm trước**.\n*   **Trường hợp đột xuất:** Gửi thông tin về đơn vị điều phối ít nhất **4 giờ trước thời gian thực hiện vận chuyển** (yêu cầu nêu rõ lý do và được phê duyệt bởi quản lý cấp phòng trở lên).\n\n**2. Theo Hướng dẫn số 21A/HD-ACT-HC về đăng ký xe đi công tác:**\n*   **Đăng ký theo kế hoạch tuần:** Phối hợp cung cấp thông tin qua điện thoại, zalo trước **12h thứ 7 hàng tuần**.\n*   **Đăng ký xe đột xuất:** Phối hợp cung cấp thông tin qua điện thoại, zalo trước **16h00 ngày N-1**.\n\nCăn cứ: Điều 4 (Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT) và Bước 1 (Hướng dẫn số 21A/HD-ACT-HC).",
+    "rewritten": "Đề xuất sử dụng xe theo Quyết định 217/QĐ-ACT cần gửi khi nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.84,
+    "tok_in": 6118,
+    "tok_out": 331,
+    "llm_calls": 2
+   }
+  ]
+ },
+ {
+  "session_id": 1045,
+  "conversation_id": "40db76ed-7426-488c-8b6b-070b7eb31f68",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Xin văn phòng phẩm hàng tháng sao?",
+    "gold_answer": "Ngày 25 đến 30 hàng tháng, phòng ban lập giấy đề nghị tháng sau theo mẫu BM02 chuyển Phòng Hành chính. Mực in do Phòng Hành chính cân đối nạp và mua mới; phòng in nhiều phải làm phiếu mua thêm hộp mực.",
+    "actual_answer": "Để xin văn phòng phẩm (VPP) hàng tháng, bạn thực hiện theo quy trình sau:\n\n**1. Quy trình thực hiện:**\n*   **Bước 1:** Phòng ban, bộ phận đề nghị lập đề xuất mua hàng.\n*   **Bước 2:** Phòng Hành chính (P.HC) kiểm tra định mức và nhu cầu mua sắm. (Nếu không đồng ý sẽ quay lại bước đề xuất).\n*   **Bước 3:** P.HC tập hợp đề xuất.\n*   **Bước 4:** Trưởng phòng Hành chính (TP.HC) phê duyệt. (Nếu không đồng ý sẽ quay lại bước tập hợp).\n*   **Bước 5:** P.HC thực hiện mua hàng, nhận hàng và phân chia theo đơn vị.\n*   **Bước 6:** P.HC hoặc Phòng ban, bộ phận đề nghị thực hiện cấp phát cho các phòng ban, bộ phận yêu cầu.\n*   **Bước 7:** P.HC lưu hồ sơ.\n\n**2. Mẫu biểu sử dụng:**\n*   Khi đề xuất: Sử dụng **Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng (Mã hiệu: BM02-QT.ACT.HC-05)**.\n*   Khi nhận cấp phát: Sử dụng **Giấy cấp phát VPP, vệ sinh phẩm (Mã hiệu: BM03-QT.ACT.HC-05)**.\n\nCăn cứ: Mục 7 (Quy trình cấp phát VPP, vệ sinh phẩm) và Mục 8 (Các mẫu biểu đính kèm) của tài liệu QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf.",
+    "rewritten": "Quy trình xin văn phòng phẩm hàng tháng như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.643,
+    "latency_s": 7.1,
+    "tok_in": 6556,
+    "tok_out": 397,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "Phòng Hành chính xử lý sao?",
+    "gold_answer": "Kiểm tra định mức: vượt thì trả phòng ban sửa lại; đúng thì tổng hợp trình Trưởng phòng Hành chính duyệt rồi liên hệ nhà cung ứng mua theo yêu cầu.",
+    "actual_answer": "Tiếp nối quy trình xin văn phòng phẩm (VPP) và vệ sinh phẩm, sau khi Phòng ban, bộ phận đề nghị lập đề xuất mua hàng, Phòng Hành chính (P.HC) sẽ xử lý theo các bước sau:\n\n*   **Kiểm tra:** P.HC kiểm tra định mức và nhu cầu mua sắm. \n    *   Nếu không đồng ý: Yêu cầu quay lại bước Đề xuất mua hàng.\n    *   Nếu đồng ý: Tiến hành tập hợp các đề xuất.\n*   **Trình phê duyệt:** Sau khi tập hợp, P.HC trình Trưởng phòng Hành chính (TP.HC) phê duyệt.\n    *   Nếu TP.HC không đồng ý: Quay lại bước Tập hợp.\n*   **Mua sắm và phân phối:** Khi được TP.HC đồng ý, P.HC thực hiện mua hàng, nhận hàng và phân chia theo đơn vị.\n*   **Cấp phát:** P.HC hoặc Phòng ban, bộ phận đề nghị thực hiện cấp phát cho các phòng ban, bộ phận yêu cầu (sử dụng Giấy cấp phát VPP, vệ sinh phẩm: BM03-QT.ACT.HC-05).\n*   **Lưu trữ:** P.HC thực hiện lưu hồ sơ.\n\nCăn cứ: Mục 7 Quy trình cấp phát VPP, vệ sinh phẩm - Tài liệu QT.ACT.HC-05.",
+    "rewritten": "Phòng Hành chính xử lý như thế nào trong quy trình xin văn phòng phẩm hàng tháng?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.643,
+    "latency_s": 9.44,
+    "tok_in": 5420,
+    "tok_out": 415,
+    "llm_calls": 3
+   },
+   {
+    "turn": 2,
+    "question": "Nhận đồ khi nào?",
+    "gold_answer": "Cấp phát từ ngày 5 đến ngày 10 tháng tiếp theo; người đại diện ký vào Biên bản cấp phát BM03.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nĐối với việc cấp phát văn phòng phẩm (VPP) và vệ sinh phẩm, thời gian nhận đồ được quy định như sau:\n\n*   **Đối với cấp phát đột xuất:** VPP, vệ sinh phẩm được cấp phát ngay sau khi nhận về cho người sử dụng. Khi nhận, người sử dụng phải ký nhận vào biên bản cấp phát.\n\nCăn cứ: Mục 6.4, Tài liệu QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf.",
+    "rewritten": "Tôi nhận văn phòng phẩm khi nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.333,
+    "latency_s": 7.08,
+    "tok_in": 6407,
+    "tok_out": 138,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Cần gấp thì sao?",
+    "gold_answer": "Lập giấy đề nghị theo mẫu BM04, chuyển Trưởng bộ phận duyệt rồi chuyển Phòng Hành chính; trong định mức thì Trưởng phòng Hành chính duyệt mua; cấp ngay khi hàng về, người nhận ký biên bản.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nTrong trường hợp cần gấp, bạn sử dụng mẫu **Giấy đề nghị VPP, vệ sinh phẩm đột xuất** với mã hiệu **BM04 - QT.ACT.HC-05**.\n\nCăn cứ: Mục 8 (Các mẫu biểu đính kèm) - Tài liệu QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf.",
+    "rewritten": "Nếu tôi cần cấp phát văn phòng phẩm gấp thì quy trình xử lý như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.235,
+    "latency_s": 7.73,
+    "tok_in": 5393,
+    "tok_out": 123,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "BM02 với BM04 khác gì?",
+    "gold_answer": "BM02 là giấy đề nghị hàng tháng lập ngày 25 đến 30; BM04 là giấy đề nghị đột xuất khi có nhu cầu phát sinh.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nSự khác biệt giữa BM02 và BM04 như sau:\n\n*   **BM02 (Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng):** Dùng cho quy trình đề xuất mua hàng định kỳ hàng tháng của các phòng ban, bộ phận.\n*   **BM04 (Giấy đề nghị VPP, vệ sinh phẩm đột xuất):** Dùng khi có nhu cầu đặt văn phòng phẩm hoặc vệ sinh phẩm đột xuất.\n\nCăn cứ: [TÀI LIỆU 1] Mục 6.4; [TÀI LIỆU 2] Mục 8; [TÀI LIỆU 3] Mục 7.",
+    "rewritten": "Mẫu BM02 và mẫu BM04 trong quy trình cấp phát văn phòng phẩm khác nhau như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.8,
+    "latency_s": 7.46,
+    "tok_in": 5484,
+    "tok_out": 191,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Dùng tiết kiệm ai chịu trách nhiệm?",
+    "gold_answer": "Phòng ban dùng đúng mục đích, tiết kiệm, tránh lãng phí; Trưởng bộ phận hướng dẫn và kiểm tra trực tiếp nhân viên trực thuộc.",
+    "actual_answer": "Trưởng bộ phận là người chịu trách nhiệm hướng dẫn và kiểm tra trực tiếp việc sử dụng VPP của nhân viên trực thuộc để đảm bảo sử dụng đúng mục đích, tiết kiệm và tránh lãng phí.\n\nCăn cứ: Mục 6.5, Tài liệu QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf.",
+    "rewritten": "Trong quy trình cấp văn phòng phẩm, việc dùng tiết kiệm thì ai chịu trách nhiệm?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.941,
+    "latency_s": 9.24,
+    "tok_in": 5395,
+    "tok_out": 119,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "5 đến 10 là ngày gì?",
+    "gold_answer": "Là thời gian cấp phát văn phòng phẩm, vệ sinh phẩm của tháng tiếp theo.",
+    "actual_answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về việc ngày 5 đến ngày 10 là ngày gì. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.\n\nCăn cứ: [TÀI LIỆU 1], [TÀI LIỆU 2], [TÀI LIỆU 3] của QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.",
+    "rewritten": "Từ ngày 5 đến ngày 10 hàng tháng là ngày gì trong quy trình quản lý văn phòng phẩm?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": true,
+    "db_ok": null,
+    "overlap": 0.5,
+    "latency_s": 10.2,
+    "tok_in": 5692,
+    "tok_out": 153,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Hết mực thì sao?",
+    "gold_answer": "Mang hộp mực đã hết đến và ký vào Bảng theo dõi đổi mực BM06 để Phòng Hành chính nạp mới; không giữ lại bình mực tránh tồn nhiều bình hết.",
+    "actual_answer": "Khi hết mực in, bạn thực hiện theo quy trình sau:\n\n- **Quy trình đổi mực:** Các phòng ban có trách nhiệm mang hộp mực đã hết và ký nhận vào “Bảng theo dõi đổi mực” (biểu mẫu BM06 - QT.ACT.HC-05) để Phòng HC quản lý và tiến hành nạp mực mới. \n- **Lưu ý quan trọng:** Các phòng ban không được giữ lại bình mực để tránh tồn nhiều bình mực đã hết.\n- **Trách nhiệm bảo quản:** Bạn có trách nhiệm bảo quản hộp mực đang sử dụng. Nếu làm mất hoặc hư hỏng bình mực, cá nhân hoặc phòng ban đó sẽ phải tự chịu trách nhiệm.\n- **Thay thế bình mới:** Trung bình một bình mực có thể nạp tối đa từ 5 đến 7 lần, sau đó sẽ phải mua bình mới để thay thế.\n\nCăn cứ: Mục 6.6, Tài liệu 2 (QT.ACT.HC-05).",
+    "rewritten": "Khi hết mực in thì quy trình xử lý như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.9,
+    "latency_s": 6.95,
+    "tok_in": 5875,
+    "tok_out": 243,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "Nạp được mấy lần?",
+    "gold_answer": "Trung bình một bình nạp tối đa 5 đến 7 lần rồi mua bình mới; làm mất hoặc hư hỏng thì cá nhân hoặc phòng ban tự chịu trách nhiệm.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nTrung bình 1 bình mực có thể nạp tối đa từ 5 đến 7 lần, sau đó phải mua bình mới để thay thế.\n\nCăn cứ: Mục 6.6, [TÀI LIỆU 2] (QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf).",
+    "rewritten": "Hộp mực in được nạp tối đa mấy lần?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.444,
+    "latency_s": 5.42,
+    "tok_in": 6135,
+    "tok_out": 109,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Mua mực sao?",
+    "gold_answer": "Phòng Hành chính theo dõi, mỗi lần mua 1 thùng 6 bình; một bình in được 12.000 đến 13.000 bản dùng khoảng 1 đến 1,5 tháng; đơn giá 800.000 đến 900.000 đồng một bình theo báo giá.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nViệc mua mực in được thực hiện như sau:\n\n- **Trách nhiệm theo dõi và đề xuất:** \n    - Đơn vị sử dụng có trách nhiệm theo dõi tần suất sử dụng máy và đề xuất thay thế mực in theo nhu cầu.\n    - Phòng HC theo dõi thời gian thay mực và đề xuất mua mới tùy vào nhu cầu sử dụng.\n- **Số lượng và định mức:** Mỗi lần mua sẽ là 1 thùng (6 bình mực).\n- **Chi phí:** Đơn giá dao động từ 800.000 - 900.000/bình (tùy thuộc vào báo giá của đối tác tại từng thời điểm).\n- **Hiệu quả sử dụng:** Trung bình 1 bình mực in được từ 12.000 - 13.000 bản in (sử dụng trong khoảng 1 đến 1,5 tháng).\n\nCăn cứ: [TÀI LIỆU 1] QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf (Trang 8).",
+    "rewritten": "Quy trình mua bình mực mới khi không thể nạp thêm được nữa như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.6,
+    "latency_s": 8.05,
+    "tok_in": 5738,
+    "tok_out": 280,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "BM06 với BM05 khác gì?",
+    "gold_answer": "BM05 là sổ Phòng Hành chính theo dõi mực in; BM06 là bảng theo dõi đổi mực các phòng ban ký nhận.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nSự khác biệt giữa BM05 và BM06 như sau:\n\n*   **BM05 (Sổ theo dõi mực in):** Do Phòng Hành chính trực tiếp quản lý để theo dõi chi tiết số lần nạp mực của từng bình mực (từ lần nạp L1 đến L7).\n*   **BM06 (Bảng theo dõi đổi mực):** Dùng để các phòng ban ký nhận khi mang hộp mực đã hết đến đổi và nhận lại mực mới/mực đã bơm từ Phòng Hành chính.\n\nCăn cứ: Mục 6.6 và Danh mục mẫu biểu tại Tài liệu QT.ACT.HC-05.",
+    "rewritten": "Mẫu biểu BM06 và BM05 khác nhau như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 6.35,
+    "tok_in": 5767,
+    "tok_out": 175,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Máy photocopy thì sao?",
+    "gold_answer": "Nhân viên Hành chính liên hệ đối tác bảo dưỡng định kỳ 1 tháng 1 lần; có lỗi thì đối tác báo giá trước; Phòng Hành chính làm phiếu đề xuất trình Tổng Giám đốc và Kế toán trưởng phê duyệt.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nDựa trên các tài liệu cung cấp và mạch trao đổi trước đó về việc mua mực in, thông tin liên quan đến máy photocopy như sau:\n\n- **Về mực in cho máy:**\n    - **Trách nhiệm:** Đơn vị sử dụng theo dõi tần suất sử dụng máy và đề xuất thay thế mực in theo nhu cầu.\n    - **Quản lý mua sắm:** Phòng HC theo dõi thời gian thay mực và đề xuất mua mới.\n    - **Số lượng mua:** Mỗi lần mua 1 thùng (6 bình mực).\n    - **Định mức sử dụng:** Trung bình 1 bình in được từ 12.000 - 13.000 bản in (sử dụng trong khoảng 1 đến 1,5 tháng).\n    - **Chi phí:** Đơn giá dao động từ 800.000 - 900.000/bình (tùy thuộc vào báo giá của đối tác tại từng thời điểm).\n\n- **Về giấy photocopy (VPP):**\n    Công ty có bảng tiêu chuẩn cho nhiều loại giấy photocopy với đơn giá chưa VAT như sau:\n    - **Giấy A4 (70gsm):** Từ 55.000đ (Indo Copy Paper) đến 68.000đ (Paper One, Double AA).\n    - **Giấy A4 (80gsm):** Từ 62.000đ (Indo Copy Paper) đến 81.000đ (Double AA).\n    - **Giấy A4 (100gsm):** 106.000đ (Paper One).\n    - **Giấy A3 (70gsm):** 110.000đ (Indo Copy Paper) hoặc 136.000đ (Double AA).\n    - **Giấy A3 (80gsm):** 124.000đ (Indo Copy Paper) hoặc 162.000đ (Double AA).\n    - **Giấy A5 (70gsm):** 27.500đ (Indo Copy Paper).\n    - **Giấy A5 (80gsm):** 31.000đ (Indo Copy Paper).\n\nCăn cứ: QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in (Trang 8 và Trang 13).",
+    "rewritten": "Quy trình mua mực cho máy photocopy thì như thế nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.444,
+    "latency_s": 6.84,
+    "tok_in": 5990,
+    "tok_out": 575,
+    "llm_calls": 2
+   }
+  ]
+ },
+ {
+  "session_id": 1046,
+  "conversation_id": "61ee13d5-de76-47af-9b52-75d47306fc2e",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Giấy A4 bao nhiêu?",
+    "gold_answer": "Giấy Indo Copy Paper A4 70gsm giá 55.000 đồng một ream; giấy photocopy Quality hoặc ZAP A4 70gsm giá 64.000 đồng một ream, chưa VAT.",
+    "actual_answer": "Vì bạn không nói rõ loại giấy A4 nào, tôi xin cung cấp đơn giá (chưa VAT) của các loại giấy A4 có trong danh mục như sau:\n\n**1. Giấy photocopy A4:**\n* Giấy Indo Copy Paper A4 (70gsm): 55.000 VNĐ/Ream\n* Giấy photocopy Quality/ZAP A4 (70gsm): 64.000 VNĐ/Ream\n* Giấy photocopy Idea A4 (70gsm): 66.000 VNĐ/Ream\n* Giấy photocopy IK Plus A4 (70gsm): 67.000 VNĐ/Ream\n* Giấy photocopy Paper One A4 (70gsm): 68.000 VNĐ/Ream\n* Giấy photocopy Double AA A4 (70gsm): 68.000 VNĐ/Ream\n* Giấy Indo Copy Paper A4 (80gsm): 62.000 VNĐ/Ream\n* Giấy photocopy Idea A4 (80gsm): 75.000 VNĐ/Ream\n* Giấy photocopy IK Plus A4 (80gsm): 77.000 VNĐ/Ream\n* Giấy photocopy Paper One A4 (80gsm): 80.000 VNĐ/Ream\n* Giấy photocopy Double AA A4 (80gsm): 81.000 VNĐ/Ream\n* Giấy photocopy Paper One A4 (100gsm): 106.000 VNĐ/Ream\n* Giấy Ford màu A4 (80gsm) xanh dương: 73.000 VNĐ/Ream\n\n**2. Giấy bìa màu/thơm/mỹ thuật A4:**\n* Giấy bìa màu A4 (180gsm) (100 tờ/xấp) 4 màu: 34.000 VNĐ/Xấp\n* Giấy bìa màu A4 (180gsm) (100 tờ/xấp) trắng: 36.000 VNĐ/Xấp\n* Giấy bìa màu A4 (160gsm) (100 tờ/xấp) TMG 8116: 80.000 VNĐ/Xấp\n* Giấy bìa thơm A4 (180gsm) (100 tờ/xấp): 76.000 VNĐ/Xấp\n* Giấy bìa thơm A4 (80gsm) (250 tờ/xấp): 80.000 VNĐ/Xấp\n* Giấy mỹ thuật A4 màu kem TMG8424 Zentino (10 tờ/xấp): 17.000 VNĐ/Xấp\n* Giấy ford trộn 5 màu A4 (80gsm) Grand: 46.000 VNĐ/Xấp\n* Giấy bìa trộn 5 màu A4 (160gsm) Grand: 78.000 VNĐ/Xấp\n\n**3. Giấy in ảnh A4:**\n* Giấy in ảnh A4/160gsm 1 mặt (100 tờ/xấp): 90.000 VNĐ/Xấp\n* Giấy in ảnh A4/210gsm 1 mặt (50 tờ/xấp): 55.000 VNĐ/Xấp\n* Giấy in ảnh A4/230gsm 2 mặt (50 tờ/xấp): 70.000 VNĐ/Xấp\n* Giấy in ảnh A4/180gsm 1 mặt (50 tờ/xấp): 50.000 VNĐ/Xấp\n* Giấy in ảnh A4/260gsm 2 mặt (50 tờ/xấp): 80.000 VNĐ/Xấp\n* Giấy in ảnh DECAN A4/135gsm 1 mặt (50 tờ/xấp): 72.000 VNĐ/Xấp\n\n**4. Khác:**\n* Bìa kiếng A4 dày 1.5 (100 tờ/xấp): 61.000 VNĐ/Xấp\n\nCăn cứ: BM01 - QT.ACT.HC-05 (Trang 13 và Trang 16).",
+    "rewritten": "Giá giấy A4 là bao nhiêu?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.818,
+    "latency_s": 8.31,
+    "tok_in": 6395,
+    "tok_out": 1028,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "64 nghìn là loại nào?",
+    "gold_answer": "Là giấy photocopy Quality hoặc ZAP A4 70gsm.",
+    "actual_answer": "Với đơn giá 64.000 VNĐ/Ream (chưa VAT), đó là loại **Giấy photocopy Quality/ZAP A4 (70gsm)**.\n\nCăn cứ: BM01 - QT.ACT.HC-05 (Trang 13).",
+    "rewritten": "Giấy photocopy Quality/ZAP A4 (70gsm) có giá 64.000 VNĐ là loại nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.8,
+    "latency_s": 9.56,
+    "tok_in": 7237,
+    "tok_out": 177,
+    "llm_calls": 3
+   },
+   {
+    "turn": 2,
+    "question": "Máy tính thì sao?",
+    "gold_answer": "Casio FX-570VN Plus 513.000 đồng; Casio FX-580VNX 680.000 đồng; CAVIET MX 120SK 110.000 đồng một cái.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nVì bạn không nói rõ loại máy tính nào, tôi xin cung cấp đơn giá (chưa VAT) của các loại máy tính có trong danh mục như sau:\n\n*   Máy tính Casio FX-570VN Plus: 513.000 VNĐ/Cái\n*   Máy tính Casio FX-580VNX: 680.000 VNĐ/Cái\n*   Máy tính N CAVIET MX 120SK: 110.000 VNĐ/Cái\n*   Máy tính N CAVIET AX 126S: 155.000 VNĐ/Cái\n*   Máy tính Casio AX12: 245.000 VNĐ/Cái\n*   Máy tính Casio AX120: 270.000 VNĐ/Cái\n*   Máy tính Casio DX-12B: 256.000 VNĐ/Cái\n*   Máy tính Casio DX-120: 283.000 VNĐ/Cái\n*   Máy tính Casio MJ-120 Plus: 240.000 VNĐ/Cái\n*   Máy tính Casio GX-14S: 420.000 VNĐ/Cái\n\nCăn cứ: BM01 - QT.ACT.HC-05 (Trang 23).",
+    "rewritten": "Đơn giá máy tính là bao nhiêu?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.857,
+    "latency_s": 5.63,
+    "tok_in": 6542,
+    "tok_out": 354,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Pin thì sao?",
+    "gold_answer": "Pin Alkaline Energizer 3A hai viên một vỉ 35.000 đồng một vỉ; pin Panasonic 2A hoặc 3A 26.000 đồng một hộp 12 vỉ.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nLiên quan đến các loại pin, tôi xin cung cấp đơn giá (chưa VAT) chi tiết như sau:\n\n*   **Pin Alkaline:**\n    *   Pin Alkaline Energizer 3A hảng (2 viên/vĩ) (LR3/2BP): 35.000 VNĐ/Vĩ\n    *   Pin Alkaline Panasonic 2A /3A hảng (2 viên/vĩ) hộp 12 vĩ: 26.000 VNĐ/Vĩ\n*   **Pin Carbon:**\n    *   Pin carbon 2A Panasonic đỏ (4 viên/vĩ) hộp 60 viên: 12.000 VNĐ/Vĩ\n    *   Pin carbon 3A Panasonic đen (2 viên/vĩ) hộp 60 viên: 6.000 VNĐ/Vĩ\n    *   Pin carbon 9V Panasonic (1 viên/vĩ) (6F22/1S): 12.200 VNĐ/Vĩ\n    *   Pin carbon 3A Maxell đen (2 viên/vĩ): 5.400 VNĐ/Vĩ\n    *   Pin carbon trung Maxell (2 viên/vĩ) (R14UT/2S): 16.000 VNĐ/Vĩ\n*   **Pin sạc:**\n    *   Pin sạc Energizer 3A 700mAh (2 viên/vĩ): 160.000 VNĐ/Vĩ\n    *   Pin sạc Energizer 2A 2300mAh (2 viên/vĩ): 210.000 VNĐ/Vĩ\n*   **Pin chuyên dụng/Pin nút:**\n    *   Pin GP 23A 12V (5 viên/vĩ): 15.000 VNĐ/Viên\n    *   Pin GP 27A 12V (5 viên/vĩ): 15.000 VNĐ/Viên\n    *   Pin đồng tiền Maxell 2032 (5 viên/vĩ): 12.000 VNĐ/Viên\n    *   Pin nút Mitshubishi 1130/AG10/389 (10 viên/vĩ): 4.500 VNĐ/Viên\n    *   Pin nút GP LR44/375 (10 viên/vĩ): 4.500 VNĐ/Viên\n\nCăn cứ: BM01 - QT.ACT.HC-05 (Trang 31).",
+    "rewritten": "Đơn giá của pin là bao nhiêu?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.833,
+    "latency_s": 6.99,
+    "tok_in": 6297,
+    "tok_out": 613,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "Hộp mực 26a bao nhiêu?",
+    "gold_answer": "Nguyên seal full box, mới 100% của TH Lý Vy, giá 809.091 đồng, nạp được nhiều lần; mua hộp mới được miễn phí nạp lần đầu từ tháng 07/2024.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nĐơn giá của Hộp mực 26a (Nguyên sill full box, Mới 100% - TH Lý Vy) là 809.091 VNĐ (chưa VAT).\n\nCăn cứ: BM01 - QT.ACT.HC-05 (Trang 36) thuộc tài liệu QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf.",
+    "rewritten": "Đơn giá của hộp mực 26a là bao nhiêu?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.25,
+    "latency_s": 6.3,
+    "tok_in": 5643,
+    "tok_out": 132,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Còn 76a?",
+    "gold_answer": "Loại không chip 680.000 đồng; loại nguyên seal full box 1.650.000 đồng.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nĐối với hộp mực 76a, tôi xin cung cấp chi tiết đơn giá (chưa VAT) như sau:\n\n*   **Hộp mực 76a/không chip**: 680.000 VNĐ (Quy cách: Nguyên sill full box; Chất lượng: Mới 100% - TH Lý Vy; Ghi chú: Nạp mực được nhiều lần).\n*   **Hộp mực 76a**: 1.650.000 VNĐ (Quy cách: Nguyên sill - full box; Chất lượng: Nguyên sill - full box; Ghi chú: Nạp mực được nhiều lần).\n\nNgoài ra, nếu bạn chỉ cần **Nạp mực 76/26**, đơn giá là 100.000 VNĐ (Chai nguyên, Mới 100%-Malay).\n\nCăn cứ: BM01 - QT.ACT.HC-05 (Trang 35, 36).",
+    "rewritten": "Đơn giá của Hộp mực 76a là bao nhiêu?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.5,
+    "latency_s": 5.95,
+    "tok_in": 6582,
+    "tok_out": 250,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "513 nghìn là máy nào?",
+    "gold_answer": "Là máy tính Casio FX-570VN Plus.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nVới mức giá 513.000 VNĐ (chưa VAT), đó là Máy tính Casio FX-570VN Plus.\n\nCăn cứ: [TÀI LIỆU 1] - BM01 - QT.ACT.HC-05 (Stt 271).",
+    "rewritten": "Hộp mực 513 nghìn là của máy nào?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 5.68,
+    "tok_in": 6937,
+    "tok_out": 102,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Bút bi bao nhiêu?",
+    "gold_answer": "Bút bi TL027 ngòi 05mm giá 3.600 đồng một cây; bút bi TL08 ngòi 08mm giá 3.600 đồng một cây.",
+    "actual_answer": "Vì có nhiều loại bút bi với đơn giá khác nhau, tôi xin cung cấp chi tiết đơn giá (chưa VAT) cho các loại bút bi theo danh mục như sau:\n\n**1. Bút bi Thiên Long và Flexoffice:**\n*   Bút bi TL027 - 05mm: 3.600 VNĐ/Cây\n*   Bút bi TL08 - 08mm: 3.600 VNĐ/Cây\n*   Bút bi TL095 - 05mm: 6.900 VNĐ/Cây\n*   Bút bi TL023 - 05mm: 3.600 VNĐ/Cây\n*   Bút bi TL025 - 08mm: 4.500 VNĐ/Cây\n*   Bút bi TL036 - 07mm: 9.500 VNĐ/Cây\n*   Bút bi TL047 - 07mm: 6.200 VNĐ/Cây\n*   Bút bi TL079 - 05mm: 3.600 VNĐ/Cây\n*   Bút bi TL031 - 05mm: 7.800 VNĐ/Cây\n*   Bút bi TL061 - 05mm: 3.200 VNĐ/Cây\n*   Bút bi FO-03 - 05mm: 3.300 VNĐ/Cái\n*   Bút bi FO-023: 3.300 VNĐ/Cái\n*   Bút cắm bàn Flexoffice FO-PH01/VN xanh (2 cây/bộ): 14.500 VNĐ/Bộ\n\n**2. Bút bi UNI:**\n*   Bút bi UNI SX101 Jestream 0.7mm xanh: 20.000 VNĐ/Cây\n*   Bút bi UNI Click BP XSB-R7 xanh - bấm: 18.000 VNĐ/Cây\n*   Bút bi UNI SN-100 0.7 xanh - bấm: 25.000 VNĐ/Cây\n\nCăn cứ: [TÀI LIỆU 2] - BM01 - QT.ACT.HC-05 (Trang 18)",
+    "rewritten": "Đơn giá bút bi là bao nhiêu theo quy chế BM01 - QT.ACT.HC-05?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.667,
+    "latency_s": 8.41,
+    "tok_in": 6687,
+    "tok_out": 586,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "BM03 là gì?",
+    "gold_answer": "Là Giấy cấp phát văn phòng phẩm, ví dụ cấp giấy in cho các phòng ban, người lập là Phòng Hành chính.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nDựa trên các tài liệu được cung cấp, BM03 là mã hiệu của các mẫu biểu mẫu được sử dụng trong **QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in**, bao gồm:\n\n*   **Giấy cấp phát văn phòng phẩm**: Dùng để ghi nhận việc cấp phát các mặt hàng như bìa kiếng, pin, miếng phân trang, cồn y tế, bút chì bấm, ruột chì...\n*   **Giấy cấp phát giấy in**: Dùng để theo dõi cấp phát giấy in (đơn vị tính: ream) cho các phòng ban.\n*   **Giấy cấp phát khăn giấy**: Dùng để theo dõi cấp phát khăn giấy (đơn vị tính: bịch) cho các phòng ban.\n\nCăn cứ: [TÀI LIỆU 1], [TÀI LIỆU 2], [TÀI LIỆU 3] - BM03 - QT.ACT.HC-05.",
+    "rewritten": "BM03 là gì?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.571,
+    "latency_s": 3.38,
+    "tok_in": 6051,
+    "tok_out": 243,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Còn BM04?",
+    "gold_answer": "Là Giấy đề nghị văn phòng phẩm, vệ sinh phẩm đột xuất, gồm người yêu cầu, bộ phận, lý do, thời gian yêu cầu và bảng kê.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nBM04 - QT.ACT.HC-05 là Giấy đề nghị VPP, vệ sinh phẩm đột xuất.\n\nCăn cứ theo quy trình, khi có nhu cầu đặt văn phòng phẩm (VPP) hoặc vệ sinh phẩm đột xuất, người có nhu cầu sẽ lập giấy đề nghị theo biểu mẫu này, chuyển Trưởng bộ phận duyệt, sau đó chuyển Phòng HC xem xét.\n\nCăn cứ: Mục 6.4 và Mục 8 của QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.",
+    "rewritten": "BM04 là gì?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.8,
+    "latency_s": 5.02,
+    "tok_in": 6277,
+    "tok_out": 146,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "809.091 là giá gì?",
+    "gold_answer": "Là giá hộp mực 26a nguyên seal full box mới 100%.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nSố tiền 809.091 là đơn giá (chưa VAT) của **Hộp mực 26a** (loại nguyên sill full box, mới 100% - TH Lý Vy).\n\nCăn cứ theo: BM01 - QT.ACT.HC-05 (Trang 36).",
+    "rewritten": "Số tiền 809.091 là giá của mặt hàng nào trong quy chế BM01 - QT.ACT.HC-05?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.667,
+    "latency_s": 7.81,
+    "tok_in": 7125,
+    "tok_out": 124,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Sổ mực BM05 theo dõi gì?",
+    "gold_answer": "Theo dõi ngày mua, loại mực và các lần nạp từ L1 đến L7; BM06 theo dõi đổi mực của các phòng ban.",
+    "actual_answer": "Căn cứ theo tài liệu quy chế, BM05 - QT.ACT.HC-05 là **Sổ theo dõi mực in**, được sử dụng để Phòng Hành chính trực tiếp quản lý số lượng mực in.\n\nNội dung theo dõi trong sổ bao gồm các thông tin:\n*   Ngày mua.\n*   Loại mực.\n*   Chi tiết các lần nạp mực (từ Nạp mực L1 đến Nạp mực L7).\n\nTrích dẫn: Mục 6.6 và Phụ lục mẫu biểu BM05 tại tài liệu QT.ACT.HC-05.",
+    "rewritten": "Sổ mực BM05 theo dõi gì?",
+    "route": "",
+    "citations": [
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.8,
+    "latency_s": 5.8,
+    "tok_in": 5823,
+    "tok_out": 159,
+    "llm_calls": 2
+   }
+  ]
+ },
+ {
+  "session_id": 1049,
+  "conversation_id": "04fab57a-c371-4106-afdc-a523ed4ccd83",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Xét tăng lương khi nào?",
+    "gold_answer": "Mỗi năm họp một lần vào tháng 04; đối tượng là nhân viên đủ thâm niên 02 năm hưởng một mức lương, hoàn thành tốt việc được giao, không vi phạm lao động.",
+    "actual_answer": "Việc xét tăng lương được quy định như sau:\n\n*   **Thời điểm xét:** Lãnh đạo công ty sẽ họp bàn xét tăng lương cho nhân viên một lần vào tháng 04 hàng năm.\n*   **Điều kiện về thâm niên và đối tượng:** Nhân viên có đủ thâm niên 02 năm hưởng một mức lương (tính từ ngày xếp lương lần liền kề với ngày xét tăng lương mới).\n*   **Điều kiện kèm theo:** \n    *   Hoàn thành tốt công việc được giao.\n    *   Không vi phạm quy định lao động.\n*   **Trường hợp vi phạm:** Nếu nhân viên có vi phạm cho vào diện xét thì phải đợi đến năm sau mới được xét nâng lương, với điều kiện không tái phạm kỷ luật lao động.\n\nCăn cứ: MauQuyCheLuong-sanKeToan-B.docx > Chương 4 > Điều 15. Chế độ xét tăng lương.",
+    "rewritten": "Khi nào thì được xét tăng lương?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.59,
+    "tok_in": 3938,
+    "tok_out": 233,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "02 năm đó tính từ khi nào?",
+    "gold_answer": "Tính từ ngày xếp lương lần liền kề với ngày xét tăng lương mới.",
+    "actual_answer": "Thời gian thâm niên 02 năm được tính kể từ ngày xếp lương lần liền kề với ngày xét tăng lương mới.\n\nCăn cứ: [TÀI LIỆU 1]: MauQuyCheLuong-sanKeToan-B.docx > Chương 4 > Điều 15. Chế độ xét tăng lương.",
+    "rewritten": "Thời hạn thâm niên 02 năm để được xét tăng lương được tính từ khi nào?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 8.74,
+    "tok_in": 4381,
+    "tok_out": 198,
+    "llm_calls": 3
+   },
+   {
+    "turn": 2,
+    "question": "Không được xét thì sao?",
+    "gold_answer": "Giám đốc Công ty giải thích cho cán bộ công nhân viên yên tâm công tác.",
+    "actual_answer": "Trong trường hợp không được xét tăng lương, quy định như sau:\n\n*   **Về giải đáp:** Giám đốc Công ty sẽ giải thích cho cán bộ công nhân viên để yên tâm công tác.\n*   **Trường hợp do vi phạm:** Nếu nhân viên có vi phạm và bị cho vào diện xét thì phải đến năm sau mới được xét nâng lương, với điều kiện là không tái phạm kỷ luật lao động.\n\nCăn cứ: [TÀI LIỆU 1] Điều 16 và [TÀI LIỆU 2] Điều 15 (MauQuyCheLuong-sanKeToan-B.docx).",
+    "rewritten": "Nếu không được xét tăng lương thì sao?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 5.95,
+    "tok_in": 4517,
+    "tok_out": 168,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Nâng bao nhiêu?",
+    "gold_answer": "Từ 10 đến 20% mức lương hiện tại tùy hiệu quả kinh doanh; theo thang bảng lương ký với bảo hiểm xã hội, Phòng Lao động Thương binh Xã hội.",
+    "actual_answer": "Mức nâng lương được quy định như sau:\n\n*   **Mức nâng:** Từ 10 đến 20% mức lương hiện tại.\n*   **Căn cứ xác định:** Tùy theo hiệu quả kinh doanh của Công ty và dựa vào thang bảng lương ký với cơ quan bảo hiểm xã hội, Phòng Lao động - Thương binh và Xã hội.\n\nCăn cứ: [TÀI LIỆU 2]: MauQuyCheLuong-sanKeToan-B.docx > Chương 4 > Điều 17. Mức nâng của mỗi bậc lương.",
+    "rewritten": "Nếu được xét tăng lương thì mức tăng là bao nhiêu?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 9.97,
+    "tok_in": 4521,
+    "tok_out": 158,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "Thưởng thâm niên thì sao?",
+    "gold_answer": "Nhân viên trên 03 năm được thưởng vào đợt chi lương tháng cuối năm.",
+    "actual_answer": "Về thưởng thâm niên, quy định như sau:\n\n*   **Điều kiện:** Nhân viên làm việc tại Công ty trên 03 năm.\n*   **Thời điểm chi trả:** Mức thưởng sẽ được ban bố vào đợt chi trả lương tháng cuối cùng trong năm.\n\nCăn cứ: MauQuyCheLuong-sanKeToan-B.docx > Chương 5 > Điều 17.",
+    "rewritten": "Quy định về thưởng thâm niên thì như thế nào?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 5.84,
+    "tok_in": 4371,
+    "tok_out": 123,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Tết thì sao?",
+    "gold_answer": "Công ty có lãi mới trích lợi nhuận thưởng, quà; mức tùy lợi nhuận từng năm.",
+    "actual_answer": "Về chế độ thưởng Tết, quy định cụ thể như sau:\n\n*   **Tết Âm lịch:** Nếu Công ty kinh doanh có lãi sẽ trích lợi nhuận để thưởng tặng quà cho nhân viên; mức thưởng tùy thuộc vào lợi nhuận của từng năm.\n*   **Tết Dương lịch:** Tiền thưởng từ 250.000 đồng đến 550.000 đồng. Mức thưởng cụ thể của từng nhân viên sẽ được ghi trong Quyết định của hội đồng thành viên Công ty tại thời điểm thưởng.\n\nCăn cứ: MauQuyCheLuong-sanKeToan-B.docx (Điều 18 và Điều 19).",
+    "rewritten": "Quy định về thưởng Tết như thế nào?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 5.43,
+    "tok_in": 4255,
+    "tok_out": 178,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "Lễ, Quốc khánh thì sao?",
+    "gold_answer": "Từ 250.000 đến 550.000 đồng; cụ thể ghi trong quyết định của hội đồng thành viên tại thời điểm thưởng.",
+    "actual_answer": "Về chế độ thưởng cho các ngày Lễ và Quốc khánh, quy định cụ thể như sau:\n\n*   **Các ngày áp dụng:** Thưởng ngày Quốc khánh, Tết Dương lịch, Ngày Chiến thắng, Quốc tế Lao động.\n*   **Mức thưởng:** Từ 250.000 đồng đến 550.000 đồng.\n*   **Quyết định mức thưởng:** Mức thưởng cụ thể của từng nhân viên sẽ được ghi trong Quyết định của hội đồng thành viên Công ty tại thời điểm thưởng.\n\nCăn cứ: MauQuyCheLuong-sanKeToan-B.docx > Chương 5 > Điều 19.",
+    "rewritten": "Chế độ thưởng ngày Lễ và Quốc khánh thì như thế nào?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.87,
+    "tok_in": 4258,
+    "tok_out": 183,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Tháng 04 làm gì?",
+    "gold_answer": "Ban lãnh đạo họp bàn xét tăng lương cho nhân viên.",
+    "actual_answer": "Vào tháng 04 hàng năm, lãnh đạo công ty sẽ họp bàn để xét tăng lương cho nhân viên.\n\nCăn cứ theo Điều 15, Chương 4 của tài liệu MauQuyCheLuong-sanKeToan-B.docx.",
+    "rewritten": "Tháng 04 hàng năm công ty thực hiện quy trình xét tăng lương như thế nào?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.11,
+    "tok_in": 4418,
+    "tok_out": 95,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "Hiếu hỉ thì sao?",
+    "gold_answer": "Người lao động 1.000.000 đồng một người một lần; vợ, chồng, bố mẹ, anh chị em ruột 500.000 đồng; hàng năm công ty tổ chức thăm quan, du lịch do ban lãnh đạo chọn.",
+    "actual_answer": "Về chế độ hiếu hỉ, quy định cụ thể như sau:\n\n*   **Đối với người lao động:** 1.000.000 đồng/người/lần.\n*   **Đối với vợ, chồng, bố mẹ, anh, chị, em ruột:** 500.000 đồng/người/lần.\n\nCăn cứ: Điều 9.1, Chương 2 của tài liệu MauQuyCheLuong-sanKeToan-B.docx.",
+    "rewritten": "Chế độ thưởng hiếu hỉ được quy định như thế nào?",
+    "route": "",
+    "citations": [
+     "bo-luat-lao-dong-2019.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.417,
+    "latency_s": 6.73,
+    "tok_in": 4443,
+    "tok_out": 148,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Kinh doanh đạt doanh thu thì sao?",
+    "gold_answer": "Phòng kinh doanh đạt mức giao được thưởng phần trăm doanh thu tháng; vượt thì Giám đốc kinh doanh tờ trình mức hưởng từng người lên Ban giám đốc duyệt, trả cùng lương tháng.",
+    "actual_answer": "Đối với nhân viên kinh doanh đạt doanh thu, quy định như sau:\n\n*   **Khi đạt doanh thu do Ban giám đốc giao:** Được thưởng phần trăm doanh thu hàng tháng.\n*   **Khi vượt doanh thu:** Giám đốc kinh doanh sẽ làm tờ trình về mức hưởng cho từng nhân viên trình Ban giám đốc duyệt và chuyển cho phòng Ké toán trả cùng với lương tháng.\n\nCăn cứ: Điều 17, Chương 5, tài liệu MauQuyCheLuong-sanKeToan-B.docx.",
+    "rewritten": "Nếu kinh doanh đạt doanh thu thì mức tăng lương sẽ như thế nào?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "MauQuyCheLuong-sanKeToan-A.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.933,
+    "latency_s": 7.87,
+    "tok_in": 4508,
+    "tok_out": 147,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "10 đến 20% của gì?",
+    "gold_answer": "Của mức lương hiện tại của nhân viên.",
+    "actual_answer": "Mức nâng từ 10 đến 20% là tính trên mức lương hiện tại, tùy theo hiệu quả kinh doanh của Công ty.\n\nCăn cứ: Điều 17, Chương 4 - MauQuyCheLuong-sanKeToan-B.docx.",
+    "rewritten": "Mức tăng 10-20% trong quy trình xét tăng lương là tính trên cái gì?",
+    "route": "",
+    "citations": [
+     "MauQuyCheLuong-sanKeToan-B.docx",
+     "bo-luat-lao-dong-2019.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.5,
+    "latency_s": 7.13,
+    "tok_in": 4617,
+    "tok_out": 101,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Ai triển khai quy chế?",
+    "gold_answer": "Trưởng phòng hành chính nhân sự và Kế toán trưởng triển khai quy định tiền thưởng, lương, phụ cấp, trợ cấp.",
+    "actual_answer": "Tùy vào từng quy chế, đơn vị triển khai thực hiện như sau:\n\n*   **Đối với quy chế về tiền lương, tiền thưởng và các chế độ phúc lợi (tại MauQuyCheLuong-sanKeToan-A.docx):** Giao cho phòng hành chính nhân sự và phòng kế toán Công ty triển khai thực hiện.\n*   **Đối với quy định về tiền thưởng, tiền lương, phụ cấp, trợ cấp (tại MauQuyCheLuong-sanKeToan-B.docx):** Giao cho trưởng phòng hành chính nhân sự và Kế toán trưởng Công ty triển khai thực hiện.\n*   **Đối với quy định về công tác đăng ký, điều phối và sử dụng xe (tại 917.QĐ-ACT):** Các đơn vị có trách nhiệm phổ biến và hướng dẫn thực hiện đến toàn thể nhân viên có liên quan.\n\nCăn cứ:\n- Chương 3, MauQuyCheLuong-sanKeToan-A.docx.\n- Chương 5, MauQuyCheLuong-sanKeToan-B.docx.\n- Điều 6, 917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf.",
+    "rewritten": "Ai là người triển khai quy chế MauQuyCheLuong-sanKeToan-B.docx?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "MauQuyCheLuong-sanKeToan-A.docx",
+     "MauQuyCheLuong-sanKeToan-B.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 5.89,
+    "tok_in": 4537,
+    "tok_out": 329,
+    "llm_calls": 2
+   }
+  ]
+ },
+ {
+  "session_id": 1050,
+  "conversation_id": "ff3e1a10-7dee-4eed-9cce-a958883a6881",
+  "rows": [
+   {
+    "turn": 0,
+    "question": "Đi công tác Hà Nội 3 ngày đặt xe theo cái nào?",
+    "gold_answer": "Xe chở người đi công tác theo Hướng dẫn 214 về đăng ký xe đi công tác, liên hệ nhân viên phụ trách xe của Phòng Hành chính.",
+    "actual_answer": "Đối với yêu cầu đi công tác Hà Nội trong 3 ngày, bạn thực hiện theo quy định sau:\n\n**1. Phương thức vận chuyển:**\nVì Hà Nội là quãng đường dài (trên 30km) và liên tỉnh, trường hợp này sẽ **ưu tiên sử dụng Dịch vụ vận chuyển thuê ngoài** (theo Điều 3, khoản 2, điểm a của Quy định 917.QĐ-ACT).\n\n**2. Thủ tục đăng ký:**\nBạn sử dụng **Phiếu đăng ký xe (Mẫu BM01)** theo Hướng dẫn 214.HD-ACT-HC để đề xuất với Phòng Hành chính. Các thông tin cần cung cấp trong phiếu bao gồm:\n*   Đơn vị đề xuất.\n*   Nội dung công việc.\n*   Số người đi.\n*   Người liên hệ và Số điện thoại.\n*   Nơi đi và Nơi đến (Hà Nội).\n*   Loại xe.\n*   Ngày đi và Ngày về (trong vòng 3 ngày).\n\n**Căn cứ:**\n*   Điều 3, Quy định ban hành kèm theo Quyết định số 217/QĐ-ACT (917.QĐ-ACT).\n*   Mẫu BM01, Hướng dẫn về việc đăng ký xe đi công tác (214.HD-ACT-HC).",
+    "rewritten": "Tôi đi công tác Hà Nội 3 ngày thì đặt xe theo quy định hoặc biểu mẫu nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.75,
+    "latency_s": 10.4,
+    "tok_in": 5268,
+    "tok_out": 338,
+    "llm_calls": 2
+   },
+   {
+    "turn": 1,
+    "question": "Còn chở hàng mẫu đi cùng?",
+    "gold_answer": "Hàng mẫu, hàng thương mại thuộc Quy định 917 về vận chuyển, phải lập đề xuất gửi đơn vị điều phối.",
+    "actual_answer": "Đối với việc chở hàng mẫu đi cùng trong chuyến công tác, bạn lưu ý các quy định sau:\n\n*   **Loại hàng hóa áp dụng:** Hàng mẫu, hàng hóa thương mại nằm trong danh mục hàng hóa được áp dụng quy định về vận chuyển của công ty (Điều 2, Khoản 3a).\n*   **Yêu cầu về thông tin:** Bạn phải ghi nhận đầy đủ lộ trình vận chuyển và tài sản mang theo (hàng mẫu) trong lịch sử điều xe (Điều 4, Khoản 3d).\n*   **Yêu cầu về biểu mẫu:** Trong đề xuất vận chuyển, bạn cần cung cấp đầy đủ thông tin về hàng hóa (Điều 4, Khoản 3e).\n*   **Trách nhiệm của đơn vị đề xuất:** Bạn có trách nhiệm đảm bảo hàng mẫu được đóng gói đúng chuẩn và gửi thông tin chính xác (Điều 5, Khoản 2).\n*   **Lưu ý đặc biệt:** Nếu hàng mẫu có đặc điểm đặc biệt (ví dụ: dễ vỡ, cần nhiệt độ bảo quản...), bạn phải nêu rõ yêu cầu này trong đề xuất vận chuyển để được bố trí phương tiện phù hợp đảm bảo an toàn (Điều 4, Khoản 5).\n\nCăn cứ: Điều 2, Điều 4 và Điều 5 của Quy định 917.QĐ-ACT.",
+    "rewritten": "Khi đi công tác Hà Nội 3 ngày, nếu tôi chở hàng mẫu đi cùng thì quy định đặt xe như thế nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.75,
+    "latency_s": 10.12,
+    "tok_in": 6124,
+    "tok_out": 448,
+    "llm_calls": 3
+   },
+   {
+    "turn": 2,
+    "question": "15 giờ với 12 giờ thứ 7 khác gì?",
+    "gold_answer": "15 giờ ngày hôm trước là hạn đề xuất vận chuyển 917 với kế hoạch đã duyệt; 12 giờ thứ 7 là hạn đăng ký xe 214 theo kế hoạch tuần.",
+    "actual_answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "rewritten": "Ca làm việc 15 giờ và ca làm việc 12 giờ thứ 7 khác nhau như thế nào?",
+    "route": "",
+    "citations": [
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": true,
+    "db_ok": null,
+    "overlap": 0.0,
+    "latency_s": 7.07,
+    "tok_in": 4621,
+    "tok_out": 86,
+    "llm_calls": 2
+   },
+   {
+    "turn": 3,
+    "question": "Gấp thì mỗi bên sao?",
+    "gold_answer": "214 đột xuất trước 16 giờ ngày N-1; 917 đột xuất nêu lý do, quản lý cấp phòng trở lên duyệt, gửi trước ít nhất 4 giờ.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "rewritten": "Trong trường hợp gấp thì quy định đặt xe cho mỗi bên như thế nào?",
+    "route": "",
+    "citations": [
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": true,
+    "db_ok": null,
+    "overlap": 0.143,
+    "latency_s": 8.85,
+    "tok_in": 4878,
+    "tok_out": 78,
+    "llm_calls": 2
+   },
+   {
+    "turn": 4,
+    "question": "BM01 là của bên nào?",
+    "gold_answer": "Của Hướng dẫn 214, là Phiếu đăng ký xe gửi Phòng Hành chính.",
+    "actual_answer": "Hiện tại có hai mẫu biểu cùng mã hiệu BM01 thuộc hai quy trình khác nhau:\n\n*   **BM01 (theo Hướng dẫn 214.HD-ACT-HC):** Là Phiếu đăng ký xe đi công tác của Phòng Hành chính.\n*   **BM01 - QT.ACT.HC-05 (theo Quy trình QT.ACT.HC-05):** Là Bảng tiêu chuẩn VPP, vệ sinh phẩm và mực in.\n\nCăn cứ theo lịch sử trao đổi trước đó về việc bạn đặt xe đi công tác Hà Nội, mẫu BM01 bạn cần sử dụng là **Phiếu đăng ký xe** thuộc Hướng dẫn 214.HD-ACT-HC.\n\nTrích dẫn:\n- Tài liệu 214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf.\n- Tài liệu QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf.",
+    "rewritten": "Phiếu đăng ký xe (Mẫu BM01) là của bên nào?",
+    "route": "",
+    "citations": [
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+     "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 7.47,
+    "tok_in": 7363,
+    "tok_out": 254,
+    "llm_calls": 2
+   },
+   {
+    "turn": 5,
+    "question": "Đề xuất 917 gồm gì?",
+    "gold_answer": "Thời gian, đơn vị đề xuất, nội dung, thông tin hàng hóa, nhận trả hàng, lộ trình, tài sản mang theo, người đi cùng.",
+    "actual_answer": "Theo Quy định 917.QĐ-ACT, một yêu cầu/đề xuất vận chuyển cần có đầy đủ các thông tin sau:\n\n*   **Thông tin vận chuyển (theo biểu mẫu):**\n    *   Thời gian vận chuyển.\n    *   Đơn vị đề xuất.\n    *   Nội dung.\n    *   Thông tin hàng hóa.\n    *   Thông tin nhận hàng, trả hàng (bao gồm: tọa độ vị trí, địa chỉ, người liên hệ, thời gian tiếp nhận).\n*   **Thông tin chi tiết khác:**\n    *   Lộ trình vận chuyển.\n    *   Tài sản mang theo.\n    *   Người đi cùng (nếu có).\n*   **Yêu cầu đặc biệt (nếu có):** Đối với hàng hóa có đặc điểm đặc biệt (dễ vỡ, cần nhiệt độ bảo quản, hàng nguy hiểm,...), cần nêu rõ yêu cầu trong đề xuất để được bố trí phương tiện phù hợp.\n\nCăn cứ: Điều 4 (mục 3, 4, 5) - Quy định về công tác đăng ký, điều phối xe và sử dụng xe (ban hành kèm theo Quyết định 917.QĐ-ACT).",
+    "rewritten": "Quy định 917.QĐ-ACT gồm những nội dung gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 6.4,
+    "tok_in": 5812,
+    "tok_out": 305,
+    "llm_calls": 2
+   },
+   {
+    "turn": 6,
+    "question": "Thuê ngoài khi nào theo 214?",
+    "gold_answer": "Xe công ty không đảm bảo: kế hoạch tuần thì đề xuất trước 01 ngày; chuyến gấp xin Ban Tổng Giám đốc rồi bổ sung sau 24 giờ.",
+    "actual_answer": "Theo Hướng dẫn 214.HD-ACT-HC, việc thuê xe ngoài được thực hiện trong các trường hợp sau:\n\n*   **Trường hợp xe ô tô Công ty không đảm bảo:** Phòng Hành chính (P.HC) thực hiện đề xuất chi phí thuê xe ngoài, hoàn thành trước 01 ngày của kế hoạch đăng ký (áp dụng đối với các chuyến đăng ký theo kế hoạch tuần).\n*   **Trường hợp các chuyến phát sinh gấp:** P.HC xin ý kiến Ban TGĐ và các Bộ phận liên quan trước khi thuê xe và bổ sung đề xuất sau 24h.\n\nCăn cứ: 214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf (Trang 1).",
+    "rewritten": "Theo Hướng dẫn 214.HD-ACT-HC thì khi nào được thuê ngoài?",
+    "route": "",
+    "citations": [
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.8,
+    "latency_s": 9.42,
+    "tok_in": 5568,
+    "tok_out": 206,
+    "llm_calls": 2
+   },
+   {
+    "turn": 7,
+    "question": "Còn 917 thuê ngoài khi nào?",
+    "gold_answer": "Quãng dài trên 30km, liên tỉnh; hàng lớn, cồng kềnh, xe chuyên dụng; xe công ty không có hoặc không phù hợp; khẩn cấp ngoài giờ, ngày nghỉ; nhiều điểm giao nhận gấp.",
+    "actual_answer": "Theo Quy định 917.QĐ-ACT, dịch vụ vận chuyển thuê ngoài được ưu tiên sử dụng trong các trường hợp sau:\n\n*   Quãng đường dài (trên 30km), liên tỉnh.\n*   Hàng hóa số lượng lớn, cồng kềnh hoặc có yêu cầu xe chuyên dụng.\n*   Xe công ty không có sẵn hoặc không phù hợp.\n*   Nhu cầu khẩn cấp, phát sinh ngoài giờ hành chính hoặc ngày nghỉ.\n*   Yêu cầu nhiều điểm giao nhận trong thời gian ngắn.\n\nCăn cứ: Điều 3, Khoản 2 - Quy định 917.QĐ-ACT.",
+    "rewritten": "Theo Quy định 917.QĐ-ACT thì thuê ngoài khi nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 5.94,
+    "tok_in": 5312,
+    "tok_out": 184,
+    "llm_calls": 2
+   },
+   {
+    "turn": 8,
+    "question": "30km đó là ngưỡng gì?",
+    "gold_answer": "Quãng đường dưới hoặc bằng 30km thì ưu tiên xe công ty; trên thì thuê ngoài.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nTheo Quy định 917.QĐ-ACT, mốc 30km là ngưỡng để phân loại phương thức vận chuyển như sau:\n\n*   **Xe công ty:** Được ưu tiên sử dụng khi quãng đường ngắn (nhỏ hơn hoặc bằng 30km).\n*   **Dịch vụ vận chuyển thuê ngoài:** Được ưu tiên sử dụng khi quãng đường dài (trên 30km) hoặc liên tỉnh.\n\nCăn cứ: Điều 3, Quy định ban hành kèm theo Quyết định 917.QĐ-ACT.",
+    "rewritten": "Ngưỡng 30km trong Quy định 917.QĐ-ACT là ngưỡng gì?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.909,
+    "latency_s": 5.79,
+    "tok_in": 5929,
+    "tok_out": 163,
+    "llm_calls": 2
+   },
+   {
+    "turn": 9,
+    "question": "Ai ký 2 văn bản?",
+    "gold_answer": "214 do Trưởng phòng Châu Thị Xuân Đào ký ngày 07 tháng 05 năm 2024; 917 do Tổng Giám đốc Phạm Tuấn Anh ký ngày 08 tháng 09 năm 2025.",
+    "actual_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nDựa trên các tài liệu được cung cấp, hai văn bản được ký bởi các cá nhân/bộ phận sau:\n\n*   **Hướng dẫn 214.HD-ACT-HC (Về việc đăng ký xe đi công tác):** Do Trưởng phòng Hành chính **Châu Thị Xuân Đào** ký.\n*   **Phiếu đăng ký xe (Mẫu BM01):** Cần chữ ký của 3 bên bao gồm: **Người lập**, **Trưởng đơn vị** và **Phòng HC**.\n\nTrích dẫn: Tài liệu 214.HD-ACT-HC (Trang 1 và Trang 3).",
+    "rewritten": "Ai là người ký hai văn bản Quy định 917.QĐ-ACT và Hướng dẫn 214.HD-ACT-HC?",
+    "route": "",
+    "citations": [
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+     "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.333,
+    "latency_s": 9.97,
+    "tok_in": 6629,
+    "tok_out": 193,
+    "llm_calls": 2
+   },
+   {
+    "turn": 10,
+    "question": "Dùng sai bị gì theo 917?",
+    "gold_answer": "Có thể bị từ chối phê duyệt các lần sau, xử lý kỷ luật tùy mức, nghiêm trọng bồi hoàn thiệt hại.",
+    "actual_answer": "Theo Quy định 917.QĐ-ACT, trường hợp sử dụng sai mục đích, không tuân thủ quy định hoặc gây thiệt hại phát sinh sẽ bị xử lý như sau:\n\n*   Có thể bị từ chối phê duyệt vận chuyển trong các lần kế tiếp.\n*   Bị xử lý kỷ luật theo quy định công ty (tùy mức độ).\n*   Trường hợp nghiêm trọng, phải bồi hoàn thiệt hại.\n\nCăn cứ: Điều 5, khoản 4 (mục a, b, c) của Quy định 917.QĐ-ACT.",
+    "rewritten": "Nếu dùng sai quy định vận chuyển theo Quy định 917.QĐ-ACT thì sẽ bị xử lý như thế nào?",
+    "route": "",
+    "citations": [
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+     "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 1.0,
+    "latency_s": 12.82,
+    "tok_in": 5677,
+    "tok_out": 178,
+    "llm_calls": 2
+   },
+   {
+    "turn": 11,
+    "question": "Tóm lại đi công tác kèm hàng thì làm sao?",
+    "gold_answer": "Đăng ký xe chở người theo 214 qua nhân viên phụ trách xe; lập đề xuất vận chuyển hàng theo 917 qua đơn vị điều phối.",
+    "actual_answer": "Dựa trên lịch sử trao đổi về việc bạn đi công tác Hà Nội 3 ngày, quy trình thực hiện như sau:\n\n*   **Đặt xe:** Áp dụng Quy định 917.QĐ-ACT. Vì quãng đường đi Hà Nội trên 30km nên ưu tiên thuê xe ngoài.\n*   **Thủ tục:** Sử dụng mẫu BM01 của Phòng Hành chính theo Hướng dẫn 214.HD-ACT-HC (tuân thủ các điều kiện thuê xe ngoài).\n*   **Vận chuyển hàng mẫu:** Thực hiện theo hướng dẫn về vận chuyển hàng mẫu đã trao đổi trước đó.\n\n**Lưu ý:** Bạn cần tuân thủ đúng mục đích sử dụng; nếu sử dụng sai quy định hoặc gây thiệt hại, bạn có thể bị từ chối phê duyệt vận chuyển trong các lần kế tiếp (theo Quy định 917.QĐ-ACT).\n\nCăn cứ: Quy định 917.QĐ-ACT và Hướng dẫn 214.HD-ACT-HC.",
+    "rewritten": "Tóm lại, tôi đi công tác kèm theo hàng mẫu thì quy trình thực hiện như thế nào?",
+    "route": "",
+    "citations": [
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx",
+     "bo-luat-lao-dong-2019.docx"
+    ],
+    "refused": false,
+    "db_ok": null,
+    "overlap": 0.364,
+    "latency_s": 10.21,
+    "tok_in": 5085,
+    "tok_out": 265,
+    "llm_calls": 2
+   }
+  ]
+ }
+]

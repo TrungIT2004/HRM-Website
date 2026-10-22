@@ -1,0 +1,806 @@
+[
+ {
+  "sid": 1001,
+  "turns": [
+   {
+    "d": "214",
+    "i": 0,
+    "rw": "Đăng ký xe công ty cho chuyến công tác theo hướng dẫn 214.HD-ACT-HC như thế nào?"
+   },
+   {
+    "d": "214",
+    "i": 1,
+    "rw": "Thời hạn đăng ký xe công ty theo kế hoạch tuần và đột xuất theo hướng dẫn 214.HD-ACT-HC là khi nào?"
+   },
+   {
+    "d": "214",
+    "i": 2,
+    "rw": "Ai chịu trách nhiệm duyệt và cấp xe công ty cho đơn vị theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 3,
+    "q": "Còn nếu công ty không có xe thì sao?",
+    "a": "Đơn vị báo cho nhân viên phụ trách xe P.HC; P.HC xin ý kiến Ban Tổng Giám đốc rồi mới thuê xe ngoài, sau đó đơn vị nộp dự toán chi phí.",
+    "rw": "Nếu công ty không có xe thì quy trình thuê xe ngoài và nộp dự toán chi phí theo hướng dẫn 214.HD-ACT-HC như thế nào?"
+   },
+   {
+    "d": "214",
+    "i": 4,
+    "rw": "Báo cáo tổng hợp việc sử dụng xe công ty phải nộp đến ngày bao nhiêu mỗi tháng theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 7,
+    "q": "Vậy cần chuẩn bị giấy tờ gì để làm phiếu này?",
+    "a": "Chuẩn bị đầy đủ thông tin chuyến đi để điền phiếu đăng ký xe theo mẫu 214.HD-ACT-HC, phối hợp với các đơn vị liên quan.",
+    "rw": "Cần chuẩn bị giấy tờ gì để hoàn thành phiếu đăng ký xe công tác theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 8,
+    "rw": "Mẫu phiếu đăng ký xe công tác theo hướng dẫn 214.HD-ACT-HC có những mục thông tin nào cần điền?"
+   },
+   {
+    "d": "214",
+    "i": 9,
+    "q": "Nộp trễ thì sao?",
+    "a": "Phải nộp phiếu đúng thời hạn quy định; đăng ký đột xuất phải trước 16h ngày N-1.",
+    "rw": "Thời hạn nộp phiếu đăng ký xe công tác theo hướng dẫn 214.HD-ACT-HC là bao lâu?"
+   },
+   {
+    "d": "214",
+    "i": 10,
+    "rw": "Tôi có thể dùng xe công tác vào thời gian nào trong tháng 04 theo bảng tổng hợp xe công tác tháng 04.2024?"
+   },
+   {
+    "d": "214",
+    "i": 11,
+    "q": "Ai phụ trách chuyến đó?",
+    "a": "Người phụ trách ghi trong bảng tổng hợp, ví dụ Bùi Xuân Quang – P.TH-K.DVKT; xe Santafe 7 chỗ, khung giờ 08h-17h30.",
+    "rw": "Xe nào được phân công cho chuyến công tác tháng 04 và ai phụ trách theo bảng tổng hợp xe công tác tháng 04.2024?"
+   },
+   {
+    "d": "214",
+    "i": 12,
+    "q": "Còn xe 7 chỗ thì sao?",
+    "a": "Có xe Santafe 7 chỗ phục vụ công tác trong khung 08h-17h30 theo bảng tổng hợp.",
+    "rw": "Có xe Santafe 7 chỗ sẵn sàng cho công tác trong khung 08h-17h30 theo bảng tổng hợp xe công tác tháng 04.2024 không?"
+   },
+   {
+    "d": "214",
+    "i": 13,
+    "q": "Liên hệ ai để đăng ký?",
+    "a": "Liên hệ người phụ trách ghi trong bảng tổng hợp xe công tác hoặc nhân viên phụ trách xe P.HC.",
+    "rw": "Ai là người liên hệ để đăng ký xe công tác theo bảng tổng hợp xe công tác tháng 04.2024?"
+   }
+  ]
+ },
+ {
+  "sid": 1002,
+  "turns": [
+   {
+    "d": "214",
+    "i": 5,
+    "rw": "Cách thức đăng ký xe đi công tác theo hướng dẫn 214.HD-ACT-HC là gì?"
+   },
+   {
+    "d": "214",
+    "i": 6,
+    "rw": "Đơn vị nào phải phối hợp và phê duyệt phiếu đăng ký xe công tác theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 0,
+    "q": "Quyết định nào làm căn cứ cho việc này?",
+    "a": "Căn cứ quyết định 453a/QĐ-ACT-KHCT về trách nhiệm của đơn vị đề xuất và Phòng Hành chính P.HC.",
+    "rw": "Quyết định nào làm căn cứ cho quy trình đăng ký xe công tác theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 1,
+    "q": "Đăng ký gấp trong ngày thì kịp không?",
+    "a": "Đăng ký đột xuất phải trước 16h ngày N-1, nên đăng ký gấp trong ngày dùng xe khó đảm bảo; liên hệ ngay P.HC để được hỗ trợ.",
+    "rw": "Đăng ký xe công tác đột xuất trong ngày có kịp không theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 3,
+    "q": "Thuê ngoài thì ai duyệt?",
+    "a": "P.HC xin ý kiến Ban Tổng Giám đốc và các bộ phận liên quan trước khi thuê xe ngoài.",
+    "rw": "Ai phê duyệt việc thuê xe ngoài khi công ty không có xe theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 8,
+    "q": "Phiếu đó điền những gì?",
+    "a": "Điền đầy đủ thông tin chuyến đi vào phiếu đăng ký xe theo mẫu 214.HD-ACT-HC.",
+    "rw": "Phiếu đăng ký xe công tác theo mẫu 214.HD-ACT-HC gồm những mục thông tin nào?"
+   },
+   {
+    "d": "214",
+    "i": 4,
+    "q": "Báo cáo đó nộp cho ai?",
+    "a": "Báo cáo tổng hợp việc sử dụng xe nộp định kỳ hằng tháng theo thời hạn quy định của hướng dẫn.",
+    "rw": "Báo cáo tổng hợp việc sử dụng xe công tác nộp cho ai và đến ngày bao nhiêu theo hướng dẫn 214.HD-ACT-HC?"
+   },
+   {
+    "d": "214",
+    "i": 10,
+    "q": "Khung giờ xe chạy thế nào?",
+    "a": "Các chuyến công tác trong bảng chạy khung 08h-17h30.",
+    "rw": "Khung giờ sử dụng xe công tác trong bảng tổng hợp xe công tác tháng 04.2024 là khi nào?"
+   },
+   {
+    "d": "214",
+    "i": 12,
+    "q": "Ngoài Santafe còn xe nào?",
+    "a": "Bảng tổng hợp nêu xe Santafe 7 chỗ; các xe khác xem trực tiếp bảng tổng hợp tháng 04.2024.",
+    "rw": "Ngoài xe Santafe 7 chỗ, bảng tổng hợp xe công tác tháng 04.2024 còn xe nào?"
+   },
+   {
+    "d": "214",
+    "i": 14,
+    "rw": "Bảng tổng hợp xe công tác tháng 04.2024 bao gồm những thông tin gì?"
+   },
+   {
+    "d": "214",
+    "i": 2,
+    "q": "P.HC là đơn vị nào?",
+    "a": "P.HC là Phòng Hành chính, đơn vị phụ trách duyệt và cấp xe, đầu mối phối hợp với các đơn vị.",
+    "rw": "P.HC trong quy trình đăng ký xe công tác theo hướng dẫn 214.HD-ACT-HC là đơn vị nào?"
+   },
+   {
+    "d": "214",
+    "i": 6,
+    "q": "Phiếu phải qua mấy cửa?",
+    "a": "Phiếu đăng ký xe cần sự phối hợp của đơn vị đề xuất và phê duyệt của các đơn vị liên quan theo hướng dẫn.",
+    "rw": "Phiếu đăng ký xe công tác phải qua những cửa phê duyệt nào theo hướng dẫn 214.HD-ACT-HC?"
+   }
+  ]
+ },
+ {
+  "sid": 1003,
+  "turns": [
+   {
+    "d": "917",
+    "i": 0,
+    "rw": "Tôi phải làm gì để đăng ký một chiếc xe công ty theo Quy định 917.QĐ-ACT?",
+    "a": "Theo Quy định 917.QĐ-ACT: mọi yêu cầu vận chuyển phải lập đề xuất cụ thể và gửi về đơn vị điều phối trước 15h00 ngày hôm trước (đối với kế hoạch đã phê duyệt); trường hợp đột xuất phải nêu rõ lý do, được quản lý cấp phòng trở lên phê duyệt và gửi thông tin ít nhất 4 giờ trước giờ vận chuyển; ghi đầy đủ lộ trình, tài sản mang theo, người đi cùng và thông tin theo biểu mẫu."
+   },
+   {
+    "d": "917",
+    "i": 1,
+    "rw": "Ai chịu trách nhiệm phê duyệt và điều phối việc sử dụng xe công ty theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 2,
+    "rw": "Quy định 917.QĐ-ACT về đăng ký, điều phối và sử dụng xe có hiệu lực từ ngày nào?"
+   },
+   {
+    "d": "917",
+    "i": 3,
+    "q": "Phòng tôi có phải tuân thủ không?",
+    "a": "Mọi phòng ban trong Công ty Cổ phần Viễn thông ACT đều phải thi hành quy định này.",
+    "rw": "Các phòng ban nào phải thi hành Quy định 917.QĐ-ACT về đăng ký, điều phối và sử dụng xe?"
+   },
+   {
+    "d": "917",
+    "i": 4,
+    "q": "Điều phối thế nào?",
+    "a": "Việc điều phối xe thực hiện thống nhất trên toàn công ty theo quy trình đăng ký, điều phối và sử dụng xe của quy định.",
+    "rw": "Quy trình điều phối xe trong Công ty Cổ phần Viễn thông ACT theo Quy định 917.QĐ-ACT được thực hiện như thế nào?"
+   },
+   {
+    "d": "917",
+    "i": 5,
+    "q": "Đăng ký xe công tác thì làm sao?",
+    "a": "Lập đề xuất, cung cấp đầy đủ thông tin chuyến đi theo quy trình đăng ký xe công tác của quy định.",
+    "rw": "Tôi cần làm gì để đăng ký sử dụng xe công tác theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 6,
+    "q": "Còn đơn vị nào khác?",
+    "a": "Tất cả đơn vị trong công ty đều thuộc phạm vi áp dụng và phải tuân thủ quy định.",
+    "rw": "Những đơn vị nào trong công ty phải tuân thủ Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 7,
+    "q": "Xe tải thì sao?",
+    "a": "Xe 6 tấn dùng cho vận chuyển hàng hóa theo phạm vi quy định, do bộ phận có thẩm quyền phê duyệt.",
+    "rw": "Xe 6 tấn được dùng cho những mục đích nào và ai có quyền phê duyệt theo Quy định 917.QĐ-ACT?"
+   }
+  ]
+ },
+ {
+  "sid": 1004,
+  "turns": [
+   {
+    "d": "917",
+    "i": 8,
+    "rw": "Quy định 917.QĐ-ACT áp dụng cho các loại hình vận chuyển nào?"
+   },
+   {
+    "d": "917",
+    "i": 9,
+    "q": "Chuyến phát sinh có cần duyệt trước?",
+    "a": "Vận chuyển phát sinh vẫn phải xin phê duyệt trước khi thực hiện theo quy định.",
+    "rw": "Có cần xin phê duyệt trước khi thực hiện vận chuyển phát sinh theo Quy định 917.QĐ-ACT không?"
+   },
+   {
+    "d": "917",
+    "i": 10,
+    "q": "Khi nào ưu tiên xe nhà?",
+    "a": "Ưu tiên xe công ty khi đáp ứng được khoảng cách, khối lượng, tính chất hàng hóa và khả năng sẵn sàng của xe.",
+    "rw": "Khi nào công ty ưu tiên sử dụng xe công ty thay vì thuê ngoài theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 11,
+    "q": "Xét theo tiêu chí nào?",
+    "a": "Xét theo khoảng cách, khối lượng, tính chất hàng hóa và khả năng sẵn sàng của xe.",
+    "rw": "Các tiêu chí nào quyết định việc lựa chọn xe công ty cho vận chuyển hàng hoá theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 12,
+    "q": "Hết xe thì thuê ngoài sao?",
+    "a": "Khi xe công ty không sẵn sàng thì làm thủ tục xin phép sử dụng dịch vụ thuê ngoài theo quy định.",
+    "rw": "Nếu xe công ty không có sẵn thì quy trình xin phép sử dụng dịch vụ thuê ngoài theo Quy định 917.QĐ-ACT như thế nào?"
+   },
+   {
+    "d": "917",
+    "i": 13,
+    "q": "Chở nặng, đi xa được không?",
+    "a": "Việc dùng xe công ty bị giới hạn bởi khoảng cách, khối lượng hàng hóa và khả năng sẵn sàng của xe.",
+    "rw": "Có giới hạn về khoảng cách và khối lượng hàng hoá đối với việc dùng xe công ty theo Quy định 917.QĐ-ACT không?"
+   },
+   {
+    "d": "917",
+    "i": 14,
+    "q": "Ai điều phối chung?",
+    "a": "Bộ phận được giao điều phối và phê duyệt việc sử dụng phương tiện trong công ty theo quy định.",
+    "rw": "Bộ phận nào chịu trách nhiệm điều phối và phê duyệt việc sử dụng phương tiện trong công ty theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 15,
+    "q": "Muốn đặt chuyến thì làm gì?",
+    "a": "Lập đề xuất chuyến vận chuyển bằng xe công ty, cung cấp đầy đủ thông tin theo quy trình.",
+    "rw": "Tôi cần làm gì để đăng ký một chuyến vận chuyển bằng xe công ty theo Quy định 917.QĐ-ACT?"
+   }
+  ]
+ },
+ {
+  "sid": 1005,
+  "turns": [
+   {
+    "d": "917",
+    "i": 16,
+    "q": "Lấy xe đi việc riêng được không?",
+    "a": "Không. Quy định cấm sử dụng xe công ty cho mục đích cá nhân.",
+    "rw": "Có được phép dùng xe công ty cho mục đích cá nhân theo Quy định 917.QĐ-ACT không?"
+   },
+   {
+    "d": "917",
+    "i": 17,
+    "q": "Ghi sai nhật ký thì ai chịu?",
+    "a": "Người có trách nhiệm ghi nhật ký xe chịu trách nhiệm về lỗi ghi chép theo quy định.",
+    "rw": "Ai chịu trách nhiệm khi có lỗi trong việc ghi nhật ký xe công ty theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 18,
+    "q": "Đi gấp trong đêm thì báo ai?",
+    "a": "Chuyến đi phát sinh bất ngờ phải thông báo theo quy trình cho bộ phận điều phối.",
+    "rw": "Nếu chuyến đi phát sinh bất ngờ thì tôi phải thông báo như thế nào theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 19,
+    "q": "Vi phạm thì bị gì?",
+    "a": "Vi phạm quy định sử dụng xe bị xử lý trách nhiệm và bồi hoàn theo quy định.",
+    "rw": "Hình phạt cho việc vi phạm quy định sử dụng xe công ty theo Quy định 917.QĐ-ACT là gì?"
+   },
+   {
+    "d": "917",
+    "i": 20,
+    "q": "Quy định này khi nào có hiệu lực?",
+    "a": "Quy định có hiệu lực ngay lập tức từ ngày ký, thay thế các quy định cũ về xe.",
+    "rw": "Quy định 917.QĐ-ACT về đăng ký, điều phối và sử dụng xe có hiệu lực từ ngày nào?"
+   },
+   {
+    "d": "917",
+    "i": 21,
+    "q": "Mấy năm xem lại một lần?",
+    "a": "Quy định được xem xét, cập nhật mỗi 6 tháng hoặc theo chỉ đạo của Tổng Giám đốc.",
+    "rw": "Tần suất cập nhật Quy định 917.QĐ-ACT về xe là bao lâu?"
+   },
+   {
+    "d": "917",
+    "i": 22,
+    "q": "Ai giám sát thực hiện?",
+    "a": "Các đơn vị phải đảm bảo triển khai; việc giám sát thực hiện theo phân công trong quy định.",
+    "rw": "Ai chịu trách nhiệm giám sát việc thực hiện quy định về xe theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 23,
+    "q": "Làm hỏng xe thì đền sao?",
+    "a": "Vi phạm phải bồi hoàn theo quy định về trách nhiệm và xử lý vi phạm sử dụng xe.",
+    "rw": "Nếu vi phạm quy định sử dụng xe thì tôi phải bồi hoàn như thế nào theo Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 24,
+    "rw": "Quy định 917.QĐ-ACT thay thế những quy định cũ nào liên quan đến xe công ty?",
+    "a": "Điều 6 Quy định 917.QĐ-ACT không liệt kê tên từng văn bản cũ mà quy định thay thế tất cả các quy định cũ (nếu có) liên quan đến phân quyền và nguyên tắc sử dụng phương tiện vận chuyển; Quy định có hiệu lực kể từ ngày ký (08/9/2025)."
+   },
+   {
+    "d": "917",
+    "i": 10,
+    "q": "Chở hàng nặng thì dùng xe nào?",
+    "a": "Xét khoảng cách, khối lượng, tính chất hàng hóa và khả năng sẵn sàng của xe để chọn xe công ty hay thuê ngoài.",
+    "rw": "Vận chuyển hàng hoá nặng thì lựa chọn xe công ty hay thuê ngoài theo tiêu chí nào của Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 5,
+    "q": "Đối tượng nào được đi xe?",
+    "a": "Đối tượng được phép dùng xe theo phạm vi áp dụng của quy định về đăng ký, điều phối và sử dụng xe.",
+    "rw": "Đối tượng nào được phép dùng xe công ty theo phạm vi áp dụng của Quy định 917.QĐ-ACT?"
+   },
+   {
+    "d": "917",
+    "i": 0,
+    "q": "Đăng ký lần đầu thì bắt đầu từ đâu?",
+    "a": "Bắt đầu bằng việc lập đề xuất và liên hệ bộ phận điều phối xe theo quy trình đăng ký của quy định.",
+    "rw": "Đăng ký sử dụng xe công ty lần đầu thì bắt đầu từ đâu theo Quy định 917.QĐ-ACT?"
+   }
+  ]
+ },
+ {
+  "sid": 1006,
+  "turns": [
+   {
+    "d": "luong",
+    "i": 0,
+    "rw": "Quyết định số bao nhiêu quy định về lương thưởng của Công ty Cổ phần Cấp Nước An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 1,
+    "q": "Ký khi nào?",
+    "a": "Quyết định số 15/2023/QĐ ký ngày 10/01/2023 tại TP.HCM.",
+    "rw": "Mẫu quy chế lương thưởng của Công ty Cổ phần Cấp Nước An Phát được ký ngày nào?"
+   },
+   {
+    "d": "luong",
+    "i": 2,
+    "q": "Của công ty nào?",
+    "a": "Của Công ty Cổ phần Cấp Nước An Phát, tại TP.HCM.",
+    "rw": "Mẫu quy chế lương thưởng này thuộc công ty nào và có địa chỉ tại đâu?"
+   },
+   {
+    "d": "luong",
+    "i": 4,
+    "q": "Có mấy bảng?",
+    "a": "Mẫu quy chế gồm các bảng biểu quy định tại phần tiêu đề của tài liệu.",
+    "rw": "Có bao nhiêu bảng biểu trong mẫu quy chế lương thưởng của Công ty Cổ phần Cấp Nước An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 5,
+    "q": "Dựa vào luật nào?",
+    "a": "Dựa trên Bộ luật Lao động 2019, Nghị định 145/2020/NĐ-CP, Luật Doanh nghiệp 2020, điều lệ công ty và quyền hạn của Hội đồng quản trị.",
+    "rw": "Mẫu quy chế lương của công ty dựa trên những căn cứ pháp lý nào?"
+   },
+   {
+    "d": "luong",
+    "i": 8,
+    "q": "Ai duyệt quy chế này?",
+    "a": "Hội đồng quản trị có thẩm quyền phê duyệt và điều chỉnh quy chế lương.",
+    "rw": "Ai có thẩm quyền phê duyệt và điều chỉnh quy chế lương của công ty?"
+   },
+   {
+    "d": "luong",
+    "i": 9,
+    "q": "Có theo luật lao động không?",
+    "a": "Có, quy chế áp dụng các chuẩn lương theo Bộ luật Lao động 2019.",
+    "rw": "Công ty có áp dụng các chuẩn lương theo Bộ luật Lao động 2019 không?"
+   },
+   {
+    "d": "luong",
+    "i": 10,
+    "q": "Lương cơ bản tính sao?",
+    "a": "Mức lương cơ bản là cơ sở tính lương và BHXH; toàn bộ CBCNV hiện áp dụng bậc lương 1.",
+    "rw": "Mức lương cơ bản được tính như thế nào và ảnh hưởng tới BHXH ra sao theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 11,
+    "q": "Ai cho lên bậc?",
+    "a": "Ban Giám đốc quyết định nâng bậc lương dựa trên thành tích.",
+    "rw": "Ai có thẩm quyền quyết định tăng bậc lương cho nhân viên theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 12,
+    "q": "Có phụ cấp gì?",
+    "a": "Công ty có các phụ cấp, trong đó có phụ cấp Hiệu quả công việc HQCV.",
+    "rw": "Công ty có những khoản phụ cấp nào và chúng được trả khi nào theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 13,
+    "q": "HQCV tính thế nào?",
+    "a": "Phụ cấp HQCV tính theo quy định của quy chế, gắn với hiệu quả công việc.",
+    "rw": "Công thức tính phụ cấp Hiệu quả công việc HQCV theo quy chế lương An Phát như thế nào?"
+   },
+   {
+    "d": "luong",
+    "i": 14,
+    "q": "Kinh doanh kém có mất phụ cấp?",
+    "a": "Phụ cấp có liên quan đến tình hình sản xuất kinh doanh của công ty theo quy định.",
+    "rw": "Phụ cấp có liên quan đến tình hình sản xuất kinh doanh của công ty không theo quy chế lương An Phát?"
+   }
+  ]
+ },
+ {
+  "sid": 1007,
+  "turns": [
+   {
+    "d": "luong",
+    "i": 15,
+    "q": "Phụ cấp ăn trưa của tôi bao nhiêu?",
+    "a": "Mức phụ cấp ăn trưa theo bảng phụ cấp cho từng chức danh trong quy chế.",
+    "rw": "Tôi được cấp bao nhiêu phụ cấp ăn trưa theo bảng phụ cấp của quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 16,
+    "q": "Công nhân được khoán xăng xe bao nhiêu?",
+    "a": "Mức khoán chi xăng xe cho công nhân theo bảng phụ cấp của quy chế.",
+    "rw": "Mức khoán chi xăng xe cho công nhân là bao nhiêu theo bảng phụ cấp của quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 17,
+    "q": "Có phụ cấp quần áo không?",
+    "a": "Có phụ cấp trang phục cho nhân viên theo bảng phụ cấp của quy chế.",
+    "rw": "Có phụ cấp trang phục cho nhân viên không theo bảng phụ cấp của quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 18,
+    "q": "Sếp được tính HQCV sao?",
+    "a": "Phụ cấp HQCV cho Ban Giám đốc tính theo bảng phụ cấp của quy chế.",
+    "rw": "Phụ cấp HQCV cho Ban Giám đốc được tính như thế nào theo bảng phụ cấp của quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 19,
+    "q": "Bảo vệ được phụ cấp điện thoại bao nhiêu?",
+    "a": "Mức phụ cấp điện thoại cho bảo vệ theo bảng phụ cấp của quy chế.",
+    "rw": "Mức phụ cấp điện thoại cho bảo vệ là bao nhiêu theo bảng phụ cấp của quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 25,
+    "q": "Ngoài lương còn gì?",
+    "a": "Nhân viên nhận các khoản trợ cấp và phụ cấp bổ sung ngoài mức lương chính đã thỏa thuận và ghi trong hợp đồng lao động.",
+    "rw": "Tôi có được nhận những loại trợ cấp nào ngoài lương cơ bản theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 26,
+    "q": "Trả khi nào?",
+    "a": "Các phụ cấp được tính và trả theo thỏa thuận ghi trong hợp đồng lao động.",
+    "rw": "Các phụ cấp được tính và trả như thế nào theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 27,
+    "q": "Điều kiện hưởng là gì?",
+    "a": "Điều kiện hưởng trợ cấp, phụ cấp theo thỏa thuận và quy định của quy chế.",
+    "rw": "Điều kiện để được hưởng trợ cấp và phụ cấp theo quy chế lương An Phát là gì?"
+   },
+   {
+    "d": "luong",
+    "i": 28,
+    "q": "Có ghi trong hợp đồng không?",
+    "a": "Các khoản trợ cấp, phụ cấp được ghi rõ trong hợp đồng lao động.",
+    "rw": "Các khoản trợ cấp, phụ cấp có được ghi rõ trong hợp đồng lao động không theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 29,
+    "q": "Ai cũng được nhận à?",
+    "a": "Mọi nhân viên đều được nhận phụ cấp theo nhóm quy định, không phân biệt.",
+    "rw": "Mọi nhân viên đều được nhận phụ cấp hay chỉ một số nhóm nhất định theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 20,
+    "q": "Quyết định 15 này nói gì?",
+    "a": "Quyết định 15/2023/QĐ ban hành Quy chế tiền lương, tiền thưởng, phụ cấp ngày 10/01/2023 tại TP.HCM.",
+    "rw": "Quyết định số 15/2023/QĐ quy định gì về tiền lương và phụ cấp của Công ty Cổ phần Cấp Nước An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 21,
+    "q": "Hiệu lực từ khi nào?",
+    "a": "Quy chế có hiệu lực từ ngày ký quyết định 10/01/2023.",
+    "rw": "Quy chế tiền lương của Công ty Cổ phần Cấp Nước An Phát có hiệu lực từ ngày nào?"
+   }
+  ]
+ },
+ {
+  "sid": 1008,
+  "turns": [
+   {
+    "d": "luong",
+    "i": 30,
+    "q": "Tôi mới vào có được trợ cấp nhà không?",
+    "a": "Lao động chính thức ký hợp đồng từ 6 tháng trở lên (trừ thời vụ) được trợ cấp thuê nhà 1.000.000 đến 2.000.000 đồng mỗi tháng.",
+    "rw": "Điều kiện để được hưởng trợ cấp thuê nhà theo quy chế lương An Phát là gì?"
+   },
+   {
+    "d": "luong",
+    "i": 31,
+    "q": "Mỗi tháng được bao nhiêu?",
+    "a": "Từ 1.000.000 đến 2.000.000 đồng mỗi tháng, mức cụ thể ghi trong hợp đồng hoặc quyết định.",
+    "rw": "Mức trợ cấp thuê nhà được tính bao nhiêu mỗi tháng theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 32,
+    "q": "Thời vụ có được không?",
+    "a": "Không, lao động thời vụ không được hưởng khoản trợ cấp thuê nhà này.",
+    "rw": "Những ai không được hưởng khoản trợ cấp thuê nhà theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 33,
+    "q": "Hợp đồng 5 tháng thì sao?",
+    "a": "Hợp đồng dưới 6 tháng không đủ điều kiện hưởng trợ cấp thuê nhà.",
+    "rw": "Nếu hợp đồng của tôi dưới 6 tháng thì có được hỗ trợ thuê nhà theo quy chế lương An Phát không?"
+   },
+   {
+    "d": "luong",
+    "i": 34,
+    "q": "Xem mức cụ thể ở đâu?",
+    "a": "Mức cụ thể ghi trong hợp đồng lao động hoặc quyết định của hội đồng thành viên.",
+    "rw": "Mức hỗ trợ thuê nhà cụ thể được ghi ở đâu theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 35,
+    "q": "Bao giờ xét tăng lương?",
+    "a": "Công ty xét tăng lương một lần mỗi năm vào tháng 04.",
+    "rw": "Công ty xét tăng lương vào thời điểm nào trong năm theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 36,
+    "q": "Ai được xét?",
+    "a": "Nhân viên thâm niên 02 năm, hoàn thành công việc và không vi phạm lao động.",
+    "rw": "Nhân viên nào đủ điều kiện để được xét tăng lương theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 37,
+    "q": "Tôi từng vi phạm thì sao?",
+    "a": "Vi phạm sẽ bị hoãn xét tăng lương đến năm sau và không được tái phạm.",
+    "rw": "Nếu tôi vi phạm quy định lao động thì có được xét tăng lương trong năm hiện tại không theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 38,
+    "q": "Thâm niên tính từ khi nào?",
+    "a": "Thâm niên 02 năm hưởng một mức lương được tính kể từ ngày xếp lương lần liền kề với ngày xét tăng lương mới (không phải ngày vào làm), áp dụng cho nhân viên hoàn thành tốt công việc được giao và không vi phạm quy định lao động; công ty xét tăng lương mỗi năm một lần vào tháng 04.",
+    "rw": "Thời gian thâm niên 02 năm để xét tăng lương được tính từ ngày nào theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 39,
+    "q": "Phải chờ bao lâu?",
+    "a": "Phải chờ đến đợt xét tăng lương năm sau nếu bị hoãn do vi phạm.",
+    "rw": "Nếu bị vi phạm thì tôi phải chờ bao lâu mới được xét tăng lương lần tiếp theo theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 22,
+    "q": "Bảng lương lưu ở đâu?",
+    "a": "Bảng biểu trong Quy chế tiền lương được lưu trữ theo quy định lưu trữ tài liệu của công ty.",
+    "rw": "Bảng biểu trong Quy chế tiền lương của Công ty Cổ phần Cấp Nước An Phát được lưu trữ ở đâu?"
+   },
+   {
+    "d": "luong",
+    "i": 23,
+    "q": "Ai giải thích quy chế này?",
+    "a": "Bộ phận có trách nhiệm giải thích nội dung Quy chế tiền lương cho nhân viên.",
+    "rw": "Ai chịu trách nhiệm giải thích nội dung của Quy chế tiền lương An Phát?"
+   }
+  ]
+ },
+ {
+  "sid": 1009,
+  "turns": [
+   {
+    "d": "luong",
+    "i": 0,
+    "q": "Cho tôi hỏi về quy chế lương An Phát?",
+    "a": "Quy chế lương thưởng của Công ty Cổ phần Cấp Nước An Phát theo quyết định 15/2023/QĐ ngày 10/01/2023 tại TP.HCM.",
+    "rw": "Quy chế lương thưởng của Công ty Cổ phần Cấp Nước An Phát theo quyết định 15/2023/QĐ có nội dung gì?"
+   },
+   {
+    "d": "luong",
+    "i": 6,
+    "q": "Nghị định 145 nói gì?",
+    "a": "Nghị định 145/2020/NĐ-CP là một trong các căn cứ pháp lý xây dựng quy chế lương.",
+    "rw": "Nghị định 145/2020/NĐ-CP quy định gì về mức lương trong căn cứ xây dựng quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 10,
+    "q": "Bậc 1 là sao?",
+    "a": "Toàn bộ CBCNV hiện áp dụng bậc lương 1, có thể được nâng cấp bởi Ban Giám đốc dựa trên thành tích.",
+    "rw": "Bậc lương 1 trong quy chế lương An Phát áp dụng cho ai và nâng bậc thế nào?"
+   },
+   {
+    "d": "luong",
+    "i": 15,
+    "q": "Ăn trưa công ty hỗ trợ không?",
+    "a": "Có phụ cấp ăn trưa theo bảng phụ cấp cho từng chức danh.",
+    "rw": "Phụ cấp ăn trưa cho nhân viên theo bảng phụ cấp của quy chế lương An Phát là bao nhiêu?"
+   },
+   {
+    "d": "luong",
+    "i": 19,
+    "q": "Điện thoại thì sao?",
+    "a": "Có phụ cấp điện thoại theo bảng phụ cấp, ví dụ cho bảo vệ.",
+    "rw": "Mức phụ cấp điện thoại cho nhân viên theo bảng phụ cấp của quy chế lương An Phát là bao nhiêu?"
+   },
+   {
+    "d": "luong",
+    "i": 30,
+    "q": "Thuê nhà có hỗ trợ không?",
+    "a": "Có, trợ cấp thuê nhà 1.000.000 đến 2.000.000 đồng mỗi tháng cho hợp đồng từ 6 tháng trở lên.",
+    "rw": "Trợ cấp thuê nhà cho nhân viên theo quy chế lương An Phát là bao nhiêu mỗi tháng?"
+   },
+   {
+    "d": "luong",
+    "i": 35,
+    "q": "Tăng lương khi nào?",
+    "a": "Xét tăng lương mỗi năm một lần vào tháng 04.",
+    "rw": "Công ty xét tăng lương vào thời điểm nào trong năm và điều kiện ra sao theo quy chế lương An Phát?"
+   },
+   {
+    "d": "luong",
+    "i": 5,
+    "q": "Căn cứ pháp lý gồm gì?",
+    "a": "Bộ luật Lao động 2019, Nghị định 145/2020/NĐ-CP, Luật Doanh nghiệp 2020, điều lệ công ty và quyền hạn HĐQT.",
+    "rw": "Mẫu quy chế lương An Phát dựa trên những căn cứ pháp lý nào?"
+   },
+   {
+    "d": "luong",
+    "i": 24,
+    "q": "Xin bản sao quy chế ở đâu?",
+    "a": "Liên hệ phòng nhân sự để được cung cấp bản sao Quy chế tiền lương.",
+    "rw": "Tôi có thể yêu cầu bản sao đầy đủ của Quy chế tiền lương An Phát từ phòng nhân sự không?"
+   },
+   {
+    "d": "luong",
+    "i": 36,
+    "q": "Điều kiện tăng lương là gì?",
+    "a": "Thâm niên 02 năm, hoàn thành công việc và không vi phạm lao động.",
+    "rw": "Điều kiện để được xét tăng lương theo quy chế lương An Phát là gì?"
+   },
+   {
+    "d": "luong",
+    "i": 2,
+    "q": "Công ty nào ban hành?",
+    "a": "Công ty Cổ phần Cấp Nước An Phát, TP.HCM.",
+    "rw": "Mẫu quy chế lương thưởng này thuộc công ty nào theo quyết định 15/2023/QĐ?"
+   },
+   {
+    "d": "luong",
+    "i": 33,
+    "q": "Hợp đồng ngắn hạn có được hỗ trợ nhà?",
+    "a": "Không, hợp đồng dưới 6 tháng không đủ điều kiện trợ cấp thuê nhà.",
+    "rw": "Hợp đồng dưới 6 tháng có được hưởng trợ cấp thuê nhà theo quy chế lương An Phát không?"
+   }
+  ]
+ },
+ {
+  "sid": 1010,
+  "turns": [
+   {
+    "d": "vpp",
+    "i": 0,
+    "rw": "Làm thế nào để yêu cầu cấp văn phòng phẩm, vệ sinh phẩm hoặc mực in theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 1,
+    "q": "Ai duyệt việc này?",
+    "a": "Người có trách nhiệm duyệt và theo dõi việc sử dụng văn phòng phẩm theo quy trình.",
+    "rw": "Ai là người chịu trách nhiệm duyệt và theo dõi việc sử dụng văn phòng phẩm trong công ty theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 2,
+    "q": "Áp dụng cho phòng nào?",
+    "a": "Áp dụng cho tất cả các bộ phận, phòng ban trong công ty.",
+    "rw": "Quy trình QT.ACT.HC-05 áp dụng cho những bộ phận hoặc phòng ban nào?"
+   },
+   {
+    "d": "vpp",
+    "i": 3,
+    "q": "Hiệu lực từ khi nào?",
+    "a": "Hiệu lực theo ngày ban hành quy trình QT.ACT.HC-05.",
+    "rw": "Quy trình QT.ACT.HC-05 có hiệu lực từ ngày nào?"
+   },
+   {
+    "d": "vpp",
+    "i": 4,
+    "q": "Có cách nào tiết kiệm không?",
+    "a": "Quy trình có các biện pháp tiết kiệm văn phòng phẩm và mực in cho các bộ phận.",
+    "rw": "Có các biện pháp nào được quy định để tiết kiệm văn phòng phẩm và mực in theo quy trình QT.ACT.HC-05 không?"
+   },
+   {
+    "d": "vpp",
+    "i": 5,
+    "q": "Cần gấp thì làm sao?",
+    "a": "Nộp mẫu BM04, được Trưởng bộ phận duyệt, phòng HC chịu trách nhiệm cấp phát.",
+    "rw": "Tôi cần cấp phát văn phòng phẩm đột xuất thì quy trình và mẫu biểu cần nộp theo QT.ACT.HC-05 là gì?"
+   },
+   {
+    "d": "vpp",
+    "i": 6,
+    "q": "Mực in thì ai duyệt?",
+    "a": "Trưởng bộ phận duyệt yêu cầu cấp phát vệ sinh phẩm và mực in.",
+    "rw": "Ai là người duyệt yêu cầu cấp phát vệ sinh phẩm và mực in theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 7,
+    "q": "Theo dõi mực in thế nào?",
+    "a": "Phòng HC kiểm tra và ghi nhận mức tiêu thụ mực in theo quy trình.",
+    "rw": "Phòng HC phải làm gì để kiểm tra và ghi nhận mức tiêu thụ mực in theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 8,
+    "q": "Hỏng mực thì ai chịu?",
+    "a": "Trách nhiệm khi hộp mực hoặc bình mực bị hỏng thuộc về cá nhân hoặc phòng ban theo quy định.",
+    "rw": "Khi hộp mực hoặc bình mực bị hỏng thì tôi hoặc phòng ban phải chịu trách nhiệm như thế nào theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 9,
+    "q": "Bảo dưỡng máy photo thì sao?",
+    "a": "Bảo dưỡng máy photocopy thực hiện theo quy trình, cần chuẩn bị giấy tờ theo yêu cầu.",
+    "rw": "Bảo dưỡng máy photocopy được thực hiện như thế nào và cần chuẩn bị giấy tờ gì theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 10,
+    "q": "Bìa và giấy note giá sao?",
+    "a": "Danh mục và đơn giá bìa, giấy note, bìa cong, bìa nhựa và phụ kiện theo tài liệu QT.ACT.HC-05.",
+    "rw": "Tôi có thể mua các loại bìa và giấy note nào và giá của chúng là bao nhiêu theo quy trình QT.ACT.HC-05?"
+   },
+   {
+    "d": "vpp",
+    "i": 11,
+    "q": "Mua VPP thì làm sao?",
+    "a": "Yêu cầu và phê duyệt mua văn phòng phẩm thực hiện theo quy trình QT.ACT.HC-05.",
+    "rw": "Quy trình yêu cầu và phê duyệt mua văn phòng phẩm trong công ty theo QT.ACT.HC-05 như thế nào?"
+   }
+  ]
+ }
+]

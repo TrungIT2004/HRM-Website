@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRM — Resignation Approval State Machine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:  #f5f5f5;
+      --color-ink:    #2d3142;
+      --color-muted:  #4f5d75;
+      --color-accent: #bf4520;
+      --color-soft:   #8b95a8;
+      --color-rule:   #d0d5dd;
+      --font-sans:    'Geist', system-ui, sans-serif;
+      --font-serif:   'Instrument Serif', 'Noto Serif', serif;
+      --font-mono:    'Geist Mono', ui-monospace, monospace;
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+    .frame { max-width: 1440px; width: 100%; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+    svg { width: 100%; min-width: 1440px; display: block; }
+    svg text { font-family: var(--font-sans); }
+    .mono { font-family: var(--font-mono); }
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">State Machine / Workflow · Diagram Design</p>
+    <h1>Resignation Request — Lifecycle</h1>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1440 1010" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="res-title res-desc">
+        <title id="res-title">Resignation request state machine</title>
+        <desc id="res-desc">An employee submits a PENDING resignation. A department head moves it to MANAGER_APPROVED or MANAGER_REJECTED. HR or executive leadership moves a manager-approved request to APPROVED or REJECTED. A department head's own request skips the manager stage. The employee may cancel a pending request. Approved requests become COMPLETED when the last working date passes.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <polygon points="0 0, 10 4, 0 8" fill="#2d3142"/>
+          </marker>
+          <marker id="arrow-soft" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+            <polygon points="0 0, 10 4, 0 8" fill="#6b778c"/>
+          </marker>
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+        <!-- legend -->
+        <line x1="1080" y1="98" x2="1122" y2="98" stroke="#2d3142" stroke-width="1.5"/>
+        <text x="1132" y="102" class="mono" font-size="9.5" fill="#2d3142">manual transition</text>
+        <line x1="1080" y1="124" x2="1122" y2="124" stroke="#6b778c" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="1132" y="128" class="mono" font-size="9.5" fill="#4f5d75">conditional / scheduled</text>
+
+        <!-- ============================================================
+             TRANSITIONS
+             ============================================================ -->
+
+        <!-- entry -->
+        <line x1="480" y1="118" x2="480" y2="146" stroke="#2d3142" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <circle cx="480" cy="111" r="5" fill="#2d3142"/>
+        <rect x="496" y="111" width="114" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="502" y="124" class="mono" font-size="10" fill="#2d3142">employee submits</text>
+
+        <!-- 1 · PENDING -> MANAGER_APPROVED -->
+        <line x1="480" y1="254" x2="480" y2="366" stroke="#2d3142" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <circle cx="466" cy="310" r="9" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="466" y="313.5" class="mono" font-size="9" font-weight="600" fill="#2d3142" text-anchor="middle">1</text>
+        <rect x="492" y="302" width="122" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="498" y="315" class="mono" font-size="10" fill="#2d3142">manager approves</text>
+
+        <!-- 2 · PENDING -> MANAGER_REJECTED -->
+        <path d="M 595,200 H 990 Q 1000,200 1000,210 V 366" fill="none" stroke="#2d3142" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <circle cx="620" cy="200" r="9" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="620" y="203.5" class="mono" font-size="9" font-weight="600" fill="#2d3142" text-anchor="middle">2</text>
+        <rect x="636" y="178" width="112" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="642" y="191" class="mono" font-size="10" fill="#2d3142">manager rejects</text>
+
+        <!-- 3 · MANAGER_APPROVED -> APPROVED -->
+        <line x1="480" y1="474" x2="480" y2="596" stroke="#2d3142" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <circle cx="466" cy="536" r="9" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="466" y="539.5" class="mono" font-size="9" font-weight="600" fill="#2d3142" text-anchor="middle">3</text>
+        <rect x="492" y="528" width="104" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="498" y="541" class="mono" font-size="10" fill="#2d3142">final approve</text>
+
+        <!-- 4 · MANAGER_APPROVED -> REJECTED -->
+        <path d="M 595,456 H 840 Q 850,456 850,466 V 640 Q 850,650 860,650 H 881" fill="none" stroke="#2d3142" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <circle cx="620" cy="456" r="9" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="620" y="459.5" class="mono" font-size="9" font-weight="600" fill="#2d3142" text-anchor="middle">4</text>
+        <rect x="636" y="434" width="94" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="642" y="447" class="mono" font-size="10" fill="#2d3142">final reject</text>
+
+        <!-- 5 · PENDING -> APPROVED (department head is the requestor) -->
+        <path d="M 365,225 H 320 Q 310,225 310,235 V 640 Q 310,650 320,650 H 361" fill="none" stroke="#6b778c" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-soft)"/>
+        <circle cx="310" cy="540" r="9" fill="#ffffff" stroke="#6b778c" stroke-width="1.2"/>
+        <text x="310" y="543.5" class="mono" font-size="9" font-weight="600" fill="#4f5d75" text-anchor="middle">5</text>
+        <rect x="212" y="628" width="136" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="342" y="641" class="mono" font-size="10" fill="#4f5d75" text-anchor="end">dept head skips stage</text>
+
+        <!-- 6 · PENDING -> CANCELLED -->
+        <path d="M 365,175 H 190 Q 180,175 180,185 V 766" fill="none" stroke="#2d3142" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <circle cx="180" cy="420" r="9" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
+        <text x="180" y="423.5" class="mono" font-size="9" font-weight="600" fill="#2d3142" text-anchor="middle">6</text>
+        <rect x="196" y="452" width="110" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="202" y="465" class="mono" font-size="10" fill="#2d3142">employee cancels</text>
+
+        <!-- 7 · APPROVED -> COMPLETED (scheduler) -->
+        <line x1="480" y1="704" x2="480" y2="816" stroke="#6b778c" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-soft)"/>
+        <circle cx="466" cy="760" r="9" fill="#ffffff" stroke="#6b778c" stroke-width="1.2"/>
+        <text x="466" y="763.5" class="mono" font-size="9" font-weight="600" fill="#4f5d75" text-anchor="middle">7</text>
+        <rect x="492" y="752" width="130" height="17" rx="3" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="498" y="765" class="mono" font-size="10" fill="#4f5d75">scheduler · 00:05</text>
+
+        <!-- ============================================================
+             STATES
+             ============================================================ -->
+
+        <!-- PENDING -->
+        <rect x="365" y="150" width="230" height="104" rx="8" fill="#ffffff" stroke="#bf4520" stroke-width="2"/>
+        <text x="381" y="175" class="mono" font-size="8" letter-spacing="0.14em" fill="#bf4520">STATE</text>
+        <text x="381" y="201" class="mono" font-size="13" font-weight="600" fill="#2d3142">PENDING</text>
+        <text x="381" y="222" class="mono" font-size="9" fill="#4f5d75">submitted · awaiting manager</text>
+
+        <!-- MANAGER_APPROVED -->
+        <rect x="365" y="370" width="230" height="104" rx="8" fill="#ffffff" stroke="#2d3142" stroke-width="1.4"/>
+        <text x="381" y="395" class="mono" font-size="8" letter-spacing="0.14em" fill="#8b95a8">STATE</text>
+        <text x="381" y="421" class="mono" font-size="13" font-weight="600" fill="#2d3142">MANAGER_APPROVED</text>
+        <text x="381" y="442" class="mono" font-size="9" fill="#4f5d75">department head accepted</text>
+
+        <!-- MANAGER_REJECTED -->
+        <rect x="885" y="370" width="230" height="104" rx="8" fill="#e9ecf1" stroke="#b6bdc9" stroke-width="1.2"/>
+        <text x="901" y="395" class="mono" font-size="8" letter-spacing="0.14em" fill="#6b778c">TERMINAL</text>
+        <text x="901" y="421" class="mono" font-size="13" font-weight="600" fill="#4f5d75">MANAGER_REJECTED</text>
+        <text x="901" y="442" class="mono" font-size="9" fill="#6b778c">closed · no further action</text>
+
+        <!-- APPROVED -->
+        <rect x="365" y="600" width="230" height="104" rx="8" fill="#ffffff" stroke="#2d3142" stroke-width="1.4"/>
+        <text x="381" y="625" class="mono" font-size="8" letter-spacing="0.14em" fill="#8b95a8">STATE</text>
+        <text x="381" y="651" class="mono" font-size="13" font-weight="600" fill="#2d3142">APPROVED</text>
+        <text x="381" y="672" class="mono" font-size="9" fill="#4f5d75">awaiting last working date</text>
+
+        <!-- REJECTED -->
+        <rect x="885" y="600" width="230" height="104" rx="8" fill="#e9ecf1" stroke="#b6bdc9" stroke-width="1.2"/>
+        <text x="901" y="625" class="mono" font-size="8" letter-spacing="0.14em" fill="#6b778c">TERMINAL</text>
+        <text x="901" y="651" class="mono" font-size="13" font-weight="600" fill="#4f5d75">REJECTED</text>
+        <text x="901" y="672" class="mono" font-size="9" fill="#6b778c">closed · no further action</text>
+
+        <!-- CANCELLED -->
+        <rect x="75" y="770" width="230" height="104" rx="8" fill="#e9ecf1" stroke="#b6bdc9" stroke-width="1.2"/>
+        <text x="91" y="795" class="mono" font-size="8" letter-spacing="0.14em" fill="#6b778c">TERMINAL</text>
+        <text x="91" y="821" class="mono" font-size="13" font-weight="600" fill="#4f5d75">CANCELLED</text>
+        <text x="91" y="842" class="mono" font-size="9" fill="#6b778c">withdrawn by employee</text>
+
+        <!-- COMPLETED -->
+        <rect x="365" y="820" width="230" height="104" rx="8" fill="#bf4520" stroke="#a83c1b" stroke-width="1.2"/>
+        <text x="381" y="845" class="mono" font-size="8" letter-spacing="0.14em" fill="#f5f5f5" opacity="0.75">TERMINAL</text>
+        <text x="381" y="871" class="mono" font-size="13" font-weight="600" fill="#ffffff">COMPLETED</text>
+        <text x="381" y="892" class="mono" font-size="9" fill="#ffffff" opacity="0.9">employment ended</text>
+
+        <!-- ============================================================
+             GUARDS PANEL
+             ============================================================ -->
+        <rect x="885" y="770" width="480" height="172" rx="8" fill="#ffffff" stroke="#d0d5dd" stroke-width="1"/>
+        <text x="905" y="796" class="mono" font-size="8" letter-spacing="0.14em" fill="#8b95a8">GUARDS ENFORCED IN CODE</text>
+        <circle cx="907" cy="816" r="2" fill="#bf4520"/>
+        <text x="917" y="820" class="mono" font-size="9.5" fill="#4f5d75">manager stage = Department Head of the same department</text>
+        <circle cx="907" cy="838" r="2" fill="#bf4520"/>
+        <text x="917" y="842" class="mono" font-size="9.5" fill="#4f5d75">self-approval is blocked (approver ≠ requestor)</text>
+        <circle cx="907" cy="860" r="2" fill="#bf4520"/>
+        <text x="917" y="864" class="mono" font-size="9.5" fill="#4f5d75">final stage = Executive Leadership or HR</text>
+        <circle cx="907" cy="882" r="2" fill="#bf4520"/>
+        <text x="917" y="886" class="mono" font-size="9.5" fill="#4f5d75">approval blocked while the employee holds company assets</text>
+        <circle cx="907" cy="904" r="2" fill="#bf4520"/>
+        <text x="917" y="908" class="mono" font-size="9.5" fill="#4f5d75">one active request per employee</text>
+        <circle cx="907" cy="926" r="2" fill="#bf4520"/>
+        <text x="917" y="930" class="mono" font-size="9.5" fill="#4f5d75">RESIGN_APPROVE permission overrides both stages</text>
+
+        <text x="75" y="985" class="mono" font-size="8.5" fill="#8b95a8">source · backend/com/minhtrung/hrm/resignation — ResignationService · ResignationScheduler · ResignationStatus</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

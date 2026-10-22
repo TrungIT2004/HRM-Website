@@ -1,0 +1,11 @@
+[{"sid": 1003, "turns": [
+{"d": "917", "i": 4, "q": "Phạm vi điều phối tới đâu?", "a": "Điều phối xe thực hiện thống nhất trên toàn Công ty Cổ phần Viễn thông ACT.", "rw": "Phạm vi điều phối xe trong Công ty Cổ phần Viễn thông ACT theo Quy định 917.QĐ-ACT tới đâu?"},
+{"d": "917", "i": 5, "q": "Đăng ký xe công tác khác gì xe hàng?", "a": "Đăng ký xe công tác lập đề xuất theo quy trình; xe hàng xét thêm khoảng cách, khối lượng, tính chất hàng hóa.", "rw": "Đăng ký xe công tác khác gì đăng ký xe vận chuyển hàng hóa theo Quy định 917.QĐ-ACT?"},
+{"d": "917", "i": 2, "q": "Ký từ bao giờ?", "a": "Quy định có hiệu lực kể từ ngày ký quyết định ban hành.", "rw": "Quy định 917.QĐ-ACT có hiệu lực kể từ khi nào?"},
+{"d": "917", "i": 7, "q": "Xe ben, xe tải thì ai duyệt?", "a": "Xe 6 tấn và các xe tải dùng theo phạm vi, do bộ phận có thẩm quyền phê duyệt.", "rw": "Xe tải, xe ben trong công ty do ai phê duyệt sử dụng theo Quy định 917.QĐ-ACT?"}
+]}, {"sid": 1004, "turns": [
+{"d": "917", "i": 13, "q": "Chở quá tải thì sao?", "a": "Việc dùng xe bị giới hạn bởi khoảng cách, khối lượng và khả năng sẵn sàng của xe.", "rw": "Vận chuyển vượt giới hạn khoảng cách, khối lượng thì xử lý thế nào theo Quy định 917.QĐ-ACT?"},
+{"d": "917", "i": 9, "q": "Đi gấp không kịp duyệt thì sao?", "a": "Vận chuyển phát sinh vẫn phải xin phê duyệt trước khi thực hiện.", "rw": "Chuyến vận chuyển phát sinh gấp không kịp duyệt trước thì xử lý thế nào theo Quy định 917.QĐ-ACT?"},
+{"d": "917", "i": 11, "q": "Ai quyết thuê ngoài?", "a": "Bộ phận điều phối quyết định dựa trên tiêu chí khoảng cách, khối lượng, tính chất hàng hóa.", "rw": "Ai quyết định thuê xe ngoài thay vì dùng xe công ty theo Quy định 917.QĐ-ACT?"},
+{"d": "917", "i": 15, "q": "Đặt xe qua ai?", "a": "Lập đề xuất và liên hệ bộ phận điều phối xe theo quy trình đăng ký.", "rw": "Đặt chuyến vận chuyển bằng xe công ty thì liên hệ ai theo Quy định 917.QĐ-ACT?"}
+]}]

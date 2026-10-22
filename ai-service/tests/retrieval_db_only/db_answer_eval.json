@@ -2,10 +2,12 @@
   "test_uid": "d47d452a-3459-4e3f-84f5-e9df27f9125b",
   "summary": {
     "n": 187,
-    "n_error": 0,
+    "n_error": 2,
     "sql_ok": 1.0,
-    "fact_recall": 0.7746,
-    "answer_ok": 0.631,
+    "fact_recall": 0.764,
+    "answer_ok": 0.6054,
+    "prompt_tokens_mean": 8766.2,
+    "completion_tokens_mean": 155.4,
     "pass_fail": {
       "fact_recall": "FAIL",
       "answer_ok": "FAIL"
@@ -21,7 +23,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Bạn có **12 ngày phép** trong năm hiện tại và chưa sử dụng ngày nào, vì vậy còn **12 ngày phép còn lại**."
+      "answer_head": "- Số ngày phép năm: 12 ngày.\n- Số ngày đã sử dụng: 0 ngày.\n- Số ngày phép còn lại: 12 ngày.",
+      "prompt_tokens": 7194,
+      "completion_tokens": 93,
+      "llm_calls": 2
     },
     {
       "id": "users_02",
@@ -32,7 +37,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Bạn được cấp **12 ngày phép** trong năm. \n- Tính đến hiện tại, **đã sử dụng 0 ngày** (tỷ lệ sử dụng ≈ 0%). \n- Vì vậy còn **12 ngày phép** còn lại để bạn sử dụng."
+      "answer_head": "- Tổng số ngày phép được cấp: 12 ngày.\n- Số ngày phép đã dùng: 0 ngày.",
+      "prompt_tokens": 7204,
+      "completion_tokens": 79,
+      "llm_calls": 2
     },
     {
       "id": "users_03",
@@ -43,7 +51,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Mã nhân viên của tôi: **EMP032** \n- Ngày vào làm: **03/01/2026**"
+      "answer_head": "- Mã nhân viên: EMP032\n- Ngày vào làm: 03/01/2026",
+      "prompt_tokens": 7199,
+      "completion_tokens": 56,
+      "llm_calls": 2
     },
     {
       "id": "users_04",
@@ -54,7 +65,10 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- Bạn đã gia nhập công ty từ ngày **03/01/2026**. \n- Theo dữ liệu hiện tại, thâm niên của bạn là **0 năm 9 tháng**. \n\nNếu cần cập nhật thông tin thâm niên hoặc có thắc mắc khác, vui lòng liên hệ phòng Nhân sự."
+      "answer_head": "- Ngày vào công ty: 03/01/2026\n- Thâm niên: 0 năm 9 tháng",
+      "prompt_tokens": 7223,
+      "completion_tokens": 109,
+      "llm_calls": 2
     },
     {
       "id": "users_05",
@@ -65,7 +79,10 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- Email công ty: **khaithanhang32@company.com** \n- Họ và tên: **Đặng Thanh Khải** \n- Mã nhân viên: **EMP032**"
+      "answer_head": "- Email công ty: khaithanhang32@company.com\n- Họ tên: Đặng Thanh Khải\n- Mã nhân viên: EMP032",
+      "prompt_tokens": 7222,
+      "completion_tokens": 71,
+      "llm_calls": 2
     },
     {
       "id": "users_06",
@@ -76,7 +93,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Bạn đang làm việc ở phòng **IT**. \n- Chức danh của bạn là **IT Support Specialist**."
+      "answer_head": "- Phòng ban: IT\n- Chức danh: IT Support Specialist",
+      "prompt_tokens": 7188,
+      "completion_tokens": 85,
+      "llm_calls": 2
     },
     {
       "id": "users_07",
@@ -87,7 +107,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Tài khoản của bạn **đang hiệu lực** (đang hoạt động)."
+      "answer_head": "- Có, tài khoản của bạn đang hoạt động.",
+      "prompt_tokens": 7174,
+      "completion_tokens": 35,
+      "llm_calls": 2
     },
     {
       "id": "users_08",
@@ -98,7 +121,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Ngày sinh: **25/09/1982** \n- Giới tính: **Nam** \n\nTheo dữ liệu hiện có trong hệ thống, thông tin này là đúng. Nếu có bất kỳ thay đổi nào cần cập nhật, vui lòng liên hệ bộ phận HR."
+      "answer_head": "Thông tin của bạn đang được lưu như sau:\n* Ngày sinh: 25/09/1982\n* Giới tính: Nam",
+      "prompt_tokens": 7201,
+      "completion_tokens": 61,
+      "llm_calls": 2
     },
     {
       "id": "users_10",
@@ -109,10 +135,13 @@
       "n_facts": 3,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- **Ca làm việc:** Giờ hành chính (Thứ Hai – Thứ Sáu) \n- **Phòng ban:** IT \n- **Mã nhân viên:** EMP032",
+      "answer_head": "- Ca làm việc: Giờ hành chính (T2-T6)\n- Phòng ban: IT\n- Mã nhân viên: EMP032",
       "missed": [
         "it support specialist"
-      ]
+      ],
+      "prompt_tokens": 7216,
+      "completion_tokens": 111,
+      "llm_calls": 2
     },
     {
       "id": "attendances_01",
@@ -123,7 +152,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu chấm công cho ngày hôm nay, vì chưa có bản ghi nào về thời gian check‑in và check‑out. \n- Bạn có thể kiểm tra lại trên hệ thống chấm công hoặc liên hệ bộ phận HR để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu chấm công của bạn cho ngày hôm nay. Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13825,
+      "completion_tokens": 171,
+      "llm_calls": 3
     },
     {
       "id": "attendances_02",
@@ -134,7 +166,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Tháng này bạn đã **đi muộn 0 lần**."
+      "answer_head": "- Số lần đi muộn của bạn trong tháng 8/2026 là: 0 lần.",
+      "prompt_tokens": 13831,
+      "completion_tokens": 166,
+      "llm_calls": 3
     },
     {
       "id": "attendances_03",
@@ -145,7 +180,10 @@
       "n_facts": 9,
       "n_hit": 9,
       "error": null,
-      "answer_head": "**Thống kê số lần đi muộn và về sớm của bạn trong năm hiện tại**\n\n| Tháng | Số lần đi muộn | Số lần về sớm |\n|-------|----------------|---------------|\n| 1 | 1 lần | 1 lần |\n| 2 | 3 lần | 3 lần |\n| 3 • | 3 lần | 2 lần |\n| 4 | 0 lần | 1 lần |\n| 5 | 0 lần | 2 lần |\n| 6 | 0 lần | 1 lần |\n| 7 | 1 lần | 2 lần |\n| 8 | 0 lần | 1 lần |\n\n- Dữ liệu hiện chỉ có đến tháng 8/2024; các tháng 9‑12 chưa có thông tin ghi nhận. \n- Nếu bạn cần thống kê cho các tháng còn lại, vui lòng chờ cập nhật hoặc liên hệ bộ phận HR để kiểm tra chi tiết."
+      "answer_head": "Thống kê đi muộn và về sớm của bạn trong năm 2026 như sau:\n\n* Tháng 1: Đi muộn 1 lần, về sớm 1 lần.\n* Tháng 2: Đi muộn 3 lần, về sớm 3 lần.\n* Tháng 3: Đi muộn 3 lần, về sớm 2 lần.\n* Tháng 4: Đi muộn 0 lần, về sớm 1 lần.\n* Tháng 5: Đi muộn 0 lần, về sớm 2 lần.\n* Tháng 6: Đi muộn 0 lần, về sớm 1 lần.\n* Tháng 7: Đi muộn 1 lần, về sớm 2 lần.\n* Tháng 8: Đi muộn 0 lần, về sớm 1 lần.",
+      "prompt_tokens": 7492,
+      "completion_tokens": 245,
+      "llm_calls": 2
     },
     {
       "id": "attendances_04",
@@ -156,7 +194,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu chấm công của bạn cho tháng này và tháng trước trong hệ thống. \n- Vì không có thông tin về thời gian vào làm, nên không thể so sánh bạn đi muộn nhiều hơn hay ít hơn. \n- Bạn có thể kiểm tra lại trong phần **Bảng chấm công** hoặc liên hệ bộ phận HR để được hỗ trợ cập nhật dữ liệu."
+      "answer_head": "- Số lần đi muộn tháng này: 0\n- Số lần đi muộn tháng trước: 0\n- Chênh lệch: 0\n- Kết luận: Số lần đi muộn của bạn không thay đổi so với tháng trước.",
+      "prompt_tokens": 7212,
+      "completion_tokens": 386,
+      "llm_calls": 2
     },
     {
       "id": "attendances_05",
@@ -167,7 +208,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- **Tổng số giờ làm việc thực tế của bạn trong tuần này:** **0 giờ**."
+      "answer_head": "- Tổng số giờ làm việc thực tế của bạn trong tuần này là: 0 giờ.",
+      "prompt_tokens": 7187,
+      "completion_tokens": 141,
+      "llm_calls": 2
     },
     {
       "id": "attendances_06",
@@ -178,7 +222,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu chấm công của bạn trong tháng này, vì vậy không thể xác định được những ngày nào bạn bị tính vắng không phép. \n- Theo quy định nội bộ (Điều 5 – Quản lý chấm công), việc ghi nhận vắng không phép sẽ được cập nhật trong bảng chấm công và thông báo qua hệ thống HR. \n- Để biết chi tiết, bạn có thể: \n 1. Kiểm tra lại trong hệ thống HR vào cuối tháng để xem bản ghi chấm công. \n 2. Liên hệ trực tiếp với bộ phận Nhân sự để được hỗ trợ và cung cấp bản sao bảng chấm công của tháng hiện tại."
+      "answer_head": "- Hiện chưa có dữ liệu chấm công của bạn trong tháng này.\n- Vui lòng liên hệ bộ phận HR để được kiểm tra và hỗ trợ chi tiết.",
+      "prompt_tokens": 13815,
+      "completion_tokens": 285,
+      "llm_calls": 3
     },
     {
       "id": "attendances_07",
@@ -189,21 +236,28 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Tháng 2 (tháng Hai) trong năm nay bạn đã đi muộn **3 lần**. \n- Hiện hệ thống chưa có dữ liệu về số lần đi muộn của các tháng khác, vì vậy không thể so sánh để xác định tháng nào có số lần đi muộn cao nhất trong toàn năm. \n\n**Bạn có thể:** \n- Kiểm tra lại bảng chấm công hoặc liên hệ bộ phận HR để cập nhật dữ liệu các tháng còn lại."
+      "answer_head": "- Tháng 2: đi muộn 3 lần.",
+      "prompt_tokens": 7190,
+      "completion_tokens": 75,
+      "llm_calls": 2
     },
     {
       "id": "attendances_08",
       "question": "Cho tôi xem lịch sử chấm công 10 ngày gần nhất của tôi?",
       "sql_ok": true,
-      "fact_recall": 0.9667,
+      "fact_recall": 0.9333,
       "answer_ok": false,
       "n_facts": 30,
-      "n_hit": 29,
+      "n_hit": 28,
       "error": null,
-      "answer_head": "**Lịch sử chấm công 10 ngày gần nhất của bạn**\n\n- **31/08/2026** – Vào: 07:13:11, Ra: 18:12:11, Trạng thái: Đủ giờ làm \n- **28/08/2026** – Vào: 07:34:30, Ra: 18:22:23, Trạng thái: Đủ giờ làm \n- **27/08/2026** – Vào: 07:49:26, Ra: 17:51:05, Trạng thái: Đủ giờ làm \n- **26/08/2026** – Vào: 07:56:57, Ra: 17:43:01, Trạng thái: Đủ giờ làm \n- **25/08/2026** – Vào: 07:53:11, Ra: 18:01:06, Trạng thái: Đủ giờ làm \n- **24/08/2026** – Vào: 07:52:18, Ra: 18:22:08, Trạng thái: Đủ giờ làm \n- **21/08/2026** – Vào: 07:26:10, Ra: 17:49:36, Trạng thái: Đủ giờ làm \n- **20/08/2026** – Vào: 07:51:09, Ra: 18:13:55, Trạng thái: Đủ giờ làm \n- **19/08/2026** – Không có giờ vào/ra, Trạng thái: Vắng không lý do (dữ liệu) \n- **18/08/2026** – Vào: 07:55:05, Ra: 17:48:24, Trạng thái: Đủ giờ làm \n\n*Ghi chú:* \n- “Đủ giờ làm” (status **SUFFICIENT**) nghĩa là bạn đã hoàn thành đủ thời gian làm việc theo ca. \n- “Vắng không lý do” (status **dữ liệu**) là ngày bạn không chấm công và chưa có lý do được ghi nhận. \n\nNếu cần chi tiết thêm (ví dụ: lý do vắng, xác nhận của quản lý), vui lòng liên hệ bộ phận HR.",
+      "answer_head": "Dưới đây là lịch sử chấm công 10 ngày gần nhất của bạn:\n\n* 31/08/2026: Vào 07:13:11, Ra 18:12:11 - Đủ công (10.98 giờ)\n* 28/08/2026: Vào 07:34:30, Ra 18:22:23 - Đủ công (10.80 giờ)\n* 27/08/2026: Vào 07:49:26, Ra 17:51:05 - Đủ công (10.03 giờ)\n* 26/08/2026: Vào 07:56:57, Ra 17:43:01 - Đủ công (9.77 giờ)\n* 25/08/2026: Vào 07:53:11, Ra 18:01:06 - Đủ công (10.13 giờ)\n* 24/08/2026: Vào 07:52:18, Ra 18:22:08 - Đủ công (10.50 giờ)\n* 21/08/2026: Vào 07:26:10, Ra 17:49:36 - Đủ công (10.39 giờ)\n* 20/08/2026: Vào 07:51:09, Ra 18:13:55 - Đủ công (10.38 giờ)\n* 19/08/2026: Vắng mặt không phép\n* 18/08/2026: Vào 07:55:05, Ra 17:48:24 - Đủ công (9.89 giờ)",
       "missed": [
+        "sufficient",
         "unexcused_absence"
-      ]
+      ],
+      "prompt_tokens": 8006,
+      "completion_tokens": 566,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_01",
@@ -214,7 +268,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Năm nay tôi đã làm **1 346,22 giờ**. \n- Tổng số ngày công của tôi là **157 ngày**."
+      "answer_head": "- Tổng số giờ làm: 1346.22 giờ\n- Tổng số ngày công: 157.00 ngày",
+      "prompt_tokens": 7207,
+      "completion_tokens": 114,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_02",
@@ -225,7 +282,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về các lần đi muộn của bạn trong tháng này. \n- Vì không có bản ghi nào, mình không thể tính tổng số phút bạn đã đi muộn. \n- Bạn có thể kiểm tra lại trong hệ thống chấm công hoặc liên hệ bộ phận HR để được hỗ trợ chi tiết."
+      "answer_head": "- Số lần đi muộn: 0 lần.\n- Tổng số phút đi muộn: 0 phút.",
+      "prompt_tokens": 7206,
+      "completion_tokens": 94,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_03",
@@ -236,7 +296,10 @@
       "n_facts": 22,
       "n_hit": 22,
       "error": null,
-      "answer_head": "- Tháng 1: 20.00 ngày công, 174.80 giờ làm \n- Tháng 2: 15.00 ngày công, 123.07 giờ làm \n- Tháng 3: 21.50 ngày công, 180.42 giờ làm \n- Tháng 4: 18.00 ngày công, 155.38 giờ làm \n- Tháng 5: 20.00 ngày công, 174.35 giờ làm \n- Tháng 6: 20.50 ngày công, 175.85 giờ làm \n- Tháng 7: 22.00 ngày công, 189.94 giờ làm \n- Tháng 8: 20.00 ngày công, 172.41 giờ làm"
+      "answer_head": "Chi tiết giờ làm và ngày công của bạn trong năm 2026:\n\n* Tháng 1: 174.80 giờ - 20.00 ngày công\n* Tháng 2: 123.07 giờ - 15.00 ngày công\n* Tháng 3: 180.42 giờ - 21.50 ngày công\n* Tháng 4: 155.38 giờ - 18.00 ngày công\n* Tháng 5: 174.35 giờ - 20.00 ngày công\n* Tháng 6: 175.85 giờ - 20.50 ngày công\n* Tháng 7: 189.94 giờ - 22.00 ngày công\n* Tháng 8: 172.41 giờ - 20.00 ngày công",
+      "prompt_tokens": 7574,
+      "completion_tokens": 275,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_04",
@@ -247,21 +310,24 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Năm nay tôi đã làm **1 346,22 giờ**. \n- Năm ngoái tôi chưa có giờ làm được ghi nhận (0 giờ). \n- Vì vậy, so với năm ngoái, tổng giờ làm của tôi **tăng 1 346,22 giờ**."
+      "answer_head": "- Tổng giờ làm năm nay: 1346.22 giờ.\n- Tổng giờ làm năm ngoái: 0 giờ.\n- Kết quả: Tăng 1346.22 giờ.",
+      "prompt_tokens": 7230,
+      "completion_tokens": 242,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_05",
       "question": "Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?",
       "sql_ok": true,
-      "fact_recall": 0.5,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 2,
-      "n_hit": 1,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các đơn nghỉ không lương của bạn trong năm nay, vì hệ thống không ghi nhận bất kỳ yêu cầu nghỉ nào. \n- Do không có thông tin về các ngày nghỉ không lương, nên không thể xác định tháng nào bạn đã nghỉ không lương nhiều nhất. \n- Để biết chi tiết hoặc nộp yêu cầu nghỉ không lương, bạn nên liên hệ trực tiếp với bộ phận Nhân sự (HR) hoặc truy cập vào hệ thống quản lý nghỉ phép để tạo/kiểm tra các đơn nghỉ.",
-      "missed": [
-        "1.0"
-      ]
+      "answer_head": "- Tháng 1: 0.00 ngày.\n- Đây là tháng duy nhất hiện có dữ liệu, nên số ngày nghỉ không lương nhiều nhất của bạn là 0.00 ngày vào tháng 1.",
+      "prompt_tokens": 7196,
+      "completion_tokens": 115,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_06",
@@ -272,7 +338,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- **Ngày nghỉ phép trong Quý 1 năm nay:** 0 ngày \n- **Ngày vắng mặt (không có lý do) trong Quý 1 năm nay:** 0 ngày \n\nHiện chưa có dữ liệu chi tiết hơn (ví dụ: ngày cụ thể, loại nghỉ). Nếu bạn cần thông tin chi tiết hoặc có thắc mắc khác, vui lòng liên hệ bộ phận HR."
+      "answer_head": "- Số ngày nghỉ phép: 0.00 ngày.\n- Số ngày vắng mặt: 0.00 ngày.",
+      "prompt_tokens": 7212,
+      "completion_tokens": 138,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_07",
@@ -283,7 +352,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- **Giờ OT thực tế trong tháng này:** 0 giờ \n- **Giờ OT được trả trong tháng này:** 0 giờ \n- **Chênh lệch giữa hai số này:** 0 giờ \n\n(Theo dữ liệu hiện có, không có sự chênh lệch nào.)"
+      "answer_head": "- Chênh lệch giờ OT của bạn trong tháng này là: 0.",
+      "prompt_tokens": 7203,
+      "completion_tokens": 228,
+      "llm_calls": 2
     },
     {
       "id": "monthly_timesheets_08",
@@ -294,7 +366,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về bảng chấm công của bạn trong năm này, vì vậy không thể xác định được những tháng nào bạn đã đi muộn trên 3 lần. \n- Để biết chi tiết, vui lòng liên hệ phòng Nhân sự hoặc truy cập hệ thống chấm công để kiểm tra lại."
+      "answer_head": "- Hiện chưa có dữ liệu về bảng chấm công của bạn.\n- Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra chi tiết.",
+      "prompt_tokens": 13820,
+      "completion_tokens": 185,
+      "llm_calls": 3
     },
     {
       "id": "monthly_timesheets_10",
@@ -305,7 +380,10 @@
       "n_facts": 10,
       "n_hit": 10,
       "error": null,
-      "answer_head": "- **Tháng 8/2026** \n - Ngày làm việc thực tế: 20 ngày \n - Số giờ làm việc thực tế: 172,41 giờ \n - Số lần đi muộn: 0 lần (tổng thời gian trễ: 0 phút)\n\n- **Tháng 7/2026** \n - Ngày làm việc thực tế: 22 ngày \n - Số giờ làm việc thực tế: 189,94 giờ \n - Số lần đi muộn: 1 lần (tổng thời gian trễ: 42 phút) \n - **Tháng này là tháng bạn đi muộn nhiều nhất trong 3 tháng gần nhất.**\n\n- **Tháng 6/2026** \n - Ngày làm việc thực tế: 20,5 ngày \n - Số giờ làm việc thực tế: 175,85 giờ \n - Số lần đi muộn: 0 lần (tổng thời gian trễ: 0 phút)"
+      "answer_head": "Chi tiết bảng công 3 tháng gần nhất của bạn:\n\n* **Tháng 08/2026:** Làm việc 20.00 ngày (172.41 giờ), nghỉ 1.00 ngày, không đi muộn. Trạng thái: Đã khóa.\n* **Tháng 07/2026:** Làm việc 22.00 ngày (189.94 giờ), không nghỉ, đi muộn 1 lần (42 phút). Trạng thái: Đã khóa.\n* **Tháng 06/2026:** Làm việc 20.50 ngày (175.85 giờ), nghỉ 1.00 ngày, không đi muộn. Trạng thái: Đã khóa.\n\n**Tháng đi muộn nhiều nhất:** Tháng 07/2026 (42 phút).",
+      "prompt_tokens": 7451,
+      "completion_tokens": 298,
+      "llm_calls": 2
     },
     {
       "id": "leave_requests_01",
@@ -316,7 +394,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Năm nay, bạn đã nghỉ phép tổng cộng **0 ngày**. \n\n(Hiện chưa có dữ liệu chi tiết về các ngày nghỉ phép cụ thể; nếu cần xem lịch sử hoặc yêu cầu cập nhật, vui lòng liên hệ phòng Nhân sự.)"
+      "answer_head": "- Tổng số ngày nghỉ phép của bạn trong năm nay là: 0 ngày.",
+      "prompt_tokens": 7183,
+      "completion_tokens": 99,
+      "llm_calls": 2
     },
     {
       "id": "leave_requests_02",
@@ -327,12 +408,15 @@
       "n_facts": 4,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Đơn xin nghỉ phép gần nhất của bạn hiện đang ở trạng thái **đang chờ duyệt**. \n\n*(Theo quy định nội bộ, trạng thái “đang chờ duyệt” có nghĩa là đơn của bạn đang được bộ phận nhân sự xem xét và sẽ được phê duyệt hoặc từ chối trong thời gian quy định.*)",
+      "answer_head": "- Trạng thái đơn xin nghỉ phép gần nhất của bạn: Đang chờ duyệt.",
       "missed": [
         "2026-07-03",
         "2026-07-05",
         "nghi ngoi phuc hoi suc khoe"
-      ]
+      ],
+      "prompt_tokens": 7232,
+      "completion_tokens": 76,
+      "llm_calls": 2
     },
     {
       "id": "leave_requests_03",
@@ -343,7 +427,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- **Đang chờ duyệt:** 1 đơn \n- **Đã duyệt:** 0 đơn \n- **Bị từ chối:** 0 đơn \n\n(Hiện chỉ có 1 đơn nghỉ phép của bạn và trạng thái đang chờ duyệt.)"
+      "answer_head": "Thống kê đơn nghỉ phép của bạn như sau:\n* Đang chờ duyệt: 1 đơn\n* Đã duyệt: hiện chưa có dữ liệu\n* Bị từ chối: hiện chưa có dữ liệu",
+      "prompt_tokens": 13903,
+      "completion_tokens": 182,
+      "llm_calls": 3
     },
     {
       "id": "leave_requests_04",
@@ -354,7 +441,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về các đơn nghỉ phép của bạn trong năm nay, vì hệ thống không ghi nhận bất kỳ yêu cầu nghỉ phép nào. \n- Do không có thông tin về số ngày nghỉ phép đã được duyệt, nên không thể xác định tháng nào bạn đã nghỉ phép nhiều nhất. \n- Nếu bạn đã nộp đơn nghỉ phép nhưng chưa thấy ở đây, vui lòng liên hệ phòng Nhân sự để kiểm tra lại hoặc cập nhật thông tin. \n\n*(Theo quy định nội bộ, mọi yêu cầu nghỉ phép cần được đăng ký và phê duyệt qua hệ thống để được ghi nhận. Khi có dữ liệu, bạn có thể xem báo cáo tổng hợp tháng để biết tháng nghỉ nhiều nhất.)*"
+      "answer_head": "- Hiện chỉ có dữ liệu của tháng 01/2026 với số ngày nghỉ phép là 0.00.\n- Do đó, chưa có dữ liệu về tháng nghỉ phép nhiều nhất trong năm.",
+      "prompt_tokens": 13842,
+      "completion_tokens": 214,
+      "llm_calls": 3
     },
     {
       "id": "leave_requests_05",
@@ -365,7 +455,10 @@
       "n_facts": 4,
       "n_hit": 4,
       "error": null,
-      "answer_head": "- **Ngày nghỉ:** 03/07/2026 – 05/07/2026 \n **Lý do:** Nghỉ ngơi phục hồi sức khỏe \n **Trạng thái:** đang chờ duyệt \n\nHiện chỉ có 1 đơn xin nghỉ của bạn trong hệ thống, vì vậy không có thêm các đơn khác để liệt kê. Nếu bạn cần xem chi tiết hoặc muốn nộp thêm đơn, vui lòng liên hệ bộ phận HR."
+      "answer_head": "Bạn có 1 đơn xin nghỉ:\n* Từ ngày 03/07/2026 đến 05/07/2026: Nghỉ ngơi phục hồi sức khỏe (đang chờ duyệt).",
+      "prompt_tokens": 7236,
+      "completion_tokens": 109,
+      "llm_calls": 2
     },
     {
       "id": "leave_requests_06",
@@ -376,7 +469,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các đơn xin nghỉ của bạn, vì vậy không có đơn nào bị từ chối và cũng không có lý do từ chối để cung cấp. \n- Nếu bạn đã nộp đơn và chưa thấy phản hồi, vui lòng liên hệ bộ phận HR để kiểm tra tình trạng và nhận thông tin chi tiết."
+      "answer_head": "- Hiện chưa có dữ liệu về đơn xin nghỉ của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13834,
+      "completion_tokens": 175,
+      "llm_calls": 3
     },
     {
       "id": "leave_requests_07",
@@ -387,7 +483,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- **Kết quả:** Số ngày nghỉ phép trong quý hiện tại và quý trước đều bằng 0, nên bạn không nghỉ nhiều hơn hay ít hơn; hai quý có cùng mức nghỉ phép."
+      "answer_head": "- Số ngày nghỉ quý này: 0 ngày.\n- Số ngày nghỉ quý trước: 0 ngày.\n- Kết luận: Số ngày nghỉ của bạn không thay đổi.",
+      "prompt_tokens": 7208,
+      "completion_tokens": 397,
+      "llm_calls": 2
     },
     {
       "id": "leave_requests_08",
@@ -398,22 +497,24 @@
       "n_facts": 4,
       "n_hit": 4,
       "error": null,
-      "answer_head": "- Hiện tại bạn có **đơn xin nghỉ** từ **03/07/2026** đến **05/07/2026** (tổng cộng 1 ngày nghỉ có trả lương) với lý do **“Nghỉ ngơi phục hồi sức khỏe”**. \n- Trạng thái của đơn là **đang chờ duyệt**. \n\n**Theo quy định nội bộ** (Điều 5.2 – Quy trình phê duyệt nghỉ phép): \n- Đơn nghỉ sẽ được quản lý trực tiếp xem xét và phê duyệt trong vòng 2 ngày làm việc. \n- Khi được phê duyệt, trạng thái sẽ chuyển thành **đã duyệt**; nếu không được chấp nhận, sẽ chuyển thành **bị từ chối** và bạn sẽ nhận được thông báo qua hệ thống.\n\nNếu bạn muốn biết thêm chi tiết về tiến độ duyệt hoặc muốn hủy/điều chỉnh đơn, vui lòng liên hệ bộ phận HR hoặc quản lý trực tiếp của bạn."
+      "answer_head": "- Có, bạn có 01 đơn xin nghỉ đang chờ duyệt.\n- Thời gian nghỉ: từ 03/07/2026 đến 05/07/2026.\n- Lý do: Nghỉ ngơi phục hồi sức khỏe.",
+      "prompt_tokens": 7228,
+      "completion_tokens": 127,
+      "llm_calls": 2
     },
     {
       "id": "leave_requests_10",
       "question": "Ai là người duyệt đơn nghỉ phép của tôi, đơn gần nhất ai duyệt?",
       "sql_ok": true,
-      "fact_recall": 0.0,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 2,
-      "n_hit": 0,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các đơn nghỉ phép của bạn, vì vậy không thể xác định được người đã duyệt (hoặc đang duyệt) đơn gần nhất. \n- Theo quy định nội bộ (Điều 3.2 “Quy trình phê duyệt nghỉ phép”), đơn nghỉ phép sẽ được người quản lý trực tiếp của bạn hoặc trưởng bộ phận phê duyệt. \n- Để biết cụ thể người đã duyệt đơn của bạn, vui lòng liên hệ phòng Nhân sự hoặc truy cập hệ thống HR để kiểm tra lại lịch sử đơn nghỉ phép.",
-      "missed": [
-        "2026-07-03",
-        "pending"
-      ]
+      "answer_head": "- Đơn nghỉ phép gần nhất của bạn (từ 03/07/2026 đến 05/07/2026) hiện đang trong trạng thái chờ duyệt.\n- Hiện chưa có dữ liệu về người duyệt cho đơn này.",
+      "prompt_tokens": 7281,
+      "completion_tokens": 130,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_01",
@@ -424,7 +525,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Năm nay bạn đã làm thêm (OT) tổng cộng **16.6 giờ**."
+      "answer_head": "- Tổng số giờ làm thêm (OT) của bạn trong năm nay là: 16.6 giờ.",
+      "prompt_tokens": 7205,
+      "completion_tokens": 125,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_02",
@@ -435,7 +539,10 @@
       "n_facts": 9,
       "n_hit": 9,
       "error": null,
-      "answer_head": "**Thống kê tổng giờ làm thêm (OT) của bạn trong năm nay:**\n\n- Tháng 1: 1.12 giờ \n- Tháng 3: 2.13 giờ \n- Tháng 4: 2.52 giờ \n- Tháng 5: 8.32 giờ \n- Tháng 6: 2.52 giờ \n\n*Các tháng khác (2, 7‑12) hiện chưa có dữ liệu ghi nhận giờ OT.*"
+      "answer_head": "Tổng giờ làm thêm (OT) của bạn trong năm nay như sau:\n\n* Tháng 1: 1.1166666666666667 giờ\n* Tháng 3: 2.1333333333333333 giờ\n* Tháng 4: 2.5166666666666667 giờ\n* Tháng 5: 8.3166666666666667 giờ\n* Tháng 6: 2.5166666666666667 giờ",
+      "prompt_tokens": 7352,
+      "completion_tokens": 268,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_03",
@@ -446,7 +553,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Theo dữ liệu hiện có, tháng **5** (tháng Năm) là tháng bạn đã làm thêm giờ nhiều nhất, với tổng **8,32 giờ**. \n- Hiện chỉ có thông tin về tháng 5; nếu bạn muốn biết các tháng khác, vui lòng liên hệ bộ phận HR để cập nhật dữ liệu."
+      "answer_head": "- Tháng có số giờ OT nhiều nhất của bạn là tháng 5 với 8.3166666666666667 giờ.",
+      "prompt_tokens": 7205,
+      "completion_tokens": 169,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_04",
@@ -457,7 +567,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Trong quý này bạn đã làm thêm giờ **0 giờ**, và quý trước cũng là **0 giờ**. \n- Sự chênh lệch là **0 giờ**, nên không có sự tăng hay giảm (theo dữ liệu hiện có)."
+      "answer_head": "- Giờ OT quý này: 0\n- Giờ OT quý trước: 0\n- Kết luận: Không thay đổi.",
+      "prompt_tokens": 7206,
+      "completion_tokens": 416,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_05",
@@ -468,7 +581,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Giờ làm thêm vào ban đêm: **0 giờ** \n- Giờ làm thêm vào cuối tuần: **4.62 giờ** (tổng cộng trong năm) \n- Giờ làm thêm vào ngày lễ: **0 giờ** \n\nNếu bạn cần chi tiết hơn (ví dụ: ngày cụ thể hoặc xác nhận thời gian tính đến ngày nào), vui lòng liên hệ phòng Nhân sự."
+      "answer_head": "Số giờ làm thêm (OT) của bạn trong năm nay như sau:\n* Ban đêm: 0 giờ\n* Cuối tuần: 4.62 giờ\n* Ngày lễ: 0 giờ",
+      "prompt_tokens": 7233,
+      "completion_tokens": 263,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_06",
@@ -479,25 +595,31 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Đơn OT đang chờ duyệt** \n - **Mã đơn:** 38df1918-22e7-49b3-8fa0-6f985907741d \n - **Ngày/giờ đề xuất:** 22/06/2026, từ 18:36:33 đến 21:15:33 \n - **Lý do:** “Chăm sóc khách hàng cao điểm” \n - **Trạng thái:** đang chờ duyệt \n\n- **Đơn OT bị từ chối** \n - Hiện không có đơn OT nào của bạn bị từ chối. \n\n**Ghi chú theo quy định nội bộ** \n- Theo Điều 3, Điều 4 của “Quy chế quản lý làm thêm giờ”, đơn OT sẽ được duyệt hoặc từ chối trong vòng 3 ngày làm việc kể từ ngày nộp. Trạng thái “đang chờ duyệt” nghĩa là đơn chưa được người quản lý xem xét; nếu bị từ chối, hệ thống sẽ ghi rõ lý do từ chối trong mục “lý do từ chối”. \n\nNếu bạn cần biết thêm chi tiết hoặc muốn cập nhật trạng thái, vui lòng liên hệ bộ phận HR."
+      "answer_head": "- Đơn đang chờ duyệt: Đơn ngày 22/06/2026 (từ 18:36:33 đến 21:15:33) với lý do \"Chăm sóc khách hàng cao điểm\".\n- Đơn bị từ chối: Hiện không có đơn nào bị từ chối.",
+      "prompt_tokens": 7287,
+      "completion_tokens": 163,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_07",
       "question": "Liệt kê 10 lần OT gần nhất của tôi, mỗi lần mấy giờ và lý do gì?",
       "sql_ok": true,
-      "fact_recall": 0.6296,
+      "fact_recall": 0.7407,
       "answer_ok": false,
       "n_facts": 27,
-      "n_hit": 17,
+      "n_hit": 20,
       "error": null,
-      "answer_head": "- **06/06/2026** – 2.5166666666666667 giờ: Triển khai tính năng gấp \n- **27/05/2026** – 2.6000000000000000 giờ: Hỗ trợ giao hàng cuối quý \n- **19/05/2026** – 1.1000000000000000 giờ: Hoàn thành báo cáo cuối tháng \n- **03/05/2026** – 4.6166666666666667 giờ: Kiểm kê kho \n- **08/04/2026** – 2.5166666666666667 giờ: Quyết toán tài chính \n- **09/03/2026** – 2.1333333333333333 giờ: Hoàn thành báo cáo cuối tháng \n- **06/01/2026** – 1.1166666666666667 giờ: Hỗ trợ giao hàng cuối quý \n\n> **Lưu ý:** Hiện chỉ có 7 lần OT được ghi nhận, nên không thể liệt kê đủ 10 lần. Nếu bạn cần thêm thông tin hoặc có các OT chưa được cập nhật, vui lòng liên hệ bộ phận HR.",
+      "answer_head": "Dưới đây là danh sách các lần làm thêm giờ (OT) gần nhất của bạn:\n\n* 22/06/2026: Chưa có số giờ - Lý do: Chăm sóc khách hàng cao điểm (Đang chờ duyệt)\n* 02/06/2026: 2.5166666666666667 giờ - Lý do: Triển khai tính năng gấp (Đã duyệt)\n* 27/05/2026: 2.6 giờ - Lý do: Hỗ trợ giao hàng cuối quý (Đã duyệt)\n* 19/05/2026: 1.1 giờ - Lý do: Hoàn thành báo cáo cuối tháng (Đã duyệt)\n* 03/05/2026: 4.6166666666666667 giờ - Lý do: Kiểm kê kho (Đã duyệt)\n* 08/04/2026: 2.5166666666666667 giờ - Lý do: Quyết toán tài chính (Đã duyệt)\n* 09/03/2026: 2.1333333333333333 giờ - Lý do: Hoàn thành báo cáo cuối tháng (Đã duyệt)\n* 06/01/2026: 1.1166666666666667 giờ - Lý do: Hỗ trợ giao hàng cuối quý (Đã duyệt)",
       "missed": [
-        "2026-06-22",
-        "cham soc khach hang cao điem",
         "2026-06-02",
-        "2026-06-02",
-        "2026-05-27"
-      ]
+        "2026-05-27",
+        "2026-05-19",
+        "2026-05-03",
+        "2026-04-08"
+      ],
+      "prompt_tokens": 7655,
+      "completion_tokens": 448,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_08",
@@ -508,7 +630,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Năm nay bạn đã có **7** đơn làm thêm giờ được duyệt. \n- Trung bình mỗi đơn khoảng **2,37 giờ**. \n\n(Thông tin dựa trên dữ liệu hiện có của bạn.)"
+      "answer_head": "- Tổng số giờ OT được duyệt: 7 giờ.\n- Trung bình mỗi đơn: 2.37 giờ.",
+      "prompt_tokens": 7224,
+      "completion_tokens": 142,
+      "llm_calls": 2
     },
     {
       "id": "overtime_records_10",
@@ -519,48 +644,65 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- **Tuần có giờ OT cao nhất:** tuần bắt đầu **27/04/2026** \n- **Tổng giờ OT trong tuần đó:** **4,62 giờ** \n\n*Lưu ý:* Hệ thống hiện chỉ có dữ liệu OT cho tuần này, vì vậy đây là tuần có giờ OT nhiều nhất trong năm. Nếu bạn muốn xem chi tiết các tuần khác, vui lòng liên hệ bộ phận HR để cập nhật thêm thông tin."
+      "answer_head": "- Tuần có số giờ OT nhiều nhất của bạn là tuần ngày 2026-04-27 với 4.6166666666666667 giờ.",
+      "prompt_tokens": 7215,
+      "completion_tokens": 190,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_01",
       "question": "Lương tháng này của tôi thực lĩnh bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 0.25,
+      "fact_recall": 0.75,
       "answer_ok": false,
       "n_facts": 4,
-      "n_hit": 1,
+      "n_hit": 3,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu lương tháng này cho bạn trong hệ thống. \n- Để biết số tiền thực lĩnh, vui lòng liên hệ phòng Nhân sự hoặc bộ phận kế toán để được cung cấp chi tiết. \n\n*(Nếu có quy định nội bộ về thời gian phát hành bảng lương, bạn có thể tham khảo mục “Quy trình trả lương” trong tài liệu nội bộ để biết ngày trả lương cụ thể.)*",
+      "answer_head": "- Lương thực lĩnh tháng 8/2026 của bạn là: 23,287,940.48 VNĐ.\n- Trạng thái: Đã thanh toán.",
       "missed": [
-        "8.0",
-        "2026.0",
         "23287940.48"
-      ]
+      ],
+      "prompt_tokens": 7213,
+      "completion_tokens": 110,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_02",
       "question": "Tổng thu nhập thực lĩnh cả năm nay của tôi là bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.0,
+      "answer_ok": false,
       "n_facts": 1,
-      "n_hit": 1,
+      "n_hit": 0,
       "error": null,
-      "answer_head": "- Tổng thu nhập thực lĩnh của bạn trong năm nay là **191 652 229,35 VND**."
+      "answer_head": "- Tổng thu nhập thực lĩnh của bạn trong năm nay là: 191,652,229.35 VNĐ.",
+      "missed": [
+        "191652229.35"
+      ],
+      "prompt_tokens": 7198,
+      "completion_tokens": 91,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_03",
       "question": "Liệt kê lương từng tháng trong năm nay của tôi?",
       "sql_ok": true,
-      "fact_recall": 0.9474,
+      "fact_recall": 0.4737,
       "answer_ok": false,
       "n_facts": 19,
-      "n_hit": 18,
+      "n_hit": 9,
       "error": null,
-      "answer_head": "- **Tháng 1/2026**: 23 534 440,48 ₫ (đã thanh toán) \n- **Tháng 2/2026**: 24 461 750,00 ₫ (đã thanh toán) \n- **Tháng 3/2026**: 24 349 704,56 ₫ (đã thanh toán) \n- **Tháng 4/2026**: 22 579 106,25 ₫ (đã thanh toán) \n- **Tháng 5/2026**: 26 738 793,75 ₫ (đã thanh toán) \n- **Tháng 6/2026**: 23 310 482,96 ₫ (đã thanh toán) \n- **Tháng 7/2026**: 23 390 010,87 ₫ (đã thanh toán) \n- **Tháng 8/2026**: 23 287 940,48 ₫ (đã thanh toán) \n\n> **Lưu ý:** Hiện chưa có dữ liệu lương cho các tháng 9‑12/2026. Nếu cần thông tin chi tiết hơn, vui lòng liên hệ bộ phận Nhân sự.",
+      "answer_head": "Chi tiết lương thực nhận (Net pay) của bạn trong năm 2026:\n\n* Tháng 1: 23,534,440.48\n* Tháng 2: 24,461,750.00\n* Tháng 3: 24,349,704.56\n* Tháng 4: 22,579,106.25\n* Tháng 5: 26,738,793.75\n* Tháng 6: 23,310,482.96\n* Tháng 7: 23,390,010.87\n* Tháng 8: 23,287,940.48",
       "missed": [
-        "29000000.0"
-      ]
+        "29000000.0",
+        "23534440.48",
+        "paid",
+        "24461750.0",
+        "24349704.56"
+      ],
+      "prompt_tokens": 7674,
+      "completion_tokens": 257,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_04",
@@ -571,25 +713,34 @@
       "n_facts": 7,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu chi tiết về bảng lương tháng này của bạn, vì hệ thống chưa ghi nhận bất kỳ khoản thu nhập hay khấu trừ nào. \n- Để biết cụ thể các khoản khấu trừ (BHXH, BHYT, BHTN, thuế thu nhập cá nhân, các khoản vay, bảo hiểm, …) bạn vui lòng liên hệ phòng Nhân sự hoặc bộ phận kế toán để họ cung cấp bản sao bảng lương đã được duyệt. \n\n**Tham khảo quy định nội bộ (điều khoản về tiền lương và các khoản khấu trừ):** \n- Các khoản bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp được trừ theo tỷ lệ quy định của pháp luật và mức lương cơ bản. \n- Thuế thu nhập cá nhân được tính dựa trên thu nhập chịu thuế sau khi trừ các khoản bảo hiểm và giảm trừ gia cảnh. \n- Các khoản khấu trừ khác (ví dụ: vay nội bộ, đóng góp quỹ, phạt vi phạm) sẽ được ghi rõ trong hợp đồng hoặc quyết định nội bộ và phải có sự đồng ý của người lao động. \n\n**Hướng dẫn:** \n1. Gửi email hoặc gọi điện tới phòng Nhân sự (địa chỉ email: hr@company.com, số nội bộ: 1234). \n2. Yêu cầu cung cấp bản sao bảng lương tháng hiện tại và giải thích chi tiết từng mục khấu trừ. \n3. Nếu có thắc mắc về mức khấu trừ cụ thể, bạn có thể yêu cầu họ chỉ ra căn cứ pháp lý hoặc nội quy công ty tương ứng. \n\nNếu cần hỗ trợ thêm, hãy cho mình biết!",
+      "answer_head": "Chi tiết các khoản khấu trừ trong lương tháng 08/2026 của bạn như sau:\n\n* Khấu trừ bảo hiểm: 3,045,000.00\n* Khấu trừ thuế TNCN: 1,286,107.14\n* Khấu trừ khác: 0.00\n* **Tổng cộng khấu trừ:** 4,331,107.14",
       "missed": [
         "29000000.0",
         "27619047.62",
         "3045000.0",
         "1286107.14",
         "4331107.14"
-      ]
+      ],
+      "prompt_tokens": 7316,
+      "completion_tokens": 209,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_05",
       "question": "Tháng nào trong năm nay lương của tôi cao nhất, có phải do thưởng không?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.6667,
+      "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 3,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Hi Bạn, hiện tại hệ thống chỉ có dữ liệu tiền lương của **tháng 5** trong năm nay: \n - **Lương thực nhận:** 26 738 793,75 VND \n - **Thưởng:** 0 VND (không có khoản thưởng) \n\n- Vì chỉ có một tháng được ghi nhận, nên **tháng 5** là tháng có lương cao nhất trong dữ liệu hiện có. \n- Lương cao nhất **không phải do thưởng**, vì khoản thưởng bằng 0 và không có khoản “cổ thưởng” được áp dụng.\n\n> **Ghi chú:** Nếu bạn muốn so sánh với các tháng khác, vui lòng kiểm tra bảng lương của các tháng còn lại hoặc liên hệ bộ phận HR để cập nhật dữ liệu đầy đủ."
+      "answer_head": "- Tháng có lương cao nhất: Tháng 5/2026 với số tiền thực nhận là 26,738,793.75.\n- Lý do: Không phải do thưởng (số tiền thưởng là 0.00).",
+      "missed": [
+        "26738793.75"
+      ],
+      "prompt_tokens": 7237,
+      "completion_tokens": 132,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_06",
@@ -600,12 +751,15 @@
       "n_facts": 3,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu bảng lương của bạn cho tháng hiện tại và tháng trước, nên không thể xác định mức tăng hoặc giảm. \n- Để biết chi tiết mức lương và so sánh giữa các tháng, vui lòng liên hệ phòng Nhân sự (HR) hoặc truy cập hệ thống lương khi dữ liệu được cập nhật.",
+      "answer_head": "- Lương tháng này của bạn giảm 102.070,39 so với tháng trước.",
       "missed": [
         "23287940.48",
         "23390010.87",
         "-102070.39"
-      ]
+      ],
+      "prompt_tokens": 7239,
+      "completion_tokens": 252,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_07",
@@ -616,7 +770,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Tổng tiền thưởng và phụ cấp bạn nhận được trong năm nay: **0.00** (đơn vị tiền tệ)."
+      "answer_head": "- Tổng tiền thưởng: 0.00\n- Tổng phụ cấp: 0.00",
+      "prompt_tokens": 7202,
+      "completion_tokens": 102,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_08",
@@ -627,7 +784,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Thuế thu nhập cá nhân bạn đã đóng: **11.232.746,34 VND** \n- Bảo hiểm xã hội, y tế, thất nghiệp bạn đã đóng: **24.360.000,00 VND** \n\n(Thông tin dựa trên dữ liệu bảng lương của năm hiện tại.)"
+      "answer_head": "- Tổng tiền thuế TNCN: 11.232.746,34 VNĐ\n- Tổng tiền bảo hiểm: 24.360.000,00 VNĐ",
+      "prompt_tokens": 7218,
+      "completion_tokens": 127,
+      "llm_calls": 2
     },
     {
       "id": "payrolls_10",
@@ -638,10 +798,13 @@
       "n_facts": 2,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Trung bình mỗi tháng bạn thực lĩnh **23 956 528,67 ₫** (theo dữ liệu phiếu lương đã thanh toán trong năm hiện tại).",
+      "answer_head": "- Số tiền thực lĩnh trung bình mỗi tháng của bạn trong năm nay là: 23.956.528,67 VNĐ.",
       "missed": [
         "8.0"
-      ]
+      ],
+      "prompt_tokens": 7227,
+      "completion_tokens": 106,
+      "llm_calls": 2
     },
     {
       "id": "salaries_01",
@@ -652,7 +815,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Lương cơ bản hiện tại của tôi là **29.000.000 đồng**."
+      "answer_head": "- Lương cơ bản hiện tại của bạn là: 29.000.000 VNĐ.",
+      "prompt_tokens": 7187,
+      "completion_tokens": 62,
+      "llm_calls": 2
     },
     {
       "id": "salaries_02",
@@ -663,7 +829,10 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Mức lương hiện tại**: 29.000.000 VND/tháng \n - **Ngày bắt đầu**: 03/01/2026 \n - **Ngày kết thúc**: chưa có (đang hiệu lực) \n - **Số ngày làm việc trong tháng**: 22 ngày \n\nHiện tại chỉ có một bản ghi lương duy nhất, vì vậy không có lịch sử mức lương trước đây. Nếu bạn cần kiểm tra thêm các kỳ lương cũ hoặc có thắc mắc khác, vui lòng liên hệ bộ phận Nhân sự."
+      "answer_head": "- Mức lương hiện tại: 29.000.000 VNĐ\n- Chu kỳ trả lương: Hàng tháng\n- Ngày bắt đầu áp dụng: 03/01/2026\n- Trạng thái: Đang hiệu lực",
+      "prompt_tokens": 7244,
+      "completion_tokens": 132,
+      "llm_calls": 2
     },
     {
       "id": "salaries_03",
@@ -674,7 +843,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Lương hiện tại của bạn: **29 000 000 VND** \n- Lương trước đây: **0 VND** \n- Mức tăng so với lương trước: **29 000 000 VND** \n\n(Do dữ liệu hiện có cho thấy bạn chưa có mức lương trước đó, vì vậy mức tăng bằng toàn bộ lương hiện tại.)"
+      "answer_head": "- Lương hiện tại: 29.000.000\n- Mức tăng so với trước đây: 0.0",
+      "prompt_tokens": 7218,
+      "completion_tokens": 248,
+      "llm_calls": 2
     },
     {
       "id": "salaries_04",
@@ -685,10 +857,13 @@
       "n_facts": 1,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Kỳ trả lương của bạn là **hàng tháng**.",
+      "answer_head": "- Kỳ trả lương của bạn là: theo tháng.",
       "missed": [
         "monthly"
-      ]
+      ],
+      "prompt_tokens": 7180,
+      "completion_tokens": 48,
+      "llm_calls": 2
     },
     {
       "id": "salaries_05",
@@ -699,21 +874,24 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn có **22 ngày công chuẩn** để tính lương."
+      "answer_head": "- Số ngày công chuẩn của bạn là: 22 ngày.",
+      "prompt_tokens": 7185,
+      "completion_tokens": 51,
+      "llm_calls": 2
     },
     {
       "id": "salaries_06",
       "question": "Mức lương cao nhất tôi từng nhận là bao nhiêu, áp dụng từ khi nào?",
       "sql_ok": true,
-      "fact_recall": 0.5,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 2,
-      "n_hit": 1,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Mức lương cao nhất bạn từng nhận là **29 000 000 VND**. \n- Áp dụng kể từ ngày **3 tháng 1 năm 2026**.",
-      "missed": [
-        "2026-01-03"
-      ]
+      "answer_head": "- Mức lương cao nhất: 29.000.000\n- Ngày áp dụng: 03/01/2026",
+      "prompt_tokens": 7216,
+      "completion_tokens": 82,
+      "llm_calls": 2
     },
     {
       "id": "salaries_07",
@@ -724,7 +902,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Mức lương hiện tại của bạn có hiệu lực **từ ngày 03/01/2026** và **đang chưa có ngày kết thúc** (không thời hạn)."
+      "answer_head": "- Ngày bắt đầu hiệu lực: 03/01/2026\n- Ngày kết thúc hiệu lực: Không thời hạn (hiện đang hiệu lực)",
+      "prompt_tokens": 7204,
+      "completion_tokens": 79,
+      "llm_calls": 2
     },
     {
       "id": "salaries_08",
@@ -735,35 +916,48 @@
       "n_facts": 4,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Lương cơ bản:** 29 000 000 VND (được trả hàng tháng). \n- **Tài khoản ngân hàng nhận lương:** \n - Ngân hàng: **MB Bank** \n - Số tài khoản: **97042648437257** \n - Chủ tài khoản: **ĐẶNG THANH KHẢI**",
+      "answer_head": "- Lương cơ bản: 29.000.000 VNĐ\n- Tài khoản ngân hàng:\n + Ngân hàng: MB Bank\n + Số tài khoản: 97042648437257\n + Chủ tài khoản: ĐẶNG THANH KHẢI",
       "missed": [
         "monthly"
-      ]
+      ],
+      "prompt_tokens": 7252,
+      "completion_tokens": 175,
+      "llm_calls": 2
     },
     {
       "id": "salaries_10",
       "question": "Trung bình các mức lương tôi từng nhận là bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.0,
+      "answer_ok": false,
       "n_facts": 1,
-      "n_hit": 1,
+      "n_hit": 0,
       "error": null,
-      "answer_head": "- Bạn đã nhận mức lương trung bình là **29 000 000 VND**."
+      "answer_head": "- Mức lương trung bình bạn từng nhận là: 23,956,528.668750000000 VNĐ.",
+      "missed": [
+        "29000000.0"
+      ],
+      "prompt_tokens": 7201,
+      "completion_tokens": 84,
+      "llm_calls": 2
     },
     {
       "id": "user_contracts_01",
       "question": "Hợp đồng hiện tại của tôi là loại gì và có hiệu lực đến khi nào?",
       "sql_ok": true,
-      "fact_recall": 0.6667,
+      "fact_recall": 0.3333,
       "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Loại hợp đồng hiện tại: **hợp đồng cố định (Fixed‑term)** \n- Ngày hết hiệu lực: **03/01/2027** \n\n(Thông tin dựa trên dữ liệu cá nhân của bạn.)",
+      "answer_head": "- Loại hợp đồng: Xác định thời hạn.\n- Hiệu lực đến ngày: 03/01/2027.",
       "missed": [
+        "fixed-term",
         "2026-01-03"
-      ]
+      ],
+      "prompt_tokens": 7213,
+      "completion_tokens": 81,
+      "llm_calls": 2
     },
     {
       "id": "user_contracts_02",
@@ -774,35 +968,48 @@
       "n_facts": 4,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- Hợp đồng loại **có thời hạn** \n - **Ngày bắt đầu:** 03/01/2026 \n - **Ngày kết thúc:** 03/01/2027 \n - **Trạng thái:** đang hiệu lực \n\nHiện tại bạn chỉ có 1 hợp đồng đã ký với công ty. Nếu cần xem chi tiết hoặc có thắc mắc khác, vui lòng liên hệ bộ phận HR.",
+      "answer_head": "Bạn có 01 hợp đồng với công ty:\n* Loại hợp đồng: Xác định thời hạn\n* Ngày bắt đầu: 03/01/2026\n* Ngày kết thúc: 03/01/2027\n* Trạng thái: Đang hiệu lực",
       "missed": [
         "fixed-term"
-      ]
+      ],
+      "prompt_tokens": 7233,
+      "completion_tokens": 125,
+      "llm_calls": 2
     },
     {
       "id": "user_contracts_03",
       "question": "Hợp đồng của tôi còn bao nhiêu ngày nữa thì hết hạn?",
       "sql_ok": true,
-      "fact_recall": 0.6667,
+      "fact_recall": 0.3333,
       "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Hợp đồng hiện tại của bạn là hợp đồng **có thời hạn**. \n- Ngày kết thúc: **03/01/2027**. \n- Còn **87 ngày** nữa là đến ngày hết hạn.",
+      "answer_head": "- Hợp đồng của bạn còn 83 ngày nữa thì hết hạn.",
       "missed": [
-        "fixed-term"
-      ]
+        "fixed-term",
+        "2027-01-03"
+      ],
+      "prompt_tokens": 7187,
+      "completion_tokens": 69,
+      "llm_calls": 2
     },
     {
       "id": "user_contracts_04",
       "question": "Tôi đã ký tổng cộng bao nhiêu hợp đồng, mỗi loại bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
       "n_facts": 2,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Tổng cộng bạn đã ký **1** hợp đồng. \n- Loại hợp đồng **Có thời hạn** (Fixed‑term): **1** hợp đồng."
+      "answer_head": "- Tổng số hợp đồng đã ký: 1\n- Chi tiết: 1 hợp đồng xác định thời hạn.",
+      "missed": [
+        "fixed-term"
+      ],
+      "prompt_tokens": 7197,
+      "completion_tokens": 71,
+      "llm_calls": 2
     },
     {
       "id": "user_contracts_05",
@@ -813,7 +1020,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về hợp đồng thử việc của bạn trong hệ thống. \n- Vui lòng liên hệ phòng Nhân sự để được cung cấp thông tin chi tiết về thời gian thử việc và các điều kiện áp dụng."
+      "answer_head": "- Hiện chưa có dữ liệu về hợp đồng của bạn.\n- Vui lòng liên hệ phòng Nhân sự (HR) để được hỗ trợ kiểm tra thông tin.",
+      "prompt_tokens": 13810,
+      "completion_tokens": 211,
+      "llm_calls": 3
     },
     {
       "id": "user_contracts_06",
@@ -824,7 +1034,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các hợp đồng của bạn, vì vậy không có hợp đồng nào được ghi nhận là đã hết hiệu lực. \n- Nếu bạn cần kiểm tra hoặc cập nhật thông tin hợp đồng, vui lòng liên hệ bộ phận HR để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về hợp đồng của bạn. Vui lòng liên hệ phòng Nhân sự (HR) để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13807,
+      "completion_tokens": 163,
+      "llm_calls": 3
     },
     {
       "id": "user_contracts_07",
@@ -835,10 +1048,13 @@
       "n_facts": 3,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Hợp đồng hiện tại của bạn có thời hạn **từ 03/01/2026 đến 03/01/2027** (khoảng 365 ngày). \n- Hiện hệ thống không có thông tin về hợp đồng trước đây của bạn, vì vậy không thể so sánh thời hạn. \n\n**Bạn có thể:** \n- Liên hệ phòng Nhân sự để kiểm tra và nhận bản sao các hợp đồng đã ký trước đó. \n- Yêu cầu cập nhật hồ sơ nếu bạn nghĩ dữ liệu chưa đầy đủ.",
+      "answer_head": "- Hợp đồng mới nhất: Thời hạn 365 ngày (từ 03/01/2026 đến 03/01/2027).\n- Hợp đồng trước đó: Hiện chưa có dữ liệu.",
       "missed": [
         "fixed-term"
-      ]
+      ],
+      "prompt_tokens": 7253,
+      "completion_tokens": 334,
+      "llm_calls": 2
     },
     {
       "id": "user_contracts_08",
@@ -849,7 +1065,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về **hợp đồng không xác định thời hạn** của bạn trong hệ thống, vì vậy không thể xác định được ngày bắt đầu cụ thể. \n- Theo quy định nội bộ (Điều XX: “Hợp đồng không xác định thời hạn có hiệu lực kể từ ngày ký kết và được ghi nhận trong hồ sơ nhân sự”), ngày bắt đầu sẽ được ghi nhận trong hợp đồng ký kết. \n\n**Bạn nên:** \n- Liên hệ trực tiếp với phòng Nhân sự để kiểm tra và nhận bản sao hợp đồng, hoặc yêu cầu cập nhật thông tin trong hệ thống. \n- Cung cấp số hợp đồng hoặc ngày ký (nếu nhớ) để HR có thể tra cứu nhanh hơn."
+      "answer_head": "- Hiện chưa có dữ liệu về hợp đồng của bạn.\n- Vui lòng liên hệ phòng Nhân sự (HR) để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13822,
+      "completion_tokens": 169,
+      "llm_calls": 3
     },
     {
       "id": "user_contracts_10",
@@ -860,7 +1079,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hợp đồng hiện tại của bạn có ngày kết thúc vào **03/01/2027**. \n- Theo dữ liệu, hợp đồng **không** sẽ hết hạn trong vòng 60 ngày tới. \n\nNếu bạn cần biết quy trình gia hạn hoặc các bước chuẩn bị khi hợp đồng sắp hết hạn, vui lòng tham khảo quy định “Quy trình gia hạn hợp đồng” trong tài liệu nội bộ hoặc liên hệ bộ phận HR để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về hợp đồng của bạn.\n- Vui lòng liên hệ phòng Nhân sự (HR) để được kiểm tra và cập nhật thông tin.",
+      "prompt_tokens": 13822,
+      "completion_tokens": 289,
+      "llm_calls": 3
     },
     {
       "id": "user_profiles_01",
@@ -871,7 +1093,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Số điện thoại: **0912000006** \n- Email cá nhân: **khaiang32@gmail.com**"
+      "answer_head": "- Số điện thoại: 0912000006\n- Email cá nhân: khaiang32@gmail.com",
+      "prompt_tokens": 7215,
+      "completion_tokens": 67,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_02",
@@ -882,22 +1107,27 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Người liên hệ khẩn cấp của bạn: **Người thân Khải** \n- Số điện thoại liên hệ: **0912000007**"
+      "answer_head": "- Người liên hệ khẩn cấp: Người thân Khải\n- Số điện thoại: 0912000007",
+      "prompt_tokens": 7214,
+      "completion_tokens": 70,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_03",
       "question": "Nơi sinh, quốc tịch và tình trạng hôn nhân của tôi đang lưu có đúng không?",
       "sql_ok": true,
-      "fact_recall": 0.3333,
+      "fact_recall": 0.6667,
       "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 1,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- **Nơi sinh:** Đà Nẵng \n- **Quốc tịch:** Việt Nam \n- **Tình trạng hôn nhân:** Đã kết hôn \n\nThông tin trên khớp với dữ liệu hiện có của bạn. Nếu có thay đổi, vui lòng liên hệ bộ phận HR để cập nhật.",
+      "answer_head": "Thông tin của bạn đang được lưu như sau:\n* Nơi sinh: Đà Nẵng\n* Quốc tịch: Vietnamese\n* Tình trạng hôn nhân: Đã kết hôn",
       "missed": [
-        "vietnamese",
         "married"
-      ]
+      ],
+      "prompt_tokens": 7215,
+      "completion_tokens": 81,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_04",
@@ -908,29 +1138,41 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Ngày bắt đầu tham gia bảo hiểm xã hội của bạn là **03/01/2026**. \n\nNếu cần thêm chi tiết hoặc có thắc mắc khác, vui lòng liên hệ bộ phận HR."
+      "answer_head": "- Ngày bắt đầu tham gia bảo hiểm xã hội của bạn là: 03/01/2026.",
+      "prompt_tokens": 7201,
+      "completion_tokens": 61,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_05",
       "question": "Tính đến nay tôi đã tham gia BHXH được bao nhiêu năm?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
       "n_facts": 2,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Ngày bắt đầu tham gia BHXH: **03/01/2026** \n- Số năm tham gia tính đến hiện tại: **0 năm** (vẫn chưa đủ 1 năm để tính thành năm). \n\nNếu cần cập nhật hoặc có thắc mắc thêm, vui lòng liên hệ phòng Nhân sự."
+      "answer_head": "- Số năm tham gia BHXH của bạn: 0 năm.",
+      "missed": [
+        "2026-01-03"
+      ],
+      "prompt_tokens": 7186,
+      "completion_tokens": 67,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_06",
       "question": "Hồ sơ cá nhân của tôi còn thiếu thông tin gì không?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.0,
+      "answer_ok": false,
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Theo hồ sơ hiện tại, tất cả các thông tin cá nhân đều đã được cung cấp đầy đủ (không có mục nào còn thiếu)."
+      "answer_head": "- Hồ sơ cá nhân của bạn hiện đã đầy đủ, không thiếu thông tin nào.",
+      "prompt_tokens": 7241,
+      "completion_tokens": 258,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_07",
@@ -941,18 +1183,27 @@
       "n_facts": 5,
       "n_hit": 5,
       "error": null,
-      "answer_head": "- Họ và tên: Đặng Thanh Khải \n- Ngày sinh: 25/09/1982 \n- Số điện thoại: 0912000006 \n- Email công ty: khaithanhang32@company.com \n- Email cá nhân: khaiang32@gmail.com"
+      "answer_head": "Thông tin cá nhân của bạn hiện được lưu như sau:\n* Họ và tên: Đặng Thanh Khải\n* Ngày sinh: 25/09/1982\n* Số điện thoại: 0912000006\n* Email: khaiang32@gmail.com",
+      "prompt_tokens": 7257,
+      "completion_tokens": 151,
+      "llm_calls": 2
     },
     {
       "id": "user_profiles_09",
       "question": "Hồ sơ đầy đủ của tôi gồm những thông tin gì?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.875,
+      "answer_ok": false,
       "n_facts": 8,
-      "n_hit": 8,
+      "n_hit": 7,
       "error": null,
-      "answer_head": "**Hồ sơ đầy đủ của bạn hiện bao gồm các thông tin sau:**\n\n- Họ và tên: Đặng Thanh Khải \n- Mã nhân viên: EMP032 \n- Email công ty: khaithanhang32@company.com \n- Email cá nhân: khaiang32@gmail.com \n- Số điện thoại: 0912000006 \n- Ngày sinh: 25/09/1982 \n- Nơi sinh: Đà Nẵng \n- Quốc tịch: Vietnamese \n- Giới tính: Nam \n- Tình trạng hôn nhân: Married \n- Địa chỉ liên hệ khẩn cấp: Người thân Khải – 0912000007 \n- Ngày gia nhập công ty: 03/01/2026 \n- Bộ phận: IT \n- Chức danh: IT Support Specialist \n- Ca làm việc: Giờ hành chính (T2‑T6) \n- Loại hợp đồng: Hợp đồng thời hạn (Fixed‑term) \n- Ngày bắt đầu hợp đồng: 03/01/2026 \n- Ngày kết thúc hợp đồng: 03/01/2027 \n- Ngày bắt đầu bảo hiểm xã hội: 03/01/2026 \n- Lương cơ bản: 29.000.000 VND/tháng \n- Tần suất trả lương: Hàng tháng \n- Số ngày làm việc trong tháng: 22 ngày \n- Số ngày nghỉ phép năm: 12 ngày (đã sử dụng 0 ngày, còn lại 12 ngày) \n- Ngân hàng nhận lương: MB Bank \n- Số tài khoản ngân hàng: 97042648437257 \n- Chủ tài khoản: ĐẶNG THANH KHẢI \n- Trạng thái tài khoản: Đang hiệu lực \n\n*Lưu ý:* Hiện chưa có thông tin về quyền truy cập hệ thống (permission) được cấp cho bạn. Nếu cần cập nhật hoặc bổ sung thông tin nào khác, vui lòng liên hệ phòng Nhân sự."
+      "answer_head": "Thông tin hồ sơ của bạn bao gồm:\n\n* **Họ và tên:** Đặng Thanh Khải\n* **Mã nhân viên:** EMP032\n* **Email công ty:** khaithanhang32@company.com\n* **Email cá nhân:** khaiang32@gmail.com\n* **Số điện thoại:** 0912000006\n* **Ngày sinh:** 25/09/1982\n* **Giới tính:** Nam\n* **Quê quán:** Đà Nẵng\n* **Quốc tịch:** Vietnamese\n* **Tình trạng hôn nhân:** Đã kết hôn\n* **Ngày gia nhập:** 03/01/2026\n* **Ngày bắt đầu đóng BHXH:** 03/01/2026\n* **Phòng ban:** IT\n* **Chức danh:** IT Support Specialist\n* **Ca làm việc:** Giờ hành chính (T2-T6)\n* **Liên hệ khẩn cấp:** Người thân Khải - 0912000007",
+      "missed": [
+        "married"
+      ],
+      "prompt_tokens": 7412,
+      "completion_tokens": 488,
+      "llm_calls": 2
     },
     {
       "id": "user_bank_accounts_01",
@@ -963,7 +1214,10 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- Ngân hàng: **MB Bank** \n- Số tài khoản nhận lương: **97042648437257** (chủ tài khoản: ĐẶNG THANH KHẢI)"
+      "answer_head": "- Ngân hàng: MB Bank\n- Số tài khoản: 97042648437257\n- Chủ tài khoản: ĐẶNG THANH KHẢI",
+      "prompt_tokens": 7232,
+      "completion_tokens": 101,
+      "llm_calls": 2
     },
     {
       "id": "user_bank_accounts_02",
@@ -974,7 +1228,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn hiện có **1 tài khoản ngân hàng** trong hệ thống."
+      "answer_head": "- Bạn có tổng cộng 1 tài khoản ngân hàng.",
+      "prompt_tokens": 7188,
+      "completion_tokens": 51,
+      "llm_calls": 2
     },
     {
       "id": "user_bank_accounts_03",
@@ -985,10 +1242,13 @@
       "n_facts": 4,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Ngân hàng:** MB Bank (mã ngân hàng 970426) \n- **Số tài khoản:** 97042648437257 \n- **Tên chủ tài khoản:** ĐẶNG THANH KHẢI \n- **Tài khoản mặc định:** Có (đây là tài khoản mặc định của bạn) \n\nHiện tại bạn chỉ có một tài khoản ngân hàng được lưu trong hệ thống. Nếu cần thêm tài khoản khác, vui lòng liên hệ bộ phận HR để được hỗ trợ.",
+      "answer_head": "Thông tin tài khoản ngân hàng của bạn:\n* Ngân hàng: MB Bank\n* Số tài khoản: 97042648437257\n* Chủ tài khoản: ĐẶNG THANH KHẢI\n* Trạng thái: Tài khoản mặc định",
       "missed": [
         "true"
-      ]
+      ],
+      "prompt_tokens": 13882,
+      "completion_tokens": 165,
+      "llm_calls": 3
     },
     {
       "id": "user_bank_accounts_04",
@@ -999,7 +1259,10 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Tên trên tài khoản ngân hàng**: “ĐẶNG THANH KHẢI” \n- **Tên của bạn trong hệ thống**: “Đặng Thanh Khải” \n\n✅ **Kết quả**: Tên chủ tài khoản **không khớp** với tên của bạn (trường `dữ liệu` = false).\n\n**Lưu ý theo quy định nội bộ** \n- Theo quy định của công ty (Điều 3.2 “Quy trình thanh toán lương”), tên chủ tài khoản ngân hàng phải trùng khớp với họ và tên của nhân viên để đảm bảo việc chuyển tiền được thực hiện đúng. \n- Khi tên không khớp, khoản lương sẽ được giữ lại cho đến khi bạn cập nhật thông tin tài khoản đúng.\n\n**Bạn nên làm gì tiếp theo** \n1. Kiểm tra lại thông tin trên thẻ ngân hàng và so sánh với họ và tên trong hồ sơ nhân sự. \n2. Nếu có sai sót (ví dụ: viết hoa/đánh dấu khác), hãy cập nhật tên chủ tài khoản trong hệ thống HR hoặc gửi yêu cầu chỉnh sửa tới bộ phận Nhân sự. \n3. Nếu tài khoản thực sự thuộc người khác, vui lòng cung cấp tài khoản ngân hàng mới có tên trùng khớp để tránh việc lương bị trả lại. \n\nNếu cần hỗ trợ chi tiết hơn, hãy liên hệ trực tiếp với phòng Nhân sự qua email **hr@company.com** hoặc số nội bộ **1234**."
+      "answer_head": "- Tên của bạn: Đặng Thanh Khải.\n- Tên chủ tài khoản nhận lương: ĐẶNG THANH KHẢI.\n- Kết quả: Không khớp.",
+      "prompt_tokens": 7228,
+      "completion_tokens": 142,
+      "llm_calls": 2
     },
     {
       "id": "user_bank_accounts_05",
@@ -1010,7 +1273,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về tài khoản phụ của bạn trong hệ thống. \n- Nếu bạn muốn thêm hoặc kiểm tra tài khoản phụ để nhận lương, vui lòng liên hệ bộ phận Nhân sự (HR) để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về tài khoản ngân hàng của bạn.\n- Vui lòng liên hệ phòng Nhân sự (HR) để được hỗ trợ cập nhật thông tin.",
+      "prompt_tokens": 13821,
+      "completion_tokens": 157,
+      "llm_calls": 3
     },
     {
       "id": "user_bank_accounts_06",
@@ -1021,21 +1287,30 @@
       "n_facts": 2,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Mã ngân hàng của tài khoản nhận lương của bạn là **970426**.",
+      "answer_head": "- Mã ngân hàng của bạn là: 970426",
       "missed": [
         "mb bank"
-      ]
+      ],
+      "prompt_tokens": 7200,
+      "completion_tokens": 56,
+      "llm_calls": 2
     },
     {
       "id": "user_bank_accounts_07",
       "question": "Lương cơ bản hiện tại và tài khoản ngân hàng nhận lương của tôi là gì?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.6667,
+      "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 3,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- **Lương cơ bản hiện tại:** 29.000.000 VND \n- **Ngân hàng nhận lương:** MB Bank \n- **Số tài khoản:** 97042648437257 \n- **Tên chủ tài khoản:** ĐẶNG THANH KHẢI"
+      "answer_head": "- Lương cơ bản: 29,000,000.0\n- Tài khoản ngân hàng:\n + Ngân hàng: MB Bank\n + Số tài khoản: 97042648437257\n + Chủ tài khoản: ĐẶNG THANH KHẢI",
+      "missed": [
+        "29000000.0"
+      ],
+      "prompt_tokens": 7252,
+      "completion_tokens": 175,
+      "llm_calls": 2
     },
     {
       "id": "user_bank_accounts_08",
@@ -1046,10 +1321,13 @@
       "n_facts": 4,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- Tài khoản nhận lương gần nhất của bạn hiện đang là **tài khoản MB Bank** mang số **9704 2648 4372 57**, chủ tài khoản: **ĐẶNG THANH KHẢI**.",
+      "answer_head": "Tài khoản nhận lương của bạn là:\n* Ngân hàng: MB Bank\n* Số tài khoản: 97042648437257\n* Chủ tài khoản: ĐẶNG THANH KHẢI\n* Trạng thái: Tài khoản mặc định",
       "missed": [
         "true"
-      ]
+      ],
+      "prompt_tokens": 7246,
+      "completion_tokens": 141,
+      "llm_calls": 2
     },
     {
       "id": "user_permission_grants_01",
@@ -1060,7 +1338,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các quyền hạn của bạn trên hệ thống. \n- Để biết chi tiết các quyền được cấp, vui lòng liên hệ bộ phận HR hoặc quản trị viên hệ thống để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về quyền hạn của bạn trên hệ thống.\n- Vui lòng liên hệ bộ phận HR hoặc Quản trị hệ thống để được hỗ trợ cấp quyền.",
+      "prompt_tokens": 13807,
+      "completion_tokens": 151,
+      "llm_calls": 3
     },
     {
       "id": "user_permission_grants_02",
@@ -1071,7 +1352,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- **Quyền duyệt đơn nghỉ phép:** hiện tại bạn **không có quyền** duyệt đơn nghỉ phép. \n- **Quy định nội bộ:** theo Điều XX của Quy chế quản lý nghỉ phép, quyền duyệt chỉ được cấp cho các vị trí quản lý hoặc người có thẩm quyền được chỉ định. \n\nNếu bạn cần thay đổi quyền này, vui lòng liên hệ bộ phận HR để xem xét và cập nhật."
+      "answer_head": "- Không, bạn không có quyền duyệt đơn nghỉ phép.",
+      "prompt_tokens": 13813,
+      "completion_tokens": 100,
+      "llm_calls": 3
     },
     {
       "id": "user_permission_grants_03",
@@ -1082,7 +1366,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn hiện đang được cấp **0** quyền. \n\n(Hiện chưa có thông tin chi tiết nào khác về quy định cấp quyền trong tài liệu nội bộ.)"
+      "answer_head": "- Bạn được cấp tổng cộng: 0 quyền.",
+      "prompt_tokens": 7177,
+      "completion_tokens": 48,
+      "llm_calls": 2
     },
     {
       "id": "user_permission_grants_04",
@@ -1093,7 +1380,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về quyền truy cập được cấp cho tôi trong hệ thống. \n- Vì không có bản ghi, nên không thể xác định quyền gần nhất và thời gian cấp. \n- Theo quy chế nội bộ về quản lý quyền truy cập (điều khoản về “Quyền và Trách nhiệm người dùng”), mọi quyền được cấp sẽ được ghi lại và thông báo qua email. \n- Để biết chi tiết, vui lòng liên hệ bộ phận Nhân sự hoặc quản trị hệ thống để kiểm tra và cập nhật thông tin."
+      "answer_head": "- Hiện chưa có dữ liệu về quyền được cấp của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ.",
+      "prompt_tokens": 13822,
+      "completion_tokens": 137,
+      "llm_calls": 3
     },
     {
       "id": "user_permission_grants_05",
@@ -1104,7 +1394,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các quyền **duyệt**, **xem**, **quản lý** được cấp cho bạn trong hệ thống. \n- Theo quy chế nội bộ, quyền truy cập được phân theo nhóm chức năng (duyệt, xem, quản lý) và phải được duyệt bởi bộ phận quản trị hệ thống. \n- Để biết chi tiết hoặc yêu cầu cấp quyền, bạn nên liên hệ **phòng Nhân sự** hoặc **bộ phận CNTT** để họ kiểm tra và cập nhật quyền cho tài khoản của bạn."
+      "answer_head": "Thống kê quyền của bạn như sau:\n* Quyền duyệt: 0\n* Quyền xem: 0\n* Quyền quản lý: 0\n* Tổng số quyền: 0",
+      "prompt_tokens": 7225,
+      "completion_tokens": 148,
+      "llm_calls": 2
     },
     {
       "id": "user_permission_grants_06",
@@ -1115,7 +1408,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Theo dữ liệu hiện tại, bạn **không có quyền** xem lương của toàn công ty. \n- Theo quy chế bảo mật thông tin nội bộ (Điều X: Quy định về quyền truy cập dữ liệu nhân sự), chỉ các vị trí được cấp quyền đặc biệt mới được phép xem mức lương chung; các nhân viên khác không được phép truy cập. \n- Nếu bạn cần truy cập vì lý do công việc, vui lòng gửi yêu cầu tới bộ phận HR để được xem xét và cấp quyền phù hợp."
+      "answer_head": "- Hiện chưa có dữ liệu về quyền hạn của bạn.\n- Vui lòng liên hệ bộ phận HR để được kiểm tra và cấp quyền nếu cần thiết.",
+      "prompt_tokens": 13810,
+      "completion_tokens": 132,
+      "llm_calls": 3
     },
     {
       "id": "user_permission_grants_07",
@@ -1126,7 +1422,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các quyền được cấp cho bạn trong năm nay. \n- Để biết chi tiết các quyền truy cập, bạn có thể liên hệ trực tiếp với bộ phận HR hoặc quản lý trực tiếp của mình. \n\n*(Theo quy định nội bộ về quản lý quyền truy cập (Điều 5 – Quy trình cấp quyền), mọi yêu cầu cấp quyền cần được duyệt và lưu trữ trong hệ thống. Nếu bạn chưa thấy thông tin, có thể chưa có yêu cầu hoặc chưa được cập nhật.)*"
+      "answer_head": "- Hiện chưa có dữ liệu về các quyền được cấp cho bạn trong năm nay.\n- Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra chi tiết.",
+      "prompt_tokens": 13810,
+      "completion_tokens": 183,
+      "llm_calls": 3
     },
     {
       "id": "user_permission_grants_08",
@@ -1137,7 +1436,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện tại bạn **không có quyền phê duyệt nào** (trường “permissions” không có giá trị). \n- Bạn **không được phép duyệt làm thêm giờ** (dữ liệu = false). \n\nNếu bạn cần được cấp quyền phê duyệt hoặc quyền duyệt OT, vui lòng liên hệ bộ phận HR để xem xét và cập nhật."
+      "answer_head": "- Hiện chưa có dữ liệu về quyền phê duyệt của bạn.\n- Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra và cấp quyền.",
+      "prompt_tokens": 13834,
+      "completion_tokens": 102,
+      "llm_calls": 3
     },
     {
       "id": "user_permission_grants_10",
@@ -1148,7 +1450,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về quyền **dữ liệu** của bạn trong hệ thống, vì không có bản ghi nào liên quan. \n- Theo **Quy chế phân quyền hệ thống** (điều 3.2 “Quyền khóa bảng công”): \n - Chỉ các **quản trị viên** hoặc **trưởng bộ phận** được phép **khóa bảng công**. \n - Việc **cấp quyền** cho người khác chỉ được thực hiện bởi **quản trị viên hệ thống** thông qua quy trình phê duyệt. \n\n**Bạn nên:** \n- Liên hệ bộ phận HR hoặc quản trị hệ thống để xác nhận quyền hiện tại và, nếu cần, đề nghị cấp/điều chỉnh quyền. \n\n*(Nếu muốn biết chi tiết hơn về quy trình và điều kiện, vui lòng yêu cầu tài liệu “Quy chế phân quyền hệ thống – Điều 3.2”.)*"
+      "answer_head": "- Hiện chưa có dữ liệu về quyền hạn của bạn.\n- Vui lòng liên hệ bộ phận HR để được kiểm tra và cấp quyền nếu cần thiết.",
+      "prompt_tokens": 13840,
+      "completion_tokens": 144,
+      "llm_calls": 3
     },
     {
       "id": "user_sessions_01",
@@ -1159,7 +1464,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện tại bạn không có phiên đăng nhập nào đang hoạt động (số phiên đang hoạt động = 0)."
+      "answer_head": "- Bạn hiện không có phiên đăng nhập nào còn hoạt động.",
+      "prompt_tokens": 7182,
+      "completion_tokens": 57,
+      "llm_calls": 2
     },
     {
       "id": "user_sessions_02",
@@ -1170,7 +1478,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về lần hoạt động cuối cùng của tài khoản của bạn. \n- Để biết chi tiết, bạn có thể liên hệ bộ phận Hỗ trợ hệ thống hoặc HR để được kiểm tra."
+      "answer_head": "- Hiện chưa có dữ liệu về lần hoạt động của tài khoản. Vui lòng liên hệ bộ phận HR để được hỗ trợ.",
+      "prompt_tokens": 13816,
+      "completion_tokens": 116,
+      "llm_calls": 3
     },
     {
       "id": "user_sessions_03",
@@ -1181,7 +1492,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về các phiên đăng nhập gần đây của bạn. \n- Nếu bạn cần kiểm tra lịch sử đăng nhập, vui lòng liên hệ bộ phận HR hoặc bộ phận CNTT để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về các phiên đăng nhập của bạn. Vui lòng liên hệ bộ phận HR hoặc IT để được hỗ trợ.",
+      "prompt_tokens": 13810,
+      "completion_tokens": 134,
+      "llm_calls": 3
     },
     {
       "id": "user_sessions_04",
@@ -1192,7 +1506,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Theo dữ liệu hiện có, không có bản ghi nào về phiên đăng nhập của bạn bị thu hồi. \n- Nếu bạn nghi ngờ có vấn đề hoặc cần kiểm tra chi tiết hơn, vui lòng liên hệ bộ phận HR hoặc bộ phận CNTT để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về các phiên đăng nhập của bạn. Vui lòng liên hệ bộ phận HR hoặc IT để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13817,
+      "completion_tokens": 135,
+      "llm_calls": 3
     },
     {
       "id": "user_sessions_05",
@@ -1203,7 +1520,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về các phiên đăng nhập của bạn trong năm nay. \n- Để biết chi tiết, bạn có thể liên hệ bộ phận Hỗ trợ hệ thống hoặc HR để được cung cấp báo cáo đăng nhập."
+      "answer_head": "- Hiện chưa có dữ liệu về các phiên đăng nhập của bạn trong năm nay.\n- Vui lòng liên hệ bộ phận HR hoặc bộ phận IT để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13819,
+      "completion_tokens": 203,
+      "llm_calls": 3
     },
     {
       "id": "user_sessions_06",
@@ -1214,7 +1534,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Tháng này bạn **chưa đăng nhập** vào hệ thống (số lần đăng nhập = 0). \n\nNếu bạn cần kiểm tra chi tiết hơn hoặc có thắc mắc khác, vui lòng liên hệ bộ phận HR."
+      "answer_head": "- Số lần đăng nhập của bạn trong tháng này: 0 lần.",
+      "prompt_tokens": 7177,
+      "completion_tokens": 91,
+      "llm_calls": 2
     },
     {
       "id": "user_sessions_07",
@@ -1225,7 +1548,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Tháng này bạn đã đăng nhập **0** lần. \n- Tháng trước bạn cũng đã đăng nhập **0** lần. \n- Vì số lần đăng nhập không thay đổi, nên **không có sự tăng hay giảm** so với tháng trước."
+      "answer_head": "- Số lần đăng nhập tháng này: 0\n- Số lần đăng nhập tháng trước: 0\n- Kết luận: Không thay đổi.",
+      "prompt_tokens": 7218,
+      "completion_tokens": 356,
+      "llm_calls": 2
     },
     {
       "id": "user_sessions_08",
@@ -1236,7 +1562,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về phiên đăng nhập cũ nhất đang hoạt động của bạn. \n- Nếu bạn cần kiểm tra lịch sử đăng nhập hoặc gặp vấn đề về tài khoản, vui lòng liên hệ bộ phận **Hỗ trợ IT** để được hỗ trợ chi tiết."
+      "answer_head": "- Hiện chưa có dữ liệu về phiên đăng nhập cũ nhất của bạn. Vui lòng liên hệ bộ phận HR hoặc IT để được hỗ trợ.",
+      "prompt_tokens": 7192,
+      "completion_tokens": 77,
+      "llm_calls": 2
     },
     {
       "id": "resignation_requests_01",
@@ -1247,7 +1576,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện tại hệ thống không có bất kỳ đơn xin nghỉ việc nào của bạn, vì vậy không có trạng thái nào để hiển thị. \n- Nếu bạn đã nộp đơn nhưng chưa thấy trong hệ thống, có thể đơn chưa được ghi nhận hoặc chưa được gửi thành công. \n- Để biết rõ hơn, bạn có thể:\n - Kiểm tra lại email xác nhận (nếu có) để chắc chắn đơn đã được gửi.\n - Liên hệ trực tiếp với bộ phận HR để xác nhận tình trạng đơn và nhận hướng dẫn tiếp theo. \n\n**Quy định nội bộ** (theo chính sách nghỉ việc): \n- Đơn xin nghỉ việc phải được nộp qua hệ thống và sẽ ở trạng thái “đang chờ duyệt” cho đến khi được người quản lý và bộ phận HR phê duyệt. \n- Khi đã được phê duyệt, trạng thái sẽ chuyển thành “đã duyệt”. \n\nNếu bạn chưa nộp đơn, vui lòng truy cập vào cổng thông tin nhân sự và thực hiện quy trình nộp đơn nghỉ việc. Nếu gặp khó khăn, hãy liên hệ HR để được hỗ trợ."
+      "answer_head": "- Hiện chưa có dữ liệu về đơn xin nghỉ việc của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ.",
+      "prompt_tokens": 13816,
+      "completion_tokens": 139,
+      "llm_calls": 3
     },
     {
       "id": "resignation_requests_02",
@@ -1258,7 +1590,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Tính đến thời điểm hiện tại, bạn chưa có bất kỳ đơn xin nghỉ việc nào được ghi nhận."
+      "answer_head": "- Bạn chưa gửi đơn xin nghỉ việc nào.",
+      "prompt_tokens": 7187,
+      "completion_tokens": 54,
+      "llm_calls": 2
     },
     {
       "id": "resignation_requests_03",
@@ -1269,7 +1604,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về đơn nghỉ việc của bạn, vì vậy không thể xác định ngày làm việc cuối cùng. \n- Vui lòng liên hệ phòng Nhân sự để được hỗ trợ và cập nhật thông tin ngày kết thúc hợp đồng."
+      "answer_head": "- Hiện chưa có dữ liệu về đơn thôi việc của bạn.\n- Vui lòng liên hệ bộ phận Nhân sự (HR) để được hỗ trợ chi tiết.",
+      "prompt_tokens": 13807,
+      "completion_tokens": 117,
+      "llm_calls": 3
     },
     {
       "id": "resignation_requests_04",
@@ -1280,7 +1618,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về đơn xin nghỉ việc của bạn trong hệ thống, vì vậy chưa có thông tin về việc đơn đã được quản lý hoặc HR duyệt hay chưa. \n- Nếu bạn đã nộp đơn, có thể chưa được ghi nhận; vui lòng kiểm tra lại với người quản lý trực tiếp hoặc bộ phận HR. \n- Nếu chưa nộp, bạn có thể tạo đơn xin nghỉ việc qua hệ thống HRM và chờ duyệt theo quy trình nội bộ (đơn sẽ được gửi cho quản lý để phê duyệt, sau đó chuyển cho HR). \n\n**Hướng dẫn:** \n- Liên hệ trực tiếp với người quản lý để xác nhận đã nhận được đơn. \n- Gửi email hoặc tới phòng Nhân sự để được hỗ trợ tạo và theo dõi trạng thái duyệt."
+      "answer_head": "- Hiện chưa có dữ liệu về đơn xin nghỉ việc của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13822,
+      "completion_tokens": 161,
+      "llm_calls": 3
     },
     {
       "id": "resignation_requests_05",
@@ -1291,7 +1632,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có bất kỳ đơn xin nghỉ nào của bạn trong hệ thống, vì vậy không có đơn nào ở trạng thái **bị từ chối** hoặc **đã hủy**. \n- Nếu bạn đã gửi đơn qua kênh khác hoặc có thắc mắc về việc chưa hiển thị, vui lòng liên hệ phòng Nhân sự để được kiểm tra và hỗ trợ. \n\n*(Theo quy định nội bộ, mọi đơn nghỉ phép sẽ được cập nhật trạng thái “đang chờ duyệt”, “đã duyệt”, “bị từ chối” hoặc “đã hủy” trên hệ thống HR portal. Khi không có dữ liệu, nghĩa là chưa có đơn nào được ghi nhận.)*"
+      "answer_head": "- Hiện chưa có dữ liệu về đơn xin nghỉ của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra.",
+      "prompt_tokens": 13819,
+      "completion_tokens": 173,
+      "llm_calls": 3
     },
     {
       "id": "resignation_requests_06",
@@ -1302,18 +1646,24 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về đơn thôi việc của bạn trong hệ thống, vì vậy không thể xác định được số ngày bạn đã thông báo trước. \n- Để biết chi tiết thời gian thông báo và ngày làm việc cuối cùng, bạn nên liên hệ trực tiếp với bộ phận HR hoặc quản lý trực tiếp của mình."
+      "answer_head": "- Hiện chưa có dữ liệu về đơn thôi việc của bạn. Vui lòng liên hệ phòng Nhân sự để được hỗ trợ.",
+      "prompt_tokens": 13834,
+      "completion_tokens": 149,
+      "llm_calls": 3
     },
     {
       "id": "resignation_requests_07",
       "question": "Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?",
       "sql_ok": true,
-      "fact_recall": 0.0,
-      "answer_ok": false,
-      "n_facts": 0,
-      "n_hit": 0,
+      "fact_recall": 1.0,
+      "answer_ok": true,
+      "n_facts": 2,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Đơn xin nghỉ gần nhất của bạn được gửi vào **01/07/2026 09:00**. \n- Lý do bạn ghi là **“Nghỉ ngơi phục hồi sức khỏe.”**"
+      "answer_head": "- Ngày gửi: 2026-07-01 09:00:00\n- Lý do: Nghỉ ngơi phục hồi sức khỏe",
+      "prompt_tokens": 13894,
+      "completion_tokens": 152,
+      "llm_calls": 3
     },
     {
       "id": "resignation_requests_08",
@@ -1324,7 +1674,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các đơn xin nghỉ việc của bạn trong hệ thống. \n- Nếu bạn đã nộp đơn nhưng chưa thấy ở đây, vui lòng liên hệ phòng Nhân sự để kiểm tra lại hoặc nộp lại đơn qua cổng thông tin nội bộ. \n\n**Quy trình nghỉ việc (theo Quy chế nội bộ):** \n1. **Nộp đơn**: Điền đầy đủ thông tin vào mẫu “Đơn xin nghỉ việc” trên hệ thống HR và gửi cho người quản lý trực tiếp. \n2. **Xác nhận**: Đơn sẽ được người quản lý duyệt (đang chờ duyệt) và sau đó chuyển cho phòng Nhân sự. \n3. **Xử lý**: Phòng Nhân sự sẽ xác nhận ngày cuối cùng làm việc, thực hiện các thủ tục bàn giao và thanh toán các khoản liên quan. \n\nNếu cần hỗ trợ thêm, hãy gửi email tới **hr@congty.com** hoặc gọi số nội bộ 1900 1234."
+      "answer_head": "- Hiện chưa có dữ liệu về đơn xin nghỉ việc của bạn.",
+      "prompt_tokens": 13813,
+      "completion_tokens": 123,
+      "llm_calls": 3
     },
     {
       "id": "work_shifts_01",
@@ -1335,25 +1688,30 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn đang làm ca **Giờ hành chính (Thứ Hai – Thứ Sáu)**."
+      "answer_head": "- Bạn đang làm ca: Giờ hành chính (T2-T6).",
+      "prompt_tokens": 7176,
+      "completion_tokens": 66,
+      "llm_calls": 2
     },
     {
       "id": "work_shifts_02",
       "question": "Ca làm của tôi bắt đầu và kết thúc lúc mấy giờ?",
       "sql_ok": true,
-      "fact_recall": 0.0,
+      "fact_recall": 0.5,
       "answer_ok": false,
       "n_facts": 8,
-      "n_hit": 0,
+      "n_hit": 4,
       "error": null,
-      "answer_head": "- **Thứ Hai – Thứ Sáu:** ca làm bắt đầu lúc **08:00** và kết thúc lúc **17:30**. \n- **Thứ Bảy – Chủ Nhật:** không có giờ làm (được ghi là 00:00 – 00:00).",
+      "answer_head": "- Ca làm việc của bạn: Giờ hành chính (T2-T6)\n- Thời gian bắt đầu: 08:00:00\n- Thời gian kết thúc: 17:30:00",
       "missed": [
-        "gio hanh chinh (t2-t6)",
         "1.0",
-        "08:00:00",
-        "17:30:00",
-        "2.0"
-      ]
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "prompt_tokens": 7514,
+      "completion_tokens": 147,
+      "llm_calls": 2
     },
     {
       "id": "work_shifts_03",
@@ -1364,57 +1722,71 @@
       "n_facts": 8,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Ca của bạn có giờ nghỉ trưa **từ 12:00 đến 13:30**. \n- Thời gian này áp dụng cho các ngày làm việc từ **Thứ Hai đến Thứ Sáu**.",
+      "answer_head": "Hiện chưa có dữ liệu về giờ nghỉ trưa của bạn. Vui lòng liên hệ bộ phận Nhân sự (HR) để được hỗ trợ.",
       "missed": [
         "gio hanh chinh (t2-t6)",
         "1.0",
         "12:00:00",
         "13:30:00",
         "2.0"
-      ]
+      ],
+      "prompt_tokens": 7388,
+      "completion_tokens": 123,
+      "llm_calls": 2
     },
     {
       "id": "work_shifts_04",
       "question": "Lịch chi tiết cả tuần của ca tôi như thế nào?",
       "sql_ok": true,
-      "fact_recall": 0.6,
+      "fact_recall": 0.4667,
       "answer_ok": false,
       "n_facts": 15,
-      "n_hit": 9,
+      "n_hit": 7,
       "error": null,
-      "answer_head": "**Lịch làm việc của bạn trong tuần (theo ca “Giờ hành chính (T2‑T6)”)**\n\n- **Thứ Hai (ngày 1)**: làm việc từ **08:00** đến **17:30** \n- **Thứ Ba (ngày 2)**: làm việc từ **08:00** đến **17:30** \n- **Thứ Tư (ngày 3)**: làm việc từ **08:00** đến **17:30** \n- **Thứ Năm (ngày 4)**: làm việc từ **08:00** đến **17:30** \n- **Thứ Sáu (ngày 5)**: làm việc từ **08:00** đến **17:30** \n- **Thứ Bảy (ngày 6)**: **ngày nghỉ** (không có ca làm) \n- **Chủ Nhật (ngày 7)**: **ngày nghỉ** (không có ca làm) \n\nNếu có thay đổi hoặc cần điều chỉnh ca làm việc, vui lòng liên hệ bộ phận HR để được hỗ trợ.",
+      "answer_head": "Lịch chi tiết ca làm việc trong tuần của bạn như sau:\n\n* Thứ 2 đến Thứ 6: Làm việc từ 08:00:00 đến 17:30:00 (Giờ hành chính).\n* Thứ 7 và Chủ nhật: Nghỉ.",
       "missed": [
-        "08:00:00",
-        "17:30:00",
+        "1.0",
         "12:00:00",
         "13:30:00",
-        "true"
-      ]
+        "true",
+        "3.0"
+      ],
+      "prompt_tokens": 7633,
+      "completion_tokens": 181,
+      "llm_calls": 2
     },
     {
       "id": "work_shifts_05",
       "question": "Những ngày nào trong tuần ca của tôi được nghỉ?",
+      "sql_ok": true,
+      "fact_recall": 0.0,
+      "answer_ok": false,
+      "n_facts": 3,
+      "n_hit": 0,
+      "error": null,
+      "answer_head": "- Bạn được nghỉ vào: Thứ Bảy và Chủ Nhật.",
+      "missed": [
+        "gio hanh chinh (t2-t6)",
+        "6.0",
+        "7.0"
+      ],
+      "prompt_tokens": 7285,
+      "completion_tokens": 128,
+      "llm_calls": 2
+    },
+    {
+      "id": "work_shifts_06",
+      "question": "So sánh giờ bắt đầu ca của tôi với các ca làm khác trong công ty?",
       "sql_ok": true,
       "fact_recall": 1.0,
       "answer_ok": true,
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- Thứ Bảy (ngày 6 trong tuần) – không làm việc \n- Chủ Nhật (ngày 7 trong tuần) – không làm việc \n\nCác ngày còn lại (Thứ Hai đến Thứ Sáu) là ngày làm việc theo ca “Giờ hành chính (T2‑T6)”."
-    },
-    {
-      "id": "work_shifts_06",
-      "question": "So sánh giờ bắt đầu ca của tôi với các ca làm khác trong công ty?",
-      "sql_ok": true,
-      "fact_recall": 0.6667,
-      "answer_ok": false,
-      "n_facts": 3,
-      "n_hit": 2,
-      "error": null,
-      "answer_head": "- **Thứ Hai đến Thứ Sáu**: \n - Ca của tôi (Giờ hành chính) bắt đầu lúc **08:00**. \n - Các ca khác (Ca Kỹ Thuật & Vận Hành) cũng bắt đầu lúc **08:00**. \n - → Hai ca khởi hành đồng thời, không có chênh lệch thời gian.\n\n- **Thứ Bảy**: \n - Ca của tôi bắt đầu lúc **00:00** (nghĩa là không có ca làm việc trong ngày này). \n - Ca Kỹ Thuật & Vận Hành bắt đầu lúc **08:00**. \n - → Ca của tôi sớm hơn ca khác **8 giờ** (hoặc không có ca làm việc).\n\n- **Chủ Nhật**: \n - Cả hai ca đều không có thời gian làm việc (cả hai bắt đầu lúc **00:00**). \n - → Không có chênh lệch thời gian.\n\n**Tóm lại**: Trong các ngày làm việc thường (Thứ Hai‑Thứ Sáu) giờ bắt đầu của tôi và các ca khác giống nhau. Chỉ vào ngày Thứ Bảy, ca của tôi không có giờ làm việc, trong khi ca Kỹ Thuật & Vận Hành bắt đầu lúc 08:00, tạo ra khoảng cách 8 giờ. Nếu cần chi tiết hơn hoặc có thắc mắc về lịch làm việc cuối tuần, vui lòng liên hệ bộ phận HR.",
-      "missed": [
-        "08:00:00"
-      ]
+      "answer_head": "- Giờ bắt đầu ca của bạn: 00:00:00 (Giờ hành chính T2-T6).\n- Giờ bắt đầu các ca khác: 00:00:00 hoặc 08:00:00 (Ca Kỹ Thuật & Vận Hành T2-T7).",
+      "prompt_tokens": 7725,
+      "completion_tokens": 313,
+      "llm_calls": 2
     },
     {
       "id": "work_shifts_07",
@@ -1425,11 +1797,14 @@
       "n_facts": 4,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Công ty hiện có 2 ca làm việc:\n - **Giờ hành chính (Thứ 2 – Thứ 6)**\n - **Ca Kỹ Thuật & Vận Hành (Thứ 2 – Thứ 7)** \n\n- **Ca của tôi**: **Giờ hành chính (Thứ 2 – Thứ 6)**.",
+      "answer_head": "- Các ca làm việc của công ty: Giờ hành chính (T2-T6) và Ca Kỹ Thuật & Vận Hành (T2-T7).\n- Ca làm việc của bạn: Giờ hành chính (T2-T6).",
       "missed": [
         "false",
         "true"
-      ]
+      ],
+      "prompt_tokens": 7242,
+      "completion_tokens": 122,
+      "llm_calls": 2
     },
     {
       "id": "work_shifts_08",
@@ -1440,30 +1815,36 @@
       "n_facts": 5,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Thứ 7: không làm việc. \n- Chủ nhật: không làm việc. \n\nBạn không có ca làm việc vào cả hai ngày này.",
+      "answer_head": "- Thứ 7: Không đi làm.\n- Chủ nhật: Không đi làm.",
       "missed": [
         "gio hanh chinh (t2-t6)",
         "6.0",
         "00:00:00"
-      ]
+      ],
+      "prompt_tokens": 7308,
+      "completion_tokens": 147,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_01",
       "question": "Lịch làm việc của tôi từ thứ 2 đến thứ 6 như thế nào?",
       "sql_ok": true,
-      "fact_recall": 0.0,
+      "fact_recall": 0.375,
       "answer_ok": false,
       "n_facts": 8,
-      "n_hit": 0,
+      "n_hit": 3,
       "error": null,
-      "answer_head": "- **Thứ Hai**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Ba**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Tư**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Năm**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Sáu**: làm việc từ **08:00** đến **17:30** (Giờ hành chính)",
+      "answer_head": "Lịch làm việc của bạn từ thứ 2 đến thứ 6 như sau:\n* Ca làm việc: Giờ hành chính (T2-T6)\n* Thời gian: 08:00:00 đến 17:30:00",
       "missed": [
         "1.0",
-        "08:00:00",
-        "17:30:00",
         "true",
-        "2.0"
-      ]
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "prompt_tokens": 7511,
+      "completion_tokens": 186,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_02",
@@ -1474,29 +1855,35 @@
       "n_facts": 4,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- **Thứ 7 (Saturday)**: không phải đi làm. \n- **Chủ nhật (Sunday)**: không phải đi làm. \n\nTheo quy định nội bộ, các ngày cuối tuần (Thứ 7 và Chủ nhật) không được tính là ngày làm việc, trừ khi có thông báo đặc biệt từ bộ phận quản lý. Nếu bạn nhận được lịch làm việc khác, vui lòng xác nhận lại với quản lý trực tiếp.",
+      "answer_head": "- Thứ 7: Không phải đi làm.\n- Chủ nhật: Không phải đi làm.",
       "missed": [
         "6.0",
         "00:00:00"
-      ]
+      ],
+      "prompt_tokens": 7304,
+      "completion_tokens": 149,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_03",
       "question": "Mỗi ngày tôi làm mấy tiếng sau khi trừ giờ nghỉ trưa?",
       "sql_ok": true,
-      "fact_recall": 0.3,
+      "fact_recall": 0.1,
       "answer_ok": false,
       "n_facts": 10,
-      "n_hit": 3,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- 05/01/2026: 8.67 giờ \n- 06/01/2026: 8.38 giờ \n- 07/01/2026: 8.94 giờ \n- 08/01/2026: 8.84 giờ \n- 09/01/2026: 8.49 giờ \n- 12/01/2026: 8.60 giờ \n- 13/01/2026: 8.14 giờ \n- 14/01/2026: 8.53 giờ \n- 15/01/2026: 8.75 giờ \n- 16/01/2026: 8.47 giờ \n\n*Lưu ý: các số giờ đã được tính sau khi trừ thời gian nghỉ trưa.*",
+      "answer_head": "Số giờ làm việc thực tế của bạn trong các ngày gần đây như sau:\n\n* 2026-08-31: 9.48 giờ\n* 2026-08-28: 9.30 giờ\n* 2026-08-27: 8.53 giờ\n* 2026-08-26: 8.27 giờ\n* 2026-08-25: 8.63 giờ\n* 2026-08-24: 9.00 giờ\n* 2026-08-21: 8.89 giờ\n* 2026-08-20: 8.88 giờ\n* 2026-08-19: hiện chưa có dữ liệu\n* 2026-08-18: 8.39 giờ",
       "missed": [
+        "1.0",
         "08:00:00",
         "17:30:00",
         "12:00:00",
-        "13:30:00",
-        "2.0"
-      ]
+        "13:30:00"
+      ],
+      "prompt_tokens": 7611,
+      "completion_tokens": 410,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_04",
@@ -1507,10 +1894,13 @@
       "n_facts": 1,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Tổng số giờ làm chuẩn của bạn mỗi tuần là **40 giờ**.",
+      "answer_head": "- Tổng số giờ làm chuẩn mỗi tuần của bạn là: 1 ngày 23 giờ 30 phút.",
       "missed": [
         "47.5"
-      ]
+      ],
+      "prompt_tokens": 7193,
+      "completion_tokens": 101,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_05",
@@ -1521,65 +1911,84 @@
       "n_facts": 2,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- **Ngày vào sớm nhất:** Ngày **4** trong tuần, vào lúc **07:11:38**. \n- **Ngày về muộn nhất:** Ngày **1** trong tuần, về lúc **18:23:41**.",
+      "answer_head": "- Ngày làm việc: Thứ 2 (Giờ hành chính T2-T6).\n- Giờ vào làm sớm nhất: 08:00:00.\n- Giờ về muộn nhất: 17:30:00.",
       "missed": [
-        "17:30:00"
-      ]
+        "1.0"
+      ],
+      "prompt_tokens": 7236,
+      "completion_tokens": 183,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_06",
       "question": "Giờ nghỉ trưa các ngày trong tuần của tôi có giống nhau không?",
       "sql_ok": true,
-      "fact_recall": 0.0,
+      "fact_recall": 0.6667,
       "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 0,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- **Có**, giờ nghỉ trưa của bạn trong các ngày trong tuần là giống nhau.",
+      "answer_head": "- Từ Thứ 2 đến Thứ 6: Giờ nghỉ trưa giống nhau, từ 12:00:00 đến 13:30:00.\n- Thứ 7 và Chủ nhật: Hiện chưa có dữ liệu về giờ nghỉ trưa.",
       "missed": [
-        "12:00:00",
-        "13:30:00",
         "5.0"
-      ]
+      ],
+      "prompt_tokens": 7586,
+      "completion_tokens": 169,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_07",
       "question": "So sánh lịch làm thứ 2 với thứ 7 của tôi?",
       "sql_ok": true,
-      "fact_recall": 0.4286,
+      "fact_recall": 0.5714,
       "answer_ok": false,
       "n_facts": 7,
-      "n_hit": 3,
+      "n_hit": 4,
       "error": null,
-      "answer_head": "- **Thứ 2**: \n - Đang làm việc. \n - Thời gian làm việc: 08:00 – 17:30. \n - Giờ nghỉ trưa: 12:00 – 13:30. \n - Thuộc ca “Giờ hành chính (T2‑T6)”.\n\n- **Thứ 7**: \n - Không làm việc. \n - Không có giờ làm việc và không có giờ nghỉ. \n - Cũng thuộc ca “Giờ hành chính (T2‑T6)”, nhưng ở ngày này ca không có hiệu lực.",
+      "answer_head": "- Thứ 2: Có làm việc, thời gian từ 08:00:00 đến 17:30:00 (Ca Giờ hành chính T2-T6).\n- Thứ 7: Không làm việc.",
       "missed": [
         "1.0",
-        "08:00:00",
-        "17:30:00",
+        "true",
         "00:00:00"
-      ]
+      ],
+      "prompt_tokens": 7305,
+      "completion_tokens": 182,
+      "llm_calls": 2
     },
     {
       "id": "work_shift_schedules_08",
       "question": "Những ngày nào trong tuần tôi được nghỉ?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.0,
+      "answer_ok": false,
       "n_facts": 2,
-      "n_hit": 2,
+      "n_hit": 0,
       "error": null,
-      "answer_head": "- Bạn được nghỉ vào **Thứ Bảy** và **Chủ Nhật** trong tuần. \n\n*(Dữ liệu hiện có chỉ liệt kê ngày 6 và 7 là ngày không có ca làm việc, các ngày còn lại được coi là ngày làm việc.)*"
+      "answer_head": "Hiện chưa có dữ liệu về lịch nghỉ của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ chi tiết.",
+      "missed": [
+        "6.0",
+        "7.0"
+      ],
+      "prompt_tokens": 7221,
+      "completion_tokens": 127,
+      "llm_calls": 2
     },
     {
       "id": "departments_01",
       "question": "Tôi đang thuộc phòng ban nào?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.0,
+      "answer_ok": false,
       "n_facts": 1,
-      "n_hit": 1,
+      "n_hit": 0,
       "error": null,
-      "answer_head": "- Bạn đang thuộc phòng **IT**."
+      "answer_head": "Hiện chưa có dữ liệu về phòng ban của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ cập nhật.",
+      "missed": [
+        "it"
+      ],
+      "prompt_tokens": 7166,
+      "completion_tokens": 69,
+      "llm_calls": 2
     },
     {
       "id": "departments_02",
@@ -1590,7 +1999,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Chức danh hiện tại: **IT Support Specialist** \n- Phòng ban hiện tại: **IT**"
+      "answer_head": "- Chức danh: IT Support Specialist\n- Phòng ban: IT",
+      "prompt_tokens": 7188,
+      "completion_tokens": 81,
+      "llm_calls": 2
     },
     {
       "id": "departments_03",
@@ -1601,7 +2013,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- **Mã nhân viên:** EMP032 \n- **Phòng ban:** IT \n- **Ca làm việc:** Giờ hành chính (Thứ Hai – Thứ Sáu)"
+      "answer_head": "- Phòng ban: IT\n- Ca làm: Giờ hành chính (T2-T6)\n- Mã nhân viên: EMP032",
+      "prompt_tokens": 7211,
+      "completion_tokens": 110,
+      "llm_calls": 2
     },
     {
       "id": "departments_04",
@@ -1612,39 +2027,49 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Bạn đã gia nhập công ty vào ngày **3 / 1 / 2026**. \n- Hiện tại bạn đang làm việc tại **phòng Ban IT**."
+      "answer_head": "- Ngày vào công ty: 03/01/2026\n- Phòng ban: IT",
+      "prompt_tokens": 7199,
+      "completion_tokens": 76,
+      "llm_calls": 2
     },
     {
       "id": "departments_05",
       "question": "Công ty có những phòng ban nào, phòng hiện tại của tôi là phòng nào?",
       "sql_ok": true,
-      "fact_recall": 0.8889,
+      "fact_recall": 0.7778,
       "answer_ok": false,
       "n_facts": 9,
-      "n_hit": 8,
+      "n_hit": 7,
       "error": null,
-      "answer_head": "- **Các phòng ban hiện có trong công ty** \n - Sales \n - Marketing & Communication \n - Human Resources \n - Finance & Accounting \n - Customer Support \n - Executive Leadership \n - IT \n\n- **Phòng hiện tại của bạn:** IT (đang hiệu lực).",
+      "answer_head": "- Các phòng ban trong công ty: Sales, Marketing & Communication, Human Resources, Finance & Accounting, Customer Support, Executive Leadership, IT.\n- Phòng ban hiện tại của bạn: IT.",
       "missed": [
-        "false"
-      ]
+        "false",
+        "true"
+      ],
+      "prompt_tokens": 7312,
+      "completion_tokens": 104,
+      "llm_calls": 2
     },
     {
       "id": "departments_06",
       "question": "Trong phòng ban của tôi có những chức danh nào?",
       "sql_ok": true,
-      "fact_recall": 0.0,
+      "fact_recall": 0.1,
       "answer_ok": false,
       "n_facts": 10,
-      "n_hit": 0,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về các chức danh trong **phòng ban của bạn**. \n- Vui lòng liên hệ bộ phận Nhân sự để được cung cấp danh sách chi tiết.",
+      "answer_head": "Trong phòng ban của bạn có các chức danh sau:\n* Trưởng phòng IT\n* Tech Lead\n* Quản trị viên hệ thống cấp cao (dữ liệu)\n* Kỹ sư phần mềm\n* Quản trị viên hệ thống\n* Chuyên viên hỗ trợ IT\n* Kỹ sư DevOps\n* Lập trình viên cao cấp",
       "missed": [
         "department head of it",
         "devops engineer",
         "it support specialist",
         "product manager",
         "qa engineer"
-      ]
+      ],
+      "prompt_tokens": 7236,
+      "completion_tokens": 139,
+      "llm_calls": 2
     },
     {
       "id": "departments_07",
@@ -1655,7 +2080,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Mã phòng ban của bạn là **0190abcd-1234-7def-89ab-cdef01234567**."
+      "answer_head": "- Mã phòng ban của bạn là: 0190abcd-1234-7def-89ab-cdef01234567",
+      "prompt_tokens": 7198,
+      "completion_tokens": 66,
+      "llm_calls": 2
     },
     {
       "id": "departments_08",
@@ -1666,7 +2094,10 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- **Chức danh:** IT Support Specialist \n- **Phòng ban:** IT"
+      "answer_head": "- Chức danh: IT Support Specialist\n- Phòng ban: IT",
+      "prompt_tokens": 7184,
+      "completion_tokens": 81,
+      "llm_calls": 2
     },
     {
       "id": "jobs_01",
@@ -1677,36 +2108,48 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn hiện đang giữ chức danh **IT Support Specialist**."
+      "answer_head": "- Chức danh hiện tại của bạn là: IT Support Specialist.",
+      "prompt_tokens": 7174,
+      "completion_tokens": 57,
+      "llm_calls": 2
     },
     {
       "id": "jobs_02",
       "question": "Chức danh của tôi thuộc phòng ban nào?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
       "n_facts": 2,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Chức danh của bạn: **IT Support Specialist** \n- Phòng ban: **IT**"
+      "answer_head": "- Chức danh của bạn thuộc phòng: IT.",
+      "missed": [
+        "it support specialist"
+      ],
+      "prompt_tokens": 7182,
+      "completion_tokens": 78,
+      "llm_calls": 2
     },
     {
       "id": "jobs_03",
       "question": "Trong phòng ban của tôi có những chức danh nào?",
       "sql_ok": true,
-      "fact_recall": 0.0,
+      "fact_recall": 0.1,
       "answer_ok": false,
       "n_facts": 10,
-      "n_hit": 0,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu chi tiết về các chức danh trong phòng ban của bạn. \n- Vui lòng liên hệ bộ phận Nhân sự để được cung cấp danh sách chức danh cụ thể trong bộ phận của mình.",
+      "answer_head": "Trong phòng ban của bạn có các chức danh sau:\n* Trưởng phòng IT\n* Tech Lead\n* Quản trị viên hệ thống cấp cao (dữ liệu)\n* Kỹ sư phần mềm\n* Quản trị viên hệ thống\n* Chuyên viên hỗ trợ IT\n* Kỹ sư DevOps\n* Lập trình viên cao cấp",
       "missed": [
         "department head of it",
         "devops engineer",
         "it support specialist",
         "product manager",
         "qa engineer"
-      ]
+      ],
+      "prompt_tokens": 7236,
+      "completion_tokens": 139,
+      "llm_calls": 2
     },
     {
       "id": "jobs_04",
@@ -1717,7 +2160,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Mã nhân viên: **EMP032** \n- Chức danh: **IT Support Specialist**"
+      "answer_head": "- Chức danh: IT Support Specialist\n- Mã nhân viên: EMP032",
+      "prompt_tokens": 7189,
+      "completion_tokens": 67,
+      "llm_calls": 2
     },
     {
       "id": "jobs_05",
@@ -1728,14 +2174,17 @@
       "n_facts": 46,
       "n_hit": 10,
       "error": null,
-      "answer_head": "- Các chức danh hiện có trong công ty: \n - Account Manager \n - Accountant \n - Brand Manager \n - Business Development Specialist \n - CEO \n - Chairman \n - Compensation & Benefits Specialist \n - Content Creator \n - Customer Support Lead \n - Customer Support Representative \n\n- Hiện chưa có dữ liệu xác định **chức danh của bạn** trong hệ thống (trường “dữ liệu” chưa được đánh dấu). \n\n**Bạn có thể:** \n- Kiểm tra lại thông tin cá nhân trên hệ thống HR. \n- Liên hệ bộ phận Nhân sự để cập nhật hoặc xác nhận chức danh và vị trí của mình.",
+      "answer_head": "- Các chức danh hiện có tại công ty:\n * Account Manager\n * Accountant\n * Brand Manager\n * Business Development Specialist\n * CEO\n * Chairman\n * Compensation & Benefits Specialist\n * Content Creator\n * Customer Support Lead\n * Customer Support Representative\n- Chức danh của bạn: Hiện chưa có dữ liệu về chức danh cụ thể của bạn, vui lòng liên hệ bộ phận HR để được hỗ trợ.",
       "missed": [
         "false",
         "department head of customer support",
         "department head of executive leadership",
         "department head of finance & accounting",
         "department head of human resources"
-      ]
+      ],
+      "prompt_tokens": 7349,
+      "completion_tokens": 181,
+      "llm_calls": 2
     },
     {
       "id": "jobs_06",
@@ -1746,25 +2195,34 @@
       "n_facts": 12,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn đang giữ vị trí **IT Support Specialist** trong phòng IT. \n- Trong tổng số **10** chức danh khác nhau của phòng, vị trí của bạn được xếp **hạng 3** (tức là bạn đứng thứ ba so với các đồng nghiệp). \n\nNếu cần biết chi tiết về tiêu chí xếp hạng hoặc muốn so sánh cụ thể với các chức danh khác, vui lòng liên hệ bộ phận HR.",
+      "answer_head": "- Chức danh của bạn: IT Support Specialist.\n- Bộ phận: IT.\n- Số lượng đồng nghiệp trong phòng: 18 người.",
       "missed": [
         "department head of it",
         "peer",
         "devops engineer",
         "my_position",
         "product manager"
-      ]
+      ],
+      "prompt_tokens": 7215,
+      "completion_tokens": 238,
+      "llm_calls": 2
     },
     {
       "id": "jobs_07",
       "question": "Mức lương cơ bản cho chức danh hiện tại của tôi là bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
       "n_facts": 2,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Mức lương cơ bản cho chức danh **IT Support Specialist** hiện tại của bạn là **29.000.000 VND**."
+      "answer_head": "- Mức lương cơ bản của bạn là: 29.000.000 VNĐ.",
+      "missed": [
+        "it support specialist"
+      ],
+      "prompt_tokens": 7195,
+      "completion_tokens": 61,
+      "llm_calls": 2
     },
     {
       "id": "jobs_08",
@@ -1775,10 +2233,13 @@
       "n_facts": 1,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các quyền hạn được gán cho bạn trên hệ thống. \n- Để biết chi tiết các chức danh và quyền truy cập hiện tại, bạn nên liên hệ trực tiếp với bộ phận HR hoặc quản trị hệ thống. \n\n*(Theo quy chế nội bộ, quyền hạn trên hệ thống được xác định dựa trên chức danh và được cập nhật trong “Bảng quyền hạn người dùng”. Khi không có thông tin trong hệ thống, HR sẽ cung cấp bản sao chi tiết.)*",
+      "answer_head": "- Hiện chưa có dữ liệu về quyền hạn của bạn trên hệ thống.\n- Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra và cấp quyền.",
       "missed": [
         "it support specialist"
-      ]
+      ],
+      "prompt_tokens": 13837,
+      "completion_tokens": 150,
+      "llm_calls": 3
     },
     {
       "id": "holidays_01",
@@ -1789,7 +2250,10 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về các ngày lễ trong tháng này cho bạn. \n- Để biết chính xác ngày nghỉ lễ mà bạn được hưởng, vui lòng tham khảo **Quy chế nội bộ** (phần Lịch nghỉ lễ) hoặc liên hệ trực tiếp với phòng **Nhân sự** để được cập nhật."
+      "answer_head": "Hiện chưa có dữ liệu về lịch nghỉ lễ của bạn. Vui lòng liên hệ bộ phận HR để được cung cấp thông tin chi tiết.",
+      "prompt_tokens": 13805,
+      "completion_tokens": 164,
+      "llm_calls": 3
     },
     {
       "id": "holidays_02",
@@ -1800,66 +2264,85 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Năm nay, bạn có **12 ngày lễ** được tính trong tổng số ngày nghỉ."
+      "answer_head": "- Tổng số ngày lễ năm nay của bạn là: 12 ngày.",
+      "prompt_tokens": 7176,
+      "completion_tokens": 52,
+      "llm_calls": 2
     },
     {
       "id": "holidays_03",
       "question": "Liệt kê các ngày lễ trong năm nay theo thứ tự thời gian?",
       "sql_ok": true,
-      "fact_recall": 0.5417,
+      "fact_recall": 0.4583,
       "answer_ok": false,
       "n_facts": 24,
-      "n_hit": 13,
+      "n_hit": 11,
       "error": null,
-      "answer_head": "- 01/01/2026 – Ngày Tết Dương lịch (New Year's Day) \n- 16/02/2026 – Tết Nguyên Đán – Ngày 1 \n- 17/02/2026 – Tết Nguyên Đán – Ngày 2 \n- 18/02/2026 – Tết Nguyên Đán – Ngày 3 \n- 19/02/2026 – Tết Nguyên Đán – Ngày 4 \n- 20/02/2026 – Tết Nguyên Đán – Ngày 5 \n- 26/04/2026 – Giỗ Tổ Hùng Vương \n- 27/04/2026 – Giỗ Tổ Hùng Vương (Hung Kings' Commemoration) \n- 30/04/2026 – Ngày Giải phóng miền Nam \n- 01/05/2026 – Ngày Quốc tế Lao động \n\n*Lưu ý:* Dữ liệu hiện có 10 ngày lễ. Nếu bạn cần thông tin về các ngày lễ còn lại trong năm, vui lòng liên hệ phòng Nhân sự.",
+      "answer_head": "Các ngày lễ trong năm 2026 bao gồm:\n\n* 2026-01-01: Tết Dương lịch\n* 2026-02-16: Tết Nguyên đán - Ngày 1\n* 2026-02-17: Tết Nguyên đán - Ngày 2\n* 2026-02-18: Tết Nguyên đán - Ngày 3\n* 2026-02-19: Tết Nguyên đán - Ngày 4\n* 2026-02-20: Tết Nguyên đán - Ngày 5\n* 2026-04-26: Giỗ Tổ Hùng Vương\n* 2026-04-27: Giỗ Tổ Hùng Vương\n* 2026-04-30: Ngày Giải phóng miền Nam\n* 2026-05-01: Ngày Quốc tế Lao động",
       "missed": [
+        "new year's day (t?t duong l?ch)",
         "t?t nguyˆn d n (lunar new year) - day 1",
         "t?t nguyˆn d n (lunar new year) - day 2",
         "t?t nguyˆn d n (lunar new year) - day 3",
-        "t?t nguyˆn d n (lunar new year) - day 4",
-        "t?t nguyˆn d n (lunar new year) - day 5"
-      ]
+        "t?t nguyˆn d n (lunar new year) - day 4"
+      ],
+      "prompt_tokens": 14183,
+      "completion_tokens": 307,
+      "llm_calls": 3
     },
     {
       "id": "holidays_04",
       "question": "Ngày lễ sắp tới gần nhất mà tôi được nghỉ là ngày nào?",
+      "sql_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
+      "n_facts": 2,
+      "n_hit": 1,
+      "error": null,
+      "answer_head": "- Ngày lễ sắp tới gần nhất bạn được nghỉ là: 2027-01-01 (Tết Dương lịch).",
+      "missed": [
+        "new year's day (t?t duong l?ch)"
+      ],
+      "prompt_tokens": 13833,
+      "completion_tokens": 110,
+      "llm_calls": 3
+    },
+    {
+      "id": "holidays_05",
+      "question": "Quý 2 năm nay có những ngày lễ nào?",
+      "sql_ok": true,
+      "fact_recall": 0.625,
+      "answer_ok": false,
+      "n_facts": 8,
+      "n_hit": 5,
+      "error": null,
+      "answer_head": "Trong Quý 2 năm 2026, bạn có các ngày lễ sau:\n\n* 26/04/2026: Giỗ Tổ Hùng Vương\n* 27/04/2026: Giỗ Tổ Hùng Vương\n* 30/04/2026: Ngày Giải phóng miền Nam\n* 01/05/2026: Ngày Quốc tế Lao động",
+      "missed": [
+        "hung kings' commemoration (gi? t? h-ng vuong)",
+        "reunification day (ng…y gi?i ph¢ng mi?n nam)",
+        "labour day (ng…y qu?c t? lao d?ng)"
+      ],
+      "prompt_tokens": 7309,
+      "completion_tokens": 165,
+      "llm_calls": 2
+    },
+    {
+      "id": "holidays_06",
+      "question": "6 tháng đầu năm và 6 tháng cuối năm, nửa nào có nhiều ngày lễ hơn?",
       "sql_ok": true,
       "fact_recall": 0.0,
       "answer_ok": false,
       "n_facts": 2,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về lịch nghỉ lễ cá nhân của bạn trong hệ thống. \n- Để biết ngày lễ sắp tới mà bạn được nghỉ, bạn có thể:\n - Kiểm tra **Bảng Lịch Nghỉ Lễ** được công bố trên cổng nội bộ (intranet) của công ty. \n - Liên hệ trực tiếp với bộ phận **HR** để được cung cấp thông tin chi tiết về ngày nghỉ lễ áp dụng cho bạn. \n\nNếu cần hỗ trợ thêm, vui lòng gửi yêu cầu tới HR qua email hoặc hệ thống quản lý nhân sự.",
+      "answer_head": "- Nửa năm có nhiều ngày lễ hơn là: 6 tháng đầu năm.",
       "missed": [
-        "2027-01-01",
-        "new year's day (t?t duong l?ch)"
-      ]
-    },
-    {
-      "id": "holidays_05",
-      "question": "Quý 2 năm nay có những ngày lễ nào?",
-      "sql_ok": true,
-      "fact_recall": 0.75,
-      "answer_ok": false,
-      "n_facts": 8,
-      "n_hit": 6,
-      "error": null,
-      "answer_head": "- **26/04/2026** – Giỗ Tổ Hùng Vương \n- **27/04/2026** – Kỷ niệm ngày Giỗ Tổ Hùng Vương (Hung Kings' Commemoration) \n- **30/04/2026** – Ngày Giải phóng miền Nam \n- **01/05/2026** – Ngày Quốc tế Lao động \n\n*Lưu ý:* Dữ liệu hiện có chỉ liệt kê các ngày lễ trong tháng 4 và tháng 5. Nếu bạn cần thông tin về các ngày lễ khác trong quý 2 (tháng 6), vui lòng liên hệ phòng Nhân sự để cập nhật.",
-      "missed": [
-        "reunification day (ng…y gi?i ph¢ng mi?n nam)",
-        "labour day (ng…y qu?c t? lao d?ng)"
-      ]
-    },
-    {
-      "id": "holidays_06",
-      "question": "6 tháng đầu năm và 6 tháng cuối năm, nửa nào có nhiều ngày lễ hơn?",
-      "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
-      "n_facts": 2,
-      "n_hit": 2,
-      "error": null,
-      "answer_head": "- Nửa đầu năm (từ tháng 1‑6) có **10 ngày lễ**. \n- Nửa cuối năm (từ tháng 7‑12) có **2 ngày lễ**. \n\n**Kết luận:** Nửa đầu năm có nhiều ngày lễ hơn nửa cuối năm."
+        "10.0",
+        "2.0"
+      ],
+      "prompt_tokens": 7220,
+      "completion_tokens": 182,
+      "llm_calls": 2
     },
     {
       "id": "holidays_07",
@@ -1870,18 +2353,28 @@
       "n_facts": 2,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Tháng 2 (tháng Feb) hiện có **5 ngày lễ** được ghi nhận. \n- Hệ thống chưa có thông tin về số ngày lễ của các tháng khác trong năm, vì vậy không thể xác định tháng nào có số ngày lễ nhiều nhất. \n\n**Bạn có thể:** \n- Kiểm tra lại hoặc yêu cầu cập nhật dữ liệu ngày lễ cho các tháng còn lại qua phòng Nhân sự. \n- Liên hệ HR để được hỗ trợ thêm thông tin chi tiết."
+      "answer_head": "- Tháng 2 có 5 ngày lễ.",
+      "prompt_tokens": 7186,
+      "completion_tokens": 81,
+      "llm_calls": 2
     },
     {
       "id": "holidays_08",
       "question": "Dịp lễ 30/4 - 1/5 năm nay tôi được nghỉ những ngày nào?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
       "n_facts": 4,
-      "n_hit": 4,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Ngày 30/4/2026: Ngày Giải phóng miền Nam (Reunification Day) \n- Ngày 1/5/2026: Ngày Quốc tế Lao động (Labour Day) \n\nBạn sẽ được nghỉ vào cả hai ngày trên."
+      "answer_head": "Dịp lễ 30/4 - 1/5 năm nay, bạn được nghỉ các ngày sau:\n* 30/04/2026: Ngày Giải phóng miền Nam.\n* 01/05/2026: Ngày Quốc tế Lao động.",
+      "missed": [
+        "reunification day (ng…y gi?i ph¢ng mi?n nam)",
+        "labour day (ng…y qu?c t? lao d?ng)"
+      ],
+      "prompt_tokens": 7265,
+      "completion_tokens": 119,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_01",
@@ -1892,40 +2385,42 @@
       "n_facts": 19,
       "n_hit": 17,
       "error": null,
-      "answer_head": "**Kết quả đánh giá hiệu suất của bạn trong năm 2026**\n\n- **Tháng 1** \n - Điểm tự đánh giá: 4.0 / 5 \n - Điểm quản lý đánh giá: 4.2 / 5 \n - Nhận xét chung: “Đạt yêu cầu công việc, cần cải thiện kỹ năng phối hợp nhóm.” \n - Trạng thái: đã khóa, chưa được lãnh đạo xác nhận.\n\n- **Tháng 2** \n - Điểm tự đánh giá: 4.4 \n - Điểm quản lý đánh giá: 4.6 \n - Nhận xét: “Thể hiện tốt, chú trọng chi tiết và hỗ trợ đồng nghiệp hiệu quả.” \n - Trạng thái: đã khóa, chưa được lãnh đạo xác nhận.\n\n- **Tháng 3** \n - Điểm tự đánh giá: 3.8 \n - Điểm quản lý đánh giá: 4.0 \n - Nhận xét: “Hoàn thành tốt nhiệm vụ được giao, cần phát huy thêm tính chủ động.” \n - Trạng thái: đã khóa, chưa được lãnh đạo xác nhận.\n\n- **Tháng 4** \n - Điểm tự đánh giá: 4.2 \n - Điểm quản lý đánh giá: 4.3 \n - Nhận xét: “Đạt yêu cầu công việc, cần cải thiện kỹ năng phối hợp nhóm.” \n - Trạng thái: đã khóa, chưa được lãnh đạo xác nhận.\n\n- **Tháng 5** \n - Điểm tự đánh giá: 4.0 \n - Điểm quản lý đánh giá: 4.2 \n - Nhận xét: “Thể hiện tốt, chú trọng chi tiết và hỗ trợ đồng nghiệp hiệu quả.” \n - Trạng thái: đã khóa, chưa được lãnh đạo xác nhận.\n\n- **Tháng 6** \n - Điểm tự đánh giá: 4.5 \n - Điểm quản lý đánh giá: 4.8 \n - Nhận xét: “Hoàn thành tốt nhiệm vụ được giao, cần phát huy thêm tính chủ động.” \n - Trạng thái: đã khóa, chưa được lãnh đạo xác nhận.\n\n- **Tháng 7** \n - Điểm tự đánh giá: 4.3 \n - Điểm quản lý đánh giá: 4.3 \n - Nhận xét: “Đạt yêu cầu công việc, cần cải thiện kỹ năng phối hợp nhóm.” \n - Trạng thái: đang chờ quản lý chấm điểm (đã ghi nhận tự đánh giá).\n\n- **Tháng 8** (đến thời điểm hiện tại) \n - Điểm tự đánh giá: 4.2 \n - Điểm quản lý đánh giá: **chưa có** (đang chờ quản lý nhập). \n - Nhận xét: “Thể hiện tốt, chú trọng chi tiết và hỗ trợ đồng nghiệp hiệu quả.” \n - Trạng thái: tự đánh giá đã nộp, đang chờ quản lý chấm.\n\n**Nhận xét tổng quan** \n- Điểm trung bình tự đánh giá trong 7 tháng đã hoàn thành: khoảng **4.2**. \n- Điểm trung bình quản lý đánh giá (trong 6 tháng có dữ liệu): khoảng **4.4**. \n- Bạn thường nhận được nh",
+      "answer_head": "Kết quả đánh giá hiệu suất của bạn trong năm 2026 như sau:\n\n* **Tháng 8:** Bạn đã tự đánh giá 4.2 (Trạng thái: Đã gửi tự đánh giá). Quản lý chưa chấm điểm.\n* **Tháng 7:** Tự đánh giá 4.3, Quản lý đánh giá 4.3 (Trạng thái: Quản lý đã chấm điểm).\n* **Tháng 6:** Tự đánh giá 4.5, Quản lý đánh giá 4.8 (Trạng thái: Đã khóa).\n* **Tháng 5:** Tự đánh giá 4.0, Quản lý đánh giá 4.2 (Trạng thái: Đã khóa).\n* **Tháng 4:** Tự đánh giá 4.2, Quản lý đánh giá 4.3 (Trạng thái: Đã khóa).\n* **Tháng 3:** Tự đánh giá 3.8, Quản lý đánh giá 4.0 (Trạng thái: Đã khóa).\n* **Tháng 2:** Tự đánh giá 4.4, Quản lý đánh giá 4.6 (Trạng thái: Đã khóa).\n* **Tháng 1:** Tự đánh giá 4.0, Quản lý đánh giá 4.2 (Trạng thái: Đã khóa).",
       "missed": [
         "locked",
-        "manager_scored"
-      ]
+        "self_submitted"
+      ],
+      "prompt_tokens": 7895,
+      "completion_tokens": 412,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_02",
       "question": "Điểm trung bình quản lý đánh giá tôi kỳ gần nhất là bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 0.0,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 2,
-      "n_hit": 0,
+      "n_hit": 2,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về điểm trung bình quản lý đánh giá của bạn trong kỳ gần nhất. \n- Để biết chi tiết, vui lòng liên hệ bộ phận Nhân sự (HR).",
-      "missed": [
-        "2026.0",
-        "8.0"
-      ]
+      "answer_head": "- Điểm trung bình quản lý đánh giá kỳ gần nhất (tháng 8/2026): Hiện chưa có dữ liệu.\n- Trạng thái đánh giá: Bạn đã tự nộp đánh giá.",
+      "prompt_tokens": 7216,
+      "completion_tokens": 111,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_03",
       "question": "Điểm tự đánh giá của tôi kỳ này chênh lệch với điểm quản lý bao nhiêu?",
       "sql_ok": true,
-      "fact_recall": 0.0,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 1,
-      "n_hit": 0,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu về điểm tự đánh giá và điểm quản lý của bạn trong kỳ này, nên không thể xác định chênh lệch được. \n- Theo quy chế đánh giá hiệu suất (Điều 3.2), sau khi kỳ đánh giá kết thúc, điểm tự đánh giá và điểm quản lý sẽ được tổng hợp để so sánh và phản hồi cho nhân viên. \n- Bạn có thể liên hệ bộ phận Nhân sự hoặc quản lý trực tiếp để biết khi nào sẽ có kết quả và nhận bản sao báo cáo đánh giá.",
-      "missed": [
-        "4.2"
-      ]
+      "answer_head": "- Điểm tự đánh giá: 4.2\n- Điểm quản lý: hiện chưa có dữ liệu\n- Mức chênh lệch: hiện chưa có dữ liệu",
+      "prompt_tokens": 7227,
+      "completion_tokens": 122,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_04",
@@ -1936,7 +2431,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Người đã đánh giá hiệu suất của bạn trong kỳ vừa rồi là **Đỗ Văn Hùng** – Trưởng bộ phận IT (IT – Department Head of IT)."
+      "answer_head": "- Người đánh giá hiệu suất của bạn là: Đỗ Văn Hùng (Trưởng phòng IT).",
+      "prompt_tokens": 7288,
+      "completion_tokens": 89,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_05",
@@ -1947,22 +2445,31 @@
       "n_facts": 3,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Mục tiêu kỳ tới của bạn: **Mentor nhân viên mới và hoàn thành đúng hạn mọi đầu việc.**",
+      "answer_head": "- Mục tiêu kỳ tới của bạn: Mentor nhân viên mới và hoàn thành đúng hạn mọi đầu việc.",
       "missed": [
         "2026.0",
         "8.0"
-      ]
+      ],
+      "prompt_tokens": 7221,
+      "completion_tokens": 87,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_06",
       "question": "Đánh giá hiệu suất của tôi đã được lãnh đạo xác nhận chưa?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.5,
+      "answer_ok": false,
       "n_facts": 2,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Đánh giá hiệu suất của bạn cho tháng 8/2026 hiện đang ở trạng thái **đã tự nộp** (dữ liệu). \n- Lãnh đạo **chưa xác nhận** (dữ liệu = false). \n\n**Theo quy định nội bộ** (Điều 5, mục 2 về quy trình đánh giá hiệu suất): sau khi nhân viên tự nộp đánh giá, lãnh đạo sẽ xem xét và xác nhận. Khi chưa có xác nhận, bạn có thể:\n\n- Kiểm tra lại nội dung đã nộp để đảm bảo đầy đủ. \n- Nhắc nhở hoặc liên hệ trực tiếp với người quản lý để biết thời gian dự kiến xác nhận. \n\nNếu cần hỗ trợ thêm, vui lòng liên hệ bộ phận HR."
+      "answer_head": "- Trạng thái: Bạn đã tự nộp đánh giá (tháng 8/2026).\n- Xác nhận của lãnh đạo: Chưa được xác nhận.",
+      "missed": [
+        "false"
+      ],
+      "prompt_tokens": 7214,
+      "completion_tokens": 103,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_07",
@@ -1973,7 +2480,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- **Điểm tự đánh giá**: 4.2 (kỳ hiện tại) so với 4.3 (kỳ trước) → **giảm 0.1 điểm**. \n- **Điểm đánh giá của quản lý**: hiện chưa có dữ liệu cho kỳ hiện tại, vì vậy không thể so sánh với kỳ trước (4.3). \n- **Kết luận chung**: theo dữ liệu hiện có, điểm tự đánh giá của bạn đã giảm; điểm đánh giá của quản lý chưa được cập nhật. \n\nNếu cần biết thêm chi tiết hoặc cập nhật điểm quản lý, vui lòng liên hệ bộ phận HR."
+      "answer_head": "- Điểm đánh giá của bạn giảm.\n- Điểm kỳ trước: 4.3\n- Điểm hiện tại: 0.0\n- Mức chênh lệch: -4.3",
+      "prompt_tokens": 7204,
+      "completion_tokens": 269,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_08",
@@ -1984,7 +2494,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- **Nhận xét tổng quan:** “Thể hiện tốt, chú trọng chi tiết và hỗ trợ đồng nghiệp hiệu quả.”"
+      "answer_head": "- Nhận xét tổng quan: Thể hiện tốt, chú trọng chi tiết và hỗ trợ đồng nghiệp hiệu quả.\n- Trạng thái: Đã tự gửi đánh giá.",
+      "prompt_tokens": 7238,
+      "completion_tokens": 110,
+      "llm_calls": 2
     },
     {
       "id": "performance_reviews_10",
@@ -1995,22 +2508,24 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Năm nay bạn đã được đánh giá **8 kỳ**."
+      "answer_head": "- Bạn đã được đánh giá tổng cộng 8 kỳ.",
+      "prompt_tokens": 7179,
+      "completion_tokens": 56,
+      "llm_calls": 2
     },
     {
       "id": "performance_scores_01",
       "question": "Chi tiết điểm từng tiêu chí đánh giá của tôi kỳ vừa rồi?",
       "sql_ok": true,
-      "fact_recall": 0.8462,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 13,
-      "n_hit": 11,
+      "n_hit": 13,
       "error": null,
-      "answer_head": "**Kỳ đánh giá tháng 8/2026 (đánh giá hàng tháng)** \n\n- **Kiến thức công việc (KT)** – Điểm tự đánh giá: **5** \n- **Chất lượng công việc (CL)** – Điểm tự đánh giá: **4** \n- **Tư duy sáng tạo (ST)** – Điểm tự đánh giá: **5** \n- **Chấm công / chuyên cần (CC)** – Điểm tự đánh giá: **4** \n- **Năng suất làm việc (NS)** – Điểm tự đánh giá: **4** \n- **Giao tiếp (GT)** – Điểm tự đánh giá: **5** \n- **Trung thực / đáng tin cậy (TT)** – Điểm tự đánh giá: **4** \n- **Giải quyết vấn đề (GQVD)** – Điểm tự đánh giá: **4** \n- **Trách nhiệm công việc (TN)** – Điểm tự đánh giá: **4** \n- **Quản lý công việc (QL)** – Điểm tự đánh giá: **3** \n\n*Ghi chú:* Tất cả các tiêu chí hiện đang ở trạng thái **đã tự nộp** và chưa có điểm đánh giá của người quản lý (đang chờ duyệt). Nếu cần biết thời gian duyệt hoặc có thắc mắc khác, vui lòng liên hệ bộ phận HR.",
-      "missed": [
-        "cham cong/chuyen can",
-        "trung thuc/đang tin cay"
-      ]
+      "answer_head": "Chi tiết điểm tự đánh giá của bạn trong kỳ tháng 8/2026 như sau:\n\n* Kiến thức công việc: 5\n* Chất lượng công việc: 4\n* Tư duy sáng tạo: 5\n* Chấm công/chuyên cần: 4\n* Năng suất làm việc: 4\n* Giao tiếp: 5\n* Trung thực/đáng tin cậy: 4\n* Giải quyết vấn đề: 4\n* Trách nhiệm công việc: 4\n* Quản lý công việc: 3\n\nHiện tại, các tiêu chí này đều ở trạng thái đã tự gửi và chưa có điểm từ quản lý.",
+      "prompt_tokens": 14518,
+      "completion_tokens": 371,
+      "llm_calls": 3
     },
     {
       "id": "performance_scores_02",
@@ -2021,7 +2536,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện tại trong kỳ đánh giá tháng 8/2026, chỉ có tiêu chí **“Kiến thức công việc”** được ghi lại, nhưng **không có điểm số** được nhập bởi quản lý. \n- Vì chưa có điểm số nào, **không thể xác định tiêu chí nào bị chấm thấp nhất** trong kỳ này. \n\n**Bạn có thể:**\n- Kiểm tra lại với quản lý trực tiếp để biết điểm số đã được cập nhật chưa. \n- Nếu cần hỗ trợ thêm, vui lòng liên hệ bộ phận **HR** để được giải đáp."
+      "answer_head": "- Hiện chưa có dữ liệu về điểm số từ quản lý cho tiêu chí \"Kiến thức công việc\".\n- Vui lòng liên hệ bộ phận HR để biết thêm chi tiết.",
+      "prompt_tokens": 7195,
+      "completion_tokens": 120,
+      "llm_calls": 2
     },
     {
       "id": "performance_scores_03",
@@ -2032,25 +2550,28 @@
       "n_facts": 2,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện chưa có dữ liệu nào về các tiêu chí đánh giá hiệu suất của bạn, vì chưa có bản ghi nào trong hệ thống. \n- Do đó không thể xác định tiêu chí nào bạn tự chấm cao hơn quản lý. \n\n**Bạn có thể:**\n- Kiểm tra lại trong hệ thống đánh giá hiệu suất (nếu đã hoàn thành) để xem chi tiết từng tiêu chí. \n- Liên hệ bộ phận Nhân sự để được hỗ trợ truy cập hoặc cập nhật thông tin đánh giá.",
+      "answer_head": "- Hiện chưa có dữ liệu về điểm chấm của quản lý cho các tiêu chí, nên không thể đối chiếu để xác định tiêu chí nào bạn tự chấm cao hơn.",
       "missed": [
         "kien thuc cong viec",
         "5.0"
-      ]
+      ],
+      "prompt_tokens": 7210,
+      "completion_tokens": 120,
+      "llm_calls": 2
     },
     {
       "id": "performance_scores_04",
       "question": "Kỳ này tôi được chấm bao nhiêu tiêu chí?",
       "sql_ok": true,
-      "fact_recall": 0.0,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 1,
-      "n_hit": 0,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- Trong kỳ này, bạn được chấm **0 tiêu chí**. \n\nNếu bạn cần biết lý do hoặc muốn cập nhật tiêu chí đánh giá, vui lòng liên hệ bộ phận HR để được hỗ trợ.",
-      "missed": [
-        "10.0"
-      ]
+      "answer_head": "- Bạn được chấm 10 tiêu chí trong kỳ này.",
+      "prompt_tokens": 13812,
+      "completion_tokens": 202,
+      "llm_calls": 3
     },
     {
       "id": "asset_assignments_01",
@@ -2061,11 +2582,14 @@
       "n_facts": 5,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Màn hình LG 27UP850N-W 27 inch 4K** \n - Mã tài sản: **MN-0002** \n - Loại: **Màn hình** \n - Địa điểm: **HCM - Toà A - Lầu 3 - P.IT01** \n - Ngày mua: **01/06/2026** – Giá mua: **11.000.000 đ** \n - Số seri: **LG27UP850-311NUTZ0091** \n - Thông số kỹ thuật: IPS 27 inch 4K, USB‑C 90W, HDR400, loa 2×5W \n - Nhà cung cấp: **An Phát** \n - Tình trạng: **Mới 100%** \n - Bảo hành đến: **31/05/2028** \n - Ngày được cấp: **05/03/2026** (đang hiệu lực)\n\n- **Laptop Lenovo ThinkPad T14 Gen 4** \n - Mã tài sản: **LT-0004** \n - Loại: **Laptop** \n - Địa điểm: **HN - Toà B - Lầu 5 - P.KT01** \n - Ngày mua: **06/07/2026** – Giá mua: **27.500.000 đ** \n - Số seri: **T14G4-PF3X9A21** \n - Thông số kỹ thuật: Ryzen 7 PRO 7735U, RAM 16 GB LPDDR5, SSD 512 GB, màn hình 14 inch WUXGA \n - Nhà cung cấp: **PSD** \n - Tình trạng: **Mới 100%, fullbox** \n - Bảo hành đến: **05/07/2028** \n - Ngày được cấp: **10/02/2026** (đang hiệu lực)",
+      "answer_head": "Bạn đang được cấp các tài sản, thiết bị sau:\n\n* Laptop: Lenovo ThinkPad T14 Gen 4 (Mã: LT-0004), cấp ngày 10/02/2026, trạng thái: đang hiệu lực.\n* Màn hình: LG 27UP850N-W 27 inch 4K (Mã: MN-0002), cấp ngày 05/03/2026, trạng thái: đang hiệu lực.",
       "missed": [
         "2026-02-10",
         "2026-03-05"
-      ]
+      ],
+      "prompt_tokens": 7319,
+      "completion_tokens": 224,
+      "llm_calls": 2
     },
     {
       "id": "asset_assignments_02",
@@ -2076,52 +2600,56 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Bạn hiện đang giữ **2 tài sản** của công ty."
+      "answer_head": "- Bạn đang giữ tổng cộng 2 tài sản công ty.",
+      "prompt_tokens": 7180,
+      "completion_tokens": 59,
+      "llm_calls": 2
     },
     {
       "id": "asset_assignments_03",
       "question": "Laptop của tôi được cấp khi nào, tình trạng lúc nhận ra sao?",
-      "sql_ok": true,
-      "fact_recall": 0.0,
-      "answer_ok": false,
-      "n_facts": 3,
-      "n_hit": 0,
-      "error": null,
-      "answer_head": "- **Thời gian cấp:** 10 / 02 / 2026, lúc 09:00 sáng. \n- **Tình trạng khi nhận:** Mới 100 % (đúng như mới).",
-      "missed": [
-        "2026-02-10",
-        "moi 100%",
-        "lenovo thinkpad t14 gen 4"
-      ]
-    },
-    {
-      "id": "asset_assignments_04",
-      "question": "Những tài sản nào tôi đã trả lại công ty?",
-      "sql_ok": true,
-      "fact_recall": 0.6667,
-      "answer_ok": false,
-      "n_facts": 3,
-      "n_hit": 2,
-      "error": null,
-      "answer_head": "- **Mã tài sản:** PK-0001 \n **Tên tài sản:** Keychron K8 Pro QMK \n **Danh mục:** Bàn phím / Chuột / Tai nghe \n **Ngày trả lại:** 20/06/2026 17:00 \n **Ghi chú:** Doi sang ban phim khac \n\nHiện chỉ có 1 tài sản đã được ghi nhận là bạn đã trả lại công ty. Nếu bạn có thêm tài sản khác chưa thấy trong danh sách, vui lòng liên hệ bộ phận HR để cập nhật.",
-      "missed": [
-        "2026-06-20"
-      ]
-    },
-    {
-      "id": "asset_assignments_05",
-      "question": "Tài sản tôi đang giữ có hạn trả dự kiến khi nào?",
       "sql_ok": true,
       "fact_recall": 0.3333,
       "answer_ok": false,
       "n_facts": 3,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Hiện tại, các tài sản bạn đang giữ (Laptop **LT‑0004** và Màn hình **MN‑0002**) không có ngày trả dự kiến được ghi trong hệ thống. \n- Vì chưa có thông tin ngày trả, bạn có thể tham khảo **Quy chế quản lý tài sản** của công ty (điều 3.2) để biết quy trình và thời hạn trả tài sản khi không có ngày trả cụ thể. \n- Nếu cần xác nhận lại hoặc muốn đặt ngày trả, vui lòng liên hệ bộ phận **Quản lý tài sản / HR** để được hỗ trợ.",
+      "answer_head": "- Ngày cấp: 10/02/2026\n- Tình trạng lúc nhận: Mới 100%",
       "missed": [
-        "lenovo thinkpad t14 gen 4",
-        "lg 27up850n-w 27 inch 4k"
-      ]
+        "2026-02-10",
+        "lenovo thinkpad t14 gen 4"
+      ],
+      "prompt_tokens": 7249,
+      "completion_tokens": 154,
+      "llm_calls": 2
+    },
+    {
+      "id": "asset_assignments_04",
+      "question": "Những tài sản nào tôi đã trả lại công ty?",
+      "sql_ok": true,
+      "fact_recall": 1.0,
+      "answer_ok": true,
+      "n_facts": 3,
+      "n_hit": 3,
+      "error": null,
+      "answer_head": "Bạn đã trả lại tài sản sau:\n* Tên tài sản: Keychron K8 Pro QMK (Mã: PK-0001)\n* Ngày trả: 2026-06-20 17:00:00\n* Tình trạng khi trả: Tot, pin yeu\n* Ghi chú: [SEED-EVAL] Doi sang ban phim khac",
+      "prompt_tokens": 7251,
+      "completion_tokens": 197,
+      "llm_calls": 2
+    },
+    {
+      "id": "asset_assignments_05",
+      "question": "Tài sản tôi đang giữ có hạn trả dự kiến khi nào?",
+      "sql_ok": true,
+      "fact_recall": 1.0,
+      "answer_ok": true,
+      "n_facts": 3,
+      "n_hit": 3,
+      "error": null,
+      "answer_head": "Bạn đang giữ các tài sản sau:\n* Laptop Lenovo ThinkPad T14 Gen 4 (LT-0004): Hiện chưa có ngày trả dự kiến.\n* Màn hình LG 27UP850N-W 27 inch 4K (MN-0002): Hiện chưa có ngày trả dự kiến.",
+      "prompt_tokens": 7270,
+      "completion_tokens": 152,
+      "llm_calls": 2
     },
     {
       "id": "asset_assignments_06",
@@ -2132,21 +2660,28 @@
       "n_facts": 0,
       "n_hit": 0,
       "error": null,
-      "answer_head": "- Người duyệt cấp tài sản cho bạn là **Lê Văn C**, vị trí **Human Resources – HR Generalist**. \n- Email: **hr.employee@company.com** \n- Số điện thoại: **0912 345 678**"
+      "answer_head": "Người cấp phát tài sản cho bạn là:\n- Ông Đặng Thanh Khải (IT – IT Support Specialist)\n- Email: khaithanhang32@company.com\n- SĐT: 0912000006",
+      "prompt_tokens": 7415,
+      "completion_tokens": 162,
+      "llm_calls": 2
     },
     {
       "id": "asset_assignments_07",
       "question": "Ghi chú bàn giao tài sản của tôi có nội dung gì?",
       "sql_ok": true,
-      "fact_recall": 0.6667,
+      "fact_recall": 0.3333,
       "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 2,
+      "n_hit": 1,
       "error": null,
-      "answer_head": "- **Màn hình LG 27UP850N‑W 27 inch 4K** (mã tài sản MN‑0002): *[SEED‑EVAL] Bổ sung màn hình phụ* \n- **Laptop Lenovo ThinkPad T14 Gen 4** (mã tài sản LT‑0004): *[SEED‑EVAL] Cấp mới khi onboarding* \n- **Bàn phím Keychron K8 Pro QMK** (mã tài sản PK‑0001): *[SEED‑EVAL] Đổi sang bàn phím khác*",
+      "answer_head": "- Ghi chú bàn giao tài sản của bạn là: [SEED-EVAL] Doi sang ban phim khac.",
       "missed": [
-        "doi sang ban phim khac"
-      ]
+        "bo sung man hinh phu",
+        "cap moi khi onboarding"
+      ],
+      "prompt_tokens": 7246,
+      "completion_tokens": 113,
+      "llm_calls": 2
     },
     {
       "id": "asset_requests_01",
@@ -2157,40 +2692,53 @@
       "n_facts": 3,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Yêu cầu cấp tài sản gần nhất của bạn hiện đang ở trạng thái **đã duyệt**.",
+      "answer_head": "- Trạng thái yêu cầu cấp tài sản (Laptop) gần nhất của bạn là: đã duyệt.",
       "missed": [
         "can laptop de lam viec",
         "2026-10-07"
-      ]
+      ],
+      "prompt_tokens": 13944,
+      "completion_tokens": 176,
+      "llm_calls": 3
     },
     {
       "id": "asset_requests_02",
       "question": "Liệt kê các yêu cầu cấp thiết bị tôi đã gửi trong năm nay?",
       "sql_ok": true,
-      "fact_recall": 0.9,
+      "fact_recall": 0.6,
       "answer_ok": false,
       "n_facts": 10,
-      "n_hit": 9,
+      "n_hit": 6,
       "error": null,
-      "answer_head": "**Các yêu cầu cấp thiết bị của bạn trong năm 2026** \n\n- **Yêu cầu 1** \n - **Loại thiết bị:** Laptop \n - **Lý do:** Can laptop de lam viec \n - **Ngày cần:** 15/01/2026 \n - **Ngày dự kiến trả lại:** 20/01/2026 \n - **Trạng thái:** Đã duyệt \n\n- **Yêu cầu 2** \n - **Loại thiết bị:** Điện thoại / Tablet \n - **Lý do:** Can dien thoai cong viec \n - **Ngày cần:** 10/05/2026 \n - **Ngày dự kiến trả lại:** (không có) \n - **Trạng thái:** Bị từ chối \n\n- **Yêu cầu 3** \n - **Loại thiết bị:** Màn hình \n - **Lý do:** Xin them man hinh 4K lam viec \n - **Ngày cần:** 12/08/2026 \n - **Ngày dự kiến trả lại:** 01/09/2026 \n - **Trạng thái:** Đang chờ duyệt \n\n*(Tất cả các yêu cầu đều được tạo vào ngày 07/10/2026.)*",
+      "answer_head": "Các yêu cầu cấp thiết bị bạn đã gửi bao gồm:\n\n* Laptop: Đã duyệt (Ngày cần: 15/01/2026)\n* Điện thoại / Tablet: Bị từ chối (Ngày cần: 10/05/2026)\n* Màn hình: Đang chờ duyệt (Ngày cần: 12/08/2026)",
       "missed": [
-        "2026-10-07"
-      ]
+        "can laptop de lam viec",
+        "2026-10-07",
+        "can dien thoai cong viec",
+        "xin them man hinh 4k lam viec"
+      ],
+      "prompt_tokens": 14142,
+      "completion_tokens": 309,
+      "llm_calls": 3
     },
     {
       "id": "asset_requests_03",
       "question": "Yêu cầu nào của tôi bị từ chối và lý do là gì?",
       "sql_ok": true,
-      "fact_recall": 0.3333,
+      "fact_recall": 0.0,
       "answer_ok": false,
       "n_facts": 3,
-      "n_hit": 1,
+      "n_hit": 0,
       "error": null,
-      "answer_head": "- Hiện tại hệ thống không có bất kỳ yêu cầu nghỉ phép hay làm thêm giờ nào của bạn, vì vậy không có yêu cầu nào bị **bị từ chối** và cũng không có lý do liên quan. \n- Nếu bạn đã gửi yêu cầu nhưng chưa thấy trong hệ thống, vui lòng liên hệ bộ phận **HR** để kiểm tra lại.",
+      "answer_head": "- Hiện chưa có dữ liệu về các yêu cầu nghỉ phép của bạn. Vui lòng liên hệ bộ phận HR để được hỗ trợ kiểm tra chi tiết.",
       "missed": [
+        "rejected",
         "vuot dinh muc cap phat",
         "can dien thoai cong viec"
-      ]
+      ],
+      "prompt_tokens": 13822,
+      "completion_tokens": 179,
+      "llm_calls": 3
     },
     {
       "id": "asset_requests_04",
@@ -2201,38 +2749,43 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Năm nay, bạn đã gửi **3** yêu cầu cấp tài sản."
+      "answer_head": "- Bạn đã gửi tổng cộng 3 yêu cầu cấp tài sản.",
+      "prompt_tokens": 7183,
+      "completion_tokens": 76,
+      "llm_calls": 2
     },
     {
       "id": "asset_requests_05",
       "question": "Ai duyệt yêu cầu cấp tài sản của tôi?",
       "sql_ok": true,
-      "fact_recall": 0.6667,
-      "answer_ok": false,
+      "fact_recall": 1.0,
+      "answer_ok": true,
       "n_facts": 3,
-      "n_hit": 2,
+      "n_hit": 3,
       "error": null,
-      "answer_head": "- Yêu cầu cấp tài sản **đã được duyệt** bởi **Lê Văn C** – Human Resources – HR Generalist (email: hr.employee@company.com, SĐT: 0912 345 678). \n- Các yêu cầu còn lại: \n - Yêu cầu có trạng thái **bị từ chối** – chưa có người duyệt. \n - Yêu cầu có trạng thái **đang chờ duyệt** – chưa có người duyệt.",
-      "missed": [
-        "approved"
-      ]
+      "answer_head": "- Yêu cầu cấp laptop: Đã duyệt bởi Lê Văn C (HR Generalist).\n- Yêu cầu cấp điện thoại: Bị từ chối (không có thông tin người duyệt).\n- Yêu cầu cấp màn hình 4K: Đang chờ duyệt.",
+      "prompt_tokens": 7411,
+      "completion_tokens": 118,
+      "llm_calls": 2
     },
     {
       "id": "assets_01",
       "question": "Thông tin chi tiết laptop công ty đang cấp cho tôi?",
       "sql_ok": true,
-      "fact_recall": 0.3333,
+      "fact_recall": 0.5,
       "answer_ok": false,
       "n_facts": 6,
-      "n_hit": 2,
+      "n_hit": 3,
       "error": null,
-      "answer_head": "- **Mã tài sản:** LT‑0004 \n- **Tên thiết bị:** Lenovo ThinkPad T14 Gen 4 \n- **Loại tài sản:** Laptop \n- **Số seri:** T14G4‑PF3X9A21 \n- **Thông số kỹ thuật:** Ryzen 7 PRO 7735U, RAM 16 GB LPDDR5, SSD 512 GB, màn hình 14 inch WUXGA \n- **Ngày mua:** 06/07/2026 \n- **Giá mua:** 27 500 000 VND \n- **Thời gian bảo hành đến:** 05/07/2028 \n- **Tình trạng khi nhận:** Mới 100 %, đầy hộp (full‑box) \n- **Ngày cấp (bắt đầu sử dụng):** 10/02/2026, 09:00 \n- **Ngày dự kiến trả lại:** chưa xác định (hiện đang sử dụng) \n- **Trạng thái:** đang hiệu lực (đang sử dụng) \n- **Ghi chú:** “Cấp mới khi onboarding” \n\nNếu cần biết thêm quy định về việc bảo trì, trả lại hoặc sử dụng tài sản, vui lòng tham khảo **Quy chế quản lý tài sản công ty** hoặc liên hệ bộ phận HR.",
+      "answer_head": "Thông tin chi tiết laptop công ty đang cấp cho bạn:\n\n* **Tên thiết bị:** Lenovo ThinkPad T14 Gen 4\n* **Mã tài sản:** LT-0004\n* **Số sê-ri:** T14G4-PF3X9A21\n* **Cấu hình:** Ryzen 7 PRO 7735U, RAM 16GB LPDDR5, SSD 512GB, 14 inch WUXGA\n* **Tình trạng khi bàn giao:** Mới 100%\n* **Ngày cấp:** 10/02/2026\n* **Trạng thái:** Đang hiệu lực\n* **Ghi chú:** Cấp mới khi onboarding",
       "missed": [
-        "ryzen 7 pro 7735u, ram 16gb lpddr5, ssd 512gb, 14 inch wuxga",
         "lg 27up850n-w 27 inch 4k",
         "lg27up850-311nutz0091",
         "ips 27 inch 4k, usb-c 90w, hdr400, loa 2x5w"
-      ]
+      ],
+      "prompt_tokens": 14004,
+      "completion_tokens": 470,
+      "llm_calls": 3
     },
     {
       "id": "assets_02",
@@ -2243,26 +2796,31 @@
       "n_facts": 4,
       "n_hit": 2,
       "error": null,
-      "answer_head": "- Laptop **Lenovo ThinkPad T14 Gen 4** (mã tài sản LT‑0004) còn bảo hành **đến ngày 05/07/2028**.",
+      "answer_head": "- Laptop của bạn (Lenovo ThinkPad T14 Gen 4) còn bảo hành đến ngày 2028-07-05.",
       "missed": [
         "lg 27up850n-w 27 inch 4k",
         "2028-05-31"
-      ]
+      ],
+      "prompt_tokens": 7200,
+      "completion_tokens": 128,
+      "llm_calls": 2
     },
     {
       "id": "assets_03",
       "question": "Tình trạng hiện tại của thiết bị tôi đang giữ?",
       "sql_ok": true,
-      "fact_recall": 0.6,
+      "fact_recall": 0.8,
       "answer_ok": false,
       "n_facts": 5,
-      "n_hit": 3,
+      "n_hit": 4,
       "error": null,
-      "answer_head": "**Các thiết bị hiện đang được bạn giữ:**\n\n- **Màn hình LG 27UP850N-W 27 inch 4K** \n - Mã thiết bị: **MN-0002** \n - Trạng thái: **đang được giao (assigned)**, **đang hiệu lực** \n - Địa điểm: **HCM - Tòa A - Lầu 3 - P.IT01** \n - Ngày giao: **05/03/2026 09:00** \n - Ghi chú: *Bổ sung màn hình phụ* \n\n- **Laptop Lenovo ThinkPad T14 Gen 4** \n - Mã thiết bị: **LT-0004** \n - Trạng thái: **đang được giao (assigned)**, **đang hiệu lực** \n - Địa điểm: **HN - Tòa B - Lầu 5 - P.KT01** \n - Ngày giao: **10/02/2026 09:00** \n - Ghi chú: *Cấp mới khi onboarding* \n\nCả hai thiết bị đều đang ở trạng thái **đang sử dụng** và chưa có ngày trả dự kiến. Nếu cần thông tin chi tiết hơn (ví dụ: ngày hết hạn bảo hành, hướng dẫn sử dụng), vui lòng liên hệ bộ phận HR hoặc IT.",
+      "answer_head": "Bạn đang giữ 2 thiết bị với tình trạng như sau:\n\n* **Laptop Lenovo ThinkPad T14 Gen 4 (LT-0004):** Đang được bàn giao, tình trạng Mới 100%, fullbox.\n* **Màn hình LG 27UP850N-W 27 inch 4K (MN-0002):** Đang được bàn giao, tình trạng Mới 100%.",
       "missed": [
-        "moi 100%, fullbox",
-        "moi 100%"
-      ]
+        "assigned"
+      ],
+      "prompt_tokens": 7296,
+      "completion_tokens": 204,
+      "llm_calls": 2
     },
     {
       "id": "it_tickets_01",
@@ -2273,40 +2831,40 @@
       "n_facts": 3,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Ticket IT gần nhất của bạn (được tạo vào ngày 10/09/2026 lúc 08:30) hiện đang ở trạng thái **đang mở**.",
+      "answer_head": "- Trạng thái: Đang mở.",
       "missed": [
         "mang phong ky thuat cham tu sang, anh huong hop online",
         "2026-09-10"
-      ]
+      ],
+      "prompt_tokens": 13957,
+      "completion_tokens": 125,
+      "llm_calls": 3
     },
     {
       "id": "it_tickets_02",
       "question": "Liệt kê các ticket IT tôi đã báo trong năm nay?",
-      "sql_ok": true,
-      "fact_recall": 0.4444,
+      "sql_ok": false,
+      "fact_recall": 0.0,
       "answer_ok": false,
       "n_facts": 18,
-      "n_hit": 8,
-      "error": null,
-      "answer_head": "**Các ticket IT bạn đã báo trong năm 2026**\n\n- **Ticket ID:** d0000000-0000-4000-8000-000000000001 \n - **Thiết bị:** Mạng chấm, rót mạng liên tục \n - **Loại:** Mạng (NETWORK) \n - **Mô tả:** “Mang phong kỹ thuật chấm từ sang, anh hưởng hợp online” \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Cao (HIGH) \n - **Trạng thái:** Đang mở (OPEN) \n - **Ngày báo:** 10/09/2026 \n\n- **Ticket ID:** d0000000-0000-4000-8000-000000000002 \n - **Thiết bị:** Máy in HP LaserJet 404dn \n - **Loại:** Máy in (PRINTER) \n - **Mô tả:** “Máy in kẹt giấy liên tục, mức còn 20%” \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Bình thường (NORMAL) \n - **Trạng thái:** Đang xử lý (dữ liệu) \n - **Ngày báo:** 15/08/2026 \n\n- **Ticket ID:** d0000000-0000-4000-8000-000000000003 \n - **Thiết bị:** ThinkPad T14 Gen 4 \n - **Loại:** Laptop/PC (dữ liệu) \n - **Mô tả:** “Pin chai nhanh, sạc đầy chỉ dùng được 1 giờ” \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Bình thường (NORMAL) \n - **Trạng thái:** Đã hoàn thành (DONE) \n - **Ngày báo:** 08/07/2026 \n - **Ngày giải quyết:** 09/07/2026 \n\n- **Ticket ID:** d0000000-0000-4000-8000-000000000005 \n - **Thiết bị:** Email công ty \n - **Loại:** Tài khoản email (dữ liệu) \n - **Mô tả:** “Quên mật khẩu email, cần reset” \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Bình thường (NORMAL) \n - **Trạng thái:** Đã hoàn thành (DONE) \n - **Ngày báo:** 05/06/2026 \n - **Ngày giải quyết:** 05/06/2026 \n\n- **Ticket ID:** d0000000-0000-4000-8000-000000000004 \n - **Thiết bị:** Office 365 \n - **Loại:** Phần mềm (SOFTWARE) \n - **Mô tả:** “Không đăng nhập được Outlook, báo lỗi license” \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Bình thường (NORMAL) \n - **Trạng thái:** Đã hoàn thành (DONE) \n - **Ngày báo:** 12/03/2026 \n - **Ngày giải quyết:** 12/03/2026",
-      "missed": [
-        "2026-09-10",
-        "2026-08-15",
-        "pin chai nhanh, sac day chi dung duoc 1 gio",
-        "laptop_pc",
-        "2026-07-08"
-      ]
+      "n_hit": 0,
+      "error": "RuntimeError: SQL bị từ chối: Bảng ngoài allowlist: ['created_at']",
+      "prompt_tokens": 13203,
+      "completion_tokens": 167,
+      "llm_calls": 2
     },
     {
       "id": "it_tickets_03",
       "question": "Năm nay tôi đã báo bao nhiêu sự cố IT?",
-      "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "sql_ok": false,
+      "fact_recall": 0.0,
+      "answer_ok": false,
       "n_facts": 1,
-      "n_hit": 1,
-      "error": null,
-      "answer_head": "- Năm nay bạn đã báo **5** sự cố IT."
+      "n_hit": 0,
+      "error": "RuntimeError: SQL bị từ chối: Bảng ngoài allowlist: ['created_at']",
+      "prompt_tokens": 13161,
+      "completion_tokens": 100,
+      "llm_calls": 2
     },
     {
       "id": "it_tickets_04",
@@ -2317,7 +2875,10 @@
       "n_facts": 1,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- **Trạng thái hiện tại:** Ticket đang **đang xử lý** (dữ liệu). \n- **Ghi chú xử lý:** Hiện chưa có ghi chú nào được cập nhật (dữ liệu = null). \n\nNếu bạn cần cập nhật thêm thông tin hoặc muốn biết thời gian dự kiến hoàn thành, vui lòng liên hệ bộ phận IT hoặc mở yêu cầu mới qua hệ thống hỗ trợ."
+      "answer_head": "- Trạng thái: Đang xử lý (chưa xong).\n- Ghi chú xử lý: Hiện chưa có dữ liệu.",
+      "prompt_tokens": 7275,
+      "completion_tokens": 105,
+      "llm_calls": 2
     },
     {
       "id": "it_tickets_05",
@@ -2328,21 +2889,31 @@
       "n_facts": 2,
       "n_hit": 1,
       "error": null,
-      "answer_head": "- Ticket sự cố mạng của bạn (ID: d0000000‑0000‑4000‑8000‑000000000001) hiện đang **mở** và **chưa được giao cho người nào** để xử lý. \n- Vì chưa có người được chỉ định, nên thời gian giải quyết vẫn chưa được xác định. \n\n**Bạn có thể:**\n- Liên hệ trực tiếp với bộ phận IT (hoặc người quản lý IT) để yêu cầu gán người phụ trách cho ticket này. \n- Kiểm tra lại email hoặc hệ thống quản lý ticket để xem có thông báo nào về việc chuyển giao không. \n\nNếu cần hỗ trợ thêm, vui lòng liên hệ phòng Nhân sự hoặc bộ phận IT để được cập nhật trạng thái mới nhất.",
+      "answer_head": "- Hiện tại yêu cầu hỗ trợ về sự cố mạng của bạn đang ở trạng thái: Mở.\n- Người xử lý: Hiện chưa có nhân sự được phân công xử lý.",
       "missed": [
         "mang phong ky thuat cham tu sang, anh huong hop online"
-      ]
+      ],
+      "prompt_tokens": 7251,
+      "completion_tokens": 132,
+      "llm_calls": 2
     },
     {
       "id": "it_tickets_06",
       "question": "Những ticket nào của tôi vẫn đang mở chưa xử lý xong?",
       "sql_ok": true,
-      "fact_recall": 1.0,
-      "answer_ok": true,
+      "fact_recall": 0.6667,
+      "answer_ok": false,
       "n_facts": 6,
-      "n_hit": 6,
+      "n_hit": 4,
       "error": null,
-      "answer_head": "- **Ticket ID:** d0000000-0000-4000-8000-000000000001 \n - **Thiết bị:** Mạng chấm, rót mạng liên tục \n - **Loại:** Mạng (NETWORK) \n - **Mô tả:** [SEED‑EVAL] Mạng phong kỹ thuật chấm từ sang, anh hưởng hợp online \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Cao (HIGH) \n - **Ngày tạo:** 10/09/2026 08:30 \n - **Trạng thái:** Đang mở (OPEN)\n\n- **Ticket ID:** d0000000-0000-4000-8000-000000000002 \n - **Thiết bị:** Máy in HP LaserJet 404dn \n - **Loại:** Máy in (PRINTER) \n - **Mô tả:** [SEED‑EVAL] Máy in kẹt giấy liên tục, mức còn 20% \n - **Vị trí:** Tầng 3 \n - **Mức ưu tiên:** Bình thường (NORMAL) \n - **Ngày tạo:** 15/08/2026 14:00 \n - **Trạng thái:** Đang xử lý (dữ liệu)\n\nCả hai ticket trên vẫn chưa được giải quyết xong. Nếu cần cập nhật hoặc đóng ticket, vui lòng liên hệ bộ phận IT."
+      "answer_head": "Bạn có 2 yêu cầu hỗ trợ kỹ thuật chưa xử lý xong:\n\n* **Yêu cầu về Mạng:** Mạng phòng kỹ thuật chậm từ sáng, ảnh hưởng họp online (Trạng thái: Đang mở).\n* **Yêu cầu về Máy in:** Máy in kẹt giấy liên tục, mực còn 20% (Trạng thái: Đang xử lý).",
+      "missed": [
+        "high",
+        "normal"
+      ],
+      "prompt_tokens": 7431,
+      "completion_tokens": 148,
+      "llm_calls": 2
     },
     {
       "id": "it_tickets_07",
@@ -2353,7 +2924,10 @@
       "n_facts": 3,
       "n_hit": 3,
       "error": null,
-      "answer_head": "- **Ticket ID:** d0000000-0000-4000-8000-000000000001 \n- **Thiết bị:** Mạng chấm, rót mạng liên tục \n- **Danh mục:** Mạng (NETWORK) \n- **Mô tả:** “Mang phong kỹ thuật chấm từ sang, anh hưởng hợp online” \n- **Vị trí:** Tầng 3 \n- **Mức ưu tiên:** **Cao (HIGH)** \n- **Trạng thái:** Đang mở (OPEN) \n- **Ngày tạo / cập nhật:** 10/09/2026 08:30 \n- **Người phụ trách:** Chưa được giao (null) \n\nHiện tại bạn chỉ có **một** ticket có mức ưu tiên HIGH như trên. Nếu cần hỗ trợ thêm hoặc muốn cập nhật trạng thái, vui lòng liên hệ bộ phận IT."
+      "answer_head": "Bạn có 1 ticket ưu tiên HIGH:\n* Nội dung: Mang phong ky thuat cham tu sang, anh huong hop online (Danh mục: NETWORK).\n* Trạng thái: Đang mở.\n* Ngày tạo: 2026-09-10 08:30:00.",
+      "prompt_tokens": 7281,
+      "completion_tokens": 145,
+      "llm_calls": 2
     }
   ]
 }

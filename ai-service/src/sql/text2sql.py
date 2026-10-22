@@ -222,6 +222,17 @@ WHERE me.user_id = %(uid)s AND m.is_active = TRUE
 ORDER BY wss.day_of_week
 ```
 
+Vd20: "Lương tháng này của tôi?" — phiếu chốt SAU kỳ nên tháng hiện tại
+thường chưa có: lấy kỳ MỚI NHẤT (ORDER BY DESC LIMIT 1), CẤM lọc tháng/năm
+hiện tại. Mẫu này áp dụng mọi bảng giao dịch theo kỳ (payrolls,
+performance_reviews...).
+```sql
+SELECT p.period_month, p.period_year, p.net_pay, p.status
+FROM payrolls p
+WHERE p.user_id = %(uid)s
+ORDER BY p.period_year DESC, p.period_month DESC LIMIT 1
+```
+
 LƯU Ý:
 1. Chỉ dùng tên bảng có trong danh sách trên. KHÔNG tự đặt tên bảng phụ trong FROM/JOIN
    (active_salary, latest_payroll...) — nếu cần tên riêng thì dùng CTE có `WITH ten AS (...)`.
@@ -243,6 +254,12 @@ LƯU Ý:
 11. So sánh với kỳ trước không tồn tại (chỉ 1 dòng lương/hợp đồng) thì chênh
     lệch = 0 — không lấy giá trị hiện tại làm chênh lệch. Trừ 2 cột DATE ra
     số ngày nguyên, cấm EXTRACT(EPOCH...) trên kiểu date.
+12. "Mới nhất / tháng này / kỳ này" trên bảng giao dịch (payrolls,
+    performance_reviews, leave_requests...): ORDER BY kỳ DESC LIMIT 1, CẤM
+    WHERE tháng/năm hiện tại — dữ liệu chốt sau kỳ nên tháng hiện tại
+    thường chưa có. Đếm/tổng/max: dùng COUNT/COALESCE/MAX (luôn trả 1
+    dòng), không GROUP BY hay ORDER BY...LIMIT 1 trên tập có thể rỗng.
+    Quan hệ có-thể-trống (quyền hạn): LEFT JOIN, không INNER JOIN.
 """
 
 
@@ -250,6 +267,10 @@ def build_text2sql_prompt(question: str) -> str:
     from datetime import date
     system = TEXT2SQL_SYSTEM.replace("{SCHEMA}", describe_schema())
     system = system.replace("%(year)s", str(date.today().year))
+    # ponytail: dynamic few-shots (chon 5 vi du gan nhat) do duoc 0.754 vs
+    # static 0.759 + latency x2.5 (prompt ngan -> SQL te hon -> retry nhieu).
+    # Giu static: vi du dung dan truoc mat chi thang khi giong het cau hoi.
+    # Ceiling: muon thu lai thi che bang git, khong viet moi.
     return f"{system}\n{FEW_SHOTS}\nCâu hỏi: {question}\n```sql"
 
 
