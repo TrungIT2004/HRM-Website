@@ -27,13 +27,9 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private final ClientInfoService clientInfoService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    // Hạn mức nghiêm ngặt cho /auth (5 requests / 60 giây)
-    private static final int AUTH_MAX_REQUESTS = 5;
+    // Hạn mức cho /auth (30 requests / 60 giây); các route khác không giới hạn
+    private static final int AUTH_MAX_REQUESTS = 30;
     private static final int AUTH_WINDOW_SECONDS = 60;
-
-    // Hạn mức chung cho toàn bộ các route khác (100 requests / 60 giây)
-    private static final int GENERAL_MAX_REQUESTS = 1000000000;
-    private static final int GENERAL_WINDOW_SECONDS = 60;
 
     public RateLimitFilter(RateLimitService rateLimitService, ClientInfoService clientInfoService) {
         this.rateLimitService = rateLimitService;
@@ -63,6 +59,12 @@ public class RateLimitFilter extends OncePerRequestFilter {
             return;
         }
 
+        // Chỉ giới hạn /auth; các route khác đi thẳng (không tốn 1 Redis incr vô ích)
+        if (!path.startsWith("/auth")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String clientIp = clientInfoService.extractRealIp(request);
 
         // Chuẩn hóa địa chỉ local loopback IPv6 thành IPv4 cho dễ đọc và thống nhất
@@ -70,19 +72,9 @@ public class RateLimitFilter extends OncePerRequestFilter {
             clientIp = "127.0.0.1";
         }
 
-        String rateLimitKey;
-        int maxRequests;
-        int windowSeconds;
-
-        if (path.startsWith("/auth")) {
-            rateLimitKey = "rate_limit:auth:" + clientIp;
-            maxRequests = AUTH_MAX_REQUESTS;
-            windowSeconds = AUTH_WINDOW_SECONDS;
-        } else {
-            rateLimitKey = "rate_limit:general:" + clientIp;
-            maxRequests = GENERAL_MAX_REQUESTS;
-            windowSeconds = GENERAL_WINDOW_SECONDS;
-        }
+        String rateLimitKey = "rate_limit:auth:" + clientIp;
+        int maxRequests = AUTH_MAX_REQUESTS;
+        int windowSeconds = AUTH_WINDOW_SECONDS;
 
         RateLimitResult result = rateLimitService.checkRateLimit(rateLimitKey, maxRequests, windowSeconds);
 

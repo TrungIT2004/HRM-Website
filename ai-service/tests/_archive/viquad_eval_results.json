@@ -1,0 +1,2015 @@
+{
+  "name": "viquad",
+  "n": 50,
+  "top_k": 5,
+  "n_docs": 12,
+  "hit@1": 1.0,
+  "hit@3": 1.0,
+  "hit@5": 1.0,
+  "mrr@5": 1.0,
+  "p50_latency_s": 5.242,
+  "max_latency_s": 23.456,
+  "reranker": true,
+  "rows": [
+    {
+      "idx": 0,
+      "question": "Tên gọi nào được Phạm Văn Đồng sử dụng khi làm Phó chủ nhiệm cơ quan Biện sự xứ tại Quế Lâm?",
+      "rank": 1,
+      "latency_s": 6.255,
+      "top1_score": 0.9999,
+      "top1_breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+      "gold_keys": [
+        "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.9999
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0007
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIII > Điều 176. Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "lâm bá kiệt"
+    },
+    {
+      "idx": 1,
+      "question": "Phạm Văn Đồng giữ chức vụ gì trong bộ máy Nhà nước Cộng hòa Xã hội chủ nghĩa Việt Nam?",
+      "rank": 1,
+      "latency_s": 5.365,
+      "top1_score": 0.975,
+      "top1_breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+      "gold_keys": [
+        "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.975
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.1017
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0303
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.023
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0012
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thủ tướng"
+    },
+    {
+      "idx": 2,
+      "question": "Giai đoạn năm 1955-1976, Phạm Văn Đồng nắm giữ chức vụ gì?",
+      "rank": 1,
+      "latency_s": 4.683,
+      "top1_score": 0.9864,
+      "top1_breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+      "gold_keys": [
+        "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.9864
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.1576
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.081
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0231
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0023
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thủ tướng chính phủ việt nam dân chủ cộng hòa"
+    },
+    {
+      "idx": 3,
+      "question": "Chủ tịch Hội đồng Bộ trưởng đầu tiên của nước Cộng hòa xã hội chủ nghĩa Việt Nam là ai?",
+      "rank": 1,
+      "latency_s": 5.266,
+      "top1_score": 0.9685,
+      "top1_breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+      "gold_keys": [
+        "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.9685
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0001
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0001
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương V > Điều 73. Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "phạm văn đồng"
+    },
+    {
+      "idx": 4,
+      "question": "Sự kiện quan trọng nào đã diễn ra vào ngày 20/7/1954?",
+      "rank": 1,
+      "latency_s": 4.796,
+      "top1_score": 0.9204,
+      "top1_breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+      "gold_keys": [
+        "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.9204
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0009
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 190. Thời hiệu yêu cầu giải quyết tranh chấp lao động cá nhân",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 189. Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 197. Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "bản hiệp định đình chỉ chiến sự ở việt nam, campuchia và lào đã được ký kết thừa nhận tôn trọng độc lập, chủ quyền, của nước việt nam, lào và campuchia"
+    },
+    {
+      "idx": 5,
+      "question": "Chức vụ mà Phạm Văn Đồng đảm nhiệm tại Hội nghị Genève về Đông Dương?",
+      "rank": 1,
+      "latency_s": 4.889,
+      "top1_score": 0.8355,
+      "top1_breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+      "gold_keys": [
+        "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.8355
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.6712
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.038
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0137
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.0105
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "trưởng phái đoàn chính phủ"
+    },
+    {
+      "idx": 6,
+      "question": "Hội nghị Genève về Đông Dương có tính chất như thế nào?",
+      "rank": 1,
+      "latency_s": 4.495,
+      "top1_score": 0.0592,
+      "top1_breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+      "gold_keys": [
+        "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0592
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0001
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 185. Hội đồng trọng tài lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "rất căng thẳng và phức tạp"
+    },
+    {
+      "idx": 7,
+      "question": "Đoàn Chính phủ Việt Nam dự hội nghị Genève về Đông Dương vì bản Hiệp ước nào?",
+      "rank": 1,
+      "latency_s": 5.166,
+      "top1_score": 0.8416,
+      "top1_breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+      "gold_keys": [
+        "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.8416
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0002
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.0002
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0002
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "bản hiệp định đình chỉ chiến sự ở việt nam, campuchia và lào"
+    },
+    {
+      "idx": 8,
+      "question": "Phạm Sơn Dương, con trai của Phạm Văn Đồng, đang giữ chức vụ gì?",
+      "rank": 1,
+      "latency_s": 4.44,
+      "top1_score": 0.8801,
+      "top1_breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+      "gold_keys": [
+        "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.8801
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.3064
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0357
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0006
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0006
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thiếu tướng quân đội nhân dân việt nam, phó giám đốc viện khoa học và công nghệ quân sự"
+    },
+    {
+      "idx": 9,
+      "question": "Phạm Văn Đồng từng cố gắng đưa bà Cúc đến nơi nào để chữa bệnh?",
+      "rank": 1,
+      "latency_s": 5.277,
+      "top1_score": 0.9996,
+      "top1_breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+      "gold_keys": [
+        "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.9996
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.009
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "company_payrolls.xlsx > Bảng dữ liệu: Bang Luong Toan Cong Ty (Bảng biểu)",
+          "score": 0.0005
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương X > Điều 138. Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 37. Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "trung quốc, liên xô"
+    },
+    {
+      "idx": 10,
+      "question": "Chứng bệnh mà bà Cúc mắc phải đến tận bây giò là gì?",
+      "rank": 1,
+      "latency_s": 5.205,
+      "top1_score": 0.9753,
+      "top1_breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+      "gold_keys": [
+        "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.9753
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương VIII > Điều 122. Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động",
+          "score": 0.0002
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "company_payrolls.xlsx > Bảng dữ liệu: Bang Luong Toan Cong Ty (Bảng biểu)",
+          "score": 0.0002
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương X > Điều 138. Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 37. Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "nửa quên nửa nhớ"
+    },
+    {
+      "idx": 11,
+      "question": "Phó giám đốc Viện Khoa học và Công nghệ Quân sự hiện nay là con của ai?",
+      "rank": 1,
+      "latency_s": 5.31,
+      "top1_score": 0.7389,
+      "top1_breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+      "gold_keys": [
+        "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.7389
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.0004
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 16. Nghĩa vụ cung cấp thông tin khi giao kết hợp đồng lao động",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIII > Điều 176. Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "phạm văn đồng"
+    },
+    {
+      "idx": 12,
+      "question": "Sai lầm mà cố thủ tướng Phạm Văn Đồng mắc phải khi đàm phán hiệp định Geneva là gì?",
+      "rank": 1,
+      "latency_s": 5.209,
+      "top1_score": 0.9998,
+      "top1_breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+      "gold_keys": [
+        "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.9998
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.0079
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0005
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.0003
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "nhờ trung quốc chuyển các bức điện về nước"
+    },
+    {
+      "idx": 13,
+      "question": "Tại sao việc Phạm Văn Đồng sử dụng phiên dịch người Trung Quốc tại cuộc đàm phán là sai lầm?",
+      "rank": 1,
+      "latency_s": 5.19,
+      "top1_score": 1.0,
+      "top1_breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+      "gold_keys": [
+        "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 1.0
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.0031
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0019
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 211. Xử lý cuộc đình công không đúng trình tự, thủ tục",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "nội dung liên lạc giữa đoàn đàm phán và trung ương, trung quốc đều biết trước và tìm cách ngăn chặn"
+    },
+    {
+      "idx": 14,
+      "question": "Nguyên nhân nào dẫn đến các sai lầm mà Phạm Văn Đồng mắc phải?",
+      "rank": 1,
+      "latency_s": 4.662,
+      "top1_score": 0.9631,
+      "top1_breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+      "gold_keys": [
+        "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.9631
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.0187
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.0057
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0014
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương V > Điều 86. Thỏa ước lao động tập thể vô hiệu",
+          "score": 0.0002
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "đoàn việt nam khi đó quá tin đoàn trung quốc"
+    },
+    {
+      "idx": 15,
+      "question": "Từ những sai lầm tại cuộc đàm phán hiệp định Geneva, Trung Quốc đã tận dụng chúng như thế nào?",
+      "rank": 1,
+      "latency_s": 5.489,
+      "top1_score": 0.9999,
+      "top1_breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+      "gold_keys": [
+        "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.9999
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 211. Xử lý cuộc đình công không đúng trình tự, thủ tục",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 51. Xử lý hợp đồng lao động vô hiệu",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "sử dụng chúng để ép việt nam ký hiệp định theo lợi ích của trung quốc"
+    },
+    {
+      "idx": 16,
+      "question": "Vì sao Trung Quốc có thể ép Việt Nam ký hiệp định theo lợi ích của họ?",
+      "rank": 1,
+      "latency_s": 5.324,
+      "top1_score": 1.0,
+      "top1_breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+      "gold_keys": [
+        "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 1.0
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0002
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 179. Tranh chấp lao động",
+          "score": 0.0001
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "do đoàn việt nam không có điện đài nên bộ trưởng ngoại giao lúc đó là phạm văn đồng đã mắc một sai lầm khi nhờ trung quốc chuyển các bức điện về nước, do vậy trung quốc biết hết các sách lược của việt nam"
+    },
+    {
+      "idx": 17,
+      "question": "Trung Quốc đã làm gì để làm sai lệch thông tin văn kiện đến quần chúng nhân dân Trung Quốc?",
+      "rank": 1,
+      "latency_s": 5.316,
+      "top1_score": 0.0144,
+      "top1_breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+      "gold_keys": [
+        "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0144
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.001
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 16. Nghĩa vụ cung cấp thông tin khi giao kết hợp đồng lao động",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 211. Xử lý cuộc đình công không đúng trình tự, thủ tục",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "các tài liệu công bố công khai cho công chúng trung quốc bản dịch tiếng trung đều không dịch đầy đủ nội dung của văn kiện"
+    },
+    {
+      "idx": 18,
+      "question": "Quan điểm của Trung Quốc là gì đối với công hàm của Thủ tướng nước Việt Nam Dân Chủ Cộng Hoà Phạm Văn Đồng?",
+      "rank": 1,
+      "latency_s": 6.267,
+      "top1_score": 0.9994,
+      "top1_breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+      "gold_keys": [
+        "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.9994
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0755
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Phạm Văn Đồng (1 tháng 3 năm 1906 – 29 tháng 4 năm 2000) là ",
+          "score": 0.0564
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0034
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.0003
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "đương nhiên \"công nhận\" chủ quyền của trung quốc đối với các quần đảo trên biển đông"
+    },
+    {
+      "idx": 19,
+      "question": "Nội dung nào được đề cập trong báo Nhân dân ngày 6 tháng 9?",
+      "rank": 1,
+      "latency_s": 4.642,
+      "top1_score": 0.5766,
+      "top1_breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+      "gold_keys": [
+        "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.5766
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 45. Thông báo chấm dứt hợp đồng lao động",
+          "score": 0.0001
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 21. Nội dung hợp đồng lao động",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương VII > Điều 112. Nghỉ lễ, tết",
+          "score": 0.0001
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương VIII > Điều 119. Đăng ký nội quy lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "tuyên bố lãnh hải của chính phủ trung quốc trong đó đường cơ sở để tính lãnh hải bao gồm bờ biển hai quần đảo tây sa và nam sa trên biển đông"
+    },
+    {
+      "idx": 20,
+      "question": "Các tài liệu công bố công khai cho công chúng Trung Quốc bản dịch tiếng Trung thiếu đoạn quan trọng nào?",
+      "rank": 1,
+      "latency_s": 5.622,
+      "top1_score": 0.998,
+      "top1_breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+      "gold_keys": [
+        "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.998
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0002
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 192. Trình tự, thủ tục giải quyết tranh chấp lao động tập thể về quyền",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 185. Hội đồng trọng tài lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "triệt để tôn trọng hải phận 12 hải lý của trung quốc"
+    },
+    {
+      "idx": 21,
+      "question": "Lập trường của Việt Nam trong việc giải quyết các vấn đề tranh chấp quần đảo Hoàng Sa và Trường Sa là gì?",
+      "rank": 1,
+      "latency_s": 5.903,
+      "top1_score": 0.948,
+      "top1_breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+      "gold_keys": [
+        "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.948
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0002
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 189. Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 193. Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 193. Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thương lượng hoà bình"
+    },
+    {
+      "idx": 22,
+      "question": "Nội dung chủ yếu trong tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần đảo Hoàng Sa và Trường Sa ngày 7 tháng 8 năm 1979 là gì?",
+      "rank": 1,
+      "latency_s": 7.63,
+      "top1_score": 0.6421,
+      "top1_breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+      "gold_keys": [
+        "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.6421
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.006
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 202. Quyết định đình công và thông báo thời điểm bắt đầu đình công",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "việt nam khẳng định lại chủ quyền đối với 2 quần đảo này, nhắc lại lập trường của việt nam về việc giải quyết sự tranh chấp về 2 quần đảo giữa hai nước bằng thương lượng hoà bình"
+    },
+    {
+      "idx": 23,
+      "question": "Lời diễn giải về bản công hàm ngày 14 tháng 9 năm 1958 được Bộ Ngoại giao nước CHXHCN Việt Nam nhìn nhận như thế nào?",
+      "rank": 1,
+      "latency_s": 7.013,
+      "top1_score": 0.9525,
+      "top1_breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+      "gold_keys": [
+        "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.9525
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Theo quan điểm của Trung Quốc (tài liệu Bộ Ngoại giao), công",
+          "score": 0.0006
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Năm 1954, ông được giao nhiệm vụ Trưởng phái đoàn Chính phủ ",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 202. Quyết định đình công và thông báo thời điểm bắt đầu đình công",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIII > Điều 171. Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "một sự xuyên tạc trắng trợn"
+    },
+    {
+      "idx": 24,
+      "question": "Tại sao lòng tin của nhân dân vào Đảng lại giảm sút?",
+      "rank": 1,
+      "latency_s": 4.719,
+      "top1_score": 0.9688,
+      "top1_breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+      "gold_keys": [
+        "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+          "score": 0.9688
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương V > Điều 74. Trách nhiệm của Ủy ban nhân dân cấp tỉnh trong thương lượng tập thể",
+          "score": 0.0
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XI > Điều 160. Các hành vi bị nghiêm cấm khi sử dụng lao động là người khuyết tật",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIII > Điều 172. Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "nhiều người có chức, có quyền trong hệ thống tổ chức của đảng, nhà nước, các đoàn thể quần chúng hư hỏng quá, thoái hóa biến chất, chạy theo chức quyền, tiền và danh lợi"
+    },
+    {
+      "idx": 25,
+      "question": "Việc dân mất niềm tin vào Đảng mang lại hậu quả như thế nào?",
+      "rank": 1,
+      "latency_s": 5.083,
+      "top1_score": 0.5157,
+      "top1_breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+      "gold_keys": [
+        "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+          "score": 0.5157
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương V > Điều 74. Trách nhiệm của Ủy ban nhân dân cấp tỉnh trong thương lượng tập thể",
+          "score": 0.0
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Ông Việt Phương, nguyên thư ký của Thủ tướng Phạm Văn Đồng, ",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XIV > Điều 201. Lấy ý kiến về đình công",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương VIII > Điều 129. Bồi thường thiệt hại",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "có thể đưa đến sự mất còn của chế độ và sự nghiệp cách mạng"
+    },
+    {
+      "idx": 26,
+      "question": "Điều gì có thể đẩy Đảng vào trong tình thế nguy kịch?",
+      "rank": 1,
+      "latency_s": 4.402,
+      "top1_score": 0.3392,
+      "top1_breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+      "gold_keys": [
+        "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+          "score": 0.3392
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XI > Điều 164. Nghĩa vụ của lao động là người giúp việc gia đình",
+          "score": 0.0
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương V > Điều 64. Nội dung đối thoại tại nơi làm việc",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XI > Điều 160. Các hành vi bị nghiêm cấm khi sử dụng lao động là người khuyết tật",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương X > Điều 142. Nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "nhân dân ta ngày càng giảm lòng tin vào đảng"
+    },
+    {
+      "idx": 27,
+      "question": "Thuật ngữ thực vật hạt kín Angioosperm được định nghĩa đầu tiên trên ngôn ngữ nào?",
+      "rank": 1,
+      "latency_s": 5.49,
+      "top1_score": 0.9973,
+      "top1_breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+      "gold_keys": [
+        "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.9973
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0093
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0078
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0059
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0025
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "tiếng hy lạp"
+    },
+    {
+      "idx": 28,
+      "question": "Angiospermae được nhà bác nào định nghĩa vào năm 1690?",
+      "rank": 1,
+      "latency_s": 4.037,
+      "top1_score": 0.9643,
+      "top1_breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+      "gold_keys": [
+        "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.9643
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0288
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0195
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Phạm Văn Đồng có vợ là bà Phạm Thị Cúc và một người con trai",
+          "score": 0.0002
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "paul hermann"
+    },
+    {
+      "idx": 29,
+      "question": "Angiospermae được nhà bác Paul Hermann định nghĩa vào năm 1690 bao gồm những loai thực nào?",
+      "rank": 1,
+      "latency_s": 5.474,
+      "top1_score": 0.7882,
+      "top1_breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+      "gold_keys": [
+        "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.7882
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.2126
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0455
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0002
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thực vật có hoa và tạo ra các hạt được bao phủ trong các bao vỏ"
+    },
+    {
+      "idx": 30,
+      "question": "Cây Tuế và cây Thông thuộc loại thực vật nào?",
+      "rank": 1,
+      "latency_s": 4.395,
+      "top1_score": 0.2174,
+      "top1_breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+      "gold_keys": [
+        "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.2174
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0018
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0007
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0004
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0002
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thực vật hạt trần"
+    },
+    {
+      "idx": 31,
+      "question": "Robert Brown phát hiện sự tồn tại của noãn trần trong cây Tuế và cây Thông vào thời gian nào?",
+      "rank": 1,
+      "latency_s": 5.639,
+      "top1_score": 0.9758,
+      "top1_breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+      "gold_keys": [
+        "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.9758
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương X > Điều 141. Trợ cấp trong thời gian chăm sóc con ốm đau, thai sản và thực hiện các biện pháp tránh thai",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "năm 1827"
+    },
+    {
+      "idx": 32,
+      "question": "Ai là người sử dụng thuật ngữ Angiosperm và từ trái nghĩa của nó trong cùng ngữ cảnh?",
+      "rank": 1,
+      "latency_s": 5.094,
+      "top1_score": 0.9999,
+      "top1_breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+      "gold_keys": [
+        "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.9999
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0336
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0257
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0008
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "carolus linnaeus"
+    },
+    {
+      "idx": 33,
+      "question": "Nhà sinh học Hofmeister đã tìm ra những thay đổi xãy ra trong túi phôi của thực vật có hoa vào thời gian nào?",
+      "rank": 1,
+      "latency_s": 23.456,
+      "top1_score": 0.997,
+      "top1_breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+      "gold_keys": [
+        "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.997
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0001
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "năm 1851"
+    },
+    {
+      "idx": 34,
+      "question": "Ai là người đã tìm ra những thay đổi xãy ra trong túi phôi của thực vật có hoa vào thời gian nào?",
+      "rank": 1,
+      "latency_s": 5.981,
+      "top1_score": 0.978,
+      "top1_breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+      "gold_keys": [
+        "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.978
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0023
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0002
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "hofmeister"
+    },
+    {
+      "idx": 35,
+      "question": "Năm 1851 nhà sinh học Hofmeister đã tìm ra điều gì ở thực vật có hoa?",
+      "rank": 1,
+      "latency_s": 5.242,
+      "top1_score": 0.6612,
+      "top1_breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+      "gold_keys": [
+        "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.6612
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0179
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.003
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0009
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0002
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "các thay đổi xảy ra trong túi phôi của thực vật có hoa"
+    },
+    {
+      "idx": 36,
+      "question": "Trước khi thuật ngữ Angiosperm được chấp nhận thì thuật ngữ gì được xem là phù hợp hơn?",
+      "rank": 1,
+      "latency_s": 5.166,
+      "top1_score": 0.8857,
+      "top1_breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+      "gold_keys": [
+        "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.8857
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.3289
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0002
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0002
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "gymnosperm"
+    },
+    {
+      "idx": 37,
+      "question": "Nhóm thực vật nào tiến hoá cao nhất?",
+      "rank": 1,
+      "latency_s": 4.138,
+      "top1_score": 0.9807,
+      "top1_breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+      "gold_keys": [
+        "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.9807
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.012
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0104
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0009
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0006
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thực vật hạt kín"
+    },
+    {
+      "idx": 38,
+      "question": "Nhóm thực vật nào tạo thành thảm thực vật chủ yếu trên bề mặt của Trái Đất?",
+      "rank": 1,
+      "latency_s": 5.369,
+      "top1_score": 0.9999,
+      "top1_breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+      "gold_keys": [
+        "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.9999
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0221
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0119
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0063
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0021
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thực vật hạt kín"
+    },
+    {
+      "idx": 39,
+      "question": "Thực vật hạt kín phân bố phổ biến ở đâu trên thế giới?",
+      "rank": 1,
+      "latency_s": 4.785,
+      "top1_score": 0.9495,
+      "top1_breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+      "gold_keys": [
+        "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.9495
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0113
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0073
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0004
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "từ hai địa cực tới xích đạo"
+    },
+    {
+      "idx": 40,
+      "question": "Ở kỷ nguyên hiện tại, loài thực vật nào là chủ yếu tạo nên thảm thực vật cho bề mặt Trái Đất?",
+      "rank": 1,
+      "latency_s": 5.958,
+      "top1_score": 1.0,
+      "top1_breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+      "gold_keys": [
+        "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 1.0
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.064
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0107
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0035
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Điều chủ yếu phải nhấn mạnh theo tinh thần trên là nhiều ngư",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thực vật hạt kín"
+    },
+    {
+      "idx": 41,
+      "question": "Người ta đã phát hiện được các mẫu hoá thạch của thực vật hạt kín vào thời gian nào?",
+      "rank": 1,
+      "latency_s": 5.714,
+      "top1_score": 0.9945,
+      "top1_breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+      "gold_keys": [
+        "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.9945
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.1162
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0097
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.008
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0005
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "khoảng 140 triệu năm trước"
+    },
+    {
+      "idx": 42,
+      "question": "Vào kỷ Trias thì thực vật hạt kín đã tách khỏi ngành thực vật nào?",
+      "rank": 1,
+      "latency_s": 5.123,
+      "top1_score": 0.9924,
+      "top1_breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+      "gold_keys": [
+        "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.9924
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.1668
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0919
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0258
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0182
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "dây gắm"
+    },
+    {
+      "idx": 43,
+      "question": "Thuật ngữ chuyên ngành của ngành Dây gắm?",
+      "rank": 1,
+      "latency_s": 4.026,
+      "top1_score": 0.0295,
+      "top1_breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+      "gold_keys": [
+        "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0295
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0013
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 52. Cho thuê lại lao động",
+          "score": 0.0006
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương I > Điều 3. Giải thích từ ngữ",
+          "score": 0.0003
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương V > Điều 72. Thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia",
+          "score": 0.0003
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "gnetophyta"
+    },
+    {
+      "idx": 44,
+      "question": "Các hoá thạch phấn hoa được tìm thấy có niên đại bao nhiêu?",
+      "rank": 1,
+      "latency_s": 4.901,
+      "top1_score": 0.7585,
+      "top1_breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+      "gold_keys": [
+        "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.7585
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0001
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0001
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0001
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "tới 130 triệu năm"
+    },
+    {
+      "idx": 45,
+      "question": "Nhóm thực vật nào chiếm tỉ lệ lớn trong số thực vật trên mặt đất vào cuối kỷ Phấn Trắng?",
+      "rank": 1,
+      "latency_s": 6.082,
+      "top1_score": 0.7249,
+      "top1_breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+      "gold_keys": [
+        "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.7249
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0155
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.003
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0013
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.0011
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "thực vật hạt kín"
+    },
+    {
+      "idx": 46,
+      "question": "Archaefructus liaoningensis là hóa thạch được phát hiện vào kỷ nào?",
+      "rank": 1,
+      "latency_s": 4.728,
+      "top1_score": 0.9615,
+      "top1_breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+      "gold_keys": [
+        "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ"
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.9615
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0003
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0001
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Theo Tuyên bố của Bộ Ngoại giao nước CHXHCN Việt Nam về quần",
+          "score": 0.0001
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.0
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "kỷ phấn trắng (kỷ creta)"
+    },
+    {
+      "idx": 47,
+      "question": "Thuật ngữ mang tính mô tả phổ biến nhất của thực vật có hoa là gì?",
+      "rank": 1,
+      "latency_s": 5.41,
+      "top1_score": 0.9985,
+      "top1_breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+      "gold_keys": [
+        "Trong phần lớn các hệ thống phân loại, thực vật có hoa được "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.9985
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.2305
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.1521
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0381
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0013
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "angiospermae"
+    },
+    {
+      "idx": 48,
+      "question": "Thuật ngữ mang tính mô tả phổ biến thứ hai của thực vật có hoa là gì?",
+      "rank": 1,
+      "latency_s": 5.546,
+      "top1_score": 0.9882,
+      "top1_breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+      "gold_keys": [
+        "Trong phần lớn các hệ thống phân loại, thực vật có hoa được "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.9882
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.1325
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.1268
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0266
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0011
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "anthophyta"
+    },
+    {
+      "idx": 49,
+      "question": "Hệ thống Engler sử dụng thuật ngữ nào để chỉ thực vật có hoa?",
+      "rank": 1,
+      "latency_s": 4.949,
+      "top1_score": 0.9141,
+      "top1_breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+      "gold_keys": [
+        "Trong phần lớn các hệ thống phân loại, thực vật có hoa được "
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "breadcrumb": "Trong phần lớn các hệ thống phân loại, thực vật có hoa được ",
+          "score": 0.9141
+        },
+        {
+          "rank": 2,
+          "breadcrumb": "Thuật ngữ để chỉ thực vật hạt kín là \"Angiosperm\", có nguồn ",
+          "score": 0.1421
+        },
+        {
+          "rank": 3,
+          "breadcrumb": "Sự phát hiện của Hofmeister năm 1851 về các thay đổi xảy ra ",
+          "score": 0.0749
+        },
+        {
+          "rank": 4,
+          "breadcrumb": "Các chứng cứ đầu tiên về sự xuất hiện của thực vật hạt kín đ",
+          "score": 0.0023
+        },
+        {
+          "rank": 5,
+          "breadcrumb": "Sự tiến hóa của giới thực vật đã theo xu hướng thiết lập các",
+          "score": 0.0004
+        }
+      ],
+      "answer_in_gold_chunk": true,
+      "gold_answer": "angiospermae"
+    }
+  ]
+}

@@ -1,0 +1,934 @@
+{
+ "1031t0": [
+  "DUNG",
+  "khop full"
+ ],
+ "1031t1": [
+  "DUNG",
+  "khop + extra"
+ ],
+ "1031t10": [
+  "SAI",
+  "tra loi quy tac 60-ngay khac (giam 1/3) thay vi Đ14"
+ ],
+ "1031t11": [
+  "PARTIAL",
+  "thieu 10 ngay"
+ ],
+ "1031t2": [
+  "DUNG",
+  "neo 'no' dung"
+ ],
+ "1031t3": [
+  "DUNG",
+  "khop full"
+ ],
+ "1031t4": [
+  "DUNG",
+  "flag nhung khop full"
+ ],
+ "1031t5": [
+  "DUNG",
+  "khop moc"
+ ],
+ "1031t6": [
+  "PARTIAL",
+  "thieu 3 moc 10/30/50"
+ ],
+ "1031t7": [
+  "DUNG",
+  "khop full"
+ ],
+ "1031t8": [
+  "DUNG",
+  "khop + extra"
+ ],
+ "1031t9": [
+  "DUNG",
+  "moi: tu refused thanh full"
+ ],
+ "1032t0": [
+  "SAI",
+  "lac de chu toa"
+ ],
+ "1032t1": [
+  "PARTIAL",
+  "lac sang BKS-salary, thieu co tuc/35%/mua lai"
+ ],
+ "1032t10": [
+  "PARTIAL",
+  "thieu pham vi QC"
+ ],
+ "1032t2": [
+  "PARTIAL",
+  "thieu mua lai 10% + HD 35%"
+ ],
+ "1032t3": [
+  "DUNG",
+  "khop don phieu"
+ ],
+ "1032t4": [
+  "DUNG",
+  "khop cap lai phieu"
+ ],
+ "1032t5": [
+  "DUNG",
+  "khop cap lai phieu"
+ ],
+ "1032t6": [
+  "DUNG",
+  "khop the + phieu"
+ ],
+ "1032t7": [
+  "DUNG",
+  "khop X/thung/ky ten"
+ ],
+ "1032t8": [
+  "SAI",
+  "tra loi cach bau thay vi dieu kien loai tru"
+ ],
+ "1032t9": [
+  "DUNG",
+  "khop mua lai 10% (sua vs run cu)"
+ ],
+ "1033t0": [
+  "PARTIAL",
+  "thieu doc lap 2NK + o lai"
+ ],
+ "1033t1": [
+  "DUNG",
+  "khop 1/3 + 01 doc lap"
+ ],
+ "1033t2": [
+  "PARTIAL",
+  "thieu cong bo CK"
+ ],
+ "1033t3": [
+  "DUNG",
+  "khop nghia vu"
+ ],
+ "1033t4": [
+  "PARTIAL",
+  "thieu khong kiem GĐ"
+ ],
+ "1033t5": [
+  "PARTIAL",
+  "thieu mien/bai trong 10 ngay"
+ ],
+ "1033t6": [
+  "DUNG",
+  "khop uy quyen + bau da so"
+ ],
+ "1033t7": [
+  "DUNG",
+  "khop a-f"
+ ],
+ "1033t8": [
+  "DUNG",
+  "khop + extra"
+ ],
+ "1034t0": [
+  "DUNG",
+  "khop dang ky"
+ ],
+ "1034t1": [
+  "PARTIAL",
+  "thieu kem theo + web"
+ ],
+ "1034t10": [
+  "DUNG",
+  "khop a-g + cam ket"
+ ],
+ "1034t11": [
+  "DUNG",
+  "khop 10 ngay BKS"
+ ],
+ "1034t2": [
+  "PARTIAL",
+  "thieu han 20 ngay"
+ ],
+ "1034t3": [
+  "DUNG",
+  "khop tung van de + don phieu"
+ ],
+ "1034t4": [
+  "DUNG",
+  "khop + extra"
+ ],
+ "1034t5": [
+  "DUNG",
+  "khop day du"
+ ],
+ "1034t6": [
+  "DUNG",
+  "phan biet 2 moc 20 ngay"
+ ],
+ "1034t7": [
+  "DUNG",
+  "khop kien huy NQ"
+ ],
+ "1034t8": [
+  "PARTIAL",
+  "thieu nhiem ky + bau lai"
+ ],
+ "1035t0": [
+  "PARTIAL",
+  "thieu vai tro dieu hanh cao nhat"
+ ],
+ "1035t1": [
+  "DUNG",
+  "khop tieu chuan TGĐ"
+ ],
+ "1035t2": [
+  "DUNG",
+  "khop 5 ngay + 60 ngay"
+ ],
+ "1035t3": [
+  "PARTIAL",
+  "thieu CT/TV/BKS chiu TN"
+ ],
+ "1035t4": [
+  "DUNG",
+  "noi dung dung (EVN+PMSC cross-check)"
+ ],
+ "1035t5": [
+  "DUNG",
+  "khop bao truoc"
+ ],
+ "1035t6": [
+  "DUNG",
+  "khop van ban + binh dang"
+ ],
+ "1035t7": [
+  "DUNG",
+  "khop 4 hinh thuc"
+ ],
+ "1035t8": [
+  "DUNG",
+  "khop 5 tieu chi"
+ ],
+ "1036t0": [
+  "SAI",
+  "nham nguon BLLĐ doi thoai"
+ ],
+ "1036t1": [
+  "SAI",
+  "nham nguon BLLĐ doi thoai"
+ ],
+ "1036t10": [
+  "DUNG",
+  "khop doi tuong thi hanh"
+ ],
+ "1036t11": [
+  "DUNG",
+  "khop sua quy che"
+ ],
+ "1036t2": [
+  "DUNG",
+  "khop TGĐ du hop"
+ ],
+ "1036t3": [
+  "DUNG",
+  "khop Nguoi QTCT"
+ ],
+ "1036t4": [
+  "PARTIAL",
+  "EVN dung nhung hedge 3 doc"
+ ],
+ "1036t6": [
+  "DUNG",
+  "khop HDQT xu TGĐ"
+ ],
+ "1036t7": [
+  "DUNG",
+  "khop BKS xu KTNB"
+ ],
+ "1036t8": [
+  "PARTIAL",
+  "dung noi dung, sai nguon PMSC"
+ ],
+ "1036t9": [
+  "DUNG",
+  "khop lo-khong-thuong"
+ ],
+ "1037t0": [
+  "PARTIAL",
+  "thieu CT-kiem"
+ ],
+ "1037t1": [
+  "DUNG",
+  "khop 10% + gop (flag nhung du)"
+ ],
+ "1037t11": [
+  "DUNG",
+  "dung context bau cu (gold co the sai)"
+ ],
+ "1037t2": [
+  "DUNG",
+  "khop 10%"
+ ],
+ "1037t3": [
+  "DUNG",
+  "khop don phieu"
+ ],
+ "1037t4": [
+  "DUNG",
+  "khop 17.1-17.6"
+ ],
+ "1037t5": [
+  "DUNG",
+  "khop 17.4"
+ ],
+ "1037t6": [
+  "PARTIAL",
+  "thieu 10 ngay + cam ket"
+ ],
+ "1037t7": [
+  "DUNG",
+  "khop a-g"
+ ],
+ "1037t8": [
+  "DUNG",
+  "khop bau lai"
+ ],
+ "1037t9": [
+  "PARTIAL",
+  "dap ca DHDCD-21d + HDQT-5d, so dung"
+ ],
+ "1038t0": [
+  "PARTIAL",
+  "thieu Truong/KH"
+ ],
+ "1038t1": [
+  "PARTIAL",
+  "thieu 2/3 + Trưởng + online"
+ ],
+ "1038t10": [
+  "SAI",
+  "lac de nhiem ky HDQT thay vi PQTCT"
+ ],
+ "1038t11": [
+  "DUNG",
+  "neo PQTCT dung (EVN)"
+ ],
+ "1038t2": [
+  "DUNG",
+  "khop 34.3"
+ ],
+ "1038t3": [
+  "SAI",
+  "lac de bao cao thay vi tieu chuan"
+ ],
+ "1038t4": [
+  "SAI",
+  "lac de bai-nhiem thay vi dieu kien cam"
+ ],
+ "1038t5": [
+  "SAI",
+  "nham doi tuong KTV thay vi TGĐ"
+ ],
+ "1038t6": [
+  "SAI",
+  "nham doc PMSC GĐ/PQTCT"
+ ],
+ "1038t7": [
+  "DUNG",
+  "khop Truong UBKT, het PII"
+ ],
+ "1038t8": [
+  "DUNG",
+  "khop dinh chi + tam dinh chi"
+ ],
+ "1038t9": [
+  "PARTIAL",
+  "thieu danh gia hang nam"
+ ],
+ "1039t0": [
+  "PARTIAL",
+  "phan MWG dung nhung kem PMSC"
+ ],
+ "1039t1": [
+  "PARTIAL",
+  "dung co che, sai nguon PMSC"
+ ],
+ "1039t10": [
+  "DUNG",
+  "khop 24h tu ket thuc hop"
+ ],
+ "1039t11": [
+  "PARTIAL",
+  "thieu cong bo website"
+ ],
+ "1039t2": [
+  "SAI",
+  "nham tai lieu PMSC cho conv MWG"
+ ],
+ "1039t3": [
+  "SAI",
+  "nham tai lieu PMSC cho conv MWG"
+ ],
+ "1039t5": [
+  "SAI",
+  "tra loi hop HDQT thay vi DHDCD"
+ ],
+ "1039t7": [
+  "PARTIAL",
+  "phan MWG dung nhung kem PMSC"
+ ],
+ "1039t9": [
+  "SAI",
+  "lac de HĐLĐ thay vi Nguyen Duc Tai"
+ ],
+ "1040t0": [
+  "PARTIAL",
+  "thieu de nghi DVKT + thi hanh"
+ ],
+ "1040t11": [
+  "DUNG",
+  "khop 15h00 + 4 gio"
+ ],
+ "1040t2": [
+  "DUNG",
+  "flag nhung full muc dich"
+ ],
+ "1040t3": [
+  "DUNG",
+  "khop doi tuong"
+ ],
+ "1040t4": [
+  "DUNG",
+  "khop loai hinh"
+ ],
+ "1040t5": [
+  "DUNG",
+  "khop hang hoa"
+ ],
+ "1040t6": [
+  "DUNG",
+  "nho 5 muc dich (memory)"
+ ],
+ "1040t7": [
+  "DUNG",
+  "khop xe CT"
+ ],
+ "1040t8": [
+  "DUNG",
+  "khop 5 DK + extra"
+ ],
+ "1040t9": [
+  "DUNG",
+  "khop thue ngoai"
+ ],
+ "1041t0": [
+  "DUNG",
+  "khop dinh nghia + uu tien"
+ ],
+ "1041t1": [
+  "DUNG",
+  "khop tiet kiem"
+ ],
+ "1041t10": [
+  "DUNG",
+  "khop P.HC/P.TH/BP"
+ ],
+ "1041t11": [
+  "DUNG",
+  "khop ghep tuyen"
+ ],
+ "1041t2": [
+  "DUNG",
+  "khop tuyen duong"
+ ],
+ "1041t4": [
+  "DUNG",
+  "khop hang dac biet"
+ ],
+ "1041t5": [
+  "PARTIAL",
+  "don BLLĐ khuyet tat"
+ ],
+ "1041t6": [
+  "DUNG",
+  "khop lenh dieu xe + extra"
+ ],
+ "1041t7": [
+  "PARTIAL",
+  "how thay vi which"
+ ],
+ "1041t8": [
+  "DUNG",
+  "khop tren 30km"
+ ],
+ "1042t0": [
+  "DUNG",
+  "khop P.HC + extra 214"
+ ],
+ "1042t1": [
+  "DUNG",
+  "khop ĐV de xuat + extra"
+ ],
+ "1042t11": [
+  "DUNG",
+  "khop + extra 214"
+ ],
+ "1042t2": [
+  "DUNG",
+  "khop tai xe"
+ ],
+ "1042t4": [
+  "PARTIAL",
+  "thieu boi hoan"
+ ],
+ "1042t5": [
+  "DUNG",
+  "khop nghiem trong"
+ ],
+ "1042t6": [
+  "DUNG",
+  "khop hieu luc + thay the"
+ ],
+ "1042t7": [
+  "DUNG",
+  "khop 6 thang"
+ ],
+ "1042t8": [
+  "PARTIAL",
+  "noi Chau Dao nhung thieu pho bien ĐV"
+ ],
+ "1042t9": [
+  "DUNG",
+  "khop Pham Tuan Anh"
+ ],
+ "1043t0": [
+  "PARTIAL",
+  "thieu ma hieu/can cu/muc dich"
+ ],
+ "1043t1": [
+  "DUNG",
+  "khop full 5 buoc"
+ ],
+ "1043t10": [
+  "DUNG",
+  "khop BM02 + extra"
+ ],
+ "1043t11": [
+  "DUNG",
+  "khop buoc 5 + extra"
+ ],
+ "1043t2": [
+  "DUNG",
+  "khop doi ke hoach"
+ ],
+ "1043t3": [
+  "DUNG",
+  "khop thue ngoai"
+ ],
+ "1043t4": [
+  "DUNG",
+  "flag nhung full 24h"
+ ],
+ "1043t5": [
+  "DUNG",
+  "flag nhung full BM01"
+ ],
+ "1043t6": [
+  "PARTIAL",
+  "thieu dot xuat 16h"
+ ],
+ "1043t7": [
+  "PARTIAL",
+  "thieu cot/VD"
+ ],
+ "1043t8": [
+  "PARTIAL",
+  "thieu noi nhan"
+ ],
+ "1043t9": [
+  "DUNG",
+  "nho buoc 4 (memory)"
+ ],
+ "1044t0": [
+  "PARTIAL",
+  "thieu ma/muc dich"
+ ],
+ "1044t1": [
+  "DUNG",
+  "khop doi tuong"
+ ],
+ "1044t10": [
+  "DUNG",
+  "khop 135A"
+ ],
+ "1044t11": [
+  "DUNG",
+  "flag nhung full 5tr/2.5tr"
+ ],
+ "1044t3": [
+  "DUNG",
+  "khop 120k + 5tr"
+ ],
+ "1044t4": [
+  "DUNG",
+  "khop TTKV full so"
+ ],
+ "1044t5": [
+  "DUNG",
+  "khop CTV"
+ ],
+ "1044t6": [
+  "DUNG",
+  "khop vuot dinh muc"
+ ],
+ "1044t7": [
+  "DUNG",
+  "khop 120k"
+ ],
+ "1044t8": [
+  "PARTIAL",
+  "thieu cap nhat"
+ ],
+ "1044t9": [
+  "SAI",
+  "liet ke gia thay vi tieu-chuan-chung"
+ ],
+ "1045t0": [
+  "PARTIAL",
+  "thieu 25-30 + muc"
+ ],
+ "1045t1": [
+  "PARTIAL",
+  "thieu vuot-tra-sua"
+ ],
+ "1045t10": [
+  "DUNG",
+  "khop BM05/BM06"
+ ],
+ "1045t11": [
+  "SAI",
+  "lech bao duong-may sang muc-in"
+ ],
+ "1045t2": [
+  "SAI",
+  "nham dot-xuat thay vi hang-thang"
+ ],
+ "1045t3": [
+  "PARTIAL",
+  "thieu chuoi duyet"
+ ],
+ "1045t4": [
+  "PARTIAL",
+  "thieu moc 25-30"
+ ],
+ "1045t5": [
+  "DUNG",
+  "khop Truong BP"
+ ],
+ "1045t7": [
+  "DUNG",
+  "khop BM06 + extra"
+ ],
+ "1045t8": [
+  "PARTIAL",
+  "thieu mat/hong + mua moi"
+ ],
+ "1045t9": [
+  "DUNG",
+  "khop 1 thung/12-13k/800-900k"
+ ],
+ "1046t0": [
+  "DUNG",
+  "khop + extra list gia"
+ ],
+ "1046t1": [
+  "DUNG",
+  "khop Quality/ZAP"
+ ],
+ "1046t11": [
+  "DUNG",
+  "khop BM05 L1-L7"
+ ],
+ "1046t2": [
+  "DUNG",
+  "khop full may tinh"
+ ],
+ "1046t3": [
+  "DUNG",
+  "khop full pin"
+ ],
+ "1046t4": [
+  "PARTIAL",
+  "thieu nap nhieu lan + free"
+ ],
+ "1046t5": [
+  "DUNG",
+  "khop 2 loai 76a"
+ ],
+ "1046t6": [
+  "DUNG",
+  "sua vs run cu: dung Casio 570"
+ ],
+ "1046t7": [
+  "DUNG",
+  "khop full but bi"
+ ],
+ "1046t8": [
+  "PARTIAL",
+  "thieu VD + P.HC lap"
+ ],
+ "1046t9": [
+  "PARTIAL",
+  "thieu bang ke"
+ ],
+ "1047t0": [
+  "DUNG",
+  "khop 4 chuc danh"
+ ],
+ "1047t1": [
+  "DUNG",
+  "khop 4 muc so"
+ ],
+ "1047t10": [
+  "DUNG",
+  "khop Đ4 TT47"
+ ],
+ "1047t11": [
+  "PARTIAL",
+  "thieu quy tac chinh 7.2"
+ ],
+ "1047t2": [
+  "DUNG",
+  "khop KTT 1.5tr"
+ ],
+ "1047t3": [
+  "DUNG",
+  "khop 730/1000/550"
+ ],
+ "1047t4": [
+  "DUNG",
+  "khop 680/500/350"
+ ],
+ "1047t5": [
+  "SAI",
+  "phu nhan sai (bao khong co ghi chu dieu chinh)"
+ ],
+ "1047t6": [
+  "DUNG",
+  "flag nhung khop 3.5tr/GĐ"
+ ],
+ "1047t7": [
+  "DUNG",
+  "khop 1-2tr nha"
+ ],
+ "1047t8": [
+  "DUNG",
+  "khop luong khoan"
+ ],
+ "1047t9": [
+  "DUNG",
+  "khop luong chinh + NĐ153"
+ ],
+ "1048t0": [
+  "DUNG",
+  "khop /26 + extra"
+ ],
+ "1048t1": [
+  "DUNG",
+  "khop cuoi thang + extra"
+ ],
+ "1048t10": [
+  "DUNG",
+  "khop 150/200/300"
+ ],
+ "1048t11": [
+  "DUNG",
+  "khop 350/550 + extra"
+ ],
+ "1048t2": [
+  "DUNG",
+  "khop 350k"
+ ],
+ "1048t3": [
+  "PARTIAL",
+  "thieu 450 + chung tu"
+ ],
+ "1048t5": [
+  "DUNG",
+  "khop 3/1 ngay"
+ ],
+ "1048t6": [
+  "DUNG",
+  "BLLĐ tuong thich"
+ ],
+ "1048t7": [
+  "DUNG",
+  "BLLĐ tuong thich"
+ ],
+ "1048t8": [
+  "PARTIAL",
+  "lech slice nhung dung luat"
+ ],
+ "1048t9": [
+  "DUNG",
+  "khop 26 ngay cong"
+ ],
+ "1049t0": [
+  "PARTIAL",
+  "thieu doi tuong"
+ ],
+ "1049t1": [
+  "DUNG",
+  "khop ngay xep luong"
+ ],
+ "1049t10": [
+  "DUNG",
+  "khop tren luong hien tai"
+ ],
+ "1049t11": [
+  "DUNG",
+  "flag nhung khop TP HCNS + KTT"
+ ],
+ "1049t2": [
+  "DUNG",
+  "khop GĐ giai thich"
+ ],
+ "1049t3": [
+  "DUNG",
+  "khop 10-20%"
+ ],
+ "1049t4": [
+  "DUNG",
+  "khop >3 nam"
+ ],
+ "1049t5": [
+  "PARTIAL",
+  "lan nguon A, thieu quy tac lai B"
+ ],
+ "1049t6": [
+  "DUNG",
+  "khop 250-550k"
+ ],
+ "1049t7": [
+  "DUNG",
+  "khop hop thang 04"
+ ],
+ "1049t9": [
+  "DUNG",
+  "khop thuong DT"
+ ],
+ "1050t0": [
+  "PARTIAL",
+  "neu ca 2 nhung chot sai trong tam 214"
+ ],
+ "1050t1": [
+  "DUNG",
+  "khop hang mau 917"
+ ],
+ "1050t10": [
+  "DUNG",
+  "khop tu choi + boi hoan"
+ ],
+ "1050t11": [
+  "PARTIAL",
+  "thieu nua 214"
+ ],
+ "1050t3": [
+  "PARTIAL",
+  "thieu nua 917 (4 gio)"
+ ],
+ "1050t4": [
+  "DUNG",
+  "flag nhung khop BM01/214"
+ ],
+ "1050t5": [
+  "DUNG",
+  "flag nhung full de xuat"
+ ],
+ "1050t6": [
+  "DUNG",
+  "flag nhung full thue ngoai"
+ ],
+ "1050t7": [
+  "DUNG",
+  "flag nhung full 917"
+ ],
+ "1050t8": [
+  "DUNG",
+  "flag nhung full 30km"
+ ],
+ "1050t9": [
+  "SAI",
+  "ca 2 do PTA ky (214 la CTXD!)"
+ ],
+ "1032t11": [
+  "PARTIAL",
+  "thieu chi dinh thanh ly"
+ ],
+ "1033t9": [
+  "PARTIAL",
+  "thieu cap 2NK"
+ ],
+ "1033t10": [
+  "DUNG",
+  "flag nhung khop Đ160"
+ ],
+ "1033t11": [
+  "DUNG",
+  "khop + extra"
+ ],
+ "1034t9": [
+  "DUNG",
+  "flag, neo HĐQT dung"
+ ],
+ "1035t9": [
+  "DUNG",
+  "khop mapping ai-danh-gia-ai"
+ ],
+ "1035t10": [
+  "DUNG",
+  "khop thuong"
+ ],
+ "1035t11": [
+  "DUNG",
+  "khop kyt luat mapping (sua vs run cu)"
+ ],
+ "1036t5": [
+  "SAI",
+  "nham nguon BLLĐ doi thoai"
+ ],
+ "1039t4": [
+  "SAI",
+  "lech 2 moc 10-ngay khac"
+ ],
+ "1039t6": [
+  "DUNG",
+  "khop Cong ty mua + gia + tham dinh"
+ ],
+ "1040t10": [
+  "DUNG",
+  "khop 500kg"
+ ],
+ "1041t3": [
+  "DUNG",
+  "khop de xuat"
+ ],
+ "1041t9": [
+  "DUNG",
+  "khop gio cao diem"
+ ],
+ "1042t3": [
+  "DUNG",
+  "khop nhat ky"
+ ],
+ "1042t10": [
+  "DUNG",
+  "suy luan tu ngay ky hop ly"
+ ],
+ "1044t2": [
+  "DUNG",
+  "khop VPP"
+ ],
+ "1048t4": [
+  "SAI",
+  "nham 450k xang-xe PGĐ vs 450k cong-tac-phi"
+ ]
+}

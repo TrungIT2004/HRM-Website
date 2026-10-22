@@ -42,11 +42,10 @@ public class UserDetailedInfo {
 
     // Từ UserBankAccount
     private String bankName;
-    private String bankAccountNumber;
+    private String accountNumber;
 
     // Từ UserContract
     private String contractType;
     private LocalDate contractStartDate;
     private LocalDate contractEndDate;
-    private LocalDate probationEndDate;
 }

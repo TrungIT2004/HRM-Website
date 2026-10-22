@@ -13,8 +13,9 @@ import requests
 from db_config import DB_CONFIG
 
 # === CẤU HÌNH API SPRING BOOT ===
-ATTENDANCE_API_URL = "http://localhost:8080/api/attendances"
-OVERTIME_API_URL = "http://localhost:8080/api/overtime"
+BACKEND_BASE_URL = os.getenv("BACKEND_BASE_URL", "http://localhost:8080")
+ATTENDANCE_API_URL = f"{BACKEND_BASE_URL}/api/attendances"
+OVERTIME_API_URL = f"{BACKEND_BASE_URL}/api/overtime"
 
 # === CẤU HÌNH AUDIO & THƯ MỤC ===
 pygame.mixer.init()

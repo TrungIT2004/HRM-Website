@@ -16,19 +16,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "user_contracts")
 public class UserContract {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID userId;
+    @Column(name = "contract_id")
+    private UUID contractId;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @MapsId
-    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
     @JsonIgnore
     private User user;
 
+    @Column(name = "contract_type")
     private String contractType;     
+
+    @Column(name = "contract_start_date")
     private LocalDate contractStartDate;
+
+    @Column(name = "contract_end_date")
     private LocalDate contractEndDate;
-    private LocalDate probationEndDate;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
 }

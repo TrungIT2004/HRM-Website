@@ -12,10 +12,13 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -24,6 +27,7 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.data.domain.Page;
@@ -74,6 +78,8 @@ import com.minhtrung.hrm.overtime.entities.OvertimeRecord;
 import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -88,6 +94,7 @@ public class AttendanceService {
     private final HolidayRepository holidayRepository;
     private final WorkShiftRepository workShiftRepository;
     private final MonthlyTimesheetRepository monthlyTimesheetRepository;
+    private final PermissionService permissionService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public AttendanceService(
@@ -98,7 +105,8 @@ public class AttendanceService {
             OvertimeRecordRepository overtimeRecordRepository,
             HolidayRepository holidayRepository,
             WorkShiftRepository workShiftRepository,
-            MonthlyTimesheetRepository monthlyTimesheetRepository) {
+            MonthlyTimesheetRepository monthlyTimesheetRepository,
+            PermissionService permissionService) {
         this.userRepository = userRepository;
         this.attendanceRepository = attendanceRepository;
         this.workShiftScheduleRepository = workShiftScheduleRepository;
@@ -107,6 +115,7 @@ public class AttendanceService {
         this.holidayRepository = holidayRepository;
         this.workShiftRepository = workShiftRepository;
         this.monthlyTimesheetRepository = monthlyTimesheetRepository;
+        this.permissionService = permissionService;
     }
 
     @SuppressWarnings("null")
@@ -128,8 +137,15 @@ public class AttendanceService {
 
     public void clockOut(Attendance usersTodayAttendance, LocalTime attendancesClockInTime, WorkShift usersWorkShift) {
         LocalTime clockOutTime = LocalTime.now();
-        LocalTime startTime = usersWorkShift.getStartTime();
-        LocalTime endTime = usersWorkShift.getEndTime();
+        LocalDate workDate = usersTodayAttendance.getWorkDate() != null ? usersTodayAttendance.getWorkDate() : LocalDate.now();
+        int dayNumber = workDate.getDayOfWeek().getValue();
+
+        Optional<WorkShiftSchedule> scheduleOpt = (usersWorkShift != null && usersWorkShift.getShiftId() != null)
+                ? workShiftScheduleRepository.findByWorkShift_ShiftIdAndDayOfWeek(usersWorkShift.getShiftId(), dayNumber)
+                : Optional.empty();
+
+        LocalTime startTime = scheduleOpt.map(WorkShiftSchedule::getStartTime).orElse(LocalTime.of(8, 0));
+        LocalTime endTime = scheduleOpt.map(WorkShiftSchedule::getEndTime).orElse(LocalTime.of(17, 30));
 
         boolean sufficientWorkShift = attendancesClockInTime.compareTo(startTime) <= 0 && clockOutTime.compareTo(endTime) >= 0;
         boolean lateWorkShift = attendancesClockInTime.compareTo(startTime) > 0 && clockOutTime.compareTo(endTime) >= 0;
@@ -138,7 +154,6 @@ public class AttendanceService {
 
         usersTodayAttendance.setClockOutTime(clockOutTime);
 
-        LocalDate workDate = usersTodayAttendance.getWorkDate();
         UUID userId = usersTodayAttendance.getUserId();
 
         if (sufficientWorkShift) {
@@ -229,7 +244,8 @@ public class AttendanceService {
     // 2. Lấy dữ liệu chấm công quản lý cấp dưới (TP IT, TP HR, Giám đốc...)
     @Transactional(readOnly = true)
     public Page<ManagerAttendanceResponse> getDepartmentAttendances(UserRole userRole, AttendanceFilterRequest filter, Pageable pageable) {
-        Specification<Attendance> spec = AttendanceSpecification.forManagement(userRole, filter);
+        boolean hasDeptGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_DEPT);
+        Specification<Attendance> spec = AttendanceSpecification.forManagement(userRole, filter, hasDeptGrant);
         return attendanceRepository.findAll(spec, pageable).map(this::mapToManagerResponse);
     }
 
@@ -237,8 +253,10 @@ public class AttendanceService {
     @Transactional(readOnly = true)
     public Page<HrAttendanceResponse> getCompanyAttendances(UserRole userRole, AttendanceFilterRequest filter, Pageable pageable) {
         String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-        if (!myDepartment.equals("Human Resources")) {
-            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự mới có quyền xem chấm công toàn công ty");
+        if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_ALL)) {
+            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
+                "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xuất dữ liệu chấm công");
         }
 
         Specification<Attendance> spec = AttendanceSpecification.forCompanyWide(filter);
@@ -315,12 +333,32 @@ public class AttendanceService {
     
     @Transactional
     public Attendance editAttendanceRecord(UUID attendanceId, UserRole userRole, EditAttendanceRequest request) {
+        validateHROrExecutive(userRole);
+
         Attendance attendance = attendanceRepository.findById(attendanceId).orElseThrow(() -> {
             throw new AttendanceException(AttendanceErrorCode.ATTENDANCE_NOT_FOUND, "Không tìm thấy bản ghi chấm công");
         });
 
+        LocalDate workDate = attendance.getWorkDate();
+        if (workDate != null) {
+            boolean isLocked = false;
+            if (attendance.getUser() != null) {
+                isLocked = monthlyTimesheetRepository
+                        .findByUser_UserIdAndPeriodMonthAndPeriodYear(attendance.getUser().getUserId(), workDate.getMonthValue(), workDate.getYear())
+                        .map(t -> t.getStatus() == TimesheetStatus.LOCKED)
+                        .orElse(false);
+            }
+            if (!isLocked) {
+                isLocked = monthlyTimesheetRepository.existsByPeriodMonthAndPeriodYearAndStatus(
+                        workDate.getMonthValue(), workDate.getYear(), TimesheetStatus.LOCKED);
+            }
+            if (isLocked) {
+                throw new AttendanceException(AttendanceErrorCode.TIMESHEET_ALREADY_LOCKED,
+                        "Không thể chỉnh sửa chấm công vì bảng chấm công tháng " + workDate.getMonthValue() + "/" + workDate.getYear() + " đã được khóa sổ (LOCKED).");
+            }
+        }
+
         UUID edtiorId = userRole.getUserId();
-        String department = userRole.getDepartment();
 
         LocalTime editedClockInTime = request.getEditedClockInTime();
         LocalTime editedClockOutTime = request.getEditedClockOutTime();
@@ -334,45 +372,54 @@ public class AttendanceService {
             }
         }
 
-        if (department.equals("Human Resources")) {
-            attendance.setEdited(true);
-            attendance.setClockInTime(editedClockInTime);
-            attendance.setClockOutTime(editedClockOutTime);
-            attendance.setEditedReason(edtiedReason);
-            attendance.setStatus(editedStatus);
+        attendance.setEdited(true);
+        attendance.setClockInTime(editedClockInTime);
+        attendance.setClockOutTime(editedClockOutTime);
+        attendance.setEditedReason(edtiedReason);
+        attendance.setStatus(editedStatus);
 
-            User userProxy = userRepository.getReferenceById(edtiorId);
-            attendance.setEditor(userProxy);
+        User userProxy = userRepository.getReferenceById(edtiorId);
+        attendance.setEditor(userProxy);
 
-            attendanceRepository.save(attendance);
-            log.warn("Bản ghi chấm công bị chỉnh sửa. HR Editor: {}, Bản ghi ID: {}, Nhân viên: {}, Giờ vào mới: {}, Giờ ra mới: {}, Lý do: {}",
-                    edtiorId, attendanceId,
-                    attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A",
-                    editedClockInTime, editedClockOutTime, edtiedReason);
-            return attendance;
-        } else {
-            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
-                    "Nhân viên không có quyền thực hiện chức năng này");
-        }
+        attendanceRepository.save(attendance);
+        log.warn("Bản ghi chấm công bị chỉnh sửa. HR Editor: {}, Bản ghi ID: {}, Nhân viên: {}, Giờ vào mới: {}, Giờ ra mới: {}, Lý do: {}",
+                edtiorId, attendanceId,
+                attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A",
+                editedClockInTime, editedClockOutTime, edtiedReason);
+        return attendance;
     }
 
     @Transactional
     public void deleteAttendanceRecord(UUID attendanceId, UserRole userRole) {
+        validateHROrExecutive(userRole);
+
         Attendance attendance = attendanceRepository.findById(attendanceId).orElseThrow(() -> {
             throw new AttendanceException(AttendanceErrorCode.ATTENDANCE_NOT_FOUND, "Can't find attendance record");
         });
 
-        String department = userRole.getDepartment();
-
-        if (department.startsWith("Human Resources")) {
-            attendanceRepository.delete(attendance);
-            log.warn("Bản ghi chấm công bị XÓA. HR Executor: {}, Bản ghi ID: {}, Nhân viên: {}",
-                    userRole.getUserId(), attendanceId,
-                    attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A");
-        } else {
-            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
-                    "Nhân viên không có quyền thực hiện chức năng này");
+        LocalDate workDate = attendance.getWorkDate();
+        if (workDate != null) {
+            boolean isLocked = false;
+            if (attendance.getUser() != null) {
+                isLocked = monthlyTimesheetRepository
+                        .findByUser_UserIdAndPeriodMonthAndPeriodYear(attendance.getUser().getUserId(), workDate.getMonthValue(), workDate.getYear())
+                        .map(t -> t.getStatus() == TimesheetStatus.LOCKED)
+                        .orElse(false);
+            }
+            if (!isLocked) {
+                isLocked = monthlyTimesheetRepository.existsByPeriodMonthAndPeriodYearAndStatus(
+                        workDate.getMonthValue(), workDate.getYear(), TimesheetStatus.LOCKED);
+            }
+            if (isLocked) {
+                throw new AttendanceException(AttendanceErrorCode.TIMESHEET_ALREADY_LOCKED,
+                        "Không thể xóa chấm công vì bảng chấm công tháng " + workDate.getMonthValue() + "/" + workDate.getYear() + " đã được khóa sổ (LOCKED).");
+            }
         }
+
+        attendanceRepository.delete(attendance);
+        log.warn("Bản ghi chấm công bị XÓA. HR Executor: {}, Bản ghi ID: {}, Nhân viên: {}",
+                userRole.getUserId(), attendanceId,
+                attendance.getUser() != null ? attendance.getUser().getUserId() : "N/A");
     }
     
     // ─── XUẤT EXCEL BẢNG CHẤM CÔNG (HR) ──────────────────────────────
@@ -392,15 +439,34 @@ public class AttendanceService {
         // 2. Khởi tạo Workbook và định dạng Header
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet("Bang Cham Cong");
+            // ponytail: tat luoi mac dinh + cot A lam le trai — chi giu vien minh ke
+            sheet.setDisplayGridlines(false);
+            final int OFF = 1;
+            sheet.setColumnWidth(0, 6 * 256);
 
-            // Style Header: In đậm, nền xanh ngọc nhạt, căn giữa
+            // Style Header: In đậm TNR, nền xanh đậm chữ trắng, căn giữa
             CellStyle headerStyle = workbook.createCellStyle();
             Font headerFont = workbook.createFont();
             headerFont.setBold(true);
+            headerFont.setFontName("Times New Roman");
+            headerFont.setColor(IndexedColors.WHITE.getIndex());
             headerStyle.setFont(headerFont);
-            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());
+            headerStyle.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
             headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
             headerStyle.setAlignment(HorizontalAlignment.CENTER);
+            headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            // ponytail: Excel khong co padding — gia lap bang indent + nang cao dong 28pt
+            CellStyle bordered = workbook.createCellStyle();
+            bordered.setBorderTop(BorderStyle.THIN);
+            bordered.setBorderBottom(BorderStyle.THIN);
+            bordered.setBorderLeft(BorderStyle.THIN);
+            bordered.setBorderRight(BorderStyle.THIN);
+            bordered.setIndention((short) 1);
+            bordered.setVerticalAlignment(VerticalAlignment.CENTER);
+            Font bodyFont = workbook.createFont();
+            bodyFont.setFontName("Times New Roman");
+            bordered.setFont(bodyFont);
 
             // Danh sách tiêu đề cột
             String[] columns = {
@@ -409,43 +475,66 @@ public class AttendanceService {
                 "Đã Chỉnh Sửa", "Lý Do Chỉnh Sửa", "Người Chỉnh Sửa", "Mã NV Người Sửa"
             };
 
-            Row headerRow = sheet.createRow(0);
+            String range = "";
+            if (filter.getStartDate() != null || filter.getEndDate() != null) {
+                range = " (" + (filter.getStartDate() != null ? filter.getStartDate().toString() : "...")
+                        + " - " + (filter.getEndDate() != null ? filter.getEndDate().toString() : "...") + ")";
+            }
+            int rowIdx = 3;
+            Row headerRow = sheet.createRow(rowIdx++);
+            headerRow.setHeightInPoints(28);
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                Cell cell = headerRow.createCell(OFF + i);
                 cell.setCellValue(columns[i]);
                 cell.setCellStyle(headerStyle);
             }
 
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            int rowIdx = 1;
+            int stt = 1;
 
             // 3. Ghi dữ liệu từng dòng theo đúng DTO HrAttendanceResponse
             for (HrAttendanceResponse rowData : dtoList) {
-                Row row = sheet.createRow(rowIdx);
+                Row row = sheet.createRow(rowIdx++);
+                row.setHeightInPoints(28);
 
-                row.createCell(0).setCellValue(rowIdx);
-                row.createCell(1).setCellValue(rowData.getEmployeeCode() != null ? rowData.getEmployeeCode() : "");
-                row.createCell(2).setCellValue(rowData.getFullName() != null ? rowData.getFullName() : "");
-                row.createCell(3).setCellValue(rowData.getDepartment() != null ? rowData.getDepartment() : "");
-                row.createCell(4).setCellValue(rowData.getJob() != null ? rowData.getJob() : "");
-                row.createCell(5).setCellValue(rowData.getWorkDate() != null ? rowData.getWorkDate().toString() : "");
-                row.createCell(6).setCellValue(
+                row.createCell(OFF + 0).setCellValue(stt++);
+                row.createCell(OFF + 1).setCellValue(rowData.getEmployeeCode() != null ? rowData.getEmployeeCode() : "");
+                row.createCell(OFF + 2).setCellValue(rowData.getFullName() != null ? rowData.getFullName() : "");
+                row.createCell(OFF + 3).setCellValue(rowData.getDepartment() != null ? rowData.getDepartment() : "");
+                row.createCell(OFF + 4).setCellValue(rowData.getJob() != null ? rowData.getJob() : "");
+                row.createCell(OFF + 5).setCellValue(rowData.getWorkDate() != null ? rowData.getWorkDate().toString() : "");
+                row.createCell(OFF + 6).setCellValue(
                         rowData.getClockInTime() != null ? rowData.getClockInTime().format(timeFormatter) : "");
-                row.createCell(7).setCellValue(
+                row.createCell(OFF + 7).setCellValue(
                         rowData.getClockOutTime() != null ? rowData.getClockOutTime().format(timeFormatter) : "");
-                row.createCell(8).setCellValue(rowData.getStatus() != null ? rowData.getStatus().name() : "");
-                row.createCell(9).setCellValue(rowData.isEdited() ? "Có" : "Không");
-                row.createCell(10).setCellValue(rowData.getEditedReason() != null ? rowData.getEditedReason() : "");
-                row.createCell(11).setCellValue(rowData.getEditorName() != null ? rowData.getEditorName() : "");
-                row.createCell(12).setCellValue(rowData.getEditorEmpCode() != null ? rowData.getEditorEmpCode() : "");
-
-                rowIdx++;
+                row.createCell(OFF + 8).setCellValue(attendanceStatusVi(rowData.getStatus()));
+                row.createCell(OFF + 9).setCellValue(rowData.isEdited() ? "Có" : "Không");
+                row.createCell(OFF + 10).setCellValue(rowData.getEditedReason() != null ? rowData.getEditedReason() : "");
+                row.createCell(OFF + 11).setCellValue(rowData.getEditorName() != null ? rowData.getEditorName() : "");
+                row.createCell(OFF + 12).setCellValue(rowData.getEditorEmpCode() != null ? rowData.getEditorEmpCode() : "");
+                for (int i = 0; i < columns.length; i++) {
+                    row.getCell(OFF + i).setCellStyle(bordered);
+                }
             }
 
             // Tự động căn chỉnh độ rộng cột
             for (int i = 0; i < columns.length; i++) {
-                sheet.autoSizeColumn(i);
+                sheet.autoSizeColumn(OFF + i);
             }
+            sheet.setColumnWidth(OFF, 8 * 256);
+
+            // ponytail: tieu de viet CUOI (sau autoSize) de chu dai khong lam phong cot
+            Row titleRow = sheet.createRow(0);
+            Cell titleCell = titleRow.createCell(OFF + 4);
+            titleCell.setCellValue("BẢNG CHẤM CÔNG" + range);
+            CellStyle titleStyle = workbook.createCellStyle();
+            Font titleFont = workbook.createFont();
+            titleFont.setBold(true);
+            titleFont.setFontName("Times New Roman");
+            titleFont.setFontHeightInPoints((short) 22);
+            titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+            titleStyle.setFont(titleFont);
+            titleCell.setCellStyle(titleStyle);
 
             workbook.write(out);
             return out.toByteArray();
@@ -453,6 +542,26 @@ public class AttendanceService {
             log.error("Failed to generate Attendance Excel file", e);
             throw new RuntimeErrorException(null);
         }
+    }
+
+    private String attendanceStatusVi(Object status) {
+        if (status == null) return "";
+        return switch (status.toString()) {
+            case "SUFFICIENT" -> "Đúng giờ";
+            case "WORKING" -> "Đang làm việc";
+            case "LATE" -> "Đi trễ";
+            case "EARLY" -> "Về sớm";
+            case "LATE_AND_EARLY" -> "Đi trễ & Về sớm";
+            case "MISSING" -> "Quên chấm công";
+            case "NOT_CHECKED" -> "Chưa điểm danh";
+            case "UNEXCUSED_ABSENCE" -> "Nghỉ không phép";
+            case "PAID_LEAVE" -> "Nghỉ phép có lương";
+            case "UNPAID_LEAVE" -> "Nghỉ không lương";
+            case "HOLIDAY" -> "Nghỉ Lễ";
+            case "BUSINESS_TRIP" -> "Đi công tác";
+            case "ADJUSTED" -> "Đã điều chỉnh";
+            default -> status.toString();
+        };
     }
 
     // =========================================================================
@@ -480,7 +589,7 @@ public class AttendanceService {
     @Transactional(readOnly = true)
     public Page<CompanyMonthlyTimesheetResponse> getCompanyMonthlyTimesheets(
             UserRole userRole, CompanyTimesheetFilterRequest filter, Pageable pageable) {
-        validateHROrExecutive(userRole);
+        validateCompanyTimesheetView(userRole);
         Specification<MonthlyTimesheet> spec = MonthlyTimesheetSpecification.filterForCompany(userRole.getUserId(), filter);
         return monthlyTimesheetRepository.findAll(spec, pageable).map(this::mapToCompanyResponse);
     }
@@ -509,7 +618,7 @@ public class AttendanceService {
     // 6. Xuất Excel bảng công toàn công ty (HR / Executive)
     @Transactional(readOnly = true)
     public byte[] exportCompanyMonthlyTimesheetsToExcel(UserRole userRole, CompanyTimesheetFilterRequest filter) {
-        validateHROrExecutive(userRole);
+        validateCompanyTimesheetView(userRole);
         Specification<MonthlyTimesheet> spec = MonthlyTimesheetSpecification.filterForCompany(userRole.getUserId(), filter);
         Sort sort = Sort.by(Sort.Direction.ASC, "user.department.name", "user.employeeCode", "periodYear", "periodMonth");
         List<MonthlyTimesheet> list = monthlyTimesheetRepository.findAll(spec, sort);
@@ -522,7 +631,22 @@ public class AttendanceService {
 
     @Transactional
     public Map<String, Object> generateMonthlyTimesheets(int month, int year, UserRole userRole) {
-        validateHROrExecutive(userRole);
+        String dept = userRole.getDepartment() != null ? userRole.getDepartment() : "";
+        boolean isHR = "Human Resources".equals(dept);
+        boolean isExecutive = "Executive Leadership".equals(dept);
+        if (!isHR && !isExecutive
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.TIMESHEET_LOCK)) {
+            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
+                    "Chỉ phòng Nhân sự (HR) hoặc Ban Giám Đốc mới có quyền thao tác dữ liệu chấm công toàn công ty");
+        }
+
+        // 0. Chỉ tổng hợp được kỳ ĐÃ KẾT THÚC: hôm 27/09 thì tháng 09 chưa được tổng hợp,
+        // phải chờ sang ngày 01/10. So sánh year*12+month để không cần parse ngày.
+        int currentPeriod = LocalDate.now().getYear() * 12 + LocalDate.now().getMonthValue();
+        if (year * 12 + month >= currentPeriod) {
+            throw new AttendanceException(AttendanceErrorCode.INVALID_TIMESHEET_PERIOD,
+                    "Kỳ " + month + "/" + year + " chưa kết thúc, chỉ tổng hợp bảng công cho kỳ đã qua.");
+        }
 
         // 1. Kiểm tra xem tháng này đã bị khóa (LOCKED) chưa
         boolean alreadyLocked = monthlyTimesheetRepository.existsByPeriodMonthAndPeriodYearAndStatus(month, year, TimesheetStatus.LOCKED);
@@ -555,6 +679,12 @@ public class AttendanceService {
                 standardWorkingDays = 22; // Mặc định 22 ngày nếu chưa gán ca
             }
 
+            // Bản đồ lịch trình tuần của ca (nếu có)
+            Map<Integer, WorkShiftSchedule> userSchedules = (shift != null && shift.getShiftId() != null)
+                    ? workShiftScheduleRepository.findByWorkShift_ShiftId(shift.getShiftId()).stream()
+                            .collect(Collectors.toMap(WorkShiftSchedule::getDayOfWeek, s -> s, (s1, s2) -> s1))
+                    : Collections.emptyMap();
+
             // 2. Tổng hợp chấm công thực tế
             List<Attendance> attendances = attendanceRepository.findByUserIdAndDateRange(user.getUserId(), startOfMonth, endOfMonth);
             BigDecimal actualWorkedDays = BigDecimal.ZERO;
@@ -568,6 +698,13 @@ public class AttendanceService {
                 AttendanceStatus status = att.getStatus();
                 if (status == null) continue;
 
+                WorkShiftSchedule daySchedule = att.getWorkDate() != null
+                        ? userSchedules.get(att.getWorkDate().getDayOfWeek().getValue())
+                        : null;
+                LocalTime shiftStartTime = (daySchedule != null) ? daySchedule.getStartTime() : null;
+                LocalTime shiftRestStart = (daySchedule != null) ? daySchedule.getRestStartTime() : null;
+                LocalTime shiftRestEnd = (daySchedule != null) ? daySchedule.getRestEndTime() : null;
+
                 switch (status) {
                     case SUFFICIENT:
                     case BUSINESS_TRIP:
@@ -577,9 +714,9 @@ public class AttendanceService {
                     case LATE:
                         actualWorkedDays = actualWorkedDays.add(BigDecimal.ONE);
                         lateCount++;
-                        if (att.getClockInTime() != null && shift != null && shift.getStartTime() != null) {
-                            if (att.getClockInTime().isAfter(shift.getStartTime())) {
-                                totalLateMinutes += (int) Duration.between(shift.getStartTime(), att.getClockInTime()).toMinutes();
+                        if (att.getClockInTime() != null && shiftStartTime != null) {
+                            if (att.getClockInTime().isAfter(shiftStartTime)) {
+                                totalLateMinutes += (int) Duration.between(shiftStartTime, att.getClockInTime()).toMinutes();
                             }
                         }
                         break;
@@ -591,9 +728,9 @@ public class AttendanceService {
                         actualWorkedDays = actualWorkedDays.add(BigDecimal.ONE);
                         lateCount++;
                         earlyDepartureCount++;
-                        if (att.getClockInTime() != null && shift != null && shift.getStartTime() != null) {
-                            if (att.getClockInTime().isAfter(shift.getStartTime())) {
-                                totalLateMinutes += (int) Duration.between(shift.getStartTime(), att.getClockInTime()).toMinutes();
+                        if (att.getClockInTime() != null && shiftStartTime != null) {
+                            if (att.getClockInTime().isAfter(shiftStartTime)) {
+                                totalLateMinutes += (int) Duration.between(shiftStartTime, att.getClockInTime()).toMinutes();
                             }
                         }
                         break;
@@ -611,9 +748,9 @@ public class AttendanceService {
                 // Tính giờ làm thực tế
                 if (att.getClockInTime() != null && att.getClockOutTime() != null) {
                     long minutes = Duration.between(att.getClockInTime(), att.getClockOutTime()).toMinutes();
-                    if (shift != null && shift.getRestStartTime() != null && shift.getRestEndTime() != null) {
-                        if (!att.getClockInTime().isAfter(shift.getRestStartTime()) && !att.getClockOutTime().isBefore(shift.getRestEndTime())) {
-                            long restMins = Duration.between(shift.getRestStartTime(), shift.getRestEndTime()).toMinutes();
+                    if (shiftRestStart != null && shiftRestEnd != null) {
+                        if (!att.getClockInTime().isAfter(shiftRestStart) && !att.getClockOutTime().isBefore(shiftRestEnd)) {
+                            long restMins = Duration.between(shiftRestStart, shiftRestEnd).toMinutes();
                             minutes = Math.max(0, minutes - restMins);
                         }
                     }
@@ -621,7 +758,7 @@ public class AttendanceService {
                     actualWorkHours = actualWorkHours.add(BigDecimal.valueOf(hours));
                 } else if (status == AttendanceStatus.MISSING) {
                     actualWorkHours = actualWorkHours.add(BigDecimal.valueOf(4.0));
-                } else if (status == AttendanceStatus.BUSINESS_TRIP || status == AttendanceStatus.ADJUSTED) {
+                } else if (status == AttendanceStatus.BUSINESS_TRIP || status == AttendanceStatus.ADJUSTED || status == AttendanceStatus.PAID_LEAVE) {
                     actualWorkHours = actualWorkHours.add(BigDecimal.valueOf(8.0));
                 }
             }
@@ -655,60 +792,63 @@ public class AttendanceService {
                 }
             }
 
+            // Đồng bộ thêm nếu có bản ghi PAID_LEAVE / UNPAID_LEAVE trực tiếp từ chấm công
+            long directPaidLeaveCount = attendances.stream()
+                    .filter(a -> a.getStatus() == AttendanceStatus.PAID_LEAVE)
+                    .count();
+            if (directPaidLeaveCount > paidLeaveDays.longValue()) {
+                paidLeaveDays = BigDecimal.valueOf(directPaidLeaveCount);
+            }
+
+            long directUnpaidLeaveCount = attendances.stream()
+                    .filter(a -> a.getStatus() == AttendanceStatus.UNPAID_LEAVE)
+                    .count();
+            if (directUnpaidLeaveCount > unpaidLeaveDays.longValue()) {
+                unpaidLeaveDays = BigDecimal.valueOf(directUnpaidLeaveCount);
+            }
+
             // 4. Tổng hợp Tăng ca (OT)
             List<OvertimeRecord> overtimes = overtimeRecordRepository.findAcceptedOvertimesByUserIdAndDateRange(
                     user.getUserId(), OvertimeRecordStatus.accepted, startOfMonth, endOfMonth);
-            BigDecimal totalActualOtHours = BigDecimal.ZERO;
-            BigDecimal totalPaidOtHours = BigDecimal.ZERO;
+            OvertimeAmounts otTotals = sumOvertimeAmounts(overtimes);
+            BigDecimal totalActualOtHours = otTotals.actualHours();
+            BigDecimal totalPaidOtHours = otTotals.paidHours();
             List<StaffMonthlyTimesheetResponse.OvertimeDetailDto> otDetailList = new ArrayList<>();
 
             for (OvertimeRecord ot : overtimes) {
-                double otHours = 0.0;
-                if (ot.getClockInTime() != null && ot.getClockOutTime() != null) {
-                    otHours = Duration.between(ot.getClockInTime(), ot.getClockOutTime()).toMinutes() / 60.0;
-                } else if (ot.getApprovedStartTime() != null && ot.getApprovedEndTime() != null) {
-                    otHours = Duration.between(ot.getApprovedStartTime(), ot.getApprovedEndTime()).toMinutes() / 60.0;
-                }
+                OvertimeAmounts a = calcOvertimeAmounts(ot);
+                double otHours = a.actualHours().doubleValue();
+                double paidOt = a.paidHours().doubleValue();
                 if (otHours <= 0) continue;
 
-                double multiplier;
                 String otTypeCode;
                 String otLabel;
+                double multiplier = a.multiplier();
                 if (ot.isHoliday()) {
                     if (ot.isNightTime()) {
-                        multiplier = 3.9;
                         otTypeCode = "HOLIDAY_NIGHT";
                         otLabel = "Ngày lễ - Ban đêm (390%)";
                     } else {
-                        multiplier = 3.0;
                         otTypeCode = "HOLIDAY_DAY";
                         otLabel = "Ngày lễ - Ban ngày (300%)";
                     }
                 } else if (ot.isWeekend()) {
                     if (ot.isNightTime()) {
-                        multiplier = 2.7;
                         otTypeCode = "WEEKEND_NIGHT";
                         otLabel = "Cuối tuần - Ban đêm (270%)";
                     } else {
-                        multiplier = 2.0;
                         otTypeCode = "WEEKEND_DAY";
                         otLabel = "Cuối tuần - Ban ngày (200%)";
                     }
                 } else {
                     if (ot.isNightTime()) {
-                        multiplier = 2.0;
                         otTypeCode = "NORMAL_NIGHT";
                         otLabel = "Ngày thường - Ban đêm (200%)";
                     } else {
-                        multiplier = 1.5;
                         otTypeCode = "NORMAL_DAY";
                         otLabel = "Ngày thường - Ban ngày (150%)";
                     }
                 }
-
-                double paidOt = otHours * multiplier;
-                totalActualOtHours = totalActualOtHours.add(BigDecimal.valueOf(otHours));
-                totalPaidOtHours = totalPaidOtHours.add(BigDecimal.valueOf(paidOt));
 
                 otDetailList.add(StaffMonthlyTimesheetResponse.OvertimeDetailDto.builder()
                         .type(otTypeCode)
@@ -824,18 +964,34 @@ public class AttendanceService {
 
     @Transactional
     public Map<String, Object> lockMonthlyTimesheet(int month, int year, UserRole userRole) {
+        return lockMonthlyTimesheet(month, year, userRole, null);
+    }
+
+    /**
+     * Chốt sổ bảng chấm công. {@code userIds} rỗng/null = chốt cả tháng (giữ hành vi cũ),
+     * có giá trị = chỉ chốt đúng nhóm nhân viên đang tick trên bảng.
+     */
+    @Transactional
+    public Map<String, Object> lockMonthlyTimesheet(int month, int year, UserRole userRole, List<UUID> userIds) {
         validateHeadOfHROrExecutive(userRole);
 
-        List<MonthlyTimesheet> list = monthlyTimesheetRepository.findByPeriodMonthAndPeriodYear(month, year);
+        boolean scoped = userIds != null && !userIds.isEmpty();
+        List<MonthlyTimesheet> list = scoped
+                ? monthlyTimesheetRepository.findByPeriodMonthAndPeriodYearAndUser_UserIdIn(month, year, userIds)
+                : monthlyTimesheetRepository.findByPeriodMonthAndPeriodYear(month, year);
         if (list.isEmpty()) {
             throw new AttendanceException(AttendanceErrorCode.TIMESHEET_NOT_FOUND,
-                    "Không tìm thấy dữ liệu bảng chấm công tháng " + month + "/" + year);
+                    scoped
+                            ? "Các nhân viên đã chọn không có bảng chấm công tháng " + month + "/" + year
+                            : "Không tìm thấy dữ liệu bảng chấm công tháng " + month + "/" + year);
         }
 
         boolean allLocked = list.stream().allMatch(t -> t.getStatus() == TimesheetStatus.LOCKED);
         if (allLocked) {
             throw new AttendanceException(AttendanceErrorCode.TIMESHEET_ALREADY_LOCKED,
-                    "Bảng chấm công tháng " + month + "/" + year + " đã được khóa sổ trước đó.");
+                    scoped
+                            ? "Các bảng công đã chọn đều được khóa sổ trước đó."
+                            : "Bảng chấm công tháng " + month + "/" + year + " đã được khóa sổ trước đó.");
         }
 
         LocalDateTime now = LocalDateTime.now();
@@ -846,14 +1002,59 @@ public class AttendanceService {
         }
         monthlyTimesheetRepository.saveAll(list);
 
-        log.info("Trưởng phòng HR {} đã chốt sổ (LOCKED) bảng chấm công tháng {}/{} cho {} nhân viên",
-                userRole.getUserId(), month, year, list.size());
+        log.info("Trưởng phòng HR {} đã chốt sổ (LOCKED) bảng chấm công tháng {}/{} cho {} nhân viên (phạm vi: {})",
+                userRole.getUserId(), month, year, list.size(), scoped ? "vùng chọn" : "toàn tháng");
 
         return Map.of(
-                "msg", "Chốt sổ bảng chấm công tháng " + month + "/" + year + " thành công",
+                "msg", (scoped ? "Chốt sổ " + list.size() + " bảng công đã chọn tháng " : "Chốt sổ bảng chấm công tháng ")
+                        + month + "/" + year + " thành công",
                 "lockedCount", list.size(),
                 "status", TimesheetStatus.LOCKED.name()
         );
+    }
+
+    /**
+     * Số giờ OT của 1 bản ghi: giờ thực tế + giờ tính lương (sau hệ số theo ngày/đêm/lễ).
+     * Tách ra để DashboardService dùng đúng luật này thay vì copy lại bảng hệ số.
+     * ponytail: ceiling là chưa tính hệ số theo ca đêm/nghỉ trưa — thêm ở đây là cả 2 nơi được.
+     */
+    public record OvertimeAmounts(BigDecimal actualHours, BigDecimal paidHours, double multiplier) {}
+
+    public static OvertimeAmounts calcOvertimeAmounts(OvertimeRecord ot) {
+        double otHours = 0.0;
+        if (ot.getClockInTime() != null && ot.getClockOutTime() != null) {
+            otHours = Duration.between(ot.getClockInTime(), ot.getClockOutTime()).toMinutes() / 60.0;
+        } else if (ot.getApprovedStartTime() != null && ot.getApprovedEndTime() != null) {
+            otHours = Duration.between(ot.getApprovedStartTime(), ot.getApprovedEndTime()).toMinutes() / 60.0;
+        }
+        if (otHours <= 0) {
+            return new OvertimeAmounts(BigDecimal.ZERO, BigDecimal.ZERO, 0.0);
+        }
+
+        double multiplier;
+        if (ot.isHoliday()) {
+            multiplier = ot.isNightTime() ? 3.9 : 3.0;
+        } else if (ot.isWeekend()) {
+            multiplier = ot.isNightTime() ? 2.7 : 2.0;
+        } else {
+            multiplier = ot.isNightTime() ? 2.0 : 1.5;
+        }
+
+        return new OvertimeAmounts(
+                BigDecimal.valueOf(otHours),
+                BigDecimal.valueOf(otHours * multiplier),
+                multiplier);
+    }
+
+    public static OvertimeAmounts sumOvertimeAmounts(List<OvertimeRecord> overtimes) {
+        BigDecimal actual = BigDecimal.ZERO;
+        BigDecimal paid = BigDecimal.ZERO;
+        for (OvertimeRecord ot : overtimes) {
+            OvertimeAmounts a = calcOvertimeAmounts(ot);
+            actual = actual.add(a.actualHours());
+            paid = paid.add(a.paidHours());
+        }
+        return new OvertimeAmounts(actual.setScale(2, RoundingMode.HALF_UP), paid.setScale(2, RoundingMode.HALF_UP), 0.0);
     }
 
     // =================== HELPER & EXCEL BUILDERS ===================
@@ -864,9 +1065,22 @@ public class AttendanceService {
         boolean isExecutive = "Executive Leadership".equals(dept);
         boolean isHR = "Human Resources".equals(dept);
         boolean isHead = job.startsWith("Department Head") || job.contains("Head") || job.contains("Manager") || job.contains("Trưởng");
-        if (!isExecutive && !(isHR && isHead)) {
+        if (!isExecutive && !(isHR && isHead)
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.TIMESHEET_LOCK)) {
             throw new AttendanceException(AttendanceErrorCode.UNAUTHORIZED_ACTION,
                     "Chỉ Trưởng phòng Nhân sự hoặc Ban Giám Đốc mới có quyền chốt sổ bảng chấm công tháng");
+        }
+    }
+
+    // ponytail: HR/Executive theo role gốc + grant ATTENDANCE_VIEW_ALL (dùng cho xem + xuất bảng công company)
+    private void validateCompanyTimesheetView(UserRole userRole) {
+        String dept = userRole.getDepartment() != null ? userRole.getDepartment() : "";
+        boolean isHR = "Human Resources".equals(dept);
+        boolean isExecutive = "Executive Leadership".equals(dept);
+        if (!isHR && !isExecutive
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_ALL)) {
+            throw new AttendanceException(AttendanceErrorCode.INSUFFICIENT_PERMISSION,
+                    "Chỉ phòng Nhân sự (HR) hoặc Ban Giám Đốc mới có quyền thao tác dữ liệu chấm công toàn công ty");
         }
     }
 
@@ -875,9 +1089,10 @@ public class AttendanceService {
         String dept = userRole.getDepartment() != null ? userRole.getDepartment() : "";
         boolean isExecutive = "Executive Leadership".equals(dept);
         boolean isHead = job.startsWith("Department Head") || job.contains("Head") || job.contains("Manager");
-        if (!isHead && !isExecutive) {
+        boolean hasDeptGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.ATTENDANCE_VIEW_DEPT);
+        if (!isHead && !isExecutive && !hasDeptGrant) {
             throw new AttendanceException(AttendanceErrorCode.UNAUTHORIZED_ACTION,
-                    "Chỉ Trưởng phòng ban hoặc Ban Giám Đốc mới có quyền thao tác dữ liệu chấm công phòng ban");
+                    "Chỉ Trưởng phòng ban, Ban Giám Đốc hoặc người được cấp quyền xem chấm công phòng ban mới có quyền thao tác dữ liệu này");
         }
     }
 
@@ -990,8 +1205,21 @@ public class AttendanceService {
     private byte[] generateStaffTimesheetExcel(List<MonthlyTimesheet> list) {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet("Bang Cong Ca Nhan");
+            sheet.setDisplayGridlines(false);
+            final int OFF = 1;
+            sheet.setColumnWidth(0, 6 * 256);
 
             CellStyle headerStyle = createHeaderCellStyle(workbook);
+            CellStyle bordered = workbook.createCellStyle();
+            bordered.setBorderTop(BorderStyle.THIN);
+            bordered.setBorderBottom(BorderStyle.THIN);
+            bordered.setBorderLeft(BorderStyle.THIN);
+            bordered.setBorderRight(BorderStyle.THIN);
+            bordered.setIndention((short) 1);
+            bordered.setVerticalAlignment(VerticalAlignment.CENTER);
+            Font bodyFont = workbook.createFont();
+            bodyFont.setFontName("Times New Roman");
+            bordered.setFont(bodyFont);
             String[] columns = {
                 "STT", "Tháng/Năm", "Trạng Thái", "Ngày Chuẩn", "Ngày Làm Thực Tế",
                 "Giờ Làm Thực Tế", "Đi Muộn (lần)", "Phút Đi Muộn", "Về Sớm (lần)",
@@ -999,36 +1227,61 @@ public class AttendanceService {
                 "Giờ OT Thực Tế", "Giờ OT Tính Lương", "Ghi Chú"
             };
 
-            Row headerRow = sheet.createRow(0);
+            String period = "";
+            if (!list.isEmpty()) {
+                MonthlyTimesheet first = list.get(0);
+                period = "T" + first.getPeriodMonth() + "/" + first.getPeriodYear();
+            }
+            int rowIdx = 3;
+            Row headerRow = sheet.createRow(rowIdx++);
+            headerRow.setHeightInPoints(28);
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                Cell cell = headerRow.createCell(OFF + i);
                 cell.setCellValue(columns[i]);
                 cell.setCellStyle(headerStyle);
             }
 
-            int rowIdx = 1;
+            int stt = 1;
             for (MonthlyTimesheet t : list) {
-                Row row = sheet.createRow(rowIdx);
-                row.createCell(0).setCellValue(rowIdx);
-                row.createCell(1).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
-                row.createCell(2).setCellValue(t.getStatus() != null ? t.getStatus().name() : "");
-                row.createCell(3).setCellValue(t.getStandardWorkingDays());
-                row.createCell(4).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
-                row.createCell(5).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
-                row.createCell(6).setCellValue(t.getLateCount());
-                row.createCell(7).setCellValue(t.getTotalLateMinutes());
-                row.createCell(8).setCellValue(t.getEarlyDepartureCount());
-                row.createCell(9).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
-                row.createCell(10).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(11).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(12).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
-                row.createCell(13).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
-                row.createCell(14).setCellValue(t.getNote() != null ? t.getNote() : "");
-                rowIdx++;
+                Row row = sheet.createRow(rowIdx++);
+                row.setHeightInPoints(28);
+                row.createCell(OFF + 0).setCellValue(stt++);
+                row.createCell(OFF + 1).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
+                row.createCell(OFF + 2).setCellValue(t.getStatus() == TimesheetStatus.LOCKED ? "Đã chốt" : "Nháp");
+                row.createCell(OFF + 3).setCellValue(t.getStandardWorkingDays());
+                row.createCell(OFF + 4).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
+                row.createCell(OFF + 5).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
+                row.createCell(OFF + 6).setCellValue(t.getLateCount());
+                row.createCell(OFF + 7).setCellValue(t.getTotalLateMinutes());
+                row.createCell(OFF + 8).setCellValue(t.getEarlyDepartureCount());
+                row.createCell(OFF + 9).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
+                row.createCell(OFF + 10).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 11).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 12).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 13).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 14).setCellValue(t.getNote() != null ? t.getNote() : "");
+                for (int i = 0; i < columns.length; i++) {
+                    row.getCell(OFF + i).setCellStyle(bordered);
+                }
             }
 
             for (int i = 0; i < columns.length; i++) {
-                sheet.autoSizeColumn(i);
+                sheet.autoSizeColumn(OFF + i);
+            }
+            sheet.setColumnWidth(OFF, 8 * 256);
+
+            if (!period.isEmpty()) {
+                Row titleRow = sheet.createRow(0);
+                Cell titleCell = titleRow.createCell(OFF + 4);
+                titleCell.setCellValue("BẢNG CÔNG CÁ NHÂN " + period);
+                CellStyle titleStyle = workbook.createCellStyle();
+                Font titleFont = workbook.createFont();
+                titleFont.setBold(true);
+                titleFont.setFontName("Times New Roman");
+                titleFont.setFontHeightInPoints((short) 22);
+                titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+                titleStyle.setFont(titleFont);
+                titleCell.setCellStyle(titleStyle);
             }
 
             workbook.write(out);
@@ -1042,8 +1295,24 @@ public class AttendanceService {
     private byte[] generateCompanyTimesheetExcel(List<MonthlyTimesheet> list, String sheetName) {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet(sheetName.length() > 30 ? sheetName.substring(0, 30) : sheetName);
+            // ponytail: tat luoi mac dinh — chi giu vien minh ke
+            sheet.setDisplayGridlines(false);
 
+            // ponytail: cot A bo trong lam le trai (~6 don vi); muon rong/hep hon doi OFF
+            final int OFF = 1;
+            sheet.setColumnWidth(0, 6 * 256);
             CellStyle headerStyle = createHeaderCellStyle(workbook);
+            CellStyle bordered = workbook.createCellStyle();
+            bordered.setBorderTop(BorderStyle.THIN);
+            bordered.setBorderBottom(BorderStyle.THIN);
+            bordered.setBorderLeft(BorderStyle.THIN);
+            bordered.setBorderRight(BorderStyle.THIN);
+            // ponytail: Excel khong co padding — gia lap bang indent trai + nang chieu cao dong (28pt)
+            bordered.setIndention((short) 1);
+            bordered.setVerticalAlignment(org.apache.poi.ss.usermodel.VerticalAlignment.CENTER);
+            Font bodyFont = workbook.createFont();
+            bodyFont.setFontName("Times New Roman");
+            bordered.setFont(bodyFont);
             String[] columns = {
                 "STT", "Mã NV", "Họ và Tên", "Phòng Ban", "Chức Vụ",
                 "Tháng/Năm", "Trạng Thái", "Ngày Chuẩn", "Ngày Làm Thực Tế",
@@ -1052,42 +1321,69 @@ public class AttendanceService {
                 "Giờ OT Thực Tế", "Giờ OT Tính Lương", "Ghi Chú"
             };
 
-            Row headerRow = sheet.createRow(0);
+            // ponytail: tieu de viet CUOI (sau autoSize) de chu dai khong lam phong cot; STT dem rieng tu 1
+            String period = "";
+            if (!list.isEmpty()) {
+                MonthlyTimesheet first = list.get(0);
+                period = "T" + first.getPeriodMonth() + "/" + first.getPeriodYear();
+            }
+            int rowIdx = 3;
+            Row headerRow = sheet.createRow(rowIdx++);
+            headerRow.setHeightInPoints(28);
             for (int i = 0; i < columns.length; i++) {
-                Cell cell = headerRow.createCell(i);
+                Cell cell = headerRow.createCell(OFF + i);
                 cell.setCellValue(columns[i]);
                 cell.setCellStyle(headerStyle);
             }
 
-            int rowIdx = 1;
+            int stt = 1;
             for (MonthlyTimesheet t : list) {
-                Row row = sheet.createRow(rowIdx);
+                Row row = sheet.createRow(rowIdx++);
                 User u = t.getUser();
 
-                row.createCell(0).setCellValue(rowIdx);
-                row.createCell(1).setCellValue(u != null && u.getEmployeeCode() != null ? u.getEmployeeCode() : "");
-                row.createCell(2).setCellValue(u != null ? ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim() : "");
-                row.createCell(3).setCellValue(u != null && u.getDepartment() != null ? u.getDepartment().getName() : "");
-                row.createCell(4).setCellValue(u != null && u.getJob() != null ? u.getJob().getTitle() : "");
-                row.createCell(5).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
-                row.createCell(6).setCellValue(t.getStatus() != null ? t.getStatus().name() : "");
-                row.createCell(7).setCellValue(t.getStandardWorkingDays());
-                row.createCell(8).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
-                row.createCell(9).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
-                row.createCell(10).setCellValue(t.getLateCount());
-                row.createCell(11).setCellValue(t.getTotalLateMinutes());
-                row.createCell(12).setCellValue(t.getEarlyDepartureCount());
-                row.createCell(13).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
-                row.createCell(14).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(15).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
-                row.createCell(16).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
-                row.createCell(17).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
-                row.createCell(18).setCellValue(t.getNote() != null ? t.getNote() : "");
-                rowIdx++;
+                row.createCell(OFF + 0).setCellValue(stt++);
+                row.createCell(OFF + 1).setCellValue(u != null && u.getEmployeeCode() != null ? u.getEmployeeCode() : "");
+                row.createCell(OFF + 2).setCellValue(u != null ? ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim() : "");
+                row.createCell(OFF + 3).setCellValue(u != null && u.getDepartment() != null ? u.getDepartment().getName() : "");
+                row.createCell(OFF + 4).setCellValue(u != null && u.getJob() != null ? u.getJob().getTitle() : "");
+                row.createCell(OFF + 5).setCellValue(t.getPeriodMonth() + "/" + t.getPeriodYear());
+                row.createCell(OFF + 6).setCellValue(t.getStatus() == TimesheetStatus.LOCKED ? "Đã chốt" : "Nháp");
+                row.createCell(OFF + 7).setCellValue(t.getStandardWorkingDays());
+                row.createCell(OFF + 8).setCellValue(t.getActualWorkedDays() != null ? t.getActualWorkedDays().doubleValue() : 0.0);
+                row.createCell(OFF + 9).setCellValue(t.getActualWorkHours() != null ? t.getActualWorkHours().doubleValue() : 0.0);
+                row.createCell(OFF + 10).setCellValue(t.getLateCount());
+                row.createCell(OFF + 11).setCellValue(t.getTotalLateMinutes());
+                row.createCell(OFF + 12).setCellValue(t.getEarlyDepartureCount());
+                row.createCell(OFF + 13).setCellValue(t.getAbsentDays() != null ? t.getAbsentDays().doubleValue() : 0.0);
+                row.createCell(OFF + 14).setCellValue(t.getPaidLeaveDays() != null ? t.getPaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 15).setCellValue(t.getUnpaidLeaveDays() != null ? t.getUnpaidLeaveDays().doubleValue() : 0.0);
+                row.createCell(OFF + 16).setCellValue(t.getTotalActualOtHours() != null ? t.getTotalActualOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 17).setCellValue(t.getTotalPaidOtHours() != null ? t.getTotalPaidOtHours().doubleValue() : 0.0);
+                row.createCell(OFF + 18).setCellValue(t.getNote() != null ? t.getNote() : "");
+                for (int i = 0; i < columns.length; i++) {
+                    if (row.getCell(OFF + i) == null) row.createCell(OFF + i);
+                    row.getCell(OFF + i).setCellStyle(bordered);
+                }
+                // ponytail: row da +1 luc createRow — dong thua o day tao ra dong trang xen ke
+                row.setHeightInPoints(28);
             }
 
             for (int i = 0; i < columns.length; i++) {
-                sheet.autoSizeColumn(i);
+                sheet.autoSizeColumn(OFF + i);
+            }
+            sheet.setColumnWidth(OFF, 8 * 256);
+            if (!period.isEmpty()) {
+                Row titleRow = sheet.createRow(0);
+                Cell titleCell = titleRow.createCell(OFF + 4);
+                titleCell.setCellValue("BẢNG TỔNG HỢP CÔNG " + period);
+                CellStyle titleStyle = workbook.createCellStyle();
+                Font titleFont = workbook.createFont();
+                titleFont.setBold(true);
+                titleFont.setFontName("Times New Roman");
+                titleFont.setFontHeightInPoints((short) 22);
+                titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+                titleStyle.setFont(titleFont);
+                titleCell.setCellStyle(titleStyle);
             }
 
             workbook.write(out);
@@ -1102,10 +1398,13 @@ public class AttendanceService {
         CellStyle headerStyle = workbook.createCellStyle();
         Font headerFont = workbook.createFont();
         headerFont.setBold(true);
+        headerFont.setFontName("Times New Roman");
+        headerFont.setColor(IndexedColors.WHITE.getIndex());
         headerStyle.setFont(headerFont);
-        headerStyle.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());
+        headerStyle.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
         headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         headerStyle.setAlignment(HorizontalAlignment.CENTER);
+        headerStyle.setVerticalAlignment(org.apache.poi.ss.usermodel.VerticalAlignment.CENTER);
         return headerStyle;
     }
 }

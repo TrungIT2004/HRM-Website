@@ -1,5 +1,7 @@
 package com.minhtrung.hrm.auth.dtos.internals;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import lombok.Data;
@@ -12,6 +14,6 @@ public class TokenPayload {
     private String profilePicUrl;
     private String department;
     private String  job;
-    public class builder {
-    }
+    // ponytail: snapshot grants cho frontend gating; enforcement backend đọc repo (luôn tươi)
+    private Set<String> permissions = new HashSet<>();
 }

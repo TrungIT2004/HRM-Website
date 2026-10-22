@@ -1,0 +1,257 @@
+package com.minhtrung.hrm.dashboard.services;
+
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.minhtrung.hrm.attendance.entities.Attendance;
+import com.minhtrung.hrm.attendance.entities.MonthlyTimesheet;
+import com.minhtrung.hrm.attendance.entities.WorkShiftSchedule;
+import com.minhtrung.hrm.attendance.enums.AttendanceStatus;
+import com.minhtrung.hrm.attendance.repositories.AttendanceRepository;
+import com.minhtrung.hrm.attendance.repositories.MonthlyTimesheetRepository;
+import com.minhtrung.hrm.dashboard.dtos.responses.DashboardSummaryResponse;
+import com.minhtrung.hrm.dashboard.dtos.responses.DashboardSummaryResponse.LeaveBalanceDto;
+import com.minhtrung.hrm.dashboard.dtos.responses.DashboardSummaryResponse.MonthlySummaryDto;
+import com.minhtrung.hrm.dashboard.dtos.responses.DashboardSummaryResponse.PendingApprovalsDto;
+import com.minhtrung.hrm.dashboard.dtos.responses.DashboardSummaryResponse.TodayAttendanceDto;
+import com.minhtrung.hrm.dashboard.dtos.responses.DashboardSummaryResponse.UserProfileDto;
+import com.minhtrung.hrm.employees.dtos.internals.UserRole;
+import com.minhtrung.hrm.employees.entities.User;
+import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.leave.dtos.requests.LeaveFilterRequest;
+import com.minhtrung.hrm.leave.enums.LeaveRequestStatus;
+import com.minhtrung.hrm.leave.repositories.LeaveRequestRepository;
+import com.minhtrung.hrm.leave.specifications.LeaveRequestSpecification;
+import com.minhtrung.hrm.overtime.dtos.requests.OvertimeFilterRequest;
+import com.minhtrung.hrm.overtime.entities.OvertimeRecord;
+import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
+import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
+import com.minhtrung.hrm.overtime.specification.OvertimeSpecification;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.attendance.services.AttendanceService;
+import com.minhtrung.hrm.permissions.services.PermissionService;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class DashboardService {
+
+    private final UserRepository userRepository;
+    private final AttendanceRepository attendanceRepository;
+    private final MonthlyTimesheetRepository monthlyTimesheetRepository;
+    private final LeaveRequestRepository leaveRequestRepository;
+    private final OvertimeRecordRepository overtimeRecordRepository;
+    private final PermissionService permissionService;
+
+    @Transactional(readOnly = true)
+    public DashboardSummaryResponse getDashboardSummary(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy người dùng với ID: " + userId));
+
+        LocalDate today = LocalDate.now();
+        int currentMonth = today.getMonthValue();
+        int currentYear = today.getYear();
+
+        // 1. Hồ sơ người dùng
+        String fullName = (user.getFirstName() != null ? user.getFirstName() : "") + " " +
+                          (user.getLastName() != null ? user.getLastName() : "");
+        String deptName = user.getDepartment() != null ? user.getDepartment().getName() : "";
+        String jobTitle = user.getJob() != null ? user.getJob().getTitle() : "";
+
+        UserProfileDto userProfile = UserProfileDto.builder()
+                .fullName(fullName.trim())
+                .employeeCode(user.getEmployeeCode())
+                .department(deptName)
+                .job(jobTitle)
+                .profilePicUrl(user.getProfilePicUrl())
+                .build();
+
+        // 2. Chấm công hôm nay
+        Optional<Attendance> todayAttOpt = attendanceRepository.findUsersTodayAttendance(userId, today);
+        TodayAttendanceDto todayAttendance;
+        if (todayAttOpt.isPresent()) {
+            Attendance att = todayAttOpt.get();
+            LocalTime inTime = att.getClockInTime();
+            LocalTime outTime = att.getClockOutTime();
+            Double hours = null;
+            if (inTime != null && outTime != null) {
+                hours = Math.round(Duration.between(inTime, outTime).toMinutes() / 60.0 * 10.0) / 10.0;
+            }
+            todayAttendance = TodayAttendanceDto.builder()
+                    .workDate(today)
+                    .hasClockIn(inTime != null)
+                    .clockInTime(inTime)
+                    .clockOutTime(outTime)
+                    .status(att.getStatus() != null ? att.getStatus().name() : "WORKING")
+                    .workingHours(hours)
+                    .build();
+        } else {
+            todayAttendance = TodayAttendanceDto.builder()
+                    .workDate(today)
+                    .hasClockIn(false)
+                    .clockInTime(null)
+                    .clockOutTime(null)
+                    .status("NOT_CHECKED_IN")
+                    .workingHours(0.0)
+                    .build();
+        }
+
+        // 3. Tổng hợp công trong tháng
+        Optional<MonthlyTimesheet> timesheetOpt = monthlyTimesheetRepository
+                .findByUser_UserIdAndPeriodMonthAndPeriodYear(userId, currentMonth, currentYear);
+        MonthlySummaryDto monthlySummary;
+        if (timesheetOpt.isPresent()) {
+            MonthlyTimesheet ts = timesheetOpt.get();
+            monthlySummary = MonthlySummaryDto.builder()
+                    .month(currentMonth)
+                    .year(currentYear)
+                    .actualWorkDays(ts.getActualWorkedDays() != null ? ts.getActualWorkedDays().doubleValue() : 0.0)
+                    .standardWorkDays(ts.getStandardWorkingDays())
+                    .totalWorkHours(ts.getActualWorkHours() != null ? ts.getActualWorkHours().doubleValue() : 0.0)
+                    .lateDays(ts.getLateCount())
+                    .totalOtHours(ts.getTotalPaidOtHours() != null ? ts.getTotalPaidOtHours().doubleValue() : 0.0)
+                    .build();
+        } else {
+            LocalDate startOfMonth = today.withDayOfMonth(1);
+            LocalDate endOfMonth = today.withDayOfMonth(today.lengthOfMonth());
+            List<Attendance> attendances = attendanceRepository.findByUserIdAndDateRange(userId, startOfMonth, endOfMonth);
+            // Lịch tuần của ca để trừ giờ nghỉ trưa — thiếu timesheet thì vẫn phải ra giờ thật.
+            Map<Integer, WorkShiftSchedule> week = (user.getShift() != null && user.getShift().getShiftId() != null)
+                    ? user.getShift().getSchedules().stream()
+                            .collect(Collectors.toMap(WorkShiftSchedule::getDayOfWeek, s -> s, (a, b) -> a))
+                    : Map.of();
+            int standardWorkDays = week.isEmpty() ? 22 : 0;
+            if (!week.isEmpty()) {
+                for (LocalDate d = startOfMonth; !d.isAfter(endOfMonth); d = d.plusDays(1)) {
+                    WorkShiftSchedule s = week.get(d.getDayOfWeek().getValue());
+                    if (s != null && s.isWorking()) standardWorkDays++;
+                }
+            }
+            double actualWorkDays = 0.0;
+            double actualWorkHours = 0.0;
+            int lateDays = 0;
+            for (Attendance a : attendances) {
+                AttendanceStatus st = a.getStatus();
+                if (st == null) continue;
+                WorkShiftSchedule daySchedule = a.getWorkDate() != null
+                        ? week.get(a.getWorkDate().getDayOfWeek().getValue())
+                        : null;
+                if (st == AttendanceStatus.SUFFICIENT || st == AttendanceStatus.ADJUSTED || st == AttendanceStatus.BUSINESS_TRIP) {
+                    actualWorkDays += 1.0;
+                } else if (st == AttendanceStatus.LATE || st == AttendanceStatus.EARLY || st == AttendanceStatus.LATE_AND_EARLY) {
+                    actualWorkDays += 1.0;
+                    if (st == AttendanceStatus.LATE || st == AttendanceStatus.LATE_AND_EARLY) {
+                        lateDays++;
+                    }
+                } else if (st == AttendanceStatus.MISSING) {
+                    actualWorkDays += 0.5;
+                }
+                // Giờ làm thực tế: clockIn→clockOut trừ giờ nghỉ của ca nếu có; MISSING 4h,
+                // công tác/điều chỉnh/phép có lương 8h. Cùng công thức với generateMonthlyTimesheet.
+                if (a.getClockInTime() != null && a.getClockOutTime() != null) {
+                    long minutes = Duration.between(a.getClockInTime(), a.getClockOutTime()).toMinutes();
+                    if (daySchedule != null && daySchedule.getRestStartTime() != null && daySchedule.getRestEndTime() != null
+                            && !a.getClockInTime().isAfter(daySchedule.getRestStartTime())
+                            && !a.getClockOutTime().isBefore(daySchedule.getRestEndTime())) {
+                        minutes = Math.max(0, minutes - Duration.between(daySchedule.getRestStartTime(), daySchedule.getRestEndTime()).toMinutes());
+                    }
+                    actualWorkHours += Math.max(0, minutes / 60.0);
+                } else if (st == AttendanceStatus.MISSING) {
+                    actualWorkHours += 4.0;
+                } else if (st == AttendanceStatus.BUSINESS_TRIP || st == AttendanceStatus.ADJUSTED || st == AttendanceStatus.PAID_LEAVE) {
+                    actualWorkHours += 8.0;
+                }
+            }
+            monthlySummary = MonthlySummaryDto.builder()
+                    .month(currentMonth)
+                    .year(currentYear)
+                    .actualWorkDays(actualWorkDays)
+                    .standardWorkDays(standardWorkDays)
+                    .totalWorkHours(Math.round(actualWorkHours * 10.0) / 10.0)
+                    .lateDays(lateDays)
+                    .totalOtHours(0.0)
+                    .build();
+        }
+
+        // 3b. Tăng ca tháng này — đọc thẳng overtime_records (nguồn sự thật).
+        // Trước đây lấy monthly_timesheets.total_actual_ot_hours nên card luôn hiện 0 cho tới khi
+        // bảng công tháng được tổng hợp. Dùng GIỜ THỰC (không nhân hệ số) để khớp với
+        // cột "GIỜ OT" ở bảng tổng hợp công và "SỐ GIỜ (ĐK/TT)" ở trang đăng ký tăng ca.
+        LocalDate startOfMonth = today.withDayOfMonth(1);
+        LocalDate endOfMonth = today.withDayOfMonth(today.lengthOfMonth());
+        List<OvertimeRecord> monthOvertimes = overtimeRecordRepository
+                .findAcceptedOvertimesByUserIdAndDateRange(userId, OvertimeRecordStatus.accepted,
+                        startOfMonth, endOfMonth);
+        double actualOtHours = AttendanceService.sumOvertimeAmounts(monthOvertimes).actualHours().doubleValue();
+        monthlySummary.setTotalOtHours(actualOtHours);
+
+        // 4. Số dư ngày phép
+        int totalAnnualLeave = user.getAnnualLeaveDays();
+        int usedLeave = user.getUsedLeaveDays();
+        double remainingLeave = Math.max(0.0, totalAnnualLeave - usedLeave);
+        LeaveBalanceDto leaveBalance = LeaveBalanceDto.builder()
+                .totalAnnualLeave(totalAnnualLeave)
+                .usedLeaveDays(usedLeave)
+                .remainingLeaveDays(remainingLeave)
+                .build();
+
+        // 5. Số lượng đơn chờ duyệt (nếu là cấp duyệt)
+        boolean isExecutive = "Executive Leadership".equalsIgnoreCase(deptName);
+        boolean isDepartmentHead = jobTitle != null && jobTitle.startsWith("Department Head");
+        boolean isHR = "Human Resources".equalsIgnoreCase(deptName);
+        boolean isApprover = isExecutive || isDepartmentHead || isHR
+                || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE)
+                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE)
+                || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE_DEPT)
+                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE_DEPT);
+
+        long pendingLeaves = 0;
+        long pendingOTs = 0;
+
+        if (isApprover) {
+            UserRole userRole = new UserRole(userId, deptName, jobTitle);
+            try {
+                LeaveFilterRequest leaveFilter = new LeaveFilterRequest(null, LeaveRequestStatus.pending, null, null, null);
+                pendingLeaves = leaveRequestRepository.count(LeaveRequestSpecification.forApprovals(userRole, leaveFilter,
+                        permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE),
+                        permissionService.hasPermission(userId, PermissionKey.LEAVE_VIEW_DEPT)
+                                || permissionService.hasPermission(userId, PermissionKey.LEAVE_APPROVE_DEPT)));
+
+                OvertimeFilterRequest otFilter = new OvertimeFilterRequest();
+                otFilter.setStatus("pending");
+                pendingOTs = overtimeRecordRepository.count(OvertimeSpecification.forApprovals(userRole, otFilter,
+                        permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE),
+                        permissionService.hasPermission(userId, PermissionKey.OVERTIME_VIEW_DEPT)
+                                || permissionService.hasPermission(userId, PermissionKey.OVERTIME_APPROVE_DEPT)));
+            } catch (Exception ex) {
+                log.warn("Lỗi khi đếm số đơn chờ duyệt cho user: {}", userId, ex);
+            }
+        }
+
+        PendingApprovalsDto pendingApprovals = PendingApprovalsDto.builder()
+                .isApprover(isApprover)
+                .pendingLeavesCount(pendingLeaves)
+                .pendingOvertimesCount(pendingOTs)
+                .build();
+
+        return DashboardSummaryResponse.builder()
+                .userProfile(userProfile)
+                .todayAttendance(todayAttendance)
+                .monthlySummary(monthlySummary)
+                .leaveBalance(leaveBalance)
+                .pendingApprovals(pendingApprovals)
+                .build();
+    }
+}

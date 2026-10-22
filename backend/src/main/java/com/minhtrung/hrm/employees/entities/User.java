@@ -24,6 +24,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
@@ -38,6 +41,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotBlank(message = "Mật khẩu không được để trống")
+    @Size(min = 8, message = "Mật khẩu phải có tối thiểu 8 ký tự")
     @Column(nullable = false)
     private String password;
 
@@ -69,6 +74,9 @@ public class User {
     @Column(name = "employee_code", nullable = false, unique = true, length = 10)
     private String employeeCode;
 
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId", foreignKey = @ForeignKey(name = "fk_user_department"))
     @JsonIgnore
@@ -79,7 +87,7 @@ public class User {
     @JsonIgnore
     private Job job;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "shiftId", referencedColumnName = "shiftId", foreignKey = @ForeignKey(name = "fk_user_shift"))
     @JsonIgnore
     private WorkShift shift;
@@ -99,10 +107,29 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
     private UserProfile profile;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private UserBankAccount bankAccount;
+    // 1 nhân viên có thể có nhiều tài khoản ngân hàng
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<UserBankAccount> bankAccounts;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private UserContract contract;
+    /** Tài khoản nhận lương (is_default = true), null nếu chưa cấu hình. */
+    @Transient
+    @JsonIgnore
+    public UserBankAccount getBankAccount() {
+        return UserBankAccount.pickDefault(bankAccounts);
+    }
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<UserContract> contracts;
+
+    public UserContract getContract() {
+        if (contracts == null || contracts.isEmpty()) {
+            return null;
+        }
+        return contracts.stream()
+                .filter(UserContract::isActive)
+                .findFirst()
+                .orElse(contracts.get(0));
+    }
 }

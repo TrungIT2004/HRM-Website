@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.minhtrung.hrm.auth.dtos.internals.ClientMetaData;
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.auth.dtos.internals.UserAuthInfo;
+import com.minhtrung.hrm.auth.dtos.requests.ChangePasswordRequest;
 import com.minhtrung.hrm.auth.dtos.requests.SignInRequest;
 import com.minhtrung.hrm.auth.dtos.requests.SignUpRequest;
 import com.minhtrung.hrm.auth.dtos.response.SignInResponse;
@@ -28,6 +29,7 @@ import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
 import com.minhtrung.hrm.employees.repositories.JobRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,6 +44,7 @@ public class AuthService {
     private final DepartmentRepository departmentRepository;
     private final JobRepository jobRepository;
     private final SessionBlacklistService sessionBlacklistService;
+    private final PermissionService permissionService;
 
     @Value("${jwt.secret.access}")
     private String accessSecret;
@@ -52,7 +55,7 @@ public class AuthService {
     AuthService(EmailService emailService, JwtService jwtService, UserRepository userRepository,
             UserSessionRepository userSessionRepository, PasswordEncoder passwordEncoder,
             DepartmentRepository departmentRepository, JobRepository jobRepository,
-            SessionBlacklistService sessionBlacklistService) {
+            SessionBlacklistService sessionBlacklistService, PermissionService permissionService) {
         this.emailService = emailService;
         this.jwtService = jwtService;
         this.userRepository = userRepository;
@@ -61,6 +64,7 @@ public class AuthService {
         this.departmentRepository = departmentRepository;
         this.jobRepository = jobRepository;
         this.sessionBlacklistService = sessionBlacklistService;
+        this.permissionService = permissionService;
     }
     
     public User register(SignUpRequest request) {
@@ -139,6 +143,8 @@ public class AuthService {
         tokenPayload.setFullName(fullName);
         tokenPayload.setDepartment(department);
         tokenPayload.setJob(job);
+        // ponytail: snapshot grants vào JWT cho frontend gating; refresh cũng đọc lại (khỏi stale 7 ngày)
+        tokenPayload.setPermissions(permissionService.findKeysByUserId(userId));
 
         String accessToken = jwtService.generateAccessToken(tokenPayload);
         String refreshToken = jwtService.generateRefreshToken(tokenPayload);
@@ -147,6 +153,7 @@ public class AuthService {
         userSessionRepository.save(session);
 
         SignInResponse signInResponse = new SignInResponse();
+        signInResponse.setUserId(userId);
         signInResponse.setAccessToken(accessToken);
         signInResponse.setRefreshToken(refreshToken);
         signInResponse.setFullName(fullName);
@@ -164,6 +171,9 @@ public class AuthService {
         String profilePicUrl = tokenPayload.getProfilePicUrl();
         String department = tokenPayload.getDepartment();
         String job = tokenPayload.getJob();
+
+        // ponytail: refresh đọc lại grants (payload cũ trong refresh token không có grants mới)
+        tokenPayload.setPermissions(permissionService.findKeysByUserId(tokenPayload.getUserId()));
 
         String accessToken = jwtService.generateAccessToken(tokenPayload);
         String refreshToken = jwtService.generateRefreshToken(tokenPayload);
@@ -187,53 +197,52 @@ public class AuthService {
     public SignInResponse signIn(SignInRequest signInRequest, UUID deviceId, ClientMetaData clientMetaData) {
         UserAuthInfo user = userRepository.getUserInfo(signInRequest.getEmail());
 
-        if (user.getUserId() == null) {
+        if (user == null || user.getUserId() == null) {
             throw new AuthenticationException(AuthErrorCode.USER_NOT_FOUND,
-                "User doesn't exists");
+                    "User doesn't exists");
         }
 
-        try {
-            if (passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())) {
-                List<UserSession> sessionList = userSessionRepository.findByUserId(user.getUserId());
+        if (!user.isActive()) {
+            throw new AuthenticationException(AuthErrorCode.ACCOUNT_DISABLED,
+                    "Tài khoản của bạn đã bị vô hiệu hóa hoặc đã thôi việc. Vui lòng liên hệ phòng Nhân sự!");
+        }
 
-                if (sessionList.isEmpty()) {
-                    System.out.println("First Login");
-                    return generateToken(deviceId, clientMetaData, user);
-                }
+        if (passwordEncoder.matches(signInRequest.getPassword(), user.getPassword())) {
+            List<UserSession> sessionList = userSessionRepository.findByUserId(user.getUserId());
 
-                UserSession session = sessionList.stream()
-                        .filter(s -> s.getDeviceId().equals(deviceId))
-                        .findFirst()
-                        .orElse(null);
-
-                if (session == null || deviceId.equals("")) {
-                    System.out.println("Untrusted device");
-                    log.warn("Đăng nhập từ thiết bị chưa từng đăng nhập. Email: {}, DeviceId: {}",
-                            signInRequest.getEmail(), deviceId);
-                    emailService.sendUntrustedDeviceWarning(user.getEmail());
-                    return generateToken(deviceId, clientMetaData, user);
-                } else if (session != null && session.getDeviceId().equals(deviceId)) {
-                    System.out.println("Trusted device");
-    
-                    // 1. Xóa session cũ (để sessionId cũ tiếp tục bị giam trong Redis)
-                    userSessionRepository.delete(session);
-                    
-                    log.info("Đăng nhập thành công (thiết bị tin cậy). Email: {}, DeviceId: {}", user.getEmail(),
-                            deviceId);
-                    
-                    // 2. Gọi generateToken là xong toàn bộ (tự tạo session mới, tự sinh token mới, tự return)
-                    return generateToken(deviceId, clientMetaData, user);
-                }
-            } else {
-                log.warn("Đăng nhập thất bại. Sai mật khẩu cho email: {}", signInRequest.getEmail());
-                throw new AuthenticationException(AuthErrorCode.USER_CREDENTIALS_INVALID, "Wrong credentials");
+            if (sessionList.isEmpty()) {
+                System.out.println("First Login");
+                return generateToken(deviceId, clientMetaData, user);
             }
-        } catch (Exception ex) {
-            log.error("Login error", ex);   // ✅ logs full stack trace
-            throw new RuntimeException(ex.getMessage());
+
+            UserSession session = sessionList.stream()
+                    .filter(s -> s.getDeviceId().equals(deviceId))
+                    .findFirst()
+                    .orElse(null);
+
+            if (session == null || deviceId.equals("")) {
+                log.warn("Đăng nhập từ thiết bị chưa từng đăng nhập. Email: {}, DeviceId: {}",
+                        signInRequest.getEmail(), deviceId);
+                emailService.sendUntrustedDeviceWarning(user.getEmail());
+                return generateToken(deviceId, clientMetaData, user);
+            } else if (session != null && session.getDeviceId().equals(deviceId)) {
+                // 1. Xóa session cũ (để sessionId cũ tiếp tục bị giam trong Redis)
+                userSessionRepository.delete(session);
+
+                log.info("Đăng nhập thành công (thiết bị tin cậy). Email: {}, DeviceId: {}", user.getEmail(),
+                        deviceId);
+
+                // 2. Gọi generateToken là xong toàn bộ (tự tạo session mới, tự sinh token mới, tự return)
+                return generateToken(deviceId, clientMetaData, user);
+            }
+        } else {
+            log.warn("Đăng nhập thất bại. Sai mật khẩu cho email: {}", signInRequest.getEmail());
+            throw new AuthenticationException(AuthErrorCode.USER_CREDENTIALS_INVALID, "Wrong credentials");
         }
+        
         return null;
-    } 
+    }
+    
     
     public SignInResponse autoSignIn(String token, UUID deviceId, ClientMetaData clientMetaData) {
         if (jwtService.isTokenValid(token, refreshSecret)) {
@@ -268,6 +277,20 @@ public class AuthService {
                 throw new AuthenticationException(AuthErrorCode.SESSION_REVOKED, "Session revoked");
             }
 
+            // Kiểm tra tài khoản người dùng có đang hoạt động hay đã bị khóa / thôi việc
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new AuthenticationException(AuthErrorCode.USER_NOT_FOUND, "User not found"));
+
+            if (!user.isActive()) {
+                log.warn("Cảnh báo bảo mật: Tài khoản đã bị vô hiệu hóa hoặc thôi việc nhưng cố gắng auto-login. UserId: {}, Email: {}, SessionId: {}",
+                        userId, user.getEmail(), sessionId);
+                session.setRevoked(true);
+                userSessionRepository.save(session);
+                sessionBlacklistService.blacklistSession(sessionId, 15);
+                throw new AuthenticationException(AuthErrorCode.ACCOUNT_DISABLED,
+                        "Tài khoản của bạn đã bị vô hiệu hóa hoặc đã thôi việc. Vui lòng liên hệ phòng Nhân sự!");
+            }
+
             if (!hash(token).equals(session.getToken())) {
                 log.error("CẢNH BÁO NGHIÊM TRỌNG: Phát hiện Token bị làm giả / Session bị tấn công! SessionId: {}, UserId: {}. Đang thu hồi phiên.", sessionId, userId);
                 session.setRevoked(true);
@@ -281,7 +304,6 @@ public class AuthService {
             return updateToken(clientMetaData, payload, session);
         }
         
-        System.out.println("Redirect to login page");
         throw new AuthenticationException(AuthErrorCode.SESSION_MISMATCH, "User's session not match");
     }
     
@@ -302,5 +324,37 @@ public class AuthService {
         } else {
             return;
         }
+    }
+
+    public void changePassword(UUID userId, ChangePasswordRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new AuthenticationException(AuthErrorCode.USER_NOT_FOUND, "Không tìm thấy người dùng"));
+
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
+            // 400 chứ không phải 401: caller ĐÃ đăng nhập, chỉ là nhập sai mật khẩu cũ.
+            // Trả 401 sẽ bị apiClient hiểu nhầm là access token hết hạn và đá user ra trang login.
+            throw new IllegalArgumentException("Mật khẩu cũ không chính xác");
+        }
+
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            throw new IllegalArgumentException("Mật khẩu mới và xác nhận mật khẩu không khớp");
+        }
+
+        if (passwordEncoder.matches(request.getNewPassword(), user.getPassword())) {
+            throw new IllegalArgumentException("Mật khẩu mới không được trùng với mật khẩu hiện tại");
+        }
+
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+
+        // Thu hồi toàn bộ các phiên đăng nhập cũ trong Redis để bảo mật
+        List<UserSession> activeSessions = userSessionRepository.findByUserId(userId);
+        for (UserSession s : activeSessions) {
+            s.setRevoked(true);
+            userSessionRepository.save(s);
+            sessionBlacklistService.blacklistSession(s.getSessionId(), 15);
+        }
+
+        log.info("Người dùng {} đã đổi mật khẩu thành công và các phiên cũ đã được thu hồi.", userId);
     }
 }

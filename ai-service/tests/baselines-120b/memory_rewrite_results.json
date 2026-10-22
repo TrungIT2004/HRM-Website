@@ -1,0 +1,4502 @@
+[
+  {
+    "session_id": 162,
+    "turns": 14,
+    "graded_turns": 11,
+    "rewrite_score": 0.955,
+    "llm_rewrote": 13,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Moldova đọc như nào?",
+        "expected_rewrite": "Moldova phiên âm như nào?",
+        "actual_rewrite": "Moldova được đọc như nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 1,
+        "question": "Tên đầy đủ của quốc gia này?",
+        "expected_rewrite": "Tên đầy đủ của Moldova?",
+        "actual_rewrite": "Tên đầy đủ của quốc gia Moldova là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Thời Trung Cổ, đa phần lãnh thổ hiện nay của nó là của nước nào?",
+        "expected_rewrite": "Thời Trung Cổ, đa phần lãnh thổ hiện nay của Moldova là của nước nào?",
+        "actual_rewrite": "Thời Trung Cổ, đa phần lãnh thổ hiện nay của Moldova là của nước nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Công quốc này có vị trí như thế nào?",
+        "expected_rewrite": "Công quốc Moldavia có vị trí như thế nào?",
+        "actual_rewrite": "Công quốc Moldavia có vị trí như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Moldavia tồn tại trong bao lâu?",
+        "expected_rewrite": "Moldavia tồn tại trong bao lâu?",
+        "actual_rewrite": "Công quốc Moldavia tồn tại trong bao lâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Nó bây giờ là quốc gia nào?",
+        "expected_rewrite": "Moldavia bây giờ là quốc gia hiện đại nào?",
+        "actual_rewrite": "Công quốc Moldavia hiện nay là quốc gia nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Trở lại Moldova, sau cuộc Chiến tranh Transnistria, Moldova đã làm gì?",
+        "expected_rewrite": "Sau cuộc Chiến tranh Transnistria, Moldova đã làm gì?",
+        "actual_rewrite": "Sau cuộc Chiến tranh Transnistria, Moldova đã làm gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "România có giáp với quốc gia này không?",
+        "expected_rewrite": "România có giáp với Moldova không?",
+        "actual_rewrite": "România có giáp với Moldova không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 8,
+        "question": "Moldova có vũ khí hạt nhân không?",
+        "expected_rewrite": "Moldova có vũ khí hạt nhân không?",
+        "actual_rewrite": "Moldova có vũ khí hạt nhân không?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 9,
+        "question": "À, tiếng của nước này có được sử dụng ở Liên Xô không nhỉ?",
+        "expected_rewrite": "À, tiếng của Moldova có được sử dụng ở Liên Xô không nhỉ?",
+        "actual_rewrite": "Tiếng của Moldova có được sử dụng ở Liên Xô không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 10,
+        "question": "Truyền hình tại Moldova xuất hiện năm nào?",
+        "expected_rewrite": "Truyền hình tại Moldova xuất hiện năm nào?",
+        "actual_rewrite": "Truyền hình tại Moldova xuất hiện vào năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 11,
+        "question": "Có kênh nước ngoài không?",
+        "expected_rewrite": "Truyền hình tại Moldova có kênh nước ngoài không?",
+        "actual_rewrite": "Truyền hình Moldova có kênh nước ngoài không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 12,
+        "question": "Vậy Tiếng Nga có được nói ở Moldova không?",
+        "expected_rewrite": "Tiếng Nga có được nói ở Moldova không?",
+        "actual_rewrite": "Tiếng Nga có được nói ở Moldova không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 13,
+        "question": "Bao nhiêu phần trăm người sử dụng?",
+        "expected_rewrite": "Bao nhiêu phần trăm người sử dụng Tiếng Nga ở Moldova ?",
+        "actual_rewrite": "Bao nhiêu phần trăm người sử dụng Tiếng Nga ở Moldova?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 214,
+    "turns": 13,
+    "graded_turns": 12,
+    "rewrite_score": 0.921,
+    "llm_rewrote": 13,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Cộng hòa Ireland chiếm bao nhiêu phần diện tích đảo Ireland?",
+        "expected_rewrite": "Cộng hòa Ireland chiếm bao nhiêu phần diện tích đảo Ireland?",
+        "actual_rewrite": "Cộng hòa Ireland chiếm bao nhiêu phần diện tích của đảo Ireland?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Quốc gia  này có biên giới trên bộ duy nhất với nước nào?",
+        "expected_rewrite": "Cộng hòa Ireland có biên giới trên bộ duy nhất với nước nào?",
+        "actual_rewrite": "Cộng hòa Ireland có biên giới trên bộ duy nhất với nước nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Quốc gia đó có dân số bao nhiêu?",
+        "expected_rewrite": "Bắc Ireland có dân số bao nhiêu?",
+        "actual_rewrite": "Cộng hòa Ireland có dân số bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Số lượng đó chiếm bao nhiêu phần trăm dân số toàn đảo?",
+        "expected_rewrite": "Số lượng 1.810.900 cư dân sinh sống tại Bắc Ireland chiếm bao nhiêu phần trăm dân số toàn đảo Ireland?",
+        "actual_rewrite": "1.810.900 cư dân sinh sống tại Bắc Ireland chiếm bao nhiêu phần trăm dân số toàn đảo Ireland?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      },
+      {
+        "turn": 4,
+        "question": "Còn cộng hoà Ireland, nó được độc lập khỏi Vương quốc Liên hiệp Anh và Ireland từ khi nào?",
+        "expected_rewrite": "Cộng hoà Ireland được độc lập khỏi Vương quốc Liên hiệp Anh và Ireland từ khi nào?",
+        "actual_rewrite": "Cộng hòa Ireland được độc lập khỏi Vương quốc Liên hiệp Anh và Ireland từ khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Nó chính thức tuyên bố là nước cộng hoà khi nào?",
+        "expected_rewrite": "Cộng hòa Ireland chính thức tuyên bố là nước cộng hoà khi nào?",
+        "actual_rewrite": "Cộng hoà Ireland chính thức tuyên bố là nước cộng hoà vào năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Có tham gia LHQ không?",
+        "expected_rewrite": "Ireland có tham gia LHQ không?",
+        "actual_rewrite": "Ireland có tham gia Liên Hợp Quốc không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Cuộc khởi nghĩa của quốc gia này chống Anh cai trị diễn ra vào thời điểm nào? ",
+        "expected_rewrite": "Cuộc khởi nghĩa của Cộng hòa Ireland chống Anh cai trị diễn ra vào thời điểm nào? ",
+        "actual_rewrite": "Cuộc khởi nghĩa của Ireland chống Anh cai trị diễn ra vào thời điểm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 8,
+        "question": "Nó diễn ra ở đâu?",
+        "expected_rewrite": "Cuộc khởi nghĩa của Cộng hòa Ireland chống Anh cai trị diễn ra ở đâu?",
+        "actual_rewrite": "Cuộc khởi nghĩa của Ireland vào ngày 24 tháng 4 năm 1916 diễn ra ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 9,
+        "question": "Chỗ này cụ thể là nằm ở đâu trên đảo?",
+        "expected_rewrite": "Dublin cụ thể là nằm ở đâu trên đảo Ireland?",
+        "actual_rewrite": "Dublin cụ thể nằm ở đâu trên đảo?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 10,
+        "question": "Tháng 12 năm 1922, cả hòn đảo này trở thành quốc gia gì?",
+        "expected_rewrite": "Tháng 12 năm 1922, cả hòn đảo Ireland trở thành quốc gia gì?",
+        "actual_rewrite": "Tháng 12 năm 1922, cả hòn đảo Ireland trở thành quốc gia gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 11,
+        "question": "Nhà nước này theo chế độ chính trị nào vậy?",
+        "expected_rewrite": "Nhà nước Tự do Ireland  theo chế độ chính trị nào vậy?",
+        "actual_rewrite": "Nhà nước Tự do Ireland theo chế độ chính trị nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 12,
+        "question": "Khi nào Bắc Ireland rời khỏi nhà nước?",
+        "expected_rewrite": "Khi nào Bắc Ireland rời khỏi nhà nước Tự do Ireland?",
+        "actual_rewrite": "Khi nào Bắc Ireland rời khỏi Nhà nước Tự do Ireland?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 226,
+    "turns": 13,
+    "graded_turns": 11,
+    "rewrite_score": 0.755,
+    "llm_rewrote": 11,
+    "rows": [
+      {
+        "turn": 0,
+        "question": " Thục Hán nằm ở đâu của TQ?",
+        "expected_rewrite": " Thục Hán nằm ở đâu của Trung Quốc?",
+        "actual_rewrite": "Thục Hán nằm ở đâu của Trung Quốc?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 1,
+        "question": "Nó thuộc thời kỳ lịch sử nào?",
+        "expected_rewrite": "Thục Hán thuộc thời kỳ lịch sử nào?",
+        "actual_rewrite": "Thục Hán thuộc thời kỳ lịch sử nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Giải thích rõ hơn về thời kỳ này?",
+        "expected_rewrite": "Giải thích rõ hơn về thời kỳ Tam Quốc?",
+        "actual_rewrite": "Giải thích rõ hơn về thời kỳ Tam Quốc?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Ai là người lập quốc Thục Hán?",
+        "expected_rewrite": "Ai là người lập quốc Thục Hán?",
+        "actual_rewrite": "Ai là người lập quốc Thục Hán?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Còn Tạo Nguỵ?",
+        "expected_rewrite": "Ai là người lập quốc Tạo Nguỵ?",
+        "actual_rewrite": "Ai là người lập quốc Tào Ngụy?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 5,
+        "question": "Trong trận Tây Xuyên, Thục Hán đã chiếm được gì từ tay của Tào Ngụy?",
+        "expected_rewrite": "Trong trận Tây Xuyên, Thục Hán đã chiếm được gì từ tay của Tào Ngụy?",
+        "actual_rewrite": "Trong trận Tây Xuyên, nhà Thục Hán đã chiếm được những gì từ tay nhà Tào Ngụy?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Trong thời đó, ai là quân sư của nhà Thục?",
+        "expected_rewrite": "Trong thời Tam Quốc, ai là quân sư của nhà Thục Hán?",
+        "actual_rewrite": "Trong thời kỳ trận Tây Xuyên, ai là quân sư của nhà Thục?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 7,
+        "question": "Ông có trung thành không?",
+        "expected_rewrite": "Gia Cát Lượng có trung thành không?",
+        "actual_rewrite": "Gia Cát Lượng có trung thành không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 8,
+        "question": "Nhà nước này có được lòng dân không?",
+        "expected_rewrite": "Nhà nước Thục Hán có được lòng dân không?",
+        "actual_rewrite": "Nhà Thục có được lòng dân không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 9,
+        "question": "Tại sao vậy?",
+        "expected_rewrite": "Tại sao hầu hết những truyện kể dân gian về thời Tam Quốc đều có nội dung ủng hộ Thục Hán?",
+        "actual_rewrite": "Tại sao hầu hết những truyện kể dân gian về thời Tam Quốc lại ủng hộ nhà Thục Hán?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      },
+      {
+        "turn": 10,
+        "question": "Còn lý do nào nữa không?",
+        "expected_rewrite": "Còn lý do nào khiến hầu hết những truyện kể dân gian về thời Tam Quốc đều có nội dung ủng hộ Thục Hán? ",
+        "actual_rewrite": "Còn lý do nào khác khiến người dân ủng hộ nhà nước này không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.167
+      },
+      {
+        "turn": 11,
+        "question": "Vị quân sư của nhà Thục có tước hiệu gì?",
+        "expected_rewrite": "Gia Cát Lượng có tước hiệu gì?",
+        "actual_rewrite": "Vị quân sư của nhà Thục có tước hiệu gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 12,
+        "question": "Con cháu ông có nối dõi nghiệp của ông không?",
+        "expected_rewrite": "Con cháu Gia Cát Lượng có nối dõi nghiệp của ông không?",
+        "actual_rewrite": "Con cháu của Vũ hương hầu có nối dõi nghiệp của ông không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      }
+    ]
+  },
+  {
+    "session_id": 200,
+    "turns": 12,
+    "graded_turns": 10,
+    "rewrite_score": 0.635,
+    "llm_rewrote": 12,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Guatemala là gì vậy?",
+        "expected_rewrite": "Guatemala là gì vậy?",
+        "actual_rewrite": "Guatemala là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Phía tây bắc giáp với gì?",
+        "expected_rewrite": "Phía tây bắc Guatemala  giáp với gì?",
+        "actual_rewrite": "Phía tây bắc của Guatemala giáp với quốc gia nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Tây nam thì sao?",
+        "expected_rewrite": "Tây nam Guatemala  giáp với gì?",
+        "actual_rewrite": "Guatemala phía tây nam giáp với quốc gia nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Đông bắc?",
+        "expected_rewrite": "Đông bắc Guatemala  giáp với gì?",
+        "actual_rewrite": "Đông bắc giáp với gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 4,
+        "question": "Còn đông nam?",
+        "expected_rewrite": "Còn đông nam Guatemala  giáp với gì?",
+        "actual_rewrite": "Đông nam có những địa điểm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.333
+      },
+      {
+        "turn": 5,
+        "question": "Cái đầu tiên là gì? ",
+        "expected_rewrite": "Honduras là gì?",
+        "actual_rewrite": "Belize và Biển Caribe là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.0
+      },
+      {
+        "turn": 6,
+        "question": "Nói về vụ đảo chính  do CIA hậu thuẫn tại Guatemala.",
+        "expected_rewrite": "Nói về vụ đảo chính  do CIA hậu thuẫn tại Guatemala.",
+        "actual_rewrite": "Vụ đảo chính do CIA hậu thuẫn tại Guatemala là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 7,
+        "question": "Sau đó ai cầm quyền quân sự?",
+        "expected_rewrite": "Sau vụ đảo chính  do CIA hậu thuẫn tại Guatemala. ai cầm quyền quân sự?",
+        "actual_rewrite": "Sau khi Jacobo Arbenz bị lật đổ trong vụ đảo chính do CIA hậu thuẫn tại Guatemala năm 1954, ai đã nắm quyền quân sự?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 8,
+        "question": "Việc đó dẫn đến hậu quả gì?",
+        "expected_rewrite": "Bằng nhà độc tài Carlos Castillo Armas cầm quyền quân sự dẫn đến hậu quả gì?",
+        "actual_rewrite": "Cuộc đảo chính do CIA hậu thuẫn tại Guatemala năm 1954 dẫn đến hậu quả gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.0
+      },
+      {
+        "turn": 9,
+        "question": "Chính phủ của quốc gia này bị lật đổ trong cuộc đảo chính trên vào ngày tháng năm nào?",
+        "expected_rewrite": "Chính phủ của quốc gia Guatemala bị lật đổ trong cuộc đảo chính do CIA hậu thuẫn vào ngày tháng năm nào?",
+        "actual_rewrite": "Chính phủ của Guatemala bị lật đổ trong cuộc đảo chính trên vào ngày tháng năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 10,
+        "question": "Cùng trong tháng đó thì Pháp và Việt Nam có sự kiện gì?",
+        "expected_rewrite": "Cùng trong tháng 6 năm 1954 thì Pháp và Việt Nam có sự kiện gì?",
+        "actual_rewrite": "Trong tháng 6 năm 1954, Pháp và Việt Nam có những sự kiện nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.833
+      },
+      {
+        "turn": 11,
+        "question": "Còn ở Đông Dương thì sao?",
+        "expected_rewrite": "Còn cùng trong tháng 6 năm 1954 ở Đông Dương thì sao?",
+        "actual_rewrite": "Trong tháng 6 năm 1954, ở Đông Dương có những sự kiện nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      }
+    ]
+  },
+  {
+    "session_id": 56,
+    "turns": 10,
+    "graded_turns": 6,
+    "rewrite_score": 0.817,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Kiên Giang có phải là tỉnh lớn nhất ở Nam Bộ không?",
+        "expected_rewrite": "Kiên Giang có phải là tỉnh lớn nhất ở Nam Bộ không?",
+        "actual_rewrite": "Kiên Giang có phải là tỉnh lớn nhất ở Nam Bộ không?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Trước thời nhà Nguyễn, Kiên Giang thuộc tỉnh nào?",
+        "expected_rewrite": "Trước thời nhà Nguyễn, Kiên Giang thuộc tỉnh nào?",
+        "actual_rewrite": "Trước thời nhà Nguyễn, Kiên Giang thuộc tỉnh nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Còn Cần Thơ thì sao?",
+        "expected_rewrite": "Còn Cần Thơ thì sao, vùng đất này trước đây thuộc đơn vị hành chính nào?",
+        "actual_rewrite": "Trước thời nhà Nguyễn, Cần Thơ thuộc tỉnh nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.4
+      },
+      {
+        "turn": 3,
+        "question": "Ông còn khai phá những vùng nào khác?",
+        "expected_rewrite": "Mạc Thiên Tích còn khai phá những vùng nào khác?",
+        "actual_rewrite": "Mạc Thiên Tích còn khai phá những vùng nào khác?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Hiện nay, tỉnh lị của Kiên Giang là đâu?",
+        "expected_rewrite": "Hiện nay, tỉnh lị của Kiên Giang là đâu?",
+        "actual_rewrite": "Hiện nay, tỉnh lị của Kiên Giang là đâu?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Kiên Giang có đặc điểm địa hình như thế nào?",
+        "expected_rewrite": "Kiên Giang có đặc điểm địa hình như thế nào?",
+        "actual_rewrite": "Kiên Giang có đặc điểm địa hình như thế nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Khí hậu ở đây ra sao?",
+        "expected_rewrite": "Khí hậu ở Kiên Giang  ra sao?",
+        "actual_rewrite": "Khí hậu của Kiên Giang ra sao?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Ngoài trồng lúa nước, tỉnh còn phát triển ngành kinh tế nào?",
+        "expected_rewrite": "Ngoài trồng lúa nước, Kiên Giang còn phát triển ngành kinh tế nào?",
+        "actual_rewrite": "Ngoài trồng lúa nước, tỉnh Kiên Giang còn phát triển ngành kinh tế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 8,
+        "question": "Phú Quốc có phải là một huyện của nó không?",
+        "expected_rewrite": "Phú Quốc có phải là một huyện của Kiên Giang không?",
+        "actual_rewrite": "Phú Quốc có phải là một huyện của Kiên Giang không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 9,
+        "question": "Ở đây có loại gia vị đặc sản nào không?",
+        "expected_rewrite": "Phú Quốc có loại gia vị đặc sản nào không?",
+        "actual_rewrite": "Kiên Giang có những loại gia vị đặc sản nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      }
+    ]
+  },
+  {
+    "session_id": 89,
+    "turns": 10,
+    "graded_turns": 6,
+    "rewrite_score": 1.0,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Tiểu bang Illinois có những biệt danh nào?",
+        "expected_rewrite": "Tiểu bang Illinois có những biệt danh nào?",
+        "actual_rewrite": "Tiểu bang Illinois có những biệt danh nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Tại sao nó được gọi là \"Quê hương của Lincoln\"?",
+        "expected_rewrite": "Tại sao Illinois được gọi là \"Quê hương của Lincoln\"?",
+        "actual_rewrite": "Tại sao Tiểu bang Illinois được gọi là “Quê hương của Lincoln”?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Trước khi trở thành một bang của Hoa Kỳ, Illinois từng là gì?",
+        "expected_rewrite": "Trước khi trở thành một bang của Hoa Kỳ, Illinois từng là gì?",
+        "actual_rewrite": "Trước khi trở thành một bang của Hoa Kỳ, Illinois từng là gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Khi gia nhập liên bang, bang này có quan điểm như thế nào về chế độ nô lệ?",
+        "expected_rewrite": "Khi gia nhập liên bang, Illinois có quan điểm như thế nào về chế độ nô lệ?",
+        "actual_rewrite": "Khi Illinois gia nhập liên bang, Illinois có quan điểm như thế nào về chế độ nô lệ?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Thành phố lớn nhất của bang là gì?",
+        "expected_rewrite": "Thành phố lớn nhất của Illinois là gì?",
+        "actual_rewrite": "Thành phố lớn nhất của bang Illinois là gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Thành phố này có những biệt danh nào?",
+        "expected_rewrite": "Thành phố Chicago có những biệt danh nào?",
+        "actual_rewrite": "Thành phố Chicago có những biệt danh nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Gia đình Lincoln đã di cư đến Illinois trong hoàn cảnh nào?",
+        "expected_rewrite": "Gia đình Lincoln đã di cư đến Illinois trong hoàn cảnh nào?",
+        "actual_rewrite": "Gia đình Lincoln đã di cư đến Illinois trong hoàn cảnh nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 7,
+        "question": "Lincoln làm gì khi đến Illinois?",
+        "expected_rewrite": "Lincoln làm gì khi đến Illinois?",
+        "actual_rewrite": "Lincoln đã làm gì khi đến Illinois?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 8,
+        "question": "Ông bắt đầu con đường chính trị như thế nào?",
+        "expected_rewrite": "Lincoln bắt đầu con đường chính trị như thế nào?",
+        "actual_rewrite": "Lincoln bắt đầu con đường chính trị như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 9,
+        "question": "Điều gì đã khiến ông quay lại chính trường vào năm 1854?",
+        "expected_rewrite": "Điều gì đã khiến Lincoln quay lại chính trường vào năm 1854?",
+        "actual_rewrite": "Điều gì đã khiến Lincoln quay lại chính trường vào năm 1854?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 99,
+    "turns": 10,
+    "graded_turns": 4,
+    "rewrite_score": 0.927,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Quốc gia nào có dân số đông hơn Ethiopia ở châu Phi?",
+        "expected_rewrite": "Quốc gia nào có dân số đông hơn Ethiopia ở châu Phi?",
+        "actual_rewrite": "Quốc gia nào ở châu Phi có dân số lớn hơn Ethiopia?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Vương quốc nào của Ethiopia từng được xem là một trong bốn quốc gia có sức mạnh lớn nhất thế giới vào thế kỷ III?",
+        "expected_rewrite": "Vương quốc nào của Ethiopia từng được xem là một trong bốn quốc gia có sức mạnh lớn nhất thế giới vào thế kỷ III?",
+        "actual_rewrite": "Vương quốc nào của Ethiopia từng được xem là một trong bốn quốc gia có sức mạnh lớn nhất thế giới vào thế kỷ III?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Haile Selassie đã làm gì trong chiến tranh Italo - Abyssinian lần thứ hai?",
+        "expected_rewrite": "Haile Selassie đã làm gì trong chiến tranh Italo - Abyssinian lần thứ hai?",
+        "actual_rewrite": "Haile Selassie đã làm gì trong cuộc chiến tranh Italo - Abyssinian lần thứ hai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Ông có quay trở lại lãnh đạo đất nước sau chiến tranh không?",
+        "expected_rewrite": "Haile Selassie có quay trở lại lãnh đạo Ethiopia sau chiến tranh không?",
+        "actual_rewrite": "Haile Selassie có quay trở lại lãnh đạo đất nước sau chiến tranh không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.833
+      },
+      {
+        "turn": 4,
+        "question": "Ông có vai trò gì trong Liên minh châu Phi?",
+        "expected_rewrite": "Haile Selassie có vai trò gì trong Liên minh châu Phi?",
+        "actual_rewrite": "Haile Selassie có vai trò gì trong Liên minh châu Phi?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Ethiopia từng theo chế độ nào vào những năm 1974-1987?",
+        "expected_rewrite": "Ethiopia từng theo chế độ nào vào những năm 1974-1987?",
+        "actual_rewrite": "Ethiopia từng theo chế độ nào vào những năm 1974-1987?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Giai đoạn này nó có gặp khó khăn gì không?",
+        "expected_rewrite": "Giai đoạn Ethiopia theo chủ nghĩa xã hội  những năm 1974-1987 có gặp khó khăn gì không?",
+        "actual_rewrite": "Giai đoạn Ethiopia xã hội chủ nghĩa (1974-1987) có gặp khó khăn gì không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 7,
+        "question": "Ở vùng Sừng châu Phi, vị tướng nào từng là chỉ huy châu Phi đầu tiên sử dụng chiến tranh pháo binh?",
+        "expected_rewrite": "Ở vùng Sừng châu Phi, vị tướng nào từng là chỉ huy châu Phi đầu tiên sử dụng chiến tranh pháo binh?",
+        "actual_rewrite": "Ở vùng Sừng châu Phi, vị tướng nào từng là chỉ huy châu Phi đầu tiên sử dụng chiến tranh pháo binh?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 8,
+        "question": "Somalia có vai trò như thế nào trong Liên đoàn Ả Rập?",
+        "expected_rewrite": "Somalia có vai trò như thế nào trong Liên đoàn Ả Rập?",
+        "actual_rewrite": "Somalia có vai trò như thế nào trong Liên đoàn Ả Rập?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 9,
+        "question": "Quốc gia này có tham gia vào các tổ chức quốc tế nào khác không?",
+        "expected_rewrite": "Somalia có tham gia vào các tổ chức quốc tế nào khác không?",
+        "actual_rewrite": "Somalia có tham gia vào các tổ chức quốc tế nào khác không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 85,
+    "turns": 9,
+    "graded_turns": 5,
+    "rewrite_score": 0.944,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Ai là người đầu tiên khởi xướng việc viết lại toàn bộ lịch sử Trung Quốc?",
+        "expected_rewrite": "Ai là người đầu tiên khởi xướng việc viết lại toàn bộ lịch sử Trung Quốc?",
+        "actual_rewrite": "Ai là người đầu tiên khởi xướng việc viết lại toàn bộ lịch sử Trung Quốc?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Nhưng ông ấy có hoàn thành được công trình này không?",
+        "expected_rewrite": "Nhưng Tư Mã Đàm có hoàn thành được công trình viết lại toàn bộ lịch sử Trung Quốc không?",
+        "actual_rewrite": "Tư Mã Đàm có hoàn thành được công trình viết lại toàn bộ lịch sử Trung Quốc không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.889
+      },
+      {
+        "turn": 2,
+        "question": "Vậy ai đã tiếp tục công việc này?",
+        "expected_rewrite": "Vậy ai đã tiếp tục công việc viết lại toàn bộ lịch sử Trung Quốc sau khi Tư Mã Đàm mất?",
+        "actual_rewrite": "Ai đã tiếp tục công việc viết lại toàn bộ lịch sử Trung Quốc sau khi Tư Mã Đàm chỉ hoàn thành bản phác thảo sơ khai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Ông ấy có gặp khó khăn gì khi viết sử không?",
+        "expected_rewrite": "Tư Mã Thiên có gặp khó khăn gì khi viết sử không?",
+        "actual_rewrite": "Cha của Tư Mã Thiên có gặp khó khăn gì khi viết sử không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Vì sao ông lại bị liên lụy trong vụ án này?",
+        "expected_rewrite": "Vì sao Tư Mã Thiên lại bị liên lụy trong vụ án Lý Lăng?",
+        "actual_rewrite": "Vì sao Tư Mã Thiên lại bị liên lụy trong vụ án Lý Lăng?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Hán Vũ Đế đã đối xử thế nào với các tướng bại trận như Lý Lăng?",
+        "expected_rewrite": "Hán Vũ Đế đã đối xử thế nào với các tướng bại trận như Lý Lăng?",
+        "actual_rewrite": "Hán Vũ Đế đã đối xử thế nào với các tướng bại trận như Lý Lăng?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Điều đó ảnh hưởng thế nào đến triều thần?",
+        "expected_rewrite": "Hán Vũ Đế không tha thứ cho những viên tướng bại trận ảnh hưởng thế nào đến triều thần?",
+        "actual_rewrite": "Việc Hán Vũ Đế không tha thứ cho các tướng bại trận như Lý Lăng ảnh hưởng như thế nào đến triều thần?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.833
+      },
+      {
+        "turn": 7,
+        "question": "Gia đình Tư Mã Thiên có truyền thống gì?",
+        "expected_rewrite": "Gia đình Tư Mã Thiên có truyền thống gì?",
+        "actual_rewrite": "Gia đình Tư Mã Thiên có truyền thống gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 8,
+        "question": "Tổ tiên trực hệ của Tư Mã Thiên là ai?",
+        "expected_rewrite": "Tổ tiên trực hệ của Tư Mã Thiên là ai?",
+        "actual_rewrite": "Tổ tiên trực hệ của Tư Mã Thiên là ai?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 97,
+    "turns": 9,
+    "graded_turns": 7,
+    "rewrite_score": 0.894,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Hành tinh nào có khối lượng lớn thứ 3 trong Hệ Mặt Trời?",
+        "expected_rewrite": "Hành tinh nào có khối lượng lớn thứ ba trong Hệ Mặt Trời?",
+        "actual_rewrite": "Hành tinh nào có khối lượng lớn thứ 3 trong Hệ Mặt Trời?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 1,
+        "question": " Nó nặng hơn hành tinh nào?",
+        "expected_rewrite": " Sao Hải Vương nặng hơn hành tinh nào?",
+        "actual_rewrite": "Sao Hải Vương nặng hơn hành tinh nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Hai hành tinh này có điểm gì chung về thành phần?",
+        "expected_rewrite": "Hai hành tinh Hải Vương và Thiên Vương này có điểm gì chung về thành phần?",
+        "actual_rewrite": "Sao Hải Vương và Sao Thiên Vương có điểm gì chung về thành phần?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 3,
+        "question": "Còn cấu trúc bên trong của Sao Hải Vương thì sao?",
+        "expected_rewrite": "Còn cấu trúc bên trong của Sao Hải Vương thì sao?",
+        "actual_rewrite": "Cấu trúc bên trong của Sao Hải Vương là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Bầu khí quyển của nó có đặc điểm gì đáng chú ý?",
+        "expected_rewrite": "Bầu khí quyển của Hải Vương  có đặc điểm gì đáng chú ý?",
+        "actual_rewrite": "Bầu khí quyển của Sao Hải Vương có đặc điểm gì đáng chú ý?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Điều gì làm cho hành tinh này có màu xanh lam?",
+        "expected_rewrite": "Điều gì làm cho Sao Hải Vương này có màu xanh lam?",
+        "actual_rewrite": "Điều gì làm cho Sao Hải Vương có màu xanh lam?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Còn Sao Thiên Vương thì sao, nó có màu sắc tương tự không?",
+        "expected_rewrite": "Còn Sao Thiên Vương thì sao, nó có màu xanh lam?",
+        "actual_rewrite": "Sao Thiên Vương có màu sắc tương tự như Sao Hải Vương không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 7,
+        "question": "Ngoài Sao Thiên Vương và Sao Hải Vương, còn hành tinh nào khác có khí quyển chứa hydro và heli?",
+        "expected_rewrite": "Ngoài Sao Thiên Vương và Sao Hải Vương, còn hành tinh nào khác có khí quyển chứa hydro và heli?",
+        "actual_rewrite": "Ngoài Sao Thiên Vương và Sao Hải Vương, còn hành tinh nào khác có khí quyển chứa hydro và heli?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 8,
+        "question": "Nhưng nó không thuộc nhóm hành tinh băng khổng lồ đúng không?",
+        "expected_rewrite": "Nhưng Sao Mộc không thuộc nhóm hành tinh băng khổng lồ đúng không?",
+        "actual_rewrite": "Sao Mộc không thuộc nhóm hành tinh băng khổng lồ đúng không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      }
+    ]
+  },
+  {
+    "session_id": 102,
+    "turns": 9,
+    "graded_turns": 2,
+    "rewrite_score": 1.0,
+    "llm_rewrote": 4,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Khi nào lãnh thổ của Đế quốc Anh đạt đến cực đại, và nó chiếm bao nhiêu phần trăm diện tích toàn cầu?",
+        "expected_rewrite": "Khi nào lãnh thổ của Đế quốc Anh đạt đến cực đại, và nó chiếm bao nhiêu phần trăm diện tích toàn cầu?",
+        "actual_rewrite": "Khi nào lãnh thổ của Đế quốc Anh đạt đến cực đại, và nó chiếm bao nhiêu phần trăm diện tích toàn cầu?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Trong thế kỷ XVI, Anh đã tiến hành thuộc địa hóa ở đâu?",
+        "expected_rewrite": "Trong thế kỷ XVI, Anh đã tiến hành thuộc địa hóa ở đâu?",
+        "actual_rewrite": "Trong thế kỷ XVI, Anh đã tiến hành thuộc địa hóa ở những địa điểm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Sự phát triển của Anh trong thời kỳ hậu kỳ cận đại có liên quan như thế nào đến Đế quốc Anh?",
+        "expected_rewrite": "Sự phát triển của Anh trong thời kỳ hậu kỳ cận đại có liên quan như thế nào đến Đế quốc Anh?",
+        "actual_rewrite": "Sự phát triển của Anh trong thời kỳ hậu kỳ cận đại có liên quan như thế nào đến Đế quốc Anh?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Những tiến bộ nào trong hạ tầng giao thông đã diễn ra trong thời kỳ này?",
+        "expected_rewrite": "Những tiến bộ nào trong hạ tầng giao thông đã diễn ra trong thời hậu kỳ cận đại?",
+        "actual_rewrite": "Những tiến bộ nào trong hạ tầng giao thông đã diễn ra trong thời kỳ hậu kỳ cận đại?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Đối thủ chính của đế quốc này trong cuộc đua thực dân thế kỷ XVIII là ai?",
+        "expected_rewrite": "Đối thủ chính của Anh trong cuộc đua thực dân thế kỷ XVIII là ai?",
+        "actual_rewrite": "Đối thủ chính của Đế quốc Anh trong cuộc đua thực dân thế kỷ XVIII là ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Tại sao Anh trở thành thế lực thực dân mạnh hơn Hà Lan?",
+        "expected_rewrite": "Tại sao Anh trở thành thế lực thực dân mạnh hơn Hà Lan?",
+        "actual_rewrite": "Tại sao Anh trở thành thế lực thực dân mạnh hơn Hà Lan?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Người Scotland có vai trò gì trong Đế quốc Anh sau năm 1746?",
+        "expected_rewrite": "Người Scotland có vai trò gì trong Đế quốc Anh sau năm 1746?",
+        "actual_rewrite": "Người Scotland có vai trò gì trong Đế quốc Anh sau năm 1746?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 7,
+        "question": "Người Anh bắt đầu thuộc địa hóa Canada từ khi nào?",
+        "expected_rewrite": "Người Anh bắt đầu thuộc địa hóa Canada từ khi nào?",
+        "actual_rewrite": "Anh bắt đầu thuộc địa hoá Canada từ khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 8,
+        "question": "Hiệp định nào đã đưa phần lớn Tân Pháp vào tay Anh?",
+        "expected_rewrite": "Hiệp định nào đã đưa phần lớn Tân Pháp vào tay Anh?",
+        "actual_rewrite": "Hiệp định nào đã đưa phần lớn Tân Pháp vào tay Anh?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 158,
+    "turns": 9,
+    "graded_turns": 6,
+    "rewrite_score": 0.829,
+    "llm_rewrote": 8,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Fujii Sōta trở thành kỳ thủ chuyên nghiệp khi nào và ở độ tuổi nào?",
+        "expected_rewrite": "Fujii Sōta trở thành kỳ thủ chuyên nghiệp khi nào và ở độ tuổi nào?",
+        "actual_rewrite": "Fujii Sōta trở thành kỳ thủ chuyên nghiệp vào thời điểm nào và ở độ tuổi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Cậu có phá kỷ lục nào khi đạt danh hiệu này không?",
+        "expected_rewrite": "Fujii Sōta có phá kỷ lục nào khi đạt danh hiệu kỳ thủ chuyên nghiệp không?",
+        "actual_rewrite": "Fujii Sōta có phá kỷ lục nào khi đạt danh hiệu kỳ thủ chuyên nghiệp không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Còn ai từng có danh hiệu này khi đang học THCS?",
+        "expected_rewrite": "Còn ai từng trở thành kỳ thủ chuyên nghiệp khi đang học THCS?",
+        "actual_rewrite": "Ai khác đã đạt danh hiệu kỳ thủ chuyên nghiệp khi đang học trung học cơ sở?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.4
+      },
+      {
+        "turn": 3,
+        "question": "Tanigawa có từng giữ kỷ lục nào khác không?",
+        "expected_rewrite": "Tanigawa Kōji có từng giữ kỷ lục nào khác không?",
+        "actual_rewrite": "Tanigawa Kōji có từng giữ kỷ lục nào khác không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Fujii Sōta phá kỷ lục trẻ tuổi nhất vô địch một giải đấu dành cho tất cả kỳ thủ chuyên nghiệp vào năm nào?",
+        "expected_rewrite": "Fujii Sōta phá kỷ lục trẻ tuổi nhất vô địch một giải đấu dành cho tất cả kỳ thủ chuyên nghiệp vào năm nào?",
+        "actual_rewrite": "Fujii Sōta đã phá vỡ kỷ lục trẻ tuổi nhất vô địch một giải đấu dành cho tất cả kỳ thủ chuyên nghiệp vào năm 2023?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": " Trong giải đấu đó, cậu đã đánh bại ai ở trận chung kết?",
+        "expected_rewrite": " Trong giải đấu đó, Fujii Sōta đã đánh bại ai ở trận chung kết?",
+        "actual_rewrite": "Trong Giải vô địch Shogi mở rộng Cúp Nhật báo Asahi lần thứ 11 (mùa giải 2017), Fujii Sōta đã đánh bại ai ở trận chung kết?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Trước đó, cậu có đối đầu với Habu Yoshiharu không?",
+        "expected_rewrite": "Trước đó, Fujii Sōta có đối đầu với Habu Yoshiharu không?",
+        "actual_rewrite": "Trước đó, Fujii Sōta có đối đầu với Habu Yoshiharu không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Trong sự nghiệp, 2 người này có đối đầu với nhau trong lần nào khác không?",
+        "expected_rewrite": "Trong sự nghiệp, Habu Yoshiharu đã từng đối đầu với Fujii Sōta lần nào khác không?",
+        "actual_rewrite": "Trong sự nghiệp của Hirose Akihito Bát đẳng và Habu Yoshiharu Long Vương (Kỳ Thánh), họ đã đối đầu với nhau trong lần nào khác không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.571
+      },
+      {
+        "turn": 8,
+        "question": " Habu Yoshiharu có từng bị cản bước khi cố giành các danh hiệu không?",
+        "expected_rewrite": " Habu Yoshiharu có từng bị cản bước khi cố giành các danh hiệu không?",
+        "actual_rewrite": "Habu Yoshiharu có từng bị cản bước khi cố giành các danh hiệu không?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 171,
+    "turns": 9,
+    "graded_turns": 7,
+    "rewrite_score": 0.752,
+    "llm_rewrote": 8,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Tiểu bang New York giáp với mấy tỉnh Canada?",
+        "expected_rewrite": "Tiểu bang New York giáp với mấy tỉnh Canada?",
+        "actual_rewrite": "Tiểu bang New York giáp với bao nhiêu tỉnh của Canada?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Đó là gì?",
+        "expected_rewrite": "Tiểu bang New York giáp với tỉnh gì của Canada?",
+        "actual_rewrite": "Hai tỉnh là gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.167
+      },
+      {
+        "turn": 2,
+        "question": "Tỉnh Ontario lớn thứ mấy?",
+        "expected_rewrite": "Tỉnh Ontario lớn thứ mấy ở Canada?",
+        "actual_rewrite": "Tỉnh Ontario lớn thứ mấy?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 3,
+        "question": "Các tổng thống nào được sinh ra ở tiểu bang nói trên của Mỹ?",
+        "expected_rewrite": "Các tổng thống nào được sinh ra ở tiểu bang  New York ",
+        "actual_rewrite": "Các tổng thống nào được sinh ra ở tiểu bang Ontario của Mỹ?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.833
+      },
+      {
+        "turn": 4,
+        "question": "Theodore Roosevelt có làm thống đốc của bang này không?",
+        "expected_rewrite": "Theodore Roosevelt có làm thống đốc của bang New York không?",
+        "actual_rewrite": "Theodore Roosevelt có làm thống đốc của tỉnh Ontario không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      },
+      {
+        "turn": 5,
+        "question": "Diện tích tiểu bangl à bao nhiêu?",
+        "expected_rewrite": "Diện tích tiểu bang New York là bao nhiêu?",
+        "actual_rewrite": "Diện tích tiểu bang New York là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Năm 1961 bang này đã ký hiệp ước gì với các bang khác?",
+        "expected_rewrite": "Năm 1961 bang New York đã ký hiệp ước gì với các bang khác?",
+        "actual_rewrite": "Năm 1961, bang New York đã ký hiệp ước gì với các bang khác?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Hiệp ước đó nói gì?",
+        "expected_rewrite": "Hiệp ước  Châu thổ Sông Delaware nói gì?",
+        "actual_rewrite": "Hiệp ước Châu thổ Sông Delaware nói gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 8,
+        "question": "Năm 1674, tỉnh Tân Hà Lan bị đổi tên thành gì?",
+        "expected_rewrite": "Năm 1674, tỉnh Tân Hà Lan bị đổi tên thành gì?",
+        "actual_rewrite": "Năm 1674, tỉnh Tân Hà Lan đã được đổi tên thành gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 198,
+    "turns": 9,
+    "graded_turns": 5,
+    "rewrite_score": 0.863,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Thủ Dầu Một là thành phố của tỉnh nào?",
+        "expected_rewrite": "Thủ Dầu Một là thành phố của tỉnh nào?",
+        "actual_rewrite": "Thủ Dầu Một là thành phố của tỉnh nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Tỉnh này cách TPHCM bao xa?",
+        "expected_rewrite": "Bình Dương này cách Thành phố Hồ Chí Minh bao xa?",
+        "actual_rewrite": "Tỉnh Bình Dương cách TPHCM bao xa?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      },
+      {
+        "turn": 2,
+        "question": "Thủ Dầu Một có  giáp với Thành phố Hồ Chí Minh không?",
+        "expected_rewrite": "Thủ Dầu Một có  giáp với Thành phố Hồ Chí Minh không?",
+        "actual_rewrite": "Thủ Dầu Một có giáp với Thành phố Hồ Chí Minh không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Còn với Bến Cát không?",
+        "expected_rewrite": "Thủ Dầu Một có giáp với Bến Cát không?",
+        "actual_rewrite": "Bến Cát có giáp với Thành phố Hồ Chí Minh không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Ở Bến Cát có trường đại học Thủ Dầu Một không?",
+        "expected_rewrite": "Ở Bến Cát có trường đại học Thủ Dầu Một không?",
+        "actual_rewrite": "Ở Bến Cát có trường đại học Thủ Dầu Một không?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Lễ hội ở Thủ Dầu Một có gì?",
+        "expected_rewrite": "Lễ hội ở Thủ Dầu Một có gì?",
+        "actual_rewrite": "Lễ hội nào được tổ chức ở Thủ Dầu Một?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Người ta làm gì ở đó?",
+        "expected_rewrite": "Người ta làm gì ở Lễ hội Chùa Bà Thiên Hậu?",
+        "actual_rewrite": "Người tham gia làm gì tại Lễ hội Chùa Bà Thiên Hậu ở Thủ Dầu Một?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Ngoài ra thì tỉnh còn có lễ hội gì khác nữa không?",
+        "expected_rewrite": "Ngoài Lễ hội Chùa Bà Thiên Hậu thì tỉnh Bình Dương còn có lễ hội gì khác nữa không?",
+        "actual_rewrite": "Ngoài lễ hội Chùa Bà Thiên Hậu, tỉnh Thủ Dầu Một còn có lễ hội nào khác không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 8,
+        "question": "Có được hỗ trợ miễn phí khi tham dự không?",
+        "expected_rewrite": "Lễ hội Miếu Ông Bổn có được hỗ trợ miễn phí khi tham dự không?",
+        "actual_rewrite": "Tôi có được hỗ trợ miễn phí khi tham dự Lễ hội Miếu Ông Bổn của người Hoa Phúc Kiến họ Lý tại Phước An Miếu không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 229,
+    "turns": 9,
+    "graded_turns": 8,
+    "rewrite_score": 0.854,
+    "llm_rewrote": 8,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Sükhbaatar là gì?",
+        "expected_rewrite": "Sükhbaatar là gì?",
+        "actual_rewrite": "Sükhbaatar là gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Nó có mấy phường?",
+        "expected_rewrite": "Sükhbaatar có mấy phường?",
+        "actual_rewrite": "Sükhbaatar có mấy phường?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Diện tích là bao nhiêu?",
+        "expected_rewrite": "Diện tích Sükhbaatar là bao nhiêu?",
+        "actual_rewrite": "Diện tích của Sükhbaatar là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Dân số?",
+        "expected_rewrite": "Dân số Sükhbaatar là bao nhiêu?",
+        "actual_rewrite": "Sükhbaatar có dân số bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Khu vực này có phải là trung tâm của thủ đô Ulaanbaatar không?",
+        "expected_rewrite": "Khu vực Sükhbaatar có phải là trung tâm của thủ đô Ulaanbaatar không?",
+        "actual_rewrite": "Sükhbaatar có phải là trung tâm của thủ đô Ulaanbaatar không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Năm 1921 thủ đô này đã đổi chủ mấy lần?",
+        "expected_rewrite": "Năm 1921 thủ đô Sükhbaatar đã đổi chủ mấy lần?",
+        "actual_rewrite": "Năm 1921, thủ đô Ulaanbaatar đã đổi chủ mấy lần?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 6,
+        "question": "Nó được đổi tên thành Ulaanbaatar khi nào?",
+        "expected_rewrite": "Thủ đô Sükhbaatar được đổi tên thành Ulaanbaatar khi nào?",
+        "actual_rewrite": "Thủ đô của Mông Cổ được đổi tên thành Ulaanbaatar khi nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 7,
+        "question": "Tại sao?",
+        "expected_rewrite": "Tại sao thủ đô Sükhbaatar được đổi tên thành Ulaanbaatar?",
+        "actual_rewrite": "Tại sao thủ đô này được đổi tên thành Ulaanbaatar?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 8,
+        "question": "Ông ấy là ai?",
+        "expected_rewrite": "Sükhbaatar là ai?",
+        "actual_rewrite": "Sükhbaatar là ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 31,
+    "turns": 8,
+    "graded_turns": 7,
+    "rewrite_score": 0.959,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Nightmare đã phát hành đĩa đơn nào đầu tiên dưới hãng đĩa VAP?",
+        "expected_rewrite": "Nightmare đã phát hành đĩa đơn nào đầu tiên dưới hãng đĩa VAP?",
+        "actual_rewrite": "Nightmare đã phát hành đĩa đơn nào đầu tiên dưới hãng đĩa VAP?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Hai bài hát trong đĩa đơn đó được sử dụng trong bộ anime nào?",
+        "expected_rewrite": "Hai bài hát trong đĩa đơn \"The World/Alumina\" được sử dụng trong bộ anime nào?",
+        "actual_rewrite": "Hai bài hát trong đĩa đơn \"The World/Alumina\" của Nightmare được sử dụng trong bộ anime nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Sau khi phát hành đĩa đơn, nhóm đã ra album nào?",
+        "expected_rewrite": "Sau khi phát hành \"The World/Alumina\", Nightmare đã ra album nào?",
+        "actual_rewrite": "Sau khi phát hành đĩa đơn \"The World/Alumina\", nhóm Nightmare đã ra album nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Nhóm nhạc này đã đi lưu diễn ở đâu sau khi ra mắt album \"The World Ruler\"?",
+        "expected_rewrite": "Nhóm nhạc Nightmare đã đi lưu diễn ở đâu sau khi ra mắt album \"The World Ruler\"?",
+        "actual_rewrite": "Nightmare đã đi lưu diễn ở đâu sau khi ra mắt album \"The World Ruler\"?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 4,
+        "question": "Sau chuyến lưu diễn này, họ đã phát hành đĩa đơn nào tiếp theo?",
+        "expected_rewrite": "Sau chuyến lưu diễn vòng quanh Nhật Bản, Nightmare đã phát hành đĩa đơn nào tiếp theo?",
+        "actual_rewrite": "Sau chuyến lưu diễn vòng quanh Nhật Bản, Nightmare đã phát hành đĩa đơn nào tiếp theo?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Bài hát đó được sử dụng làm nhạc hiệu mở đầu của anime nào?",
+        "expected_rewrite": "\"Raison d'Etre\" được sử dụng làm nhạc hiệu mở đầu của anime nào?",
+        "actual_rewrite": "Bài hát \"Raison d'Etre\" được sử dụng làm nhạc hiệu mở đầu của anime nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Đĩa đơn này được phát hành vào thời gian nào?",
+        "expected_rewrite": "Đĩa đơn \"Raison d'Etre\" được phát hành vào thời gian nào?",
+        "actual_rewrite": "Đĩa đơn \"Raison d'Etre\" được phát hành vào thời gian nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Còn bộ anime có bài hát kết thúc là gì và ai trình bày?",
+        "expected_rewrite": "Bộ anime \"Claymore\" có bài hát kết thúc là gì và ai trình bày?",
+        "actual_rewrite": "Bài hát kết thúc của anime Claymore là gì và ai là người trình bày?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 32,
+    "turns": 8,
+    "graded_turns": 4,
+    "rewrite_score": 0.675,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Hai Bà Trưng đã chống lại ai khi khởi nghĩa?",
+        "expected_rewrite": "Hai Bà Trưng đã chống lại ai khi khởi nghĩa?",
+        "actual_rewrite": "Hai Bà Trưng đã chống lại ai khi khởi nghĩa?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Trưng Trắc có chồng là ai?",
+        "expected_rewrite": "Trưng Trắc có chồng là ai?",
+        "actual_rewrite": "Chồng của Trưng Trắc là ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Khi bà nổi dậy, những ai đã hưởng ứng?",
+        "expected_rewrite": "Khi Trưng Trắc nổi dậy, những ai đã hưởng ứng?",
+        "actual_rewrite": "Khi Hai Bà Trưng nổi dậy, những người nào đã hưởng ứng?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 3,
+        "question": "Sau khi đánh bại Hai Bà Trưng, Mã Viện đã làm gì để răn đe người Giao Chỉ?",
+        "expected_rewrite": "Sau khi đánh bại Hai Bà Trưng, Mã Viện đã làm gì để răn đe người Giao Chỉ?",
+        "actual_rewrite": "Sau khi đánh bại Hai Bà Trưng, Mã Viện đã làm gì để răn đe người Giao Chỉ?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Người Giao Chỉ phản ứng thế nào với cột đồng này?",
+        "expected_rewrite": "Người Giao Chỉ phản ứng thế nào với cột đồng có khắc sáu chữ: \"Đồng trụ chiết, Giao Chỉ diệt\" này?",
+        "actual_rewrite": "Người Giao Chỉ đã phản ứng như thế nào với trụ đồng mà Mã Viện đã dựng?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.571
+      },
+      {
+        "turn": 5,
+        "question": "Sau thời nhà Tùy, Giao Chỉ thuộc sự cai trị của những triều đại nào?",
+        "expected_rewrite": "Sau thời nhà Tùy, Giao Chỉ thuộc sự cai trị của những triều đại nào?",
+        "actual_rewrite": "Sau thời nhà Tùy, Giao Chỉ thuộc sự cai trị của những triều đại nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Khi đó, phủ được tổ chức thế nào?",
+        "expected_rewrite": "Khi nhà Đường cai trị, Giao Châu được tổ chức thế nào?",
+        "actual_rewrite": "Phủ Giao Châu được tổ chức như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 7,
+        "question": "Trong số các huyện của phủ, huyện Long Biên có vị trí quan trọng ra sao?",
+        "expected_rewrite": "Trong số các huyện của Giao Châu, huyện Long Biên có vị trí quan trọng ra sao?",
+        "actual_rewrite": "Trong số các huyện của An Nam đô hộ phủ, huyện Long Biên có vị trí quan trọng ra sao?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      }
+    ]
+  },
+  {
+    "session_id": 57,
+    "turns": 8,
+    "graded_turns": 4,
+    "rewrite_score": 0.95,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": " Trần Quốc Khang thuộc triều đại nào?",
+        "expected_rewrite": " Trần Quốc Khang thuộc triều đại nào?",
+        "actual_rewrite": "Trần Quốc Khang thuộc triều đại nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Mẹ ông là ai?",
+        "expected_rewrite": "Mẹ Trần Quốc Khang là ai?",
+        "actual_rewrite": "Mẹ của Trần Quốc Khang là ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Thực chất ông là con của ai?",
+        "expected_rewrite": "Trần Quốc Khang thực chất là con của ai?",
+        "actual_rewrite": "Thực chất Trần Quốc Khang là con của ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Vì sao Thuận Thiên lại trở thành hoàng hậu thay thế?",
+        "expected_rewrite": "Vì sao Thuận Thiên lại trở thành hoàng hậu thay thế?",
+        "actual_rewrite": "Vì sao hoàng hậu Thuận Thiên lại trở thành hoàng hậu thay thế?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Trần Liễu phản ứng thế nào trước sự kiện này?",
+        "expected_rewrite": "Trần Liễu phản ứng thế nào trước sự kiện Thuận Thiê trở thành hoàng hậu thay thế?",
+        "actual_rewrite": "Trần Liễu đã phản ứng như thế nào trước khi Thuận Thiên trở thành hoàng hậu thay thế?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      },
+      {
+        "turn": 5,
+        "question": "Trần Thủ Độ có thái độ ra sao khi Trần Liễu đến hàng?",
+        "expected_rewrite": "Trần Thủ Độ có thái độ ra sao khi Trần Liễu đến hàng?",
+        "actual_rewrite": "Trần Thủ Độ có thái độ ra sao khi Trần Liễu đến hàng?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Kết cục của ông sau khi đầu hàng là gì?",
+        "expected_rewrite": "Kết cục của Trần Liễu sau khi đầu hàng là gì?",
+        "actual_rewrite": "Kết cục của Trần Liễu sau khi đầu hàng là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Còn Trần Quốc Khang có được lập làm Hoàng thái tử không?",
+        "expected_rewrite": "Còn Trần Quốc Khang có được lập làm Hoàng thái tử không?",
+        "actual_rewrite": "Trần Quốc Khang có được lập làm Hoàng thái tử không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 105,
+    "turns": 8,
+    "graded_turns": 7,
+    "rewrite_score": 0.734,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Xã Vĩnh Trạch Đông thuộc địa phương nào?",
+        "expected_rewrite": "Xã Vĩnh Trạch Đông thuộc địa phương nào?",
+        "actual_rewrite": "Xã Vĩnh Trạch Đông thuộc địa phương nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ở xã này có loại rừng nào?",
+        "expected_rewrite": "Ở xã Vĩnh Trạch Đông  có loại rừng nào?",
+        "actual_rewrite": "Xã Vĩnh Trạch Đông có loại rừng nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Ngoài rừng phòng hộ, ở đây còn có công trình lớn nào không?",
+        "expected_rewrite": "Ngoài rừng phòng hộ, Vĩnh Trạch Đông còn có công trình lớn nào không?",
+        "actual_rewrite": "Ngoài rừng phòng hộ, Xã Vĩnh Trạch Đông còn có công trình lớn nào không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Nhà máy này được xây dựng từ khi nào?",
+        "expected_rewrite": "Nhà máy điện gió Bạc Liêu được xây dựng từ khi nào?",
+        "actual_rewrite": "Nhà máy điện gió Bạc Liêu được xây dựng từ khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Trong xã còn có địa điểm nào đặc biệt khác không?",
+        "expected_rewrite": "Trong Vĩnh Trạch Đông  còn có địa điểm nào đặc biệt khác không?",
+        "actual_rewrite": "Trong xã còn có địa điểm đặc biệt nào khác ngoài Nhà máy điện gió Bạc Liêu không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 5,
+        "question": "Cây xoài này nằm ở đâu?",
+        "expected_rewrite": "Cây xoài cổ thụ hơn 300 năm tuổi Vĩnh Trạch Đông nằm ở đâu?",
+        "actual_rewrite": "Cây xoài cổ thụ hơn 300 năm tuổi nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.4
+      },
+      {
+        "turn": 6,
+        "question": "Xã có tuyến đường bộ quan trọng nào không?",
+        "expected_rewrite": "Xã Vĩnh Trạch Đông có tuyến đường bộ quan trọng nào không?",
+        "actual_rewrite": "Xã có những tuyến đường bộ quan trọng nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.571
+      },
+      {
+        "turn": 7,
+        "question": "Trong chương trình nông thôn mới, xã có ấp nào đạt chuẩn nâng cao không?",
+        "expected_rewrite": "Trong chương trình nông thôn mới, xã Vĩnh Trạch Đông có ấp nào đạt chuẩn nâng cao không?",
+        "actual_rewrite": "Trong chương trình nông thôn mới, xã có ấp nào đạt chuẩn nâng cao không?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      }
+    ]
+  },
+  {
+    "session_id": 190,
+    "turns": 8,
+    "graded_turns": 6,
+    "rewrite_score": 0.772,
+    "llm_rewrote": 8,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Hitler làm thủ tướng Đức khi nào?",
+        "expected_rewrite": "Hitler làm thủ tướng Đức khi nào?",
+        "actual_rewrite": "Hitler làm thủ tướng Đức vào thời gian nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Sau đó ông đã làm gì?",
+        "expected_rewrite": "Sau khi làm thủ tướng Đức,  Hitler đã làm gì?",
+        "actual_rewrite": "Sau đó, Hitler đã làm gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 2,
+        "question": "Nét đặc trưng của nhà nước Đức Quốc Xã của ông là gì?",
+        "expected_rewrite": "Nét đặc trưng của nhà nước Đức Quốc Xã của Hitler là gì?",
+        "actual_rewrite": "Nét đặc trưng của nhà nước Đức Quốc Xã của Hitler là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Vụ cháy toà nhà Reichstag diễn ra khi nào?",
+        "expected_rewrite": "Vụ cháy toà nhà Reichstag diễn ra khi nào?",
+        "actual_rewrite": "Vụ cháy tòa nhà Reichstag diễn ra vào ngày nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Ai là hung thủ của vụ này?",
+        "expected_rewrite": "Ai là hung thủ của Vụ hỏa hoạn tòa nhà ''Reichstag''?",
+        "actual_rewrite": "Ai là hung thủ của vụ cháy tòa nhà Reichstag?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 5,
+        "question": "Sau vụ này thì có việc gì xảy ra liên quan đến ông?",
+        "expected_rewrite": "Sau vụ hỏa hoạn tòa nhà ''Reichstag' thì có việc gì xảy ra liên quan đến Hitler?",
+        "actual_rewrite": "Sau vụ cháy tòa nhà Reichstag, có việc gì xảy ra liên quan đến Göring?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 6,
+        "question": "Nghị định này kéo dài đến bao lâu?",
+        "expected_rewrite": "Nghị định Hỏa hoạn Reichstag kéo dài đến bao lâu?",
+        "actual_rewrite": "Nghị định Hỏa hoạn Reichstag kéo dài đến bao lâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "chính quyền này bắt đầu đi xuống về quân sự khi nào?",
+        "expected_rewrite": "chính quyền Đức Quốc Xã bắt đầu đi xuống về quân sự khi nào?",
+        "actual_rewrite": "Chính quyền Đức Quốc Xã bắt đầu suy giảm về mặt quân sự vào thời điểm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      }
+    ]
+  },
+  {
+    "session_id": 209,
+    "turns": 8,
+    "graded_turns": 7,
+    "rewrite_score": 0.716,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Command & Conquer: Red Alert là loại game gì?",
+        "expected_rewrite": "Command & Conquer: Red Alert là loại game gì?",
+        "actual_rewrite": "Command & Conquer: Red Alert là loại game gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ai sản xuất nó?",
+        "expected_rewrite": "Ai sản xuất Command & Conquer: Red Alert?",
+        "actual_rewrite": "Ai là nhà sản xuất của trò chơi Command & Conquer: Red Alert?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Công ty này vào tháng 3/2023 có sự kiện gì?",
+        "expected_rewrite": "Westwood Studios vào tháng 3/2023 có sự kiện gì?",
+        "actual_rewrite": "Westwood Studios vào tháng 3/2023 có sự kiện gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Cốt truyện của game kết thúc như thế nào?",
+        "expected_rewrite": "Cốt truyện của game Command & Conquer: Red Alert kết thúc như thế nào?",
+        "actual_rewrite": "Cốt truyện của game kết thúc như thế nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 4,
+        "question": "bản mở rộng của game được phát hành nằm 1998 là gì?",
+        "expected_rewrite": "bản mở rộng của game Command & Conquer: Red Alert được phát hành nằm 1998 là gì?",
+        "actual_rewrite": "Bản mở rộng của game được phát hành vào năm 1998 là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.625
+      },
+      {
+        "turn": 5,
+        "question": "Trong game thì các tướng nào sẽ không xuất hiện nữa ở Red Alert 2?",
+        "expected_rewrite": "Trong game  Command & Conquer: Red Alert thì các tướng nào sẽ không xuất hiện nữa ở Red Alert 2?",
+        "actual_rewrite": "Trong game Red Alert 2, các tướng nào sẽ không xuất hiện nữa?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 6,
+        "question": "Phiên bản thứ hai này của game này được phát hành vào ngày nào?",
+        "expected_rewrite": "Phiên bản Command & Conquer: Red Alert 2 được phát hành vào ngày nào?",
+        "actual_rewrite": "Red Alert 2 được phát hành vào ngày nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.571
+      },
+      {
+        "turn": 7,
+        "question": "Bối cảnh của phiên bản này là gì?",
+        "expected_rewrite": "Bối cảnh của phiên bản  Command & Conquer: Red Alert 2  là gì?",
+        "actual_rewrite": "Bối cảnh của phiên bản thứ hai của trò chơi Red Alert 2 là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      }
+    ]
+  },
+  {
+    "session_id": 216,
+    "turns": 8,
+    "graded_turns": 7,
+    "rewrite_score": 0.75,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Nice có bao nhiêu dân?",
+        "expected_rewrite": "Nice có bao nhiêu dân?",
+        "actual_rewrite": "Nice có bao nhiêu dân?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Vậy dân số xếp thứ mấy ở Pháp?",
+        "expected_rewrite": "Dân số Nice xếp thứ mấy ở Pháp?",
+        "actual_rewrite": "Dân số của Pháp xếp thứ mấy trên thế giới?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 2,
+        "question": "Xếp sau ai?",
+        "expected_rewrite": "Dân số Nice xếp sau các thành phố nào?",
+        "actual_rewrite": "Quốc gia nào xếp sau Pháp trong bảng xếp hạng dân số?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.0
+      },
+      {
+        "turn": 3,
+        "question": "Thành phố này có biệt danh gì không?",
+        "expected_rewrite": "Thành phố Nice có biệt danh gì không? ",
+        "actual_rewrite": "Thành phố Nice có biệt danh gì không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Nghĩa là gì?",
+        "expected_rewrite": "Nice la Belle nghĩa là gì?",
+        "actual_rewrite": "Cụm từ “Nice la Belle” có nghĩa là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Thành phố này từng thuộc sở hữu của ai?",
+        "expected_rewrite": "Thành phố Nice  từng thuộc sở hữu của ai?",
+        "actual_rewrite": "Thành phố này từng thuộc sở hữu của ai?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 6,
+        "question": "Sự kiện đó diễn ra vào năm nào?",
+        "expected_rewrite": "Nice sáp nhập lại vào Pháp vào năm nào?",
+        "actual_rewrite": "Năm nào Nice sáp nhập lại vào Pháp?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Ngoài Nice thì các thành phố khác của quốc gia này là gì?",
+        "expected_rewrite": "Ngoài Nice thì các thành phố khác của Pháp là gì?",
+        "actual_rewrite": "Ngoài Nice thì các thành phố khác của Pháp là gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 217,
+    "turns": 8,
+    "graded_turns": 7,
+    "rewrite_score": 0.754,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Rob Halford là ai?",
+        "expected_rewrite": "Rob Halford là ai?",
+        "actual_rewrite": "Rob Halford là ai?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Nhóm nhạc của ông là gì?",
+        "expected_rewrite": "Nhóm nhạc của Rob Halford là gì?",
+        "actual_rewrite": "Nhóm nhạc của Rob Halford là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Các thành viên của nhóm vào năm 1970 có ai?",
+        "expected_rewrite": "Các thành viên của nhóm Judas Priest vào năm 1970 có ai?",
+        "actual_rewrite": "Các thành viên của nhóm Judas Priest vào năm 1970 có ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Làm sao mà ca sĩ biết tên tay bass?",
+        "expected_rewrite": "Làm sao mà ca sĩ Rob Halford biết tên tay bass Ian Hill ?",
+        "actual_rewrite": "Làm sao mà ca sĩ Rob Halford biết tên tay bass Ian Hill?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Mối quan hệ giữa tay bass và chị gái khi đó như thế nào?",
+        "expected_rewrite": "Mối quan hệ giữa tay bass Ian Hill và chị gái Halford năm 2005 như thế nào?",
+        "actual_rewrite": "Mối quan hệ giữa Ian Hill và Sue, chị gái của Rob Halford, khi đó như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 5,
+        "question": "Ai là người thay thế khi Moore rời nhóm nhạc?",
+        "expected_rewrite": "Ai là người thay thế khi Moore rời nhóm nhạc Judas Priest?",
+        "actual_rewrite": "Ai là người thay thế khi Moore rời nhóm nhạc?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 6,
+        "question": "Người này có rời nhóm luôn không?",
+        "expected_rewrite": "Chris \"Congo\" Campbell có rời nhóm luôn không?",
+        "actual_rewrite": "Moore có rời nhóm luôn không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.4
+      },
+      {
+        "turn": 7,
+        "question": "Vậy ai được tuyển để thay thế?",
+        "expected_rewrite": "Vậy ai được tuyển để thay thế cho Campbell cũng rời nhóm Judas Priest?",
+        "actual_rewrite": "Ai được tuyển để thay thế Chris \"Congo\" Campbell?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      }
+    ]
+  },
+  {
+    "session_id": 221,
+    "turns": 8,
+    "graded_turns": 6,
+    "rewrite_score": 0.847,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Haiti nằm ở đảo?",
+        "expected_rewrite": "Haiti nằm ở đảo gì?",
+        "actual_rewrite": "Haiti có phải là một hòn đảo không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 1,
+        "question": "Quần đảo đó ở vùng biển gì?",
+        "expected_rewrite": "Quần đảo Đại Antilles ở vùng biển gì?",
+        "actual_rewrite": "Quần đảo Đại Antilles nằm ở vùng biển nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Hispaniola trước khi Christopher Columbus đến đây thì nó được chia làm mấy lãnh thổ?",
+        "expected_rewrite": "Hispaniola trước khi Christopher Columbus đến đây thì nó được chia làm mấy lãnh thổ?",
+        "actual_rewrite": "Trước khi Christopher Columbus đến, đảo Hispaniola được chia làm mấy lãnh thổ?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Tôn giáo chính thức của Haiti là gì?",
+        "expected_rewrite": "Tôn giáo chính thức của Haiti là gì?",
+        "actual_rewrite": "Tôn giáo chính thức của Haiti là gì?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Quốc gia này có động đất vào năm 2010 đúng không?",
+        "expected_rewrite": "Haiti  có động đất vào năm 2010 đúng không?",
+        "actual_rewrite": "Haiti có xảy ra động đất vào năm 2010 đúng không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Có Hồi giáo ở đó không?",
+        "expected_rewrite": "Có Hồi giáo ở Haiti không?",
+        "actual_rewrite": "Có Hồi giáo ở Haiti không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Ai là người Hồi giáo đầu tiên được bầu Quốc hội của nước này?",
+        "expected_rewrite": "Ai là người Hồi giáo đầu tiên được bầu Quốc hội của nước Haiti?",
+        "actual_rewrite": "Ai là người Hồi giáo đầu tiên được bầu Quốc hội của Haiti?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.833
+      },
+      {
+        "turn": 7,
+        "question": "Sự kiện đó diễn ra vào năm nào?",
+        "expected_rewrite": "Sự kiện người Hồi giáo đầu tiên được bầu Quốc hội của nước Haiti diễn ra vào năm nào?",
+        "actual_rewrite": "Nawoon Marcellus được bầu Quốc hội của nước này vào năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.25
+      }
+    ]
+  },
+  {
+    "session_id": 225,
+    "turns": 8,
+    "graded_turns": 5,
+    "rewrite_score": 0.971,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Pháp có mấy vùng?",
+        "expected_rewrite": "Pháp có mấy vùng?",
+        "actual_rewrite": "Pháp có bao nhiêu vùng?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Chúng bao gồm gì?",
+        "expected_rewrite": "18 vùng của Pháp  bao gồm gì?",
+        "actual_rewrite": "Các 18 vùng của Pháp bao gồm những gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Vùng Mayotte nằm ở đâu?",
+        "expected_rewrite": "Vùng Mayotte nằm ở đâu?",
+        "actual_rewrite": "Mayotte nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Dân số vùng là bao nhiêu?",
+        "expected_rewrite": "Dân số vùng Mayotte  là bao nhiêu?",
+        "actual_rewrite": "Dân số của vùng Mayotte là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Pháp nổi lên thành một đại cường tại châu Âu vào thời kỳ nào?",
+        "expected_rewrite": "Pháp nổi lên thành một đại cường tại châu Âu vào thời kỳ nào?",
+        "actual_rewrite": "Pháp nổi lên thành một đại cường tại châu Âu vào thời kỳ nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Lượng khách du lịch nước ngoài của quốc gia này là bao nhiêu?",
+        "expected_rewrite": "Lượng khách du lịch nước ngoài của quốc gia  Pháp là bao nhiêu?",
+        "actual_rewrite": "Lượng khách du lịch nước ngoài của Pháp là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.857
+      },
+      {
+        "turn": 6,
+        "question": "Nó có vũ khí hạt nhân không?",
+        "expected_rewrite": "Pháp có vũ khí hạt nhân không?",
+        "actual_rewrite": "Pháp có vũ khí hạt nhân không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 7,
+        "question": "Ngoài quốc gia này, 4 thành viên thường trực khác của Pháp là gì?",
+        "expected_rewrite": "Ngoài Pháp , 4 thành viên thường trực khác của Pháp là gì?",
+        "actual_rewrite": "Ngoài Pháp, bốn thành viên thường trực khác của Hội đồng Bảo an Liên Hợp Quốc là gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 232,
+    "turns": 8,
+    "graded_turns": 5,
+    "rewrite_score": 0.978,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Ecuador có diện tích bao nhiêu?",
+        "expected_rewrite": "Ecuador có diện tích bao nhiêu?",
+        "actual_rewrite": "Ecuador có diện tích bao nhiêu?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Thủ đô của nó là gì?",
+        "expected_rewrite": "Thủ đô của Ecuador là gì?",
+        "actual_rewrite": "Thủ đô của Ecuador là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Quốc gia này có đội tuyển bóng đá không?",
+        "expected_rewrite": "Ecuador này có đội tuyển bóng đá không?",
+        "actual_rewrite": "Ecuador có đội tuyển bóng đá không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Trận đầu tiên của đội thi đấu quốc tế là năm nào?",
+        "expected_rewrite": "Trận đầu tiên của đội tuyển bóng đá quốc gia Ecuador thi đấu quốc tế là năm nào?",
+        "actual_rewrite": "Trận đầu tiên của đội tuyển bóng đá quốc gia Ecuador thi đấu quốc tế là năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Có bao nhiêu người người Ecuador sống tại Tây Ban Nha",
+        "expected_rewrite": "Có bao nhiêu người người Ecuador sống tại Tây Ban Nha",
+        "actual_rewrite": "Có bao nhiêu người Ecuador sống tại Tây Ban Nha?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Thế kỷ XIX, tình hình Ecuador như thế nào?",
+        "expected_rewrite": "Thế kỷ XIX, tình hình Ecuador như thế nào?",
+        "actual_rewrite": "Thế kỷ XIX, tình hình của Ecuador như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": " Một cuộc cách mạng tự do bắt nguồn từ vùng ven biển nổ ra năm 1895 dưới sự chỉ huy của ai?",
+        "expected_rewrite": " Một cuộc cách mạng tự do bắt nguồn từ vùng ven biển Ecuador nổ ra năm 1895 dưới sự chỉ huy của ai?",
+        "actual_rewrite": "Cuộc cách mạng tự do ở Ecuador, bắt nguồn từ vùng ven biển và nổ ra năm 1895, do ai chỉ huy?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.889
+      },
+      {
+        "turn": 7,
+        "question": "Ông là ai?",
+        "expected_rewrite": "Eloy Alfaro là ai?",
+        "actual_rewrite": "Eloy Alfaro là ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 2,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.91,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Deep Blue là gì?",
+        "expected_rewrite": "Deep Blue là gì?",
+        "actual_rewrite": "Deep Blue là gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ai là nhà vô địch thế giới mà Deep Blue đã đánh bại?",
+        "expected_rewrite": "Ai là nhà vô địch thế giới mà Deep Blue đã đánh bại?",
+        "actual_rewrite": "Ai là nhà vô địch thế giới mà Deep Blue đã đánh bại?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Họ gặp nhau lần đầu khi nào?",
+        "expected_rewrite": "Deep Blue và Garry Kimovich Kasparov gặp nhau lần đầu khi nào?",
+        "actual_rewrite": "Deep Blue và Garry Kimovich Kasparov gặp nhau lần đầu khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Kết quả trận đấu đó thế nào?",
+        "expected_rewrite": "Kết quả trận Deep Blue đấu với Kasparov lần đầu tiên vào năm 1996 thế nào?",
+        "actual_rewrite": "Kết quả trận đấu đầu tiên giữa Deep Blue và Garry Kimovich Kasparov vào năm 1996 thế nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Nhưng Deep Blue có thắng ván nào không?",
+        "expected_rewrite": "Nhưng Deep Blue có thắng Kasparov ván nào không?",
+        "actual_rewrite": "Deep Blue có thắng ván nào trong trận đấu với Kasparov năm 1996 không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      },
+      {
+        "turn": 5,
+        "question": "Sau thất bại đó, Deep Blue có cơ hội tái đấu không?",
+        "expected_rewrite": "Sau thất bại với Kasparov, Deep Blue có cơ hội tái đấu không?",
+        "actual_rewrite": "Sau thất bại của Deep Blue trong ván đầu tiên, Deep Blue có cơ hội tái đấu không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 6,
+        "question": "Lần này kết quả ra sao?",
+        "expected_rewrite": "Lần Deep Blue tái đấu với Kasparov năm 1997  kết quả ra sao?",
+        "actual_rewrite": "Kết quả của lần tái đấu giữa Deep Blue và Kasparov năm 1997 ra sao?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 3,
+    "turns": 7,
+    "graded_turns": 4,
+    "rewrite_score": 1.0,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Mường Tùng thuộc huyện nào?",
+        "expected_rewrite": "Mường Tùng thuộc huyện nào?",
+        "actual_rewrite": "Mường Tùng thuộc huyện nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ở Mường Chà có những con sông suối nào đáng chú ý?",
+        "expected_rewrite": "Ở Mường Chà có những con sông suối nào đáng chú ý?",
+        "actual_rewrite": "Ở huyện Mường Chà có những con sông suối nào đáng chú ý?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Suối Nậm He chảy theo hướng nào?",
+        "expected_rewrite": "Suối Nậm He chảy theo hướng nào?",
+        "actual_rewrite": "Suối Nậm He chảy theo hướng nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Lưu vực của suối này khoảng bao nhiêu?",
+        "expected_rewrite": "Lưu vực của suối Nậm He khoảng bao nhiêu?",
+        "actual_rewrite": "Lưu vực của suối Nậm He khoảng bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Có công trình nào đang được xây dựng trên suối này không?",
+        "expected_rewrite": "Có công trình nào đang được xây dựng trên suối Nậm He không?",
+        "actual_rewrite": "Có công trình nào đang được xây dựng trên Suối Nậm He không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Còn suối Nậm Lay chảy theo hướng nào?",
+        "expected_rewrite": "Suối Nậm Lay chảy theo hướng nào?",
+        "actual_rewrite": "Suối Nậm Lay chảy theo hướng nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Nó kết nối với sông Đà ở đâu?",
+        "expected_rewrite": "Suối Nậm Lay kết nối với sông Đà ở đâu?",
+        "actual_rewrite": "Suối Nậm Lay kết nối với sông Đà ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 20,
+    "turns": 7,
+    "graded_turns": 6,
+    "rewrite_score": 0.889,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Thanh Lân thuộc huyện nào?",
+        "expected_rewrite": "Thanh Lân thuộc huyện nào?",
+        "actual_rewrite": "Thanh Lân thuộc huyện nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Diện tích của nó là bao nhiêu?",
+        "expected_rewrite": "Diện tích của Thanh Lân là bao nhiêu?",
+        "actual_rewrite": "Diện tích của xã Thanh Lân là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Dân số thì sao?",
+        "expected_rewrite": "Dân số của Thanh Lân là bao nhiêu?",
+        "actual_rewrite": "Dân số của xã Thanh Lân là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Kể tên các bãi biển của xã này?",
+        "expected_rewrite": "Kể tên các bãi biển của xã Thanh Lân?",
+        "actual_rewrite": "Kể tên các bãi biển của xã Thanh Lân?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Còn đảo cùng tên với có diện tích bao nhiêu?",
+        "expected_rewrite": "Còn đảo Thanh Lân có diện tích bao nhiêu?",
+        "actual_rewrite": "Đảo Ba Châu có diện tích bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 5,
+        "question": "Trên đảo này có những loại cây ăn trái naò?",
+        "expected_rewrite": "Trên đảo Thanh Lân có những loại cây ăn trái naò?",
+        "actual_rewrite": "Trên đảo Thanh Lân có những loại cây ăn trái nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Còn động vật thì sao?",
+        "expected_rewrite": "Còn động vật trên đảo Thanh Lân thì sao?",
+        "actual_rewrite": "Đảo Thanh Lân còn có những loài động vật nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      }
+    ]
+  },
+  {
+    "session_id": 22,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.8,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Minnesota trở thành tiểu bang của Hoa Kỳ vào năm nào?",
+        "expected_rewrite": "Minnesota trở thành tiểu bang của Hoa Kỳ vào năm nào?",
+        "actual_rewrite": "Minnesota trở thành tiểu bang của Hoa Kỳ vào năm nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Bang này có bao nhiêu hồ?",
+        "expected_rewrite": "Bang Minnesota có bao nhiêu hồ?",
+        "actual_rewrite": "Minnesota có bao nhiêu hồ?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 2,
+        "question": "Thành phố nào là trung tâm của vùng đô thị lớn nhất bang?",
+        "expected_rewrite": "Thành phố nào là trung tâm của vùng đô thị lớn nhất bang Minnesota?",
+        "actual_rewrite": "Thành phố nào là trung tâm của vùng đô thị lớn nhất của bang Minnesota?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Thành phố này nằm ở đây?",
+        "expected_rewrite": "Thành phố  Saint Paul  này nằm ở đây?",
+        "actual_rewrite": "Thành phố Saint Paul nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Còn Minneapolis ?",
+        "expected_rewrite": "Còn Minneapolis thì sao? Thành phố này nằm ở đâu?",
+        "actual_rewrite": "Minneapolis nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 5,
+        "question": "Bang Minnesota áp dụng những mức thuế thu nhập nào?",
+        "expected_rewrite": "Bang Minnesota áp dụng những mức thuế thu nhập nào?",
+        "actual_rewrite": "Bang Minnesota áp dụng những mức thuế thu nhập nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Ngoài thuế thu nhập, còn có loại thuế nào khác không?",
+        "expected_rewrite": "Ngoài thuế thu nhập, còn có loại thuế nào khác không ở  Bang Minnesota ?",
+        "actual_rewrite": "Ngoài thuế thu nhập, Bang Minnesota còn có loại thuế nào khác không?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 34,
+    "turns": 7,
+    "graded_turns": 4,
+    "rewrite_score": 0.928,
+    "llm_rewrote": 4,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Hành tinh nào có chu kỳ quỹ đạo ngắn nhất trong Hệ Mặt Trời?",
+        "expected_rewrite": "Hành tinh nào có chu kỳ quỹ đạo ngắn nhất trong Hệ Mặt Trời?",
+        "actual_rewrite": "Hành tinh nào có chu kỳ quỹ đạo ngắn nhất trong Hệ Mặt Trời?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Nó được đặt tên theo vị thần nào ?",
+        "expected_rewrite": "Sao Thủy được đặt tên theo vị thần nào ?",
+        "actual_rewrite": "Sao Thủy được đặt tên theo vị thần nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Vậy bề mặt của hành tinh này có gì đặc biệt?",
+        "expected_rewrite": "Vậy bề mặt của hành tinh Sao Thủy có gì đặc biệt?",
+        "actual_rewrite": "Bề mặt của hành tinh Sao Thủy có gì đặc biệt?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Nhiệt độ ở đó thay đổi ra sao giữa ngày và đêm?",
+        "expected_rewrite": "Nhiệt độ ở bề mặt Sao Thủy thay đổi ra sao giữa ngày và đêm?",
+        "actual_rewrite": "Nhiệt độ trên Sao Thủy thay đổi ra sao giữa ngày và đêm?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Ngoài Sao Thủy, thiên thể nào khác cũng có dấu hiệu co ngót?",
+        "expected_rewrite": "Ngoài Sao Thủy, thiên thể nào khác cũng có dấu hiệu co ngót?",
+        "actual_rewrite": "Ngoài Sao Thủy, thiên thể nào khác cũng có dấu hiệu co ngót?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Hiện tượng này được quan sát bằng cách nào?",
+        "expected_rewrite": "Hiện tượng co ngót của Mặt Trăng được quan sát bằng cách nào?",
+        "actual_rewrite": "Dấu hiệu co ngót trên Mặt Trăng được quan sát bằng cách nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 6,
+        "question": "Trong lịch sử, ai là người đầu tiên quan sát sự chuyển động của Sao Thủy?",
+        "expected_rewrite": "Trong lịch sử, ai là người đầu tiên quan sát sự chuyển động của Sao Thủy?",
+        "actual_rewrite": "Trong lịch sử, ai là người đầu tiên quan sát sự chuyển động của Sao Thủy?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 43,
+    "turns": 7,
+    "graded_turns": 7,
+    "rewrite_score": 0.852,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Sau năm 2006, sức khỏe của Quốc vương Bhumibol như thế nào?",
+        "expected_rewrite": "Q: Sau năm 2006, sức khỏe của Quốc vương Bhumibol như thế nào?",
+        "actual_rewrite": "Sau năm 2006, sức khỏe của Quốc vương Bhumibol như thế nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 1,
+        "question": "Người kế vị của ông có được lòng dân như ông không?",
+        "expected_rewrite": "Người kế vị của Quốc vương Bhumibol  có được lòng dân như ông không?",
+        "actual_rewrite": "Người kế vị của Quốc vương Bhumibol có được lòng dân như Bhumibol không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Người kế nhiệm chính thức đăng quang vào thời gian nào?",
+        "expected_rewrite": "Vajiralongkorn chính thức đăng quang vào thời gian nào?",
+        "actual_rewrite": "Vajiralongkorn đăng quang vào thời gian nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 3,
+        "question": "Ông vua mới này được phong Thái tử khi nào?",
+        "expected_rewrite": "Vajiralongkorn được phong Thái tử khi nào?",
+        "actual_rewrite": "Vajiralongkorn được phong Thái tử vào thời gian nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Trước khi lên ngôi, ông có cuộc sống như thế nào?",
+        "expected_rewrite": "Trước khi lên ngôi, Vajiralongkorn có cuộc sống như thế nào?",
+        "actual_rewrite": "Trước khi lên ngôi, Vajiralongkorn có cuộc sống như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Sau khi vua cha qua đời, chính quyền có động thái gì?",
+        "expected_rewrite": "Sau khi vua cha  Vajiralongkorn qua đời, chính quyền có động thái gì?",
+        "actual_rewrite": "Sau khi vua cha của ông vua mới qua đời, chính quyền đã có động thái gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      },
+      {
+        "turn": 6,
+        "question": "Vua cha qua đời vào ngày nào?",
+        "expected_rewrite": "Bhumibol qua đời vào ngày nào?",
+        "actual_rewrite": "Vua cha qua đời vào ngày nào?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      }
+    ]
+  },
+  {
+    "session_id": 53,
+    "turns": 7,
+    "graded_turns": 4,
+    "rewrite_score": 0.757,
+    "llm_rewrote": 4,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Hàn Thế Trung là ai?",
+        "expected_rewrite": "Hàn Thế Trung là ai?",
+        "actual_rewrite": "Hàn Thế Trung là ai?",
+        "llm_rewritten": false,
+        "route": "DIRECTORY",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ngoài ông, những ai được thờ tại miếu?",
+        "expected_rewrite": "Ngoài Hàn Thế Trung, những ai được thờ tại Đế vương miếu thời Nam Tống?",
+        "actual_rewrite": "Ngoài Hàn Thế Trung, những ai được thờ tại miếu?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      },
+      {
+        "turn": 2,
+        "question": "Nhạc Phi đã chỉ huy bao nhiêu cuộc bắc phạt chống quân Kim?",
+        "expected_rewrite": "Nhạc Phi đã chỉ huy bao nhiêu cuộc bắc phạt chống quân Kim?",
+        "actual_rewrite": "Nhạc Phi đã chỉ huy bao nhiêu cuộc bắc phạt chống quân Kim?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Khi đó, ông đã từng hợp tác với Hàn Thế Trung như thế nào?",
+        "expected_rewrite": "Trong cuộc chiến chống quân Kim, Nhạc Phi đã từng hợp tác với Hàn Thế Trung như thế nào?",
+        "actual_rewrite": "Nhạc Phi đã từng hợp tác với Hàn Thế Trung như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.429
+      },
+      {
+        "turn": 4,
+        "question": "Hàn Thế Trung đã dùng chiến thuật gì để đối phó với quân Kim khi bị lệnh rút quân?",
+        "expected_rewrite": "Hàn Thế Trung đã dùng chiến thuật gì để đối phó với quân Kim khi bị lệnh rút quân?",
+        "actual_rewrite": "Hàn Thế Trung đã dùng chiến thuật gì để đối phó với quân Kim khi bị lệnh rút quân?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Ông bị mất binh quyền như thế nào?",
+        "expected_rewrite": "Hàn Thế Trung bị mất binh quyền như thế nào?",
+        "actual_rewrite": "Hàn Thế Trung bị mất binh quyền như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Khi Nhạc Phi bị hại thì ông phản ứng ra sao?",
+        "expected_rewrite": "Hàn Thế Trung có phản ứng như thế nào khi Nhạc Phi bị hại?",
+        "actual_rewrite": "Khi Nhạc Phi bị hại, Hàn Thế Trung đã phản ứng như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 54,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.818,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Ai là người đã giành chức vô địch cờ vua thế giới năm 2007?",
+        "expected_rewrite": "Ai là người đã giành chức vô địch cờ vua thế giới năm 2007?",
+        "actual_rewrite": "Ai là người đã giành chức vô địch cờ vua thế giới năm 2007?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Chức vô địch này có ý nghĩa gì đối với anh ấy?",
+        "expected_rewrite": "Chức vô địch này có ý nghĩa gì đối với Viswanathan Anand?",
+        "actual_rewrite": "Chức vô địch cờ vua thế giới năm 2007 có ý nghĩa gì đối với Viswanathan Anand?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Trước đó, anh ấy đã từng vô địch thế giới chưa?",
+        "expected_rewrite": "Trước vô địch cờ vua thế giới năm 2007, Viswanathan Anand đã từng vô địch thế giới chưa?",
+        "actual_rewrite": "Trước đó, Viswanathan Anand đã từng vô địch thế giới chưa?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 3,
+        "question": "Anh ấy có bảo vệ thành công danh hiệu này sau đó không?",
+        "expected_rewrite": "Anand có bảo vệ thành công danh hiệu vô địch cờ vua thế giới  sau đó không?",
+        "actual_rewrite": "Anand có bảo vệ thành công danh hiệu này sau đó không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.714
+      },
+      {
+        "turn": 4,
+        "question": "Nhưng sau đó anh ấy đã mất danh hiệu vào năm nào?",
+        "expected_rewrite": "Nhưng sau đó Anand đã mất danh hiệu vô địch cờ vua thế giới vào năm nào?",
+        "actual_rewrite": "Anand đã mất danh hiệu vào năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 5,
+        "question": "Vậy Carlsen có giữ danh hiệu này lâu không?",
+        "expected_rewrite": "Vậy Carlsen có giữ danh hiệu vô địch cờ vua thế giới lâu không?",
+        "actual_rewrite": "Carlsen có giữ danh hiệu vô địch thế giới trong bao lâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Anand có từng vô địch cờ nhanh không?",
+        "expected_rewrite": "Anand có từng vô địch cờ nhanh không?",
+        "actual_rewrite": "Anand có từng vô địch cờ nhanh không?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 60,
+    "turns": 7,
+    "graded_turns": 4,
+    "rewrite_score": 0.792,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Kandal có những đặc điểm địa hình nào?",
+        "expected_rewrite": "Kandal có những đặc điểm địa hình nào?",
+        "actual_rewrite": "Kandal có những đặc điểm địa hình nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Các huyện nào của tỉnh này có biên giới với An Giang?",
+        "expected_rewrite": "Các huyện nào của Kandal có biên giới với An Giang?",
+        "actual_rewrite": "Các huyện nào của tỉnh Kandal có biên giới với An Giang?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "An Giang có đường biên giới với những địa phương nào của Campuchia?",
+        "expected_rewrite": "An Giang có đường biên giới với những địa phương nào của Campuchia?",
+        "actual_rewrite": "An Giang có đường biên giới với những địa phương nào của Campuchia?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Đường biên giới giữa An Giang và nước bạn dài bao nhiêu km?",
+        "expected_rewrite": "Đường biên giới giữa An Giang và Campuchia dài bao nhiêu km?",
+        "actual_rewrite": "Đường biên giới giữa An Giang và Campuchia dài bao nhiêu km?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Điểm cực Bắc của An Giang nằm ở đâu?",
+        "expected_rewrite": "Điểm cực Bắc của An Giang nằm ở đâu?",
+        "actual_rewrite": "Điểm cực Bắc của tỉnh An Giang nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Còn cực Nam?",
+        "expected_rewrite": "Điểm cực Nam của An Giang nằm ở đâu?",
+        "actual_rewrite": "Cực Nam của An Giang nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 6,
+        "question": "Cực Đông thì sao?",
+        "expected_rewrite": "Điểm cực Đông của An Giang nằm ở đâu?",
+        "actual_rewrite": "Cực Đông của tỉnh An Giang nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      }
+    ]
+  },
+  {
+    "session_id": 68,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.833,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Thành phố nào lớn nhất Tây Ban Nha?",
+        "expected_rewrite": "Thành phố nào lớn nhất Tây Ban Nha?",
+        "actual_rewrite": "Thành phố nào là thành phố lớn nhất ở Tây Ban Nha?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ngoài nó ra, những khu vực đô thị lớn nào khác ở quốc gia này?",
+        "expected_rewrite": "Ngoài Madrid, những khu vực đô thị lớn nào khác ở Tây Ban Nha?",
+        "actual_rewrite": "Ngoài Madrid, những khu vực đô thị lớn nào khác ở Tây Ban Nha?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Dân số của đô thị đầu tiên mà bạn liệt kê là bao nhiêu?",
+        "expected_rewrite": "Dân số của Barcelona là bao nhiêu?",
+        "actual_rewrite": "Dân số của thành phố Barcelona là bao nhiêu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Thành phố đó nằm cạnh biển nào?",
+        "expected_rewrite": "Thành phố Barcelona nằm cạnh biển nào?",
+        "actual_rewrite": "Thành phố Barcelona nằm cạnh biển nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Tây Ban Nha trở thành một quốc gia thống nhất từ khi nào?",
+        "expected_rewrite": "Tây Ban Nha trở thành một quốc gia thống nhất từ khi nào?",
+        "actual_rewrite": "Tây Ban Nha trở thành một quốc gia thống nhất từ khi nào?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Ngôn ngữ của quốc gia này có nguồn gốc từ đâu?",
+        "expected_rewrite": "Tiếng Tây Ban Nha có nguồn gốc từ đâu?",
+        "actual_rewrite": "Ngôn ngữ của Tây Ban Nha có nguồn gốc từ đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 6,
+        "question": "Người dân nước này đến bán đảo Iberia vào năm nào?",
+        "expected_rewrite": "Người dân nước Tây Ban Nha đến bán đảo Iberia vào năm nào?",
+        "actual_rewrite": "Người dân Tây Ban Nha đến bán đảo Iberia vào năm nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      }
+    ]
+  },
+  {
+    "session_id": 74,
+    "turns": 7,
+    "graded_turns": 4,
+    "rewrite_score": 0.969,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Thời kỳ Sơ Trung Cổ chứng kiến những thay đổi lớn nào trong dân số và chính trị?",
+        "expected_rewrite": "Thời kỳ Sơ Trung Cổ chứng kiến những thay đổi lớn nào trong dân số và chính trị?",
+        "actual_rewrite": "Thời kỳ Sơ Trung Cổ đã chứng kiến những thay đổi lớn nào trong dân số và chính trị?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Người Slav đã định cư ở đâu trong thời kỳ này?",
+        "expected_rewrite": "Người Slav đã định cư ở đâu trong thời kỳ Sơ Trung Cổ?",
+        "actual_rewrite": "Người Slav đã định cư ở đâu trong thời kỳ Sơ Trung Cổ?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Trong triều đại của Justinianus, tình hình an ninh vùng Balkan như thế nào?",
+        "expected_rewrite": "Trong triều đại của Justinianus, tình hình an ninh vùng Balkan như thế nào?",
+        "actual_rewrite": "Trong triều đại của Justinianus, tình hình an ninh vùng Balkan như thế nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Vị hoàng đế này đã làm gì để bảo vệ biên giới sông Danube?",
+        "expected_rewrite": "Justinianus đã làm gì để bảo vệ biên giới sông Danube?",
+        "actual_rewrite": "Hoàng đế Justinianus đã làm gì để bảo vệ biên giới sông Danube?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Ông có những đóng góp quan trọng nào?",
+        "expected_rewrite": "Hoàng đế Justinianus có những đóng góp quan trọng nào?",
+        "actual_rewrite": "Hoàng đế Justinianus có những đóng góp quan trọng nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Tại sao một số nhà sử học chỉ trích tham vọng khôi phục Đế quốc Rôma của ông?",
+        "expected_rewrite": "Tại sao một số nhà sử học chỉ trích tham vọng khôi phục Đế quốc Rôma của Justinianus?",
+        "actual_rewrite": "Tại sao một số nhà sử học chỉ trích tham vọng khôi phục Đế quốc Rôma của vị hoàng đế này?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 6,
+        "question": "Người Slavơ đã xâm nhập bán đảo Balkan vào thời điểm nào và bằng cách nào?",
+        "expected_rewrite": "Người Slavơ đã xâm nhập bán đảo Balkan vào thời điểm nào và bằng cách nào?",
+        "actual_rewrite": "Người Slavơ đã xâm nhập bán đảo Balkan vào thời điểm nào và bằng cách nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  },
+  {
+    "session_id": 104,
+    "turns": 7,
+    "graded_turns": 3,
+    "rewrite_score": 0.917,
+    "llm_rewrote": 4,
+    "rows": [
+      {
+        "turn": 0,
+        "question": " Hán Vũ Đế đã thực hiện chính sách gì đối với các tướng bại trận?",
+        "expected_rewrite": " Hán Vũ Đế đã thực hiện chính sách gì đối với các tướng bại trận?",
+        "actual_rewrite": "Hán Vũ Đế đã thực hiện chính sách gì đối với các tướng bại trận?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": " Lý Lăng đã chiến đấu như thế nào trước khi đầu hàng?",
+        "expected_rewrite": " Lý Lăng đã chiến đấu như thế nào trước khi đầu hàng?",
+        "actual_rewrite": "Lý Lăng đã chiến đấu như thế nào trước khi đầu hàng?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 2,
+        "question": "Hán Vũ Đế đã trừng phạt gia đình này ra sao?",
+        "expected_rewrite": "Hán Vũ Đế đã trừng phạt gia đình Lý Lăng ra sao?",
+        "actual_rewrite": "Hán Vũ Đế đã trừng phạt gia đình của các tướng bại trận như thế nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 3,
+        "question": "Ngoài Lý Lăng, Hán Vũ Đế còn thực hiện những chiến dịch quân sự nào chống lại Hung Nô?",
+        "expected_rewrite": "Ngoài Lý Lăng, Hán Vũ Đế còn thực hiện những chiến dịch quân sự nào chống lại Hung Nô?",
+        "actual_rewrite": "Hán Vũ Đế đã thực hiện những chiến dịch quân sự nào khác chống lại Hung Nô, ngoài chiến dịch đối đầu với Lý Lăng?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Chính quyền nhà Hán thời vua này tổ chức ra sao?",
+        "expected_rewrite": "Chính quyền nhà Hán thời Hán Vũ Đế tổ chức ra sao?",
+        "actual_rewrite": "Chính quyền nhà Hán thời Hán Vũ Đế được tổ chức như thế nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Tư Mã Thiên có đóng góp gì cho nền sử học Trung Quốc?",
+        "expected_rewrite": "Tư Mã Thiên có đóng góp gì cho nền sử học Trung Quốc?",
+        "actual_rewrite": "Tư Mã Thiên có đóng góp gì cho nền sử học Trung Quốc?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Gia đình ông có truyền thống gì?",
+        "expected_rewrite": "Gia đình Tư Mã Thiên có truyền thống gì?",
+        "actual_rewrite": "Gia đình Tư Mã Thiên có truyền thống gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 106,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.846,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": " Khánh Ly có tên thật là gì và sinh năm bao nhiêu?",
+        "expected_rewrite": " Khánh Ly có tên thật là gì và sinh năm bao nhiêu?",
+        "actual_rewrite": "Khánh Ly có tên thật là gì và sinh năm bao nhiêu?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Bà lấy nghệ danh này từ đâu?",
+        "expected_rewrite": "Bà lấy nghệ danh Khánh Ly từ đâu?",
+        "actual_rewrite": "Khánh Ly lấy nghệ danh này từ đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Trong số những ca sĩ thể hiện nhạc Trịnh Công Sơn, bà là người thành công nhất phải không?",
+        "expected_rewrite": "Trong số những ca sĩ thể hiện nhạc Trịnh Công Sơn, Khánh Ly là người thành công nhất phải không?",
+        "actual_rewrite": "Trong số những ca sĩ thể hiện nhạc Trịnh Công Sơn, Khánh Ly là người thành công nhất phải không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "vậy ông nhạc sĩ này có bao nhiêu ca khúc?",
+        "expected_rewrite": "Trịnh Công Sơn có bao nhiêu ca khúc?",
+        "actual_rewrite": "Ông Trịnh Công Sơn có bao nhiêu ca khúc?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Ông bắt đầu sáng tác nhạc phản chiến từ khi nào?",
+        "expected_rewrite": "Trịnh Công Sơn bắt đầu sáng tác nhạc phản chiến từ khi nào?",
+        "actual_rewrite": "Trịnh Công Sơn bắt đầu sáng tác nhạc phản chiến từ khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Khánh Ly đã thu âm những album nào tại Việt Nam?",
+        "expected_rewrite": "Khánh Ly đã thu âm những album nào tại Việt Nam?",
+        "actual_rewrite": "Khánh Ly đã thu âm những album nào tại Việt Nam?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Trong đó, album nào có nhạc của Phạm Duy?",
+        "expected_rewrite": "Trong \"Biển nhớ\", \"Hạ trắng\", \"Chủ nhật buồn\", \"Tình nhớ\", \"Bên đời hiu quạnh\", \"Hà Nội Nhớ\", \"Những con mắt trần gian\" và \"Thương một người\"., album nào có nhạc của Phạm Duy?",
+        "actual_rewrite": "Trong các album do Hãng phim Phương Nam sản xuất mà Khánh Ly đã thu âm tại Việt Nam, album nào có nhạc của Phạm Duy?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.231
+      }
+    ]
+  },
+  {
+    "session_id": 122,
+    "turns": 7,
+    "graded_turns": 3,
+    "rewrite_score": 1.0,
+    "llm_rewrote": 4,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Thái Bình Dương có những vực thẳm nào sâu nhất thế giới?",
+        "expected_rewrite": "Thái Bình Dương có những vực thẳm nào sâu nhất thế giới?",
+        "actual_rewrite": "Thái Bình Dương có những vực thẳm nào sâu nhất thế giới?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Khu vực phía tây của đại dương này có những vùng biển nào đáng chú ý?",
+        "expected_rewrite": "Khu vực phía tây của Thái Bình Dương có những vùng biển nào đáng chú ý?",
+        "actual_rewrite": "Khu vực phía tây của Thái Bình Dương có những vùng biển nào đáng chú ý?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Alaska giáp với những khu vực nào?",
+        "expected_rewrite": "Alaska giáp với những khu vực nào?",
+        "actual_rewrite": "Alaska giáp với Biển Bering và Vịnh Alaska?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Dân số của bang này phân bố như thế nào?",
+        "expected_rewrite": "Dân số của bang Alaska phân bố như thế nào?",
+        "actual_rewrite": "Dân số của bang Alaska phân bố như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Trước khi người châu Âu khám phá, đã có những cuộc di cư nào đáng chú ý ở Thái Bình Dương?",
+        "expected_rewrite": "Trước khi người châu Âu khám phá, đã có những cuộc di cư nào đáng chú ý ở Thái Bình Dương?",
+        "actual_rewrite": "Trước khi người châu Âu khám phá, đã có những cuộc di cư nào đáng chú ý ở Thái Bình Dương?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Polynesia gồm bao nhiêu đảo?",
+        "expected_rewrite": "Polynesia gồm bao nhiêu đảo?",
+        "actual_rewrite": "Polynesia gồm bao nhiêu đảo?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Người ở đây có những đặc điểm văn hóa nào chung?",
+        "expected_rewrite": "Người Polynesia có những đặc điểm văn hóa nào chung?",
+        "actual_rewrite": "Người ở Polynesia có những đặc điểm văn hóa nào chung?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 130,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.95,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Fernando Alonso giành chiến thắng đầu tiên trong sự nghiệp ở chặng đua nào?",
+        "expected_rewrite": "Fernando Alonso giành chiến thắng đầu tiên trong sự nghiệp ở chặng đua nào?",
+        "actual_rewrite": "Fernando Alonso giành chiến thắng đầu tiên trong sự nghiệp ở chặng đua nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Hamilton và anh  từng là đồng đội tại đội đua nào?",
+        "expected_rewrite": "Hamilton và Alonso từng là đồng đội tại đội đua nào?",
+        "actual_rewrite": "Hamilton và Fernando Alonso từng là đồng đội tại đội đua nào?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Cuối mùa giải 2007, 2 người có cùng số điểm không?",
+        "expected_rewrite": "Cuối mùa giải 2007, Alonso và Hamilton có cùng số điểm không?",
+        "actual_rewrite": "Cuối mùa giải 2007, Fernando Alonso và Hamilton có cùng số điểm không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Nếu cùng điểm số, tại sao Alonso lại xếp dưới?",
+        "expected_rewrite": "Nếu cùng điểm số tại cuối mùa giải 2007, tại sao Alonso lại xếp dưới Hamilton?",
+        "actual_rewrite": "Nếu Hamilton và Alonso đều có 109 điểm vào cuối mùa giải 2007, tại sao Alonso lại xếp dưới?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 4,
+        "question": "Cuộc cạnh tranh giữa hai tay đua đã ảnh hưởng đến McLaren thế nào?",
+        "expected_rewrite": "Cuộc cạnh tranh giữa Alonso và Hamilton đã ảnh hưởng đến McLaren thế nào?",
+        "actual_rewrite": "Cuộc cạnh tranh giữa Alonso và tay đua còn lại đã ảnh hưởng đến McLaren như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 5,
+        "question": "Raikkonen đã giành chức vô địch năm 2007 với cách biệt bao nhiêu điểm?",
+        "expected_rewrite": "Raikkonen đã giành chức vô địch năm 2007 với cách biệt bao nhiêu điểm?",
+        "actual_rewrite": "Raikkonen đã giành chức vô địch năm 2007 với cách biệt bao nhiêu điểm?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Khi trở lại Ferrari lần hai, tay đua đó đã có cơ hội chiến thắng đầu tiên ở chặng đua nào?",
+        "expected_rewrite": "Khi trở lại Ferrari lần hai, Raikkonen đã có cơ hội chiến thắng đầu tiên ở chặng đua nào?",
+        "actual_rewrite": "Khi Kimi Raikkonen trở lại Ferrari lần hai, anh ấy đã có cơ hội chiến thắng đầu tiên ở chặng đua nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 149,
+    "turns": 7,
+    "graded_turns": 4,
+    "rewrite_score": 0.938,
+    "llm_rewrote": 5,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Gauteng có nghĩa là gì?",
+        "expected_rewrite": "Gauteng có nghĩa là gì?",
+        "actual_rewrite": "Gauteng có nghĩa là gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Tỉnh này được thành lập khi nào?",
+        "expected_rewrite": "Gauteng được thành lập khi nào?",
+        "actual_rewrite": "Gauteng được thành lập khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": " Thành phố lớn nhất của Gauteng là đâu?",
+        "expected_rewrite": " Thành phố lớn nhất của Gauteng là đâu?",
+        "actual_rewrite": "Thành phố lớn nhất của Gauteng là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Còn thủ đô hành chính của Nam Phi thì sao?",
+        "expected_rewrite": "Còn thủ đô hành chính của Nam Phi là đâu?",
+        "actual_rewrite": "Thủ đô hành chính của Nam Phi là gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Johannesburg có khí hậu như thế nào?",
+        "expected_rewrite": "Johannesburg có khí hậu như thế nào?",
+        "actual_rewrite": "Johannesburg có khí hậu như thế nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Thành phố này có thường có tuyết rơi không?",
+        "expected_rewrite": "Thành phố Johannesburg có thường có tuyết rơi không?",
+        "actual_rewrite": "Johannesburg có thường có tuyết rơi không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 6,
+        "question": "Nó có biệt danh gì?",
+        "expected_rewrite": "Johannesburg có biệt danh gì?",
+        "actual_rewrite": "Johannesburg có biệt danh gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 175,
+    "turns": 7,
+    "graded_turns": 6,
+    "rewrite_score": 0.786,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Triệu Độ thuộc huyện nào?",
+        "expected_rewrite": "Triệu Độ thuộc huyện nào?",
+        "actual_rewrite": "Triệu Độ thuộc huyện nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Tỉnh nào?",
+        "expected_rewrite": "Triệu Độ thuộc tỉnh nào?",
+        "actual_rewrite": "Triệu Độ thuộc tỉnh nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Địa hình của huyện này như thế nào?",
+        "expected_rewrite": "Địa hình của huyện Triệu Phong như thế nào?",
+        "actual_rewrite": "Địa hình của huyện Triệu Phong như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Vùng gò đồi chiếm bao nhiêu phần trăm diện tích?",
+        "expected_rewrite": "Vùng gò đồi (địa hình huyện Triệu Phong) chiếm bao nhiêu phần trăm diện tích?",
+        "actual_rewrite": "Vùng gò đồi của huyện Triệu Phong chiếm bao nhiêu phần trăm diện tích?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.875
+      },
+      {
+        "turn": 4,
+        "question": "Còn đồng bằng?",
+        "expected_rewrite": "Vùng đồng bằng (địa hình huyện Triệu Phong) chiếm bao nhiêu phần trăm diện tích?",
+        "actual_rewrite": "Đồng bằng chiếm bao nhiêu phần trăm diện tích đất tự nhiên của huyện Triệu Phong?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.8
+      },
+      {
+        "turn": 5,
+        "question": "Còn vùng cát thì sao?",
+        "expected_rewrite": "Vùng cát ven biển (địa hình huyện Triệu Phong) chiếm bao nhiêu phần trăm diện tích?",
+        "actual_rewrite": "Vùng cát chiếm bao nhiêu phần trăm diện tích đất tự nhiên?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.444
+      },
+      {
+        "turn": 6,
+        "question": "Đường bở biển của huyện dài bao nhiêu cây số?",
+        "expected_rewrite": "Đường bở biển của huyện Triệu Phong dài bao nhiêu cây số?",
+        "actual_rewrite": "Đường bờ biển của huyện dài bao nhiêu cây số, dựa trên dải cát ở phía Đông huyện dài trên 15 km?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      }
+    ]
+  },
+  {
+    "session_id": 206,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.739,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Những album của Thái Chạy ở Trung tâm Mimosa là gì?",
+        "expected_rewrite": "Những album của Thái Chạy ở Trung tâm Mimosa là gì?",
+        "actual_rewrite": "Những album của Thái Chạy ở Trung tâm Mimosa là gì?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Những ca khúc nào hát chung với Hương Lan?",
+        "expected_rewrite": "Những ca khúc nào của Thái Châu ở Trung tâm Mimosa hát chung với Hương Lan?",
+        "actual_rewrite": "Những ca khúc nào được hát chung với Hương Lan?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.429
+      },
+      {
+        "turn": 2,
+        "question": "Còn Hương Lan thì hát chung với ông những ca khúc nào?",
+        "expected_rewrite": "Còn Hương Lan thì hát chung với Thái Châu những ca khúc nào?",
+        "actual_rewrite": "Hương Lan hát chung với tôi những ca khúc nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      },
+      {
+        "turn": 3,
+        "question": "Trong Biển Tình Music có Phi Nhung tham gia không?",
+        "expected_rewrite": "Trong Biển Tình Music có Phi Nhung tham gia không?",
+        "actual_rewrite": "Trong chương trình Biển Tình Music, Phi Nhung có tham gia không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "Đó là ca khúc nào?",
+        "expected_rewrite": "Trong Biển Tình Music có Phi Nhung tham gia những ca khúc nào?",
+        "actual_rewrite": "Biển Tình Music là ca khúc nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 5,
+        "question": "Thái Châu hát với cô ca sỹ này khi nào?",
+        "expected_rewrite": "Thái Châu hát với  Phi Nhung  khi nào?",
+        "actual_rewrite": "Thái Châu hát với Phi Nhung khi nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Nghệ danh của khán giả đạt cho cô là gì?",
+        "expected_rewrite": "Nghệ danh của khán giả đạt cho Phi Nhung là gì?",
+        "actual_rewrite": "Nghệ danh mà khán giả đặt cho Phi Nhung là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 210,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.933,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Puerto Rico thuộc sở hữu của ai?",
+        "expected_rewrite": "Puerto Rico thuộc sở hữu của ai?",
+        "actual_rewrite": "Puerto Rico thuộc sở hữu của ai?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Nằm ở đâu?",
+        "expected_rewrite": "Puerto Rico nằm ở đâu?",
+        "actual_rewrite": "Puerto Rico nằm ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Hoa Kỳ giành được lãnh thổ này từ ai?",
+        "expected_rewrite": "Hoa Kỳ giành được lãnh thổ Puerto Rico từ ai?",
+        "actual_rewrite": "Hoa Kỳ giành được Puerto Rico từ ai?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Vậy ban đầu đất nước này có ai ở đó?",
+        "expected_rewrite": "Vậy ban đầu đất nước  Puerto Rico  có ai ở đó?",
+        "actual_rewrite": "Ban đầu, ai đã sinh sống ở Puerto Rico?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 4,
+        "question": "Khi nào nó bị Tây Ban Nha xâm chiếm?",
+        "expected_rewrite": "Khi nào Puerto Rico bị Tây Ban Nha xâm chiếm?",
+        "actual_rewrite": "Khi nào Puerto Rico bị Tây Ban Nha xâm chiếm?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Năm 1826 thì Tây Ban Nha có bao nhiêu thuộc địa tại châu Mỹ ?",
+        "expected_rewrite": "Năm 1826 thì Tây Ban Nha có bao nhiêu thuộc địa tại châu Mỹ ?",
+        "actual_rewrite": "Năm 1826, Tây Ban Nha có bao nhiêu thuộc địa tại châu Mỹ?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 6,
+        "question": "Tại sao vậy?",
+        "expected_rewrite": "Tại sao đến năm 1826, thuộc địa của Tây Ban Nha tại châu Mỹ chỉ còn lại Cuba và Puerto Rico.?",
+        "actual_rewrite": "Tại sao vào năm 1826, thuộc địa của Tây Ban Nha tại châu Mỹ chỉ còn lại Cuba và Puerto Rico?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 228,
+    "turns": 7,
+    "graded_turns": 5,
+    "rewrite_score": 0.833,
+    "llm_rewrote": 7,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "The Beatles có mấy thành viên?",
+        "expected_rewrite": "The Beatles có mấy thành viên?",
+        "actual_rewrite": "The Beatles có bao nhiêu thành viên?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ban nhạc được thành lập ở đâu?",
+        "expected_rewrite": "Ban nhạc The Beatles được thành lập ở đâu?",
+        "actual_rewrite": "Ban nhạc The Beatles được thành lập ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Ở thành phố này có bao nhiêu đĩa đơn hạng nhất?",
+        "expected_rewrite": "Ở thành phố  Liverpool có bao nhiêu đĩa đơn hạng nhất?",
+        "actual_rewrite": "Ở Liverpool có bao nhiêu đĩa đơn hạng nhất?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 3,
+        "question": "The Beatles xây dựng danh tiếng  như thế nào?",
+        "expected_rewrite": "The Beatles xây dựng danh tiếng  như thế nào?",
+        "actual_rewrite": "The Beatles xây dựng danh tiếng như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 4,
+        "question": "'Rubber Soul của nhóm nhạc này được phát hành vào tháng mấy?",
+        "expected_rewrite": "'Rubber Soul của nhóm nhạc The Beatles được phát hành vào tháng mấy?",
+        "actual_rewrite": "Rubber Soul của The Beatles được phát hành vào tháng mấy?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 5,
+        "question": "Đây là album thứ mấy?",
+        "expected_rewrite": "Rubber Soul là album thứ mấy của nhóm nhạc The Beatles?",
+        "actual_rewrite": "Rubber Soul là album thứ mấy của The Beatles?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.667
+      },
+      {
+        "turn": 6,
+        "question": "Do ai sản xuất?",
+        "expected_rewrite": "Rubber Soul ai sản xuất?",
+        "actual_rewrite": "Ai là người sản xuất album Rubber Soul của The Beatles?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 231,
+    "turns": 7,
+    "graded_turns": 6,
+    "rewrite_score": 1.0,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Eva là ai?",
+        "expected_rewrite": "Eva là ai?",
+        "actual_rewrite": "Eva là ai?",
+        "llm_rewritten": false,
+        "route": "DIRECTORY",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Bà được Adam gọi là gì?",
+        "expected_rewrite": "Eva được Adam gọi là gì?",
+        "actual_rewrite": "Eva được Adam gọi là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Bà đã phạm tội gì?",
+        "expected_rewrite": "Eva đã phạm tội gì?",
+        "actual_rewrite": "Eva đã phạm tội gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Kể tên các con của bà.",
+        "expected_rewrite": "Kể tên các con của Eva.",
+        "actual_rewrite": "Kể tên các con của bà mẹ của chúng sinh.",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Seth là con thứ mấy?",
+        "expected_rewrite": "Seth là con thứ mấy của Eva?",
+        "actual_rewrite": "Seth là con thứ mấy của Eva?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Tên của ông nghĩa là gì?",
+        "expected_rewrite": "Tên của Seth nghĩa là gì?",
+        "actual_rewrite": "Tên của Seth nghĩa là gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Hoàn cảnh Eva sinh ra ông như thế nào?",
+        "expected_rewrite": "Hoàn cảnh Eva sinh ra Seth như thế nào?",
+        "actual_rewrite": "Hoàn cảnh Eva sinh ra Seth như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 239,
+    "turns": 7,
+    "graded_turns": 6,
+    "rewrite_score": 0.708,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Diablo được phát hành trên PlayStation vào năm nào?",
+        "expected_rewrite": "Diablo được phát hành trên PlayStation vào năm nào?",
+        "actual_rewrite": "Diablo được phát hành trên PlayStation vào năm nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Phiên bản này có gì khác so với chơi trên máy PC?",
+        "expected_rewrite": "Phiên bản Diablo được phát hành trên PlayStation có gì khác so với chơi trên máy PC?",
+        "actual_rewrite": "Phiên bản Diablo trên PlayStation có gì khác so với chơi trên máy PC?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 2,
+        "question": "Game này có bản mở rộng nào phát hành 1997 không?",
+        "expected_rewrite": "Game Diablo có bản mở rộng nào phát hành 1997 không?",
+        "actual_rewrite": "Diablo có bản mở rộng nào được phát hành vào năm 1997 không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.833
+      },
+      {
+        "turn": 3,
+        "question": "Nhà phát hành này là của quốc gia nào?",
+        "expected_rewrite": "Blizzard Entertainment là của quốc gia nào?",
+        "actual_rewrite": "Nhà phát hành của bản mở rộng Diablo: Hellfire là của quốc gia nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.333
+      },
+      {
+        "turn": 4,
+        "question": "Trụ sở công ty ở đâu?",
+        "expected_rewrite": "Trụ sở Blizzard Entertainment ở đâu?",
+        "actual_rewrite": "Trụ sở của Blizzard Entertainment ở đâu?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Ai thành lập nó?",
+        "expected_rewrite": "Ai thành lập Blizzard Entertainment?",
+        "actual_rewrite": "Ai thành lập Blizzard Entertainment?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 6,
+        "question": "Ban đầu tên công ty là gì?",
+        "expected_rewrite": "Ban đầu tên công ty Blizzard Entertainment là gì?",
+        "actual_rewrite": "Tên ban đầu của công ty là gì?",
+        "llm_rewritten": true,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.333
+      }
+    ]
+  },
+  {
+    "session_id": 0,
+    "turns": 6,
+    "graded_turns": 4,
+    "rewrite_score": 0.875,
+    "llm_rewrote": 6,
+    "rows": [
+      {
+        "turn": 0,
+        "question": " Hệ thống truyền hình của Berlusconi có vai trò gì trong sự nghiệp chính trị của ông?",
+        "expected_rewrite": " Hệ thống truyền hình của Berlusconi có vai trò gì trong sự nghiệp chính trị của ông?",
+        "actual_rewrite": "Hệ thống truyền hình của Berlusconi có vai trò gì trong sự nghiệp chính trị của Berlusconi?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Ông đã đắc cử vào năm 2001 như thế nào?",
+        "expected_rewrite": "Berlusconi đã đắc cử vào năm 2001 như thế nào?",
+        "actual_rewrite": "Berlusconi đã đắc cử vào năm 2001 như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Giai đoạn thập niên 1990, tình hình chính trị Ý có gì đáng chú ý?",
+        "expected_rewrite": "Giai đoạn thập niên 1990, tình hình chính trị Ý có gì đáng chú ý?",
+        "actual_rewrite": "Trong giai đoạn thập niên 1990, tình hình chính trị của Ý có gì đáng chú ý?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 3,
+        "question": "Ông có vai trò gì trong bối cảnh chính trị thời kỳ đó?",
+        "expected_rewrite": "Berlusconi có vai trò gì trong bối cảnh chính trị thời kỳ thập niên 1990 tại Ý?",
+        "actual_rewrite": "Berlusconi có vai trò gì trong bối cảnh chính trị thời kỳ đó?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.5
+      },
+      {
+        "turn": 4,
+        "question": "Đến năm 2009, đời sống cá nhân của ông có biến động gì?",
+        "expected_rewrite": "Đến năm 2009, đời sống cá nhân của Berlusconi có biến động gì?",
+        "actual_rewrite": "Đến năm 2009, đời sống cá nhân của Silvio Berlusconi có biến động gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Chính phủ của ông có động thái nào với cuộc khủng hoảng rác thải ở Napoli?",
+        "expected_rewrite": "Chính phủ Berlusconi có động thái nào với cuộc khủng hoảng rác thải ở Napoli?",
+        "actual_rewrite": "Chính phủ của Silvio Berlusconi có động thái nào với cuộc khủng hoảng rác thải ở Napoli?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 14,
+    "turns": 6,
+    "graded_turns": 4,
+    "rewrite_score": 1.0,
+    "llm_rewrote": 4,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Leeteuk từng dẫn những chương trình nào?",
+        "expected_rewrite": "Leeteuk từng dẫn những chương trình nào?",
+        "actual_rewrite": "Leeteuk từng dẫn những chương trình nào?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Anh ấy có phải là thành viên đầu tiên của Super Junior được SM Entertainment thu nhận không?",
+        "expected_rewrite": "Leeteuk có phải là thành viên đầu tiên của Super Junior được SM Entertainment thu nhận không?",
+        "actual_rewrite": "Leeteuk có phải là thành viên đầu tiên của Super Junior được SM Entertainment thu nhận không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Anh ấy đã từng biểu diễn song ca chưa?",
+        "expected_rewrite": "Leeteuk đã từng biểu diễn song ca chưa?",
+        "actual_rewrite": "Leeteuk đã từng biểu diễn song ca chưa?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 3,
+        "question": "Trước khi ra mắt, anh ấy đã gia nhập SM Entertainment như thế nào?",
+        "expected_rewrite": "Trước khi ra mắt, Leeteuk đã gia nhập SM Entertainment như thế nào?",
+        "actual_rewrite": "Trước khi ra mắt, Leeteuk đã gia nhập SM Entertainment như thế nào?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 4,
+        "question": "Super Junior có bao nhiêu thành viên khi ra mắt?",
+        "expected_rewrite": "Super Junior có bao nhiêu thành viên khi ra mắt?",
+        "actual_rewrite": "Super Junior có bao nhiêu thành viên khi ra mắt?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 5,
+        "question": "Ai là thành viên thứ 13?",
+        "expected_rewrite": "Ai  là thành viên thứ 13 của Super Junior?",
+        "actual_rewrite": "Thành viên thứ 13 của Super Junior là ai?",
+        "llm_rewritten": true,
+        "route": "DIRECTORY",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      }
+    ]
+  },
+  {
+    "session_id": 28,
+    "turns": 6,
+    "graded_turns": 4,
+    "rewrite_score": 0.838,
+    "llm_rewrote": 3,
+    "rows": [
+      {
+        "turn": 0,
+        "question": "Ai vào vai Brendan \"Brando\" Dorff trong My Boys?",
+        "expected_rewrite": "Ai vào vai Brendan \"Brando\" Dorff trong My Boys?",
+        "actual_rewrite": "Ai vào vai Brendan \"Brando\" Dorff trong My Boys?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      },
+      {
+        "turn": 1,
+        "question": "Anh ấy là ai trong phim?",
+        "expected_rewrite": "Reid Scott là ai trong phim?",
+        "actual_rewrite": "Reid Scott là ai trong phim?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 2,
+        "question": "Sau này anh ấy có tiếp tục làm ở John's Club không?",
+        "expected_rewrite": "Sau này Reid Scott  có tiếp tục làm ở John's Club không?",
+        "actual_rewrite": "Sau này Brendan \"Brando\" Dorff có tiếp tục làm ở John's Club không?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 0.6
+      },
+      {
+        "turn": 3,
+        "question": "Còn ai đóng vai chính trong phim?",
+        "expected_rewrite": "Còn ai đóng vai chính trong phim My Boys?",
+        "actual_rewrite": "Còn ai đóng vai chính trong phim?",
+        "llm_rewritten": false,
+        "route": "DOC_ONLY",
+        "needs_rewrite": true,
+        "rewrite_score": 0.75
+      },
+      {
+        "turn": 4,
+        "question": "Nhân vật đó làm nghề gì?",
+        "expected_rewrite": "Mike Callahan làm nghề gì?",
+        "actual_rewrite": "Mike Callahan làm nghề gì?",
+        "llm_rewritten": true,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": true,
+        "rewrite_score": 1.0
+      },
+      {
+        "turn": 5,
+        "question": "Reid Scott sinh năm bao nhiêu?",
+        "expected_rewrite": "Reid Scott sinh năm bao nhiêu?",
+        "actual_rewrite": "Reid Scott sinh năm bao nhiêu?",
+        "llm_rewritten": false,
+        "route": "OUT_OF_SCOPE",
+        "needs_rewrite": false,
+        "rewrite_score": null
+      }
+    ]
+  }
+]

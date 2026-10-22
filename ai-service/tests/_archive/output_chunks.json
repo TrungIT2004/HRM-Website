@@ -1,0 +1,271 @@
+[
+  {
+    "chunk_id": "51f39616-ffb7-46ed-8eed-234599bd3374",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx",
+    "chunk_type": "TEXT",
+    "page_number": null,
+    "content": "QUY CHẾ KỶ LUẬT LAO ĐỘNG VÀ CHẾ ĐỘ PHÚC LỢI NĂM 2024",
+    "summary": "Đây là quy chế quy định kỷ luật lao động và các chế độ phúc lợi dành cho năm 2024.",
+    "keywords": [
+      "Quy chế",
+      "Kỷ luật lao động",
+      "Chế độ phúc lợi",
+      "2024",
+      "Nhân sự",
+      "Chính sách công ty"
+    ],
+    "hypothetical_questions": [
+      "Tôi có thể xem quy chế kỷ luật lao động và chế độ phúc lợi năm 2024 ở đâu?",
+      "Những hành vi nào bị coi là vi phạm kỷ luật theo quy chế này?",
+      "Chế độ phúc lợi năm 2024 bao gồm những quyền lợi nào?",
+      "Bộ phận nào chịu trách nhiệm thực thi quy chế kỷ luật và phúc lợi?",
+      "Nếu tôi muốn khiếu nại về vi phạm kỷ luật, quy trình như thế nào?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  },
+  {
+    "chunk_id": "37483ce1-9634-4771-9e04-1f688ee3a299",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG I: QUY ĐỊNH CHUNG VỀ THỜI GIAN LÀM VIỆC",
+    "chunk_type": "TEXT",
+    "page_number": null,
+    "content": "Điều 1: Thời gian làm việc tiêu chuẩn và chấm công\n1. Toàn bộ cán bộ nhân viên làm việc 8 giờ/ngày từ Thứ 2 đến Thứ 6. Giờ làm việc buổi sáng từ 08:30 đến 12:00, buổi chiều từ 13:30 đến 18:00.\n2. Nhân viên có trách nhiệm chấm công bằng ứng dụng nhận diện khuôn mặt (Face Recognition) hoặc trên Website HRM khi đến văn phòng và trước khi ra về.",
+    "summary": "Nhân viên làm việc 8 giờ mỗi ngày từ Thứ 2 đến Thứ 6 với giờ làm sáng 08:30‑12:00 và chiều 13:30‑18:00, và phải chấm công bằng ứng dụng nhận diện khuôn mặt hoặc trên website HRM khi đến và trước khi ra về.",
+    "keywords": [
+      "Thời gian làm việc",
+      "8 giờ/ngày",
+      "Thứ 2‑Thứ 6",
+      "Face Recognition",
+      "Website HRM",
+      "Chấm công"
+    ],
+    "hypothetical_questions": [
+      "Tôi phải làm việc bao nhiêu giờ mỗi ngày và vào những ngày nào?",
+      "Giờ làm việc buổi sáng và buổi chiều cụ thể là mấy giờ?",
+      "Cách chấm công tại công ty như thế nào?",
+      "Có bắt buộc phải dùng Face Recognition để chấm công không?",
+      "Tôi có cần chấm công trước khi ra về không?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  },
+  {
+    "chunk_id": "f27e341a-0c23-4b67-ac3d-916b6495ea87",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT",
+    "chunk_type": "TEXT",
+    "page_number": null,
+    "content": "Điều 2: Xử lý vi phạm đi làm muộn và nghỉ không phép\nNgười lao động đi muộn sau 08:35 sẽ bị tính là đi muộn. Mức độ xử lý vi phạm được quy định chi tiết trong bảng biểu dưới đây:",
+    "summary": "Nhân viên đi làm sau 08:35 được xem là đi muộn và sẽ bị xử lý vi phạm theo mức độ quy định trong bảng biểu.",
+    "keywords": [
+      "Xử lý vi phạm",
+      "Đi muộn",
+      "Nghỉ không phép",
+      "08:35",
+      "bảng xử lý",
+      "Chương II",
+      "Nhân sự"
+    ],
+    "hypothetical_questions": [
+      "Tôi có bị phạt nếu đến công ty sau 08:35 không?",
+      "Mức độ xử lý vi phạm đi muộn được quy định như thế nào?",
+      "Có hình phạt nào cho việc nghỉ không phép không?",
+      "Bảng biểu xử lý vi phạm đi muộn và nghỉ không phép nằm ở đâu?",
+      "Có ngoại lệ nào cho việc tính thời gian đi muộn không?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  },
+  {
+    "chunk_id": "d8039190-8ada-49fe-b063-a278a1e6257e",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG II: XỬ LÝ VI PHẠM KỶ LUẬT (Bảng biểu)",
+    "chunk_type": "TABLE",
+    "page_number": null,
+    "content": "**Bảng biểu quy định**\n\n| Hành vi vi phạm | Vi phạm lần 1 | Vi phạm lần 2 | Vi phạm từ lần 3 trở lên |\n| --- | --- | --- | --- |\n| Đi muộn từ 5 - 15 phút | Nhắc nhở nội bộ | Trừ 50.000 VNĐ vào phụ cấp | Trừ 100.000 VNĐ / lần |\n| Đi muộn trên 30 phút | Trừ 0.5 ngày công | Trừ 1 ngày công | Họp kỷ luật khiển trách |\n| Tự ý nghỉ việc không phép | Cắt thưởng tháng | Trừ 2 ngày lương | Xem xét sa thải theo luật |",
+    "summary": "Bảng quy định mức xử lý kỷ luật cho các vi phạm như đi muộn và tự ý nghỉ việc không phép, với các hình phạt tăng dần từ nhắc nhở tới trừ lương và quyết định sa thải.",
+    "keywords": [
+      "vi phạm",
+      "đi muộn",
+      "tự ý nghỉ việc không phép",
+      "trừ lương",
+      "kỷ luật",
+      "họp kỷ luật"
+    ],
+    "hypothetical_questions": [
+      "Nếu tôi đến muộn 10 phút lần đầu sẽ bị xử lý như thế nào?",
+      "Khi đi muộn trên 30 phút lần thứ hai, công ty sẽ trừ bao nhiêu ngày công?",
+      "Hình phạt cho việc tự ý nghỉ việc không phép lần ba là gì?",
+      "Có bị cắt thưởng tháng không nếu tôi chỉ đi muộn 5 phút?",
+      "Khi vi phạm từ lần ba trở lên, công ty sẽ tổ chức họp kỷ luật như thế nào?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  },
+  {
+    "chunk_id": "7c04f80d-c806-4961-a471-80adb54995d3",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT",
+    "chunk_type": "TEXT",
+    "page_number": null,
+    "content": "Điều 3: Chế độ kết hôn, thai sản và hiếu hỷ\n1. Nhân viên chính thức kết hôn được nghỉ 03 ngày có hưởng nguyên lương theo luật lao động.\n2. Công ty hỗ trợ tiền mừng và quà chúc mừng theo bảng phúc lợi ban hành:",
+    "summary": "Nhân viên chính thức khi kết hôn được nghỉ 3 ngày có hưởng nguyên lương và công ty hỗ trợ tiền mừng cùng quà theo bảng phúc lợi.",
+    "keywords": [
+      "Chế độ kết hôn",
+      "Thai sản",
+      "Hiếu hỷ",
+      "Ngày nghỉ có nguyên lương",
+      "Tiền mừng",
+      "Quà chúc mừng",
+      "Nhân viên chính thức"
+    ],
+    "hypothetical_questions": [
+      "Khi kết hôn, tôi được nghỉ bao nhiêu ngày và có nhận nguyên lương không?",
+      "Công ty có hỗ trợ tiền mừng và quà gì cho dịp cưới?",
+      "Chế độ thai sản và hiếu hỷ được quy định như thế nào trong công ty?",
+      "Có yêu cầu gì để được hưởng ngày nghỉ có nguyên lương khi kết hôn không?",
+      "Bảng phúc lợi công ty quy định mức hỗ trợ tiền mừng và quà như thế nào?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  },
+  {
+    "chunk_id": "3d4253fd-cff8-470f-8501-272ed01b374e",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT (Bảng biểu)",
+    "chunk_type": "TABLE",
+    "page_number": null,
+    "content": "**Bảng biểu quy định**\n\n| Sự kiện | Số ngày nghỉ có lương | Mức tiền mừng từ Quỹ Công đoàn |\n| --- | --- | --- |\n| Nhân viên kết hôn | 03 ngày | 2.000.000 VNĐ + Quà lưu niệm |\n| Con của nhân viên kết hôn | 01 ngày | 1.000.000 VNĐ |\n| Nhân viên nữ sinh con | 06 tháng (theo BHXH) | 3.000.000 VNĐ + 01 giỏ quà mẹ bé |",
+    "summary": "Bảng quy định số ngày nghỉ có lương và mức trợ cấp tài chính từ Quỹ Công đoàn cho các sự kiện như nhân viên kết hôn, con nhân viên kết hôn, và sinh con của nhân viên nữ.",
+    "keywords": [
+      "Ngày nghỉ có lương",
+      "Quỹ Công đoàn",
+      "Kết hôn",
+      "Sinh con",
+      "Trợ cấp tài chính",
+      "Nhân viên nữ",
+      "Con của nhân viên"
+    ],
+    "hypothetical_questions": [
+      "Tôi được nghỉ bao nhiêu ngày có lương khi kết hôn?",
+      "Quỹ Công đoàn sẽ hỗ trợ tài chính bao nhiêu cho con tôi khi tôi kết hôn?",
+      "Nhân viên nữ sinh con sẽ được nghỉ bao lâu và nhận khoản tiền hỗ trợ nào?",
+      "Có quà lưu niệm hoặc Giỏ quà mẹ bé trong chế độ nghỉ đặc biệt không?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  },
+  {
+    "chunk_id": "2c693c49-7d33-4575-be8e-4a8c957c5039",
+    "document_name": "sample_policy.docx",
+    "document_id": null,
+    "breadcrumb": "sample_policy.docx > CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT",
+    "chunk_type": "TEXT",
+    "page_number": null,
+    "content": "CHƯƠNG III: CHẾ ĐỘ PHÚC LỢI VÀ NGHỈ PHÉP ĐẶC BIỆT",
+    "summary": "Chương III quy định các chế độ phúc lợi và các loại nghỉ phép đặc biệt dành cho nhân viên công ty.",
+    "keywords": [
+      "Chế độ phúc lợi",
+      "Nghỉ phép đặc biệt",
+      "Chương III",
+      "Quy định nội bộ",
+      "Nhân viên",
+      "Quyền lợi",
+      "Chính sách công ty"
+    ],
+    "hypothetical_questions": [
+      "Công ty có những loại nghỉ phép đặc biệt nào?",
+      "Làm sao để được hưởng các chế độ phúc lợi được quy định trong chương III?",
+      "Những đối tượng nhân viên nào được áp dụng chế độ phúc lợi này?",
+      "Quy trình đề nghị nghỉ phép đặc biệt tại công ty là gì?",
+      "Có giới hạn thời gian hay số ngày cho mỗi loại nghỉ phép đặc biệt không?"
+    ],
+    "allowed_jobs": [
+      "ROLE_EMPLOYEE",
+      "ROLE_MANAGER",
+      "ROLE_ADMIN"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ],
+    "allowed_roles": [
+      "ALL"
+    ],
+    "content_vector": null,
+    "questions_vector": null
+  }
+]

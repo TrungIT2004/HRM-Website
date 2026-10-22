@@ -42,7 +42,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000", "http://127.0.0.1:3000"));
+        config.setAllowedOriginPatterns(List.of(
+            "http://localhost:[*]",
+            "http://127.0.0.1:[*]",
+            "https://*.trycloudflare.com"
+        ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
@@ -77,19 +81,6 @@ public class SecurityConfig {
 
             
             .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-            
-            // // Route permissions
-            // .authorizeHttpRequests(auth -> auth
-            //     .requestMatchers(
-            //         "/auth/send-code",
-            //         "/auth/login",
-            //         "/auth/register",
-            //         "/auth/auto-login",
-            //         "/auth/logout",
-            //         "/api/v1/posts/**"
-            //     ).permitAll()
-            //     .anyRequest().authenticated()
-            // )
 
             .addFilterBefore(
                 jwtAuthFilter,

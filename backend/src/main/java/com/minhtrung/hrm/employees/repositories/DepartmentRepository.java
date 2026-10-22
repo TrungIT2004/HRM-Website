@@ -12,6 +12,7 @@ import com.minhtrung.hrm.employees.entities.Department;
 
 public interface DepartmentRepository extends JpaRepository<Department, UUID> {
     Optional<Department> findByName(String department);
+    boolean existsByName(String name);
 
     @Query("""
         SELECT d.departmentId

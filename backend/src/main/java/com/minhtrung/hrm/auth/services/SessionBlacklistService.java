@@ -29,9 +29,13 @@ public class SessionBlacklistService {
         if (sessionId == null) {
             return;
         }
-        String key = BLACKLIST_KEY_PREFIX + sessionId;
-        log.info("Đưa phiên làm việc vào Redis blacklist trong {} phút. SessionId: {}", durationMinutes, sessionId);
-        redisTemplate.opsForValue().set(key, "true", durationMinutes, TimeUnit.MINUTES);
+        try {
+            String key = BLACKLIST_KEY_PREFIX + sessionId;
+            log.info("Đưa phiên làm việc vào Redis blacklist trong {} phút. SessionId: {}", durationMinutes, sessionId);
+            redisTemplate.opsForValue().set(key, "true", durationMinutes, TimeUnit.MINUTES);
+        } catch (Exception e) {
+            log.warn("Redis không khả dụng khi lưu blacklist session {}: {}", sessionId, e.getMessage());
+        }
     }
 
     /**
@@ -44,7 +48,12 @@ public class SessionBlacklistService {
         if (sessionId == null) {
             return false;
         }
-        String key = BLACKLIST_KEY_PREFIX + sessionId;
-        return Boolean.TRUE.equals(redisTemplate.hasKey(key));
+        try {
+            String key = BLACKLIST_KEY_PREFIX + sessionId;
+            return Boolean.TRUE.equals(redisTemplate.hasKey(key));
+        } catch (Exception e) {
+            log.warn("Redis không khả dụng khi kiểm tra blacklist session, cho phép tiếp tục: {}", e.getMessage());
+            return false;
+        }
     }
 }

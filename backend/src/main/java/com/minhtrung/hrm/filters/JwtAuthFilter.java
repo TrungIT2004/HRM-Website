@@ -34,20 +34,25 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private String secretAccessKey;
 
     private static final List<String> PROTECTED_PATHS = List.of(
-        "/api/v1/posts",
-        "/api/v1/post-reaction",
-        "/api/v1/comments",
-        "/api/v1/comment-reaction",
-        "/api/v1/shares",
-        "/api/v1/friends",
-        "/api/v1/notifications",
-        
         "/api/attendances",
         "/api/leave",
         "/api/overtime",
         "/api/employees",
                         
-        "/api/payrolls"
+        "/api/payrolls",
+        "/api/dashboard",
+        "/api/work-shifts",
+        "/api/departments",
+        "/api/jobs",
+        "/api/resignations",
+        "/api/resignation",
+        "/auth/change-password",
+        "/api/admin",
+        "/api/ai",
+        "/api/documents",
+        "/api/assets",
+        "/api/it-tickets",
+        "/api/performance-reviews"
     );
 
     JwtAuthFilter(JwtService jwtService, ClientInfoService clientInfoService,

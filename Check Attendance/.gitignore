@@ -1,4 +1,4 @@
-﻿# Virtual Environment
+# Virtual Environment
 venv/
 .venv/
 env/
@@ -8,6 +8,7 @@ ENV/
 __pycache__/
 *.py[cod]
 *.class
+.pytest_cache/
 
 # Sensitive Database config
 src/db_config.py
@@ -33,3 +34,6 @@ logs/
 *.xlsx
 *.pptx
 *.pdf
+
+# Test Dataset (LFW Benchmark)
+test/

@@ -1,0 +1,3639 @@
+{
+  "total": 402,
+  "accuracy": 0.9602,
+  "avg_latency_ms": 902.5,
+  "per_route": {
+    "DOC_ONLY": {
+      "acc": 0.9834254143646409,
+      "total": 181
+    },
+    "DB_ONLY": {
+      "acc": 0.946524064171123,
+      "total": 187
+    },
+    "HYBRID": {
+      "acc": 0.9117647058823529,
+      "total": 34
+    }
+  },
+  "details": [
+    {
+      "id": "doc_0",
+      "question": "Làm sao để đăng ký xe công ty cho chuyến công tác?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Làm sao để đăng ký xe công ty cho chuyến công tác?",
+      "correct": true,
+      "latency_ms": 3339.5
+    },
+    {
+      "id": "doc_1",
+      "question": "Thời gian đăng ký xe theo kế hoạch tuần và đăng ký khẩn cấp là bao giờ?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời gian đăng ký xe theo kế hoạch tuần và đăng ký khẩn cấp là bao giờ?",
+      "correct": true,
+      "latency_ms": 778.4
+    },
+    {
+      "id": "doc_2",
+      "question": "Ai chịu trách nhiệm duyệt và cấp xe cho đơn vị?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm duyệt và cấp xe cho đơn vị?",
+      "correct": true,
+      "latency_ms": 1492.2
+    },
+    {
+      "id": "doc_3",
+      "question": "Nếu xe công ty không có, quy trình xin thuê xe ngoài và nộp dự toán chi phí như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu xe công ty không có, quy trình xin thuê xe ngoài và nộp dự toán chi phí như thế nào?",
+      "correct": true,
+      "latency_ms": 719.9
+    },
+    {
+      "id": "doc_4",
+      "question": "Báo cáo tổng hợp việc sử dụng xe phải nộp đến ngày bao nhiêu mỗi tháng?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Báo cáo tổng hợp việc sử dụng xe phải nộp đến ngày bao nhiêu mỗi tháng?",
+      "correct": true,
+      "latency_ms": 2050.9
+    },
+    {
+      "id": "doc_5",
+      "question": "Cách thức đăng ký xe đi công tác theo hướng dẫn này là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cách thức đăng ký xe đi công tác theo hướng dẫn này là gì?",
+      "correct": true,
+      "latency_ms": 666.9
+    },
+    {
+      "id": "doc_6",
+      "question": "Đơn vị nào phải phối hợp và phê duyệt phiếu đăng ký xe?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Đơn vị nào phải phối hợp và phê duyệt phiếu đăng ký xe?",
+      "correct": true,
+      "latency_ms": 1441.3
+    },
+    {
+      "id": "doc_7",
+      "question": "Mẫu phiếu đăng ký xe có những mục thông tin nào cần điền?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mẫu phiếu đăng ký xe có những mục thông tin nào cần điền?",
+      "correct": true,
+      "latency_ms": 930.6
+    },
+    {
+      "id": "doc_8",
+      "question": "Tôi có thể dùng xe công tác vào thời gian nào trong tháng 04?",
+      "expected": "DOC_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có thể dùng xe công tác vào thời gian nào trong tháng 04?",
+      "correct": false,
+      "latency_ms": 1470.3
+    },
+    {
+      "id": "doc_9",
+      "question": "Có xe Santafe 7 chỗ sẵn sàng cho công tác từ 08h‑17h30 không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có xe Santafe 7 chỗ sẵn sàng cho công tác từ 08h-17h30 không?",
+      "correct": true,
+      "latency_ms": 675.1
+    },
+    {
+      "id": "doc_10",
+      "question": "Ai là người liên hệ nếu muốn đăng ký xe công tác?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai là người liên hệ nếu muốn đăng ký xe công tác?",
+      "correct": true,
+      "latency_ms": 663.2
+    },
+    {
+      "id": "doc_11",
+      "question": "Bảng tổng hợp xe công tác tháng 04.2024 bao gồm những thông tin gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Bảng tổng hợp xe công tác tháng 04.2024 bao gồm những thông tin gì?",
+      "correct": true,
+      "latency_ms": 709.4
+    },
+    {
+      "id": "doc_12",
+      "question": "Ai chịu trách nhiệm phê duyệt và điều phối việc sử dụng xe?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm phê duyệt và điều phối việc sử dụng xe?",
+      "correct": true,
+      "latency_ms": 1443.1
+    },
+    {
+      "id": "doc_13",
+      "question": "Quy định này có hiệu lực từ ngày nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy định này có hiệu lực từ ngày nào?",
+      "correct": true,
+      "latency_ms": 610.9
+    },
+    {
+      "id": "doc_14",
+      "question": "Các phòng ban nào phải thi hành quyết định này?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Các phòng ban nào phải thi hành quyết định này?",
+      "correct": true,
+      "latency_ms": 640.5
+    },
+    {
+      "id": "doc_15",
+      "question": "Những đơn vị nào trong công ty phải tuân thủ Quy định 917.QĐ-ACT?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Những đơn vị nào trong công ty phải tuân thủ Quy định 917.QĐ-ACT?",
+      "correct": true,
+      "latency_ms": 744.2
+    },
+    {
+      "id": "doc_16",
+      "question": "Xe 6 tấn được dùng cho những mục đích nào và ai có quyền phê duyệt?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Xe 6 tấn được dùng cho những mục đích nào và ai có quyền phê duyệt?",
+      "correct": true,
+      "latency_ms": 666.3
+    },
+    {
+      "id": "doc_17",
+      "question": "Quy định này áp dụng cho các loại hình vận chuyển nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy định này áp dụng cho các loại hình vận chuyển nào?",
+      "correct": true,
+      "latency_ms": 684.3
+    },
+    {
+      "id": "doc_18",
+      "question": "Khi nào công ty ưu tiên sử dụng xe công ty thay vì thuê ngoài?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi nào công ty ưu tiên sử dụng xe công ty thay vì thuê ngoài?",
+      "correct": true,
+      "latency_ms": 727.2
+    },
+    {
+      "id": "doc_19",
+      "question": "Các tiêu chí nào quyết định việc lựa chọn xe công ty cho vận chuyển hàng hoá?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Các tiêu chí nào quyết định việc lựa chọn xe công ty cho vận chuyển hàng hoá?",
+      "correct": true,
+      "latency_ms": 744.7
+    },
+    {
+      "id": "doc_20",
+      "question": "Nếu xe công ty không có sẵn, quy trình xin phép sử dụng dịch vụ thuê ngoài như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu xe công ty không có sẵn, quy trình xin phép sử dụng dịch vụ thuê ngoài như thế nào?",
+      "correct": true,
+      "latency_ms": 676.3
+    },
+    {
+      "id": "doc_21",
+      "question": "Có giới hạn về khoảng cách và khối lượng hàng hoá đối với việc dùng xe công ty không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có giới hạn về khoảng cách và khối lượng hàng hoá đối với việc dùng xe công ty không?",
+      "correct": true,
+      "latency_ms": 678.0
+    },
+    {
+      "id": "doc_22",
+      "question": "Bộ phận nào chịu trách nhiệm điều phối và phê duyệt việc sử dụng phương tiện trong công ty?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Bộ phận nào chịu trách nhiệm điều phối và phê duyệt việc sử dụng phương tiện trong công ty?",
+      "correct": true,
+      "latency_ms": 638.7
+    },
+    {
+      "id": "doc_23",
+      "question": "Tôi cần làm gì để đăng ký một chuyến vận chuyển bằng xe công ty?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi cần làm gì để đăng ký một chuyến vận chuyển bằng xe công ty?",
+      "correct": true,
+      "latency_ms": 727.0
+    },
+    {
+      "id": "doc_24",
+      "question": "Có được phép dùng xe công ty cho mục đích cá nhân không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có được phép dùng xe công ty cho mục đích cá nhân không?",
+      "correct": true,
+      "latency_ms": 742.0
+    },
+    {
+      "id": "doc_25",
+      "question": "Ai chịu trách nhiệm khi có lỗi trong việc ghi nhật ký xe?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm khi có lỗi trong việc ghi nhật ký xe?",
+      "correct": true,
+      "latency_ms": 738.6
+    },
+    {
+      "id": "doc_26",
+      "question": "Nếu chuyến đi phát sinh bất ngờ, tôi phải thông báo như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu chuyến đi phát sinh bất ngờ, tôi phải thông báo như thế nào?",
+      "correct": true,
+      "latency_ms": 663.2
+    },
+    {
+      "id": "doc_27",
+      "question": "Hình phạt cho việc vi phạm quy định sử dụng xe là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Hình phạt cho việc vi phạm quy định sử dụng xe là gì?",
+      "correct": true,
+      "latency_ms": 650.4
+    },
+    {
+      "id": "doc_28",
+      "question": "Quy định này có hiệu lực từ ngày nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy định này có hiệu lực từ ngày nào?",
+      "correct": true,
+      "latency_ms": 632.0
+    },
+    {
+      "id": "doc_29",
+      "question": "Tần suất cập nhật quy định là bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tần suất cập nhật quy định là bao lâu?",
+      "correct": true,
+      "latency_ms": 670.5
+    },
+    {
+      "id": "doc_30",
+      "question": "Ai chịu trách nhiệm giám sát việc thực hiện quy định về xe?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm giám sát việc thực hiện quy định về xe?",
+      "correct": true,
+      "latency_ms": 651.8
+    },
+    {
+      "id": "doc_31",
+      "question": "Nếu vi phạm quy định, tôi phải bồi hoàn như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu vi phạm quy định, tôi phải bồi hoàn như thế nào?",
+      "correct": true,
+      "latency_ms": 930.9
+    },
+    {
+      "id": "doc_32",
+      "question": "Quyết định số bao nhiêu quy định về lương thưởng?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quyết định số bao nhiêu quy định về lương thưởng?",
+      "correct": true,
+      "latency_ms": 660.7
+    },
+    {
+      "id": "doc_33",
+      "question": "Nội dung này là phần nào của tài liệu quy chế lương thưởng?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nội dung này là phần nào của tài liệu quy chế lương thưởng?",
+      "correct": true,
+      "latency_ms": 681.0
+    },
+    {
+      "id": "doc_34",
+      "question": "Mẫu quy chế lương dựa trên căn cứ pháp lý nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mẫu quy chế lương dựa trên căn cứ pháp lý nào?",
+      "correct": true,
+      "latency_ms": 725.3
+    },
+    {
+      "id": "doc_35",
+      "question": "Nghị định 145/2020/NĐ-CP quy định gì về mức lương?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nghị định 145/2020/NĐ-CP quy định gì về mức lương?",
+      "correct": true,
+      "latency_ms": 712.4
+    },
+    {
+      "id": "doc_36",
+      "question": "Luật doanh nghiệp 2020 ảnh hưởng như thế nào tới chính sách lương của công ty?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Luật doanh nghiệp 2020 ảnh hưởng như thế nào tới chính sách lương của công ty?",
+      "correct": true,
+      "latency_ms": 663.0
+    },
+    {
+      "id": "doc_37",
+      "question": "Ai có thẩm quyền phê duyệt và điều chỉnh quy chế lương?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có thẩm quyền phê duyệt và điều chỉnh quy chế lương?",
+      "correct": true,
+      "latency_ms": 729.1
+    },
+    {
+      "id": "doc_38",
+      "question": "Ai có thẩm quyền quyết định tăng bậc lương cho nhân viên?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có thẩm quyền quyết định tăng bậc lương cho nhân viên?",
+      "correct": true,
+      "latency_ms": 706.2
+    },
+    {
+      "id": "doc_39",
+      "question": "Công ty có những khoản phụ cấp nào và chúng được trả khi nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Công ty có những khoản phụ cấp nào và chúng được trả khi nào?",
+      "correct": true,
+      "latency_ms": 650.0
+    },
+    {
+      "id": "doc_40",
+      "question": "Phụ cấp có liên quan đến tình hình sản xuất kinh doanh của công ty không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Phụ cấp có liên quan đến tình hình sản xuất kinh doanh của công ty không?",
+      "correct": true,
+      "latency_ms": 633.1
+    },
+    {
+      "id": "doc_41",
+      "question": "Tôi được cấp bao nhiêu phụ cấp ăn trưa?",
+      "expected": "DOC_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi được cấp bao nhiêu phụ cấp ăn trưa?",
+      "correct": false,
+      "latency_ms": 639.3
+    },
+    {
+      "id": "doc_42",
+      "question": "Mức khoán chi xăng xe cho công nhân là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mức khoán chi xăng xe cho công nhân là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 726.3
+    },
+    {
+      "id": "doc_43",
+      "question": "Có phụ cấp trang phục cho nhân viên không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có phụ cấp trang phục cho nhân viên không?",
+      "correct": true,
+      "latency_ms": 634.1
+    },
+    {
+      "id": "doc_44",
+      "question": "Mức phụ cấp điện thoại cho bảo vệ là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mức phụ cấp điện thoại cho bảo vệ là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 677.9
+    },
+    {
+      "id": "doc_45",
+      "question": "Quy chế tiền lương này có hiệu lực từ ngày nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế tiền lương này có hiệu lực từ ngày nào?",
+      "correct": true,
+      "latency_ms": 640.2
+    },
+    {
+      "id": "doc_46",
+      "question": "Điều kiện để được hưởng trợ cấp và phụ cấp là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Điều kiện để được hưởng trợ cấp và phụ cấp là gì?",
+      "correct": true,
+      "latency_ms": 709.0
+    },
+    {
+      "id": "doc_47",
+      "question": "Các khoản trợ cấp, phụ cấp có được ghi rõ trong hợp đồng lao động không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Các khoản trợ cấp, phụ cấp có được ghi rõ trong hợp đồng lao động không?",
+      "correct": true,
+      "latency_ms": 864.4
+    },
+    {
+      "id": "doc_48",
+      "question": "Mức trợ cấp thuê nhà được tính bao nhiêu mỗi tháng?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mức trợ cấp thuê nhà được tính bao nhiêu mỗi tháng?",
+      "correct": true,
+      "latency_ms": 659.7
+    },
+    {
+      "id": "doc_49",
+      "question": "Những ai không được hưởng khoản trợ cấp này?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Những ai không được hưởng khoản trợ cấp này?",
+      "correct": true,
+      "latency_ms": 656.1
+    },
+    {
+      "id": "doc_50",
+      "question": "Nếu hợp đồng của tôi dưới 6 tháng thì có được hỗ trợ không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Nếu hợp đồng của tôi dưới 6 tháng thì tôi có được hỗ trợ không?",
+      "correct": false,
+      "latency_ms": 738.7
+    },
+    {
+      "id": "doc_51",
+      "question": "Mức hỗ trợ cụ thể được ghi ở đâu trong tài liệu công ty?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mức hỗ trợ cụ thể được ghi ở đâu trong tài liệu công ty?",
+      "correct": true,
+      "latency_ms": 681.8
+    },
+    {
+      "id": "doc_52",
+      "question": "Công ty xét tăng lương vào thời điểm nào trong năm?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Công ty xét tăng lương vào thời điểm nào trong năm?",
+      "correct": true,
+      "latency_ms": 654.2
+    },
+    {
+      "id": "doc_53",
+      "question": "Nhân viên nào đủ điều kiện để được xét tăng lương?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nhân viên nào đủ điều kiện để được xét tăng lương?",
+      "correct": true,
+      "latency_ms": 848.3
+    },
+    {
+      "id": "doc_54",
+      "question": "Nếu tôi vi phạm quy định lao động, tôi có được xét tăng lương trong năm hiện tại không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu tôi vi phạm quy định lao động, tôi có được xét tăng lương trong năm hiện tại không?",
+      "correct": true,
+      "latency_ms": 641.3
+    },
+    {
+      "id": "doc_55",
+      "question": "Thời gian thâm niên 02 năm được tính từ ngày nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời gian thâm niên 02 năm được tính từ ngày nào?",
+      "correct": true,
+      "latency_ms": 697.2
+    },
+    {
+      "id": "doc_56",
+      "question": "Nếu bị vi phạm, tôi phải chờ bao lâu mới được xét tăng lương lần tiếp theo?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu bị vi phạm, tôi phải chờ bao lâu mới được xét tăng lương lần tiếp theo?",
+      "correct": true,
+      "latency_ms": 668.5
+    },
+    {
+      "id": "doc_57",
+      "question": "Làm thế nào để yêu cầu cấp văn phòng phẩm, vệ sinh phẩm hoặc mực in?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Làm thế nào để yêu cầu cấp văn phòng phẩm, vệ sinh phẩm hoặc mực in?",
+      "correct": true,
+      "latency_ms": 641.8
+    },
+    {
+      "id": "doc_58",
+      "question": "Quy trình này áp dụng cho những bộ phận hoặc phòng ban nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy trình này áp dụng cho những bộ phận hoặc phòng ban nào?",
+      "correct": true,
+      "latency_ms": 735.4
+    },
+    {
+      "id": "doc_59",
+      "question": "Quy trình QT.ACT.HC-05 có hiệu lực từ ngày nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy trình QT.ACT.HC-05 có hiệu lực từ ngày nào?",
+      "correct": true,
+      "latency_ms": 681.5
+    },
+    {
+      "id": "doc_60",
+      "question": "Tôi cần cấp phát văn phòng phẩm đột xuất, quy trình và mẫu biểu cần nộp là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi cần cấp phát văn phòng phẩm đột xuất, quy trình và mẫu biểu cần nộp là gì?",
+      "correct": true,
+      "latency_ms": 700.0
+    },
+    {
+      "id": "doc_61",
+      "question": "Ai là người duyệt yêu cầu cấp phát vệ sinh phẩm và mực in?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai là người duyệt yêu cầu cấp phát vệ sinh phẩm và mực in?",
+      "correct": true,
+      "latency_ms": 675.6
+    },
+    {
+      "id": "doc_62",
+      "question": "Phòng HC phải làm gì để kiểm tra và ghi nhận mức tiêu thụ mực in?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Phòng HC phải làm gì để kiểm tra và ghi nhận mức tiêu thụ mực in?",
+      "correct": true,
+      "latency_ms": 680.0
+    },
+    {
+      "id": "doc_63",
+      "question": "Khi hộp mực hoặc bình mực bị hỏng, tôi hoặc phòng ban phải chịu trách nhiệm như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi hộp mực hoặc bình mực bị hỏng, tôi hoặc phòng ban phải chịu trách nhiệm như thế nào?",
+      "correct": true,
+      "latency_ms": 677.4
+    },
+    {
+      "id": "doc_64",
+      "question": "Bao dưỡng máy photocopy được thực hiện như thế nào và cần chuẩn bị giấy tờ gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Bảo dưỡng máy photocopy được thực hiện như thế nào và cần chuẩn bị giấy tờ gì?",
+      "correct": true,
+      "latency_ms": 673.9
+    },
+    {
+      "id": "doc_65",
+      "question": "Tôi có thể mua các loại bìa và giấy note nào và giá của chúng là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi có thể mua các loại bìa và giấy note nào và giá của chúng là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 730.6
+    },
+    {
+      "id": "doc_66",
+      "question": "Ai chịu trách nhiệm quản lý và cập nhật danh mục văn phòng phẩm theo QT.ACT.HC-05?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm quản lý và cập nhật danh mục văn phòng phẩm theo QT.ACT.HC-05?",
+      "correct": true,
+      "latency_ms": 37935.1
+    },
+    {
+      "id": "doc_67",
+      "question": "Các mã hàng và đơn vị đo lường của từng loại văn phòng phẩm là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Các mã hàng và đơn vị đo lường của từng loại văn phòng phẩm là gì?",
+      "correct": true,
+      "latency_ms": 728.5
+    },
+    {
+      "id": "doc_68",
+      "question": "Giá của bút bi TL027 (0.5mm) là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Giá của bút bi TL027 (0.5mm) là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 699.5
+    },
+    {
+      "id": "doc_69",
+      "question": "Mã sản phẩm và kích thước của bút gel UNI Signo UM-100 là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mã sản phẩm và kích thước của bút gel UNI Signo UM-100 là gì?",
+      "correct": true,
+      "latency_ms": 888.8
+    },
+    {
+      "id": "doc_70",
+      "question": "Có bao nhiêu loại bút được liệt kê trong danh sách này?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có bao nhiêu loại bút được liệt kê trong danh sách này?",
+      "correct": true,
+      "latency_ms": 3320.4
+    },
+    {
+      "id": "doc_71",
+      "question": "Giá của máy tính Casio FX-570VN Plus là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Giá của máy tính Casio FX-570VN Plus là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 744.0
+    },
+    {
+      "id": "doc_72",
+      "question": "Có những mẫu máy bấm kim nào được liệt kê trong quy trình QT.ACT.HC-05?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có những mẫu máy bấm kim nào được liệt kê trong quy trình QT.ACT.HC-05?",
+      "correct": true,
+      "latency_ms": 717.2
+    },
+    {
+      "id": "doc_73",
+      "question": "Tôi muốn mua máy đóng tài liệu, mẫu nào có giá dưới 300.000 đồng?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi muốn mua máy đóng tài liệu, mẫu nào có giá dưới 300.000 đồng?",
+      "correct": true,
+      "latency_ms": 789.8
+    },
+    {
+      "id": "doc_74",
+      "question": "Theo QT.ACT.HC-05, tôi có thể mua những loại văn phòng phẩm nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Theo QT.ACT.HC-05, tôi có thể mua những loại văn phòng phẩm nào?",
+      "correct": true,
+      "latency_ms": 761.1
+    },
+    {
+      "id": "doc_75",
+      "question": "Giá của thước kéo JUNXO 67/G-STAR 7,5 mét là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Giá của thước kéo JUNXO 67/G-STAR 7,5 mét là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 758.8
+    },
+    {
+      "id": "doc_76",
+      "question": "Có những loại mực in nào được liệt kê trong quy trình này?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có những loại mực in nào được liệt kê trong quy trình này?",
+      "correct": true,
+      "latency_ms": 717.5
+    },
+    {
+      "id": "doc_77",
+      "question": "Đơn vị tính cho các sản phẩm trong danh mục là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Đơn vị tính cho các sản phẩm trong danh mục là gì?",
+      "correct": true,
+      "latency_ms": 755.3
+    },
+    {
+      "id": "doc_78",
+      "question": "Có bao nhiêu loại pin Panasonic được liệt kê trong danh sách?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có bao nhiêu loại pin Panasonic được liệt kê trong danh sách?",
+      "correct": true,
+      "latency_ms": 751.3
+    },
+    {
+      "id": "doc_79",
+      "question": "Mua thun khoanh vòng lớn (500gr/bịch) phải trả bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Mua thun khoanh vòng lớn (500gr/bịch) phải trả bao nhiêu?",
+      "correct": true,
+      "latency_ms": 731.7
+    },
+    {
+      "id": "doc_80",
+      "question": "Bảng mica kích thước 80cmx100cm có giá bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Bảng mica kích thước 80cmx100cm có giá bao nhiêu?",
+      "correct": true,
+      "latency_ms": 761.1
+    },
+    {
+      "id": "doc_81",
+      "question": "Đơn giá của pin carbon 3A Maxell là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Đơn giá của pin carbon 3A Maxell là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 722.8
+    },
+    {
+      "id": "doc_82",
+      "question": "Tôi có thể mua mực in nào và giá của chúng là bao nhiêu theo quy định này?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi có thể mua mực in nào và giá của chúng là bao nhiêu theo quy định?",
+      "correct": true,
+      "latency_ms": 664.7
+    },
+    {
+      "id": "doc_83",
+      "question": "Thùng rác trung nap dap No.740 có kích thước và giá bán ra sao?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thùng rác trung nap dap No.740 có kích thước và giá bán ra sao?",
+      "correct": true,
+      "latency_ms": 681.4
+    },
+    {
+      "id": "doc_84",
+      "question": "Có bao nhiêu loại mực Epson được liệt kê và mỗi loại có giá bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có bao nhiêu loại mực Epson được liệt kê và mỗi loại có giá bao nhiêu?",
+      "correct": true,
+      "latency_ms": 679.5
+    },
+    {
+      "id": "doc_85",
+      "question": "Quy chế quản trị nội bộ của công ty tài chính chi nhánh Điện lực sẽ được ban hành khi nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế quản trị nội bộ của công ty tài chính chi nhánh Điện lực sẽ được ban hành khi nào?",
+      "correct": true,
+      "latency_ms": 703.9
+    },
+    {
+      "id": "doc_86",
+      "question": "Quy chế này dựa trên những văn bản pháp luật nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế này dựa trên những văn bản pháp luật nào?",
+      "correct": true,
+      "latency_ms": 658.0
+    },
+    {
+      "id": "doc_87",
+      "question": "Ai có thẩm quyền phê duyệt và ký ban hành Quy chế quản trị nội bộ?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có thẩm quyền phê duyệt và ký ban hành Quy chế quản trị nội bộ?",
+      "correct": true,
+      "latency_ms": 1019.9
+    },
+    {
+      "id": "doc_88",
+      "question": "Quy chế này ảnh hưởng như thế nào đến quyền lợi và nghĩa vụ của nhân viên?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế này ảnh hưởng như thế nào đến quyền lợi và nghĩa vụ của nhân viên?",
+      "correct": true,
+      "latency_ms": 679.1
+    },
+    {
+      "id": "doc_89",
+      "question": "Quy chế này dựa trên những văn bản pháp luật nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế này dựa trên những văn bản pháp luật nào?",
+      "correct": true,
+      "latency_ms": 663.7
+    },
+    {
+      "id": "doc_90",
+      "question": "Quy chế này có hiệu lực từ ngày nào và có thể thay đổi như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế này có hiệu lực từ ngày nào và có thể thay đổi như thế nào?",
+      "correct": true,
+      "latency_ms": 697.1
+    },
+    {
+      "id": "doc_91",
+      "question": "Tôi có thể xem bản đầy đủ của Quy chế Quản trị Nội bộ ở đâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi có thể xem bản đầy đủ của Quy chế Quản trị Nội bộ ở đâu?",
+      "correct": true,
+      "latency_ms": 666.8
+    },
+    {
+      "id": "doc_92",
+      "question": "Quy chế quy định quyền lợi và nghĩa vụ của cổ đông như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế quy định quyền lợi và nghĩa vụ của cổ đông như thế nào?",
+      "correct": true,
+      "latency_ms": 802.7
+    },
+    {
+      "id": "doc_93",
+      "question": "Cổ đông lớn có thể đề nghị thay đổi quyết định của Hội đồng Quản trị như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cổ đông lớn có thể đề nghị thay đổi quyết định của Hội đồng Quản trị như thế nào?",
+      "correct": true,
+      "latency_ms": 858.1
+    },
+    {
+      "id": "doc_94",
+      "question": "Cuộc họp Hội đồng Quản trị thường niên được triệu tập vào thời điểm nào trong năm?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cuộc họp Hội đồng Quản trị thường niên được triệu tập vào thời điểm nào trong năm?",
+      "correct": true,
+      "latency_ms": 861.8
+    },
+    {
+      "id": "doc_95",
+      "question": "Quy trình thông báo danh sách cổ đông có quyền tham dự cuộc họp Hội đồng Quản trị ra sao?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy trình thông báo danh sách cổ đông có quyền tham dự cuộc họp Hội đồng Quản trị ra sao?",
+      "correct": true,
+      "latency_ms": 737.8
+    },
+    {
+      "id": "doc_96",
+      "question": "Cổ đông lớn có bị cấm lợi dụng ưu thế để ảnh hưởng đến quyền lợi của công ty và các cổ đông khác không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cổ đông lớn có bị cấm lợi dụng ưu thế để ảnh hưởng đến quyền lợi của công ty và các cổ đông khác không?",
+      "correct": true,
+      "latency_ms": 700.6
+    },
+    {
+      "id": "doc_97",
+      "question": "Ai có thẩm quyền triệu tập họp Hội đồng Quản trị bất thường và theo quy định nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có thẩm quyền triệu tập họp Hội đồng Quản trị bất thường và theo quy định nào?",
+      "correct": true,
+      "latency_ms": 741.6
+    },
+    {
+      "id": "doc_98",
+      "question": "Thời gian tối đa để lấy ý kiến cổ đông bằng văn bản là bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời gian tối đa để lấy ý kiến cổ đông bằng văn bản là bao lâu?",
+      "correct": true,
+      "latency_ms": 984.1
+    },
+    {
+      "id": "doc_99",
+      "question": "Ai chịu trách nhiệm chuẩn bị và kiểm tra biên bản kiểm phiếu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm chuẩn bị và kiểm tra biên bản kiểm phiếu?",
+      "correct": true,
+      "latency_ms": 776.7
+    },
+    {
+      "id": "doc_100",
+      "question": "Nếu biên bản kiểm phiếu không trung thực sẽ có hậu quả gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu biên bản kiểm phiếu không trung thực sẽ có hậu quả gì?",
+      "correct": true,
+      "latency_ms": 713.8
+    },
+    {
+      "id": "doc_101",
+      "question": "Biên bản kiểm phiếu và phiếu lấy ý kiến phải được lưu trữ ở đâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Biên bản kiểm phiếu và phiếu lấy ý kiến phải được lưu trữ ở đâu?",
+      "correct": true,
+      "latency_ms": 641.1
+    },
+    {
+      "id": "doc_102",
+      "question": "Các bước cụ thể để gửi phiếu lấy ý kiến cho cổ đông là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Các bước cụ thể để gửi phiếu lấy ý kiến cho cổ đông là gì?",
+      "correct": true,
+      "latency_ms": 648.8
+    },
+    {
+      "id": "doc_103",
+      "question": "Công ty cần thông báo họp HĐQT trước ít nhất bao nhiêu ngày?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Công ty cần thông báo họp HĐQT trước ít nhất bao nhiêu ngày?",
+      "correct": true,
+      "latency_ms": 651.6
+    },
+    {
+      "id": "doc_104",
+      "question": "Quorum để cuộc họp HĐQT được coi là hợp lệ là bao nhiêu thành viên?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quorum để cuộc họp HĐQT được coi là hợp lệ là bao nhiêu thành viên?",
+      "correct": true,
+      "latency_ms": 691.1
+    },
+    {
+      "id": "doc_105",
+      "question": "Nếu không đủ quorum lần đầu, công ty phải triệu tập lại trong bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu không đủ quorum lần đầu, công ty phải triệu tập lại trong bao lâu?",
+      "correct": true,
+      "latency_ms": 710.3
+    },
+    {
+      "id": "doc_106",
+      "question": "Quyết định của HĐQT có thể được thông qua bằng văn bản mà không tổ chức họp không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quyết định của HĐQT có thể được thông qua bằng văn bản mà không tổ chức họp không?",
+      "correct": true,
+      "latency_ms": 756.7
+    },
+    {
+      "id": "doc_107",
+      "question": "Ai phải ký vào biên bản họp HĐQT?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai phải ký vào biên bản họp HĐQT?",
+      "correct": true,
+      "latency_ms": 726.3
+    },
+    {
+      "id": "doc_108",
+      "question": "Quy trình bãi nhiệm Tổng Giám đốc được thực hiện như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy trình bãi nhiệm Tổng Giám đốc được thực hiện như thế nào?",
+      "correct": true,
+      "latency_ms": 764.3
+    },
+    {
+      "id": "doc_109",
+      "question": "Tổng Giám đốc phải có bằng cấp và kinh nghiệm gì theo quy định?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tổng Giám đốc phải có bằng cấp và kinh nghiệm gì theo quy định?",
+      "correct": true,
+      "latency_ms": 719.7
+    },
+    {
+      "id": "doc_110",
+      "question": "Thời gian tối đa để tìm người thay thế sau khi bãi nhiệm Tổng Giám đốc là bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời gian tối đa để tìm người thay thế sau khi bãi nhiệm Tổng Giám đốc là bao lâu?",
+      "correct": true,
+      "latency_ms": 768.6
+    },
+    {
+      "id": "doc_111",
+      "question": "Ai có thẩm quyền quyết định miễn nhiệm hoặc bãi nhiệm Tổng Giám đốc?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có thẩm quyền quyết định miễn nhiệm hoặc bãi nhiệm Tổng Giám đốc?",
+      "correct": true,
+      "latency_ms": 715.1
+    },
+    {
+      "id": "doc_112",
+      "question": "Ban Kiểm soát yêu cầu cung cấp báo cáo và tài liệu gì từ Hội đồng Quản trị?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ban Kiểm soát yêu cầu cung cấp báo cáo và tài liệu gì từ Hội đồng Quản trị?",
+      "correct": true,
+      "latency_ms": 771.6
+    },
+    {
+      "id": "doc_113",
+      "question": "Khi phát hiện vi phạm, quy trình thông báo cho Hội đồng Quản trị như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi phát hiện vi phạm, quy trình thông báo cho Hội đồng Quản trị như thế nào?",
+      "correct": true,
+      "latency_ms": 798.2
+    },
+    {
+      "id": "doc_114",
+      "question": "Tổng Giám đốc phải cung cấp thông tin gì cho Ban Kiểm soát và tần suất ra sao?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tổng Giám đốc phải cung cấp thông tin gì cho Ban Kiểm soát và tần suất cung cấp ra sao?",
+      "correct": true,
+      "latency_ms": 788.5
+    },
+    {
+      "id": "doc_115",
+      "question": "Ban Kiểm soát có thể thực hiện kiểm tra nội bộ độc lập như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ban Kiểm soát có thể thực hiện kiểm tra nội bộ độc lập như thế nào?",
+      "correct": true,
+      "latency_ms": 708.8
+    },
+    {
+      "id": "doc_116",
+      "question": "Ai chịu trách nhiệm phối hợp và giải quyết các sai phạm sau mỗi lần kiểm tra?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm phối hợp và giải quyết các sai phạm sau mỗi lần kiểm tra?",
+      "correct": true,
+      "latency_ms": 725.0
+    },
+    {
+      "id": "doc_117",
+      "question": "Tiêu chí nào được dùng để đánh giá thành viên Hội đồng Quản trị và Ban Kiểm soát?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tiêu chí nào được dùng để đánh giá thành viên Hội đồng Quản trị và Ban Kiểm soát?",
+      "correct": true,
+      "latency_ms": 655.1
+    },
+    {
+      "id": "doc_118",
+      "question": "Bao nhiêu lần trong năm Chủ tịch HĐQT phải thực hiện đánh giá hiệu quả làm việc?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Bao nhiêu lần trong năm Chủ tịch HĐQT phải thực hiện đánh giá hiệu quả làm việc?",
+      "correct": true,
+      "latency_ms": 740.3
+    },
+    {
+      "id": "doc_119",
+      "question": "Ai chịu trách nhiệm đánh giá tổng Giám đốc hàng năm?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm đánh giá tổng Giám đốc hàng năm?",
+      "correct": true,
+      "latency_ms": 769.4
+    },
+    {
+      "id": "doc_120",
+      "question": "Khi nào và như thế nào kết quả đánh giá sẽ được báo cáo lên Đại hội đồng cổ đông?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi nào và như thế nào kết quả đánh giá sẽ được báo cáo lên Đại hội đồng cổ đông?",
+      "correct": true,
+      "latency_ms": 759.6
+    },
+    {
+      "id": "doc_121",
+      "question": "Quy chế này áp dụng cho những người nào trong công ty?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế này áp dụng cho những người nào trong công ty?",
+      "correct": true,
+      "latency_ms": 846.8
+    },
+    {
+      "id": "doc_122",
+      "question": "Cổ đông lớn được định nghĩa như thế nào trong quy chế?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cổ đông lớn được định nghĩa như thế nào trong quy chế?",
+      "correct": true,
+      "latency_ms": 625.4
+    },
+    {
+      "id": "doc_123",
+      "question": "Ai được coi là \"Người điều hành\" theo quy chế này?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai được coi là \"Người điều hành\" theo quy chế?",
+      "correct": true,
+      "latency_ms": 685.4
+    },
+    {
+      "id": "doc_124",
+      "question": "Quy chế này được thông qua trong nghị quyết nào và vào ngày nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế này được thông qua trong nghị quyết nào và vào ngày nào?",
+      "correct": true,
+      "latency_ms": 671.8
+    },
+    {
+      "id": "doc_125",
+      "question": "Ban điều hành bao gồm những vị trí nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ban điều hành bao gồm những vị trí nào?",
+      "correct": true,
+      "latency_ms": 639.2
+    },
+    {
+      "id": "doc_126",
+      "question": "Công ty phải gửi thông báo triệu tập đại hội đồng cổ đông ít nhất bao nhiêu ngày trước ngày họp?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Công ty phải gửi thông báo triệu tập đại hội đồng cổ đông ít nhất bao nhiêu ngày trước ngày họp?",
+      "correct": true,
+      "latency_ms": 688.8
+    },
+    {
+      "id": "doc_127",
+      "question": "Các hình thức nào được công ty chấp nhận để gửi thông báo triệu tập (điện tử, bưu điện, tin nhắn,…)?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Các hình thức nào được công ty chấp nhận để gửi thông báo triệu tập (điện tử, bưu điện, tin nhắn,…)?",
+      "correct": true,
+      "latency_ms": 865.7
+    },
+    {
+      "id": "doc_128",
+      "question": "Nếu thông tin liên lạc của tôi không chính xác, tôi sẽ chịu trách nhiệm như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu thông tin liên lạc của tôi không chính xác, tôi sẽ chịu trách nhiệm như thế nào?",
+      "correct": true,
+      "latency_ms": 784.6
+    },
+    {
+      "id": "doc_129",
+      "question": "Ai chịu trách nhiệm cung cấp danh sách cổ đông có quyền tham dự đại hội?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm cung cấp danh sách cổ đông có quyền tham dự đại hội?",
+      "correct": true,
+      "latency_ms": 772.9
+    },
+    {
+      "id": "doc_130",
+      "question": "Khi có quy định của pháp luật chuyên ngành mâu thuẫn với quy chế nội bộ, nên áp dụng quy định nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi có quy định của pháp luật chuyên ngành mâu thuẫn với quy chế nội bộ, nên áp dụng quy định nào?",
+      "correct": true,
+      "latency_ms": 768.4
+    },
+    {
+      "id": "doc_131",
+      "question": "Làm sao để nộp phiếu biểu quyết trực tuyến qua ứng dụng hoặc website của công ty?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Làm sao để nộp phiếu biểu quyết trực tuyến qua ứng dụng hoặc website của công ty?",
+      "correct": true,
+      "latency_ms": 3680.3
+    },
+    {
+      "id": "doc_132",
+      "question": "Thời điểm cuối cùng để gửi phiếu biểu quyết là bao giờ đối với các hình thức biểu quyết khác nhau?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời điểm cuối cùng để gửi phiếu biểu quyết là bao giờ đối với các hình thức biểu quyết khác nhau?",
+      "correct": true,
+      "latency_ms": 684.5
+    },
+    {
+      "id": "doc_133",
+      "question": "Khi biểu quyết, cổ đông có bao nhiêu lựa chọn và chúng có nghĩa gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi biểu quyết, cổ đông có bao nhiêu lựa chọn và những lựa chọn đó có nghĩa là gì?",
+      "correct": true,
+      "latency_ms": 683.3
+    },
+    {
+      "id": "doc_134",
+      "question": "Nếu tôi gửi nhiều phiếu biểu quyết, phiếu nào sẽ được công nhận là quyết định cuối cùng?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu tôi gửi nhiều phiếu biểu quyết, phiếu nào sẽ được công nhận là quyết định cuối cùng?",
+      "correct": true,
+      "latency_ms": 676.7
+    },
+    {
+      "id": "doc_135",
+      "question": "Ai xác định và thông báo thời điểm thu phiếu cho biểu quyết từ xa?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai xác định và thông báo thời điểm thu phiếu cho biểu quyết từ xa?",
+      "correct": true,
+      "latency_ms": 669.7
+    },
+    {
+      "id": "doc_136",
+      "question": "Làm sao công ty lấy ý kiến cổ đông bằng văn bản?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Làm sao công ty lấy ý kiến cổ đông bằng văn bản?",
+      "correct": true,
+      "latency_ms": 635.1
+    },
+    {
+      "id": "doc_137",
+      "question": "Tiêu chuẩn nào để trở thành thành viên Hội đồng quản trị?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tiêu chuẩn nào để trở thành thành viên Hội đồng quản trị?",
+      "correct": true,
+      "latency_ms": 1094.1
+    },
+    {
+      "id": "doc_138",
+      "question": "Số lượng thành viên Hội đồng quản trị tối thiểu và tối đa là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Số lượng thành viên Hội đồng quản trị tối thiểu và tối đa là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 748.0
+    },
+    {
+      "id": "doc_139",
+      "question": "Ai có quyền đề cử ứng viên vào Hội đồng quản trị?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có quyền đề cử ứng viên vào Hội đồng quản trị?",
+      "correct": true,
+      "latency_ms": 826.8
+    },
+    {
+      "id": "doc_140",
+      "question": "Thời gian nhiệm kỳ của Hội đồng quản trị là bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời gian nhiệm kỳ của Hội đồng quản trị là bao lâu?",
+      "correct": true,
+      "latency_ms": 796.3
+    },
+    {
+      "id": "doc_141",
+      "question": "Trong trường hợp nào tôi có thể tham gia họp Hội đồng quản trị qua phương tiện điện tử?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Trong trường hợp nào tôi có thể tham gia họp Hội đồng quản trị qua phương tiện điện tử?",
+      "correct": true,
+      "latency_ms": 764.0
+    },
+    {
+      "id": "doc_142",
+      "question": "Cần thông báo trước bao lâu để mời các thành viên tham dự họp Hội đồng quản trị?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cần thông báo trước bao lâu để mời các thành viên tham dự họp Hội đồng quản trị?",
+      "correct": true,
+      "latency_ms": 714.0
+    },
+    {
+      "id": "doc_143",
+      "question": "Quy định về số lượng thành viên tối thiểu để cuộc họp đạt quorum là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy định về số lượng thành viên tối thiểu để cuộc họp đạt quorum là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 708.9
+    },
+    {
+      "id": "doc_144",
+      "question": "Thành viên Hội đồng quản trị có thể bỏ phiếu cho các giao dịch có liên quan đến bản thân không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thành viên Hội đồng quản trị có thể bỏ phiếu cho các giao dịch có liên quan đến bản thân không?",
+      "correct": true,
+      "latency_ms": 726.5
+    },
+    {
+      "id": "doc_145",
+      "question": "Nếu không đủ số thành viên dự họp, cuộc họp sẽ được hoãn lại bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu không đủ số thành viên dự họp, cuộc họp sẽ được hoãn lại bao lâu?",
+      "correct": true,
+      "latency_ms": 683.7
+    },
+    {
+      "id": "doc_146",
+      "question": "Hội đồng quản trị có thể thành lập những tiểu ban nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Hội đồng quản trị có thể thành lập những tiểu ban nào?",
+      "correct": true,
+      "latency_ms": 664.0
+    },
+    {
+      "id": "doc_147",
+      "question": "Ai có thể được bổ nhiệm làm thành viên hoặc trưởng tiểu ban?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có thể được bổ nhiệm làm thành viên hoặc trưởng tiểu ban?",
+      "correct": true,
+      "latency_ms": 677.4
+    },
+    {
+      "id": "doc_148",
+      "question": "Tiêu chuẩn để trở thành thành viên Kiểm toán nội bộ là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tiêu chuẩn để trở thành thành viên Kiểm toán nội bộ là gì?",
+      "correct": true,
+      "latency_ms": 640.1
+    },
+    {
+      "id": "doc_149",
+      "question": "Trách nhiệm cụ thể của tiểu ban và trưởng tiểu ban được quy định ở đâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Trách nhiệm cụ thể của tiểu ban và trưởng tiểu ban được quy định ở đâu?",
+      "correct": true,
+      "latency_ms": 700.2
+    },
+    {
+      "id": "doc_150",
+      "question": "Quyết định nào quyết định việc thành lập và hoạt động của các tiểu ban?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quyết định nào quyết định việc thành lập và hoạt động của các tiểu ban?",
+      "correct": true,
+      "latency_ms": 686.0
+    },
+    {
+      "id": "doc_151",
+      "question": "Người điều hành khác phải đáp ứng những yêu cầu nào về học vấn và kinh nghiệm?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Người điều hành khác phải đáp ứng những yêu cầu nào về học vấn và kinh nghiệm?",
+      "correct": true,
+      "latency_ms": 644.6
+    },
+    {
+      "id": "doc_152",
+      "question": "Quy trình bổ nhiệm và ký hợp đồng lao động cho người điều hành được thực hiện như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy trình bổ nhiệm và ký hợp đồng lao động cho người điều hành được thực hiện như thế nào?",
+      "correct": true,
+      "latency_ms": 689.9
+    },
+    {
+      "id": "doc_153",
+      "question": "Người đã từng bị kết án hoặc đang trong thời gian chấp hành án hình phạt có thể trở thành người điều hành không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Người đã từng bị kết án hoặc đang trong thời gian chấp hành án hình phạt có thể trở thành người điều hành không?",
+      "correct": true,
+      "latency_ms": 1447.3
+    },
+    {
+      "id": "doc_154",
+      "question": "Thời gian làm việc tối thiểu tại công ty để được xem xét cho vị trí người điều hành là bao lâu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời gian làm việc tối thiểu tại công ty để được xem xét cho vị trí người điều hành là bao lâu?",
+      "correct": true,
+      "latency_ms": 705.1
+    },
+    {
+      "id": "doc_155",
+      "question": "Khi nào Tổng Giám đốc phải báo cáo và xin ý kiến HĐQT?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi nào Tổng Giám đốc phải báo cáo và xin ý kiến HĐQT?",
+      "correct": true,
+      "latency_ms": 726.1
+    },
+    {
+      "id": "doc_156",
+      "question": "Ai có quyền đề nghị triệu tập cuộc họp HĐQT và trong những trường hợp nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có quyền đề nghị triệu tập cuộc họp HĐQT và trong những trường hợp nào?",
+      "correct": true,
+      "latency_ms": 745.7
+    },
+    {
+      "id": "doc_157",
+      "question": "Tiêu chuẩn và nghĩa vụ của Người phụ trách quản trị công ty là gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tiêu chuẩn và nghĩa vụ của Người phụ trách quản trị công ty là gì?",
+      "correct": true,
+      "latency_ms": 643.5
+    },
+    {
+      "id": "doc_158",
+      "question": "HĐQT đánh giá việc thực hiện nghị quyết của Tổng Giám đốc như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "HĐQT đánh giá việc thực hiện nghị quyết của Tổng Giám đốc như thế nào?",
+      "correct": true,
+      "latency_ms": 775.6
+    },
+    {
+      "id": "doc_159",
+      "question": "Thời hạn tối đa và điều kiện để bổ nhiệm lại Người phụ trách quản trị công ty là bao nhiêu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thời hạn tối đa và điều kiện để bổ nhiệm lại Người phụ trách quản trị công ty là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 705.5
+    },
+    {
+      "id": "doc_160",
+      "question": "Cơ sở pháp lý nào quy định về nhân sự Đại hội đồng cổ đông?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Cơ sở pháp lý nào quy định về nhân sự Đại hội đồng cổ đông?",
+      "correct": true,
+      "latency_ms": 663.7
+    },
+    {
+      "id": "doc_161",
+      "question": "Quy chế nội bộ về quản trị công ty PMSC nằm ở trang nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế nội bộ về quản trị công ty PMSC nằm ở trang nào?",
+      "correct": true,
+      "latency_ms": 4540.4
+    },
+    {
+      "id": "doc_162",
+      "question": "Làm sao tôi có thể xem được bảng biểu quy chế quản trị công ty trong tài liệu?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Làm sao tôi có thể xem được bảng biểu quy chế quản trị công ty trong tài liệu?",
+      "correct": true,
+      "latency_ms": 791.9
+    },
+    {
+      "id": "doc_163",
+      "question": "Tôi cần tham khảo quy chế này để chuẩn bị nghị quyết Đại hội đồng cổ đông, nên truy cập tài liệu nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi cần tham khảo quy chế để chuẩn bị nghị quyết Đại hội đồng cổ đông, nên truy cập tài liệu nào?",
+      "correct": true,
+      "latency_ms": 802.3
+    },
+    {
+      "id": "doc_164",
+      "question": "HĐQT có thể lấy ý kiến cổ đông bằng văn bản trong những trường hợp nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "HĐQT có thể lấy ý kiến cổ đông bằng văn bản trong những trường hợp nào?",
+      "correct": true,
+      "latency_ms": 759.0
+    },
+    {
+      "id": "doc_165",
+      "question": "Điều 22 Điều lệ và Điều 21 quy chế quy định gì về việc lấy ý kiến cổ đông bằng văn bản?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Điều 22 Điều lệ và Điều 21 quy chế quy định gì về việc lấy ý kiến cổ đông bằng văn bản?",
+      "correct": true,
+      "latency_ms": 1110.3
+    },
+    {
+      "id": "doc_166",
+      "question": "Có được lấy ý kiến cổ đông bằng văn bản cho các quyết định khác không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có được lấy ý kiến cổ đông bằng văn bản cho các quyết định khác không?",
+      "correct": true,
+      "latency_ms": 717.3
+    },
+    {
+      "id": "doc_167",
+      "question": "Nếu muốn gửi ý kiến cổ đông bằng văn bản, cần tuân thủ quy định gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Nếu muốn gửi ý kiến cổ đông bằng văn bản, cần tuân thủ quy định gì?",
+      "correct": true,
+      "latency_ms": 774.6
+    },
+    {
+      "id": "doc_168",
+      "question": "Ai chịu trách nhiệm thu thập và xử lý ý kiến cổ đông bằng văn bản?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai chịu trách nhiệm thu thập và xử lý ý kiến cổ đông bằng văn bản?",
+      "correct": true,
+      "latency_ms": 790.7
+    },
+    {
+      "id": "doc_169",
+      "question": "Có thể công bố nghị quyết Đại hội đồng cổ đông bằng hình thức họp trực tiếp kết hợp với trực tuyến không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Có thể công bố nghị quyết Đại hội đồng cổ đông bằng hình thức họp trực tiếp kết hợp với trực tuyến không?",
+      "correct": true,
+      "latency_ms": 799.9
+    },
+    {
+      "id": "doc_170",
+      "question": "Điều 20 quy chế quy định gì về việc công bố quyết định của Đại hội đồng cổ đông?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Điều 20 quy chế quy định gì về việc công bố quyết định của Đại hội đồng cổ đông?",
+      "correct": true,
+      "latency_ms": 777.1
+    },
+    {
+      "id": "doc_171",
+      "question": "Tôi có được nhận thù lao bổ sung khi đảm nhận chức vụ điều hành hoặc làm việc tại tiểu ban HĐQT không?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi có được nhận thù lao bổ sung khi đảm nhận chức vụ điều hành hoặc làm việc tại tiểu ban HĐQT không?",
+      "correct": true,
+      "latency_ms": 792.7
+    },
+    {
+      "id": "doc_172",
+      "question": "Công ty sẽ thanh toán chi phí đi lại, ăn ở và các chi phí hợp lý khác khi tôi tham dự cuộc họp Đại hội đồng cổ đông hay Hội đồng quản trị?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Công ty sẽ thanh toán chi phí đi lại, ăn ở và các chi phí hợp lý khác khi tôi tham dự cuộc họp Đại hội đồng cổ đông hay Hội đồng quản trị như thế nào?",
+      "correct": true,
+      "latency_ms": 822.3
+    },
+    {
+      "id": "doc_173",
+      "question": "Công ty có mua bảo hiểm trách nhiệm cho thành viên HĐQT không và bảo hiểm này bao gồm những gì?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Công ty có mua bảo hiểm trách nhiệm cho thành viên HĐQT không và bảo hiểm này bao gồm những gì?",
+      "correct": true,
+      "latency_ms": 774.2
+    },
+    {
+      "id": "doc_174",
+      "question": "Thù lao bổ sung cho thành viên HĐQT được tính theo hình thức nào (tiền công, lương, hoa hồng, phần trăm lợi nhuận, …)?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Thù lao bổ sung cho thành viên HĐQT được tính theo hình thức nào (tiền công, lương, hoa hồng, phần trăm lợi nhuận, …)?",
+      "correct": true,
+      "latency_ms": 811.4
+    },
+    {
+      "id": "doc_175",
+      "question": "Quyết định trả thù lao bổ sung cho thành viên HĐQT được đưa ra bởi ai?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quyết định trả thù lao bổ sung cho thành viên HĐQT được đưa ra bởi ai?",
+      "correct": true,
+      "latency_ms": 754.0
+    },
+    {
+      "id": "doc_176",
+      "question": "Quy chế nội bộ quản trị công ty áp dụng cho ai trong PMSC?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quy chế nội bộ quản trị công ty áp dụng cho ai trong PMSC?",
+      "correct": true,
+      "latency_ms": 715.1
+    },
+    {
+      "id": "doc_177",
+      "question": "Khi nào Nghị quyết/Quyết định của HĐQT phải được gửi cho Giám đốc?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Khi nào Nghị quyết/Quyết định của HĐQT phải được gửi cho Giám đốc?",
+      "correct": true,
+      "latency_ms": 688.0
+    },
+    {
+      "id": "doc_178",
+      "question": "Phương thức thông báo Nghị quyết HĐQT cho Giám đốc giống như thông báo cho thành viên HĐQT như thế nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Phương thức thông báo Nghị quyết HĐQT cho Giám đốc giống như thông báo cho thành viên HĐQT như thế nào?",
+      "correct": true,
+      "latency_ms": 1268.5
+    },
+    {
+      "id": "doc_179",
+      "question": "Ai có quyền đề nghị triệu tập họp HĐQT và trong những trường hợp nào?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ai có quyền đề nghị triệu tập họp HĐQT và trong những trường hợp nào?",
+      "correct": true,
+      "latency_ms": 762.1
+    },
+    {
+      "id": "doc_180",
+      "question": "Cần tham khảo những văn bản pháp luật nào khi đề nghị triệu tập HĐQT?",
+      "expected": "DOC_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tôi cần tham khảo những văn bản pháp luật nào khi đề nghị triệu tập HĐQT?",
+      "correct": true,
+      "latency_ms": 709.8
+    },
+    {
+      "id": "users_01",
+      "question": "Tôi còn bao nhiêu ngày phép năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi còn bao nhiêu ngày phép năm nay?",
+      "correct": true,
+      "latency_ms": 687.9
+    },
+    {
+      "id": "users_02",
+      "question": "Tôi đã dùng bao nhiêu ngày phép trên tổng số ngày được cấp?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đã dùng bao nhiêu ngày phép trên tổng số ngày được cấp?",
+      "correct": true,
+      "latency_ms": 680.9
+    },
+    {
+      "id": "users_03",
+      "question": "Mã nhân viên và ngày vào làm của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mã nhân viên và ngày vào làm của tôi là gì?",
+      "correct": true,
+      "latency_ms": 705.8
+    },
+    {
+      "id": "users_04",
+      "question": "Tôi vào công ty được bao lâu rồi, thâm niên của tôi là mấy năm mấy tháng?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi vào công ty được bao lâu rồi, thâm niên của tôi là mấy năm mấy tháng?",
+      "correct": true,
+      "latency_ms": 619.6
+    },
+    {
+      "id": "users_05",
+      "question": "Email công ty, họ tên và mã nhân viên của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Email công ty, họ tên và mã nhân viên của tôi là gì?",
+      "correct": true,
+      "latency_ms": 644.6
+    },
+    {
+      "id": "users_06",
+      "question": "Tôi đang thuộc phòng ban nào và giữ chức danh gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đang thuộc phòng ban nào và giữ chức danh gì?",
+      "correct": true,
+      "latency_ms": 644.5
+    },
+    {
+      "id": "users_07",
+      "question": "Tài khoản của tôi có đang hoạt động không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tài khoản của tôi có đang hoạt động không?",
+      "correct": true,
+      "latency_ms": 689.1
+    },
+    {
+      "id": "users_08",
+      "question": "Ngày sinh và giới tính của tôi mà hệ thống đang lưu có đúng không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ngày sinh và giới tính của tôi mà hệ thống đang lưu có đúng không?",
+      "correct": true,
+      "latency_ms": 696.1
+    },
+    {
+      "id": "users_09",
+      "question": "Quy định số ngày phép tối đa mỗi năm là bao nhiêu, và tôi còn lại mấy ngày?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định số ngày phép tối đa mỗi năm là bao nhiêu, và tôi còn lại mấy ngày phép?",
+      "correct": true,
+      "latency_ms": 696.7
+    },
+    {
+      "id": "users_10",
+      "question": "Ca làm việc, phòng ban và mã nhân viên hiện tại của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ca làm việc, phòng ban và mã nhân viên hiện tại của tôi là gì?",
+      "correct": true,
+      "latency_ms": 683.5
+    },
+    {
+      "id": "attendances_01",
+      "question": "Hôm nay tôi check-in lúc mấy giờ, check-out lúc mấy giờ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hôm nay tôi check-in lúc mấy giờ và check-out lúc mấy giờ?",
+      "correct": true,
+      "latency_ms": 752.7
+    },
+    {
+      "id": "attendances_02",
+      "question": "Tháng này tôi đi muộn mấy lần?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng này tôi đi muộn mấy lần?",
+      "correct": true,
+      "latency_ms": 630.2
+    },
+    {
+      "id": "attendances_03",
+      "question": "Thống kê số lần đi muộn và về sớm của tôi theo từng tháng trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thống kê số lần đi muộn và về sớm của tôi theo từng tháng trong năm nay?",
+      "correct": true,
+      "latency_ms": 729.1
+    },
+    {
+      "id": "attendances_04",
+      "question": "Tháng này so với tháng trước, tôi đi muộn nhiều hơn hay ít hơn?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng này so với tháng trước, tôi đi muộn nhiều hơn hay ít hơn?",
+      "correct": true,
+      "latency_ms": 691.9
+    },
+    {
+      "id": "attendances_05",
+      "question": "Tổng số giờ làm việc thực tế của tôi trong tuần này là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tổng số giờ làm việc thực tế của tôi trong tuần này là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 645.9
+    },
+    {
+      "id": "attendances_06",
+      "question": "Những ngày nào trong tháng này tôi bị tính vắng không phép?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những ngày nào trong tháng này tôi bị tính vắng không phép?",
+      "correct": true,
+      "latency_ms": 794.8
+    },
+    {
+      "id": "attendances_07",
+      "question": "Tháng nào trong năm nay tôi đi muộn nhiều nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng nào trong năm nay tôi đi muộn nhiều nhất?",
+      "correct": true,
+      "latency_ms": 681.3
+    },
+    {
+      "id": "attendances_08",
+      "question": "Cho tôi xem lịch sử chấm công 10 ngày gần nhất của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Cho tôi xem lịch sử chấm công 10 ngày gần nhất của tôi?",
+      "correct": true,
+      "latency_ms": 695.6
+    },
+    {
+      "id": "attendances_09",
+      "question": "Quy định đi muộn bị xử lý thế nào, và tháng này tôi đã đi muộn mấy lần rồi?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định đi muộn bị xử lý thế nào, và tháng này tôi đã đi muộn mấy lần rồi?",
+      "correct": true,
+      "latency_ms": 711.2
+    },
+    {
+      "id": "attendances_10",
+      "question": "Số ngày công đủ (SUFFICIENT) của tôi trong tháng này có bị trừ lương không theo quy định?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Số ngày công đủ (SUFFICIENT) của tôi trong tháng này có bị trừ lương không theo quy định?",
+      "correct": true,
+      "latency_ms": 13931.9
+    },
+    {
+      "id": "monthly_timesheets_01",
+      "question": "Năm nay tôi làm tổng cộng bao nhiêu giờ, bao nhiêu ngày công?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi làm tổng cộng bao nhiêu giờ, bao nhiêu ngày công?",
+      "correct": true,
+      "latency_ms": 626.0
+    },
+    {
+      "id": "monthly_timesheets_02",
+      "question": "Tháng này tôi đi muộn mấy lần, tổng cộng bao nhiêu phút?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng này tôi đi muộn mấy lần, tổng cộng bao nhiêu phút?",
+      "correct": true,
+      "latency_ms": 669.4
+    },
+    {
+      "id": "monthly_timesheets_03",
+      "question": "Liệt kê giờ làm và ngày công của tôi theo từng tháng trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê giờ làm và ngày công của tôi theo từng tháng trong năm nay?",
+      "correct": true,
+      "latency_ms": 675.0
+    },
+    {
+      "id": "monthly_timesheets_04",
+      "question": "Năm nay so với năm ngoái, tổng giờ làm của tôi tăng hay giảm bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay so với năm ngoái, tổng giờ làm của tôi tăng hay giảm bao nhiêu?",
+      "correct": true,
+      "latency_ms": 649.6
+    },
+    {
+      "id": "monthly_timesheets_05",
+      "question": "Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?",
+      "correct": true,
+      "latency_ms": 669.3
+    },
+    {
+      "id": "monthly_timesheets_06",
+      "question": "Quý 1 năm nay tôi nghỉ phép mấy ngày, vắng mặt mấy ngày?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Quý 1 năm nay tôi nghỉ phép mấy ngày, vắng mặt mấy ngày?",
+      "correct": true,
+      "latency_ms": 986.6
+    },
+    {
+      "id": "monthly_timesheets_07",
+      "question": "Giờ OT thực tế và giờ OT được trả của tôi trong tháng này chênh lệch bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Giờ OT thực tế và giờ OT được trả của tôi trong tháng này chênh lệch bao nhiêu?",
+      "correct": true,
+      "latency_ms": 677.0
+    },
+    {
+      "id": "monthly_timesheets_08",
+      "question": "Những tháng nào trong năm nay tôi đi muộn trên 3 lần?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những tháng nào trong năm nay tôi đi muộn trên 3 lần?",
+      "correct": true,
+      "latency_ms": 677.3
+    },
+    {
+      "id": "monthly_timesheets_09",
+      "question": "Quy định ngày công chuẩn một tháng là bao nhiêu, công thực tế tháng này của tôi có đủ không?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định ngày công chuẩn một tháng là bao nhiêu và công thực tế tháng này của tôi có đủ không?",
+      "correct": true,
+      "latency_ms": 700.6
+    },
+    {
+      "id": "monthly_timesheets_10",
+      "question": "Bảng công 3 tháng gần nhất của tôi như thế nào, tháng nào đi muộn nhiều nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Bảng công 3 tháng gần nhất của tôi như thế nào, tháng nào tôi đi muộn nhiều nhất?",
+      "correct": true,
+      "latency_ms": 661.2
+    },
+    {
+      "id": "leave_requests_01",
+      "question": "Năm nay tôi đã nghỉ phép tổng cộng bao nhiêu ngày?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi đã nghỉ phép tổng cộng bao nhiêu ngày?",
+      "correct": true,
+      "latency_ms": 678.2
+    },
+    {
+      "id": "leave_requests_02",
+      "question": "Đơn xin nghỉ phép gần nhất của tôi đang ở trạng thái nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đơn xin nghỉ phép gần nhất của tôi đang ở trạng thái nào?",
+      "correct": true,
+      "latency_ms": 694.6
+    },
+    {
+      "id": "leave_requests_03",
+      "question": "Thống kê số đơn nghỉ phép của tôi theo từng trạng thái (chờ duyệt, đã duyệt, bị từ chối)?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thống kê số đơn nghỉ phép của tôi theo từng trạng thái (chờ duyệt, đã duyệt, bị từ chối)?",
+      "correct": true,
+      "latency_ms": 998.9
+    },
+    {
+      "id": "leave_requests_04",
+      "question": "Tháng nào trong năm nay tôi nghỉ phép nhiều nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng nào trong năm nay tôi nghỉ phép nhiều nhất?",
+      "correct": true,
+      "latency_ms": 2633.0
+    },
+    {
+      "id": "leave_requests_05",
+      "question": "Liệt kê 10 đơn xin nghỉ gần nhất của tôi kèm lý do?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê 10 đơn xin nghỉ gần nhất của tôi kèm lý do?",
+      "correct": true,
+      "latency_ms": 705.6
+    },
+    {
+      "id": "leave_requests_06",
+      "question": "Đơn xin nghỉ nào của tôi bị từ chối và lý do từ chối là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đơn xin nghỉ nào của tôi bị từ chối và lý do từ chối là gì?",
+      "correct": true,
+      "latency_ms": 695.8
+    },
+    {
+      "id": "leave_requests_07",
+      "question": "Quý này so với quý trước, tôi nghỉ phép nhiều hơn hay ít hơn?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Quý này so với quý trước, tôi nghỉ phép nhiều hơn hay ít hơn?",
+      "correct": true,
+      "latency_ms": 1040.5
+    },
+    {
+      "id": "leave_requests_08",
+      "question": "Hiện tại tôi có đơn xin nghỉ nào đang chờ duyệt không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hiện tại tôi có đơn xin nghỉ nào đang chờ duyệt không?",
+      "correct": true,
+      "latency_ms": 689.3
+    },
+    {
+      "id": "leave_requests_09",
+      "question": "Quy định nghỉ phép năm thế nào, năm nay tôi đã dùng hết phép chưa?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định nghỉ phép năm thế nào và năm nay tôi đã dùng hết phép chưa?",
+      "correct": true,
+      "latency_ms": 657.4
+    },
+    {
+      "id": "leave_requests_10",
+      "question": "Ai là người duyệt đơn nghỉ phép của tôi, đơn gần nhất ai duyệt?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ai là người duyệt đơn nghỉ phép của tôi và đơn nghỉ phép gần nhất của tôi do ai duyệt?",
+      "correct": true,
+      "latency_ms": 1113.6
+    },
+    {
+      "id": "overtime_records_01",
+      "question": "Năm nay tôi làm thêm (OT) tổng cộng bao nhiêu giờ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi làm thêm (OT) tổng cộng bao nhiêu giờ?",
+      "correct": true,
+      "latency_ms": 666.8
+    },
+    {
+      "id": "overtime_records_02",
+      "question": "Thống kê tổng giờ OT của tôi theo từng tháng trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thống kê tổng giờ OT của tôi theo từng tháng trong năm nay?",
+      "correct": true,
+      "latency_ms": 688.5
+    },
+    {
+      "id": "overtime_records_03",
+      "question": "Tháng nào trong năm nay tôi OT nhiều giờ nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng nào trong năm nay tôi OT nhiều giờ nhất?",
+      "correct": true,
+      "latency_ms": 682.8
+    },
+    {
+      "id": "overtime_records_04",
+      "question": "Quý này so với quý trước, giờ OT của tôi tăng hay giảm?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Quý này so với quý trước, giờ OT của tôi tăng hay giảm?",
+      "correct": true,
+      "latency_ms": 674.9
+    },
+    {
+      "id": "overtime_records_05",
+      "question": "Tôi có bao nhiêu giờ OT vào ban đêm, cuối tuần và ngày lễ trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có bao nhiêu giờ OT vào ban đêm, cuối tuần và ngày lễ trong năm nay?",
+      "correct": true,
+      "latency_ms": 706.7
+    },
+    {
+      "id": "overtime_records_06",
+      "question": "Đơn OT nào của tôi đang chờ duyệt, đơn nào bị từ chối và vì sao?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đơn OT nào của tôi đang chờ duyệt, đơn nào bị từ chối và vì sao?",
+      "correct": true,
+      "latency_ms": 673.6
+    },
+    {
+      "id": "overtime_records_07",
+      "question": "Liệt kê 10 lần OT gần nhất của tôi, mỗi lần mấy giờ và lý do gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê 10 lần OT gần nhất của tôi, mỗi lần mấy giờ và lý do gì?",
+      "correct": true,
+      "latency_ms": 704.8
+    },
+    {
+      "id": "overtime_records_08",
+      "question": "Năm nay tôi có bao nhiêu đơn OT được duyệt, trung bình mỗi đơn mấy giờ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi có bao nhiêu đơn OT được duyệt, trung bình mỗi đơn mấy giờ?",
+      "correct": true,
+      "latency_ms": 656.4
+    },
+    {
+      "id": "overtime_records_09",
+      "question": "Quy định tính lương OT ngày thường, cuối tuần, ngày lễ thế nào, tháng này tôi OT bao nhiêu giờ?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định tính lương OT ngày thường, cuối tuần, ngày lễ thế nào và tháng này tôi OT bao nhiêu giờ?",
+      "correct": true,
+      "latency_ms": 719.9
+    },
+    {
+      "id": "overtime_records_10",
+      "question": "Tuần nào trong năm nay tôi OT nhiều giờ nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tuần nào trong năm nay tôi OT nhiều giờ nhất?",
+      "correct": true,
+      "latency_ms": 699.1
+    },
+    {
+      "id": "payrolls_01",
+      "question": "Lương tháng này của tôi thực lĩnh bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lương tháng này của tôi thực lĩnh bao nhiêu?",
+      "correct": true,
+      "latency_ms": 673.1
+    },
+    {
+      "id": "payrolls_02",
+      "question": "Tổng thu nhập thực lĩnh cả năm nay của tôi là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tổng thu nhập thực lĩnh cả năm nay của tôi là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 647.6
+    },
+    {
+      "id": "payrolls_03",
+      "question": "Liệt kê lương từng tháng trong năm nay của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê lương từng tháng trong năm nay của tôi?",
+      "correct": true,
+      "latency_ms": 660.3
+    },
+    {
+      "id": "payrolls_04",
+      "question": "Giải thích chi tiết các khoản khấu trừ trong lương tháng này của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Giải thích chi tiết các khoản khấu trừ trong lương tháng này của tôi?",
+      "correct": true,
+      "latency_ms": 867.4
+    },
+    {
+      "id": "payrolls_05",
+      "question": "Tháng nào trong năm nay lương của tôi cao nhất, có phải do thưởng không?",
+      "expected": "DB_ONLY",
+      "predicted": "HYBRID",
+      "rewritten": "Tháng nào trong năm nay lương của tôi cao nhất, có phải do thưởng không?",
+      "correct": false,
+      "latency_ms": 752.7
+    },
+    {
+      "id": "payrolls_06",
+      "question": "So với tháng trước, lương tháng này của tôi tăng hay giảm bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "So với tháng trước, lương tháng này của tôi tăng hay giảm bao nhiêu?",
+      "correct": true,
+      "latency_ms": 879.8
+    },
+    {
+      "id": "payrolls_07",
+      "question": "Tổng tiền thưởng và phụ cấp tôi nhận được trong năm nay là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tổng tiền thưởng và phụ cấp tôi nhận được trong năm nay là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 687.4
+    },
+    {
+      "id": "payrolls_08",
+      "question": "Năm nay tôi đã đóng tổng cộng bao nhiêu tiền thuế TNCN và bảo hiểm?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi đã đóng tổng cộng bao nhiêu tiền thuế TNCN và bảo hiểm?",
+      "correct": true,
+      "latency_ms": 662.3
+    },
+    {
+      "id": "payrolls_09",
+      "question": "Quy định khấu trừ BHXH và thuế TNCN thế nào, tháng này tôi bị trừ bao nhiêu?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định khấu trừ BHXH và thuế TNCN thế nào, tháng này tôi bị trừ bao nhiêu?",
+      "correct": true,
+      "latency_ms": 722.5
+    },
+    {
+      "id": "payrolls_10",
+      "question": "Các phiếu lương đã thanh toán (PAID) của tôi trong năm nay, trung bình mỗi tháng thực lĩnh bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Các phiếu lương đã thanh toán (PAID) của tôi trong năm nay, trung bình mỗi tháng thực lĩnh bao nhiêu?",
+      "correct": true,
+      "latency_ms": 697.4
+    },
+    {
+      "id": "salaries_01",
+      "question": "Lương cơ bản hiện tại của tôi là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lương cơ bản hiện tại của tôi là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 722.0
+    },
+    {
+      "id": "salaries_02",
+      "question": "Liệt kê lịch sử các mức lương của tôi từ trước tới nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê lịch sử các mức lương của tôi từ trước tới nay?",
+      "correct": true,
+      "latency_ms": 655.4
+    },
+    {
+      "id": "salaries_03",
+      "question": "Lương hiện tại của tôi tăng bao nhiêu so với mức lương trước đây?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lương hiện tại của tôi tăng bao nhiêu so với mức lương trước đây?",
+      "correct": true,
+      "latency_ms": 668.9
+    },
+    {
+      "id": "salaries_04",
+      "question": "Kỳ trả lương của tôi là theo tháng hay theo tuần?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Kỳ trả lương của tôi là theo tháng hay theo tuần?",
+      "correct": true,
+      "latency_ms": 647.7
+    },
+    {
+      "id": "salaries_05",
+      "question": "Số ngày công chuẩn để tính lương của tôi là bao nhiêu ngày?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Số ngày công chuẩn để tính lương của tôi là bao nhiêu ngày?",
+      "correct": true,
+      "latency_ms": 788.0
+    },
+    {
+      "id": "salaries_06",
+      "question": "Mức lương cao nhất tôi từng nhận là bao nhiêu, áp dụng từ khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mức lương cao nhất tôi từng nhận là bao nhiêu và được áp dụng từ khi nào?",
+      "correct": true,
+      "latency_ms": 738.3
+    },
+    {
+      "id": "salaries_07",
+      "question": "Mức lương hiện tại của tôi có hiệu lực từ ngày nào đến ngày nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mức lương hiện tại của tôi có hiệu lực từ ngày nào đến ngày nào?",
+      "correct": true,
+      "latency_ms": 704.7
+    },
+    {
+      "id": "salaries_08",
+      "question": "Lương cơ bản và tài khoản ngân hàng nhận lương hiện tại của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lương cơ bản và tài khoản ngân hàng nhận lương hiện tại của tôi là gì?",
+      "correct": true,
+      "latency_ms": 702.4
+    },
+    {
+      "id": "salaries_09",
+      "question": "Quy định nâng bậc lương thế nào, lương hiện tại của tôi đang ở mức nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định nâng bậc lương thế nào và lương hiện tại của tôi đang ở mức nào?",
+      "correct": true,
+      "latency_ms": 728.1
+    },
+    {
+      "id": "salaries_10",
+      "question": "Trung bình các mức lương tôi từng nhận là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Trung bình các mức lương tôi từng nhận là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 671.5
+    },
+    {
+      "id": "user_contracts_01",
+      "question": "Hợp đồng hiện tại của tôi là loại gì và có hiệu lực đến khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hợp đồng hiện tại của tôi là loại gì và có hiệu lực đến khi nào?",
+      "correct": true,
+      "latency_ms": 643.4
+    },
+    {
+      "id": "user_contracts_02",
+      "question": "Liệt kê tất cả các hợp đồng tôi đã ký với công ty?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê tất cả các hợp đồng tôi đã ký với công ty?",
+      "correct": true,
+      "latency_ms": 654.3
+    },
+    {
+      "id": "user_contracts_03",
+      "question": "Hợp đồng của tôi còn bao nhiêu ngày nữa thì hết hạn?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hợp đồng của tôi còn bao nhiêu ngày nữa thì hết hạn?",
+      "correct": true,
+      "latency_ms": 686.2
+    },
+    {
+      "id": "user_contracts_04",
+      "question": "Tôi đã ký tổng cộng bao nhiêu hợp đồng, mỗi loại bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đã ký tổng cộng bao nhiêu hợp đồng, mỗi loại bao nhiêu?",
+      "correct": true,
+      "latency_ms": 677.5
+    },
+    {
+      "id": "user_contracts_05",
+      "question": "Hợp đồng thử việc của tôi kéo dài bao lâu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hợp đồng thử việc của tôi kéo dài bao lâu?",
+      "correct": true,
+      "latency_ms": 655.7
+    },
+    {
+      "id": "user_contracts_06",
+      "question": "Những hợp đồng nào của tôi đã hết hiệu lực?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những hợp đồng nào của tôi đã hết hiệu lực?",
+      "correct": true,
+      "latency_ms": 670.4
+    },
+    {
+      "id": "user_contracts_07",
+      "question": "So sánh thời hạn hợp đồng mới nhất với hợp đồng trước đó của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "So sánh thời hạn hợp đồng mới nhất với hợp đồng trước đó của tôi?",
+      "correct": true,
+      "latency_ms": 767.8
+    },
+    {
+      "id": "user_contracts_08",
+      "question": "Hợp đồng không xác định thời hạn của tôi bắt đầu từ khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hợp đồng không xác định thời hạn của tôi bắt đầu từ khi nào?",
+      "correct": true,
+      "latency_ms": 992.1
+    },
+    {
+      "id": "user_contracts_09",
+      "question": "Quy định về số lần gia hạn hợp đồng xác định thời hạn thế nào, hợp đồng của tôi sắp hết hạn chưa?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định về số lần gia hạn hợp đồng xác định thời hạn thế nào và hợp đồng của tôi sắp hết hạn chưa?",
+      "correct": true,
+      "latency_ms": 699.3
+    },
+    {
+      "id": "user_contracts_10",
+      "question": "Hợp đồng của tôi có hết hạn trong 60 ngày tới không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hợp đồng của tôi có hết hạn trong 60 ngày tới không?",
+      "correct": true,
+      "latency_ms": 804.3
+    },
+    {
+      "id": "user_profiles_01",
+      "question": "Số điện thoại và email cá nhân của tôi mà hệ thống đang lưu là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Số điện thoại và email cá nhân của tôi mà hệ thống đang lưu là gì?",
+      "correct": true,
+      "latency_ms": 770.6
+    },
+    {
+      "id": "user_profiles_02",
+      "question": "Người liên hệ khẩn cấp của tôi là ai và số điện thoại bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Người liên hệ khẩn cấp của tôi là ai và số điện thoại của họ là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 774.3
+    },
+    {
+      "id": "user_profiles_03",
+      "question": "Nơi sinh, quốc tịch và tình trạng hôn nhân của tôi đang lưu có đúng không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Nơi sinh, quốc tịch và tình trạng hôn nhân của tôi đang lưu có đúng không?",
+      "correct": true,
+      "latency_ms": 741.9
+    },
+    {
+      "id": "user_profiles_04",
+      "question": "Ngày bắt đầu tham gia bảo hiểm xã hội của tôi là từ khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ngày bắt đầu tham gia bảo hiểm xã hội của tôi là từ khi nào?",
+      "correct": true,
+      "latency_ms": 720.2
+    },
+    {
+      "id": "user_profiles_05",
+      "question": "Tính đến nay tôi đã tham gia BHXH được bao nhiêu năm?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tính đến nay tôi đã tham gia BHXH được bao nhiêu năm?",
+      "correct": true,
+      "latency_ms": 727.1
+    },
+    {
+      "id": "user_profiles_06",
+      "question": "Hồ sơ cá nhân của tôi còn thiếu thông tin gì không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hồ sơ cá nhân của tôi còn thiếu thông tin gì không?",
+      "correct": true,
+      "latency_ms": 742.4
+    },
+    {
+      "id": "user_profiles_07",
+      "question": "Họ tên, ngày sinh, số điện thoại và email của tôi hiện lưu thế nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Họ tên, ngày sinh, số điện thoại và email của tôi hiện lưu thế nào?",
+      "correct": true,
+      "latency_ms": 772.0
+    },
+    {
+      "id": "user_profiles_08",
+      "question": "Quy định cập nhật thông tin cá nhân thế nào, số điện thoại hiện tại của tôi là gì?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định cập nhật thông tin cá nhân thế nào và số điện thoại hiện tại của tôi là gì?",
+      "correct": true,
+      "latency_ms": 767.3
+    },
+    {
+      "id": "user_profiles_09",
+      "question": "Hồ sơ đầy đủ của tôi gồm những thông tin gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Hồ sơ đầy đủ của tôi gồm những thông tin gì?",
+      "correct": true,
+      "latency_ms": 723.4
+    },
+    {
+      "id": "user_profiles_10",
+      "question": "Chế độ BHXH tôi đang hưởng tính từ khi nào, quy định đóng BHXH thế nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Chế độ BHXH tôi đang hưởng tính từ khi nào và quy định đóng BHXH chung thế nào?",
+      "correct": true,
+      "latency_ms": 778.3
+    },
+    {
+      "id": "user_bank_accounts_01",
+      "question": "Tài khoản ngân hàng nhận lương của tôi là số nào, ở ngân hàng nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tài khoản ngân hàng nhận lương của tôi là số nào, ở ngân hàng nào?",
+      "correct": true,
+      "latency_ms": 773.4
+    },
+    {
+      "id": "user_bank_accounts_02",
+      "question": "Tôi có tổng cộng bao nhiêu tài khoản ngân hàng trong hệ thống?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có tổng cộng bao nhiêu tài khoản ngân hàng trong hệ thống?",
+      "correct": true,
+      "latency_ms": 765.6
+    },
+    {
+      "id": "user_bank_accounts_03",
+      "question": "Liệt kê tất cả tài khoản ngân hàng của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê tất cả tài khoản ngân hàng của tôi?",
+      "correct": true,
+      "latency_ms": 677.7
+    },
+    {
+      "id": "user_bank_accounts_04",
+      "question": "Tên chủ tài khoản nhận lương của tôi có khớp với tên tôi không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tên chủ tài khoản nhận lương của tôi có khớp với tên tôi không?",
+      "correct": true,
+      "latency_ms": 738.3
+    },
+    {
+      "id": "user_bank_accounts_05",
+      "question": "Ngoài tài khoản nhận lương chính, tôi còn tài khoản phụ nào không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ngoài tài khoản nhận lương chính, tôi còn tài khoản phụ nào không?",
+      "correct": true,
+      "latency_ms": 700.2
+    },
+    {
+      "id": "user_bank_accounts_06",
+      "question": "Mã ngân hàng (bank_code) của tài khoản nhận lương của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mã ngân hàng (bank_code) của tài khoản nhận lương của tôi là gì?",
+      "correct": true,
+      "latency_ms": 738.5
+    },
+    {
+      "id": "user_bank_accounts_07",
+      "question": "Lương cơ bản hiện tại và tài khoản ngân hàng nhận lương của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lương cơ bản hiện tại và tài khoản ngân hàng nhận lương của tôi là gì?",
+      "correct": true,
+      "latency_ms": 710.7
+    },
+    {
+      "id": "user_bank_accounts_08",
+      "question": "Tài khoản nhận lương gần đây nhất của tôi là tài khoản nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tài khoản nhận lương gần đây nhất của tôi là tài khoản nào?",
+      "correct": true,
+      "latency_ms": 714.9
+    },
+    {
+      "id": "user_bank_accounts_09",
+      "question": "Thủ tục đổi tài khoản nhận lương thế nào, tài khoản hiện tại của tôi là số nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Thủ tục đổi tài khoản nhận lương thế nào và tài khoản hiện tại của tôi là số nào?",
+      "correct": true,
+      "latency_ms": 712.9
+    },
+    {
+      "id": "user_bank_accounts_10",
+      "question": "Chính sách trả lương qua ngân hàng của công ty thế nào, tôi đang nhận lương qua ngân hàng nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Chính sách trả lương qua ngân hàng của công ty thế nào và tôi đang nhận lương qua ngân hàng nào?",
+      "correct": true,
+      "latency_ms": 715.4
+    },
+    {
+      "id": "user_permission_grants_01",
+      "question": "Tôi có những quyền hạn nào trên hệ thống?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có những quyền hạn nào trên hệ thống?",
+      "correct": true,
+      "latency_ms": 696.8
+    },
+    {
+      "id": "user_permission_grants_02",
+      "question": "Tôi có quyền duyệt đơn nghỉ phép không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có quyền duyệt đơn nghỉ phép không?",
+      "correct": true,
+      "latency_ms": 1073.0
+    },
+    {
+      "id": "user_permission_grants_03",
+      "question": "Tôi được cấp tổng cộng bao nhiêu quyền?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi được cấp tổng cộng bao nhiêu quyền?",
+      "correct": true,
+      "latency_ms": 686.8
+    },
+    {
+      "id": "user_permission_grants_04",
+      "question": "Quyền gần nhất tôi được cấp là quyền gì, cấp khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Quyền gần nhất tôi được cấp là quyền gì, cấp khi nào?",
+      "correct": true,
+      "latency_ms": 1097.1
+    },
+    {
+      "id": "user_permission_grants_05",
+      "question": "Thống kê quyền của tôi theo nhóm: duyệt, xem, quản lý?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thống kê quyền của tôi theo nhóm: duyệt, xem, quản lý?",
+      "correct": true,
+      "latency_ms": 698.8
+    },
+    {
+      "id": "user_permission_grants_06",
+      "question": "Tôi có quyền xem lương toàn công ty không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có quyền xem lương toàn công ty không?",
+      "correct": true,
+      "latency_ms": 689.0
+    },
+    {
+      "id": "user_permission_grants_07",
+      "question": "Những quyền nào của tôi được cấp trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những quyền nào của tôi được cấp trong năm nay?",
+      "correct": true,
+      "latency_ms": 652.1
+    },
+    {
+      "id": "user_permission_grants_08",
+      "question": "Tôi có những quyền phê duyệt (APPROVE) nào, có bao gồm duyệt OT không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có những quyền phê duyệt (APPROVE) nào, có bao gồm duyệt OT không?",
+      "correct": true,
+      "latency_ms": 705.0
+    },
+    {
+      "id": "user_permission_grants_09",
+      "question": "Quy định phân quyền hệ thống thế nào, hiện tại tôi đang có những quyền gì?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định phân quyền hệ thống thế nào và hiện tại tôi đang có những quyền gì?",
+      "correct": true,
+      "latency_ms": 692.6
+    },
+    {
+      "id": "user_permission_grants_10",
+      "question": "Tôi có quyền khóa bảng công (TIMESHEET_LOCK) hay cấp quyền cho người khác không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi có quyền khóa bảng công (TIMESHEET_LOCK) hay cấp quyền cho người khác không?",
+      "correct": true,
+      "latency_ms": 682.6
+    },
+    {
+      "id": "user_sessions_01",
+      "question": "Tôi đang có bao nhiêu phiên đăng nhập còn hoạt động?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đang có bao nhiêu phiên đăng nhập còn hoạt động?",
+      "correct": true,
+      "latency_ms": 758.4
+    },
+    {
+      "id": "user_sessions_02",
+      "question": "Lần hoạt động gần nhất của tài khoản tôi là khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lần hoạt động gần nhất của tài khoản tôi là khi nào?",
+      "correct": true,
+      "latency_ms": 1957.1
+    },
+    {
+      "id": "user_sessions_03",
+      "question": "Liệt kê các phiên đăng nhập gần đây của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê các phiên đăng nhập gần đây của tôi?",
+      "correct": true,
+      "latency_ms": 696.8
+    },
+    {
+      "id": "user_sessions_04",
+      "question": "Tài khoản của tôi có phiên đăng nhập nào bị thu hồi không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tài khoản của tôi có phiên đăng nhập nào bị thu hồi không?",
+      "correct": true,
+      "latency_ms": 693.5
+    },
+    {
+      "id": "user_sessions_05",
+      "question": "Thống kê số phiên đăng nhập của tôi theo từng tháng năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thống kê số phiên đăng nhập của tôi theo từng tháng năm nay?",
+      "correct": true,
+      "latency_ms": 760.2
+    },
+    {
+      "id": "user_sessions_06",
+      "question": "Tháng này tôi đã đăng nhập bao nhiêu lần?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng này tôi đã đăng nhập bao nhiêu lần?",
+      "correct": true,
+      "latency_ms": 647.4
+    },
+    {
+      "id": "user_sessions_07",
+      "question": "So với tháng trước, số lần đăng nhập tháng này của tôi tăng hay giảm?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "So với tháng trước, số lần đăng nhập tháng này của tôi tăng hay giảm?",
+      "correct": true,
+      "latency_ms": 726.9
+    },
+    {
+      "id": "user_sessions_08",
+      "question": "Phiên đăng nhập cũ nhất còn hoạt động của tôi bắt đầu từ khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Phiên đăng nhập cũ nhất còn hoạt động của tôi bắt đầu từ khi nào?",
+      "correct": true,
+      "latency_ms": 671.3
+    },
+    {
+      "id": "user_sessions_09",
+      "question": "Quy định bảo mật tài khoản thế nào, tôi có phiên đăng nhập lạ nào không?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định bảo mật tài khoản thế nào và tôi có phiên đăng nhập lạ nào không?",
+      "correct": true,
+      "latency_ms": 730.6
+    },
+    {
+      "id": "user_sessions_10",
+      "question": "Có ai đang đăng nhập tài khoản của tôi ở nơi khác không, kiểm tra giúp tôi?",
+      "expected": "HYBRID",
+      "predicted": "DB_ONLY",
+      "rewritten": "Có ai đang đăng nhập tài khoản của tôi ở nơi khác không, kiểm tra giúp tôi?",
+      "correct": false,
+      "latency_ms": 707.3
+    },
+    {
+      "id": "resignation_requests_01",
+      "question": "Đơn xin nghỉ việc của tôi hiện đang ở trạng thái nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đơn xin nghỉ việc của tôi hiện đang ở trạng thái nào?",
+      "correct": true,
+      "latency_ms": 702.4
+    },
+    {
+      "id": "resignation_requests_02",
+      "question": "Từ trước tới nay tôi đã gửi bao nhiêu đơn xin nghỉ việc?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Từ trước tới nay tôi đã gửi bao nhiêu đơn xin nghỉ việc?",
+      "correct": true,
+      "latency_ms": 676.4
+    },
+    {
+      "id": "resignation_requests_03",
+      "question": "Ngày làm việc cuối cùng của tôi là ngày nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ngày làm việc cuối cùng của tôi là ngày nào?",
+      "correct": true,
+      "latency_ms": 626.3
+    },
+    {
+      "id": "resignation_requests_04",
+      "question": "Đơn xin nghỉ việc của tôi đã được quản lý và HR duyệt chưa?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đơn xin nghỉ việc của tôi đã được quản lý và HR duyệt chưa?",
+      "correct": true,
+      "latency_ms": 775.3
+    },
+    {
+      "id": "resignation_requests_05",
+      "question": "Đơn xin nghỉ nào của tôi bị từ chối hoặc đã hủy?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những đơn xin nghỉ nào của tôi bị từ chối hoặc đã hủy?",
+      "correct": true,
+      "latency_ms": 738.3
+    },
+    {
+      "id": "resignation_requests_06",
+      "question": "Từ lúc tôi gửi đơn đến ngày làm việc cuối cùng, tôi đã báo trước bao nhiêu ngày?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Từ lúc tôi gửi đơn đến ngày làm việc cuối cùng, tôi đã báo trước bao nhiêu ngày?",
+      "correct": true,
+      "latency_ms": 749.0
+    },
+    {
+      "id": "resignation_requests_07",
+      "question": "Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?",
+      "correct": true,
+      "latency_ms": 652.5
+    },
+    {
+      "id": "resignation_requests_08",
+      "question": "Liệt kê lịch sử các đơn xin nghỉ việc của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê lịch sử các đơn xin nghỉ việc của tôi?",
+      "correct": true,
+      "latency_ms": 678.3
+    },
+    {
+      "id": "resignation_requests_09",
+      "question": "Quy định thời gian báo trước khi nghỉ việc thế nào, đơn của tôi có đủ thời gian báo trước không?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định thời gian báo trước khi nghỉ việc thế nào, đơn của tôi có đủ thời gian báo trước không?",
+      "correct": true,
+      "latency_ms": 2331.8
+    },
+    {
+      "id": "resignation_requests_10",
+      "question": "Thủ tục bàn giao khi nghỉ việc gồm những gì, đơn của tôi đang tới bước nào rồi?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Thủ tục bàn giao khi nghỉ việc gồm những gì và đơn nghỉ việc của tôi đang tới bước nào rồi?",
+      "correct": true,
+      "latency_ms": 714.3
+    },
+    {
+      "id": "work_shifts_01",
+      "question": "Tôi đang làm ca nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đang làm ca nào?",
+      "correct": true,
+      "latency_ms": 658.5
+    },
+    {
+      "id": "work_shifts_02",
+      "question": "Ca làm của tôi bắt đầu và kết thúc lúc mấy giờ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ca làm của tôi bắt đầu và kết thúc lúc mấy giờ?",
+      "correct": true,
+      "latency_ms": 656.1
+    },
+    {
+      "id": "work_shifts_03",
+      "question": "Ca của tôi có giờ nghỉ trưa từ mấy giờ đến mấy giờ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ca của tôi có giờ nghỉ trưa từ mấy giờ đến mấy giờ?",
+      "correct": true,
+      "latency_ms": 752.4
+    },
+    {
+      "id": "work_shifts_04",
+      "question": "Lịch chi tiết cả tuần của ca tôi như thế nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lịch chi tiết cả tuần của ca làm việc của tôi như thế nào?",
+      "correct": true,
+      "latency_ms": 664.3
+    },
+    {
+      "id": "work_shifts_05",
+      "question": "Những ngày nào trong tuần ca của tôi được nghỉ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những ngày nào trong tuần ca của tôi được nghỉ?",
+      "correct": true,
+      "latency_ms": 671.9
+    },
+    {
+      "id": "work_shifts_06",
+      "question": "So sánh giờ bắt đầu ca của tôi với các ca làm khác trong công ty?",
+      "expected": "DB_ONLY",
+      "predicted": "HYBRID",
+      "rewritten": "So sánh giờ bắt đầu ca làm việc của tôi với các ca làm việc khác trong công ty?",
+      "correct": false,
+      "latency_ms": 667.9
+    },
+    {
+      "id": "work_shifts_07",
+      "question": "Công ty có những ca làm việc nào, ca của tôi là ca nào trong số đó?",
+      "expected": "DB_ONLY",
+      "predicted": "HYBRID",
+      "rewritten": "Công ty có những ca làm việc nào và ca làm việc của tôi là ca nào trong số đó?",
+      "correct": false,
+      "latency_ms": 725.0
+    },
+    {
+      "id": "work_shifts_08",
+      "question": "Thứ 7 và Chủ nhật ca của tôi có phải đi làm không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thứ 7 và Chủ nhật ca làm việc của tôi có phải đi làm không?",
+      "correct": true,
+      "latency_ms": 680.4
+    },
+    {
+      "id": "work_shifts_09",
+      "question": "Quy định giờ làm việc của công ty thế nào, ca của tôi có đúng quy định không?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định giờ làm việc của công ty thế nào, ca làm việc của tôi có đúng quy định không?",
+      "correct": true,
+      "latency_ms": 667.8
+    },
+    {
+      "id": "work_shifts_10",
+      "question": "Quy định nghỉ giữa ca thế nào, ca tôi được nghỉ trưa bao lâu?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định nghỉ giữa ca thế nào và ca làm việc của tôi được nghỉ trưa bao lâu?",
+      "correct": true,
+      "latency_ms": 689.5
+    },
+    {
+      "id": "work_shift_schedules_01",
+      "question": "Lịch làm việc của tôi từ thứ 2 đến thứ 6 như thế nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Lịch làm việc của tôi từ thứ 2 đến thứ 6 như thế nào?",
+      "correct": true,
+      "latency_ms": 631.8
+    },
+    {
+      "id": "work_shift_schedules_02",
+      "question": "Thứ 7 và Chủ nhật tôi có phải đi làm không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thứ 7 và Chủ nhật tôi có phải đi làm không?",
+      "correct": true,
+      "latency_ms": 654.3
+    },
+    {
+      "id": "work_shift_schedules_03",
+      "question": "Mỗi ngày tôi làm mấy tiếng sau khi trừ giờ nghỉ trưa?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mỗi ngày tôi làm mấy tiếng sau khi trừ giờ nghỉ trưa?",
+      "correct": true,
+      "latency_ms": 672.3
+    },
+    {
+      "id": "work_shift_schedules_04",
+      "question": "Tổng số giờ làm chuẩn của tôi mỗi tuần là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tổng số giờ làm chuẩn của tôi mỗi tuần là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 684.8
+    },
+    {
+      "id": "work_shift_schedules_05",
+      "question": "Ngày nào trong tuần tôi phải vào làm sớm nhất và về muộn nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ngày nào trong tuần tôi phải vào làm sớm nhất và về muộn nhất?",
+      "correct": true,
+      "latency_ms": 641.1
+    },
+    {
+      "id": "work_shift_schedules_06",
+      "question": "Giờ nghỉ trưa các ngày trong tuần của tôi có giống nhau không?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Giờ nghỉ trưa các ngày trong tuần của tôi có giống nhau không?",
+      "correct": true,
+      "latency_ms": 721.4
+    },
+    {
+      "id": "work_shift_schedules_07",
+      "question": "So sánh lịch làm thứ 2 với thứ 7 của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "So sánh lịch làm việc thứ 2 với thứ 7 của tôi?",
+      "correct": true,
+      "latency_ms": 671.5
+    },
+    {
+      "id": "work_shift_schedules_08",
+      "question": "Những ngày nào trong tuần tôi được nghỉ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những ngày nào trong tuần tôi được nghỉ?",
+      "correct": true,
+      "latency_ms": 653.6
+    },
+    {
+      "id": "work_shift_schedules_09",
+      "question": "Quy định giờ làm tối đa mỗi tuần thế nào, lịch của tôi có vượt quá không?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định giờ làm tối đa mỗi tuần thế nào và lịch làm việc của tôi có vượt quá quy định đó không?",
+      "correct": true,
+      "latency_ms": 667.3
+    },
+    {
+      "id": "work_shift_schedules_10",
+      "question": "Quy định làm việc cuối tuần thế nào, lịch thứ 7 Chủ nhật của tôi ra sao?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định làm việc cuối tuần thế nào và lịch làm việc thứ 7, Chủ nhật của tôi ra sao?",
+      "correct": true,
+      "latency_ms": 704.4
+    },
+    {
+      "id": "departments_01",
+      "question": "Tôi đang thuộc phòng ban nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đang thuộc phòng ban nào?",
+      "correct": true,
+      "latency_ms": 923.2
+    },
+    {
+      "id": "departments_02",
+      "question": "Chức danh và phòng ban hiện tại của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chức danh và phòng ban hiện tại của tôi là gì?",
+      "correct": true,
+      "latency_ms": 660.5
+    },
+    {
+      "id": "departments_03",
+      "question": "Phòng ban, ca làm và mã nhân viên của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Phòng ban, ca làm và mã nhân viên của tôi là gì?",
+      "correct": true,
+      "latency_ms": 627.1
+    },
+    {
+      "id": "departments_04",
+      "question": "Tôi vào công ty khi nào và hiện đang ở phòng ban nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi vào công ty khi nào và hiện đang ở phòng ban nào?",
+      "correct": true,
+      "latency_ms": 635.5
+    },
+    {
+      "id": "departments_05",
+      "question": "Công ty có những phòng ban nào, phòng hiện tại của tôi là phòng nào?",
+      "expected": "DB_ONLY",
+      "predicted": "HYBRID",
+      "rewritten": "Công ty có những phòng ban nào và phòng hiện tại của tôi là phòng nào?",
+      "correct": false,
+      "latency_ms": 867.6
+    },
+    {
+      "id": "departments_06",
+      "question": "Trong phòng ban của tôi có những chức danh nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Trong phòng ban của tôi có những chức danh nào?",
+      "correct": true,
+      "latency_ms": 663.7
+    },
+    {
+      "id": "departments_07",
+      "question": "Mã phòng ban của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mã phòng ban của tôi là gì?",
+      "correct": true,
+      "latency_ms": 626.5
+    },
+    {
+      "id": "departments_08",
+      "question": "Chức danh của tôi trong phòng ban là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chức danh của tôi trong phòng ban là gì?",
+      "correct": true,
+      "latency_ms": 659.4
+    },
+    {
+      "id": "departments_09",
+      "question": "Quy định chuyển phòng ban thế nào, hiện tại tôi đang ở phòng nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định chuyển phòng ban thế nào và hiện tại tôi đang ở phòng nào?",
+      "correct": true,
+      "latency_ms": 678.3
+    },
+    {
+      "id": "departments_10",
+      "question": "Cơ cấu tổ chức các phòng ban theo quy định ra sao, tôi thuộc phòng nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Cơ cấu tổ chức các phòng ban theo quy định ra sao và tôi thuộc phòng nào?",
+      "correct": true,
+      "latency_ms": 677.2
+    },
+    {
+      "id": "jobs_01",
+      "question": "Chức danh hiện tại của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chức danh hiện tại của tôi là gì?",
+      "correct": true,
+      "latency_ms": 640.1
+    },
+    {
+      "id": "jobs_02",
+      "question": "Chức danh của tôi thuộc phòng ban nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chức danh của tôi thuộc phòng ban nào?",
+      "correct": true,
+      "latency_ms": 666.6
+    },
+    {
+      "id": "jobs_03",
+      "question": "Trong phòng ban của tôi có những chức danh nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Trong phòng ban của tôi có những chức danh nào?",
+      "correct": true,
+      "latency_ms": 642.3
+    },
+    {
+      "id": "jobs_04",
+      "question": "Chức danh và mã nhân viên của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chức danh và mã nhân viên của tôi là gì?",
+      "correct": true,
+      "latency_ms": 693.5
+    },
+    {
+      "id": "jobs_05",
+      "question": "Công ty có những chức danh nào, chức danh của tôi là vị trí nào trong số đó?",
+      "expected": "DB_ONLY",
+      "predicted": "HYBRID",
+      "rewritten": "Công ty có những chức danh nào và chức danh của tôi là vị trí nào trong số đó?",
+      "correct": false,
+      "latency_ms": 830.0
+    },
+    {
+      "id": "jobs_06",
+      "question": "So với các chức danh khác trong phòng, vị trí của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "So với các chức danh khác trong phòng, chức danh và phòng ban của tôi là gì?",
+      "correct": true,
+      "latency_ms": 687.0
+    },
+    {
+      "id": "jobs_07",
+      "question": "Mức lương cơ bản cho chức danh hiện tại của tôi là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mức lương cơ bản cho chức danh hiện tại của tôi là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 722.4
+    },
+    {
+      "id": "jobs_08",
+      "question": "Chức danh của tôi đang có những quyền hạn gì trên hệ thống?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chức danh của tôi đang có những quyền hạn gì trên hệ thống?",
+      "correct": true,
+      "latency_ms": 652.5
+    },
+    {
+      "id": "jobs_09",
+      "question": "Lộ trình thăng tiến từ chức danh của tôi theo quy định thế nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Lộ trình thăng tiến từ chức danh của tôi theo quy định thế nào?",
+      "correct": true,
+      "latency_ms": 678.7
+    },
+    {
+      "id": "jobs_10",
+      "question": "Mô tả công việc của chức danh tôi theo quy định là gì?",
+      "expected": "HYBRID",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mô tả công việc của chức danh của tôi theo quy định là gì?",
+      "correct": false,
+      "latency_ms": 678.0
+    },
+    {
+      "id": "holidays_01",
+      "question": "Tháng này có những ngày lễ nào tôi được nghỉ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tháng này tôi được nghỉ những ngày lễ nào?",
+      "correct": true,
+      "latency_ms": 665.9
+    },
+    {
+      "id": "holidays_02",
+      "question": "Năm nay có tổng cộng bao nhiêu ngày lễ?",
+      "expected": "DB_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Năm nay có tổng cộng bao nhiêu ngày lễ?",
+      "correct": false,
+      "latency_ms": 652.3
+    },
+    {
+      "id": "holidays_03",
+      "question": "Liệt kê các ngày lễ trong năm nay theo thứ tự thời gian?",
+      "expected": "DB_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Liệt kê các ngày lễ trong năm nay theo thứ tự thời gian?",
+      "correct": false,
+      "latency_ms": 1059.3
+    },
+    {
+      "id": "holidays_04",
+      "question": "Ngày lễ sắp tới gần nhất mà tôi được nghỉ là ngày nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ngày lễ sắp tới gần nhất mà tôi được nghỉ là ngày nào?",
+      "correct": true,
+      "latency_ms": 644.3
+    },
+    {
+      "id": "holidays_05",
+      "question": "Quý 2 năm nay có những ngày lễ nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Quý 2 năm nay có những ngày lễ nào?",
+      "correct": false,
+      "latency_ms": 650.0
+    },
+    {
+      "id": "holidays_06",
+      "question": "6 tháng đầu năm và 6 tháng cuối năm, nửa nào có nhiều ngày lễ hơn?",
+      "expected": "DB_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "6 tháng đầu năm và 6 tháng cuối năm, nửa nào có nhiều ngày lễ hơn?",
+      "correct": false,
+      "latency_ms": 1117.0
+    },
+    {
+      "id": "holidays_07",
+      "question": "Tháng nào trong năm nay có nhiều ngày lễ nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Tháng nào trong năm nay có nhiều ngày lễ nhất?",
+      "correct": false,
+      "latency_ms": 725.9
+    },
+    {
+      "id": "holidays_08",
+      "question": "Dịp lễ 30/4 - 1/5 năm nay tôi được nghỉ những ngày nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Dịp lễ 30/4 - 1/5 năm nay tôi được nghỉ những ngày nào?",
+      "correct": true,
+      "latency_ms": 676.5
+    },
+    {
+      "id": "holidays_09",
+      "question": "Quy định nghỉ lễ hưởng nguyên lương thế nào, năm nay tôi được nghỉ những ngày lễ nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định nghỉ lễ hưởng nguyên lương thế nào và năm nay tôi được nghỉ những ngày lễ nào?",
+      "correct": true,
+      "latency_ms": 723.6
+    },
+    {
+      "id": "holidays_10",
+      "question": "Ngày lễ rơi vào cuối tuần có được nghỉ bù không, các ngày lễ năm nay rơi vào thứ mấy?",
+      "expected": "HYBRID",
+      "predicted": "DOC_ONLY",
+      "rewritten": "Ngày lễ rơi vào cuối tuần có được nghỉ bù không và các ngày lễ năm nay rơi vào thứ mấy?",
+      "correct": false,
+      "latency_ms": 786.2
+    },
+    {
+      "id": "performance_reviews_01",
+      "question": "Kết quả đánh giá hiệu suất của tôi trong năm nay như thế nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Kết quả đánh giá hiệu suất của tôi trong năm nay như thế nào?",
+      "correct": true,
+      "latency_ms": 805.7
+    },
+    {
+      "id": "performance_reviews_02",
+      "question": "Điểm trung bình quản lý đánh giá tôi kỳ gần nhất là bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Điểm trung bình quản lý đánh giá tôi kỳ gần nhất là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 825.2
+    },
+    {
+      "id": "performance_reviews_03",
+      "question": "Điểm tự đánh giá của tôi kỳ này chênh lệch với điểm quản lý bao nhiêu?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Điểm tự đánh giá của tôi kỳ này chênh lệch với điểm quản lý bao nhiêu?",
+      "correct": true,
+      "latency_ms": 694.5
+    },
+    {
+      "id": "performance_reviews_04",
+      "question": "Ai là người đánh giá hiệu suất của tôi kỳ vừa rồi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ai là người đánh giá hiệu suất của tôi kỳ vừa rồi?",
+      "correct": true,
+      "latency_ms": 617.3
+    },
+    {
+      "id": "performance_reviews_05",
+      "question": "Mục tiêu kỳ tới của tôi được ghi nhận là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Mục tiêu kỳ tới của tôi được ghi nhận là gì?",
+      "correct": true,
+      "latency_ms": 681.7
+    },
+    {
+      "id": "performance_reviews_06",
+      "question": "Đánh giá hiệu suất của tôi đã được lãnh đạo xác nhận chưa?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Đánh giá hiệu suất của tôi đã được lãnh đạo xác nhận chưa?",
+      "correct": true,
+      "latency_ms": 716.7
+    },
+    {
+      "id": "performance_reviews_07",
+      "question": "So với kỳ trước, điểm đánh giá của tôi tăng hay giảm?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "So với kỳ trước, điểm đánh giá của tôi tăng hay giảm?",
+      "correct": true,
+      "latency_ms": 629.3
+    },
+    {
+      "id": "performance_reviews_08",
+      "question": "Nhận xét tổng quan của quản lý về hiệu suất của tôi là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Nhận xét tổng quan của quản lý về hiệu suất của tôi là gì?",
+      "correct": true,
+      "latency_ms": 778.3
+    },
+    {
+      "id": "performance_reviews_09",
+      "question": "Quy định đánh giá hiệu suất thế nào, điểm trung bình của tôi kỳ này là bao nhiêu?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định đánh giá hiệu suất thế nào và điểm trung bình của tôi kỳ này là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 649.8
+    },
+    {
+      "id": "performance_reviews_10",
+      "question": "Năm nay tôi đã được đánh giá bao nhiêu kỳ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi đã được đánh giá bao nhiêu kỳ?",
+      "correct": true,
+      "latency_ms": 634.0
+    },
+    {
+      "id": "performance_scores_01",
+      "question": "Chi tiết điểm từng tiêu chí đánh giá của tôi kỳ vừa rồi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Chi tiết điểm từng tiêu chí đánh giá của tôi kỳ vừa rồi là bao nhiêu?",
+      "correct": true,
+      "latency_ms": 693.5
+    },
+    {
+      "id": "performance_scores_02",
+      "question": "Tiêu chí nào tôi bị quản lý chấm thấp nhất kỳ này?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tiêu chí nào tôi bị quản lý chấm thấp nhất kỳ này?",
+      "correct": true,
+      "latency_ms": 666.7
+    },
+    {
+      "id": "performance_scores_03",
+      "question": "Tiêu chí nào tôi tự chấm cao hơn quản lý chấm nhiều nhất?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tiêu chí nào tôi tự chấm cao hơn quản lý chấm nhiều nhất?",
+      "correct": true,
+      "latency_ms": 656.6
+    },
+    {
+      "id": "performance_scores_04",
+      "question": "Kỳ này tôi được chấm bao nhiêu tiêu chí?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Kỳ này tôi được chấm bao nhiêu tiêu chí?",
+      "correct": true,
+      "latency_ms": 643.5
+    },
+    {
+      "id": "performance_scores_05",
+      "question": "Thang điểm đánh giá theo quy định thế nào, tiêu chí nào của tôi thấp nhất?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Thang điểm đánh giá theo quy định thế nào và tiêu chí nào của tôi thấp nhất?",
+      "correct": true,
+      "latency_ms": 661.7
+    },
+    {
+      "id": "asset_assignments_01",
+      "question": "Tôi đang được cấp những tài sản, thiết bị nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đang được cấp những tài sản, thiết bị nào?",
+      "correct": true,
+      "latency_ms": 658.0
+    },
+    {
+      "id": "asset_assignments_02",
+      "question": "Tôi đang giữ tổng cộng bao nhiêu tài sản công ty?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tôi đang giữ tổng cộng bao nhiêu tài sản công ty?",
+      "correct": true,
+      "latency_ms": 624.2
+    },
+    {
+      "id": "asset_assignments_03",
+      "question": "Laptop của tôi được cấp khi nào, tình trạng lúc nhận ra sao?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Laptop của tôi được cấp khi nào, tình trạng lúc nhận ra sao?",
+      "correct": true,
+      "latency_ms": 654.5
+    },
+    {
+      "id": "asset_assignments_04",
+      "question": "Những tài sản nào tôi đã trả lại công ty?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những tài sản nào tôi đã trả lại công ty?",
+      "correct": true,
+      "latency_ms": 642.6
+    },
+    {
+      "id": "asset_assignments_05",
+      "question": "Tài sản tôi đang giữ có hạn trả dự kiến khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tài sản tôi đang giữ có hạn trả dự kiến khi nào?",
+      "correct": true,
+      "latency_ms": 616.5
+    },
+    {
+      "id": "asset_assignments_06",
+      "question": "Ai là người duyệt cấp tài sản cho tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ai là người duyệt cấp tài sản cho tôi?",
+      "correct": true,
+      "latency_ms": 672.9
+    },
+    {
+      "id": "asset_assignments_07",
+      "question": "Ghi chú bàn giao tài sản của tôi có nội dung gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ghi chú bàn giao tài sản của tôi có nội dung gì?",
+      "correct": true,
+      "latency_ms": 666.2
+    },
+    {
+      "id": "asset_assignments_08",
+      "question": "Quy định sử dụng tài sản công ty thế nào, tôi đang giữ những gì?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định sử dụng tài sản công ty thế nào và tôi đang giữ những tài sản gì?",
+      "correct": true,
+      "latency_ms": 2443.5
+    },
+    {
+      "id": "asset_requests_01",
+      "question": "Yêu cầu cấp tài sản gần nhất của tôi đang ở trạng thái nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Yêu cầu cấp tài sản gần nhất của tôi đang ở trạng thái nào?",
+      "correct": true,
+      "latency_ms": 689.7
+    },
+    {
+      "id": "asset_requests_02",
+      "question": "Liệt kê các yêu cầu cấp thiết bị tôi đã gửi trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê các yêu cầu cấp thiết bị tôi đã gửi trong năm nay?",
+      "correct": true,
+      "latency_ms": 669.2
+    },
+    {
+      "id": "asset_requests_03",
+      "question": "Yêu cầu nào của tôi bị từ chối và lý do là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Yêu cầu nào của tôi bị từ chối và lý do là gì?",
+      "correct": true,
+      "latency_ms": 711.2
+    },
+    {
+      "id": "asset_requests_04",
+      "question": "Năm nay tôi đã gửi bao nhiêu yêu cầu cấp tài sản?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi đã gửi bao nhiêu yêu cầu cấp tài sản?",
+      "correct": true,
+      "latency_ms": 657.0
+    },
+    {
+      "id": "asset_requests_05",
+      "question": "Ai duyệt yêu cầu cấp tài sản của tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ai duyệt yêu cầu cấp tài sản của tôi?",
+      "correct": true,
+      "latency_ms": 624.0
+    },
+    {
+      "id": "asset_requests_06",
+      "question": "Thủ tục xin cấp laptop mới thế nào, đơn của tôi tới bước nào rồi?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Thủ tục xin cấp laptop mới thế nào và đơn xin cấp laptop của tôi tới bước nào rồi?",
+      "correct": true,
+      "latency_ms": 730.4
+    },
+    {
+      "id": "assets_01",
+      "question": "Thông tin chi tiết laptop công ty đang cấp cho tôi?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Thông tin chi tiết laptop công ty đang cấp cho tôi là gì?",
+      "correct": true,
+      "latency_ms": 639.3
+    },
+    {
+      "id": "assets_02",
+      "question": "Laptop của tôi còn bảo hành đến khi nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Laptop của tôi còn bảo hành đến khi nào?",
+      "correct": true,
+      "latency_ms": 652.7
+    },
+    {
+      "id": "assets_03",
+      "question": "Tình trạng hiện tại của thiết bị tôi đang giữ?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Tình trạng hiện tại của thiết bị tôi đang giữ là gì?",
+      "correct": true,
+      "latency_ms": 662.8
+    },
+    {
+      "id": "assets_04",
+      "question": "Quy định bảo quản tài sản thế nào, laptop của tôi còn bảo hành không?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy định bảo quản tài sản thế nào và laptop của tôi còn bảo hành không?",
+      "correct": true,
+      "latency_ms": 671.0
+    },
+    {
+      "id": "it_tickets_01",
+      "question": "Ticket sự cố IT gần nhất tôi báo đang ở trạng thái nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ticket sự cố IT gần nhất tôi báo đang ở trạng thái nào?",
+      "correct": true,
+      "latency_ms": 719.0
+    },
+    {
+      "id": "it_tickets_02",
+      "question": "Liệt kê các ticket IT tôi đã báo trong năm nay?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Liệt kê các ticket IT tôi đã báo trong năm nay?",
+      "correct": true,
+      "latency_ms": 802.6
+    },
+    {
+      "id": "it_tickets_03",
+      "question": "Năm nay tôi đã báo bao nhiêu sự cố IT?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Năm nay tôi đã báo bao nhiêu sự cố IT?",
+      "correct": true,
+      "latency_ms": 734.3
+    },
+    {
+      "id": "it_tickets_04",
+      "question": "Ticket máy in của tôi đã được xử lý xong chưa, ghi chú xử lý là gì?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ticket máy in của tôi đã được xử lý xong chưa, ghi chú xử lý là gì?",
+      "correct": true,
+      "latency_ms": 704.1
+    },
+    {
+      "id": "it_tickets_05",
+      "question": "Ai đang xử lý ticket sự cố mạng tôi báo?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ai đang xử lý ticket sự cố mạng mà tôi báo?",
+      "correct": true,
+      "latency_ms": 697.4
+    },
+    {
+      "id": "it_tickets_06",
+      "question": "Những ticket nào của tôi vẫn đang mở chưa xử lý xong?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Những ticket nào của tôi vẫn đang mở chưa xử lý xong?",
+      "correct": true,
+      "latency_ms": 625.3
+    },
+    {
+      "id": "it_tickets_07",
+      "question": "Ticket ưu tiên HIGH của tôi có những cái nào?",
+      "expected": "DB_ONLY",
+      "predicted": "DB_ONLY",
+      "rewritten": "Ticket ưu tiên HIGH của tôi có những cái nào?",
+      "correct": true,
+      "latency_ms": 711.9
+    },
+    {
+      "id": "it_tickets_08",
+      "question": "Quy trình báo sự cố IT thế nào, ticket của tôi đang tới bước nào?",
+      "expected": "HYBRID",
+      "predicted": "HYBRID",
+      "rewritten": "Quy trình báo sự cố IT thế nào và ticket của tôi đang tới bước nào?",
+      "correct": true,
+      "latency_ms": 672.6
+    }
+  ]
+}

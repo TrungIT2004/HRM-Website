@@ -1,0 +1,50 @@
+[
+ {
+  "id": 0,
+  "question": "Làm sao để đăng ký xe công ty cho chuyến công tác?",
+  "answer": "Để đăng ký xe công ty đi công tác, bạn thực hiện theo quy trình 5 bước sau:\n\n*   **Bước 1:** Phối hợp với nhân viên phụ trách xe (Phòng Hành chính) cung cấp thông tin: ngày giờ, điểm đi, điểm đến, số người... qua điện thoại hoặc Zalo.\n    *   Đăng ký theo kế hoạch tuần: Trước 12h thứ 7 hàng tuần.\n    *   Đăng ký xe đột xuất: Trước 16h00 ngày N-1.\n*   **Bước 2:** Sau khi thống nhất thông tin, Đơn vị thực hiện ký đề xuất xe theo mẫu BM01.\n*   **Bước 3:** Chuyển bản ký qua email hoặc Zalo cho nhân viên phụ trách xe (P.HC) để lưu trữ. Nếu đề xuất bị từ chối, thực hiện lại từ Bước 1.\n*   **Bước 4:** Nhân viên phụ trách xe (P.HC) chuyển thông tin cho bộ phận lái xe, phân công tài xế và thông báo thông tin xe, tài xế cho Đơn vị.\n*   **Bước 5:** Nhân viên phụ trách xe (P.HC) theo dõi, tổng hợp và ký xác nhận kết quả thực hiện hàng tháng trước ngày 5 tháng N+1 theo mẫu BM02.\n\n**Lưu ý:**\n*   Nếu có bất kỳ thay đổi nào so với thông tin đã được phê duyệt, bạn phải phản hồi ngay cho Phòng Hành chính để điều chỉnh và trình ký lại đề xuất.\n\nTrích dẫn: [TÀI LIỆU 2], [TÀI LIỆU 4] (Hướng dẫn Về việc đăng ký xe đi công tác số 21A/HD-ACT-HC).",
+  "contexts": [
+   "Trên đây là Hướng dẫn về việc đăng ký xe đi công tác. Kính đề nghị các Đơn vị liên quan phối hợp và thực hiện theo đúng hướng dẫn./.\n\nTrân trọng cảm ơn!\n\n**Nơi nhận:**\n- Ban TGĐ (b/c);\n- Các Khối, P/ban, TTKV (t/h);\n- Lưu: VT (01).\n\n**TRƯỞNG PHÒNG**\n\nChâu Thị Xuân Đào\n\nBM01\n\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT\nĐƠN VỊ/ PHÒNG BAN\nSố: ......../PĐK-ACT-HC\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập – Tự do",
+   "CÔNG TY CP VIỄN THÔNG ACT\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nSố: 21A/HD-ACT-HC\n\nTp HCM, ngày 07 tháng 05 năm 2024\n\nHƯỚNG DẪN\nVề việc đăng ký xe đi công tác\n\nCăn cứ quy chế quản lý và sử dụng xe ô tô Công ty Cổ phần Viễn thông ACT số: 453a/QĐ-ACT-KHCT ban hành ngày 01/09/2018;\nCăn cứ chức năng, nhiệm vụ Phòng Hành chính.\n\nNhằm hướng dẫn các Đơn vị đăng ký xe ô tô Công ",
+   "CÔNG TY CP VIỄN THÔNG ACT    CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\n                             Độc lập - Tự do - Hạnh phúc\n\nSố: 21A/HD-ACT-HC            Tp HCM, ngày 07 tháng 05 năm 2024\n\nHƯỚNG DẪN\nVề việc đăng ký xe đi công tác\n\nCăn cứ quy chế quản lý và sử dụng xe ô tô Công ty Cổ phần Viễn thông ACT số: 453a/QĐ-ACT-KHCT ban hành ngày 01/09/2018;\nCăn cứ chức năng, nhiệm vụ Phòng Hành chính.\n\nNhằm h"
+  ],
+  "verdict": null,
+  "judge_verdict": false,
+  "judge_reason": "Đáp án cung cấp chi tiết quy trình 5 bước, các mốc thời gian (12h thứ 7, 16h ngày N-1), tên mẫu đơn (BM01, BM02) và các bước phối hợp cụ thể, nhưng trong phần NGUON cung cấp, các tài liệu [TAI LIEU 2] và [TAI LIEU 3] đều bị cắt ngang (truncated) ngay sau phần mở đầu, không chứa nội dung chi tiết về quy trình thực hiện.",
+  "judge_unsupported": "Toàn bộ quy trình 5 bước, các mốc thời gian đăng ký, tên mẫu đơn BM01, BM02 và lưu ý về thay đổi thông tin.",
+  "judge_model": "gemma4:31b",
+  "judge_elapsed": 1.3
+ },
+ {
+  "id": 1,
+  "question": "Ai chịu trách nhiệm phê duyệt và điều phối việc sử dụng xe?",
+  "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+  "contexts": [
+   "CÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nSố: 917./QĐ-ACT\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nTp. Hồ Chí Minh, ngày 08 tháng 9. năm 2025\n\nQUYẾT ĐỊNH\nBan hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT\n\nTỔNG GIÁM ĐỐC\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nCăn cứ Điều lệ, Quy chế hoạt động và thẩm quyền của Tổng Giám đốc Công ty Cổ phần ",
+   "3\n\na) Vật tư kỹ thuật, thiết bị, máy móc, công cụ dụng cụ, linh kiện;\nb) Hàng mẫu, hàng hóa thương mại;\nc) Tài sản cố định, hàng tồn kho điều chuyển nội bộ;\nd) Các loại hàng hóa có yêu cầu đặc biệt về bảo quản, an toàn, dễ vỡ hoặc có giá trị cao...\n\nĐiều 3. Phân loại phương thức vận chuyển\n\n1. Xe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài, đ",
+   "CÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nSố: 917./QĐ-ACT\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nTp. Hồ Chí Minh, ngày 08 tháng 9. năm 2025\n\nQUYẾT ĐỊNH\nBan hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT\n\nTỔNG GIÁM ĐỐC\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nCăn cứ Điều lệ, Quy chế hoạt động và thẩm quyền của Tổng Giám đốc Công ty Cổ phần "
+  ],
+  "verdict": null,
+  "judge_verdict": true,
+  "judge_reason": "Nguồn cung cấp chỉ bao gồm tiêu đề quyết định và một phần phân loại phương thức vận chuyển, không chứa thông tin về người chịu trách nhiệm phê duyệt và điều phối xe. Do đó, câu trả lời thông báo không có thông tin trong quy chế là chính xác.",
+  "judge_unsupported": "",
+  "judge_model": "gemma4:31b",
+  "judge_elapsed": 0.8
+ },
+ {
+  "id": 2,
+  "question": "Quyết định số bao nhiêu quy định về lương thưởng?",
+  "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+  "contexts": [
+   "1. Thưởng là số tiền hoặc tài sản hoặc bằng các hình thức khác mà người sử dụng lao động thưởng cho người lao động căn cứ vào kết quả sản xuất, kinh doanh, mức độ hoàn thành công việc của người lao động.\n\n2. Quy chế thưởng do người sử dụng lao động quyết định và công bố công khai tại nơi làm việc sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện",
+   "Tiền thưởng từ 250.000 đồng đến 550.000 đồng.\n\nMức thưởng cụ thể của từng nhân viên sẽ được ghi trong Quyết định của hội đồng thành viên Công ty tại thời điểm thưởng.",
+   "Tiền thưởng từ 250.000 đồng đến 550.000 đồng.\n\nMức thưởng cụ thể của từng nhân viên sẽ được ghi trong Quyết định của hội đồng thành viên Công ty tại thời điểm thưởng."
+  ],
+  "verdict": null,
+  "judge_verdict": true,
+  "judge_reason": "Câu hỏi yêu cầu số quyết định cụ thể quy định về lương thưởng, trong khi các tài liệu chỉ nêu nguyên tắc chung và việc mức thưởng sẽ được ghi trong Quyết định của hội đồng thành viên mà không cung cấp số quyết định cụ thể nào. Do đó, câu trả lời 'không có thông tin' là chính xác.",
+  "judge_unsupported": "",
+  "judge_model": "gemma4:31b",
+  "judge_elapsed": 1.5
+ }
+]

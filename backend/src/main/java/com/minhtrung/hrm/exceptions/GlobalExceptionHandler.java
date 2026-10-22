@@ -6,12 +6,16 @@ import java.util.function.BiFunction;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.minhtrung.hrm.auth.enums.AuthErrorCode;
+import com.minhtrung.hrm.auth.exceptions.AuthenticationException;
 import com.minhtrung.hrm.attendance.enums.AttendanceErrorCode;
 import com.minhtrung.hrm.attendance.exceptions.AttendanceException;
 import com.minhtrung.hrm.leave.enums.LeaveErrorCode;
@@ -20,13 +24,24 @@ import com.minhtrung.hrm.overtime.enums.OvertimeErrorCode;
 import com.minhtrung.hrm.overtime.exceptions.OvertimeException;
 import com.minhtrung.hrm.payroll.enums.PayrollErrorCode;
 import com.minhtrung.hrm.payroll.exceptions.PayrollException;
+import com.minhtrung.hrm.resignation.enums.ResignationErrorCode;
+import com.minhtrung.hrm.resignation.exceptions.ResignationException;
+import com.minhtrung.hrm.documents.enums.DocumentErrorCode;
+import com.minhtrung.hrm.documents.exceptions.DocumentException;
+import com.minhtrung.hrm.asset.enums.AssetErrorCode;
+import com.minhtrung.hrm.asset.exceptions.AssetException;
+import com.minhtrung.hrm.itticket.enums.ItTicketErrorCode;
+import com.minhtrung.hrm.itticket.exceptions.ItTicketException;
+import com.minhtrung.hrm.performance.enums.PerformanceErrorCode;
+import com.minhtrung.hrm.performance.exceptions.PerformanceException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 
 import lombok.extern.slf4j.Slf4j;
 
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-
     // ─── BEAN VALIDATION ───────────────────────────────────────
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
@@ -48,72 +63,45 @@ public class GlobalExceptionHandler {
         ));
     }
 
-    // ─── DATA INTEGRITY ────────────────────────────────────────
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<?> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
-        String msg = ex.getMostSpecificCause().getMessage();
-        log.warn("Data integrity violation: {}", msg);
+    // ─── NO RESOURCE FOUND (404 STATIC / INVALID PATH) ───────
+    /**
+     * Xử lý trường hợp không tìm thấy tài nguyên tĩnh hoặc đường dẫn không hợp lệ (HTTP 404).
+     * Bắt chặn NoResourceFoundException (ví dụ các polling request ngầm từ LuaTools/DevTools tới /json)
+     * để tránh ghi log lỗi 500 [ERROR] hệ thống không xác định làm nhiễu console.
+     */
+    @ExceptionHandler(org.springframework.web.servlet.resource.NoResourceFoundException.class)
+    public ResponseEntity<?> handleNoResourceFound(org.springframework.web.servlet.resource.NoResourceFoundException ex) {
+        log.debug("Không tìm thấy tài nguyên tĩnh hoặc API: /{}", ex.getResourcePath());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
+                "errorCode", "RESOURCE_NOT_FOUND",
+                "msg", "Đường dẫn không tồn tại: /" + ex.getResourcePath()
+        ));
+    }
 
-        BiFunction<String, String, ResponseEntity<?>> error = (code, message) ->
-            ResponseEntity.status(404).body(Map.of("errorCode", code, "msg", message));
+    /**
+     * ResponseStatusException mang sẵn HTTP status cụ thể (409 CONFLICT khi xoá master data
+     * còn bị tham chiếu, 400 BAD_REQUEST...). Phải khai báo trước {@code Exception.class}
+     * vì handler generic sẽ nuốt mất status và trả về 500.
+     */
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, Object>> handleResponseStatus(ResponseStatusException ex) {
+        HttpStatusCode status = ex.getStatusCode();
+        String reason = ex.getReason() != null ? ex.getReason() : status.toString();
+        log.warn("Request bị từ chối [{}]: {}", status.value(), reason);
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", "REQUEST_REJECTED",
+                "msg", reason
+        ));
+    }
 
-        BiFunction<String, String, ResponseEntity<?>> conflict = (code, message) ->
-            ResponseEntity.status(409).body(Map.of("errorCode", code, "msg", message));
-
-        // 1. Friendship
-        if (msg.contains("fk_friendship_requester")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "Requester not found");
-        }
-        if (msg.contains("fk_friendship_addressee") || msg.contains("uk_friendship_addressee")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "Addressee not found");
-        }
-        if (msg.contains("uk_friendship")) {
-            return conflict.apply("FRIENDSHIP_ALREADY_EXISTS", "Friendship already exists");
-        }
-
-        // 2. Post
-        if (msg.contains("fk_post_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-
-        // 3. Post reaction
-        if (msg.contains("fk_post_reaction_interactable")) {
-            return error.apply("REFERENCED_POST_NOT_FOUND", "Post not exists");
-        }
-        if (msg.contains("uk_user_interactable")) {
-            return conflict.apply("REACTION_ALREADY_EXISTS", "User has already reacted to the post");
-        }
-
-        // 4. Comment
-        if (msg.contains("fk_comment_interactable")) {
-            return error.apply("REFERENCED_POST_NOT_FOUND", "Post not exists");
-        }
-        if (msg.contains("fk_comment_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-
-        // 5. Comment reaction
-        if (msg.contains("fk_comment_reaction_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-        if (msg.contains("fk_comment_reaction_comment")) {
-            return error.apply("REFERENCED_COMMENT_NOT_FOUND", "Comment not exists");
-        }
-        if (msg.contains("uk_user_comment")) {
-            return conflict.apply("REACTION_ALREADY_EXISTS", "User already reacted to this comment");
-        }
-
-        // 6. Share
-        if (msg.contains("fk_share_user")) {
-            return error.apply("REFERENCED_USER_NOT_FOUND", "User not exists");
-        }
-        if (msg.contains("fk_share_post")) {
-            return error.apply("REFERENCED_POST_NOT_FOUND", "Referenced post not exists");
-        }
-
-        return ResponseEntity.status(500).body(Map.of(
-            "errorCode", "DATA_INTEGRITY_ERROR",
-            "msg", "Database constraint violation"));
+    // ─── MALFORMED JSON / TYPE MISMATCH (400, không phải 500) ───────
+    @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> handleNotReadable(org.springframework.http.converter.HttpMessageNotReadableException ex) {
+        log.warn("Dữ liệu JSON không đọc được: {}", ex.getMostSpecificCause().getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "errorCode", "MALFORMED_REQUEST",
+                "msg", "Dữ liệu gửi lên sai định dạng (ví dụ giờ làm việc phải là HH:mm)."
+        ));
     }
 
     // ─── GENERIC EXCEPTION ────────────────────────────────────
@@ -151,6 +139,10 @@ public class GlobalExceptionHandler {
             case UNAUTHORIZED_ACTION:
                 return HttpStatus.FORBIDDEN;
             case TIMESHEET_ALREADY_LOCKED:
+            case INVALID_TIMESHEET_PERIOD:
+            case WORK_SHIFT_DAILY_HOURS_EXCEEDED:
+            case WORK_SHIFT_WEEKLY_HOURS_EXCEEDED:
+            case WORK_SHIFT_INVALID_TIME:
                 return HttpStatus.BAD_REQUEST;
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
@@ -178,7 +170,6 @@ public class GlobalExceptionHandler {
                 return HttpStatus.NOT_FOUND;
             case INSUFFICIENT_PERMISSION:
                 return HttpStatus.FORBIDDEN;
-            case CHAIRMAN_CANNOT_LEAVE:
             case OUT_OF_ANNUAL_LEAVE_DAYS:
             case ALREADY_PROCESSED_REQUEST:
             case OVERLAPPING_LEAVE_REQUEST:
@@ -209,14 +200,12 @@ public class GlobalExceptionHandler {
 
         switch (errorCode) {
             // 404 Not Found
-            case SHIFT_NOT_FOUND:
             case RECORD_NOT_FOUND:
                 return HttpStatus.NOT_FOUND;
 
             // 403 Forbidden
             case NOT_RECORD_OWNER:
             case INSUFFICIENT_PERMISSION:
-            case INVALID_STATUS:
                 return HttpStatus.FORBIDDEN;
 
             // 400 Bad Request – lỗi dữ liệu đầu vào (giới hạn OT, thời gian, nghỉ...)
@@ -229,13 +218,11 @@ public class GlobalExceptionHandler {
             case EXCEED_MONTHLY_OVERTIME:
             case EXCEED_YEARLY_OVERTIME:
             case INVALID_TIME:
-            case INVALID_TIME_RANGE:
             case ALREADY_PROCESSED_REQUEST:
             case INSUFFICIENT_TIME:
                 return HttpStatus.BAD_REQUEST;
 
             // 500 Internal Server Error
-            case GENERIC:
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -246,6 +233,15 @@ public class GlobalExceptionHandler {
         log.warn("Access denied: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of(
                 "errorCode", "FORBIDDEN",
+                "msg", ex.getMessage()
+        ));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        log.warn("Invalid argument: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
+                "errorCode", "BAD_REQUEST",
                 "msg", ex.getMessage()
         ));
     }
@@ -267,25 +263,252 @@ public class GlobalExceptionHandler {
         }
 
         switch (errorCode) {
-            case TIMESHEET_NOT_FOUND:
             case PAYROLL_NOT_FOUND:
             case SUMMARY_NOT_FOUND:
-            case SALARY_NOT_CONFIGURED:
                 return HttpStatus.NOT_FOUND;
 
             case INSUFFICIENT_PERMISSION:
                 return HttpStatus.FORBIDDEN;
 
             case TIMESHEET_NOT_LOCKED:
-            case PAYROLL_ALREADY_EXISTS:
             case PAYROLL_ALREADY_APPROVED:
             case PAYROLL_ALREADY_PAID:
             case INVALID_PAYROLL_PERIOD:
                 return HttpStatus.BAD_REQUEST;
 
-            case GENERIC:
             default:
                 return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
+
+    // ─── AUTHENTICATION EXCEPTION ─────────────────────────────
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<Map<String, Object>> handleAuthenticationException(AuthenticationException ex) {
+        HttpStatus status = mapAuthECToStatus(ex.getCode());
+        log.warn("Lỗi xác thực (Authentication error): Mã lỗi: {}, Thông báo: {}", ex.getCode(), ex.getMessage());
+
+        ResponseCookie deleteCookie = ResponseCookie.from("refreshToken", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .sameSite("Lax")
+                .build();
+
+        ResponseCookie deleteDeviceCookie = ResponseCookie.from("deviceId", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .sameSite("Lax")
+                .build();
+
+        String message = ex.getMessage();
+        if ("Wrong credentials".equalsIgnoreCase(message)) {
+            message = "Email hoặc mật khẩu không chính xác";
+        } else if ("User doesn't exists".equalsIgnoreCase(message)) {
+            message = "Tài khoản không tồn tại trong hệ thống";
+        } else if (message == null || message.isBlank()) {
+            message = getDefaultAuthMessage(ex.getCode());
+        }
+
+        ResponseEntity.BodyBuilder builder = ResponseEntity.status(status)
+                .header(HttpHeaders.SET_COOKIE, deleteCookie.toString());
+
+        if (ex.getCode() == AuthErrorCode.ACCOUNT_DISABLED) {
+            builder.header(HttpHeaders.SET_COOKIE, deleteDeviceCookie.toString());
+        }
+
+        return builder.body(Map.of(
+                "errorCode", ex.getCode().name(),
+                "message", message,
+                "msg", message
+        ));
+    }
+
+    private HttpStatus mapAuthECToStatus(AuthErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.UNAUTHORIZED;
+        }
+
+        switch (errorCode) {
+            case USER_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case USER_CREDENTIALS_INVALID:
+                return HttpStatus.UNAUTHORIZED;
+            case ACCOUNT_DISABLED:
+            case USER_MISMATCH:
+            case DEVICE_MISMATCH:
+            case DEVICE_COOKIE_MISMATCH:
+                return HttpStatus.FORBIDDEN;
+            case SESSION_COMPROMISED:
+            case SESSION_NOT_FOUND:
+            case SESSION_REVOKED:
+            case SESSION_MISMATCH:
+                return HttpStatus.UNAUTHORIZED;
+            case INTERNAL_SERVER_ERROR:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+            default:
+                return HttpStatus.UNAUTHORIZED;
+        }
+    }
+
+    private String getDefaultAuthMessage(AuthErrorCode errorCode) {
+        if (errorCode == null) {
+            return "Lỗi xác thực người dùng";
+        }
+        switch (errorCode) {
+            case USER_NOT_FOUND:
+                return "Không tìm thấy người dùng trong hệ thống";
+            case USER_CREDENTIALS_INVALID:
+                return "Email hoặc mật khẩu không chính xác";
+            case ACCOUNT_DISABLED:
+                return "Tài khoản nhân viên này đã bị khóa do đã thôi việc.";
+            case SESSION_COMPROMISED:
+                return "Phiên làm việc có dấu hiệu bị xâm nhập. Vui lòng đăng nhập lại.";
+            case SESSION_NOT_FOUND:
+            case SESSION_REVOKED:
+            case SESSION_MISMATCH:
+                return "Phiên đăng nhập không hợp lệ hoặc đã hết hạn.";
+            case USER_MISMATCH:
+            case DEVICE_MISMATCH:
+            case DEVICE_COOKIE_MISMATCH:
+                return "Thông tin thiết bị hoặc phiên không khớp.";
+            default:
+                return "Xác thực thất bại";
+        }
+    }
+
+    // ─── RESIGNATION EXCEPTION ────────────────────────────────
+    @ExceptionHandler(ResignationException.class)
+    public ResponseEntity<Map<String, Object>> handleResignationException(ResignationException ex) {
+        HttpStatus status = mapResignationECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ thôi việc: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapResignationECToStatus(ResignationErrorCode errorCode) {
+        switch (errorCode) {
+            case RESIGNATION_NOT_FOUND:
+            case CONTRACT_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case SELF_APPROVAL_NOT_ALLOWED:
+            case UNAUTHORIZED_ACTION:
+                return HttpStatus.FORBIDDEN;
+            case ACTIVE_REQUEST_EXISTS:
+            case INVALID_NOTICE_PERIOD:
+            case INVALID_STATUS_TRANSITION:
+                return HttpStatus.BAD_REQUEST;
+            default:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
+
+    // ─── DOCUMENT EXCEPTION ─────────────────────────────────
+    @ExceptionHandler(DocumentException.class)
+    public ResponseEntity<Map<String, Object>> handleDocumentException(DocumentException ex) {
+        HttpStatus status = mapDocumentECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ mẫu đơn: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapDocumentECToStatus(DocumentErrorCode errorCode) {
+        switch (errorCode) {
+            case DOCUMENT_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case UNAUTHORIZED_ACTION:
+                return HttpStatus.FORBIDDEN;
+            case INVALID_FILE_TYPE:
+            case FILE_TOO_LARGE:
+                return HttpStatus.BAD_REQUEST;
+            default:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+    }
+
+    // ─── ASSET EXCEPTION ────────────────────────────────────
+    @ExceptionHandler(AssetException.class)
+    public ResponseEntity<Map<String, Object>> handleAssetException(AssetException ex) {
+        HttpStatus status = mapAssetECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ tài sản: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapAssetECToStatus(AssetErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        switch (errorCode) {
+            case ASSET_NOT_FOUND:
+            case CATEGORY_NOT_FOUND:
+            case REQUEST_NOT_FOUND:
+            case ASSIGNMENT_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case NOT_RECORD_OWNER:
+            case INSUFFICIENT_PERMISSION:
+            case SELF_APPROVAL_NOT_ALLOWED:
+                return HttpStatus.FORBIDDEN;
+            default:
+                return HttpStatus.BAD_REQUEST;
+        }
+    }
+
+    // ─── IT TICKET EXCEPTION ─────────────────────────────────
+    @ExceptionHandler(ItTicketException.class)
+    public ResponseEntity<Map<String, Object>> handleItTicketException(ItTicketException ex) {
+        HttpStatus status = mapItTicketECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ IT ticket: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapItTicketECToStatus(ItTicketErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        switch (errorCode) {
+            case TICKET_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case NOT_RECORD_OWNER:
+            case INSUFFICIENT_PERMISSION:
+                return HttpStatus.FORBIDDEN;
+            default:
+                return HttpStatus.BAD_REQUEST;
+        }
+    }
+
+    // ─── PERFORMANCE EXCEPTION ───────────────────────────────
+    @ExceptionHandler(PerformanceException.class)
+    public ResponseEntity<Map<String, Object>> handlePerformanceException(PerformanceException ex) {
+        HttpStatus status = mapPerformanceECToStatus(ex.getErrorCode());
+        log.warn("Lỗi nghiệp vụ đánh giá hiệu suất: Mã lỗi: {}, Thông báo: {}", ex.getErrorCode(), ex.getMessage());
+        return ResponseEntity.status(status).body(Map.of(
+                "errorCode", ex.getErrorCode().name(),
+                "msg", ex.getMessage()));
+    }
+
+    private HttpStatus mapPerformanceECToStatus(PerformanceErrorCode errorCode) {
+        if (errorCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        switch (errorCode) {
+            case REVIEW_NOT_FOUND:
+                return HttpStatus.NOT_FOUND;
+            case INTERNAL_SERVER_ERROR:
+                return HttpStatus.INTERNAL_SERVER_ERROR;
+            case NOT_RECORD_OWNER:
+            case INSUFFICIENT_PERMISSION:
+            case SELF_APPROVAL_NOT_ALLOWED:
+                return HttpStatus.FORBIDDEN;
+            default:
+                return HttpStatus.BAD_REQUEST;
         }
     }
 }

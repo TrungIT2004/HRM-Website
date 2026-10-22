@@ -10,4 +10,8 @@ import java.util.UUID;
 public interface WorkShiftScheduleRepository extends JpaRepository<WorkShiftSchedule, UUID> {
     List<WorkShiftSchedule> findByWorkShift_ShiftId(UUID shiftId);
     Optional<WorkShiftSchedule> findByWorkShift_ShiftIdAndDayOfWeek(UUID shiftId, Integer dayOfWeek);
+
+    int countByWorkShift_ShiftId(UUID shiftId);
+
+    void deleteAllByWorkShift_ShiftId(UUID shiftId);
 }

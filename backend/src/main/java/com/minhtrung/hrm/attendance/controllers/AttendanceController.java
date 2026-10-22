@@ -10,6 +10,8 @@ import com.minhtrung.hrm.attendance.dtos.requests.ManagerTimesheetFilterRequest;
 import com.minhtrung.hrm.attendance.dtos.requests.MonthlyTimesheetEditRequest;
 import com.minhtrung.hrm.attendance.dtos.requests.StaffTimesheetFilterRequest;
 import com.minhtrung.hrm.attendance.dtos.response.CompanyMonthlyTimesheetResponse;
+import com.minhtrung.hrm.attendance.dtos.response.AttendanceOverviewResponse;
+import com.minhtrung.hrm.attendance.services.AttendanceOverviewService;
 import com.minhtrung.hrm.attendance.dtos.response.HrAttendanceResponse;
 import com.minhtrung.hrm.attendance.dtos.response.ManagerAttendanceResponse;
 import com.minhtrung.hrm.attendance.dtos.response.StaffAttendanceResponse;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -50,14 +53,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class AttendanceController {
     private final AttendanceService attendanceService;
+    private final AttendanceOverviewService overviewService;
 
-    public AttendanceController(AttendanceService attendanceService) {
+    public AttendanceController(AttendanceService attendanceService, AttendanceOverviewService overviewService) {
         this.attendanceService = attendanceService;
+        this.overviewService = overviewService;
     }
 
     private UserRole getCurrentUserRole() {
         TokenPayload payload = RequestContextHolder.get().getTokenPayload();
         return new UserRole(payload.getUserId(), payload.getDepartment(), payload.getJob());
+    }
+
+    // 0. Tổng quan báo cáo chấm công (dữ liệu thật, thay mock frontend).
+    // scope=dept: chỉ tổng hợp phòng của người gọi (phòng lấy từ token).
+    @GetMapping("/overview")
+    public ResponseEntity<AttendanceOverviewResponse> getAttendanceOverview(
+            @RequestParam(required = false) LocalDate startDate,
+            @RequestParam(required = false) LocalDate endDate,
+            @RequestParam(required = false) String scope) {
+        UserRole userRole = getCurrentUserRole();
+        return ResponseEntity.ok(overviewService.getOverview(startDate, endDate, userRole, scope));
     }
 
     // 1. Chấm công cá nhân
@@ -234,11 +250,13 @@ public class AttendanceController {
     }
 
     // 6. Trưởng phòng HR / Ban Giám Đốc chốt sổ bảng công tháng (LOCKED)
+    // userIds rỗng = chốt cả tháng; có giá trị = chỉ chốt nhóm nhân viên đang tick trên bảng.
     @PutMapping("/summary/lock")
     public ResponseEntity<Map<String, Object>> lockMonthlySummary(
             @RequestParam int month,
-            @RequestParam int year) {
+            @RequestParam int year,
+            @RequestParam(required = false) List<UUID> userIds) {
         UserRole userRole = getCurrentUserRole();
-        return ResponseEntity.ok(attendanceService.lockMonthlyTimesheet(month, year, userRole));
+        return ResponseEntity.ok(attendanceService.lockMonthlyTimesheet(month, year, userRole, userIds));
     }
 }

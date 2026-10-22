@@ -1,0 +1,194 @@
+[
+  {
+    "question": "Làm sao để đăng ký xe công ty cho chuyến công tác?",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "answer_draft_v2": "Bước 1: Đơn vị phối hợp với nhân viên phụ trách xe (P.HC) cung cấp ngày‑giờ, điểm đi, điểm đến, số người; đăng ký qua điện thoại/Zalo trước 12h thứ 7 (đăng ký theo kế hoạch tuần) hoặc trước 16h00 ngày N‑J (đăng ký đột xuất) (214.HD-ACT-HC)  \nBước 2: Đơn vị ký đề xuất xe theo mẫu BM01 đính kèm và gửi cho P.HC (214.HD-ACT-HC)  \nBước 3: Đơn vị chuyển bản ký qua email hoặc Zalo cho P.HC; nếu đề xuất bị từ chối phải quay lại Bước 1 (214.HD-ACT-HC)  \nBước 4: P.HC phê duyệt đề xuất, chuyền thông tin đăng ký cho bộ phận lái xe, phân công tài xế và thông báo cho đơn vị đi công tác (214.HD-ACT-HC)  \nBước 5: P.HC theo dõi, tổng hợp, ký xác nhận kết quả thực hiện hàng tháng trước ngày 5 tháng N+1 theo mẫu BM02 (214.HD-ACT-HC)  \nCăn cứ: Quy chế quản lý và sử dụng xe ô tô Công ty (số 453a/QĐ-ACT-KHCT, ban hành ngày 01/09/2018) (214.HD-ACT-HC)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Thời gian đăng ký xe theo kế hoạch tuần và đăng ký khẩn cấp là bao giờ?",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "answer_draft_v2": "- Đăng ký xe theo kế hoạch tuần: phối hợp qua điện thoại, Zalo trước 12h thứ 7 hàng tuần (214.HD-ACT-HC)  \n- Đăng ký xe khẩn cấp (đột xuất): phối hợp qua điện thoại, Zalo trước 16h00 ngày N‑J (214.HD-ACT-HC)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Ai chịu trách nhiệm duyệt và cấp xe cho đơn vị?",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "answer_draft_v2": "Nhân viên phụ trách xe (P.HC) chịu trách nhiệm phê duyệt và cấp xe cho đơn vị (214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf).",
+    "needs_review": "True"
+  },
+  {
+    "question": "Nếu xe công ty không có, quy trình xin thuê xe ngoài và nộp dự toán chi phí như thế nào?",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "answer_draft_v2": "Khi xe ô tô công ty không đáp ứng, P.HC thực hiện đề xuất chỉ phí thuê xe ngoài, phải hoàn thành trước ngày của kế hoạch đăng ký (214.HD-ACT-HC)  \nĐối với chuyến phát sinh gấp, P.HC phải xin ý kiến Ban Tổ Đoàn và các bộ phận liên quan trước khi thuê xe, sau đó bổ sung đề xuất trong vòng 24 h (214.HD-ACT-HC)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Báo cáo tổng hợp việc sử dụng xe phải nộp đến ngày bao nhiêu mỗi tháng?",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "answer_draft_v2": "Trước ngày 5 tháng N+1 mỗi tháng (báo cáo tổng hợp phải nộp trước ngày 5 của tháng kế) (214.HD-ACT-HC)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Ai chịu trách nhiệm phê duyệt và điều phối việc sử dụng xe?",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "answer_draft_v2": "Tổng Giám đốc phê duyệt Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe (917.QĐ‑ACT, ngày 2025‑??‑??)  \nGiám đốc Khối Dịch vụ kỹ thuật, Giám đốc các khối, Trưởng phòng/Ban và các đơn vị trực thuộc chịu trách nhiệm điều phối việc sử dụng xe (917.QĐ‑ACT, Điều 3)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy định này có hiệu lực từ ngày nào?",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Các phòng ban nào phải thi hành quyết định này?",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "answer_draft_v2": "Giám đốc Khối Dịch vụ kỹ thuật (917.QĐ-ACT)  \nGiám đốc các khối (917.QĐ-ACT)  \nTrưởng Phòng/Ban (917.QĐ-ACT)  \nCác đơn vị trực thuộc (917.QĐ-ACT)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Những đơn vị nào trong công ty phải tuân thủ Quy định 917.QĐ-ACT?",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Xe 6 tấn được dùng cho những mục đích nào và ai có quyền phê duyệt?",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy định này có hiệu lực từ ngày nào?",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quyết định số bao nhiêu quy định về lương thưởng?",
+    "source_file": "MauQuyCheLuong-sanKeToan.docx",
+    "answer_draft_v2": "Số: 15/2023/QĐ (MauQuyCheLuong-sanKeToan.docx)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Nội dung này là phần nào của tài liệu quy chế lương thưởng?",
+    "source_file": "MauQuyCheLuong-sanKeToan.docx",
+    "answer_draft_v2": "Bảng biểu quy định (MauQuyCheLuong-sanKeToan.docx)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Mẫu quy chế lương dựa trên căn cứ pháp lý nào?",
+    "source_file": "MauQuyCheLuong-sanKeToan.docx",
+    "answer_draft_v2": "Căn cứ Bộ luật Lao động 2019 (MauQuyCheLuong-sanKeToan.docx)  \nCăn cứ Nghị định 145/2020/NĐ-CP (MauQuyCheLuong-sanKeToan.docx)  \nCăn cứ Luật doanh nghiệp 2020 (MauQuyCheLuong-sanKeToan.docx)  \nCăn cứ Điều lệ tổ chức và hoạt động của Công ty Cổ phần Cấp Nước (MauQuyCheLuong-sanKeToan.docx)  \nCăn cứ chức năng, quyền hạn của Hội đồng quản trị công ty (MauQuyCheLuong-sanKeToan.docx)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Nghị định 145/2020/NĐ-CP quy định gì về mức lương?",
+    "source_file": "MauQuyCheLuong-sanKeToan.docx",
+    "answer_draft_v2": "THIẾU THÔNG TIN.",
+    "needs_review": "True"
+  },
+  {
+    "question": "Làm thế nào để yêu cầu cấp văn phòng phẩm, vệ sinh phẩm hoặc mực in?",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy trình này áp dụng cho những bộ phận hoặc phòng ban nào?",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "answer_draft_v2": "Ban TCĐT (Ban Tổ chức Đầu tư) (QT.ACT.HC-05)  \nBan Mua sắm (QT.ACT.HC-05)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy trình QT.ACT.HC-05 có hiệu lực từ ngày nào?",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "answer_draft_v2": "01/07/2024 (QT.ACT.HC-05)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Tôi cần cấp phát văn phòng phẩm đột xuất, quy trình và mẫu biểu cần nộp là gì?",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế quản trị nội bộ của công ty tài chính chi nhánh Điện lực sẽ được ban hành khi nào?",
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế này dựa trên những văn bản pháp luật nào?",
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Ai có thẩm quyền phê duyệt và ký ban hành Quy chế quản trị nội bộ?",
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN.",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế này ảnh hưởng như thế nào đến quyền lợi và nghĩa vụ của nhân viên?",
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế này dựa trên những văn bản pháp luật nào?",
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "answer_draft_v2": "THIẾU THÔNG TIN",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế này áp dụng cho những người nào trong công ty?",
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "answer_draft_v2": "Đại hội đồng cổ đông (QuyCheQuanTri-MWG.pdf)  \nThành viên Hội đồng quản trị, thành viên Ủy ban kiểm toán nội bộ, Người quản lý, Người điều hành và các tổ chức, cá nhân, người có liên quan của các đối tượng trên (QuyCheQuanTri-MWG.pdf)  \nTổ chức và cá nhân có quyền lợi liên quan đến Công ty (QuyCheQuanTri-MWG.pdf)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Cổ đông lớn được định nghĩa như thế nào trong quy chế?",
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "answer_draft_v2": "Cổ đông lớn: là Cổ đông sở hữu trực tiếp hoặc gián tiếp từ năm (05) phần trăm trở lên số cổ phần có quyền biểu quyết của Công ty được quy định tại Điều lệ (QuyCheQuanTri-MWG.pdf)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Ai được coi là \"Người điều hành\" theo quy chế này?",
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "answer_draft_v2": "Tổng Giám đốc, Phó Tổng Giám đốc, Kế toán trưởng và các vị trí quản lý khác trong Công ty được Hội đồng quản trị bổ nhiệm (QuyCheQuanTri-MWG.pdf)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế này được thông qua trong nghị quyết nào và vào ngày nào?",
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "answer_draft_v2": "Nghị quyết Đại hội đồng cổ đông số 01_2023/NQODHĐCĐ/MWG, ngày 2023-04-08 (QuyCheQuanTri-MWG.pdf)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Cơ sở pháp lý nào quy định về nhân sự Đại hội đồng cổ đông?",
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "answer_draft_v2": "- Điều 146 Luật doanh nghiệp số 59/2020/QH14 (QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4)  \n- Khoản 2 Điều 20 Điều lệ công ty (QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Quy chế nội bộ về quản trị công ty PMSC nằm ở trang nào?",
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "answer_draft_v2": "Trang 15 (QuyCheQuanTri-Petrolimex-PMSC.pdf)",
+    "needs_review": "True"
+  },
+  {
+    "question": "Làm sao tôi có thể xem được bảng biểu quy chế quản trị công ty trong tài liệu?",
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "answer_draft_v2": "Bảng biểu quy chế quản trị công ty có trong tài liệu “QuyCheQuanTri-Petrolimex-PMSC.pdf” nằm ở Trang 15 (EVALRET).",
+    "needs_review": "True"
+  },
+  {
+    "question": "Tôi cần tham khảo quy chế này để chuẩn bị nghị quyết Đại hội đồng cổ đông, nên truy cập tài liệu nào?",
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "answer_draft_v2": "QuyCheQuanTri-Petrolimex-PMSC.pdf (EVALRET)​ (trang 15, Điều 10)​",
+    "needs_review": "True"
+  }
+]
