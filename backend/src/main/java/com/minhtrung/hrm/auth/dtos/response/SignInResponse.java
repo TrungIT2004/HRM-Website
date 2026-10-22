@@ -1,5 +1,6 @@
 package com.minhtrung.hrm.auth.dtos.response;
 
+import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -15,6 +16,7 @@ public class SignInResponse {
     @JsonIgnore
     private String refreshToken;
     
+    private UUID userId;
     private String email;
     private String fullName;
     private String profilePicUrl;

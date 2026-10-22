@@ -1,5 +1,7 @@
 package com.minhtrung.hrm.overtime.controllers;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Map;
 import java.util.UUID;
 
@@ -7,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +24,7 @@ import com.minhtrung.hrm.overtime.dtos.requests.OvertimeFilterRequest;
 import com.minhtrung.hrm.overtime.dtos.requests.OvertimeWorkTimeRequest;
 import com.minhtrung.hrm.overtime.dtos.responses.HrOvertimeResponse;
 import com.minhtrung.hrm.overtime.dtos.responses.ManagerOvertimeResponse;
+import com.minhtrung.hrm.overtime.dtos.responses.OvertimePreviewResponse;
 import com.minhtrung.hrm.overtime.dtos.responses.StaffOvertimeResponse;
 import com.minhtrung.hrm.overtime.entities.OvertimeRecord;
 import com.minhtrung.hrm.overtime.services.OvertimeService;
@@ -48,6 +52,19 @@ public class OvertimeController {
         return ResponseEntity.status(200).body(Map.of(
             "action", action,
             "msg", "Check attendance completed"));
+    }
+
+    /**
+     * 0. Xem trước thời gian & hệ số làm thêm (trước khi tạo đơn)
+     * GET /api/overtime/preview?date=yyyy-MM-dd&startTime=HH:mm&endTime=HH:mm
+     */
+    @GetMapping("/preview")
+    public ResponseEntity<OvertimePreviewResponse> previewOvertimeRequest(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+            @RequestParam @DateTimeFormat(pattern = "HH:mm") LocalTime startTime,
+            @RequestParam @DateTimeFormat(pattern = "HH:mm") LocalTime endTime) {
+        return ResponseEntity.ok(overtimeService.previewOvertime(
+                date.atTime(startTime), date.atTime(endTime)));
     }
 
     /**

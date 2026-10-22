@@ -81,16 +81,16 @@ public class MonthlyTimesheetSpecification {
         };
     }
 
-    // ─── 2. TAB PHÒNG BAN: Trưởng phòng xem nhân viên trong phòng (CHỪA MÌNH RA) ──
+    // ─── 2. TAB PHÒNG BAN: Trưởng phòng xem nhân viên trong phòng (kể cả chính mình) ──
     public static Specification<MonthlyTimesheet> filterForManager(UserRole managerRole, ManagerTimesheetFilterRequest filter) {
         return (root, query, cb) -> {
             Join<MonthlyTimesheet, User> userJoin = setupJoins(root, query);
             Join<User, Department> deptJoin = userJoin.join("department", JoinType.INNER);
             List<Predicate> predicates = new ArrayList<>();
 
-            // 👉 Chừa chính Trưởng phòng ra (xem công của mình ở Tab 1)
-            predicates.add(cb.notEqual(userJoin.get("userId"), managerRole.getUserId()));
-
+            // Không chừa chính mình ra: giống filterForCompany, người xem cũng cần thấy
+            // dòng của chính mình trong bảng (trước đây notEqual ở đây làm Trưởng phòng
+            // mở bảng tổng hợp công tháng mà không thấy dòng của chính mình).
             // Lọc theo phòng ban phụ trách
             predicates.add(cb.equal(deptJoin.get("name"), managerRole.getDepartment()));
 
@@ -101,14 +101,12 @@ public class MonthlyTimesheetSpecification {
         };
     }
 
-    // ─── 3. TAB TOÀN CÔNG TY: HR / Giám đốc xem toàn công ty (CHỪA MÌNH RA) ───
+    // ─── 3. TAB TOÀN CÔNG TY: HR / Giám đốc xem toàn công ty ───
+    // Không chừa chính mình ra: người xem cũng cần thấy dòng của chính mình trong bảng.
     public static Specification<MonthlyTimesheet> filterForCompany(UUID currentUserId, CompanyTimesheetFilterRequest filter) {
         return (root, query, cb) -> {
             Join<MonthlyTimesheet, User> userJoin = setupJoins(root, query);
             List<Predicate> predicates = new ArrayList<>();
-
-            // 👉 Chừa chính người đang xem ra
-            predicates.add(cb.notEqual(userJoin.get("userId"), currentUserId));
 
             applyPeriodAndStatusFilters(predicates, root, cb, filter.getMonth(), filter.getYear(), filter.getStatus());
             applyKeywordSearch(predicates, userJoin, cb, filter.getKeyword());

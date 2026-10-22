@@ -17,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,14 +30,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class WorkShiftSchedule {
-
     @Id
     @UuidGenerator(style = UuidGenerator.Style.TIME)
     private UUID scheduleId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "shiftId", nullable = false, foreignKey = @ForeignKey(name = "fk_shift_schedules"))
+    @JoinColumn(name = "shift_id", nullable = false, foreignKey = @ForeignKey(name = "fk_shift_schedules"))
     @JsonIgnore
     private WorkShift workShift;
 
@@ -56,5 +57,6 @@ public class WorkShiftSchedule {
     private LocalTime restEndTime;
 
     @Column(name = "is_working", nullable = false)
+    @Builder.Default
     private boolean isWorking = true;
 }

@@ -37,8 +37,13 @@ import com.minhtrung.hrm.overtime.enums.OvertimeErrorCode;
 import com.minhtrung.hrm.overtime.enums.OvertimeRecordStatus;
 import com.minhtrung.hrm.overtime.exceptions.OvertimeException;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
+import com.minhtrung.hrm.attendance.entities.WorkShiftSchedule;
+import com.minhtrung.hrm.attendance.services.AttendanceService;
+import com.minhtrung.hrm.overtime.dtos.responses.OvertimePreviewResponse;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
 import com.minhtrung.hrm.overtime.specification.OvertimeSpecification;
+import com.minhtrung.hrm.permissions.enums.PermissionKey;
+import com.minhtrung.hrm.permissions.services.PermissionService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +57,38 @@ public class OvertimeService {
     private final UserRepository userRepository;
     private final HolidayRepository holidayRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
+    private final PermissionService permissionService;
+
+    /**
+     * Xem trước thời gian + hệ số OT. Tái dùng đúng luật đang áp dụng khi lưu đơn:
+     * OvertimeRecord.setFlags() (cuối tuần / ban đêm) + calcOvertimeAmounts() (hệ số theo ngày lễ).
+     * Frontend không tự tính lại để tránh lệch với bảng lương.
+     */
+    @Transactional(readOnly = true)
+    public OvertimePreviewResponse previewOvertime(LocalDateTime start, LocalDateTime end) {
+        LocalDateTime resolvedEnd = resolveEnd(start, end);
+        double hours = Duration.between(start, resolvedEnd).toMinutes() / 60.0;
+
+        OvertimeRecord probe = new OvertimeRecord();
+        probe.setApprovedStartTime(start);
+        probe.setApprovedEndTime(resolvedEnd);
+        probe.setFlags();
+        probe.setHoliday(isAnyDayHoliday(start, resolvedEnd));
+
+        double multiplier = 0.0;
+        if (hours > 0) {
+            multiplier = AttendanceService.calcOvertimeAmounts(probe).multiplier();
+        }
+
+        return new OvertimePreviewResponse(
+                resolvedEnd.toLocalDate().equals(start.toLocalDate()) ? null : resolvedEnd.toLocalDate(),
+                hours,
+                probe.isWeekend(),
+                probe.isHoliday(),
+                probe.isNightTime(),
+                multiplier,
+                hours * multiplier);
+    }
 
     // ─── LẤY SCHEDULE ────────────────────────────────────────────────
     private WorkShiftSchedule getScheduleOrNull(UUID shiftId, LocalDate date) {
@@ -134,23 +171,27 @@ public class OvertimeService {
     }
 
     // ─── TẠO ĐƠN TĂNG CA ─────────────────────────────────────────────
+    /**
+     * Chuẩn hoá cửa sổ OT: giờ kết thúc <= giờ bắt đầu nghĩa là làm xuyên đêm
+     * → kéo giờ kết thúc sang ngày hôm sau. Dùng chung cho preview và create
+     * để UI và DB luôn thống nhất.
+     */
+    public static LocalDateTime resolveEnd(LocalDateTime start, LocalDateTime end) {
+        return end.isAfter(start) ? end : end.plusDays(1);
+    }
+
     @Transactional
     public OvertimeRecord createOvertimeRequest(UUID requestorId, OvertimeWorkTimeRequest req) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime start = req.getApprovedStartTime();
-        LocalDateTime end = req.getApprovedEndTime();
+        // Ca xuyên đêm (vd 18:00 -> 01:00) phải tính sang ngày hôm sau, nếu không Duration.between ra số âm
+        LocalDateTime end = resolveEnd(start, req.getApprovedEndTime());
         LocalDate OTStartDate = start.toLocalDate();
         LocalDate OTEndDate = end.toLocalDate();
         double restTime = 0.0;
 
         if (start.isBefore(now)) {
             throw new OvertimeException(OvertimeErrorCode.INVALID_TIME, "Ngày làm việc đã trôi qua. Không thể đăng ký làm thêm giờ cho quá khứ");
-        }
-
-        if (OTStartDate.equals(OTEndDate)) {
-            if (end.isBefore(start)) {
-                throw new OvertimeException(OvertimeErrorCode.INVALID_TIME, "Giờ kết thúc phải sau giờ bắt đầu");
-            }
         }
 
         double requestedHours = Duration.between(start, end).toMinutes() / 60.0;
@@ -270,9 +311,17 @@ public class OvertimeService {
         record.setHoliday(isHoliday);
         record.setReason(req.getReason());
 
+        // Chairman là cấp cao nhất: không có ai duyệt được nên đơn tự động ở trạng thái accepted,
+        // approver ghi chính Chairman (giữ đúng mốc thời gian ai xử lý).
+        boolean isChairman = "Chairman".equals(userRepository.findUsersJob(requestorId));
+        if (isChairman) {
+            record.setApprover(userProxy);
+            record.setStatus(OvertimeRecordStatus.accepted);
+        }
+
         OvertimeRecord saved = overtimeRecordRepository.save(record);
-        log.info("Đơn tăng ca mới được tạo. RequestorId: {}, Thời gian bắt đầu: {}, Thời gian kết thúc: {}, Ngày lễ: {}, Số giờ đăng ký: {}",
-                requestorId, start, end, isHoliday, String.format("%.1f", requestedHours));
+        log.info("Đơn tăng ca mới được tạo. RequestorId: {}, Thời gian bắt đầu: {}, Thời gian kết thúc: {}, Ngày lễ: {}, Số giờ đăng ký: {}, Tự duyệt: {}",
+                requestorId, start, end, isHoliday, String.format("%.1f", requestedHours), isChairman);
         return saved;
     }
 
@@ -366,6 +415,9 @@ public class OvertimeService {
         boolean isRequestorsDepartmentHead = approverDepartment.equals(requestorDepartment)
                 && approverJob.startsWith("Department Head");
         boolean isExecutive = approverDepartment.equals("Executive Leadership");
+        // Grant phòng ban: chỉ duyệt được đơn OT của chính phòng mình
+        boolean canApproveDept = approverDepartment.equals(requestorDepartment)
+                && permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_APPROVE_DEPT);
 
         // 4. Kiểm tra quyền phê duyệt theo phân cấp
         if ("Executive Leadership".equals(requestorDepartment)) {
@@ -381,7 +433,8 @@ public class OvertimeService {
             }
         }
 
-        if (isRequestorsDepartmentHead || isExecutive) {
+        if (isRequestorsDepartmentHead || isExecutive || canApproveDept
+                || permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_APPROVE)) {
             // 5. Gán người duyệt và cập nhật trạng thái mới
             User approverProxy = userRepository.getReferenceById(approverId);
             overtimeRecord.setApprover(approverProxy);
@@ -432,7 +485,10 @@ public class OvertimeService {
     // ─── XEM ĐƠN OT CẦN PHÊ DUYỆT ───────────────────────────────────
     @Transactional(readOnly = true)
     public Page<ManagerOvertimeResponse> getOvertimeRecordsToApprove(UserRole userRole, OvertimeFilterRequest filter, Pageable pageable) {
-        Specification<OvertimeRecord> spec = OvertimeSpecification.forApprovals(userRole, filter);
+        boolean hasGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_APPROVE);
+        boolean hasDeptGrant = permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_VIEW_DEPT)
+                || permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_APPROVE_DEPT);
+        Specification<OvertimeRecord> spec = OvertimeSpecification.forApprovals(userRole, filter, hasGrant, hasDeptGrant);
         return overtimeRecordRepository.findAll(spec, pageable).map(this::mapToManagerResponse);
     }
 
@@ -440,8 +496,9 @@ public class OvertimeService {
     @Transactional(readOnly = true)
     public Page<HrOvertimeResponse> getCompanyOvertimeRecords(UserRole userRole, OvertimeFilterRequest filter, Pageable pageable) {
         String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-        if (!myDepartment.equals("Human Resources")) {
-            throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ nhân viên phòng Nhân sự mới có quyền xem toàn bộ bản ghi tăng ca công ty");
+        if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+                && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_VIEW_ALL)) {
+            throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xem toàn bộ bản ghi tăng ca công ty");
         }
 
         Specification<OvertimeRecord> spec = OvertimeSpecification.forCompanyWide(filter);
@@ -546,8 +603,9 @@ public class OvertimeService {
 @Transactional(readOnly = true)
 public byte[] exportOvertimeToExcel(UserRole userRole, OvertimeFilterRequest filter) {
     String myDepartment = userRole.getDepartment() != null ? userRole.getDepartment() : "";
-    if (!myDepartment.equals("Human Resources")) {
-        throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ nhân viên phòng Nhân sự mới có quyền xuất báo cáo làm thêm giờ");
+    if (!myDepartment.equals("Human Resources") && !myDepartment.equals("Executive Leadership")
+            && !permissionService.hasPermission(userRole.getUserId(), PermissionKey.OVERTIME_VIEW_ALL)) {
+        throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION, "Chỉ phòng Nhân sự hoặc Ban Giám Đốc mới có quyền xuất báo cáo làm thêm giờ");
     }
 
     // 1. Lấy toàn bộ dữ liệu khớp bộ lọc (không phân trang)
@@ -558,15 +616,32 @@ public byte[] exportOvertimeToExcel(UserRole userRole, OvertimeFilterRequest fil
     // 2. Tạo workbook Excel bằng Apache POI
     try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
         Sheet sheet = workbook.createSheet("Overtime Records");
+        sheet.setDisplayGridlines(false);
+        final int OFF = 1;
+        sheet.setColumnWidth(0, 6 * 256);
 
-        // Header Style (In đậm + Màu nền xám nhạt)
+        // Header Style (TNR đậm + nền xanh đậm chữ trắng)
         CellStyle headerStyle = workbook.createCellStyle();
         Font headerFont = workbook.createFont();
         headerFont.setBold(true);
+        headerFont.setFontName("Times New Roman");
+        headerFont.setColor(IndexedColors.WHITE.getIndex());
         headerStyle.setFont(headerFont);
-        headerStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        headerStyle.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
         headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         headerStyle.setAlignment(HorizontalAlignment.CENTER);
+        headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+
+        CellStyle bordered = workbook.createCellStyle();
+        bordered.setBorderTop(BorderStyle.THIN);
+        bordered.setBorderBottom(BorderStyle.THIN);
+        bordered.setBorderLeft(BorderStyle.THIN);
+        bordered.setBorderRight(BorderStyle.THIN);
+        bordered.setIndention((short) 1);
+        bordered.setVerticalAlignment(VerticalAlignment.CENTER);
+        Font bodyFont = workbook.createFont();
+        bodyFont.setFontName("Times New Roman");
+        bordered.setFont(bodyFont);
 
         // Danh sách tiêu đề cột
         String[] columns = {
@@ -577,46 +652,64 @@ public byte[] exportOvertimeToExcel(UserRole userRole, OvertimeFilterRequest fil
         };
 
         // Ghi dòng Header
-        Row headerRow = sheet.createRow(0);
+        int rowIdx = 3;
+        Row headerRow = sheet.createRow(rowIdx++);
+        headerRow.setHeightInPoints(28);
         for (int i = 0; i < columns.length; i++) {
-            Cell cell = headerRow.createCell(i);
+            Cell cell = headerRow.createCell(OFF + i);
             cell.setCellValue(columns[i]);
             cell.setCellStyle(headerStyle);
         }
 
         // Ghi dữ liệu từng dòng
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        int rowIdx = 1;
+        int stt = 1;
 
         for (HrOvertimeResponse rowData : dtoList) {
-            Row row = sheet.createRow(rowIdx);
+            Row row = sheet.createRow(rowIdx++);
+            row.setHeightInPoints(28);
 
-            row.createCell(0).setCellValue(rowIdx);
-            row.createCell(1).setCellValue(rowData.getRequestorCode() != null ? rowData.getRequestorCode() : "");
-            row.createCell(2).setCellValue(rowData.getRequestorName() != null ? rowData.getRequestorName() : "");
-            row.createCell(3)
+            row.createCell(OFF + 0).setCellValue(stt++);
+            row.createCell(OFF + 1).setCellValue(rowData.getRequestorCode() != null ? rowData.getRequestorCode() : "");
+            row.createCell(OFF + 2).setCellValue(rowData.getRequestorName() != null ? rowData.getRequestorName() : "");
+            row.createCell(OFF + 3)
                     .setCellValue(rowData.getRequestorDepartment() != null ? rowData.getRequestorDepartment() : "");
-            row.createCell(4).setCellValue(rowData.getRequestorJob() != null ? rowData.getRequestorJob() : "");
-            row.createCell(5)
+            row.createCell(OFF + 4).setCellValue(rowData.getRequestorJob() != null ? rowData.getRequestorJob() : "");
+            row.createCell(OFF + 5)
                     .setCellValue(rowData.getApprovedDate() != null ? rowData.getApprovedDate().toString() : "");
-            row.createCell(6).setCellValue(
+            row.createCell(OFF + 6).setCellValue(
                     rowData.getApprovedStartTime() != null ? rowData.getApprovedStartTime().format(timeFormatter) : "");
-            row.createCell(7).setCellValue(
+            row.createCell(OFF + 7).setCellValue(
                     rowData.getApprovedEndTime() != null ? rowData.getApprovedEndTime().format(timeFormatter) : "");
-            row.createCell(8)
+            row.createCell(OFF + 8)
                     .setCellValue(rowData.getTotalApprovedHours() != null ? rowData.getTotalApprovedHours() : 0.0);
-            row.createCell(9).setCellValue(rowData.getTotalActualHours() != null ? rowData.getTotalActualHours() : 0.0);
-            row.createCell(10).setCellValue(Boolean.TRUE.equals(rowData.getIsWeekend()) ? "Có" : "Không");
-            row.createCell(11).setCellValue(Boolean.TRUE.equals(rowData.getIsNightTime()) ? "Có" : "Không");
-            row.createCell(12).setCellValue(Boolean.TRUE.equals(rowData.getIsHoliday()) ? "Có" : "Không");
-            row.createCell(13).setCellValue(rowData.getStatus() != null ? rowData.getStatus().name() : "");
-            rowIdx++;
+            row.createCell(OFF + 9).setCellValue(rowData.getTotalActualHours() != null ? rowData.getTotalActualHours() : 0.0);
+            row.createCell(OFF + 10).setCellValue(Boolean.TRUE.equals(rowData.getIsWeekend()) ? "Có" : "Không");
+            row.createCell(OFF + 11).setCellValue(Boolean.TRUE.equals(rowData.getIsNightTime()) ? "Có" : "Không");
+            row.createCell(OFF + 12).setCellValue(Boolean.TRUE.equals(rowData.getIsHoliday()) ? "Có" : "Không");
+            row.createCell(OFF + 13).setCellValue(otStatusVi(rowData.getStatus()));
+            for (int i = 0; i < columns.length; i++) {
+                row.getCell(OFF + i).setCellStyle(bordered);
+            }
         }
 
         // Auto resize độ rộng cột vừa vặn với nội dung
         for (int i = 0; i < columns.length; i++) {
-            sheet.autoSizeColumn(i);
+            sheet.autoSizeColumn(OFF + i);
         }
+        sheet.setColumnWidth(OFF, 8 * 256);
+
+        Row titleRow = sheet.createRow(0);
+        Cell titleCell = titleRow.createCell(OFF + 4);
+        titleCell.setCellValue("BẢNG TỔNG HỢP ĐƠN LÀM THÊM GIỜ");
+        CellStyle titleStyle = workbook.createCellStyle();
+        Font titleFont = workbook.createFont();
+        titleFont.setBold(true);
+        titleFont.setFontName("Times New Roman");
+        titleFont.setFontHeightInPoints((short) 22);
+        titleFont.setColor(IndexedColors.DARK_BLUE.getIndex());
+        titleStyle.setFont(titleFont);
+        titleCell.setCellStyle(titleStyle);
 
         workbook.write(out);
         return out.toByteArray();
@@ -625,6 +718,14 @@ public byte[] exportOvertimeToExcel(UserRole userRole, OvertimeFilterRequest fil
         throw new OvertimeException(OvertimeErrorCode.INTERNAL_SERVER_ERROR,
                 "Có lỗi xảy ra khi đang tạo và xuất báo cáo Excel");
     }
-}
+    }
 
+    private String otStatusVi(Object status) {
+        if (status == null) return "";
+        return switch (status.toString().toLowerCase()) {
+            case "accepted" -> "Đã duyệt";
+            case "rejected" -> "Từ chối";
+            default -> "Chờ duyệt";
+        };
+    }
 }

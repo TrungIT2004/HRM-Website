@@ -33,31 +33,36 @@ public class RateLimitService {
      * @return RateLimitResult chứa trạng thái được phép, số lượt hiện tại, và thời gian chờ nếu bị chặn
      */
     public RateLimitResult checkRateLimit(String key, int maxRequests, int windowSeconds) {
-        Long currentCount = redisTemplate.opsForValue().increment(key);
-        if (currentCount == null) {
-            currentCount = 1L;
+        try {
+            Long currentCount = redisTemplate.opsForValue().increment(key);
+            if (currentCount == null) {
+                currentCount = 1L;
+            }
+
+            // Lần đầu tiên gọi trong cửa sổ: thiết lập thời gian hết hạn (TTL)
+            if (currentCount == 1L) {
+                redisTemplate.expire(key, windowSeconds, TimeUnit.SECONDS);
+            }
+
+            // Đảm bảo key luôn có TTL ngay cả khi xảy ra sự cố bất thường ( trường hợp TTL = -1 là tồn tại vĩnh viễn )
+            Long ttl = redisTemplate.getExpire(key, TimeUnit.SECONDS);
+            if (ttl != null && ttl < 0) {
+                redisTemplate.expire(key, windowSeconds, TimeUnit.SECONDS);
+                ttl = (long) windowSeconds;
+            }
+
+            long retryAfter = (ttl != null && ttl > 0) ? ttl : windowSeconds;
+
+            if (currentCount > maxRequests) {
+                log.warn("Vượt quá giới hạn Rate Limit cho key: [{}]. Lượt gọi: {}/{}, Thử lại sau: {}s",
+                        key, currentCount, maxRequests, retryAfter);
+                return new RateLimitResult(false, currentCount, maxRequests, retryAfter);
+            }
+
+            return new RateLimitResult(true, currentCount, maxRequests, 0);
+        } catch (Exception e) {
+            log.warn("Redis không khả dụng để kiểm tra rate limit, cho phép request đi tiếp: {}", e.getMessage());
+            return new RateLimitResult(true, 1L, maxRequests, 0);
         }
-
-        // Lần đầu tiên gọi trong cửa sổ: thiết lập thời gian hết hạn (TTL)
-        if (currentCount == 1L) {
-            redisTemplate.expire(key, windowSeconds, TimeUnit.SECONDS);
-        }
-
-        // Đảm bảo key luôn có TTL ngay cả khi xảy ra sự cố bất thường ( trường hợp TTL = -1 là tồn tại vĩnh viễn )
-        Long ttl = redisTemplate.getExpire(key, TimeUnit.SECONDS);
-        if (ttl != null && ttl < 0) {
-            redisTemplate.expire(key, windowSeconds, TimeUnit.SECONDS);
-            ttl = (long) windowSeconds;
-        }
-
-        long retryAfter = (ttl != null && ttl > 0) ? ttl : windowSeconds;
-
-        if (currentCount > maxRequests) {
-            log.warn("Vượt quá giới hạn Rate Limit cho key: [{}]. Lượt gọi: {}/{}, Thử lại sau: {}s",
-                    key, currentCount, maxRequests, retryAfter);
-            return new RateLimitResult(false, currentCount, maxRequests, retryAfter);
-        }
-
-        return new RateLimitResult(true, currentCount, maxRequests, 0);
     }
 }

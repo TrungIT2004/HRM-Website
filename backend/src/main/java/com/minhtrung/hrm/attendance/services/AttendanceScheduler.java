@@ -13,6 +13,7 @@ import com.minhtrung.hrm.attendance.enums.AttendanceStatus;
 import com.minhtrung.hrm.attendance.repositories.AttendanceRepository;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class AttendanceScheduler {
     private final UserRepository userRepository;
     private final AttendanceRepository attendanceRepository;
     private final AttendanceService attendanceService;
+    private final HolidayRepository holidayRepository;
 
     /**
      * Cron job 1: Chạy vào lúc 00:00:00 mỗi ngày
@@ -43,25 +45,31 @@ public class AttendanceScheduler {
 
         for (User user : users) {
             WorkShift shift = user.getShift();
-            
+
             // Nếu user có ca làm việc và hôm nay là ngày làm việc của ca đó
             if (shift != null && attendanceService.isWorkingDay(shift.getShiftId(), dayOfWeek)) {
-                
+
                 // Kiểm tra xem đã có record chưa (tránh trường hợp server khởi động lại tạo trùng)
-                boolean alreadyExists = attendanceRepository.findUsersTodayAttendance(user.getUserId(), today).isPresent();
-                
+                boolean alreadyExists = attendanceRepository.findUsersTodayAttendance(user.getUserId(), today)
+                        .isPresent();
+
                 if (!alreadyExists) {
                     Attendance attendance = new Attendance();
                     attendance.setUser(user);
                     attendance.setShift(shift);
                     attendance.setWorkDate(today);
-                    attendance.setStatus(AttendanceStatus.NOT_CHECKED);
-                    
+
+                    if (holidayRepository.existsByDate(today)) {
+                        attendance.setStatus(AttendanceStatus.HOLIDAY);
+                    } else {
+                        attendance.setStatus(AttendanceStatus.NOT_CHECKED);
+                    }
+
                     attendanceRepository.save(attendance);
-                    log.info("Đã tạo record NOT_CHECKED cho user {}", user.getUserId());
                 }
             }
         }
+        log.info("CronJob: Khởi tạo dữ liệu chấm công cho ngày {} thành công", today);
     }
 
     /**

@@ -1,0 +1,768 @@
+[
+  {
+    "id": 31,
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214...pdf",
+    "question": "Phiếu đăng ký xe BM01 gồm những thông tin và chữ ký nào?",
+    "reference": "",
+    "content_preview": "STT | Đơn vị đề xuất | Nội dung công việc | Số người | Người liên hệ_SĐT | Nơi đi | Nơi đến | Loại xe | Ngày đi | Ngày về | PHÒNG HC | TRƯỞNG ĐƠN VỊ | NGƯỜI LẬP",
+    "answer": "Phiếu BM01 ghi: đơn vị đề xuất, nội dung công việc, số người, người liên hệ/SĐT, nơi đi, nơi đến, loại xe, ngày đi, ngày về, ghi chú; có 3 chữ ký: Phòng HC, Trưởng đơn vị, Người lập.",
+    "qtype": "clear"
+  },
+  {
+    "id": 32,
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214...pdf",
+    "question": "Văn bản hướng dẫn đăng ký xe gửi cho những đơn vị nào?",
+    "reference": "",
+    "content_preview": "Nơi nhận: - Ban TGĐ (b/c); - Các Khối, P/ban, TTKV (t/h); - Lưu: VT (01).",
+    "answer": "Nơi nhận: Ban TGĐ (báo cáo); các Khối, Phòng/ban, TTKV (thực hiện); lưu VT.",
+    "qtype": "clear"
+  },
+  {
+    "id": 33,
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214...pdf",
+    "question": "Hướng dẫn đăng ký xe căn cứ vào văn bản nào?",
+    "reference": "",
+    "content_preview": "Căn cứ quy chế quản lý và sử dụng xe ô tô ... số: 453a/QĐ-ACT-KHCT ban hành ngày 01/09/2018",
+    "answer": "Căn cứ Quy chế quản lý và sử dụng xe ô tô Công ty Cổ phần Viễn thông ACT số 453a/QĐ-ACT-KHCT ban hành ngày 01/09/2018 và chức năng, nhiệm vụ Phòng Hành chính.",
+    "qtype": "clear"
+  },
+  {
+    "id": 34,
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214...pdf",
+    "question": "Văn bản hướng dẫn đăng ký xe mang số hiệu gì, ký ngày nào?",
+    "reference": "",
+    "content_preview": "Số: 214/HD-ACT-HC, Tp HCM, ngày 07 tháng 05 năm 2024",
+    "answer": "Số 214/HD-ACT-HC, ký tại TP. HCM ngày 07/05/2024.",
+    "qtype": "clear"
+  },
+  {
+    "id": 35,
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917...pdf > Điều 1. Mục đích",
+    "question": "Mục đích của Quy định 917 về công tác xe là gì?",
+    "reference": "",
+    "content_preview": "Điều 1. Mục đích: 1. Làm cơ sở cho việc tổ chức, quản lý, điều phối và kiểm soát toàn bộ hoạt động công tác, vận chuyển hàng hóa...",
+    "answer": "Làm cơ sở tổ chức, quản lý, điều phối và kiểm soát toàn bộ hoạt động công tác, vận chuyển hàng hóa phục vụ sản xuất kinh doanh và vận hành nội bộ; sử dụng hiệu quả tài nguyên; hạn chế chi phí, rủi ro; tăng tính chủ động và năng suất.",
+    "qtype": "clear"
+  },
+  {
+    "id": 36,
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917...pdf > Điều 2. Phạm vi áp dụng",
+    "question": "Quy định 917 áp dụng cho loại hình vận chuyển nào?",
+    "reference": "",
+    "content_preview": "a) Vận chuyển nội thành, ngoại thành, liên tỉnh... b) định kỳ theo kế hoạch hoặc phát sinh, đột xuất. c) một chiều, hai chiều, hoặc nhiều điểm giao/nhận kết hợp.",
+    "answer": "Vận chuyển nội thành, ngoại thành, liên tỉnh (giữa văn phòng, kho, dự án); định kỳ theo kế hoạch hoặc phát sinh đột xuất; một chiều, hai chiều hoặc nhiều điểm giao nhận kết hợp.",
+    "qtype": "clear"
+  },
+  {
+    "id": 37,
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917...pdf > Điều 3. Phân loại",
+    "question": "Xe công ty gồm những loại nào và được ưu tiên khi nào?",
+    "reference": "",
+    "content_preview": "1. Xe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ... a) Quãng đường ngắn (nhỏ hơn hoặc bằng 30km). b) ... nhỏ hơn hoặc bằng 500kg...",
+    "answer": "Xe công ty gồm ô tô con, bán tải, tải nhỏ; ưu tiên khi quãng đường từ 30km trở xuống, hàng nhỏ lẻ dưới 500kg dễ xếp dỡ, điểm đến trong lộ trình có sẵn, xe có sẵn trong khung giờ yêu cầu.",
+    "qtype": "clear"
+  },
+  {
+    "id": 38,
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917...pdf > Điều 3. Phân loại",
+    "question": "Dịch vụ thuê ngoài dùng trong trường hợp nào?",
+    "reference": "",
+    "content_preview": "2. Dịch vụ vận chuyển thuê ngoài... xe tải lớn, xe chuyên dụng... a) Quãng đường dài (trên 30km), liên tỉnh. b) Hàng hóa số lượng lớn, cồng kềnh...",
+    "answer": "Xe tải lớn, xe chuyên dụng theo yêu cầu; dùng khi quãng đường dài trên 30km hoặc liên tỉnh, hàng lớn cồng kềnh hoặc cần xe chuyên dụng, xe công ty không có sẵn hoặc không phù hợp, nhu cầu khẩn cấp ngoài giờ.",
+    "qtype": "clear"
+  },
+  {
+    "id": 39,
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917...pdf > Điều 4. Nguyên tắc",
+    "question": "Thời hạn gửi đề xuất vận chuyển thường lệ và đột xuất?",
+    "reference": "",
+    "content_preview": "b) ... gửi về đơn vị điều phối trước 15h00 ngày hôm trước... c) ... được phê duyệt bởi quản lý cấp phòng trở lên (gửi thông tin ... ít nhất 4 giờ trước...).",
+    "answer": "Thường lệ: gửi đề xuất cụ thể về đơn vị điều phối trước 15h00 ngày hôm trước. Đột xuất: nêu rõ lý do, quản lý cấp phòng trở lên phê duyệt, gửi thông tin ít nhất 4 giờ trước giờ thực hiện.",
+    "qtype": "clear"
+  },
+  {
+    "id": 40,
+    "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+    "breadcrumb": "A.docx > Điều 3: nguyên tắc + thử việc",
+    "question": "Lương thử việc và thời gian thử việc quy định thế nào?",
+    "reference": "",
+    "content_preview": "Mức lương thử việc: Hưởng 100% mức lương cơ bản... Thời gian thử việc đối với nhân viên văn phòng, nhân viên kỹ thuật không quá 60 ngày.",
+    "answer": "Mức lương thử việc hưởng 100% mức lương cơ bản của công việc đó; thời gian thử việc với nhân viên văn phòng, kỹ thuật không quá 60 ngày.",
+    "qtype": "clear"
+  },
+  {
+    "id": 41,
+    "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+    "breadcrumb": "A.docx > làm thêm giờ",
+    "question": "Làm thêm giờ tính lương thế nào, làm đêm thì sao?",
+    "reference": "",
+    "content_preview": "Mức 150% ngày thường. Mức 200% ngày nghỉ hàng tuần... Mức 300% ngày lễ... làm thêm vào ban đêm thì được trả thêm ít nhất là 30%...",
+    "answer": "Ngày thường 150%, ngày nghỉ hàng tuần 200%, lễ/tết 300% (đã gồm lương ngày nghỉ hưởng nguyên lương theo Điều 97 BLLĐ); làm thêm ban đêm cộng thêm ít nhất 30% so với lương ban ngày.",
+    "qtype": "clear"
+  },
+  {
+    "id": 42,
+    "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+    "breadcrumb": "A.docx > thưởng Tết",
+    "question": "Thưởng Tết âm lịch mức bao nhiêu?",
+    "reference": "",
+    "content_preview": "1. Thưởng tết âm lịch - Mức thưởng: 01 tháng lương cơ bản của năm trước liền kề.",
+    "answer": "Vào dịp Tết âm lịch hàng năm công ty thưởng cho CBCNV với mức 01 tháng lương cơ bản của năm trước liền kề.",
+    "qtype": "clear"
+  },
+  {
+    "id": 43,
+    "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+    "breadcrumb": "A.docx > công tác phí",
+    "question": "Công tác phí trong nước các mức thế nào?",
+    "reference": "",
+    "content_preview": "Nếu đi về trong ngày: 150.000 đồng/ngày... Bắc Ninh, Vĩnh Phúc... 500.000 đồng/ngày... TP Hồ Chí Minh, miền Trung, nam: 2.000.000 đồng/ngày.",
+    "answer": "Đi về trong ngày 150.000 đồng/ngày; từ 2 ngày trở lên: tỉnh lân cận phía Bắc 500.000 đồng/ngày; TP.HCM, miền Trung, miền Nam 2.000.000 đồng/ngày (hỗ trợ ăn uống, sinh hoạt).",
+    "qtype": "clear"
+  },
+  {
+    "id": 44,
+    "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+    "breadcrumb": "A.docx > đồng phục",
+    "question": "Chế độ cấp đồng phục thế nào, nghỉ việc thì sao?",
+    "reference": "",
+    "content_preview": "Nhân viên kỹ thuật được cấp 4 bộ đồng phục/năm chia làm 2 đợt vào tháng 01 và tháng 07... Nếu hết thời gian thử việc mà không ký hợp đồng chính thức thì phải hoàn trả... mất hoặc hư hỏng phải bồi thường.",
+    "answer": "Nhân viên kỹ thuật được cấp 4 bộ/năm chia 2 đợt tháng 01 và tháng 07; nhân viên mới được cấp khi ký hợp đồng; hết thử việc không ký chính thức phải hoàn trả, mất hoặc hư hỏng phải bồi thường.",
+    "qtype": "clear"
+  },
+  {
+    "id": 45,
+    "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+    "breadcrumb": "A.docx > lương tháng 13",
+    "question": "Lương tháng 13 điều kiện và cách tính ra sao?",
+    "reference": "",
+    "content_preview": "3.6. Tiền lương tháng thứ 13: Công ty nếu kinh doanh có lãi sẽ thưởng... 1 tháng lương cơ bản... tính trên số tháng thực tế làm việc...",
+    "answer": "Công ty kinh doanh có lãi mới thưởng tháng 13 cho nhân viên có hợp đồng có thời hạn và không xác định thời hạn, mức 1 tháng lương cơ bản tính trên số tháng thực tế làm việc tại doanh nghiệp.",
+    "qtype": "clear"
+  },
+  {
+    "id": 46,
+    "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+    "breadcrumb": "B.docx > Điều 7. Phụ cấp",
+    "question": "Phụ cấp trách nhiệm các chức danh mức bao nhiêu?",
+    "reference": "",
+    "content_preview": "Mức hưởng phụ cấp trách nhiệm | 3.500.000 đồng | 2.500.000 đồng | 1.500.000 đồng | 2.000.000 đồng",
+    "answer": "Giám đốc 3.500.000 đồng; Phó giám đốc 2.500.000 đồng; Kế toán trưởng 1.500.000 đồng; Trưởng phòng kinh doanh 2.000.000 đồng.",
+    "qtype": "clear"
+  },
+  {
+    "id": 47,
+    "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+    "breadcrumb": "B.docx > Điều 7. Phụ cấp",
+    "question": "Phụ cấp ăn trưa, điện thoại, xăng xe của Giám đốc là bao nhiêu?",
+    "reference": "",
+    "content_preview": "Giám đốc | 730.000 đồng | 1.000.000 đồng | 550.000 đồng",
+    "answer": "Giám đốc: ăn trưa 730.000 đồng, điện thoại 1.000.000 đồng, xăng xe 550.000 đồng mỗi tháng.",
+    "qtype": "clear"
+  },
+  {
+    "id": 48,
+    "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+    "breadcrumb": "B.docx > Điều 8. Trợ cấp",
+    "question": "Hỗ trợ tiền thuê nhà điều kiện và mức nào?",
+    "reference": "",
+    "content_preview": "Tất cả lao động chính thức (ngoại trừ lao động thời vụ) ký hợp đồng lao động từ 06 tháng trở lên được hưởng thêm khoản tiền hỗ trợ thuê nhà từ 1.000.000 đến 2.000.000 đồng mỗi tháng.",
+    "answer": "Lao động chính thức (trừ thời vụ) ký hợp đồng từ 06 tháng trở lên được hỗ trợ thuê nhà từ 1.000.000 đến 2.000.000 đồng mỗi tháng.",
+    "qtype": "clear"
+  },
+  {
+    "id": 49,
+    "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+    "breadcrumb": "B.docx > Điều 10. Cơ sở tính lương",
+    "question": "Tiền lương tháng tính theo công thức nào?",
+    "reference": "",
+    "content_preview": "Tiền lương tháng = (Tiền lương chính + Phụ cấp, trợ cấp nếu có): 26 x số ngày làm việc thực tế.",
+    "answer": "Tiền lương tháng = (tiền lương chính + phụ cấp, trợ cấp nếu có) chia 26 nhân số ngày làm việc thực tế, căn cứ bảng chấm công.",
+    "qtype": "clear"
+  },
+  {
+    "id": 50,
+    "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+    "breadcrumb": "B.docx > Điều 11. Hạn trả lương",
+    "question": "Lương trả vào thời điểm nào trong tháng?",
+    "reference": "",
+    "content_preview": "Toàn thể nhân viên Công ty được chi trả tiền lương vào ngày cuối cùng của tháng.",
+    "answer": "Toàn thể nhân viên công ty được chi trả tiền lương vào ngày cuối cùng của tháng.",
+    "qtype": "clear"
+  },
+  {
+    "id": 51,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > 6.1 + định mức",
+    "question": "Định mức VPP cho khối văn phòng là bao nhiêu?",
+    "reference": "",
+    "content_preview": "Đối với khối văn phòng: Định mức sử dụng VPP và mực in: 120.000/người/tháng, định mức chi cho mua ngoài...: 5.000.000/tháng.",
+    "answer": "VPP và mực in 120.000 đồng/người/tháng; chi mua ngoài (đồ vệ sinh, dây điện, ổ cắm, phí vệ sinh, gồm VP Đồng Xoài và trung tâm đào tạo) 5.000.000 đồng/tháng.",
+    "qtype": "clear"
+  },
+  {
+    "id": 52,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > 6.1 + định mức",
+    "question": "Định mức VPP cho trung tâm khu vực thế nào?",
+    "reference": "",
+    "content_preview": "Đối với trung tâm khu vực: ... 120.000/người/tháng với nhân viên văn phòng và 30.000/người/tháng đối với kỹ thuật viên... 2.500.000 (dưới 100 người) và 2.750.000 (trên 100 người).",
+    "answer": "Nhân viên văn phòng 120.000 đồng/người/tháng, kỹ thuật viên 30.000 đồng/người/tháng; chi mua ngoài 2.500.000 đồng (trung tâm dưới 100 người) và 2.750.000 đồng (trên 100 người).",
+    "qtype": "clear"
+  },
+  {
+    "id": 53,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > 6.1 + vượt định mức",
+    "question": "Dùng VPP vượt định mức thì thủ tục gì?",
+    "reference": "",
+    "content_preview": "Những khối và phòng ban... phải sử dụng VPP và mực in vượt so với định mức... phải có Phiếu đề xuất có chữ ký của Trưởng đơn vị, trình cho Tổng giám đốc và Kế toán trưởng phê duyệt.",
+    "answer": "Phải có Phiếu đề xuất có chữ ký Trưởng đơn vị, trình Tổng giám đốc và Kế toán trưởng phê duyệt.",
+    "qtype": "clear"
+  },
+  {
+    "id": 54,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > 6.6 mực in",
+    "question": "Bình mực nạp tối đa mấy lần, mất bình thì sao?",
+    "reference": "",
+    "content_preview": "Trung bình 1 bình mực có thể nạp tối đa từ 5 đến 7 lần... trường hợp làm mất hoặc hư hỏng bình mực thì cá nhân hoặc phòng ban tự chịu trách nhiệm.",
+    "answer": "Trung bình 1 bình mực nạp tối đa 5 đến 7 lần rồi mua bình mới; làm mất hoặc hư hỏng bình mực thì cá nhân hoặc phòng ban tự chịu trách nhiệm.",
+    "qtype": "clear"
+  },
+  {
+    "id": 55,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > 6.3/6.4",
+    "question": "BM02 và BM04 khác nhau thế nào?",
+    "reference": "",
+    "content_preview": "BM02 - QT.ACT.HC-05 (giấy đề nghị hàng tháng, ngày 25-30)... BM04 - QT.ACT.HC-05 (giấy đề nghị đột xuất).",
+    "answer": "BM02 là giấy đề nghị VPP, vệ sinh phẩm hàng tháng (lập ngày 25-30 hàng tháng); BM04 là giấy đề nghị VPP, vệ sinh phẩm đột xuất.",
+    "qtype": "clear"
+  },
+  {
+    "id": 56,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > 6.7 photocopy",
+    "question": "Máy photocopy bảo dưỡng và sửa chữa thế nào?",
+    "reference": "",
+    "content_preview": "bảo dưỡng máy định kỳ 1 tháng 1 lần... đối tác sẽ chỉ ra lỗi và báo giá trực tiếp... P.HC sẽ làm Phiếu đề xuất trình cho Tổng giám đốc và Kế toán trưởng phê duyệt.",
+    "answer": "Nhân viên HC liên hệ đối tác bảo dưỡng định kỳ 1 tháng 1 lần; phát hiện hỏng hóc thì đối tác báo giá trước khi làm; P.HC làm Phiếu đề xuất trình Tổng giám đốc và Kế toán trưởng phê duyệt.",
+    "qtype": "clear"
+  },
+  {
+    "id": 57,
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT...pdf > bảng mực in",
+    "question": "Mua hộp mực mới có ưu đãi gì, từ khi nào?",
+    "reference": "",
+    "content_preview": "Khi mua hộp mực mới sẽ được miễn phí nạp mực lần đầu tiên (áp dụng từ Tháng 07/2024)",
+    "answer": "Mua hộp mực mới được miễn phí nạp mực lần đầu tiên, áp dụng từ tháng 07/2024.",
+    "qtype": "clear"
+  },
+  {
+    "id": 58,
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "breadcrumb": "EVN...pdf > Điều 2",
+    "question": "Mục đích ban hành quy chế EVNFinance là gì?",
+    "reference": "",
+    "content_preview": "Điều 2... (i) bảo vệ quyền và lợi ích hợp pháp của cổ đông và Công ty... (ii) đảm bảo Công ty hoạt động phù hợp với quy định của pháp luật...",
+    "answer": "Quy định nguyên tắc quản trị cơ bản để bảo vệ quyền và lợi ích hợp pháp của cổ đông và công ty, đảm bảo công ty hoạt động đúng pháp luật, Điều lệ và chuẩn mực kinh doanh nhằm hiệu quả cao nhất.",
+    "qtype": "clear"
+  },
+  {
+    "id": 59,
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "breadcrumb": "EVN...pdf > Điều 3",
+    "question": "Phạm vi điều chỉnh của quy chế EVNFinance gồm những ai?",
+    "reference": "",
+    "content_preview": "Điều 3... bao gồm: Đại hội đồng cổ đông, Hội đồng quản trị, Ban Kiểm soát, Tổng Giám đốc và các bộ phận liên quan khác.",
+    "answer": "Bộ máy tổ chức theo Điều lệ: Đại hội đồng cổ đông, Hội đồng quản trị, Ban Kiểm soát, Tổng Giám đốc và các bộ phận liên quan khác.",
+    "qtype": "clear"
+  },
+  {
+    "id": 60,
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "breadcrumb": "EVN...pdf > Điều 20",
+    "question": "Ban Kiểm soát EVNFinance có bao nhiêu thành viên, nhiệm kỳ mấy năm?",
+    "reference": "",
+    "content_preview": "BKS có ít nhất 03 (ba) thành viên và không nhiều hơn 05 (năm)... Nhiệm kỳ của BKS không quá 05 (năm) năm...",
+    "answer": "Ít nhất 03 và không quá 05 thành viên (ít nhất một nửa là chuyên trách); nhiệm kỳ không quá 05 năm, được bầu lại không hạn chế.",
+    "qtype": "clear"
+  },
+  {
+    "id": 61,
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "breadcrumb": "EVN...pdf > Điều 22",
+    "question": "Tổng Giám đốc EVNFinance do ai bổ nhiệm, vai trò gì?",
+    "reference": "",
+    "content_preview": "Tổng Giám đốc do Hội đồng Quản trị bổ nhiệm... là người điều hành cao nhất của Công ty, chịu sự giám sát của Hội đồng quản trị...",
+    "answer": "Do Hội đồng quản trị bổ nhiệm (trong hoặc ngoài thành viên HĐQT); là người điều hành cao nhất, chịu sự giám sát của HĐQT.",
+    "qtype": "clear"
+  },
+  {
+    "id": 62,
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "breadcrumb": "EVN...pdf > Điều 18",
+    "question": "HĐQT EVNFinance họp định kỳ thế nào, điều kiện tiến hành?",
+    "reference": "",
+    "content_preview": "mỗi quý phải họp ít nhất một lần... gửi thông báo mời họp ít nhất 05 (năm) ngày làm việc... khi có từ 3/4 (ba phần tư) tổng số thành viên trở lên dự họp...",
+    "answer": "Mỗi quý họp ít nhất một lần; thông báo họp ít nhất 05 ngày làm việc trước; cuộc họp tiến hành khi có từ 3/4 tổng số thành viên trở lên dự họp.",
+    "qtype": "clear"
+  },
+  {
+    "id": 63,
+    "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+    "breadcrumb": "EVN...pdf > Điều 29",
+    "question": "EVNFinance cam kết gì về lao động, môi trường, xã hội?",
+    "reference": "",
+    "content_preview": "1. ...trách nhiệm với cộng đồng... 2. Công ty phải tuân thủ các quy định về luật lao động, môi trường và xã hội.",
+    "answer": "Tuân thủ các quy định về luật lao động, môi trường và xã hội; thực hiện trách nhiệm với cộng đồng và người có quyền lợi liên quan theo pháp luật và Điều lệ.",
+    "qtype": "clear"
+  },
+  {
+    "id": 64,
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "breadcrumb": "MWG...pdf > Điều 5",
+    "question": "Thông báo mời họp ĐHĐCĐ MWG gửi trước bao lâu, bằng cách nào?",
+    "reference": "",
+    "content_preview": "5.1 Thông báo mời họp... chậm nhất là hai mươi mốt (21) ngày... thư bảo đảm... thư tay hoặc... Phương tiện trực tuyến...",
+    "answer": "Chậm nhất 21 ngày trước khai mạc, bằng thư bảo đảm qua bưu điện, thư tay hoặc phương tiện trực tuyến (email, tin nhắn), đồng thời công bố trên website công ty, UBCK và Sở Giao dịch.",
+    "qtype": "clear"
+  },
+  {
+    "id": 65,
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "breadcrumb": "MWG...pdf > Điều 7",
+    "question": "Cổ đông MWG có mấy lựa chọn khi biểu quyết?",
+    "reference": "",
+    "content_preview": "7.4.1 ... chỉ chọn một (01) trong ba (03) lựa chọn Tán thành..., Không tán thành..., Không có ý kiến...",
+    "answer": "Ba lựa chọn cho mỗi vấn đề: Tán thành, Không tán thành, Không có ý kiến; chỉ được chọn một.",
+    "qtype": "clear"
+  },
+  {
+    "id": 66,
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "breadcrumb": "MWG...pdf > Điều 8",
+    "question": "Kiểm phiếu ở MWG đếm theo thứ tự nào?",
+    "reference": "",
+    "content_preview": "8.2 ... số phiếu biểu quyết tán thành được đếm trước, tiếp đó đến số phiếu... không tán thành và đếm số phiếu... không có ý kiến, cuối cùng đếm tổng số...",
+    "answer": "Đếm phiếu tán thành trước, tiếp đến không tán thành, rồi không có ý kiến, cuối cùng tổng số phiếu biểu quyết; Ban kiểm phiếu ghi đầy đủ vào biên bản kiểm phiếu.",
+    "qtype": "clear"
+  },
+  {
+    "id": 67,
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "breadcrumb": "MWG...pdf > Điều 10",
+    "question": "Cổ đông MWG yêu cầu mua lại cổ phần điều kiện và thời hạn gì?",
+    "reference": "",
+    "content_preview": "10.1 ... Yêu cầu phải được gửi đến Công ty trong thời hạn 10 ngày... 10.2 ... trong thời hạn 90 ngày, kể từ ngày nhận được yêu cầu...",
+    "answer": "Cổ đông biểu quyết phản đối nghị quyết tổ chức lại hoặc thay đổi quyền cổ đông theo Điều lệ; yêu cầu bằng văn bản trong 10 ngày kể từ ngày thông qua; công ty mua lại trong 90 ngày với giá thị trường hoặc theo Điều lệ.",
+    "qtype": "clear"
+  },
+  {
+    "id": 68,
+    "source_file": "QuyCheQuanTri-MWG.pdf",
+    "breadcrumb": "MWG...pdf > Điều 14",
+    "question": "HĐQT MWG có bao nhiêu thành viên, nhiệm kỳ mấy năm?",
+    "reference": "",
+    "content_preview": "14.1 Số lượng... không ít hơn năm (5) người, không vượt quá mười một (11) người. Nhiệm kỳ... không quá bốn (04) năm...",
+    "answer": "Không ít hơn 05 và không quá 11 người; nhiệm kỳ không quá 04 năm, được bầu lại không hạn chế (trừ luật khác quy định).",
+    "qtype": "clear"
+  },
+  {
+    "id": 69,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 5",
+    "question": "Công ty PMSC công bố danh sách cổ đông dự họp trước bao lâu?",
+    "reference": "",
+    "content_preview": "1. Công ty phải công bố thông tin... tối thiểu 20 ngày trước ngày đăng ký cuối cùng... theo ... Tổng công ty Lưu ký và Bù trừ chứng khoán Việt Nam.",
+    "answer": "Công bố thông tin lập danh sách tối thiểu 20 ngày trước ngày đăng ký cuối cùng; lập danh sách theo Quy chế thực hiện quyền của Tổng công ty Lưu ký và Bù trừ chứng khoán Việt Nam.",
+    "qtype": "clear"
+  },
+  {
+    "id": 70,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 6",
+    "question": "Thông báo mời họp ĐHĐCĐ PMSC gửi trước bao lâu?",
+    "reference": "",
+    "content_preview": "1. Người triệu tập họp... phải gửi thông báo mời họp... chậm nhất là 21 ngày trước ngày khai mạc",
+    "answer": "Người triệu tập phải gửi thông báo mời họp đến tất cả cổ đông trong danh sách chậm nhất 21 ngày trước ngày khai mạc.",
+    "qtype": "clear"
+  },
+  {
+    "id": 71,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 8",
+    "question": "Cổ đông PMSC đăng ký và ủy quyền dự họp thế nào?",
+    "reference": "",
+    "content_preview": "a. ... liên hệ Công ty hoặc gửi Giấy đăng ký tham dự... b. Cổ đông chọn hình thức... Tham dự và biểu quyết/bầu cử trực tiếp... Ủy quyền cho một đại diện khác...",
+    "answer": "Đăng ký theo cách ghi trong thông báo họp: liên hệ công ty hoặc gửi Giấy đăng ký (đính kèm thông báo); chọn trực tiếp hoặc ủy quyền cho một đại diện khác theo khoản 2 Điều 8.",
+    "qtype": "clear"
+  },
+  {
+    "id": 72,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 9",
+    "question": "Điều kiện tiến hành họp ĐHĐCĐ PMSC các lần thế nào?",
+    "reference": "",
+    "content_preview": "1. ... trên [50%] tổng số cổ phần có quyền biểu quyết. 2. ... trong thời hạn [30 ngày]... từ [33%]... 3. ... trong thời hạn [20] ngày... không phụ thuộc vào tổng số phiếu...",
+    "answer": "Lần 1: cổ đông dự họp đại diện trên 50% cổ phần biểu quyết. Lần 2 (mời trong 30 ngày): từ 33% trở lên. Lần 3 (mời trong 20 ngày): không phụ thuộc số phiếu dự họp.",
+    "qtype": "clear"
+  },
+  {
+    "id": 73,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 13",
+    "question": "Biểu quyết ở PMSC bằng những hình thức nào?",
+    "reference": "",
+    "content_preview": "biểu quyết được tiến hành bằng cách giơ thẻ, bỏ phiếu trực tiếp, bỏ phiếu điện tử hoặc hình thức điện tử khác... Tán thành, Không tán thành hoặc Không ý kiến...",
+    "answer": "Thảo luận và biểu quyết từng vấn đề; bằng giơ thẻ, bỏ phiếu trực tiếp, bỏ phiếu điện tử hoặc hình thức điện tử khác; mỗi vấn đề chọn Tán thành, Không tán thành hoặc Không ý kiến.",
+    "qtype": "clear"
+  },
+  {
+    "id": 74,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 14",
+    "question": "Bầu cử ở PMSC theo phương thức gì, ai không được kiểm phiếu?",
+    "reference": "",
+    "content_preview": "a. Bầu cử theo phương thức bầu dồn phiếu... Thành viên ban kiểm phiếu không được có tên trong danh sách đề cử, tự đề cử vào HĐQT và Ban kiểm soát.",
+    "answer": "Bầu dồn phiếu: mỗi đại biểu có tổng phiếu bằng cổ phần nhân số thành viên được bầu, được dồn hết cho một hoặc chia cho nhiều ứng viên; thành viên ban kiểm phiếu không được có tên trong danh sách đề cử, tự đề cử vào HĐQT và Ban kiểm soát.",
+    "qtype": "clear"
+  },
+  {
+    "id": 75,
+    "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+    "breadcrumb": "PMSC...pdf > Điều 15+16",
+    "question": "Kiểm phiếu và điều kiện thông qua nghị quyết PMSC ra sao?",
+    "reference": "",
+    "content_preview": "Cách thức kiểm phiếu... tổng hợp phiếu... tán thành, không tán thành, không có ý kiến... 1. Nghị quyết về nội dung sau đây được thông qua nếu được số cổ đông đại diện từ [65%]... a. Loại cổ phần... d. ...lớn hơn 35% tổng giá trị tài sản...",
+    "answer": "Tổng hợp phiếu tán thành, không tán thành, không có ý kiến; vấn đề nhạy cảm hoặc cổ đông yêu cầu thì tổ chức độc lập kiểm phiếu. Nghị quyết nội dung đặc biệt (loại cổ phần, ngành nghề, cơ cấu tổ chức, tài sản ≥35%, tổ chức lại...) cần từ 65% phiếu biểu quyết tán thành.",
+    "qtype": "clear"
+  },
+  {
+    "id": 76,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Quy chế này có hiệu lực từ ngày nào?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: 917/QĐ-ACT, QT.ACT.HC-05, MWG, EVNFinance, quy chế lương Cấp Nước An Phát.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "917/QĐ-ACT (kể từ ngày ký 08/09/2025)",
+      "QT.ACT.HC-05 (01/07/2024)",
+      "MWG (08/04/2023)",
+      "EVNFinance (tháng 04/2018)",
+      "MauQuyCheLuong-A (01/01/20xx, năm in thiếu)"
+    ]
+  },
+  {
+    "id": 77,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Ai có thẩm quyền phê duyệt quy chế?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: EVNFinance, MWG, quy chế lương Cấp Nước An Phát.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "EVNFinance (ĐHĐCĐ thông qua, HĐQT ban hành)",
+      "MWG (ĐHĐCĐ thông qua)",
+      "MauQuyCheLuong-A (Giám đốc ban hành, Ban Giám đốc điều chỉnh)"
+    ]
+  },
+  {
+    "id": 78,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Đối tượng áp dụng của quy chế là ai?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: MWG, EVNFinance, quy chế lương Cấp Nước An Phát.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MWG (Điều 1.2)",
+      "EVNFinance (Điều 3)",
+      "MauQuyCheLuong-A (Điều 4: mọi NLĐ hợp đồng)"
+    ]
+  },
+  {
+    "id": 79,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Cổ đông lớn là gì?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: MWG (định nghĩa) hay EVNFinance (nghĩa vụ).",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MWG (Điều 2.6: sở hữu từ 5% CP biểu quyết)",
+      "EVNFinance (Điều 8: nghĩa vụ cổ đông lớn)"
+    ]
+  },
+  {
+    "id": 80,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Người điều hành gồm những ai?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: MWG hay EVNFinance.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MWG (Điều 2.10: TGĐ, Phó TGĐ, KTT + vị trí khác do HĐQT bổ nhiệm)",
+      "EVNFinance (Điều 5: TGĐ, Phó TGĐ, KTT, Giám đốc chi nhánh)"
+    ]
+  },
+  {
+    "id": 81,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Quy trình đăng ký xe thế nào?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi Hướng dẫn 214 (xe công tác) hay Quy định 917 (điều phối xe).",
+    "qtype": "ambiguous",
+    "candidates": [
+      "214/HD-ACT-HC (5 bước đăng ký xe công tác)",
+      "917/QĐ-ACT (Điều 4: đề xuất trước 15h/4h)"
+    ]
+  },
+  {
+    "id": 82,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Chế độ hiếu hỉ thế nào?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế lương Cấp Nước An Phát hay mẫu quy chế lương (phần B). Hai văn bản quy định khác nhau.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MauQuyCheLuong-A (NLĐ 2 triệu, gia đình 500 nghìn)",
+      "MauQuyCheLuong-B (NLĐ 1 triệu, gia đình 500 nghìn)"
+    ]
+  },
+  {
+    "id": 83,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Thưởng Tết âm lịch ra sao?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế lương Cấp Nước An Phát hay mẫu quy chế lương (phần B). Hai văn bản quy định khác nhau.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MauQuyCheLuong-A (01 tháng lương cơ bản năm trước)",
+      "MauQuyCheLuong-B (trích lợi nhuận tùy từng năm)"
+    ]
+  },
+  {
+    "id": 84,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Tiền lương tháng tính theo công thức nào?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi mẫu quy chế lương phần B (có công thức chia 26) hay quy chế Cấp Nước An Phát.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MauQuyCheLuong-B (Điều 10: (lương chính + phụ cấp)/26 x ngày thực tế)",
+      "MauQuyCheLuong-A (theo đóng góp, không có công thức cố định)"
+    ]
+  },
+  {
+    "id": 85,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Biên bản họp ĐHĐCĐ phải lập khi nào, gồm những gì?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: EVNFinance, MWG, PMSC.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "EVNFinance (Điều 13: hoàn thành trước bế mạc, tiếng Việt)",
+      "MWG (Điều 11.2: lập xong trước khi kết thúc)",
+      "PMSC (Điều 19: ghi biên bản, tiếng Việt + nội dung chủ yếu)"
+    ]
+  },
+  {
+    "id": 86,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Thông báo mời họp ĐHĐCĐ gửi trước bao lâu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: MWG hay PMSC (cả hai đều quy định 21 ngày).",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MWG (Điều 5: chậm nhất 21 ngày)",
+      "PMSC (Điều 6: chậm nhất 21 ngày)"
+    ]
+  },
+  {
+    "id": 87,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Bầu thành viên HĐQT theo phương thức gì?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế nào trong số: MWG hay PMSC (cả hai đều bầu dồn phiếu).",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MWG (Điều 16: bầu dồn phiếu)",
+      "PMSC (Điều 14: bầu dồn phiếu)"
+    ]
+  },
+  {
+    "id": 88,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "BM01 là biểu mẫu gì?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi BM01 của Hướng dẫn đăng ký xe 214 hay của Quy trình QT.ACT.HC-05.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "214/HD-ACT-HC (Phiếu đăng ký xe)",
+      "QT.ACT.HC-05 (Bảng tiêu chuẩn VPP, vệ sinh phẩm, mực in)"
+    ]
+  },
+  {
+    "id": 89,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Phụ cấp ăn trưa của kế toán trưởng bao nhiêu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế lương Cấp Nước An Phát (730.000) hay mẫu quy chế phần B (710.000).",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MauQuyCheLuong-A (730.000 đồng, chung mọi CBCNV)",
+      "MauQuyCheLuong-B (710.000 đồng)"
+    ]
+  },
+  {
+    "id": 90,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Công tác phí đi TP.HCM bao nhiêu một ngày?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Câu hỏi thiếu tên văn bản — cần hỏi lại bạn đang hỏi quy chế lương Cấp Nước An Phát hay mẫu quy chế phần B. Hai văn bản quy định khác nhau.",
+    "qtype": "ambiguous",
+    "candidates": [
+      "MauQuyCheLuong-A (2.000.000 đồng/ngày)",
+      "MauQuyCheLuong-B (450.000 đồng/ngày + ăn ở thực tế)"
+    ]
+  },
+  {
+    "id": 91,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Chế độ thai sản theo quy chế quy định thế nào?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 92,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Mã số thuế của công ty là gì?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 93,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Lương tháng 6 của Nguyễn Văn A là bao nhiêu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+    "qtype": "oos"
+  },
+  {
+    "id": 94,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Số ngày phép còn lại của tôi là bao nhiêu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 95,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Giá cổ phiếu MWG hôm nay bao nhiêu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 96,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Giám đốc nhân sự hiện tại của công ty là ai?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 97,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Mức đóng BHXH hàng tháng là bao nhiêu phần trăm?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 98,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Tải mẫu đơn xin nghỉ phép ở đâu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 99,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Tổng số nhân viên hiện tại của công ty là bao nhiêu?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  },
+  {
+    "id": 100,
+    "source_file": "",
+    "breadcrumb": "",
+    "question": "Thủ tục đăng ký kinh doanh công ty mới gồm những gì?",
+    "reference": "",
+    "content_preview": "",
+    "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.",
+    "qtype": "oos"
+  }
+]

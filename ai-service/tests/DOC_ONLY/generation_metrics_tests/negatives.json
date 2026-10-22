@@ -1,0 +1,12 @@
+[
+  {"id": "N001", "question": "Chính sách làm việc từ xa (WFH) của công ty quy định thế nào?"},
+  {"id": "N002", "question": "Nhân viên có được quyền mua cổ phiếu ưu đãi ESOP không?"},
+  {"id": "N003", "question": "Công ty có phòng tập gym cho nhân viên không, ở tầng mấy?"},
+  {"id": "N004", "question": "Mỗi tháng công ty hỗ trợ tiền giữ xe bao nhiêu?"},
+  {"id": "N005", "question": "Ngân sách team building mỗi quý của phòng ban là bao nhiêu?"},
+  {"id": "N006", "question": "Sinh nhật nhân viên công ty tặng quà gì?"},
+  {"id": "N007", "question": "Nhân viên mới vào có được cấp laptop không, cấu hình ra sao?"},
+  {"id": "N008", "question": "Phụ cấp ngoại ngữ cho người có chứng chỉ IELTS 7.0 là bao nhiêu?"},
+  {"id": "N009", "question": "Bảo hiểm sức khỏe Bảo Việt cho người thân nhân viên gồm những quyền lợi gì?"},
+  {"id": "N010", "question": "Xe công ty có tuyến đưa đón nhân viên hằng ngày từ Thủ Đức không?"}
+]
