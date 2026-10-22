@@ -2,7 +2,7 @@
 server.port=8080
 
 # ====================== Cấu hình Database (PostgreSQL) ======================
-spring.datasource.url=jdbc:postgresql://localhost:5432/social_app
+spring.datasource.url=jdbc:postgresql://localhost:5432/hrm
 spring.datasource.username=postgres
 spring.datasource.password=YOUR_POSTGRESQL_PASSWORD
 spring.datasource.driver-class-name=org.postgresql.Driver
@@ -44,4 +44,4 @@ logging.logback.rollingpolicy.total-size-cap=100MB
 
 # ====================== AI RAG Service ======================
 ai.service.base-url=http://localhost:8000
-ai.service.internal-secret=hrm-internal-key-secure-2024
+ai.service.internal-secret=change-me-internal-secret

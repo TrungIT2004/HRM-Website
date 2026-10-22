@@ -1,35 +1,33 @@
 # HRM – Human Resource Management System
 
-Hệ thống quản lý nhân sự toàn diện dành cho doanh nghiệp, bao gồm quản lý nhân viên, chấm công, nghỉ phép, tăng ca, tính lương và quy trình thôi việc.
+Hệ thống quản lý nhân sự toàn diện cho doanh nghiệp: quản lý nhân viên, chấm công
+(nhận diện khuôn mặt), ca làm, nghỉ phép, tăng ca, tính lương, tài sản, IT ticket,
+đánh giá KPI, thôi việc và trợ lý AI tra cứu quy chế nội bộ.
 
 ---
 
-## Tổng quan hệ thống
+## Kiến trúc
 
+```text
+Next.js (HRM Website) ──REST/SSE──> Spring Boot API ──> PostgreSQL 17 + pgvector
+                                            │            Redis 7
+                                            │
+Check Attendance (OpenCV) ──REST──> Spring Boot
+        │
+        └── đọc face_embedding (128d) trực tiếp từ PostgreSQL
+
+Spring Boot ──REST/SSE (X-Internal-Secret)──> FastAPI AI Service
+                                                    │
+                                                    └──> pgvector (768d) + Hybrid Search
 ```
-┌─────────────────────────────────────────────────────┐
-│                   HRM System                        │
-│                                                     │
-│  ┌──────────────┐    ┌──────────────────────────┐  │
-│  │  HRM Website │    │  Check Attendance        │  │
-│  │  (Frontend)  │    │  (Face Recognition)      │  │
-│  │  React/Next  │    │  Python + OpenCV         │  │
-│  └──────┬───────┘    └────────────┬─────────────┘  │
-│         │                         │                 │
-│         └──────────┬──────────────┘                 │
-│                    ▼                                 │
-│         ┌──────────────────┐                        │
-│         │   Backend API    │                        │
-│         │  Spring Boot 3   │                        │
-│         │  Java 17 · JWT   │                        │
-│         └────┬────────┬────┘                        │
-│              │        │                             │
-│    ┌─────────▼──┐  ┌──▼──────┐                     │
-│    │ PostgreSQL │  │  Redis  │                     │
-│    │  Database  │  │ Cache   │                     │
-│    └────────────┘  └─────────┘                     │
-└─────────────────────────────────────────────────────┘
-```
+
+| Thành phần | Thư mục | Vai trò |
+|---|---|---|
+| Backend API | `backend/` | Nghiệp vụ HRM, xác thực, phân quyền, gateway cho AI service |
+| Frontend | `HRM Website/` | Giao diện Next.js cho toàn bộ nghiệp vụ |
+| AI Service | `ai-service/` | RAG pipeline: parse → chunk → embed → retrieve → rerank → LLM |
+| Check Attendance | `Check Attendance/` | Kiosk chấm công bằng khuôn mặt (OpenCV + dlib) |
+| Hạ tầng | `docker-compose.yml`, `init-db/`, `backups/` | PostgreSQL, Redis, n8n backup, Cloudflare tunnel |
 
 ---
 
@@ -38,181 +36,233 @@ Hệ thống quản lý nhân sự toàn diện dành cho doanh nghiệp, bao g�
 ### Backend
 | Thành phần | Công nghệ |
 |---|---|
-| Framework | Spring Boot 3, Java 17 |
-| Database | PostgreSQL |
-| Cache / Session | Redis |
-| Authentication | JWT (HS256) – Access Token 15 phút · Refresh Token 7 ngày |
-| ORM | Spring Data JPA / Hibernate |
-| Build tool | Maven |
-| File storage | Local file system (`./uploads/`) |
+| Ngôn ngữ / Framework | Java 21, Spring Boot 4.0.6 |
+| Bảo mật | Spring Security, JWT (JJWT 0.11.5) – access 15 phút, refresh 7 ngày |
+| ORM | Spring Data JPA / Hibernate, JPA Specification |
+| Database | PostgreSQL 17 (pgvector, pg_trgm) |
+| Cache / Session | Redis 7 (session blacklist, rate limiting) |
+| File & báo cáo | Local storage (`./uploads/`), Apache POI (Excel), Thumbnailator (WebP) |
+| Build | Maven 3.9+ |
 
 ### Frontend
 | Thành phần | Công nghệ |
 |---|---|
-| Framework | React / Next.js |
+| Framework | Next.js 16.3.4 (App Router), React 19.2.8 |
+| Ngôn ngữ / Style | TypeScript 5, Tailwind CSS 4, Lucide React |
 | Thư mục | `HRM Website/` |
 
-### Face Recognition (Chấm công nhận diện khuôn mặt)
+### AI Service
 | Thành phần | Công nghệ |
 |---|---|
-| Language | Python |
-| Library | OpenCV, face_recognition |
-| Thư mục | `Check Attendance/` |
+| Framework | FastAPI, Python 3.10+ |
+| Vector DB | PostgreSQL + pgvector, `VECTOR(768)`, HNSW cosine index |
+| Embedding | `google/embeddinggemma-300m` (offline, GPU/CPU) |
+| Retrieval | Hybrid Search (dense vector + full-text tiếng Việt), Cross-Encoder rerank `BAAI/bge-reranker-base` |
+| LLM | Gemini, OpenAI hoặc Ollama (cấu hình qua `LLM_PROVIDER`) |
+| Parser | PyMuPDF, python-docx, openpyxl, EasyOCR |
 
-### AI RAG Service (Trợ lý thông minh & Quản lý tri thức)
+### Check Attendance
 | Thành phần | Công nghệ |
 |---|---|
-| Framework | FastAPI, Python 3.11 |
-| Vector Database | PostgreSQL (`pgvector` – 768d vectors) |
-| LLM & Embeddings | Google Gemini + Ollama Cloud |
-| Search Engine | Hybrid Search (Full-Text Search tiếng Việt + Dense Vector) |
-| Thư mục | `ai-service/` |
+| Ngôn ngữ | Python 3.10+ |
+| Thư viện | OpenCV, face_recognition (dlib 128d), pygame, psycopg2 |
+| Model | YuNet ONNX + Haar Cascade |
 
 ---
 
 ## Tính năng chính
 
-- 👤 **Quản lý nhân viên & Onboarding** – HR tiếp nhận hồ sơ ứng viên (pending users), quản lý hợp đồng, lương, điều chuyển phòng ban & ca làm
-- 🛠️ **Quản trị hệ thống (Admin IT)** – Duyệt & cấp tài khoản chính thức (provisioning), khóa/mở khóa tài khoản, reset mật khẩu, giám sát & thu hồi phiên đăng nhập
-- 🤖 **Trợ lý AI RAG & Quản lý Quy chế** – Hỏi đáp chính sách, nội quy công ty qua Chatbot AI (hỗ trợ Streaming SSE & Multi-turn memory), quản lý nạp tài liệu quy chế (PDF, Word, Excel) với pgvector
-- 🕐 **Chấm công** – Clock in/out thủ công hoặc nhận diện khuôn mặt, tổng hợp bảng công tháng
-- 🏖️ **Nghỉ phép** – Đăng ký, phê duyệt, trừ phép năm tự động
-- ⏰ **Tăng ca** – Đăng ký, phê duyệt, tính giờ OT thực tế
-- 💰 **Lương** – Tính lương tự động từ bảng công, thuế TNCN lũy tiến 7 bậc, bảo hiểm
-- 📝 **Thôi việc** – Quy trình 2 cấp duyệt, tự động khóa tài khoản
-- 📊 **Dashboard** – Tổng quan theo vai trò (nhân viên / quản lý / HR / Ban Giám Đốc)
+- **Nhân viên & tổ chức** – hồ sơ, hợp đồng, lương, tài khoản ngân hàng, phòng ban, chức vụ, điều chuyển.
+- **Chấm công & ca làm** – clock in/out thủ công hoặc khuôn mặt, ca làm và lịch ca, tính đi muộn/về sớm, bảng công tháng, cron job chốt công hằng ngày.
+- **Nghỉ phép** – đăng ký, phê duyệt nhiều cấp, trừ phép năm.
+- **Tăng ca** – đăng ký, phê duyệt, tính giờ OT thực tế và quản lý ngày lễ.
+- **Lương** – tính từ bảng công, thuế TNCN lũy tiến 7 bậc, bảo hiểm, xuất Excel.
+- **Tài sản** – danh mục, cấp phát/thu hồi, bảo trì, kiểm kê.
+- **IT ticket** – tạo và xử lý yêu cầu hỗ trợ nội bộ.
+- **Đánh giá KPI** – phiếu đánh giá theo kỳ và phòng ban.
+- **Thôi việc** – quy trình 2 cấp duyệt, bàn giao tài sản, khóa tài khoản.
+- **Quản trị hệ thống** – duyệt tài khoản, khóa/mở khóa, reset mật khẩu, thu hồi phiên, phân quyền theo phòng ban/chức danh.
+- **Trợ lý AI RAG** – hỏi đáp quy chế, streaming SSE, multi-turn, quản lý tài liệu PDF/DOCX/XLSX, phân quyền theo tài liệu (PBAC).
+- **Dashboard** – tổng quan theo vai trò: nhân viên, quản lý, HR, ban giám đốc.
+- **Backup & giám sát** – n8n workflow sao lưu PostgreSQL, kiểm tra container health.
 
 ---
 
-## Cài đặt & Chạy Backend
+## Cấu trúc repository
 
-### Yêu cầu hệ thống
-
-| Phần mềm | Phiên bản tối thiểu |
-|---|---|
-| Java JDK | 17+ |
-| Maven | 3.8+ |
-| PostgreSQL | 13+ |
-| Redis | 6+ |
-
----
-
-### Bước 1 – Clone & cấu hình
-
-```bash
-# Vào thư mục backend
-cd backend
-
-# Copy file cấu hình mẫu
-cp src/main/resources/application.properties.example \
-   src/main/resources/application.properties
+```text
+HRM/
+├── backend/                  # Spring Boot API
+├── HRM Website/              # Next.js frontend
+├── ai-service/               # FastAPI RAG service
+├── Check Attendance/         # Kiosk chấm công khuôn mặt
+├── init-db/                  # SQL dump nạp tự động khi tạo volume Postgres
+├── backups/                  # n8n workflow backup / restore / monitoring
+├── docs/                     # api-reference.md
+├── diagrams/                 # Sơ đồ kiến trúc, ERD, luồng nghiệp vụ (HTML)
+├── docker-compose.yml
+└── postman.json
 ```
 
-Mở `application.properties` và điền thông tin thực tế:
+---
+
+## Chạy nhanh bằng Docker Compose
+
+Yêu cầu: Docker Desktop.
+
+```bash
+# 1. Tạo file môi trường và điền giá trị thật
+cp .env.example .env
+
+# 2. Khởi động toàn bộ hệ thống
+docker compose up -d --build
+```
+
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:8080 |
+| Swagger UI | http://localhost:8080/swagger-ui/index.html |
+| AI Service | http://localhost:8001 (host) → 8000 (container) |
+| n8n | http://localhost:5678 |
+
+Lưu ý:
+- Các file `.sql` trong `init-db/` bị ignore vì chứa dữ liệu nhạy cảm. Nếu cần dữ liệu mẫu, đặt dump vào `init-db/` trước lần khởi động đầu tiên; Hibernate sẽ tự tạo schema `hrm` khi DB trống (`ddl-auto=update`).
+- AI service dùng database riêng `hrm_ai`. Tạo DB này và bật extension `vector`, `pg_trgm` (xem `ai-service/sql/init_db.sql` hoặc `init-db/02_hrm_ai.sql` nếu có).
+- File `.env` không được commit. Dùng `.env.example` làm mẫu và đổi toàn bộ secret mặc định.
+
+---
+
+## Chạy từng service (môi trường dev)
+
+### 1. Backend
+
+Yêu cầu: JDK 21, Maven 3.9+, PostgreSQL 17, Redis 7.
+
+```bash
+cd backend
+cp src/main/resources/application.properties.example src/main/resources/application.properties
+```
+
+Cấu hình tối thiểu trong `application.properties`:
 
 ```properties
-# Server
 server.port=8080
-
-# Database PostgreSQL
-spring.datasource.url=jdbc:postgresql://localhost:5432/hrm_db
+spring.datasource.url=jdbc:postgresql://localhost:5432/hrm
 spring.datasource.username=postgres
 spring.datasource.password=YOUR_PASSWORD
-
-# Redis
 spring.data.redis.host=localhost
 spring.data.redis.port=6379
-
-# JWT Secrets (tối thiểu 32 ký tự)
-jwt.secret.access=your-super-long-access-secret-key-here
-jwt.secret.refresh=your-super-long-refresh-secret-key-here
-
-# File upload
+jwt.secret.access=your-access-secret-at-least-32-chars
+jwt.secret.refresh=your-refresh-secret-at-least-32-chars
 file.upload-dir=./uploads
+ai.service.base-url=http://localhost:8000
+ai.service.internal-secret=YOUR_INTERNAL_SECRET
 ```
-
----
-
-### Bước 2 – Tạo database
-
-```sql
-CREATE DATABASE hrm_db;
-```
-
-> Hibernate sẽ tự tạo bảng khi chạy lần đầu (`spring.jpa.hibernate.ddl-auto=update`).
-
----
-
-### Bước 3 – Build & Chạy
 
 ```bash
-# Chạy với Maven Wrapper (khuyến nghị)
-./mvnw spring-boot:run
-
-# Hoặc build trước rồi chạy
-./mvnw clean package -DskipTests
-java -jar target/hrm-*.jar
+./mvnw spring-boot:run       # http://localhost:8080
+./mvnw test                  # chạy test
 ```
 
-Server khởi động tại: **`http://localhost:8080`**
+### 2. Frontend
 
----
-
-### Bước 4 – Seed dữ liệu mẫu (tuỳ chọn)
+Yêu cầu: Node.js 20+.
 
 ```bash
-curl -X POST "http://localhost:8080/api/seeder/mock-data?year=2026&fromMonth=1&toMonth=8"
+cd "HRM Website"
+npm install
 ```
 
----
+Tạo `.env.local`:
 
-### Bước 5 – Kiểm tra
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080
+INTERNAL_BACKEND_URL=http://localhost:8080
+```
 
 ```bash
-# Health check
-curl http://localhost:8080/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"admin@company.com","password":"password"}'
+npm run dev                  # http://localhost:3000
+npm run build                # build production
 ```
+
+### 3. AI Service
+
+Yêu cầu: Python 3.10+, PostgreSQL đã bật extension `vector`.
+
+```bash
+cd ai-service
+python -m venv .venv
+.venv\Scripts\activate       # Windows
+pip install -r requirements.txt
+cp .env.example .env         # điền DATABASE_URL, INTERNAL_API_SECRET, LLM_PROVIDER...
+uvicorn main:app --reload --port 8000
+pytest
+```
+
+Thiết lập DB: chạy lần lượt các file trong `ai-service/sql/` (`init_db.sql`, `create_semantic_cache.sql`, `add_tsv_column.sql`, `readonly_role.sql`).
+
+### 4. Check Attendance
+
+```bash
+cd "Check Attendance"
+pip install -r requirements.txt
+python src/register.py       # đăng ký khuôn mặt → users.face_embedding
+python src/attendance.py     # mở webcam chấm công
+```
+
+Kiosk gọi trực tiếp `PUT /api/attendances/{userId}` và `PUT /api/overtime/{userId}` (không yêu cầu JWT).
 
 ---
 
-## Cấu trúc thư mục Backend
+## Biến môi trường
 
-```
-backend/src/main/java/com/minhtrung/hrm/
-│
-├── admin/                    # Quản trị hệ thống, cấp tài khoản, quản lý phiên
-├── ai/                       # Trợ lý AI RAG, tích hợp FastAPI microservice, streaming SSE
-├── auth/                     # Đăng nhập, JWT, session
-├── attendance/               # Chấm công, ca làm việc, bảng công tháng
-├── leave/                    # Nghỉ phép
-├── overtime/                 # Tăng ca
-├── payroll/                  # Bảng lương
-├── resignation/              # Thôi việc
-├── employees/                # Nhân viên, phòng ban, chức vụ
-├── dashboard/                # Dashboard tổng quan
-├── seeder/                   # Seed dữ liệu mẫu (dev)
-│
-├── configs/                  # Security, CORS, Web config
-├── filters/                  # JWT filter, Rate limit filter
-├── exceptions/               # Global exception handler
-└── services/                 # Shared services (file storage, ...)
-```
+### Docker Compose (`.env`)
 
----
-
-## Phân quyền hệ thống
-
-| Vai trò | Định nghĩa |
+| Biến | Mô tả |
 |---|---|
-| **Nhân viên** | Tất cả user đã đăng nhập |
-| **Manager** | `job` bắt đầu bằng `"Department Head"` |
-| **HR** | `department = "Human Resources"` |
-| **HR Head** | HR + `job` chứa `"Head"` |
-| **System Admin** | `department = "Information Technology"` + `job` chứa `"System Administrator"` hoặc `"Admin"` |
-| **Executive** | `department = "Executive Leadership"` |
-| **Accounting** | `department` hoặc `job` chứa từ khóa kế toán/tài chính |
+| `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` | Thông tin PostgreSQL |
+| `REDIS_PORT`, `BACKEND_PORT`, `FRONTEND_PORT`, `AI_SERVICE_PORT`, `N8N_PORT` | Port publish ra host |
+| `AI_SERVICE_SECRET` | Secret nội bộ giữa backend và AI service |
+| `LLM_PROVIDER`, `OLLAMA_*`, `GEMINI_*`, `OPENAI_*` | Cấu hình LLM |
+
+### Backend (`application.properties`)
+
+| Biến | Mô tả |
+|---|---|
+| `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD` | Kết nối DB |
+| `SPRING_DATA_REDIS_HOST`, `SPRING_DATA_REDIS_PORT` | Kết nối Redis |
+| `jwt.secret.access`, `jwt.secret.refresh` | Khóa ký JWT |
+| `ai.service.base-url`, `ai.service.internal-secret` | Kết nối AI service |
+| `file.upload-dir` | Thư mục lưu file upload |
+
+### AI Service (`.env`)
+
+| Biến | Mô tả |
+|---|---|
+| `DATABASE_URL` | PostgreSQL chứa `knowledge_documents`, `document_chunks`, `semantic_cache` |
+| `HRM_DATABASE_URL` | Kết nối read-only cho Text-to-SQL |
+| `INTERNAL_API_SECRET` | Phải khớp `ai.service.internal-secret` của backend |
+| `LLM_PROVIDER`, `OLLAMA_MODEL`, `GEMINI_MODEL`, `OPENAI_MODEL` | Chọn LLM |
+| `LOCAL_EMBEDDING_MODEL` | Model embedding 768 chiều |
+
+---
+
+## Phân quyền
+
+Vai trò được suy ra động từ `department` và `job`, không lưu cứng trong bảng user:
+
+| Vai trò | Điều kiện |
+|---|---|
+| Nhân viên | Mọi user đã đăng nhập |
+| Manager | `job` bắt đầu bằng `Department Head` |
+| HR | `department = Human Resources` |
+| HR Head / Trưởng phòng | Chức danh chứa `Head`, `Chief` hoặc `Manager` |
+| System Admin | `department = Information Technology` + `job` chứa `System Administrator` hoặc `Admin` |
+| Executive | `department = Executive Leadership` |
+| Accounting | Phòng ban/chức danh thuộc kế toán – tài chính |
+
+Ngoài ra hệ thống có bảng `user_permission_grants` để cấp quyền bổ sung ngoài vai trò.
 
 ---
 
@@ -220,34 +270,17 @@ backend/src/main/java/com/minhtrung/hrm/
 
 | Tài liệu | Link |
 |---|---|
-| 📄 **API Reference** | [docs/api-reference.md](./docs/api-reference.md) |
-| ⚙️ **Cấu hình mẫu** | [application.properties.example](./backend/src/main/resources/application.properties.example) |
+| API Reference | [docs/api-reference.md](./docs/api-reference.md) |
+| Cấu hình mẫu backend | [application.properties.example](./backend/src/main/resources/application.properties.example) |
+| Postman collection | [postman.json](./postman.json), [HRM_AI_Postman_Collection.json](./HRM_AI_Postman_Collection.json) |
+| Sơ đồ kiến trúc / ERD | [diagrams/](./diagrams/) |
+| Quy ước & ngữ cảnh codebase | [AGENTS.md](./AGENTS.md) |
 
 ---
 
-## Môi trường phát triển
+## Lưu ý vận hành
 
-### Chạy với Docker (tuỳ chọn)
-
-```bash
-# Khởi động PostgreSQL + Redis
-docker run -d --name hrm-postgres \
-  -e POSTGRES_DB=hrm_db \
-  -e POSTGRES_PASSWORD=password \
-  -p 5432:5432 postgres:15
-
-docker run -d --name hrm-redis \
-  -p 6379:6379 redis:7
-```
-
-### Logging
-
-Log được ghi ra console và file `logs/myapp.log`. Level mặc định:
-- Root: `INFO`
-- `com.minhtrung.hrm`: `DEBUG`
-
----
-
-## Lưu ý
-
-> ⚠️ **`/api/seeder/mock-data`** không có kiểm tra xác thực – chỉ dùng ở môi trường **development**. Tắt hoặc xóa endpoint này trước khi deploy production.
+- Endpoint chấm công bằng camera (`PUT /api/attendances/{userId}`, `PUT /api/overtime/{userId}`) bỏ qua JWT để kiosk hoạt động tự động. Chỉ expose trong mạng nội bộ.
+- `spring.jpa.hibernate.ddl-auto=update` chỉ phù hợp môi trường dev; production nên dùng migration.
+- Log ghi ra console và `logs/myapp.log`; package `com.minhtrung.hrm` ở mức `DEBUG`.
+- Không commit `.env`, `application.properties`, dump SQL hay thư mục `uploads/`.
