@@ -1,0 +1,77 @@
+- generic [ref=f23e1]:
+  - generic [ref=f23e2]:
+    - banner [ref=f23e20]:
+      - generic [ref=f23e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f23e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f23e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f23e29]: ACT
+          - generic [ref=f23e30]: ACT HRM
+      - generic [ref=f23e32]:
+        - generic [ref=f23e33]:
+          - generic [ref=f23e37]: "Hôm nay:"
+          - generic [ref=f23e38]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f23e40] [cursor=pointer]:
+          - generic [ref=f23e41]: A
+          - generic [ref=f23e42]:
+            - generic [ref=f23e43]: Super Admin
+            - generic [ref=f23e44]: SUPER_ADMIN
+    - generic [ref=f23e45]:
+      - complementary [ref=f23e46]:
+        - generic [ref=f23e47]:
+          - generic [ref=f23e48]:
+            - generic [ref=f23e49]: Không gian làm việc
+            - link "Kho tài sản" [ref=f23e52] [cursor=pointer]:
+              - /url: /assets/management/storage
+            - link "Duyệt đơn" [ref=f23e59] [cursor=pointer]:
+              - /url: /assets/management/forms
+            - link "Nhắc việc" [ref=f23e66] [cursor=pointer]:
+              - /url: /assets/management/reminders
+            - link "Vòng đời" [ref=f23e72] [cursor=pointer]:
+              - /url: /assets/management/life-cycle
+          - generic [ref=f23e79]: ACT HRM Enterprise v2.4
+      - main [ref=f23e80]:
+        - generic [ref=f23e81]:
+          - heading "Kho tài sản" [level=1] [ref=f23e82]
+          - generic [ref=f23e87]:
+            - textbox "Tìm theo mã, tên tài sản" [ref=f23e92]:
+              - /placeholder: Tìm theo mã, tên tài sản…
+              - text: xyz-khong-co
+            - combobox "Lọc theo trạng thái" [ref=f23e93]:
+              - option "Mọi trạng thái" [selected]
+              - option "available"
+              - option "assigned"
+              - option "under_maintenance"
+              - option "broken"
+              - option "lost"
+              - option "retired"
+            - combobox "Lọc theo loại tài sản" [ref=f23e94]:
+              - option "Mọi loại" [selected]
+              - option "Laptop"
+              - option "Desktop / PC"
+              - option "Điện thoại / Tablet"
+              - option "Màn hình"
+              - option "Bàn phím / Chuột / Tai nghe"
+              - option "Camera / An ninh"
+              - option "Máy in / Scanner"
+              - option "Thiết bị mạng"
+              - option "Phụ kiện / Tiêu hao"
+            - button "Tìm kiếm" [active] [ref=f23e95] [cursor=pointer]
+            - button "Xóa lọc" [ref=f23e120] [cursor=pointer]
+            - button "Nhập tài sản" [ref=f23e99] [cursor=pointer]
+          - paragraph [ref=f23e101]: 0/1 tài sản
+          - table [ref=f23e103]:
+            - rowgroup [ref=f23e104]:
+              - row [ref=f23e105]:
+                - columnheader "Mã" [ref=f23e106]
+                - columnheader "Tên" [ref=f23e107]
+                - columnheader "Loại" [ref=f23e108]
+                - columnheader "Trạng thái" [ref=f23e109]
+                - columnheader "Người giữ" [ref=f23e110]
+                - columnheader "Vị trí" [ref=f23e111]
+            - rowgroup [ref=f23e112]:
+              - row [ref=f23e121]:
+                - cell "Không khớp tìm kiếm." [ref=f23e122]
+  - button "Open Next.js Dev Tools" [ref=f23e15] [cursor=pointer]
+  - alert [ref=f23e19]

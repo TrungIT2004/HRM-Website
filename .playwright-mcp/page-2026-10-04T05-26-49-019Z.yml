@@ -1,0 +1,54 @@
+- generic [active] [ref=f12e1]:
+  - button "Open Next.js Dev Tools" [ref=f12e138] [cursor=pointer]
+  - alert [ref=f12e142]
+  - generic [ref=f12e143]:
+    - banner [ref=f12e145]:
+      - generic [ref=f12e146]:
+        - generic [ref=f12e147]: ACT
+        - generic [ref=f12e148]:
+          - generic [ref=f12e149]: ACT HRM PORTAL
+          - generic [ref=f12e150]: Cổng Dịch vụ Nhân sự Doanh nghiệp
+      - generic [ref=f12e151]:
+        - button "Tất cả ứng dụng" [ref=f12e152] [cursor=pointer]
+        - button "Nhân sự" [ref=f12e153] [cursor=pointer]
+        - button "Chấm công & Lương" [ref=f12e154] [cursor=pointer]
+        - button "Văn phòng số" [ref=f12e155] [cursor=pointer]
+        - button "Quản trị & Hệ thống" [ref=f12e156] [cursor=pointer]
+      - generic [ref=f12e157]:
+        - textbox "Tìm ứng dụng..." [ref=f12e162]
+        - button "T Đỗ Thị F Software Engineer" [ref=f12e164] [cursor=pointer]:
+          - generic [ref=f12e165]: T
+          - generic [ref=f12e166]:
+            - paragraph [ref=f12e167]: Đỗ Thị F
+            - paragraph [ref=f12e168]: Software Engineer
+    - main [ref=f12e171]:
+      - generic [ref=f12e172]:
+        - link "Thông tin nhân sự" [ref=f12e173] [cursor=pointer]:
+          - /url: /my-profile
+        - link "Chấm công" [ref=f12e186] [cursor=pointer]:
+          - /url: /attendance/overview
+        - link "Tiền lương" [ref=f12e204] [cursor=pointer]:
+          - /url: /payroll
+        - link "Cơ cấu tổ chức" [ref=f12e216] [cursor=pointer]:
+          - /url: /organization/overview
+        - link "Danh bạ nhân sự" [ref=f12e230] [cursor=pointer]:
+          - /url: /employees
+        - link "Nhân viên mới & Tuyển dụng" [ref=f12e244] [cursor=pointer]:
+          - /url: /employees
+        - link "Đơn thôi việc" [ref=f12e256] [cursor=pointer]:
+          - /url: /resignations
+        - link "Kho tài liệu & Quy chế" [ref=f12e268] [cursor=pointer]:
+          - /url: /documents
+        - link "Trợ lý AI" [ref=f12e280] [cursor=pointer]:
+          - /url: /chat
+        - link "Quản trị hệ thống Bảo mật" [ref=f12e292] [cursor=pointer]:
+          - /url: /admin
+          - generic [ref=f12e303]: Quản trị hệ thống
+          - generic [ref=f12e304]: Bảo mật
+        - link "Cài đặt" [ref=f12e305] [cursor=pointer]:
+          - /url: /security/password
+        - link "Tài sản của tôi" [ref=f12e317] [cursor=pointer]:
+          - /url: /assets
+        - link "Đánh giá hiệu suất" [ref=f12e329] [cursor=pointer]:
+          - /url: "#"
+    - contentinfo [ref=f12e341]: © 2026 ACT Corporation • Nền tảng Quản trị Doanh nghiệp & Nhân sự Thông minh ACT HRM

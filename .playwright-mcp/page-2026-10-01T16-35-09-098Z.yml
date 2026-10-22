@@ -1,0 +1,4 @@
+- generic [active] [ref=f29e1]:
+  - paragraph [ref=f29e5]: Đang tải không gian làm việc...
+  - button "Open Next.js Dev Tools" [ref=f29e11] [cursor=pointer]
+  - alert [ref=f29e15]

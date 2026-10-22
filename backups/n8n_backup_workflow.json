@@ -1,0 +1,232 @@
+{
+  "name": "HRM - PostgreSQL Backup",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "command": "mkdir -p /backups/sql /backups/base /backups/wal && date +%Y%m%d_%H%M%S > /backups/.current_timestamp && cat /backups/.current_timestamp"
+      },
+      "id": "setup-dirs",
+      "name": "Chuẩn bị thư mục + Timestamp",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "command": "TS=`cat /backups/.current_timestamp 2>/dev/null || date +%Y%m%d_%H%M%S` && F1=\"/backups/sql/hrm_dump_${TS}.sql\" && F2=\"/backups/sql/hrm_ai_dump_${TS}.sql\" && docker exec hrm-database pg_dump -U postgres -d hrm > \"$F1\" && docker exec hrm-database pg_dump -U postgres -d hrm_ai > \"$F2\" && S1=`du -h \"$F1\" | cut -f1` && S2=`du -h \"$F2\" | cut -f1` && echo \"SQL_SUCCESS:${F1},${F2}:${S1}+${S2}\" || echo \"SQL_FAILED\""
+      },
+      "id": "run-pgdump",
+      "name": "Backup pg_dump (SQL)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "command": "TS=`cat /backups/.current_timestamp 2>/dev/null || date +%Y%m%d_%H%M%S` && BASE_DIR=\"/backups/base/hrm_base_${TS}\" && mkdir -p \"$BASE_DIR\" && docker exec hrm-database pg_basebackup -U postgres -D \"$BASE_DIR\" -F tar -z -X stream -P && SIZE=`du -sh \"$BASE_DIR\" | cut -f1` && echo \"BASE_SUCCESS:${BASE_DIR}:${SIZE}\" || echo \"BASE_FAILED\""
+      },
+      "id": "run-basebackup",
+      "name": "Backup pg_basebackup (Physical)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Backup pg_dump (SQL)').item.json.stdout }}",
+              "operation": "contains",
+              "value2": "SQL_SUCCESS"
+            },
+            {
+              "value1": "={{ $('Backup pg_basebackup (Physical)').item.json.stdout }}",
+              "operation": "contains",
+              "value2": "BASE_SUCCESS"
+            }
+          ]
+        },
+        "combineOperation": "all"
+      },
+      "id": "check-backup-ok",
+      "name": "Kiểm tra Backup OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "command": "find /backups/sql -name 'hrm_dump_*.sql' -type f | sort | head -n -7 | xargs rm -f 2>/dev/null; find /backups/sql -name 'hrm_ai_dump_*.sql' -type f | sort | head -n -7 | xargs rm -f 2>/dev/null; find /backups/base -maxdepth 1 -type d -name 'hrm_base_*' | sort | head -n -3 | xargs rm -rf 2>/dev/null; echo \"Cleanup done\""
+      },
+      "id": "cleanup",
+      "name": "Dọn dẹp backup cũ",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1340, 180]
+    },
+    {
+      "parameters": {
+        "command": "WAL_COUNT=`ls /backups/wal/ 2>/dev/null | wc -l` && rm -f /backups/wal/* 2>/dev/null && echo \"WAL_CLEANED:${WAL_COUNT}\""
+      },
+      "id": "cleanup-wal",
+      "name": "Xóa WAL cũ",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1560, 180]
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "8578855126",
+        "text": "=✅ *HRM Backup THÀNH CÔNG!*\n\n📅 Thời gian: {{ $now.setZone('Asia/Ho_Chi_Minh').toFormat('dd/MM/yyyy HH:mm:ss') }}\n\n📄 *pg_dump SQL:* `{{ $('Backup pg_dump (SQL)').item.json.stdout.split(':')[1] }}` ({{ $('Backup pg_dump (SQL)').item.json.stdout.split(':')[2] }})\n📁 *pg_basebackup:* `{{ $('Backup pg_basebackup (Physical)').item.json.stdout.split(':')[1] }}` ({{ $('Backup pg_basebackup (Physical)').item.json.stdout.split(':')[2] }})\n🧹 *WAL đã dọn:* Đã xóa {{ $('Xóa WAL cũ').item.json.stdout.split(':')[1] }} file (reset đón WAL 24h mới)\n\n_Chính sách: Giữ 7 bản SQL | 3 bản Physical_",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-success",
+      "name": "Telegram - Backup THÀNH CÔNG",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1780, 180],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-hrm-bot",
+          "name": "HRM Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "8578855126",
+        "text": "=❌ *HRM Backup THẤT BẠI!*\n\n📅 Thời gian: {{ $now.setZone('Asia/Ho_Chi_Minh').toFormat('dd/MM/yyyy HH:mm:ss') }}\n\n📄 *pg_dump SQL:* {{ $('Backup pg_dump (SQL)').item.json.stdout.includes('SQL_SUCCESS') ? '✅ THÀNH CÔNG' : '❌ THẤT BẠI' }}\n📁 *pg_basebackup:* {{ $('Backup pg_basebackup (Physical)').item.json.stdout.includes('BASE_SUCCESS') ? '✅ THÀNH CÔNG' : '❌ THẤT BẠI' }}\n\n⚠️ *Chi tiết:* Kiểm tra log n8n hoặc dung lượng đĩa server!",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-fail",
+      "name": "Telegram - Backup THẤT BẠI",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1340, 420],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-hrm-bot",
+          "name": "HRM Telegram Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Chuẩn bị thư mục + Timestamp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chuẩn bị thư mục + Timestamp": {
+      "main": [
+        [
+          {
+            "node": "Backup pg_dump (SQL)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Backup pg_dump (SQL)": {
+      "main": [
+        [
+          {
+            "node": "Backup pg_basebackup (Physical)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Backup pg_basebackup (Physical)": {
+      "main": [
+        [
+          {
+            "node": "Kiểm tra Backup OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kiểm tra Backup OK?": {
+      "main": [
+        [
+          {
+            "node": "Dọn dẹp backup cũ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram - Backup THẤT BẠI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dọn dẹp backup cũ": {
+      "main": [
+        [
+          {
+            "node": "Xóa WAL cũ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Xóa WAL cũ": {
+      "main": [
+        [
+          {
+            "node": "Telegram - Backup THÀNH CÔNG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

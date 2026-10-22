@@ -1,0 +1,64 @@
+- generic [active] [ref=f7e1]:
+  - button "Open Next.js Dev Tools" [ref=f7e138] [cursor=pointer]
+  - alert [ref=f7e142]
+  - generic [ref=f7e143]:
+    - banner [ref=f7e145]:
+      - generic [ref=f7e146]:
+        - generic [ref=f7e147]: ACT
+        - generic [ref=f7e148]:
+          - generic [ref=f7e149]: ACT HRM PORTAL
+          - generic [ref=f7e150]: Cổng Dịch vụ Nhân sự Doanh nghiệp
+      - generic [ref=f7e151]:
+        - button "Tất cả ứng dụng" [ref=f7e152] [cursor=pointer]
+        - button "Nhân sự" [ref=f7e153] [cursor=pointer]
+        - button "Chấm công & Lương" [ref=f7e154] [cursor=pointer]
+        - button "Văn phòng số" [ref=f7e155] [cursor=pointer]
+        - button "Quản trị & Hệ thống" [ref=f7e156] [cursor=pointer]
+      - generic [ref=f7e157]:
+        - textbox "Tìm ứng dụng..." [ref=f7e162]
+        - button "A Super Admin SUPER_ADMIN" [ref=f7e164] [cursor=pointer]:
+          - generic [ref=f7e165]: A
+          - generic [ref=f7e166]:
+            - paragraph [ref=f7e167]: Super Admin
+            - paragraph [ref=f7e168]: SUPER_ADMIN
+    - main [ref=f7e171]:
+      - generic [ref=f7e172]:
+        - link "Thông tin nhân sự" [ref=f7e173] [cursor=pointer]:
+          - /url: /my-profile
+        - link "Chấm công" [ref=f7e186] [cursor=pointer]:
+          - /url: /attendance/overview
+        - link "Quản lý công & Duyệt đơn Quản lý" [ref=f7e204] [cursor=pointer]:
+          - /url: /management/overview
+          - generic [ref=f7e215]: Quản lý công & Duyệt đơn
+          - generic [ref=f7e216]: Quản lý
+        - link "Tiền lương" [ref=f7e217] [cursor=pointer]:
+          - /url: /payroll
+        - link "Cơ cấu tổ chức" [ref=f7e229] [cursor=pointer]:
+          - /url: /organization/overview
+        - link "Danh bạ nhân sự" [ref=f7e243] [cursor=pointer]:
+          - /url: /employees
+        - link "Nhân viên mới & Tuyển dụng HR / Admin" [ref=f7e257] [cursor=pointer]:
+          - /url: /recruitment
+          - generic [ref=f7e268]: Nhân viên mới & Tuyển dụng
+          - generic [ref=f7e269]: HR / Admin
+        - link "Đơn thôi việc" [ref=f7e270] [cursor=pointer]:
+          - /url: /resignations
+        - link "Kho tài liệu & Quy chế" [ref=f7e282] [cursor=pointer]:
+          - /url: /documents
+        - link "Trợ lý AI" [ref=f7e294] [cursor=pointer]:
+          - /url: /chat
+        - link "Quản trị hệ thống Bảo mật" [ref=f7e306] [cursor=pointer]:
+          - /url: /admin
+          - generic [ref=f7e317]: Quản trị hệ thống
+          - generic [ref=f7e318]: Bảo mật
+        - link "Cài đặt" [ref=f7e319] [cursor=pointer]:
+          - /url: /security/password
+        - link "Tài sản của tôi" [ref=f7e331] [cursor=pointer]:
+          - /url: /assets
+        - link "Quản lý tài sản Quản lý" [ref=f7e343] [cursor=pointer]:
+          - /url: /assets/management
+          - generic [ref=f7e354]: Quản lý tài sản
+          - generic [ref=f7e355]: Quản lý
+        - link "Đánh giá hiệu suất" [ref=f7e356] [cursor=pointer]:
+          - /url: "#"
+    - contentinfo [ref=f7e368]: © 2026 ACT Corporation • Nền tảng Quản trị Doanh nghiệp & Nhân sự Thông minh ACT HRM

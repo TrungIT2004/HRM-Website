@@ -1,0 +1,69 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]:
+    - banner [ref=f5e19]:
+      - generic [ref=f5e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f5e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f5e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f5e28]: ACT
+          - generic [ref=f5e29]: ACT HRM
+      - generic [ref=f5e31]:
+        - generic [ref=f5e32]:
+          - generic [ref=f5e36]: "Hôm nay:"
+          - generic [ref=f5e37]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f5e39] [cursor=pointer]:
+          - generic [ref=f5e40]: A
+          - generic [ref=f5e41]:
+            - generic [ref=f5e42]: Super Admin
+            - generic [ref=f5e43]: SUPER_ADMIN
+    - main [ref=f5e45]:
+      - generic [ref=f5e46]:
+        - complementary [ref=f5e47]:
+          - button "Đoạn chat mới" [ref=f5e49] [cursor=pointer]
+          - generic [ref=f5e51]:
+            - generic [ref=f5e52]: Lịch sử hội thoại
+            - generic [ref=f5e53] [cursor=pointer]:
+              - generic [ref=f5e54]: Thông tin lương cá nhân
+              - button "Tùy chọn hội thoại" [ref=f5e59]
+            - generic [ref=f5e64] [cursor=pointer]:
+              - generic [ref=f5e65]: Thông tin lương ngân hàng
+              - button "Tùy chọn hội thoại" [ref=f5e70]
+            - generic [ref=f5e75] [cursor=pointer]:
+              - generic [ref=f5e76]: Ngày phép và hợp đồng
+              - button "Tùy chọn hội thoại" [ref=f5e81]
+            - generic [ref=f5e86] [cursor=pointer]:
+              - generic [ref=f5e87]: Ngày phép còn lại
+              - button "Tùy chọn hội thoại" [ref=f5e92]
+        - generic [ref=f5e97]:
+          - generic [ref=f5e98]:
+            - generic [ref=f5e104]:
+              - heading "Trợ lý AI Quy chế" [level=1] [ref=f5e105]
+              - paragraph [ref=f5e106]: Tra cứu nội quy lao động, chính sách phúc lợi & thủ tục công ty
+            - link "Kho tài liệu" [ref=f5e108] [cursor=pointer]:
+              - /url: /documents
+          - generic [ref=f5e112]:
+            - paragraph [ref=f5e116]: thông tin lương của tôi
+            - generic [ref=f5e124]:
+              - list [ref=f5e125]:
+                - listitem [ref=f5e126]:
+                  - strong [ref=f5e127]: Mức lương cơ bản
+                  - text: ": 50.000.000 VND"
+                - listitem [ref=f5e128]:
+                  - strong [ref=f5e129]: Tần suất trả lương
+                  - text: ": Hàng tháng"
+                - listitem [ref=f5e130]:
+                  - strong [ref=f5e131]: Số ngày làm việc chuẩn
+                  - text: ": 22 ngày mỗi tháng"
+                - listitem [ref=f5e132]:
+                  - strong [ref=f5e133]: Ngày bắt đầu áp dụng mức lương
+                  - text: ": 01/01/2024"
+                - listitem [ref=f5e134]:
+                  - strong [ref=f5e135]: Ngày kết thúc
+                  - text: ": hiện đang hiệu lực, không thời hạn"
+              - paragraph [ref=f5e136]: "*(Nếu cần chi tiết hơn hoặc có thắc mắc về các khoản phụ cấp, thưởng, vui lòng liên hệ phòng Nhân sự.)*"
+          - generic [ref=f5e138]:
+            - 'textbox "Nhập câu hỏi quy chế (VD: Nghỉ ốm cần nộp giấy tờ gì?)..." [ref=f5e139]'
+            - button "Gửi câu hỏi" [disabled] [ref=f5e140] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f5e15] [cursor=pointer]
+  - alert [ref=f5e144]
