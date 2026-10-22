@@ -21,10 +21,10 @@ import {
 
 const QUICK_ACCOUNTS = [
   {
-    name: 'Super Admin',
-    email: 'superadmin@company.com',
-    role: 'Quản trị viên Tối cao (IT)',
-    dept: 'IT',
+    name: 'Nguyễn Văn Admin',
+    email: 'sysadmin@company.com',
+    role: 'Quản trị viên Hệ thống (IT)',
+    dept: 'Information Technology',
     badge: '⚡ SUPER ADMIN',
     badgeColor: 'bg-purple-50 text-purple-700 border-purple-200'
   },
@@ -43,14 +43,6 @@ const QUICK_ACCOUNTS = [
     dept: 'Human Resources',
     badge: '🟠 HR HEAD',
     badgeColor: 'bg-amber-50 text-amber-700 border-amber-200'
-  },
-  {
-    name: 'Nguyễn Văn Admin',
-    email: 'sysadmin@company.com',
-    role: 'Quản trị viên Hệ thống (IT)',
-    dept: 'Information Technology',
-    badge: '🛡️ ADMIN',
-    badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200'
   },
   {
     name: 'Đỗ Văn Hùng',
@@ -105,7 +97,7 @@ export default function LoginPage() {
     }
   }, [router]);
 
-  const [email, setEmail] = useState('superadmin@company.com');
+  const [email, setEmail] = useState('sysadmin@company.com');
   const [password, setPassword] = useState('test@123');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');

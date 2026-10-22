@@ -5,11 +5,12 @@ DB role hrm_ai_reader là lớp chặn cuối: dù guard lọt, cột cấm vẫ
 """
 import re
 from datetime import date
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from .schema_registry import (
     ALLOWED_TABLES, SCOPED_USER_COL, GLOBAL_TABLES, scoped_tables_in,
 )
+from .text2sql import build_text2sql_prompt, extract_sql
 from src.db.session import get_hrm_connection
 
 FORBIDDEN = re.compile(
@@ -111,6 +112,89 @@ def run_hrm_query(sql: str, user_id: str) -> Dict[str, Any]:
             conn.close()
         except Exception:
             pass
+
+
+EMPTY_RETRY_HINT = (
+    "\nLần trước SQL chạy được nhưng trả về 0 dòng. Thử lại: bỏ lọc "
+    "tháng/năm hiện tại, lấy kỳ MỚI NHẤT (ORDER BY ... DESC LIMIT 1); "
+    "quan hệ có-thể-trống thì LEFT JOIN; đếm/tổng/max thì COUNT/COALESCE/MAX."
+)
+
+
+def _plain(s: str) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", (s or "").lower())
+                   if unicodedata.category(c) != "Mn").replace("đ", "d")
+
+
+_LISTING = ("liet ke", "chi tiet", "gan nhat", "trang thai", "ly do",
+            "mo ta", "danh sach")
+
+
+def _shape_ok(question: str, columns) -> bool:
+    """Cau liet ke/chi tiet phai co cot ngay + >=3 cot (hoac co status).
+    ponytail: chi bat cau liet ke — cau "bao nhieu" 1 con so la du, gold doi
+    them cot input la chuyen cua harness (step 2/3), khong dot call retry.
+    Ceiling: ten cot alias la (tuan, thang) khong chua date/time -> lot."""
+    if not any(w in _plain(question) for w in _LISTING):
+        return True
+    cols = [c.lower() for c in (columns or [])]
+    has_date = any(("date" in c or "time" in c or "month" in c
+                    or "year" in c or "day" in c) for c in cols)
+    return has_date and (len(cols) >= 3 or any("status" in c for c in cols))
+
+
+def _freeform_rows(llm_complete, question, user_id):
+    """Loop freeform cu (2 calls): loi -> hint loi; rong/sai-hinh -> hint rieng.
+    Dung lam fallback khi plan khong goi duoc."""
+    last_err = ""
+    pending_hint = ""
+    for attempt in range(2):
+        prompt = build_text2sql_prompt(question)
+        if last_err:
+            prompt += f"\nLần trước SQL lỗi: {last_err}. Sửa lại cho đúng luật."
+        elif pending_hint:
+            prompt += pending_hint
+        raw = llm_complete(
+            "Trả về duy nhất 1 khối ```sql ... ```.",
+            prompt, tag=f"text2sql:{attempt}")
+        sql = extract_sql(raw)
+        try:
+            result = run_hrm_query(sql, user_id)
+        except (ValueError, RuntimeError) as e:
+            last_err = str(e)
+            print(f"[Text2SQL] attempt {attempt} failed: {e}")
+            continue
+        last_err = ""
+        if attempt == 1:
+            return result["rows"], sql
+        if not result["rows"]:
+            pending_hint = EMPTY_RETRY_HINT
+            print("[Text2SQL] attempt 0 empty, retry once with latest-period hint")
+            continue
+        if not _shape_ok(question, result["columns"]):
+            pending_hint = (
+                "\nLần trước SQL chạy được nhưng thiếu cột ngữ cảnh (chỉ có: "
+                + ", ".join(result["columns"]) + "). Viết lại GIỮ NGUYÊN các "
+                "cột đã có và THÊM cột ngày/tháng/lý do/trạng thái còn thiếu "
+                "theo câu hỏi."
+            )
+            print(f"[Text2SQL] attempt 0 shape-bad {result['columns']}, retry once")
+            continue
+        return result["rows"], sql
+    raise RuntimeError(last_err or "Không sinh được SQL hợp lệ")
+
+
+def generate_personal_rows(
+    llm_complete: Callable[[str, str, str], str],
+    question: str,
+    user_id: str,
+) -> Tuple[List[Dict], str]:
+    """Freeform + guardrail (rong/shape retry, tong toi da 2 calls).
+    ponytail: two-stage thu 2 lan (0.706; merge co verify 0.700 + latency x3)
+    deu thua freeform 0.775 — plan prompt ngan mat het rule/Vd tich luy, chon
+    sai noi dung ma van du hinh (lot luoi). Revert; muon thu lai che git."""
+    return _freeform_rows(llm_complete, question, user_id)
 
 
 # Từ ngữ kỹ thuật lọt vào câu trả lời -> thay bằng tiếng Việt nghiệp vụ.

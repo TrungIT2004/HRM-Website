@@ -86,8 +86,51 @@ class DOCXParser:
                     ))
 
         clean_name = re.sub(r'^[a-fA-F0-9]{8,64}_', '', path.name)
+
+        # OCR mọi ảnh embedded (hình chụp văn bản, con dấu kẹp giữa các đoạn).
+        # ponytail: ảnh append cuối, mất vị trí tương đối với đoạn văn; xen đúng
+        # chỗ cần parse document.xml order (w:drawing vs w:p). Chỉ quét main part,
+        # ảnh logo ở header/footer tự loại.
+        for blob in _embedded_images(doc):
+            text = _ocr_image_bytes(blob)
+            if text:
+                blocks.append(DocumentBlock(
+                    block_type="PARAGRAPH",
+                    content=text,
+                    page_number=None
+                ))
+
         return ParsedDocument(
             document_name=clean_name,
             file_type="docx",
             blocks=blocks
         )
+
+
+def _embedded_images(doc) -> list:
+    """Bytes các ảnh embedded duy nhất trong main document part."""
+    blobs, seen = [], set()
+    for rel in doc.part.rels.values():
+        if rel.is_external:
+            continue
+        part = rel.target_part
+        if not part.content_type.startswith("image/"):
+            continue
+        if str(part.partname) in seen:
+            continue
+        seen.add(str(part.partname))
+        blobs.append(part.blob)
+    return blobs
+
+
+def _ocr_image_bytes(data: bytes) -> str:
+    try:
+        import io
+        from PIL import Image
+        from src.parsers.pdf_parser import ocr_pil_image_to_text
+    except ImportError:
+        return ""
+    try:
+        return ocr_pil_image_to_text(Image.open(io.BytesIO(data)))
+    except Exception:
+        return ""

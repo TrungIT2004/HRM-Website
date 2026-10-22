@@ -4063,7 +4063,7 @@
             "status"
           ],
           "note": "",
-          "expected_sql_query": "SELECT submitted_time, reason, status FROM resignation_requests WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY submitted_time DESC LIMIT 1",
+          "expected_sql_query": "SELECT created_at, reason FROM leave_requests WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY created_at DESC LIMIT 1",
           "expected_answer": {
             "columns": [
               "submitted_time",

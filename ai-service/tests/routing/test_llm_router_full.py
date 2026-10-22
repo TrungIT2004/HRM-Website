@@ -1,5 +1,6 @@
 """Test full LLM router (rewrite_and_route) trên tất cả câu DOC_ONLY + DB_ONLY/HYBRID."""
 import sys, json, csv, time
+from typing import Optional
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
@@ -63,8 +64,9 @@ def main():
     # Initialize ChatService to get LLM completion callback
     svc = ChatService()
     
-    def llm_complete(system_content: str, user_content: str, tag: str = "rewrite_route") -> str:
-        return svc._llm_complete(system_content, user_content, tag=tag)
+    def llm_complete(system_content: str, user_content: str, tag: str = "rewrite_route",
+                     model: Optional[str] = None) -> str:
+        return svc._llm_complete(system_content, user_content, tag=tag, model=model)
 
     results = []
     correct_route = 0

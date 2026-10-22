@@ -2,7 +2,7 @@
 Sinh bo cau hoi test RAG tu 3 file "Tai lieu doanh nghiep thuc te".
 
 Tai dung IngestionPipeline + MetadataEnricher san co (khong cai them ragas/langchain).
-- PDFParser tu OCR trang scan bang Tesseract local (can binary + vie.traineddata).
+- PDFParser tu OCR trang scan bang EasyOCR local.
 - Chi enrich LLM tren mau chunk (dau-giua-cuoi) de tranh timeout voi file lon
   (enrich_all mac dinh >20 chunks se dung fallback rule-based, cau hoi rat generic).
 - LLM dung theo LLM_PROVIDER trong .env (ollama/gemini/openai).
@@ -98,7 +98,7 @@ def main() -> None:
             base_url=os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1"),
             api_key=os.getenv("OLLAMA_API_KEY", "ollama"),
         )
-        llm_model = os.getenv("OLLAMA_MODEL", "gpt-oss:120b")
+        llm_model = os.getenv("OLLAMA_MODEL", "gemma4:31b")
 
     # Chunk nhanh, chua enrich (PDFParser tu OCR trang scan; tranh fallback
     # rule-based cua enrich_all voi file lon)

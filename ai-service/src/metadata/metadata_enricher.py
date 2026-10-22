@@ -50,28 +50,15 @@ Chỉ trả về chuỗi JSON hợp lệ, không thêm chữ giải thích bên 
 class MetadataEnricher:
     def __init__(self, provider: Optional[str] = None):
         self.provider = provider or os.getenv("LLM_PROVIDER", "gemini").lower()
-        self.gemini_key = os.getenv("GEMINI_API_KEY")
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
         self.ollama_api_key = os.getenv("OLLAMA_API_KEY", "ollama") # Cloud Ollama might require key
 
-        # Initialize clients lazily or if keys exist
-        self.gemini_client = None
+        # Initialize clients lazily or if keys exist (Gemini chi cho OCR, khong dung o day)
         self.openai_client = None
         self.ollama_client = None
 
-        if self.provider == "gemini" and self.gemini_key and self.gemini_key != "your_gemini_api_key_here":
-            try:
-                import google.generativeai as genai
-                genai.configure(api_key=self.gemini_key)
-                self.gemini_client = genai.GenerativeModel(
-                    os.getenv("GEMINI_MODEL", "gemini-1.5-flash"),
-                    generation_config={"response_mime_type": "application/json"}
-                )
-            except Exception as e:
-                print(f"[MetadataEnricher] Warning: Failed to init Gemini client: {e}")
-
-        elif self.provider == "openai" and self.openai_key and self.openai_key != "your_openai_api_key_here":
+        if self.provider == "openai" and self.openai_key and self.openai_key != "your_openai_api_key_here":
             try:
                 from openai import OpenAI
                 self.openai_client = OpenAI(api_key=self.openai_key)
@@ -159,17 +146,8 @@ class MetadataEnricher:
 
         result: Optional[ChunkEnrichmentResult] = None
 
-        # 1. Try Gemini
-        if self.gemini_client:
-            try:
-                response = self.gemini_client.generate_content(prompt)
-                parsed = json.loads(response.text)
-                result = ChunkEnrichmentResult(**parsed)
-            except Exception as e:
-                print(f"[MetadataEnricher] Gemini call failed for chunk {chunk.chunk_id}: {e}")
-
-        # 2. Try OpenAI
-        elif self.openai_client:
+        # 1. Try OpenAI
+        if self.openai_client:
             try:
                 model_name = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
                 response = self.openai_client.chat.completions.create(
@@ -182,10 +160,10 @@ class MetadataEnricher:
             except Exception as e:
                 print(f"[MetadataEnricher] OpenAI call failed for chunk {chunk.chunk_id}: {e}")
                 
-        # 3. Try Ollama (API compatible with OpenAI)
+        # 2. Try Ollama (API compatible with OpenAI)
         elif self.ollama_client:
             try:
-                model_name = os.getenv("OLLAMA_MODEL", "gpt-oss:120B")
+                model_name = os.getenv("OLLAMA_MODEL", "gemma4:31b")
                 response = self.ollama_client.chat.completions.create(
                     model=model_name,
                     messages=[{"role": "user", "content": prompt}],
@@ -203,7 +181,7 @@ class MetadataEnricher:
             except Exception as e:
                 print(f"[MetadataEnricher] Ollama call failed for chunk {chunk.chunk_id}: {e}")
 
-        # 4. Fallback
+        # 3. Fallback
         if not result:
             result = self._fallback_enrichment(chunk)
 

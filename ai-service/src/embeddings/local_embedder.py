@@ -19,6 +19,8 @@ class LocalEmbedder:
     - Runs 100% locally on CUDA GPU (or CPU if no GPU available).
     - 100% Free forever: No API Key, No Network Latency, No Rate Limits (0% 429).
     - Produces exact 768-dimensional vectors matching PostgreSQL pgvector schema.
+    - Model: google/embeddinggemma-300m (doi tu bkai 2026-10-13: cosine cau
+      cut cao gap 3-5x; doi model phai embed lai TOAN BO + calib lai nguong).
     """
     _instance: Optional["LocalEmbedder"] = None
     _model: Optional[SentenceTransformer] = None
@@ -27,7 +29,7 @@ class LocalEmbedder:
         self.model_name = (
             model_name 
             or os.getenv("LOCAL_EMBEDDING_MODEL") 
-            or "bkai-foundation-models/vietnamese-bi-encoder"
+            or "google/embeddinggemma-300m"
         )
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         

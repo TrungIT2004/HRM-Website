@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRM Platform — Exploded Axonometric</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f5f5;
+      --color-ink:     #2d3142;
+      --color-muted:   #4f5d75;
+      --color-accent:  #bf4520;
+      --color-soft:    #8b95a8;
+      --color-rule:    #d0d5dd;
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+    .frame { max-width: 1400px; width: 100%; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+    svg { width: 100%; min-width: 1200px; display: block; }
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Exploded Axonometric · Diagram Design</p>
+    <h1>HRM Platform — System Teardown</h1>
+    <div class="diagram-container">
+      <!--
+        Projection: 2:1 dimetric (iso)
+        iso(x, y, z) = (ox + x - y, oy + (x + y)/2 - z)
+        Origin: (200, 650) for the bottom of the stack
+        All dimensions in model units (multiples of 4)
+      -->
+      <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hrm-exploded-title hrm-exploded-desc">
+        <title id="hrm-exploded-title">HRM Platform Exploded Axonometric</title>
+        <desc id="hrm-exploded-desc">HRM system as a 3D teardown: Infrastructure base, Edge Biometrics kiosk, Spring Boot Backend core, FastAPI AI Service (focal), Next.js Frontend, Cloudflare Tunnel wrapper. Parts lift vertically along the explode axis.</desc>
+        <defs>
+          <!-- Light shading overlays -->
+          <linearGradient id="top-light" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#2d3142" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#2d3142" stop-opacity="0.03"/>
+          </linearGradient>
+          <linearGradient id="left-light" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2d3142" stop-opacity="0.07"/>
+            <stop offset="100%" stop-color="#2d3142" stop-opacity="0.02"/>
+          </linearGradient>
+          <linearGradient id="right-shade" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2d3142" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#2d3142" stop-opacity="0.05"/>
+          </linearGradient>
+
+          <!-- Focal (accent) overlays -->
+          <linearGradient id="top-accent" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#bf4520" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#bf4520" stop-opacity="0.04"/>
+          </linearGradient>
+          <linearGradient id="left-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#bf4520" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#bf4520" stop-opacity="0.08"/>
+          </linearGradient>
+          <linearGradient id="right-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#bf4520" stop-opacity="0.32"/>
+            <stop offset="100%" stop-color="#bf4520" stop-opacity="0.12"/>
+          </linearGradient>
+
+          <!-- Silhouette stroke -->
+          <marker id="trace-dot" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
+            <circle cx="2" cy="2" r="2" fill="#2d3142" opacity="0.30"/>
+          </marker>
+        </defs>
+
+        <!-- Background -->
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+        <!-- ============================================================
+             EXPLODED OBJECT WRAPPER
+             data-origin="200 650" data-gap="80"
+             Parts listed bottom to top (assembled z=0 at bottom)
+             ============================================================ -->
+        <g data-exploded data-origin="200 650" data-gap="80">
+
+          <!-- TRACE LINES (paint first, behind everything) -->
+          <!-- Left trace -->
+          <path data-role="trace" d="M 200,650 L 200,150" fill="none" stroke="#2d3142" stroke-opacity="0.30" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <!-- Right trace -->
+          <path data-role="trace" d="M 800,650 L 800,150" fill="none" stroke="#2d3142" stroke-opacity="0.30" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+          <!-- ============================================================
+               PART 1: INFRASTRUCTURE BASE (bottom, z=0, doesn't move)
+               PostgreSQL + Redis + Docker + n8n
+               Box: x=0..600, y=0..400, z=0..40, r=8
+               ============================================================ -->
+          <g data-part="infra" data-name="Infrastructure" data-rect="0 0 600 400 8" data-z="0" data-t="40" data-level="0" data-kind="housing">
+            <!-- Back half of housing (silhouette, rim, cavity, floor) - paints before inner parts -->
+            <!-- Bottom face (not visible, but floor of cavity) -->
+            <!-- Left face (back half) -->
+            <path data-role="silhouette" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"
+                  d="M 200,650
+                     L 200,530
+                     L 100,580
+                     L 100,690
+                     Z"/>
+
+            <!-- Right face (back half) -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.2"
+                  d="M 500,530
+                     L 800,690
+                     L 800,570
+                     L 500,410
+                     Z"/>
+
+            <!-- Cavity floor -->
+            <path fill="#f0f0f0" stroke="none"
+                  d="M 204,526
+                     L 104,576
+                     L 496,406
+                     L 596,356
+                     Z"/>
+
+            <!-- INNER PARTS (databases, cache) -->
+            <!-- PostgreSQL block inside -->
+            <g transform="translate(0,0)">
+              <!-- Top face -->
+              <path fill="#ffffff" stroke="#2d3142" stroke-width="0.8"
+                    d="M 260,490
+                       L 180,530
+                       L 180,500
+                       L 260,460
+                       Z"/>
+              <path fill="url(#top-light)" stroke="none"
+                    d="M 260,490
+                       L 180,530
+                       L 180,500
+                       L 260,460
+                       Z"/>
+              <!-- Left face -->
+              <path fill="#ffffff" stroke="#2d3142" stroke-width="0.8"
+                    d="M 180,530
+                       L 180,500
+                       L 100,530
+                       L 100,560
+                       Z"/>
+              <path fill="url(#left-light)" stroke="none"
+                    d="M 180,530
+                       L 180,500
+                       L 100,530
+                       L 100,560
+                       Z"/>
+              <!-- Right face -->
+              <path fill="#ffffff" stroke="#2d3142" stroke-width="0.8"
+                    d="M 260,490
+                       L 260,460
+                       L 340,490
+                       L 340,520
+                       Z"/>
+              <path fill="url(#right-shade)" stroke="none"
+                    d="M 260,490
+                       L 260,460
+                       L 340,490
+                       L 340,520
+                       Z"/>
+              <!-- Label on top face -->
+              <text x="220" y="502" fill="#2d3142" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" font-weight="500">PostgreSQL 17</text>
+              <text x="220" y="514" fill="#4f5d75" font-size="6" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">pgvector · pg_trgm</text>
+            </g>
+
+            <!-- Redis block inside -->
+            <g transform="translate(0,0)">
+              <path fill="#ffffff" stroke="#2d3142" stroke-width="0.8"
+                    d="M 440,490
+                       L 360,530
+                       L 360,500
+                       L 440,460
+                       Z"/>
+              <path fill="url(#top-light)" stroke="none"
+                    d="M 440,490
+                       L 360,530
+                       L 360,500
+                       L 440,460
+                       Z"/>
+              <path fill="#ffffff" stroke="#2d3142" stroke-width="0.8"
+                    d="M 360,530
+                       L 360,500
+                       L 280,530
+                       L 280,560
+                       Z"/>
+              <path fill="url(#left-light)" stroke="none"
+                    d="M 360,530
+                       L 360,500
+                       L 280,530
+                       L 280,560
+                       Z"/>
+              <path fill="#ffffff" stroke="#2d3142" stroke-width="0.8"
+                    d="M 440,490
+                       L 440,460
+                       L 520,490
+                       L 520,520
+                       Z"/>
+              <path fill="url(#right-shade)" stroke="none"
+                    d="M 440,490
+                       L 440,460
+                       L 520,490
+                       L 520,520
+                       Z"/>
+              <text x="400" y="502" fill="#2d3142" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" font-weight="500">Redis 7</text>
+              <text x="400" y="514" fill="#4f5d75" font-size="6" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Cache · Sessions</text>
+            </g>
+
+            <!-- n8n block inside -->
+            <g transform="translate(0,0)">
+              <path fill="#ffffff" stroke="#8b95a8" stroke-width="0.8" stroke-dasharray="4,3"
+                    d="M 520,490
+                       L 440,530
+                       L 440,500
+                       L 520,460
+                       Z"/>
+              <path fill="url(#top-light)" stroke="none"
+                    d="M 520,490
+                       L 440,530
+                       L 440,500
+                       L 520,460
+                       Z"/>
+              <path fill="#ffffff" stroke="#8b95a8" stroke-width="0.8" stroke-dasharray="4,3"
+                    d="M 440,530
+                       L 440,500
+                       L 360,530
+                       L 360,560
+                       Z"/>
+              <path fill="url(#left-light)" stroke="none"
+                    d="M 440,530
+                       L 440,500
+                       L 360,530
+                       L 360,560
+                       Z"/>
+              <path fill="#ffffff" stroke="#8b95a8" stroke-width="0.8" stroke-dasharray="4,3"
+                    d="M 520,490
+                       L 520,460
+                       L 600,490
+                       L 600,520
+                       Z"/>
+              <path fill="url(#right-shade)" stroke="none"
+                    d="M 520,490
+                       L 520,460
+                       L 600,490
+                       L 600,520
+                       Z"/>
+              <text x="480" y="502" fill="#8b95a8" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" font-weight="500">n8n</text>
+              <text x="480" y="514" fill="#4f5d75" font-size="6" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Backups · Health</text>
+            </g>
+
+            <!-- Front half of housing (outer walls, front rim) - paints AFTER inner parts -->
+            <!-- Left face (front half) -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.2"
+                  d="M 100,580
+                     L 100,690
+                     L 200,650
+                     L 200,530
+                     Z"/>
+            <path fill="url(#left-light)" stroke="none"
+                  d="M 100,580
+                     L 100,690
+                     L 200,650
+                     L 200,530
+                     Z"/>
+            <!-- Right face (front half) -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.2"
+                  d="M 500,410
+                     L 800,570
+                     L 800,690
+                     L 500,530
+                     Z"/>
+            <path fill="url(#right-shade)" stroke="none"
+                  d="M 500,410
+                     L 800,570
+                     L 800,690
+                     L 500,530
+                     Z"/>
+            <!-- Front rim (top-front edge) -->
+            <path fill="none" stroke="#2d3142" stroke-opacity="0.55" stroke-width="0.8"
+                  d="M 100,580 L 200,530 L 500,410 L 800,570 L 800,690 L 100,690 Z"/>
+
+            <!-- Label leader -->
+            <g data-role="label">
+              <line data-role="leader" x1="800" y1="610" x2="960" y2="610" stroke="#2d3142" stroke-opacity="0.40" stroke-width="0.8"/>
+              <circle cx="800" cy="610" r="2" fill="#2d3142" opacity="0.40"/>
+              <text data-role="name" x="970" y="606" fill="#2d3142" font-size="16" font-family="'Geist', system-ui, sans-serif" font-weight="600">Infrastructure</text>
+              <text x="970" y="626" fill="#4f5d75" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">PostgreSQL 17 · Redis 7 · n8n · Docker</text>
+            </g>
+          </g>
+
+          <!-- ============================================================
+               PART 2: EDGE BIOMETRICS KIOSK (level 1, z=40+80=120)
+               Physical device: Camera + OpenCV + face_recognition
+               Box: x=100..500, y=50..350, z=120..160, r=6
+               ============================================================ -->
+          <g data-part="edge" data-name="Edge Biometrics" data-rect="100 50 400 300 6" data-z="120" data-t="40" data-level="1" data-closed-z="40">
+            <!-- Top face -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.0"
+                  d="M 350,450
+                     L 230,510
+                     L 230,470
+                     L 350,410
+                     Z"/>
+            <path fill="url(#top-light)" stroke="none"
+                  d="M 350,450
+                     L 230,510
+                     L 230,470
+                     L 350,410
+                       Z"/>
+            <!-- Camera lens detail on top face -->
+            <ellipse cx="290" cy="474" rx="12" ry="8" fill="#1a1a2e" stroke="#2d3142" stroke-width="0.6"/>
+            <ellipse cx="290" cy="474" rx="6" ry="4" fill="#bf4520" opacity="0.3"/>
+            <!-- Left face -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.0"
+                  d="M 230,510
+                     L 230,470
+                     L 130,520
+                     L 130,560
+                     Z"/>
+            <path fill="url(#left-light)" stroke="none"
+                  d="M 230,510
+                     L 230,470
+                     L 130,520
+                     L 130,560
+                     Z"/>
+            <!-- Right face -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.0"
+                  d="M 350,450
+                     L 350,410
+                     L 450,460
+                     L 450,500
+                     Z"/>
+            <path fill="url(#right-shade)" stroke="none"
+                  d="M 350,450
+                     L 350,410
+                     L 450,460
+                     L 450,500
+                     Z"/>
+            <!-- Detail on top face: "YuNet ONNX" -->
+            <text x="290" y="440" fill="#2d3142" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" font-weight="500">YuNet ONNX</text>
+            <text x="290" y="452" fill="#4f5d75" font-size="6" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">dlib 128d · pygame audio</text>
+
+            <!-- Label leader -->
+            <g data-role="label">
+              <line data-role="leader" x1="450" y1="480" x2="960" y2="480" stroke="#2d3142" stroke-opacity="0.40" stroke-width="0.8"/>
+              <circle cx="450" cy="480" r="2" fill="#2d3142" opacity="0.40"/>
+              <text data-role="name" x="970" y="476" fill="#2d3142" font-size="16" font-family="'Geist', system-ui, sans-serif" font-weight="600">Edge Biometrics</text>
+              <text x="970" y="496" fill="#4f5d75" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">OpenCV · face_recognition · 128d embedding</text>
+            </g>
+          </g>
+
+          <!-- ============================================================
+               PART 3: SPRING BOOT BACKEND (level 2, z=160+80=240)
+               Core API: Auth, Employees, Attendance, Leave, Payroll, etc.
+               Box: x=50..550, y=50..350, z=240..300, r=8
+               ============================================================ -->
+          <g data-part="backend" data-name="Spring Boot Backend" data-rect="50 50 500 300 8" data-z="240" data-t="60" data-level="2" data-closed-z="100">
+            <!-- Top face -->
+            <path fill="#ffffff" stroke="#bf4520" stroke-width="1.5"
+                  d="M 375,290
+                     L 215,370
+                     L 215,320
+                     L 375,240
+                     Z"/>
+            <path fill="url(#top-light)" stroke="none"
+                  d="M 375,290
+                     L 215,370
+                     L 215,320
+                     L 375,240
+                     Z"/>
+            <!-- Module insets on top face -->
+            <rect x="235" y="270" width="260" height="16" rx="2" fill="#fef3f0" stroke="#bf4520" stroke-opacity="0.3" stroke-width="0.6"/>
+            <text x="365" y="282" fill="#bf4520" font-size="7" font-family="'Geist', system-ui, sans-serif" font-weight="600" text-anchor="middle">Auth · Employees · Attendance · Leave · Payroll</text>
+            <rect x="235" y="290" width="260" height="16" rx="2" fill="#fef3f0" stroke="#bf4520" stroke-opacity="0.3" stroke-width="0.6"/>
+            <text x="365" y="302" fill="#bf4520" font-size="7" font-family="'Geist', system-ui, sans-serif" font-weight="600" text-anchor="middle">Resignation · Dashboard · Admin · Overtime</text>
+            <!-- Left face -->
+            <path fill="#ffffff" stroke="#bf4520" stroke-width="1.5"
+                  d="M 215,370
+                     L 215,320
+                     L 115,370
+                     L 115,420
+                     Z"/>
+            <path fill="url(#left-light)" stroke="none"
+                  d="M 215,370
+                     L 215,320
+                     L 115,370
+                     L 115,420
+                     Z"/>
+            <!-- Right face -->
+            <path fill="#ffffff" stroke="#bf4520" stroke-width="1.5"
+                  d="M 375,290
+                     L 375,240
+                     L 475,290
+                     L 475,340
+                     Z"/>
+            <path fill="url(#right-shade)" stroke="none"
+                  d="M 375,290
+                     L 375,240
+                     L 475,290
+                     L 475,340
+                     Z"/>
+            <!-- Port 8080 badge -->
+            <rect x="255" y="310" width="60" height="14" rx="2" fill="#bf4520" opacity="0.15"/>
+            <text x="285" y="320" fill="#bf4520" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Port 8080</text>
+
+            <!-- Label leader -->
+            <g data-role="label">
+              <line data-role="leader" x1="475" y1="305" x2="960" y2="305" stroke="#2d3142" stroke-opacity="0.40" stroke-width="0.8"/>
+              <circle cx="475" cy="305" r="2" fill="#2d3142" opacity="0.40"/>
+              <text data-role="name" x="970" y="301" fill="#2d3142" font-size="16" font-family="'Geist', system-ui, sans-serif" font-weight="600">Spring Boot Backend</text>
+              <text x="970" y="321" fill="#4f5d75" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">Java 21 · JWT · JPA · SSE Proxy · Rate Limit</text>
+            </g>
+          </g>
+
+          <!-- ============================================================
+               PART 4: FASTAPI AI SERVICE — FOCAL (level 3, z=300+80=380)
+               RAG Pipeline: Parser → Chunker → Enricher → Embedder → pgvector → Retriever → Reranker → LLM
+               Box: x=100..500, y=50..350, z=380..440, r=8
+               ============================================================ -->
+          <g data-part="ai" data-name="FastAPI AI Service" data-rect="100 50 400 300 8" data-z="380" data-t="60" data-level="3" data-closed-z="160" data-focal="true">
+            <!-- Top face (accent) -->
+            <path fill="#ffffff" stroke="#bf4520" stroke-width="1.5"
+                  d="M 350,150
+                     L 230,210
+                     L 230,170
+                     L 350,110
+                     Z"/>
+            <path fill="url(#top-accent)" stroke="none"
+                  d="M 350,150
+                     L 230,210
+                     L 230,170
+                     L 350,110
+                     Z"/>
+            <!-- Pipeline stages on top face -->
+            <g font-family="'Geist Mono', ui-monospace, monospace" font-size="6.5" fill="#bf4520" text-anchor="middle">
+              <text x="290" y="138" font-weight="600">Parser → Chunker → Enricher</text>
+              <text x="290" y="150" font-weight="600">→ Embedder (768d) → pgvector</text>
+              <text x="290" y="162" font-weight="600">→ HybridRetriever → Reranker → LLM</text>
+            </g>
+            <!-- Left face (accent) -->
+            <path fill="#ffffff" stroke="#bf4520" stroke-width="1.5"
+                  d="M 230,210
+                     L 230,170
+                     L 130,220
+                     L 130,260
+                     Z"/>
+            <path fill="url(#left-accent)" stroke="none"
+                  d="M 230,210
+                     L 230,170
+                     L 130,220
+                     L 130,260
+                     Z"/>
+            <!-- Right face (accent) -->
+            <path fill="#ffffff" stroke="#bf4520" stroke-width="1.5"
+                  d="M 350,150
+                     L 350,110
+                     L 450,160
+                     L 450,200
+                     Z"/>
+            <path fill="url(#right-accent)" stroke="none"
+                  d="M 350,150
+                     L 350,110
+                     L 450,160
+                     L 450,200
+                     Z"/>
+            <!-- PBAC badge -->
+            <rect x="250" y="174" width="80" height="14" rx="2" fill="#bf4520" opacity="0.15"/>
+            <text x="290" y="184" fill="#bf4520" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">PBAC Enforced</text>
+            <!-- Port 8000 badge -->
+            <rect x="250" y="192" width="60" height="14" rx="2" fill="#bf4520" opacity="0.15"/>
+            <text x="280" y="202" fill="#bf4520" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Port 8000</text>
+
+            <!-- Label leader (accent) -->
+            <g data-role="label">
+              <line data-role="leader" x1="450" y1="180" x2="960" y2="180" stroke="#bf4520" stroke-opacity="0.60" stroke-width="0.8"/>
+              <circle cx="450" cy="180" r="2" fill="#bf4520" opacity="0.60"/>
+              <text data-role="name" x="970" y="176" fill="#2d3142" font-size="16" font-family="'Geist', system-ui, sans-serif" font-weight="600">FastAPI AI Service</text>
+              <text x="970" y="196" fill="#bf4520" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">Gemini · OpenAI · Ollama · Semantic Cache</text>
+            </g>
+          </g>
+
+          <!-- ============================================================
+               PART 5: NEXT.JS FRONTEND (level 4, z=440+80=520)
+               App Router, React 19, Tailwind v4
+               Box: x=100..500, y=50..350, z=520..560, r=6
+               ============================================================ -->
+          <g data-part="frontend" data-name="Next.js Frontend" data-rect="100 50 400 300 6" data-z="520" data-t="40" data-level="4" data-closed-z="220">
+            <!-- Top face -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.0"
+                  d="M 350,10
+                     L 230,70
+                     L 230,40
+                     L 350,-20
+                     Z"/>
+            <path fill="url(#top-light)" stroke="none"
+                  d="M 350,10
+                     L 230,70
+                     L 230,40
+                     L 350,-20
+                     Z"/>
+            <!-- Screen detail on top face -->
+            <rect x="240" y="10" width="200" height="30" rx="2" fill="#1a1a2e" stroke="#2d3142" stroke-width="0.6"/>
+            <text x="340" y="32" fill="#bf4520" font-size="7" font-family="'Geist', system-ui, sans-serif" font-weight="600" text-anchor="middle">HRM Dashboard</text>
+            <text x="340" y="40" fill="#8b95a8" font-size="5.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">App Router · Tailwind v4 · React 19</text>
+            <!-- Left face -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.0"
+                  d="M 230,70
+                     L 230,40
+                     L 130,90
+                     L 130,120
+                     Z"/>
+            <path fill="url(#left-light)" stroke="none"
+                  d="M 230,70
+                     L 230,40
+                     L 130,90
+                     L 130,120
+                     Z"/>
+            <!-- Right face -->
+            <path fill="#ffffff" stroke="#2d3142" stroke-width="1.0"
+                  d="M 350,10
+                     L 350,-20
+                     L 450,30
+                     L 450,60
+                     Z"/>
+            <path fill="url(#right-shade)" stroke="none"
+                  d="M 350,10
+                     L 350,-20
+                     L 450,30
+                     L 450,60
+                     Z"/>
+            <!-- Port 3000 badge -->
+            <rect x="250" y="38" width="60" height="14" rx="2" fill="#2d3142" opacity="0.10"/>
+            <text x="280" y="48" fill="#2d3142" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Port 3000</text>
+
+            <!-- Label leader -->
+            <g data-role="label">
+              <line data-role="leader" x1="450" y1="20" x2="960" y2="20" stroke="#2d3142" stroke-opacity="0.40" stroke-width="0.8"/>
+              <circle cx="450" cy="20" r="2" fill="#2d3142" opacity="0.40"/>
+              <text data-role="name" x="970" y="16" fill="#2d3142" font-size="16" font-family="'Geist', system-ui, sans-serif" font-weight="600">Next.js Frontend</text>
+              <text x="970" y="36" fill="#4f5d75" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">React 19 · Tailwind v4 · Port 3000</text>
+            </g>
+          </g>
+
+          <!-- ============================================================
+               PART 6: CLOUDFLARE TUNNEL (level 5, z=560+80=640) - WRAPPER
+               External HTTPS tunnel wrapper
+               Box: x=0..600, y=0..400, z=640..680, r=10 (housing)
+               ============================================================ -->
+          <g data-part="cloudflare" data-name="Cloudflare Tunnel" data-rect="0 0 600 400 10" data-z="640" data-t="40" data-level="5" data-kind="housing" data-closed-z="260">
+            <!-- Back half of housing -->
+            <path fill="#ffffff" stroke="#2e5aa8" stroke-width="1.2"
+                  d="M 200,150
+                     L 200,30
+                     L 100,80
+                     L 100,190
+                     Z"/>
+            <path fill="url(#left-light)" stroke="none"
+                  d="M 200,150
+                     L 200,30
+                     L 100,80
+                     L 100,190
+                     Z"/>
+            <path fill="#ffffff" stroke="#2e5aa8" stroke-width="1.2"
+                  d="M 500,30
+                     L 800,190
+                     L 800,80
+                     L 500,-70
+                     Z"/>
+            <path fill="url(#right-shade)" stroke="none"
+                  d="M 500,30
+                     L 800,190
+                     L 800,80
+                     L 500,-70
+                     Z"/>
+            <!-- Cavity floor (where frontend sits) -->
+            <path fill="#f0f4f8" stroke="none"
+                  d="M 204,26
+                     L 104,76
+                     L 496,-74
+                     L 596,-24
+                     Z"/>
+
+            <!-- Front half of housing -->
+            <path fill="#ffffff" stroke="#2e5aa8" stroke-width="1.2"
+                  d="M 100,80
+                     L 100,190
+                     L 200,150
+                     L 200,30
+                     Z"/>
+            <path fill="url(#left-light)" stroke="none"
+                  d="M 100,80
+                     L 100,190
+                     L 200,150
+                     L 200,30
+                     Z"/>
+            <path fill="#ffffff" stroke="#2e5aa8" stroke-width="1.2"
+                  d="M 500,-70
+                     L 800,80
+                     L 800,190
+                     L 500,30
+                     Z"/>
+            <path fill="url(#right-shade)" stroke="none"
+                  d="M 500,-70
+                     L 800,80
+                     L 800,190
+                     L 500,30
+                     Z"/>
+            <!-- Front rim -->
+            <path fill="none" stroke="#2e5aa8" stroke-opacity="0.55" stroke-width="0.8"
+                  d="M 100,80 L 200,30 L 500,-70 L 800,80 L 800,190 L 100,190 Z"/>
+
+            <!-- Cloudflare logo on front face -->
+            <text x="300" y="60" fill="#2e5aa8" font-size="14" font-family="'Geist', system-ui, sans-serif" font-weight="600" text-anchor="middle">☁</text>
+            <text x="300" y="80" fill="#2e5aa8" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle">Tunnel</text>
+
+            <!-- Label leader -->
+            <g data-role="label">
+              <line data-role="leader" x1="800" y1="110" x2="960" y2="110" stroke="#2e5aa8" stroke-opacity="0.50" stroke-width="0.8"/>
+              <circle cx="800" cy="110" r="2" fill="#2e5aa8" opacity="0.50"/>
+              <text data-role="name" x="970" y="106" fill="#2d3142" font-size="16" font-family="'Geist', system-ui, sans-serif" font-weight="600">Cloudflare Tunnel</text>
+              <text x="970" y="126" fill="#4f5d75" font-size="10" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">HTTPS · DDoS Protection · Edge Cache</text>
+            </g>
+          </g>
+
+        </g> <!-- /exploded wrapper -->
+
+        <!-- ============================================================
+             LEGEND STRIP (bottom)
+             ============================================================ -->
+        <g transform="translate(40, 850)">
+          <rect x="0" y="0" width="1120" height="40" rx="6" fill="#f5f5f5" stroke="#d0d5dd" stroke-width="0.8"/>
+          <text x="10" y="14" fill="#2d3142" font-size="7" font-family="'Geist', system-ui, sans-serif" font-weight="600">Exploded view — bottom part (Infrastructure) stays fixed; each level lifts by 80 units. Focal part: AI Service (accent).</text>
+          <text x="10" y="28" fill="#8b95a8" font-size="6.5" font-family="'Geist Mono', ui-monospace, monospace">Projection: 2:1 dimetric · Light from top-left · No shadows · Shaded faces only</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

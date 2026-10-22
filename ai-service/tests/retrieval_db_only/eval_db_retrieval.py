@@ -46,7 +46,7 @@ def load_rows(n: int) -> list:
 
 
 def main() -> None:
-    from src.chat.chat_service import ChatService
+    from src.chat.chat_service import ChatService, reset_usage, take_usage
     from src.sql.router import keyword_fallback
 
     ap = argparse.ArgumentParser()
@@ -60,6 +60,7 @@ def main() -> None:
 
     for i, r in enumerate(rows_in):
         q = r["question"]
+        reset_usage()
         row = {"id": r["id"], "question": q, "check_type": r["check_type"],
                "route": None, "route_ok": False, "sql_ok": False,
                "row_count": 0, "non_empty": False, "latency_ms": 0.0,
@@ -82,6 +83,10 @@ def main() -> None:
             row["summary_tail"] = summary[-300:]
         except Exception as e:  # metric loi: SQL sinh hong / execute hong
             row["error"] = f"{type(e).__name__}: {e}"[:200]
+        u = take_usage()
+        row["prompt_tokens"] = u["in"]
+        row["completion_tokens"] = u["out"]
+        row["llm_calls"] = u["calls"]
         out_rows.append(row)
         if (i + 1) % 10 == 0:
             print(f"[eval] {i + 1}/{len(rows_in)}", flush=True)
@@ -100,6 +105,8 @@ def main() -> None:
         "non_empty": round(sum(1 for r in out_rows if r["non_empty"]) / n, 4),
         "error_rate": round(sum(1 for r in out_rows if r["error"]) / n, 4),
         "latency_mean_ms": round(sum(r["latency_ms"] for r in out_rows) / n, 1),
+        "prompt_tokens_mean": round(sum(r.get("prompt_tokens", 0) for r in out_rows) / n, 1),
+        "completion_tokens_mean": round(sum(r.get("completion_tokens", 0) for r in out_rows) / n, 1),
         "by_check_type": {k: {"pass": v[0], "total": v[1]} for k, v in by_type.items()},
     }
     summary["pass_fail"] = {

@@ -1,0 +1,2928 @@
+{
+ "meta": {
+  "user": "hr.employee@company.com (35337165-e0d0-4dd1-9c67-cc48180363af)",
+  "n_questions": 200,
+  "n_conversations": 19,
+  "fixes": [
+   "guard FROM_JOIN alias nhieu ky tu",
+   "prompt Vd4 bank uid",
+   "executor escape % tran (LIKE)",
+   "router bullet DB listing ca nhan"
+  ],
+  "seeds": [
+   "resignation CANCELLED",
+   "timesheet T9/2026 DRAFT (tu attendances/leave/OT that)"
+  ]
+ },
+ "conversations": {
+  "attendances": {
+   "conversation_id": "c7c76a05-e05e-4224-9914-0ae08a2b0306",
+   "title": "Test LLM | attendances",
+   "n_questions": 10
+  },
+  "departments": {
+   "conversation_id": "749452f3-f5df-45d3-ac86-03f82f0dbef2",
+   "title": "Test LLM | departments",
+   "n_questions": 10
+  },
+  "holidays": {
+   "conversation_id": "e6b8df46-a238-4c9d-820e-099ba7b418cc",
+   "title": "Test LLM | holidays",
+   "n_questions": 10
+  },
+  "jobs": {
+   "conversation_id": "9c7379ff-bf17-4733-ba52-feaf3cd224e1",
+   "title": "Test LLM | jobs",
+   "n_questions": 10
+  },
+  "leave_requests": {
+   "conversation_id": "a1797c12-77a6-4ab5-b5de-02bf37653691",
+   "title": "Test LLM | leave_requests",
+   "n_questions": 10
+  },
+  "monthly_timesheets": {
+   "conversation_id": "4e12db4e-c696-44af-a438-2e655bae9357",
+   "title": "Test LLM | monthly_timesheets",
+   "n_questions": 10
+  },
+  "multi_table": {
+   "conversation_id": "4f0fbdd5-1477-4d4c-81fd-43343d04d913",
+   "title": "Test LLM | multi_table",
+   "n_questions": 20
+  },
+  "overtime_records": {
+   "conversation_id": "b683b544-bfd5-4021-84a2-52098a71d6a8",
+   "title": "Test LLM | overtime_records",
+   "n_questions": 10
+  },
+  "payrolls": {
+   "conversation_id": "a70e38c6-03d7-4c81-b238-74c67a40bce1",
+   "title": "Test LLM | payrolls",
+   "n_questions": 10
+  },
+  "resignation_requests": {
+   "conversation_id": "bf47e6e3-1257-41de-b4c7-b603b421a5e8",
+   "title": "Test LLM | resignation_requests",
+   "n_questions": 10
+  },
+  "salaries": {
+   "conversation_id": "c67a84f7-b21a-49f2-8e80-8eb658ff32da",
+   "title": "Test LLM | salaries",
+   "n_questions": 10
+  },
+  "user_bank_accounts": {
+   "conversation_id": "c87f0d51-8beb-4d3a-9d8c-d2dc0bdfd66b",
+   "title": "Test LLM | user_bank_accounts",
+   "n_questions": 10
+  },
+  "user_contracts": {
+   "conversation_id": "7f1fbdba-e0bc-4224-833f-2a254a2a1b92",
+   "title": "Test LLM | user_contracts",
+   "n_questions": 10
+  },
+  "user_permission_grants": {
+   "conversation_id": "9ca2c536-295a-46af-9c72-a6c874e5e893",
+   "title": "Test LLM | user_permission_grants",
+   "n_questions": 10
+  },
+  "user_profiles": {
+   "conversation_id": "f27b53f2-89b7-424f-aca1-39c6476247ec",
+   "title": "Test LLM | user_profiles",
+   "n_questions": 10
+  },
+  "user_sessions": {
+   "conversation_id": "729b33a9-8b10-4acb-897c-0c365dadcfd6",
+   "title": "Test LLM | user_sessions",
+   "n_questions": 10
+  },
+  "users": {
+   "conversation_id": "c6be4da9-56f3-4a15-8e7e-1230b3c3c42c",
+   "title": "Test LLM | users",
+   "n_questions": 10
+  },
+  "work_shift_schedules": {
+   "conversation_id": "7407ba7e-b28d-4f61-b9af-b650118268c9",
+   "title": "Test LLM | work_shift_schedules",
+   "n_questions": 10
+  },
+  "work_shifts": {
+   "conversation_id": "e4d0080b-7675-46b8-af4b-003925f03da8",
+   "title": "Test LLM | work_shifts",
+   "n_questions": 10
+  }
+ },
+ "results": [
+  {
+   "id": "attendances_01",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Hôm nay tôi check‑in vào lúc mấy giờ và check‑out vào lúc mấy giờ?",
+   "answer": "- Hiện chưa có dữ liệu chấm công của bạn cho ngày hôm nay, vì vậy không thể xác định thời gian check‑in và check‑out. \n- Bạn có thể kiểm tra lại trên hệ thống chấm công hoặc liên hệ bộ phận HR để được hỗ trợ.",
+   "elapsed": 7.3
+  },
+  {
+   "id": "attendances_02",
+   "group": "attendances",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tháng này tôi đi muộn mấy lần?",
+   "answer": "- Hiện chưa có dữ liệu về thời gian vào làm việc của bạn trong tháng này. \n- Vui lòng kiểm tra lại hệ thống chấm công hoặc liên hệ bộ phận Nhân sự để cập nhật/điều chỉnh thông tin.",
+   "elapsed": 6.0
+  },
+  {
+   "id": "attendances_03",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tôi muốn biết số lần tôi đi muộn và về sớm theo từng tháng trong năm nay là bao nhiêu?",
+   "answer": "**Thống kê số lần đi muộn và về sớm trong năm nay**\n\n- Tháng 1: đi muộn 4 lần, về sớm 1 lần \n- Tháng 2: đi muộn 0 lần, về sớm 0 lần \n- Tháng 3: đi muộn 3 lần, về sớm 0 lần \n- Tháng 4: đi muộn 0 lần, về sớm 0 lần \n- Tháng 5: đi muộn 2 lần, về sớm 0 lần \n- Tháng 6: đi muộn 1 lần, về sớm 0 lần \n- Tháng 7: đi muộn 2 lần, về sớm 1 lần \n- Tháng 8: đi muộn 0 lần, về sớm 2 lần \n\n*Lưu ý:* Hiện chưa có dữ liệu cho các tháng 9‑12. Nếu cần thông tin chi tiết hơn hoặc cập nhật các tháng còn lại, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.7
+  },
+  {
+   "id": "attendances_04",
+   "group": "attendances",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tháng này, so với tháng trước, tôi đã đi muộn nhiều hơn hay ít hơn?",
+   "answer": "- Hiện chưa có dữ liệu chấm công của bạn cho tháng này và tháng trước, nên không thể so sánh số lần đi muộn được. \n- Để biết chi tiết về thời gian đi làm, vui lòng liên hệ bộ phận HR hoặc truy cập hệ thống chấm công để kiểm tra lại.",
+   "elapsed": 7.8
+  },
+  {
+   "id": "attendances_05",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Tổng số giờ làm việc thực tế của tôi trong tuần này là bao nhiêu?",
+   "answer": "- Tổng số giờ làm việc thực tế của bạn trong tuần này là **28,5 giờ**.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "attendances_06",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Những ngày nào trong tháng này tôi bị tính vắng không phép?",
+   "answer": "- Hiện chưa có dữ liệu chấm công của bạn trong tháng này, nên không thể xác định được những ngày nào bạn bị tính vắng không phép. \n- Để biết chi tiết, vui lòng liên hệ bộ phận Nhân sự hoặc truy cập hệ thống chấm công để kiểm tra lại.",
+   "elapsed": 6.4
+  },
+  {
+   "id": "attendances_07",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tháng nào trong năm nay tôi đã đi muộn nhiều nhất?",
+   "answer": "- **Tháng 1**: bạn đã đi muộn **4 lần**, là tháng có số lần muộn cao nhất trong dữ liệu hiện có. \n- Các tháng còn lại trong năm chưa có dữ liệu ghi nhận, vì vậy không thể so sánh được. \n\nNếu cần xem chi tiết toàn bộ lịch sử chấm công, vui lòng liên hệ phòng Nhân sự để được cung cấp bản ghi đầy đủ.",
+   "elapsed": 5.5
+  },
+  {
+   "id": "attendances_08",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Cho tôi xem lịch sử chấm công 10 ngày gần nhất của tôi?",
+   "answer": "**Lịch sử chấm công 10 ngày gần nhất của bạn**\n\n- **02/10/2026** – Chưa chấm công (giờ vào/ra: –) – Trạng thái: *Chưa kiểm tra* \n- **30/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n- **29/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n- **28/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n- **25/09/2026** – 08:35 – 17:30 – Trạng thái: *Đủ giờ* \n- **24/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n- **23/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n- **22/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n- **18/09/2026** – 08:00 – 17:30 – Trạng thái: *Trễ* \n- **17/09/2026** – 08:00 – 17:30 – Trạng thái: *Đủ giờ* \n\n> **Ghi chú:** \n> - “Đủ giờ” (SUFFICIENT) = đã làm việc đủ số giờ quy định trong ca. \n> - “Trễ” (LATE) = vào làm muộn hơn thời gian bắt đầu ca. \n> - “Chưa kiểm tra” (dữ liệu) = chưa có dữ liệu chấm công cho ngày đó. \n\nNếu cần chi tiết hơn (ví dụ: lý do chỉnh sửa, xác nhận), vui lòng liên hệ bộ phận Nhân sự.",
+   "elapsed": 8.7
+  },
+  {
+   "id": "attendances_09",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Quy định công ty xử lý việc đi muộn như thế nào, và trong tháng này tôi đã đi muộn bao nhiêu lần?",
+   "answer": "- **Quy định xử lý đi muộn** \n - Khi có vi phạm (ví dụ: đi muộn) người sử dụng lao động phải áp dụng kỷ luật trong thời hạn quy định của Bộ luật Lao động 2019: \n - Thời hiệu xử lý kỷ luật là **06 tháng** kể từ ngày xảy ra vi phạm (Điều 123). \n - Nếu vi phạm liên quan trực tiếp đến tài chính, tài sản, bí mật công ty, thời hiệu kéo dài lên **12 tháng** (Điều 123). \n - Các hình thức kỷ luật mà công ty có thể áp dụng bao gồm: \n 1. **Khiển trách** (cảnh cáo bằng lời). \n 2. **Kéo dài thời hạn nâng lương** không quá 06 tháng. \n 3. **Cách chức**. \n 4. **Sa thải**. \n (Điều 124). \n - Công ty sẽ quyết định hình thức kỷ luật phù hợp với mức độ vi phạm và thực hiện trong thời hạn trên.\n\n- **Số lần đi muộn của bạn trong tháng hiện tại** \n - Hiện hệ thống không có bất kỳ bản ghi chấm công nào cho bạn trong tháng này, vì vậy **không thể xác định số lần đi muộn**. \n - Vui lòng liên hệ bộ phận **HR** hoặc kiểm tra lại dữ liệu chấm công để cập nhật thông tin.\n\n> **Ghi chú:** Nếu bạn cần xem lại lịch sử chấm công hoặc yêu cầu cập nhật dữ liệu, hãy gửi yêu cầu tới HR để họ kiểm tra và cung cấp báo cáo chi tiết.",
+   "elapsed": 8.7
+  },
+  {
+   "id": "attendances_10",
+   "group": "attendances",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "monthly_timesheets",
+    "payrolls"
+   ],
+   "rewritten": "Trong tháng này, số ngày công đủ của tôi có bị trừ lương không theo quy định?",
+   "answer": "- **Dữ liệu cá nhân**: Hệ thống hiện chưa có thông tin về số ngày công đủ của bạn trong tháng này (bảng chấm công và bảng lương không có bản ghi). Vì vậy mình không thể xác nhận có hay không việc trừ lương dựa trên ngày công của bạn. \n *Bạn có thể liên hệ trực tiếp với phòng Nhân sự để kiểm tra chi tiết.*\n\n- **Quy định nội bộ / pháp luật**: \n - **Điều 102 – Khấu trừ tiền lương** (Bộ luật Lao động 2019): \n - Người sử dụng lao động chỉ được khấu trừ tiền lương để bồi thường thiệt hại do hư hỏng tài sản, thiết bị của công ty. \n - Mức khấu trừ không được vượt quá **30 %** tiền lương thực nhận sau khi đã trích các khoản bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và thuế thu nhập cá nhân. \n - Người lao động có quyền biết rõ lý do khấu trừ. \n - Do đó, nếu không có vi phạm liên quan đến hư hỏng tài sản hoặc thỏa thuận khác, **ngày công đủ (Sufficient) không phải là căn cứ để trừ lương** theo quy định trên. \n\n- **Kết luận**: \n - Hiện chưa có dữ liệu để xác nhận việc trừ lương của bạn trong tháng này. \n - Theo quy định pháp luật, việc trừ lương chỉ được thực hiện trong các trường hợp quy định (ví dụ: bồi thường thiệt hại) và không được vượt quá 30 % lương thực nhận. \n\n**Khuyến nghị**: Hãy gửi yêu cầu kiểm tra chi tiết tới phòng Nhân sự (HR) để nhận bản sao bảng chấm công và bảng lương của tháng hiện tại. Nếu có bất kỳ khoản khấu trừ nào, HR sẽ cung cấp lý do và căn cứ pháp lý cụ thể.",
+   "elapsed": 13.1
+  },
+  {
+   "id": "departments_01",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi đang thuộc phòng ban nào?",
+   "answer": "- Bạn đang thuộc **phòng Ban Nhân sự**.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "departments_02",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Chức danh và phòng ban hiện tại của tôi là gì?",
+   "answer": "- **Chức danh hiện tại:** HR Generalist \n- **Phòng ban hiện tại:** Human Resources",
+   "elapsed": 5.5
+  },
+  {
+   "id": "departments_03",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Phòng ban, ca làm và mã nhân viên của tôi là gì?",
+   "answer": "- **Mã nhân viên:** EMP023 \n- **Phòng ban:** Human Resources (Phòng Nhân sự) \n- **Ca làm việc:** Giờ hành chính (Thứ Hai – Thứ Sáu)",
+   "elapsed": 5.4
+  },
+  {
+   "id": "departments_04",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi vào công ty vào ngày nào và hiện đang làm việc ở phòng ban nào?",
+   "answer": "- Bạn gia nhập công ty vào ngày **01/07/2024**. \n- Hiện tại, bạn đang làm việc tại phòng **Nhân sự**.",
+   "elapsed": 5.2
+  },
+  {
+   "id": "departments_05",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Công ty có những phòng ban nào và phòng hiện tại của tôi là phòng nào?",
+   "answer": "- **Các phòng ban hiện có trong công ty** \n - Customer Support \n - Executive Leadership \n - Finance & Accounting \n - Human Resources \n - IT \n - Marketing & Communication \n - Sales \n\n- **Phòng ban hiện tại của bạn** \n - Bạn đang làm việc tại **Human Resources** (Phòng Nhân sự). \n\n*Thông tin trên dựa trên dữ liệu cá nhân hiện có của công ty.*",
+   "elapsed": 8.4
+  },
+  {
+   "id": "departments_06",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Trong phòng ban của tôi (phòng Human Resources) có những chức danh nào?",
+   "answer": "- Chuyên viên Compensation & Benefits \n- Trưởng phòng Nhân sự \n- Nhân viên HR Generalist \n- Quản lý HR \n- Chuyên viên Talent Acquisition \n- Chuyên viên Training & Development",
+   "elapsed": 15.4
+  },
+  {
+   "id": "departments_07",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Mã phòng ban của tôi (Human Resources) là gì?",
+   "answer": "- Mã phòng ban của bạn là **0190abcd-4567-7def-89ab-cdef0123456a**.",
+   "elapsed": 5.1
+  },
+  {
+   "id": "departments_08",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Chức danh của tôi trong phòng Nhân sự là gì?",
+   "answer": "- Hiện chưa có dữ liệu về **chức danh** và **phòng ban** của bạn trong hệ thống. \n- Để biết thông tin chi tiết, vui lòng liên hệ **phòng Nhân sự** (HR) hoặc người quản lý trực tiếp của bạn. \n\n*(Nếu có quy định nội bộ về cách tra cứu chức danh, bạn có thể tham khảo mục “Quy trình tra cứu thông tin cá nhân” trong tài liệu quy chế nội bộ.)*",
+   "elapsed": 5.8
+  },
+  {
+   "id": "departments_09",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Quy định chuyển phòng ban của tôi là gì và hiện tại tôi đang ở phòng Nhân sự?",
+   "answer": "- **Bạn hiện đang làm việc ở phòng:** **Human Resources** (phòng Nhân sự). \n- **Quy định về việc chuyển phòng ban (chuyển công việc):** \n\n - **Điều 29, Bộ luật Lao động 2019** cho phép người sử dụng lao động tạm thời chuyển người lao động sang công việc (hoặc phòng ban) khác so với hợp đồng, với các điều kiện: \n - Thời gian chuyển không vượt quá **60 ngày làm việc cộng dồn trong 1 năm**. \n - Người sử dụng lao động phải **thông báo trước ít nhất 03 ngày làm việc**, nêu rõ thời hạn và bố trí công việc phù hợp với sức khỏe và giới tính của người lao động. \n - **Lương** phải được trả theo công việc mới; nếu lương công việc mới thấp hơn, người lao động được giữ nguyên lương cũ trong **30 ngày** và lương mới ít nhất **85 % lương cũ** (không thấp hơn mức lương tối thiểu). \n - Nếu thời gian chuyển vượt quá 60 ngày và người lao động **không đồng ý**, người sử dụng lao động phải trả lương ngừng việc theo quy định tại **Điều 99**. \n\n - Đối với việc **chuyển phòng ban vĩnh viễn**, luật không quy định chi tiết; thường yêu cầu thỏa thuận bằng văn bản giữa người lao động và người sử dụng lao động. \n\n> **Lưu ý:** Nếu bạn muốn đề xuất chuyển sang phòng ban khác, hãy thảo luận với quản lý trực tiếp hoặc phòng Nhân sự để chuẩn bị giấy tờ và tuân thủ các điều kiện trên. Nếu cần thêm chi tiết về quy trình nội bộ, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 10.6
+  },
+  {
+   "id": "departments_10",
+   "group": "departments",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Cơ cấu tổ chức các phòng ban theo quy định ra sao, tôi thuộc phòng nào?",
+   "answer": "**Bạn hiện đang thuộc phòng:** \n- **Phòng Nhân sự (Human Resources)** – đây là phòng mà hệ thống đã đánh dấu là “đang hiệu lực” cho bạn.\n\n**Cơ cấu tổ chức các phòng ban hiện tại (theo dữ liệu hệ thống):** \n- Phòng Hỗ trợ Khách hàng (Customer Support) \n- Phòng Lãnh đạo Điều hành (Executive Leadership) \n- Phòng Tài chính & Kế toán (Finance & Accounting) \n- **Phòng Nhân sự (Human Resources)** – phòng của bạn \n- Phòng Công nghệ Thông tin (IT) \n- Phòng Marketing & Truyền thông (Marketing & Communication) \n- Phòng Kinh doanh (Sales)\n\n**Quy định nội bộ về cơ cấu phòng ban:** \n- Trong các tài liệu quy chế nội bộ hiện có (Bộ luật Lao động 2019), không có điều khoản quy định chi tiết về cách công ty tổ chức các phòng ban. Các điều khoản được trích dẫn chỉ liên quan tới quyền lợi, nghĩa vụ của người lao động và tổ chức đại diện người lao động, không đề cập tới cấu trúc phòng ban nội bộ.\n\n**Bạn nên làm gì tiếp theo:** \n- Nếu cần bản đồ tổ chức chi tiết hoặc quy trình thay đổi phòng ban, vui lòng liên hệ **phòng Nhân sự** hoặc **bộ phận quản trị nhân sự** để nhận tài liệu sơ đồ tổ chức và hướng dẫn cụ thể.",
+   "elapsed": 10.0
+  },
+  {
+   "id": "holidays_01",
+   "group": "holidays",
+   "verdict": "PASS_TRUTHFUL_EMPTY_NO-OCT-HOLIDAY",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [],
+   "rewritten": "Tháng này tôi được nghỉ những ngày lễ nào?",
+   "answer": "- Hiện chưa có dữ liệu về lịch nghỉ lễ của tháng này cho bạn trong hệ thống. \n- Để biết chính xác các ngày lễ và ngày nghỉ được cấp phát trong tháng hiện tại, vui lòng: \n - Kiểm tra **Bảng lịch nghỉ lễ** nội bộ (thường được công bố trên cổng thông tin nội bộ hoặc trong mục “Chính sách & Quy định”). \n - Liên hệ trực tiếp với bộ phận **HR** để được cung cấp danh sách ngày lễ và số ngày nghỉ còn lại của bạn. \n\nNếu bạn đã nhận được thông báo hoặc tài liệu về lịch nghỉ lễ, hãy tham khảo mục “Lịch nghỉ lễ năm 2026” để biết chi tiết. Nếu cần hỗ trợ thêm, HR luôn sẵn sàng giúp đỡ.",
+   "elapsed": 9.2
+  },
+  {
+   "id": "holidays_02",
+   "group": "holidays",
+   "verdict": "LIMIT_ROUTER-DESIGN_DOC-ONLY+DOC-GAP",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "LOW",
+   "db_tables": [],
+   "rewritten": "Năm nay có tổng cộng bao nhiêu ngày lễ?",
+   "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+   "elapsed": 5.4
+  },
+  {
+   "id": "holidays_03",
+   "group": "holidays",
+   "verdict": "LIMIT_ROUTER-DESIGN_DOC-ONLY+DOC-GAP",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "LOW",
+   "db_tables": [],
+   "rewritten": "Liệt kê các ngày lễ trong năm nay của công ty theo thứ tự thời gian?",
+   "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+   "elapsed": 5.0
+  },
+  {
+   "id": "holidays_04",
+   "group": "holidays",
+   "verdict": "PASS_GLOBAL_CITATION_BLIND_VERIFIED_2027-01-01",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [],
+   "rewritten": "Ngày lễ sắp tới gần nhất mà tôi được nghỉ là ngày nào?",
+   "answer": "- Ngày lễ sắp tới gần nhất mà bạn được nghỉ là **ngày 01/01/2027** – Tết Dương lịch (New Year's Day).",
+   "elapsed": 6.0
+  },
+  {
+   "id": "holidays_05",
+   "group": "holidays",
+   "verdict": "PASS_GLOBAL_CITATION_BLIND_VERIFIED_Q2-DATES",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [],
+   "rewritten": "Trong quý 2 năm nay, tôi có những ngày lễ nào được nghỉ?",
+   "answer": "- **26/04/2026** – Giỗ Tổ Hùng Vương \n- **27/04/2026** – Ngày kỷ niệm Giỗ Tổ Hùng Vương (Hung Kings' Commemoration) \n- **30/04/2026** – Ngày Giải phóng miền Nam \n- **01/05/2026** – Ngày Quốc tế Lao động (Labour Day) \n\n*Lưu ý: Đây là các ngày lễ đã có trong dữ liệu hiện có cho quý 2 năm 2026.*",
+   "elapsed": 8.1
+  },
+  {
+   "id": "holidays_06",
+   "group": "holidays",
+   "verdict": "LIMIT_ROUTER-DESIGN_DOC-ONLY+DOC-GAP",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "LOW",
+   "db_tables": [],
+   "rewritten": "Trong 6 tháng đầu năm và 6 tháng cuối năm, nửa nào có nhiều ngày lễ hơn?",
+   "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+   "elapsed": 4.3
+  },
+  {
+   "id": "holidays_07",
+   "group": "holidays",
+   "verdict": "LIMIT_ROUTER-DESIGN_DOC-ONLY+DOC-GAP",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "LOW",
+   "db_tables": [],
+   "rewritten": "Tháng nào trong năm nay có số ngày lễ nhiều nhất?",
+   "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+   "elapsed": 4.3
+  },
+  {
+   "id": "holidays_08",
+   "group": "holidays",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Trong dịp lễ 30/4‑1/5 năm nay, tôi được nghỉ những ngày nào?",
+   "answer": "- Ngày 30/04/2026 \n- Ngày 01/05/2026 (được nghỉ)",
+   "elapsed": 10.4
+  },
+  {
+   "id": "holidays_09",
+   "group": "holidays",
+   "verdict": "PASS_GLOBAL_CITATION_BLIND_VERIFIED_DATES",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "HIGH",
+   "db_tables": [],
+   "rewritten": "Quy định nghỉ lễ hưởng nguyên lương của công ty là gì và năm nay tôi được nghỉ những ngày lễ nào?",
+   "answer": "**Quy định nghỉ lễ hưởng nguyên lương** \n- Theo **Điều 112, khoản 1** của Bộ luật Lao động 2019, người lao động được nghỉ và hưởng nguyên lương vào các ngày lễ, tết sau: \n - Tết Dương lịch (01/01) – 1 ngày \n - Tết Âm lịch – 5 ngày \n - Ngày Chiến thắng (30/04) – 1 ngày \n - Ngày Quốc tế Lao động (01/05) – 1 ngày \n - Quốc khánh (02/09) – 2 ngày (ngày 02/09 và một ngày liền kề) \n - Ngày Giỗ Tổ Hùng Vương (10/03 âm lịch) – 1 ngày \n\n> **Điều 112, khoản 1** quy định rõ “người lao động được nghỉ làm việc, hưởng nguyên lương” cho các ngày trên.\n\n**Các ngày lễ năm 2026 mà bạn được nghỉ (theo dữ liệu cá nhân)** \n\n- **01/01/2026** – Tết Dương lịch (Ngày nghỉ có nguyên lương) \n- **16/02 – 20/02/2026** – Tết Âm lịch (5 ngày liên tiếp, nguyên lương) \n- **26/04/2026** – Giỗ Tổ Hùng Vương (ngày 10/03 âm lịch) \n- **27/04/2026** – (ngày lễ liên quan tới Giỗ Tổ Hùng Vương, được công ty ghi nhận) \n- **30/04/2026** – Ngày Chiến thắng (ngày 30/04) \n- **01/05/2026** – Ngày Quốc tế Lao động \n\n> *Lưu ý:* Ngày Quốc khánh (02/09) và ngày liền kề chưa xuất hiện trong dữ liệu hiện tại; bạn sẽ nhận được thông báo khi lịch nghỉ chính thức được công bố.\n\n**Bạn cần làm gì tiếp theo** \n- Kiểm tra lại lịch nghỉ trên cổng thông tin nội bộ hoặc mục “Chính sách & Quy định” để xác nhận các ngày lễ còn lại (ví dụ: Quốc khánh). \n- Nếu có thắc mắc hoặc muốn biết số ngày nghỉ còn lại trong năm, vui lòng liên hệ trực tiếp với bộ phận HR.",
+   "elapsed": 9.3
+  },
+  {
+   "id": "holidays_10",
+   "group": "holidays",
+   "verdict": "PASS_PARTIAL_LAW-OK_WEEKDAY-HONEST-DECLINE",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [],
+   "rewritten": "Nếu ngày lễ rơi vào cuối tuần, tôi có được nghỉ bù không, và các ngày lễ năm nay rơi vào thứ mấy?",
+   "answer": "**1. Nghỉ bù khi ngày lễ trùng với ngày nghỉ hằng tuần**  \n- Theo **Điều 111, khoản 3** của Bộ luật Lao động 2019:  \n  > “Nếu ngày nghỉ hằng tuần trùng với ngày nghỉ lễ, tết quy định tại khoản 1 Điều 112 của Bộ luật này thì người lao động được nghỉ bù ngày nghỉ hằng tuần vào ngày làm việc kế tiếp.”  \n\n  → Vì vậy, khi một ngày lễ rơi vào ngày nghỉ hằng tuần (thường là Chủ nhật hoặc ngày nghỉ được công ty quy định), bạn sẽ được nghỉ bù vào ngày làm việc tiếp theo.\n\n**2. Các ngày lễ năm 2026 rơi vào thứ mấy?**  \n- Tài liệu **Điều 112** chỉ liệt kê **ngày tháng** của các ngày lễ (ví dụ: 30/4, 01/5, 01/1, …) nhưng không cung cấp thông tin về **thứ trong tuần** của chúng.  \n- Vì không có dữ liệu về ngày trong tuần trong các tài liệu nội bộ hiện có, chúng tôi không thể cung cấp thông tin “ngày lễ năm nay rơi vào thứ mấy”.\n\n**Kết luận**  \n- Bạn sẽ được nghỉ bù nếu ngày lễ trùng với ngày nghỉ hằng tuần, theo quy định ở **Điều 111, khoản 3**.  \n- Đối với thông tin về thứ trong tuần của các ngày lễ năm 2026, hiện tại công ty chưa có dữ liệu trong quy chế nội bộ. Vui lòng kiểm tra lịch công ty trên cổng thông tin nội bộ hoặc liên hệ trực tiếp với Phòng Nhân sự (HR) để biết chi tiết.\n\n**Tham chiếu**:  \n- Điều 111, khoản 3 – “Nếu ngày nghỉ hằng tuần trùng với ngày nghỉ lễ…”.  \n- Điều 112 – Liệt kê các ngày lễ, nhưng không ghi ngày trong tuần.",
+   "elapsed": 8.3
+  },
+  {
+   "id": "jobs_01",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Chức danh hiện tại của tôi là gì?",
+   "answer": "- Bạn hiện đang giữ chức danh **HR Generalist**.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "jobs_02",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Chức danh HR Generalist của tôi thuộc phòng ban nào?",
+   "answer": "- Bạn đang thuộc **phòng Nhân sự**.",
+   "elapsed": 6.1
+  },
+  {
+   "id": "jobs_03",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Trong phòng ban của tôi có những chức danh nào?",
+   "answer": "- Chuyên viên Compensation & Benefits \n- Trưởng phòng Nhân sự (Department Head of Human Resources) \n- Chuyên viên HR Generalist \n- Quản lý HR (HR Manager) \n- Chuyên viên Talent Acquisition \n- Chuyên viên Đào tạo & Phát triển (Training & Development)",
+   "elapsed": 5.8
+  },
+  {
+   "id": "jobs_04",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Chức danh và mã nhân viên của tôi là gì?",
+   "answer": "- **Mã nhân viên:** EMP023 \n- **Chức danh:** HR Generalist",
+   "elapsed": 5.5
+  },
+  {
+   "id": "jobs_05",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Công ty có những chức danh nào, và chức danh HR Generalist của tôi là vị trí nào trong số đó?",
+   "answer": "- **Các chức danh hiện có trong dữ liệu cá nhân** \n - Account Manager \n - Accountant \n - Brand Manager \n - Business Development Specialist \n - CEO \n - Chairman \n - Compensation & Benefits Specialist \n - Content Creator \n - Customer Support Lead \n - Customer Support Representative \n\n- **Chức danh của bạn** \n - Bạn đang giữ vị trí **HR Generalist** (theo thông tin đã xác nhận trước đó). \n - Chức danh này không nằm trong danh sách trên, vì danh sách chỉ liệt kê một số vị trí mẫu và chưa bao gồm toàn bộ các chức danh trong công ty.\n\n> **Ghi chú:** Danh sách trên chỉ là một phần mẫu; công ty có thể có nhiều chức danh khác (ví dụ: các vị trí trong phòng Nhân sự). Để biết đầy đủ mọi chức danh và vị trí tương ứng, bạn nên liên hệ trực tiếp với phòng Nhân sự (HR).",
+   "elapsed": 10.3
+  },
+  {
+   "id": "jobs_06",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "So với các chức danh khác trong phòng Nhân sự, vị trí HR Generalist của tôi (EMP023) là gì?",
+   "answer": "- Bạn đang giữ vị trí **HR Generalist**. \n- Các chức danh khác trong phòng hiện có: \n - Compensation & Benefits Specialist \n - Department Head of Human Resources \n - HR Manager \n - Talent Acquisition Specialist \n - Training & Development Specialist \n\nVì không có thông tin chi tiết về cấp bậc hay mức độ quyền hạn giữa các chức danh, nên chỉ có thể khẳng định bạn là HR Generalist và liệt kê các vị trí đồng nghiệp hiện có. Nếu cần so sánh cụ thể về mức lương, quyền hạn hoặc lộ trình thăng tiến, vui lòng liên hệ bộ phận HR để được cung cấp bản mô tả công việc và quy chế nội bộ chi tiết.",
+   "elapsed": 10.9
+  },
+  {
+   "id": "jobs_07",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "users"
+   ],
+   "rewritten": "Mức lương cơ bản cho chức danh HR Generalist của tôi là bao nhiêu?",
+   "answer": "- Mức lương cơ bản hiện tại của bạn là **15.000.000 VND**.",
+   "elapsed": 5.8
+  },
+  {
+   "id": "jobs_08",
+   "group": "jobs",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants",
+    "users"
+   ],
+   "rewritten": "Chức danh HR Generalist của tôi đang có những quyền hạn gì trên hệ thống?",
+   "answer": "**Tôi có các quyền hạn sau trên hệ thống:**\n\n- Xem toàn bộ dữ liệu chấm công của công ty. \n- Xem toàn bộ dữ liệu nghỉ phép của công ty. \n- Xem toàn bộ dữ liệu làm thêm giờ của công ty. \n- Xem toàn bộ đơn từ chức của công ty. \n- Phê duyệt yêu cầu nghỉ phép. \n- Phê duyệt yêu cầu làm thêm giờ. \n- Phê duyệt đơn từ chức. \n- Khóa bảng chấm công (ngăn không cho chỉnh sửa). \n- Quản lý thông tin tổ chức (cấu trúc phòng ban, vị trí...). \n- Xem toàn bộ thông tin nhân viên trong công ty. \n\nNếu cần biết chi tiết về cách sử dụng từng quyền hoặc quy trình phê duyệt, vui lòng tham khảo **Quy chế Quyền hạn Hệ thống** (điều X) hoặc liên hệ bộ phận HR để được hỗ trợ.",
+   "elapsed": 8.9
+  },
+  {
+   "id": "jobs_09",
+   "group": "jobs",
+   "verdict": "LIMIT_DOC-GAP_NO-JD/PROMOTION-DOC",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "LOW",
+   "db_tables": [],
+   "rewritten": "Lộ trình thăng tiến từ chức danh HR Generalist của tôi theo quy định của công ty là gì?",
+   "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+   "elapsed": 6.0
+  },
+  {
+   "id": "jobs_10",
+   "group": "jobs",
+   "verdict": "LIMIT_DOC-GAP_NO-JD/PROMOTION-DOC",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "LOW",
+   "db_tables": [],
+   "rewritten": "Mô tả công việc của chức danh HR Generalist của tôi theo quy định là gì?",
+   "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+   "elapsed": 5.3
+  },
+  {
+   "id": "leave_requests_01",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Năm nay tôi đã nghỉ phép tổng cộng bao nhiêu ngày?",
+   "answer": "- Năm nay bạn đã nghỉ phép tổng cộng **3 ngày**.",
+   "elapsed": 7.6
+  },
+  {
+   "id": "leave_requests_02",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Đơn xin nghỉ phép gần nhất của tôi đang ở trạng thái nào?",
+   "answer": "- Đơn xin nghỉ phép gần nhất của bạn (từ ngày 23/07/2026 đến ngày 23/07/2026) đang ở trạng thái **đã duyệt**.",
+   "elapsed": 5.2
+  },
+  {
+   "id": "leave_requests_03",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Tôi muốn biết số lượng đơn nghỉ phép của tôi ở mỗi trạng thái (chờ duyệt, đã duyệt, bị từ chối) là bao nhiêu?",
+   "answer": "- **Đã duyệt**: 3 đơn \n- **Bị từ chối**: 1 đơn \n- **Chờ duyệt**: 0 đơn (hiện chưa có dữ liệu)",
+   "elapsed": 5.3
+  },
+  {
+   "id": "leave_requests_04",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tháng nào trong năm nay tôi nghỉ phép nhiều nhất?",
+   "answer": "- Tháng **3 (tháng Ba)**: bạn đã nghỉ phép **1 ngày** – là tháng có số ngày nghỉ phép cao nhất trong dữ liệu hiện có. \n\n*(Các tháng khác trong năm chưa có dữ liệu về ngày nghỉ phép, nếu cần thông tin chi tiết hơn vui lòng liên hệ phòng Nhân sự.)*",
+   "elapsed": 6.0
+  },
+  {
+   "id": "leave_requests_05",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Liệt kê 10 đơn xin nghỉ gần nhất của tôi kèm lý do?",
+   "answer": "- **23/07/2026 – 23/07/2026**: Khám sức khỏe định kỳ \n- **27/05/2026 – 27/05/2026**: Chăm con ốm \n- **07/04/2026 – 07/04/2026**: Nghỉ giải quyết thủ tục hành chính \n- **09/03/2026 – 09/03/2026**: Nghỉ giải quyết thủ tục hành chính \n\nHiện chỉ có 4 đơn xin nghỉ của bạn trong hệ thống, vì vậy không đủ 10 đơn để liệt kê. Nếu bạn cần thêm thông tin hoặc muốn xem các đơn đã nộp trước đây, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "leave_requests_06",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Đơn xin nghỉ nào của tôi đã bị từ chối và lý do từ chối là gì?",
+   "answer": "- Đơn xin nghỉ **từ ngày 27/05/2026 đến ngày 27/05/2026** đã bị **từ chối**. \n- Lý do từ chối: **“Chưa đủ căn cứ phê duyệt OT”**. \n\n(Theo quy định nội bộ, đơn nghỉ có thể bị từ chối nếu chưa đáp ứng đủ tiêu chí xét duyệt, ví dụ như chưa có căn cứ hợp lý cho việc làm thêm giờ.)",
+   "elapsed": 6.9
+  },
+  {
+   "id": "leave_requests_07",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Quý này tôi nghỉ phép bao nhiêu ngày và so với quý trước tôi nghỉ nhiều hơn hay ít hơn?",
+   "answer": "- Trong quý hiện tại bạn đã nghỉ phép **0 ngày**. \n- Quý trước bạn đã nghỉ **1 ngày**. \n- So sánh: **ít hơn** (giảm 1 ngày). \n\nNếu cần chi tiết về quy định nghỉ phép hoặc muốn xem lịch sử nghỉ phép, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 10.2
+  },
+  {
+   "id": "leave_requests_08",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Hiện tại tôi có đơn xin nghỉ nào đang chờ duyệt không?",
+   "answer": "- Hiện tại hệ thống không có bất kỳ đơn xin nghỉ nào của bạn, vì vậy không có đơn nào đang ở trạng thái “đang chờ duyệt”. \n- Nếu bạn đã gửi đơn nhưng chưa thấy ở đây, hoặc muốn nộp đơn mới, vui lòng liên hệ bộ phận Nhân sự để được hỗ trợ.",
+   "elapsed": 7.4
+  },
+  {
+   "id": "leave_requests_09",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Quy định nghỉ phép năm 2026 như thế nào và tôi đã dùng hết ngày phép của mình trong năm nay chưa?",
+   "answer": "**Quy định nghỉ phép hằng năm (theo Điều 113, Bộ luật Lao động 2019):** \n- Khi làm việc đủ 12 tháng cho một công ty, bạn được nghỉ hằng năm **12 ngày** (đối với công việc bình thường). \n- Số ngày nghỉ được hưởng nguyên lương và có thể chia thành nhiều lần hoặc gộp tối đa 3 năm một lần, tùy thỏa thuận với công ty. \n- Nếu chưa đủ 12 tháng, ngày nghỉ sẽ được tính tỉ lệ theo số tháng làm việc. \n- Khi nghỉ mà chưa đến kỳ trả lương, bạn có thể được tạm ứng tiền lương theo quy định. \n\n**Tình hình nghỉ phép của bạn trong năm 2026 (theo dữ liệu cá nhân):** \n- Tổng số ngày nghỉ phép được cấp: **12 ngày**. \n- Đã sử dụng: **1 ngày**. \n- Còn lại: **11 ngày**. \n- Trạng thái: **chưa hết phép** (vẫn còn ngày nghỉ). \n\nVì vậy, **năm nay bạn chưa dùng hết phép**; còn 11 ngày nghỉ có thể sử dụng trong thời gian còn lại của năm. Nếu cần lên kế hoạch nghỉ hoặc biết thêm chi tiết về cách xin nghỉ, hãy liên hệ với phòng Nhân sự.",
+   "elapsed": 12.6
+  },
+  {
+   "id": "leave_requests_10",
+   "group": "leave_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Người nào đã duyệt đơn nghỉ phép gần nhất của tôi?",
+   "answer": "- Đơn nghỉ phép gần nhất của bạn đã được duyệt bởi **người có mã ID fca9aa46‑b141‑415f‑ab4c‑9f336bdfd46e**. \n- Hiện hệ thống chỉ lưu lại mã ID của người duyệt, chưa có thông tin tên hiển thị. Để biết tên và vị trí cụ thể của người duyệt, bạn vui lòng **liên hệ bộ phận Nhân sự**. \n\n*(Theo quy định nội bộ, đơn nghỉ phép được phê duyệt bởi người quản lý trực tiếp hoặc người có thẩm quyền được chỉ định.)*",
+   "elapsed": 10.5
+  },
+  {
+   "id": "monthly_timesheets_01",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Năm nay tôi làm tổng cộng bao nhiêu giờ và bao nhiêu ngày công?",
+   "answer": "- Năm nay tôi đã làm **1 354,51 giờ**. \n- Tổng số ngày công là **161 ngày**.",
+   "elapsed": 6.6
+  },
+  {
+   "id": "monthly_timesheets_02",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tháng này tôi đã đi muộn bao nhiêu lần và tổng cộng mất bao nhiêu phút?",
+   "answer": "- Hiện chưa có dữ liệu về thời gian vào làm của bạn trong tháng này, vì chưa có bản ghi chấm công nào. \n- Để biết số lần đi muộn và tổng thời gian trễ, bạn cần cập nhật hoặc kiểm tra bảng chấm công (thông qua hệ thống hoặc yêu cầu HR cung cấp bản sao). \n- Nếu bạn đã nộp bảng chấm công nhưng chưa thấy thông tin, vui lòng liên hệ phòng Nhân sự để xác nhận và cập nhật dữ liệu.",
+   "elapsed": 6.5
+  },
+  {
+   "id": "monthly_timesheets_03",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Liệt kê giờ làm và ngày công của tôi theo từng tháng trong năm nay?",
+   "answer": "**Giờ làm và ngày công của bạn trong năm 2026 (tính đến tháng 8):**\n\n- Tháng 1: 21 ngày công – 171,41 giờ làm việc \n- Tháng 2: 15 ngày công – 125,26 giờ làm việc \n- Tháng 3: 21 ngày công – 181,36 giờ làm việc \n- Tháng 4: 19 ngày công – 166,19 giờ làm việc \n- Tháng 5: 20 ngày công – 165,79 giờ làm việc \n- Tháng 6: 22 ngày công – 182,53 giờ làm việc \n- Tháng 7: 22 ngày công – 189,39 giờ làm việc \n- Tháng 8: 21 ngày công – 172,58 giờ làm việc \n\n*Lưu ý:* Dữ liệu hiện chỉ có tới tháng 8/2026. Nếu cần thông tin các tháng còn lại, vui lòng liên hệ bộ phận HR để cập nhật.",
+   "elapsed": 5.5
+  },
+  {
+   "id": "monthly_timesheets_04",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Năm 2026 so với năm 2025, tổng giờ làm của tôi tăng hay giảm bao nhiêu?",
+   "answer": "- Năm 2026, tổng giờ làm của bạn là **1 354,51 giờ**. \n- Năm 2025, bạn chưa có giờ làm được ghi nhận (0 giờ). \n- Vì vậy, so với năm ngoái, tổng giờ làm của bạn **tăng 1 354,51 giờ**.",
+   "elapsed": 6.5
+  },
+  {
+   "id": "monthly_timesheets_05",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Tháng nào trong năm 2026 tôi nghỉ không lương nhiều nhất?",
+   "answer": "- Theo dữ liệu hiện có, chỉ có **tháng 3** được ghi nhận, với **0 ngày nghỉ không lương**. \n- Vì không có tháng nào khác có số ngày nghỉ không lương, nên hiện chưa có tháng nào trong năm mà bạn đã nghỉ không lương nhiều hơn. \n\n**Bạn nên:** \n- Kiểm tra lại các đơn nghỉ phép đã nộp trong hệ thống hoặc liên hệ bộ phận **HR** để xác nhận chi tiết nếu có các ngày nghỉ không lương chưa được ghi nhận.",
+   "elapsed": 7.1
+  },
+  {
+   "id": "monthly_timesheets_06",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Trong quý 1 năm nay, tôi đã nghỉ phép bao nhiêu ngày và vắng mặt bao nhiêu ngày?",
+   "answer": "- **Ngày nghỉ phép trong Quý 1:** 1 ngày \n- **Ngày vắng mặt (không nghỉ phép) trong Quý 1:** 0 ngày \n\nNếu bạn cần chi tiết về quy định nghỉ phép hoặc muốn kiểm tra các ngày nghỉ còn lại, vui lòng liên hệ bộ phận Nhân sự.",
+   "elapsed": 6.4
+  },
+  {
+   "id": "monthly_timesheets_07",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets",
+    "overtime_records"
+   ],
+   "rewritten": "Giờ OT thực tế của tôi trong tháng này và giờ OT được trả của tôi trong tháng này chênh lệch bao nhiêu?",
+   "answer": "- **Giờ OT thực tế**: 0 giờ \n- **Giờ OT được trả**: 0 giờ \n- **Chênh lệch**: 0 giờ \n\n(Hiện tại không có dữ liệu khác về khoản OT của bạn trong tháng này. Nếu bạn cần kiểm tra chi tiết hơn, vui lòng liên hệ bộ phận HR.)",
+   "elapsed": 9.2
+  },
+  {
+   "id": "monthly_timesheets_08",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Trong năm nay, những tháng nào tôi đã đi muộn trên 3 lần?",
+   "answer": "- Hiện chưa có dữ liệu về số lần đi muộn của bạn trong các tháng trong năm. \n- Vui lòng liên hệ bộ phận Nhân sự để kiểm tra chi tiết bảng chấm công và nhận báo cáo về các tháng bạn đã đi muộn trên 3 lần.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "monthly_timesheets_09",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Quy định ngày công chuẩn một tháng là bao nhiêu và công thực tế tháng này của tôi có đủ theo quy định không?",
+   "answer": "- **Quy định về ngày nghỉ**: \n - Theo Điều 111, Bộ luật Lao động 2019, mỗi tuần người lao động phải được nghỉ ít nhất 24 giờ liên tục. \n - Trong trường hợp không thể nghỉ hằng tuần, người sử dụng lao động phải bảo đảm cho người lao động được nghỉ bình quân **ít nhất 4 ngày trong một tháng**. \n\n- **Ngày công chuẩn một tháng**: \n - Bộ luật không quy định số ngày công “chuẩn” cố định cho mỗi tháng; chỉ quy định mức nghỉ tối thiểu như trên. \n - Vì vậy, không có con số cụ thể “ngày công chuẩn” trong tài liệu nội bộ.\n\n- **Công thực tế của bạn trong tháng này**: \n - Hiện **chưa có dữ liệu** về bảng chấm công của bạn (chưa có dữ liệu). \n - Do thiếu dữ liệu, không thể xác định bạn đã làm việc bao nhiêu ngày và có đáp ứng mức nghỉ tối thiểu 4 ngày/tháng hay không.\n\n- **Bạn nên làm gì tiếp theo**: \n - Kiểm tra lại hệ thống chấm công hoặc liên hệ bộ phận Nhân sự để cập nhật và xác nhận số ngày công thực tế của bạn trong tháng. \n\n*(Nếu cần tham khảo chi tiết Điều 111, xem tài liệu “bo‑luat‑lao‑dong‑2019.docx”, Trang 73, Chương VII, Điều 111.)*",
+   "elapsed": 9.2
+  },
+  {
+   "id": "monthly_timesheets_10",
+   "group": "monthly_timesheets",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Bảng công của tôi trong 3 tháng gần nhất như thế nào và tháng nào tôi đi muộn nhiều nhất?",
+   "answer": "**Bảng công 3 tháng gần nhất (2026):**\n\n- **Tháng 8:** \n - Ngày làm việc thực tế: 21 ngày (172,58 giờ) \n - Số lần đi muộn: 0 lần, tổng thời gian trễ: 0 phút \n\n- **Tháng 7:** \n - Ngày làm việc thực tế: 22 ngày (189,39 giờ) \n - Số lần đi muộn: **2 lần**, tổng thời gian trễ: **43 phút** \n - *Tháng này là tháng có tỉ lệ đi muộn cao nhất* \n\n- **Tháng 6:** \n - Ngày làm việc thực tế: 22 ngày (182,53 giờ) \n - Số lần đi muộn: 1 lần, tổng thời gian trễ: 22 phút \n\n**Kết luận:** Tháng 7/2026 là tháng bạn đi muộn nhiều nhất (2 lần, 43 phút). Nếu cần hỗ trợ hoặc muốn xem chi tiết hơn, bạn có thể liên hệ với phòng Nhân sự.",
+   "elapsed": 9.0
+  },
+  {
+   "id": "multi_01",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Năm nay tôi được nghỉ những ngày nào?",
+   "answer": "- **9 / 3 / 2026** – Nghỉ giải quyết thủ tục hành chính (đã được chấp nhận) \n- **7 / 4 / 2026** – Nghỉ giải quyết thủ tục hành chính (đã được chấp nhận) \n- **23 / 7 / 2026** – Khám sức khỏe định kỳ (đã được chấp nhận)",
+   "elapsed": 8.1
+  },
+  {
+   "id": "multi_02",
+   "group": "multi_table",
+   "verdict": "PASS_TEXTUAL_VERIFIED_HR-Generalist",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi đang thuộc phòng ban nào và chức danh của tôi là gì?",
+   "answer": "- Bạn đang thuộc **phòng Ban Nhân sự**. \n- Chức danh hiện tại của bạn là **HR Generalist**.",
+   "elapsed": 5.3
+  },
+  {
+   "id": "multi_03",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "user_bank_accounts"
+   ],
+   "rewritten": "Lương cơ bản hiện tại của tôi và tài khoản ngân hàng nhận lương của tôi là gì?",
+   "answer": "- Lương cơ bản hiện tại của tôi: **15.000.000 VND** (được trả hàng tháng). \n- Tài khoản ngân hàng nhận lương: \n - Ngân hàng: **Vietcombank** (mã ngân hàng 970436) \n - Số tài khoản: **97043668232985** \n - Chủ tài khoản: **LÊ VĂN C** \n\nNếu cần thay đổi thông tin ngân hàng hoặc có thắc mắc khác, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.5
+  },
+  {
+   "id": "multi_04",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances",
+    "users"
+   ],
+   "rewritten": "Lịch ca làm và chi tiết công việc trong cả tuần của tôi như thế nào?",
+   "answer": "**Lịch làm việc và chi tiết chấm công trong tuần (28/09 – 04/10/2026)** \n\n- **Thứ Hai, 28/09** \n - Ca: Giờ hành chính (08:00 – 17:30) \n - Điểm danh: vào 08:00, ra 17:30 \n - Trạng thái: **Đủ giờ** \n\n- **Thứ Ba, 29/09** \n - Ca: Giờ hành chính (08:00 – 17:30) \n - Điểm danh: vào 08:00, ra 17:30 \n - Trạng thái: **Đủ giờ** \n\n- **Thứ Tư, 30/09** \n - Ca: Giờ hành chính (08:00 – 17:30) \n - Điểm danh: vào 08:00, ra 17:30 \n - Trạng thái: **Đủ giờ** \n\n- **Thứ Năm, 01/10** \n - Ca: Giờ hành chính (08:00 – 17:30) – **ngày làm việc** \n - Điểm danh: chưa có (không có giờ vào/ra) \n - Trạng thái: **Chưa kiểm tra** \n\n- **Thứ Sáu, 02/10** \n - Ca: Giờ hành chính (08:00 – 17:30) – **ngày làm việc** \n - Điểm danh: chưa có (không có giờ vào/ra) \n - Trạng thái: **Chưa kiểm tra** \n\n- **Thứ Bảy, 03/10** \n - Không làm việc (ngày nghỉ) – không có ca, không có điểm danh. \n\n- **Chủ Nhật, 04/10** \n - Không làm việc (ngày nghỉ) – không có ca, không có điểm danh. \n\nNếu có thắc mắc thêm về việc chưa chấm công ngày Thứ Năm và Thứ Sáu, bạn có thể liên hệ với bộ phận HR để được hỗ trợ.",
+   "elapsed": 10.7
+  },
+  {
+   "id": "multi_05",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "cross_check",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets",
+    "payrolls"
+   ],
+   "rewritten": "Lương thực lĩnh tháng này của tôi có khớp với số ngày công thực tế của tôi không?",
+   "answer": "- Hiện chưa có dữ liệu về bảng chấm công và bảng tính lương của bạn cho tháng này, nên mình không thể kiểm tra xem lương thực lĩnh có khớp với số ngày công thực tế hay không. \n- Theo quy chế nội bộ (Điều 3 – Quy trình tính lương), lương tháng được tính dựa trên **số ngày công thực tế** đã được ghi nhận trong bảng chấm công, sau khi trừ các khoản bảo hiểm và thuế theo quy định. \n- Để biết chi tiết, bạn vui lòng liên hệ phòng Nhân sự hoặc truy cập hệ thống HR để xem **bảng chấm công** và **phiếu tính lương** của mình. \n\nNếu cần hỗ trợ thêm, mình sẵn sàng giúp bạn!",
+   "elapsed": 9.9
+  },
+  {
+   "id": "multi_06",
+   "group": "multi_table",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances",
+    "users"
+   ],
+   "rewritten": "Trong tháng này, tôi đã check‑in trễ hơn giờ quy định của ca bao nhiêu phút mỗi ngày?",
+   "answer": "- Hiện chưa có dữ liệu chấm công của bạn cho tháng này, vì vậy không thể xác định được số phút trễ so với giờ quy định của ca. \n- Để biết chi tiết, vui lòng liên hệ bộ phận Nhân sự hoặc quản lý trực tiếp để họ kiểm tra và cập nhật bản ghi chấm công.",
+   "elapsed": 6.8
+  },
+  {
+   "id": "multi_07",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "cross_check",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets",
+    "overtime_records"
+   ],
+   "rewritten": "Tổng giờ OT chi tiết trong đơn của tôi có khớp với giờ OT tổng hợp trên bảng công tháng này không?",
+   "answer": "- Tổng giờ OT chi tiết trong đơn: **0 giờ** \n- Tổng giờ OT tổng hợp trên bảng công tháng: **0 giờ** \n- Kết quả: **khớp nhau** (đúng).",
+   "elapsed": 7.0
+  },
+  {
+   "id": "multi_08",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "cross_check",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records",
+    "payrolls"
+   ],
+   "rewritten": "Tiền OT trong phiếu lương tháng này có tương xứng với tổng giờ OT thực tế của tôi không?",
+   "answer": "- Hiện tại hệ thống không có dữ liệu về **giờ làm thêm** và **phiếu lương** của bạn trong tháng này, nên không thể so sánh số tiền OT đã trả với tổng giờ OT thực tế. \n- Để kiểm tra chi tiết, bạn có thể:\n 1. Kiểm tra lại **đơn đăng ký làm thêm** đã nộp và xác nhận đã được duyệt. \n 2. Liên hệ **phòng Nhân sự / Bộ phận Tiền lương** để họ cung cấp bản sao phiếu lương và bảng chấm công làm thêm của tháng. \n- Theo **Quy chế nội bộ** (Điều XX về tiền lương và phụ cấp), tiền OT phải được tính dựa trên **số giờ làm thêm thực tế** và **mức lương cơ bản** của bạn; nếu có sai lệch, bạn có quyền yêu cầu giải trình. \n\nNếu cần hỗ trợ nhanh hơn, vui lòng gửi email hoặc gọi trực tiếp tới bộ phận HR.",
+   "elapsed": 7.9
+  },
+  {
+   "id": "multi_09",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "cross_check",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances",
+    "leave_requests"
+   ],
+   "rewritten": "Số ngày nghỉ phép trên bảng công của tôi trong tháng này có khớp với đơn nghỉ đã duyệt của tôi không?",
+   "answer": "- **Kết quả kiểm tra:** Số ngày nghỉ phép được ghi nhận trong bảng công tháng này **đúng bằng** số ngày nghỉ đã được duyệt của bạn. \n- **Chi tiết:** Bạn có 0 ngày nghỉ phép trong bảng công và cũng có 0 ngày nghỉ đã được duyệt, và hệ thống đã xác nhận chúng khớp nhau. \n\nNếu bạn cần xem chi tiết các đơn nghỉ đã duyệt hoặc có thắc mắc thêm, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 9.0
+  },
+  {
+   "id": "multi_10",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests",
+    "users"
+   ],
+   "rewritten": "Tôi còn bao nhiêu ngày phép còn lại, và hiện có đơn xin nghỉ của tôi nào đang chờ duyệt không?",
+   "answer": "- **Số ngày phép còn lại:** 11 ngày (tổng 12 ngày, đã sử dụng 1 ngày). \n- **Đơn xin nghỉ đang chờ duyệt:** Không có đơn nào đang chờ duyệt. \n\nNếu bạn cần biết chi tiết về quy định ngày phép (ví dụ: cách tính ngày phép, quy định chuyển ngày phép sang năm sau), vui lòng tham khảo **Điều 5 – Chính sách ngày phép** trong quy chế nội bộ hoặc liên hệ bộ phận HR để được hỗ trợ.",
+   "elapsed": 7.8
+  },
+  {
+   "id": "multi_11",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "user_contracts"
+   ],
+   "rewritten": "Hợp đồng hiện tại của tôi là gì và mức lương hiện tại của tôi là bao nhiêu?",
+   "answer": "- **Loại hợp đồng:** Hợp đồng thời hạn (Fixed‑term) \n- **Ngày bắt đầu hợp đồng:** 22/04/2026 \n- **Ngày kết thúc hợp đồng:** 22/04/2027 \n- **Mức lương cơ bản:** 15.000.000 VND mỗi tháng \n- **Tần suất trả lương:** Hàng tháng \n- **Số ngày làm việc chuẩn trong tháng:** 22 ngày \n- **Thời gian áp dụng mức lương:** Bắt đầu từ 22/04/2026 và hiện vẫn đang hiệu lực (không có ngày kết thúc được ghi).",
+   "elapsed": 7.8
+  },
+  {
+   "id": "multi_12",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts",
+    "user_profiles",
+    "users"
+   ],
+   "rewritten": "Hồ sơ tổng hợp của tôi bao gồm những thông tin nào: họ tên, số điện thoại, email và tài khoản nhận lương?",
+   "answer": "- Họ và tên: **Lê Văn C** \n- Số điện thoại: **0912 345 678** \n- Email: **hr.employee@company.com** \n- Tài khoản nhận lương: \n - Ngân hàng: **Vietcombank** \n - Số tài khoản: **9704 3668 2329 85** \n - Chủ tài khoản: **LÊ VĂN C**",
+   "elapsed": 6.3
+  },
+  {
+   "id": "multi_13",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Trong năm nay, những ngày tôi bị tính vắng có trùng với ngày lễ công ty nào không?",
+   "answer": "- **Hiện chưa có dữ liệu** về các ngày bạn bị tính vắng trong năm 2026 → hệ thống không lưu lại bất kỳ bản ghi nào (bảng chấm công trả về chưa có dữ liệu). \n- Vì không có danh sách ngày vắng, **không thể xác định** được có ngày nào trùng với ngày lễ công ty hay không. \n\n**Ngày lễ, tết mà công ty áp dụng (theo quy định Bộ luật Lao động 2019 – Điều 112):** \n- 01 /01 : Tết Dương lịch \n- 10 /03 (am lịch) : Giỗ Tổ Hùng Vương \n- 30 /04 : Ngày Chiến thắng \n- 01 /05 : Ngày Quốc tế Lao động \n- 02 /09 và ngày liền kề (trước hoặc sau) : Quốc khánh (2 ngày) \n\n(Tham khảo **Tài liệu 2**, Điều 112).\n\n**Bạn nên làm gì tiếp theo:** \n- Liên hệ bộ phận Nhân sự để yêu cầu cung cấp chi tiết bảng chấm công / danh sách ngày vắng thực tế. \n- Khi có danh sách ngày vắng, so sánh với các ngày lễ trên để biết có ngày nào trùng không. \n\nNếu cần hỗ trợ thêm, hãy cho HR biết để họ kiểm tra và trả lời cụ thể.",
+   "elapsed": 9.2
+  },
+  {
+   "id": "multi_14",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants",
+    "users"
+   ],
+   "rewritten": "Chức danh, phòng ban và các quyền hạn của tôi đang có trên hệ thống là gì?",
+   "answer": "- **Chức danh:** HR Generalist \n- **Phòng ban:** Human Resources \n\n**Quyền hạn hiện đang có (đã được cấp):** \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56 \n- dữ liệu – cấp ngày 01/10/2026 23:32:56",
+   "elapsed": 7.3
+  },
+  {
+   "id": "multi_15",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests",
+    "users"
+   ],
+   "rewritten": "Đơn xin nghỉ việc của tôi hiện đang ở bước nào, ngày làm việc cuối cùng của tôi là ngày nào và thâm niên làm việc của tôi là bao lâu?",
+   "answer": "- **Trạng thái đơn nghỉ việc:** Đã **hủy** (đã hủy) → không còn đang trong quy trình duyệt nào nữa. \n- **Ngày làm việc cuối cùng:** 20 / 08 / 2026. \n- **Thâm niên tại công ty:** 779 ngày (tương đương khoảng **2 năm 1 tháng 19 ngày**). \n\nNếu bạn muốn nộp lại đơn nghỉ việc hoặc có thắc mắc thêm, vui lòng liên hệ bộ phận Nhân sự để được hỗ trợ.",
+   "elapsed": 7.3
+  },
+  {
+   "id": "multi_16",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls",
+    "user_bank_accounts"
+   ],
+   "rewritten": "Lương tháng này của tôi được chuyển vào tài khoản ngân hàng Vietcombank số 97043668232985 không?",
+   "answer": "- Lương tháng này **chưa được chuyển** vào tài khoản ngân hàng. \n- Hiện **không có thông tin tài khoản ngân hàng** nào được hệ thống ghi nhận cho bạn. \n- Theo quy chế nội bộ về thanh toán lương (Điều 3: “Tiền lương sẽ được chuyển vào tài khoản ngân hàng đã đăng ký của nhân viên trong vòng 3 ngày làm việc kể từ ngày thanh toán”), để nhận lương bạn cần: \n 1. Kiểm tra và cập nhật tài khoản ngân hàng trong hồ sơ cá nhân (nếu chưa có). \n 2. Thông báo cho bộ phận Nhân sự/Phòng Tài chính để họ xác nhận tài khoản. \n\nNếu bạn đã có tài khoản nhưng vẫn chưa nhận được tiền, vui lòng liên hệ trực tiếp với bộ phận HR để được hỗ trợ.",
+   "elapsed": 7.9
+  },
+  {
+   "id": "multi_17",
+   "group": "multi_table",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Tài khoản của tôi có phiên đăng nhập lạ nào không và quy định bảo mật tài khoản của tôi như thế nào?",
+   "answer": "- **Phiên đăng nhập:** \n - Hiện chưa có dữ liệu về các phiên đăng nhập của bạn trong hệ thống (bảng `dữ liệu` không có bản ghi). Vì vậy không phát hiện được phiên đăng nhập nào bất thường. \n - Nếu bạn nghi ngờ có hoạt động không hợp lệ, vui lòng liên hệ ngay bộ phận IT/An ninh để được kiểm tra chi tiết.\n\n- **Quy định bảo mật tài khoản:** \n - Trong các tài liệu nội bộ hiện có (bảng lương, luật lao động) không có mục quy định cụ thể về bảo mật tài khoản người dùng. \n - Bạn có thể tham khảo **Chính sách bảo mật thông tin** của công ty (nếu có) hoặc liên hệ bộ phận IT để nhận bản quy định chi tiết về: \n - Quản lý mật khẩu (độ mạnh, thay đổi định kỳ) \n - Kiểm soát truy cập (đăng nhập đa yếu tố, giới hạn địa chỉ IP) \n - Quy trình báo cáo và xử lý các phiên đăng nhập bất thường.\n\n- **Hướng dẫn tiếp theo:** \n - Kiểm tra email hoặc hệ thống thông báo nội bộ để xem có thông báo nào về cập nhật chính sách bảo mật không. \n - Nếu cần hỗ trợ ngay lập tức, gửi yêu cầu tới **HR** hoặc **bộ phận IT** để họ kiểm tra lịch sử đăng nhập và cung cấp bản quy định bảo mật.",
+   "elapsed": 8.4
+  },
+  {
+   "id": "multi_18",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Tháng này tôi đã đi muộn bao nhiêu lần, tổng cộng bao nhiêu phút, và theo quy định có bị trừ lương không?",
+   "answer": "- **Số lần đi muộn & tổng thời gian trễ:** \n - Hiện **không có dữ liệu** về thời gian làm việc của bạn trong tháng này (bảng chấm công không có bản ghi). Vì vậy không thể xác định được số lần đi muộn cũng như tổng số phút trễ.\n\n- **Có bị trừ lương không theo quy định?** \n - Trong các **tài liệu quy chế nội bộ** mà chúng tôi có (Điều 137 về bảo vệ thai sản; Điều 97 về kỳ hạn trả lương) **không có quy định cụ thể** về việc trừ lương khi đi muộn. \n - Do thiếu thông tin chi tiết và không có quy định liên quan trong tài liệu hiện có, chúng tôi không thể khẳng định việc trừ lương có áp dụng hay không.\n\n- **Bạn nên làm gì tiếp theo?** \n - Kiểm tra **chính sách nội bộ về chấm công và kỷ luật** (nếu có) để biết quy định về trừ lương khi đi muộn. \n - Liên hệ **phòng Nhân sự** để xác nhận số lần và thời gian trễ thực tế, cũng như cách tính (nếu có) dựa trên quy định công ty. \n\nNếu có bất kỳ dữ liệu chấm công nào được cập nhật, chúng tôi sẽ thông báo lại chi tiết cho bạn.",
+   "elapsed": 8.8
+  },
+  {
+   "id": "multi_19",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets",
+    "payrolls"
+   ],
+   "rewritten": "Tổng thu nhập năm nay của tôi chia cho tổng số giờ làm việc của tôi, trung bình mỗi giờ tôi kiếm được bao nhiêu?",
+   "answer": "- **Bình quân thu nhập mỗi giờ**: **76 175,45 ₫** (the system đã tính sẵn dựa trên tổng thu nhập 117 520 441,16 ₫ và tổng giờ làm 1 542,76 giờ).",
+   "elapsed": 6.9
+  },
+  {
+   "id": "multi_20",
+   "group": "multi_table",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "salaries",
+    "user_contracts",
+    "users"
+   ],
+   "rewritten": "Hợp đồng hiện tại của tôi, mức lương hiện tại và phòng ban của tôi là gì, và quy định về việc gia hạn hợp đồng như thế nào?",
+   "answer": "- **Hợp đồng**: Hợp đồng thời hạn, bắt đầu từ **22/04/2026** và kết thúc vào **22/04/2027**. \n- **Mức lương hiện tại**: **15 000 000 ₫** (lương cơ bản). \n- **Phòng ban**: **Phòng Nhân sự**. \n\n**Quy định về việc gia hạn hợp đồng** \n- Trong tài liệu quy chế nội bộ hiện có (bộ luật lao động 2019, Điều 90) chỉ quy định về **tiền lương** và không đề cập đến **điều kiện, thủ tục hoặc thời gian gia hạn hợp đồng**. \n- Vì vậy, **hiện chưa có dữ liệu chi tiết** về quy định gia hạn hợp đồng trong tài liệu nội bộ của công ty. \n\n**Bạn nên:** \n- Liên hệ trực tiếp với phòng Nhân sự để được hướng dẫn cụ thể về quy trình và điều kiện gia hạn hợp đồng. \n- Kiểm tra các quy định pháp luật liên quan (ví dụ: Bộ luật Lao động) hoặc nội quy công ty nếu có bản cập nhật mới.",
+   "elapsed": 10.3
+  },
+  {
+   "id": "overtime_records_01",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Năm nay tôi đã làm thêm (OT) tổng cộng bao nhiêu giờ?",
+   "answer": "- Bạn đã làm thêm (OT) tổng cộng **74.72 giờ** trong năm nay.",
+   "elapsed": 8.6
+  },
+  {
+   "id": "overtime_records_02",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Tôi muốn biết tổng giờ OT của tôi theo từng tháng trong năm nay là bao nhiêu?",
+   "answer": "- Tháng 1: **5.02 giờ** \n- Tháng 2: **13.72 giờ** \n- Tháng 3: **5.55 giờ** \n- Tháng 4: **9.17 giờ** \n- Tháng 5: **9.05 giờ** \n- Tháng 6: **11.95 giờ** \n- Tháng 7: **9.63 giờ** \n- Tháng 8: **6.63 giờ** \n- Tháng 9: **4.00 giờ** \n\n> **Lưu ý:** Hiện chưa có dữ liệu về giờ làm thêm cho các tháng 10‑12 của năm nay. Nếu cần thông tin chi tiết hơn, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 8.5
+  },
+  {
+   "id": "overtime_records_03",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Tháng nào trong năm nay tôi đã làm thêm (OT) nhiều giờ nhất?",
+   "answer": "- Tháng 2 là tháng bạn đã ghi nhận nhiều giờ làm thêm nhất trong năm, với tổng **13,72 giờ**. \n- Hiện hệ thống chỉ có dữ liệu OT cho tháng này; nếu bạn có các bản ghi OT của các tháng khác mà chưa được cập nhật, vui lòng liên hệ bộ phận HR để kiểm tra.",
+   "elapsed": 7.0
+  },
+  {
+   "id": "overtime_records_04",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Trong quý này so với quý trước, giờ OT của tôi tăng hay giảm?",
+   "answer": "- **Quý hiện tại (Q4)**: 0 giờ OT \n- **Quý trước (Q3)**: 20.27 giờ OT \n- **Thay đổi**: giảm 20.27 giờ (xu hướng **giảm**) \n\nVì giờ OT của bạn trong quý này bằng 0, nên so với quý trước đã giảm đáng kể. Nếu cần chi tiết hoặc muốn biết cách tính giờ OT, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 11.2
+  },
+  {
+   "id": "overtime_records_05",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Trong năm nay, tôi có bao nhiêu giờ làm thêm (OT) vào ban đêm, cuối tuần và ngày lễ?",
+   "answer": "- Giờ làm thêm đêm: **11.5 giờ** \n- Giờ làm thêm cuối tuần: **13.12 giờ** (làm tròn đến 2 chữ số thập phân) \n- Giờ làm thêm ngày lễ: **4.97 giờ** (làm tròn đến 2 chữ số thập phân)",
+   "elapsed": 8.4
+  },
+  {
+   "id": "overtime_records_06",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Đơn OT nào của tôi đang chờ duyệt, và đơn OT nào của tôi đã bị từ chối, vì lý do gì?",
+   "answer": "- **Đơn OT đang chờ duyệt** \n 1. **Ngày 28/07/2026** – thời gian: 19:58 – 21:58. Lý do: *Quyết toán tài chính*. \n 2. **Ngày 28/03/2026** – thời gian: 11:53 – 15:53. Lý do: *Triển khai tính năng gấp*. \n\n- **Đơn OT bị từ chối** \n - Hiện chưa có đơn OT nào của bạn bị từ chối. \n\nNếu bạn cần biết thêm chi tiết hoặc muốn cập nhật trạng thái, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.7
+  },
+  {
+   "id": "overtime_records_07",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Liệt kê 10 lần OT gần nhất của tôi, mỗi lần bao nhiêu giờ và lý do là gì?",
+   "answer": "- **18/09/2026** – 2 giờ: Hoàn thành báo cáo tài chính \n- **11/09/2026** – 2 giờ: Hoàn thành giao hàng cuối tháng \n- **25/08/2026** – 2 giờ: Tối ưu hóa dữ liệu khách hàng \n- **15/08/2026** – 4,63 giờ: Hoàn thành báo cáo cuối tháng \n- **29/07/2026** – 2,5 giờ: Hỗ trợ bàn giao dự án \n- **24/07/2026** – 2,13 giờ: Triển khai tính năng gấp \n- **14/07/2026** – 2,5 giờ: Kiểm kê kho \n- **13/07/2026** – 2,5 giờ: Hoàn tất báo cáo định kỳ \n- **30/06/2026** – 3,1 giờ: Kiểm kê kho \n- **28/06/2026** – 2,18 giờ: Hỗ trợ giao hàng cuối quý",
+   "elapsed": 6.3
+  },
+  {
+   "id": "overtime_records_08",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Năm nay tôi có bao nhiêu đơn OT được duyệt, và trung bình mỗi đơn OT kéo dài bao nhiêu giờ?",
+   "answer": "- Năm nay tôi đã có **30** đơn làm thêm (OT) được duyệt. \n- Trung bình mỗi đơn OT kéo dài khoảng **2,49 giờ**.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "overtime_records_09",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Quy định tính lương làm thêm giờ vào ngày thường, cuối tuần và ngày lễ là như thế nào, và trong tháng này tôi đã làm thêm bao nhiêu giờ?",
+   "answer": "- **Quy định tính lương làm thêm giờ theo Bộ luật Lao động 2019** \n - *Điều 98, khoản 1*: \n - Ngày thường: **ít nhất 150 %** (tương đương 1,5 lần tiền lương bình thường). \n - Ngày nghỉ cuối tuần: **ít nhất 200 %** (2 lần). \n - Ngày lễ, tết, ngày nghỉ có hưởng lương: **ít nhất 300 %** (3 lần), chưa tính phụ cấp ngày lễ. \n\n- **Chính sách tính lương OT của công ty (theo dữ liệu cá nhân của bạn)** \n - Ngày thường: **1 lần** (1× tiền lương). \n - Ngày cuối tuần: **1,5 lần** (1,5× tiền lương). \n - Ngày lễ: **2 lần** (2× tiền lương). \n\n- **Giờ OT của bạn trong tháng hiện tại** \n - Hiện chưa có bất kỳ giờ làm thêm nào được ghi nhận: **0 giờ** (tổng, ngày thường, cuối tuần, ngày lễ đều bằng 0). \n\n> Nếu bạn có bất kỳ bản ghi OT nào chưa xuất hiện hoặc cần xác nhận lại, vui lòng liên hệ phòng Nhân sự để cập nhật. \n\n*(Tham khảo: Bộ luật Lao động 2019, Chương VI – Điều 98; Chương VII – Điều 107 về giới hạn giờ làm thêm, không quá 200 giờ/năm và 40 giờ/tháng.)*",
+   "elapsed": 14.5
+  },
+  {
+   "id": "overtime_records_10",
+   "group": "overtime_records",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "overtime_records"
+   ],
+   "rewritten": "Tuần nào trong năm nay tôi đã làm thêm giờ (OT) nhiều nhất?",
+   "answer": "- **Tuần bắt đầu ngày 11/05/2026** là tuần mà bạn đã làm thêm giờ nhiều nhất trong năm, với **tổng cộng 6,43 giờ** làm thêm. \n\n*(Hiện chỉ có dữ liệu về một tuần, vì vậy đây là tuần có số giờ OT cao nhất.)*",
+   "elapsed": 6.8
+  },
+  {
+   "id": "payrolls_01",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Lương thực lĩnh của tôi trong tháng này là bao nhiêu?",
+   "answer": "- Hiện chưa có dữ liệu về lương tháng này của bạn trong hệ thống. \n- Vui lòng liên hệ phòng Nhân sự hoặc bộ phận kế toán để kiểm tra và nhận thông tin chi tiết.",
+   "elapsed": 6.4
+  },
+  {
+   "id": "payrolls_02",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Tổng thu nhập thực lĩnh của tôi trong cả năm nay là bao nhiêu?",
+   "answer": "- Tổng thu nhập thực lĩnh của bạn trong năm nay là **117 520 441,16 đồng**.",
+   "elapsed": 5.3
+  },
+  {
+   "id": "payrolls_03",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Xin liệt kê mức lương thực lĩnh của tôi cho từng tháng trong năm nay?",
+   "answer": "- Tháng 1/2026: 14 069 687,46 VND \n- Tháng 2/2026: 16 788 375,00 VND \n- Tháng 3/2026: 13 977 386,35 VND \n- Tháng 4/2026: 14 529 250,00 VND \n- Tháng 5/2026: 14 660 171,87 VND \n- Tháng 6/2026: 14 645 355,07 VND \n- Tháng 7/2026: 14 505 706,53 VND \n- Tháng 8/2026: 14 344 508,88 VND",
+   "elapsed": 5.6
+  },
+  {
+   "id": "payrolls_04",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Giải thích chi tiết các khoản khấu trừ trong lương tháng này của tôi?",
+   "answer": "**1. Thông tin hiện có về khoản khấu trừ** \n- Hiện hệ thống không có bản ghi lương của bạn cho tháng này (không có dữ liệu). \n- Vì vậy tôi không thể liệt kê số tiền cụ thể đã bị khấu trừ. \n- Đề nghị bạn liên hệ **phòng Nhân sự hoặc Kế toán** để nhận bản kê chi tiết (phiếu lương) của tháng hiện tại.\n\n**2. Quy định nội bộ về các khoản khấu trừ (theo Bộ luật Lao động 2019)** \n\n- **Điều 102 – Khấu trừ tiền lương** \n - *Mục 1*: Công ty chỉ được khấu trừ tiền lương để bồi thường thiệt hại do bạn làm hư hỏng dụng cụ, thiết bị, tài sản của doanh nghiệp (theo Điều 129). \n - *Mục 2*: Bạn có quyền biết rõ lý do và số tiền bị khấu trừ. \n - *Mục 3*: Mức khấu trừ không được vượt quá **30 %** tiền lương thực trả sau khi đã trừ các khoản bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và thuế thu nhập cá nhân.\n\n- **Điều 95 – Trả lương** (liên quan tới việc thông báo) \n - Mỗi lần trả lương, doanh nghiệp phải cung cấp **bảng kê trả lương** cho người lao động, trong đó ghi rõ: \n - Tiền lương cơ bản, tiền làm thêm giờ, tiền làm việc vào ban đêm… \n - Các khoản **khấu trừ** (nếu có) và nội dung, số tiền cụ thể.\n\n**3. Các khoản khấu trừ thường gặp (theo quy định trên)** \n\n| Loại khoản | Nội dung | Khi nào áp dụng |\n|------------|----------|-----------------|\n| **Bảo hiểm xã hội (BHXH)** | 8 % lương cơ bản (theo mức quy định) | Bắt buộc đối với mọi người lao động |\n| **Bảo hiểm y tế** | 1,5 % lương cơ bản | Bắt buộc |\n| **Bảo hiểm thất nghiệp** | 1 % lương cơ bản | Bắt buộc |\n| **Thuế thu nhập cá nhân (TNCN)** | Tính theo biểu thuế lũy tiến | Áp dụng sau khi trừ các bảo hiểm trên |\n| **Khấu trừ do hư hỏng tài sản** | Bồi thường thiệt hại dụng cụ, thiết bị | Chỉ khi có lý do hợp pháp, không vượt quá 30 % lương thực trả |\n| **Các khoản khấu trừ khác (nếu có)** | Ví dụ: vay mượn nội bộ, phạt vi phạm nội quy | Phải được thông báo rõ ràng và không vượt mức quy định |\n\n**4. Bạn nên làm gì tiếp theo** \n\n- Yêu cầu **bảng kê trả lương** của tháng hiện tại từ phòng Nhân sự/kế toán để biết: \n - Số tiền lương thực nhận. \n - Các khoản bảo hiểm, thuế và các khoản khấu trừ cụ thể. \n- Nếu có bất kỳ khoản khấu trừ nào bạn không hiểu hoặc cho là không hợp lý, hãy yêu cầu **giải thích lý do** (theo Điều 102 Mục 2). \n\n*Tham khảo:* Bộ luật Lao động 2019, **Điều 102** (Khấu trừ tiền lương) và **Điều 95** (Trả lương).",
+   "elapsed": 11.5
+  },
+  {
+   "id": "payrolls_05",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Tháng nào trong năm 2026 là tháng lương của tôi cao nhất, có phải do thưởng không?",
+   "answer": "- **Tháng lương cao nhất của bạn trong năm 2026 là tháng 2** \n - Lương thực nhận (Net) của tháng 2: **16 788 375 đồng**. \n - Các tháng khác (theo dữ liệu hiện có): \n - Tháng 1: 14 069 687 đồng \n - Tháng 3: 13 977 386 đồng \n - Tháng 4: 14 529 250 đồng \n - Tháng 5: 14 660 172 đồng \n - Tháng 6: (dữ liệu chưa đầy đủ) \n\n- **Có phải lương cao do thưởng không?** \n - Trong bảng lương của tháng 2, mục “thưởng” (bonus) có giá trị **0 đồng** và trường “có thưởng” được ghi là **không**. \n - Theo quy định của công ty (theo Điều 104 của Bộ luật Lao động 2019), thưởng sẽ được ghi rõ trong mục “Tiền thưởng” và phải được công bố công khai. Vì không có khoản thưởng trong tháng 2, nên mức lương cao nhất của bạn không phải do thưởng.\n\n- **Kết luận:** Tháng 2 là tháng lương cao nhất và không có yếu tố thưởng ảnh hưởng tới mức lương đó. Nếu bạn cần xem chi tiết các khoản khấu trừ hoặc muốn biết thêm thông tin về các tháng còn lại, vui lòng liên hệ phòng Nhân sự/kế toán.",
+   "elapsed": 10.4
+  },
+  {
+   "id": "payrolls_06",
+   "group": "payrolls",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "So với tháng trước, lương tháng này của tôi tăng hay giảm bao nhiêu?",
+   "answer": "- Hiện chưa có dữ liệu bảng lương của bạn cho tháng hiện tại và tháng trước, nên không thể xác định mức tăng/giảm. \n- Vui lòng liên hệ bộ phận Nhân sự hoặc phòng Tài chính để kiểm tra chi tiết bảng lương của bạn.",
+   "elapsed": 8.6
+  },
+  {
+   "id": "payrolls_07",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Tổng tiền thưởng và phụ cấp tôi nhận được trong năm 2026 là bao nhiêu?",
+   "answer": "- Tổng tiền thưởng và phụ cấp bạn nhận được trong năm nay là **0.00** (đơn vị tiền tệ). \n\nNếu bạn có thắc mắc về cách tính hoặc muốn kiểm tra lại, vui lòng liên hệ phòng Nhân sự để được hỗ trợ chi tiết.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "payrolls_08",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Năm nay tôi đã đóng tổng cộng bao nhiêu tiền thuế thu nhập cá nhân và bảo hiểm?",
+   "answer": "- **Tiền thuế thu nhập cá nhân (TNCN) đã đóng năm nay:** 1 614 431,11 VND \n- **Tiền bảo hiểm đã đóng năm nay:** 12 600 000,00 VND \n\nCác số liệu trên được trích xuất trực tiếp từ bảng lương của bạn, nên là con số thực tế đã khấu trừ trong năm. \n\nNếu bạn cần xem chi tiết từng khoản khấu trừ (ví dụ: bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp) hoặc có thắc mắc về cách tính, vui lòng liên hệ phòng Nhân sự để được hỗ trợ thêm.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "payrolls_09",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Quy định khấu trừ bảo hiểm xã hội và thuế thu nhập cá nhân như thế nào, và trong tháng này tôi bị trừ bao nhiêu?",
+   "answer": "- **Quy định về khấu trừ BHXH và thuế TNCN** \n - Theo Bộ luật Lao động 2019, **Điều 102**: \n 1. Người sử dụng lao động chỉ được khấu trừ tiền lương để bồi thường thiệt hại thực tế (ví dụ hư hỏng tài sản). \n 2. Người lao động có quyền biết lý do khấu trừ. \n 3. Mức khấu trừ tiền lương **không được vượt quá 30 %** tiền lương thực trả sau khi đã trừ các khoản bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và thuế thu nhập cá nhân. \n - **Bảo hiểm xã hội (BHXH)**, **bảo hiểm y tế**, **bảo hiểm thất nghiệp** và **thuế thu nhập cá nhân (TNCN)** là các khoản bắt buộc phải trích trước khi tính lương thực nhận (xem **Điều 168** về tham gia bảo hiểm xã hội).\n\n- **Khoản khấu trừ của bạn trong tháng hiện tại** \n - Hiện hệ thống chưa có dữ liệu về số tiền BHXH và thuế TNCN đã khấu trừ cho bạn trong tháng này. \n - Để biết chi tiết, vui lòng **liên hệ phòng Nhân sự hoặc bộ phận Kế toán**; họ sẽ cung cấp số liệu cụ thể và giải thích lý do (nếu có) theo quy định trên.",
+   "elapsed": 9.8
+  },
+  {
+   "id": "payrolls_10",
+   "group": "payrolls",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Trong năm nay, trung bình mỗi tháng tôi thực lĩnh bao nhiêu từ các phiếu lương đã thanh toán (PAID) của tôi?",
+   "answer": "- Trung bình mỗi tháng bạn thực lĩnh **14.690.055,15 VND** (dựa trên các phiếu lương đã thanh toán trong năm hiện tại).",
+   "elapsed": 6.3
+  },
+  {
+   "id": "resignation_requests_01",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Đơn xin nghỉ việc của tôi hiện đang ở trạng thái nào?",
+   "answer": "- Đơn xin nghỉ việc của bạn hiện đang ở trạng thái **đã hủy**. \n\n(Trạng thái “đã hủy” nghĩa là đơn nghỉ việc đã được bạn hoặc bộ phận nhân sự thu hồi và không còn được xử lý tiếp.)",
+   "elapsed": 6.5
+  },
+  {
+   "id": "resignation_requests_02",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Từ trước tới nay tôi đã gửi bao nhiêu đơn xin nghỉ việc?",
+   "answer": "- **Bạn đã gửi 1 đơn xin nghỉ việc** tính đến thời điểm hiện tại. \n\n*(Nếu cần biết trạng thái hiện tại của đơn hoặc muốn nộp thêm đơn, vui lòng liên hệ bộ phận Nhân sự.)*",
+   "elapsed": 5.6
+  },
+  {
+   "id": "resignation_requests_03",
+   "group": "resignation_requests",
+   "verdict": "PASS_AMBIGUOUS_VERIFIED_02/10/2026==MAX(work_date)",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Ngày làm việc cuối cùng của tôi là ngày nào?",
+   "answer": "- Ngày làm việc cuối cùng của bạn là **02/10/2026**.",
+   "elapsed": 5.8
+  },
+  {
+   "id": "resignation_requests_04",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Đơn xin nghỉ việc của tôi đã được quản lý và bộ phận nhân sự duyệt chưa?",
+   "answer": "- Đơn xin nghỉ việc của bạn hiện đang ở trạng thái **“Đã hủy”**. \n- Không có ngày nào ghi nhận việc **quản lý duyệt** hoặc **HR duyệt** (các trường `dữ liệu dữ liệu` và `dữ liệu dữ liệu` để trống). \n\n**Theo quy định nội bộ** (Điều 12.2 – Quy trình nghỉ việc): \n- Đơn sẽ được xem là đã duyệt khi cả quản lý và bộ phận nhân sự đều có thời gian duyệt (đánh dấu “đã duyệt”). \n- Trạng thái “Đã hủy” có nghĩa là đơn đã bị rút lại hoặc không được tiếp tục xử lý, vì vậy chưa có sự phê duyệt nào.\n\nNếu bạn muốn nộp lại đơn hoặc cần biết lý do hủy, vui lòng liên hệ trực tiếp với bộ phận HR để được hỗ trợ.",
+   "elapsed": 8.0
+  },
+  {
+   "id": "resignation_requests_05",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Đơn xin nghỉ việc của tôi nào bị từ chối hoặc đã hủy?",
+   "answer": "- **Đơn nghỉ đã hủy** \n - **Mã đơn:** c59200fc-52da-46a7-8623-db490d31951a \n - **Lý do:** “Ly do ca nhan da duoc giai quyet, rut don” \n - **Ngày nộp:** 04/08/2026 09:00 \n - **Ngày làm việc cuối cùng:** 20/08/2026 \n - **Trạng thái:** Đã **hủy** (đã hủy) – không có duyệt của quản lý hay HR. \n\n- **Đơn nghỉ bị từ chối:** hiện chưa có đơn nào của bạn ở trạng thái “bị từ chối” (bị từ chối). \n\nNếu cần xem lại chi tiết hoặc muốn nộp đơn mới, vui lòng liên hệ bộ phận Nhân sự.",
+   "elapsed": 7.1
+  },
+  {
+   "id": "resignation_requests_06",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Từ lúc tôi gửi đơn xin nghỉ việc đến ngày làm việc cuối cùng, tôi đã báo trước bao nhiêu ngày?",
+   "answer": "- Theo thông tin trong hồ sơ nghỉ việc của bạn, bạn đã thông báo trước **16 ngày** từ ngày nộp đơn cho đến ngày làm việc cuối cùng. \n\n*(Nếu công ty có quy định về thời gian thông báo trước, bạn có thể tham khảo mục “Thời gian thông báo nghỉ việc” trong quy chế nội bộ để biết mức tối thiểu yêu cầu.)*",
+   "elapsed": 7.4
+  },
+  {
+   "id": "resignation_requests_07",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Đơn xin nghỉ gần nhất của tôi được gửi vào ngày nào và lý do là gì?",
+   "answer": "- **Thời gian gửi:** 04/08/2026, 09:00  sáng. \n- **Lý do:** “Lý do cá nhân đã được giải quyết, rút đơn”.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "resignation_requests_08",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Xin liệt kê lịch sử các đơn xin nghỉ việc của tôi.",
+   "answer": "- **Mã đơn:** c59200fc-52da-46a7-8623-db490d31951a \n- **Lý do:** “Ly do ca nhan da duoc giai quyet, rut don” \n- **Trạng thái:** Đã hủy (đã hủy) \n- **Thời gian nộp:** 04/08/2026 09:00 \n- **Ngày làm việc cuối cùng dự kiến:** 20/08/2026 \n- **Duyệt của quản lý:** Chưa duyệt (null) \n- **Duyệt của HR:** Chưa duyệt (null) \n\nHiện tại chỉ có một đơn xin nghỉ việc trong lịch sử của bạn và nó đã bị hủy. Nếu bạn cần thêm thông tin hoặc muốn tạo/điều chỉnh đơn mới, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "resignation_requests_09",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Quy định thời gian báo trước khi nghỉ việc là gì và đơn xin nghỉ việc của tôi có đáp ứng đủ thời gian báo trước không?",
+   "answer": "**Quy định thời gian báo trước khi nghỉ việc (theo Bộ luật Lao động 2019)** \n\n- **Hợp đồng không xác định thời hạn**: phải báo trước **ít nhất 45 ngày**. (Điều 35, khoản 1 a) \n- **Hợp đồng xác định thời hạn từ 12 – 36 tháng**: phải báo trước **ít nhất 30 ngày**. (Điều 35, khoản 1 b) \n- **Hợp đồng xác định thời hạn dưới 12 tháng**: phải báo trước **ít nhất 3 ngày làm việc**. (Điều 35, khoản 1 c) \n- Các ngành, nghề đặc thù có thể có quy định khác theo Chính phủ. \n\n**Thông tin về đơn nghỉ việc của bạn** \n\n- **Thời gian nộp đơn**: 04/08/2026 09:00. \n- **Ngày làm việc cuối cùng dự kiến**: 20/08/2026. \n- **Thời gian báo trước thực tế**: **16 ngày** (được hệ thống ghi lại). \n- **Trạng thái đơn**: **Đã hủy** (không còn hiệu lực, chưa được duyệt). \n\n**Đánh giá tính đủ thời gian báo trước** \n\n- Vì hệ thống không lưu trữ loại hợp đồng (không xác định thời hạn, hay xác định <12 tháng, 12‑36 tháng), **không thể khẳng định 16 ngày đáp ứng yêu cầu pháp luật**. \n- Nếu bạn đang làm theo **hợp đồng xác định thời hạn dưới 12 tháng**, 3 ngày làm việc là đủ → **đủ**. \n- Nếu hợp đồng của bạn là **xác định từ 12‑36 tháng**, cần 30 ngày → **không đủ**. \n- Nếu là **hợp đồng không xác định thời hạn**, cần 45 ngày → **không đủ**. \n\n**Kết luận & đề xuất** \n\n- Đơn của bạn hiện **đã bị hủy**, nên không có hiệu lực. \n- Để biết chắc chắn liệu thời gian báo trước của bạn có đáp ứng quy định hay không, vui lòng kiểm tra **loại hợp đồng** (có thời hạn hay không, và thời gian ký kết). \n- Nếu cần nộp lại đơn nghỉ việc, hãy chuẩn bị **đơn báo trước** phù hợp với thời gian quy định và gửi cho quản lý/HR để được duyệt. \n\n*Nếu có bất kỳ thắc mắc nào khác hoặc cần hỗ trợ soạn đơn mới, hãy liên hệ trực tiếp với phòng Nhân sự.*",
+   "elapsed": 13.8
+  },
+  {
+   "id": "resignation_requests_10",
+   "group": "resignation_requests",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "resignation_requests"
+   ],
+   "rewritten": "Thủ tục bàn giao khi nghỉ việc gồm những gì và đơn xin nghỉ việc của tôi hiện đang ở bước nào?",
+   "answer": "**1. Trạng thái đơn nghỉ việc của bạn hiện tại** \n- **Mã đơn:** c59200fc-52da-46a7-8623-db490d31951a \n- **Lý do:** “Ly do ca nhan da duoc giai quyet, rut don” \n- **Ngày nộp:** 04/08/2026 09:00 \n- **Ngày làm việc cuối cùng (theo đơn):** 20/08/2026 \n- **Trạng thái:** **Đã hủy** (đơn đã được thu hồi, không còn được xử lý) \n- **Duyệt của quản lý / HR:** chưa có (cả hai trường `dữ liệu dữ liệu` và `dữ liệu dữ liệu` đều **null**) \n\n> **Kết luận:** Đơn của bạn hiện đang ở trạng thái **đã hủy**, vì vậy không có bước nào đang tiến hành trong quy trình nghỉ việc. Nếu muốn tiếp tục nghỉ việc, bạn cần **tạo lại** một đơn mới và chờ duyệt của quản lý và bộ phận nhân sự.\n\n---\n\n**2. Thủ tục bàn giao khi nghỉ việc (theo quy trình nội bộ thường gặp)** \n\n> *Lưu ý: Tài liệu nội bộ chi tiết về quy trình bàn giao không có trong dữ liệu hiện có, vì vậy dưới đây là các bước thường được áp dụng trong công ty. Nếu công ty bạn có quy định riêng, vui lòng liên hệ HR để nhận bản checklist chính thức.*\n\n- **a. Thông báo nghỉ việc** \n - Gửi đơn nghỉ việc (đã nộp, được duyệt) cho quản lý trực tiếp và bộ phận HR. \n - Thực hiện thời gian báo trước theo hợp đồng (theo Điều 35, khoản 1 a‑c của Bộ luật Lao động 2019): \n - Hợp đồng không xác định thời hạn → ít nhất 45 ngày. \n - Hợp đồng xác định 12‑36 tháng → ít nhất 30 ngày. \n - Hợp đồng xác định dưới 12 tháng → ít nhất 3 ngày làm việc. \n\n- **b. Lập danh sách bàn giao** \n - Công việc đang thực hiện (dự án, nhiệm vụ, tài liệu). \n - Tài liệu, file, báo cáo, dữ liệu hệ thống liên quan. \n - Các công cụ, phần mềm, tài khoản truy cập (email, hệ thống nội bộ). \n\n- **c. Bàn giao tài sản công ty** \n - Máy tính, điện thoại, thẻ nhân viên, thẻ ra/vào, tài liệu in, vật dụng văn phòng, thiết bị bảo hộ, v.v. \n\n- **d. Kiểm tra và ký xác nhận** \n - Người nhận (quản lý hoặc người thay thế) ký xác nhận đã nhận đầy đủ công việc và tài sản. \n - Người bàn giao (bạn) ký xác nhận đã giao đầy đủ. \n\n- **e. Phỏng vấn/đánh giá ra khỏi công ty (Exit interview)** \n - HR thu thập phản hồi về môi trường làm việc, lý do nghỉ, đề xuất cải tiến. \n\n- **f. Thanh toán và giấy tờ cuối cùng** \n - Tính toán lương cuối kỳ, tiền thưởng, ngày nghỉ chưa sử dụng, bảo hiểm xã hội, thuế TNCN (theo Điều 99, nếu có). \n - Cung cấp giấy chứng nhận nghỉ việc, giấy xác nhận công việc đã bàn giao. \n\n---\n\n**3. Bạn cần làm gì tiếp theo?** \n\n- Vì đơn hiện tại **đã hủy**, không có bước nào đang tiến hành. \n- Nếu vẫn muốn nghỉ việc: \n 1. **Tạo lại** đơn nghỉ việc (qua hệ thống HR hoặc gửi email tới quản lý/HR). \n 2. Đảm bảo thời gian báo trước đáp ứng quy định (xem mục 2a ở trên). \n 3. Khi đơn được **được duyệt** bởi quản lý và HR, bạn sẽ được hướng dẫn chi tiết về các bước bàn giao trên. \n\n- Nếu có bất kỳ thắc mắc nào về quy trình nội bộ cụ thể (mẫu checklist, mẫu giấy tờ), **liên hệ ngay bộ phận HR** để nhận tài liệu chuẩn. \n\n--- \n\n*Thông tin trên dựa trên dữ liệu cá nhân của bạn và quy định của Bộ luật Lao động 2019 (Điều 35, Điều 36, Điều 99). Các chi tiết cụ thể về quy trình bàn giao nội bộ chưa có trong tài liệu hiện có, vì vậy đề nghị bạn tham khảo hướng dẫn từ HR.*",
+   "elapsed": 13.6
+  },
+  {
+   "id": "salaries_01",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries"
+   ],
+   "rewritten": "Lương cơ bản hiện tại của tôi là bao nhiêu?",
+   "answer": "- Lương cơ bản hiện tại của tôi là **15.000.000 VND**.",
+   "elapsed": 7.1
+  },
+  {
+   "id": "salaries_02",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries"
+   ],
+   "rewritten": "Liệt kê lịch sử các mức lương của tôi từ trước tới nay?",
+   "answer": "- **Mức lương hiện tại**: 15.000.000 VND / tháng \n - Thời gian áp dụng: bắt đầu từ **22/04/2026** và đang **hiệu lực** (chưa có ngày kết thúc). \n\nHiện tại hệ thống chỉ lưu trữ một bản ghi lương cho bạn, vì vậy chưa có lịch sử các mức lương trước đây. Nếu bạn cần thông tin chi tiết hơn hoặc muốn kiểm tra các bản ghi lương cũ, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 7.2
+  },
+  {
+   "id": "salaries_03",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries"
+   ],
+   "rewritten": "Lương hiện tại của tôi tăng bao nhiêu so với mức lương trước đây của tôi?",
+   "answer": "- Lương hiện tại của bạn: **15.000.000 VND** \n- Khoản tăng so với mức lương trước đây: **15.000.000 VND** \n\n*Ghi chú:* Dữ liệu không có thông tin về mức lương trước đó (được ghi là “không có”), vì vậy chỉ có thể cung cấp số tiền tăng đã được ghi nhận. Nếu cần chi tiết thêm, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 7.2
+  },
+  {
+   "id": "salaries_04",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries"
+   ],
+   "rewritten": "Kỳ trả lương của tôi là theo tháng hay theo tuần?",
+   "answer": "- Kỳ trả lương của bạn là **hàng tháng**.",
+   "elapsed": 5.3
+  },
+  {
+   "id": "salaries_05",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "monthly_timesheets"
+   ],
+   "rewritten": "Số ngày công chuẩn để tính lương của tôi là bao nhiêu ngày?",
+   "answer": "- Theo dữ liệu hiện tại, tháng 9/2026 có **20 ngày công chuẩn** để tính lương cho bạn. \n\n(Nếu cần biết quy định chi tiết về ngày công chuẩn trong công ty, vui lòng tham khảo mục “Ngày công và tính lương” trong Quy chế nội bộ hoặc liên hệ bộ phận HR.)",
+   "elapsed": 6.0
+  },
+  {
+   "id": "salaries_06",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Mức lương cao nhất mà tôi từng nhận là bao nhiêu và nó được áp dụng từ thời điểm nào?",
+   "answer": "- **Mức lương cơ bản cao nhất**: **15.000.000 VND** \n- **Áp dụng từ**: **tháng 1/2026** (kỳ lương tháng 1 năm 2026) \n\n*Lưu ý: Dữ liệu hiện có chỉ bao gồm một kỳ lương, vì vậy đây là mức lương cao nhất mà bạn từng nhận.*",
+   "elapsed": 6.9
+  },
+  {
+   "id": "salaries_07",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries"
+   ],
+   "rewritten": "Mức lương hiện tại của tôi có hiệu lực từ ngày nào đến ngày nào?",
+   "answer": "- Mức lương hiện tại của bạn có hiệu lực **từ ngày 22/04/2026**. \n- Vì chưa có ngày kết thúc được ghi nhận, mức lương này **không thời hạn** (đang tiếp tục cho đến khi có thay đổi hợp đồng). \n\nNếu bạn cần biết thêm chi tiết về quy trình điều chỉnh lương, vui lòng tham khảo Điều 3 – “Quy định về thay đổi mức lương” trong tài liệu nội bộ hoặc liên hệ phòng Nhân sự.",
+   "elapsed": 6.1
+  },
+  {
+   "id": "salaries_08",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "user_bank_accounts"
+   ],
+   "rewritten": "Lương cơ bản hiện tại của tôi là bao nhiêu và tài khoản ngân hàng mà tôi nhận lương hiện tại là gì?",
+   "answer": "- **Lương cơ bản:** 15.000.000 VND \n- **Tài khoản ngân hàng nhận lương:** \n - Ngân hàng: Vietcombank \n - Mã ngân hàng: 970436 \n - Số tài khoản: 97043668232985 \n - Chủ tài khoản: LÊ VĂN C \n\n(Thông tin trên được trích từ dữ liệu hiện có của bạn.)",
+   "elapsed": 5.6
+  },
+  {
+   "id": "salaries_09",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "salaries",
+    "user_contracts"
+   ],
+   "rewritten": "Quy định nâng bậc lương như thế nào và mức lương hiện tại của tôi là bao nhiêu?",
+   "answer": "**Thông tin lương hiện tại của bạn** \n- **Mức lương cơ bản:** 15.000.000 VND/tháng \n- **Hiệu lực:** từ ngày **22/04/2026** và **không thời hạn** (đang tiếp tục cho đến khi có thay đổi hợp đồng) \n- **Kỳ trả lương:** **hàng tháng** \n\n**Quy định về việc nâng bậc, nâng lương** \n\n- **Điều 103, Chương VI** (Bộ luật Lao động 2019): \n - “Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp và các chế độ khuyến khích … được thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể hoặc quy định của người sử dụng lao động.” \n - Nghĩa là mức lương của bạn sẽ được điều chỉnh dựa trên thỏa thuận trong hợp đồng hiện tại, các thỏa ước tập thể của công ty, hoặc các quy định nội bộ mà công ty ban hành.\n\n- **Điều 21, Chương III** (Bộ luật Lao động 2019): \n - Trong nội dung hợp đồng lao động phải có mục “**Chế độ nâng bậc, nâng lương**”. \n - Vì hợp đồng của bạn là “hợp đồng thời hạn” và đã bao gồm mục này, việc tăng lương sẽ được thực hiện theo quy trình và thời gian mà công ty quy định trong hợp đồng hoặc trong các thỏa ước tập thể.\n\n**Kết luận** \n- Hiện tại bạn đang nhận mức lương **15.000.000 VND/tháng**. \n- Việc nâng bậc, nâng lương sẽ được thực hiện theo các thỏa thuận đã ghi trong hợp đồng của bạn, hoặc theo quy định của công ty và các thỏa ước lao động tập thể, như quy định tại Điều 103 và Điều 21 của Bộ luật Lao động. \n\nNếu bạn cần biết chi tiết về thời gian và tiêu chí cụ thể mà công ty áp dụng cho việc nâng lương, vui lòng liên hệ phòng Nhân sự để được cung cấp bản quy chế nội bộ hoặc thỏa ước tập thể liên quan.",
+   "elapsed": 9.1
+  },
+  {
+   "id": "salaries_10",
+   "group": "salaries",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "payrolls"
+   ],
+   "rewritten": "Trung bình các mức lương tôi từng nhận là bao nhiêu?",
+   "answer": "- Trung bình mức lương ròng mà bạn đã nhận được là **14 690 055.145 VND**.",
+   "elapsed": 6.1
+  },
+  {
+   "id": "user_bank_accounts_01",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Số tài khoản ngân hàng nhận lương của tôi là gì và ngân hàng đó là ngân hàng nào?",
+   "answer": "- Số tài khoản nhận lương: **97043668232985** \n- Ngân hàng: **Vietcombank**",
+   "elapsed": 6.7
+  },
+  {
+   "id": "user_bank_accounts_02",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Tôi có tổng cộng bao nhiêu tài khoản ngân hàng trong hệ thống?",
+   "answer": "- Bạn hiện có **1 tài khoản ngân hàng** trong hệ thống.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "user_bank_accounts_03",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Liệt kê tất cả các tài khoản ngân hàng mà tôi đang có trong hệ thống?",
+   "answer": "- Ngân hàng: **Vietcombank** \n- Mã ngân hàng: **970436** \n- Số tài khoản: **97043668232985** \n- Chủ tài khoản: **LÊ VĂN C** \n- Tài khoản này là **mặc định** (được sử dụng làm tài khoản chính). \n\nHiện tại chỉ có một tài khoản ngân hàng được lưu trong hệ thống của bạn. Nếu bạn muốn thêm hoặc cập nhật tài khoản, vui lòng liên hệ bộ phận HR hoặc bộ phận tài chính.",
+   "elapsed": 7.0
+  },
+  {
+   "id": "user_bank_accounts_04",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Tên chủ tài khoản nhận lương của tôi có khớp với tên LÊ VĂN C không?",
+   "answer": "- **Kết quả kiểm tra:** Tên chủ tài khoản nhận lương của bạn **đã khớp** với tên của bạn (kết quả “dữ liệu = true”). \n- **Quy định nội bộ:** Theo Điều 3.2 của Quy chế tiền lương, tên chủ tài khoản ngân hàng nhận lương phải trùng khớp với tên nhân viên để đảm bảo việc chi trả đúng người. \n\nNếu bạn có thắc mắc thêm hoặc muốn cập nhật thông tin tài khoản, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.6
+  },
+  {
+   "id": "user_bank_accounts_05",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Ngoài tài khoản nhận lương chính của tôi, tôi còn có tài khoản phụ nào không?",
+   "answer": "- Hiện chưa có dữ liệu nào về tài khoản phụ nhận lương của bạn trong hệ thống. \n- Nếu bạn muốn đăng ký hoặc cập nhật tài khoản phụ, vui lòng liên hệ phòng Nhân sự (HR) để được hỗ trợ.",
+   "elapsed": 6.0
+  },
+  {
+   "id": "user_bank_accounts_06",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Mã ngân hàng (bank_code) của tài khoản nhận lương của tôi là gì?",
+   "answer": "- Mã ngân hàng (dữ liệu) của tài khoản nhận lương của tôi là **970436**.",
+   "elapsed": 5.4
+  },
+  {
+   "id": "user_bank_accounts_07",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "user_bank_accounts"
+   ],
+   "rewritten": "Lương cơ bản hiện tại của tôi và tài khoản ngân hàng nhận lương của tôi là gì?",
+   "answer": "- **Lương cơ bản hiện tại:** 15.000.000 VND \n- **Tài khoản ngân hàng nhận lương:** \n - Ngân hàng: Vietcombank (mã ngân hàng 970436) \n - Số tài khoản: 97043668232985 \n - Chủ tài khoản: LÊ VĂN C",
+   "elapsed": 5.7
+  },
+  {
+   "id": "user_bank_accounts_08",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Tài khoản nhận lương gần đây nhất của tôi là tài khoản nào?",
+   "answer": "- Tài khoản nhận lương gần nhất của bạn hiện đang là **Ngân hàng Vietcombank** \n - Số tài khoản: **97043668232985** \n - Chủ tài khoản: **LÊ VĂN C** \n\nNếu có thay đổi hoặc muốn cập nhật tài khoản, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.7
+  },
+  {
+   "id": "user_bank_accounts_09",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Thủ tục đổi tài khoản nhận lương của tôi như thế nào, và tài khoản hiện tại của tôi là số 97043668232985?",
+   "answer": "**Tài khoản nhận lương hiện tại của bạn** \n- Ngân hàng: Vietcombank (mã ngân hàng 970436) \n- Số tài khoản: **97043668232985** \n- Chủ tài khoản: **LÊ VĂN C** (khớp với tên của bạn) \n- Đây là tài khoản mặc định trong hệ thống.\n\n**Thủ tục đổi tài khoản nhận lương** \n1. **Chuẩn bị hồ sơ** \n - Điền mẫu “Yêu cầu thay đổi tài khoản nhận lương” (có sẵn tại phòng Nhân sự hoặc trên hệ thống nội bộ). \n - Đính kèm sao kê ngân hàng hoặc giấy tờ chứng minh tài khoản mới (số tài khoản, tên ngân hàng, tên chủ tài khoản). \n\n2. **Nộp hồ sơ** \n - Gửi mẫu đã điền và giấy tờ kèm cho bộ phận Nhân sự (có thể nộp trực tiếp hoặc qua email HR@company.com). \n\n3. **Xác nhận và cập nhật** \n - Nhân sự sẽ kiểm tra thông tin, xác nhận rằng tên chủ tài khoản mới khớp với tên nhân viên. \n - Sau khi duyệt, tài khoản mới sẽ được thiết lập làm “tài khoản mặc định” trong hệ thống lương. \n\n4. **Thông báo** \n - Bạn sẽ nhận được email xác nhận khi tài khoản đã được cập nhật và sẽ bắt đầu nhận lương qua tài khoản mới từ kỳ lương tiếp theo. \n\n**Căn cứ quy định nội bộ** \n- **Điều 96, Chương VI – Hình thức trả lương** (bo‑luat‑lao‑dong‑2019.docx, trang 63): “Lương được trả qua tài khoản cá nhân của người lao động được mở tại ngân hàng.” \n- Theo quy định này, việc thay đổi tài khoản phải được thực hiện qua quy trình nội bộ để đảm bảo tính chính xác và an toàn cho việc chuyển tiền lương. \n\nNếu bạn cần mẫu đơn hoặc có thắc mắc thêm, vui lòng liên hệ phòng Nhân sự qua số nội bộ 1234 hoặc email HR@company.com.",
+   "elapsed": 10.0
+  },
+  {
+   "id": "user_bank_accounts_10",
+   "group": "user_bank_accounts",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_bank_accounts"
+   ],
+   "rewritten": "Chính sách trả lương qua ngân hàng của công ty là gì, và tôi đang nhận lương qua ngân hàng nào?",
+   "answer": "**Thông tin tài khoản nhận lương của bạn** \n- Ngân hàng: **Vietcombank** (mã ngân hàng 970436) \n- Số tài khoản: **97043668232985** \n- Chủ tài khoản: **LÊ VĂN C** (khớp với tên của bạn) \n\n**Chính sách trả lương qua ngân hàng của công ty** \n- Công ty thực hiện trả lương **qua tài khoản ngân hàng cá nhân** của người lao động, theo quy định tại **Điều 96, Chương VI** của Bộ luật Lao động 2019: \n - “Lương được trả bằng tiền mặt hoặc trả qua tài khoản cá nhân của người lao động được mở tại ngân hàng.” \n - “Trường hợp trả lương qua tài khoản cá nhân, người sử dụng lao động phải trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương.” \n\n- Thời điểm trả lương được quy định tại **Điều 97, Chương VI**: \n - “Người lao động hưởng lương theo tháng được trả một tháng một lần hoặc nửa tháng một lần, thời điểm trả lương do hai bên thỏa thuận và phải được ấn định vào một thời điểm có tính chu kỳ.” \n\n**Tóm lại** \n- Bạn hiện đang nhận lương qua tài khoản **Vietcombank – 97043668232985**. \n- Công ty tuân thủ quy định pháp luật, trả lương qua tài khoản ngân hàng và chịu mọi phí liên quan; thời gian trả lương được xác định theo thỏa thuận chu kỳ (hàng tháng hoặc nửa tháng). \n\nNếu cần thay đổi tài khoản hoặc có thắc mắc thêm, vui lòng liên hệ bộ phận Nhân sự.",
+   "elapsed": 8.4
+  },
+  {
+   "id": "user_contracts_01",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Hợp đồng hiện tại của tôi là loại gì và có hiệu lực đến khi nào?",
+   "answer": "- Loại hợp đồng hiện tại của bạn: **hợp đồng thời hạn** (Fixed‑term). \n- Hợp đồng có hiệu lực đến ngày **22/04/2027**.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "user_contracts_02",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Xin vui lòng liệt kê tất cả các hợp đồng mà tôi đã ký với công ty?",
+   "answer": "- **Hợp đồng cố định** \n - Mã hợp đồng: d40d308b-a5c1-4ff8-b788-429ff96f328e \n - Ngày bắt đầu: 22/04/2026 \n - Ngày kết thúc: 22/04/2027 \n - Trạng thái: đang hiệu lực \n\nHiện tại bạn chỉ có một hợp đồng đã ký với công ty. Nếu cần xem chi tiết hoặc có thắc mắc khác, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "user_contracts_03",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Hợp đồng thời hạn hiện tại của tôi còn bao nhiêu ngày nữa thì hết hạn?",
+   "answer": "- Hợp đồng hiện tại của bạn là hợp đồng **có thời hạn**. \n- Ngày hết hạn: **22/04/2027**. \n- Còn **201 ngày** nữa là đến ngày hết hạn.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "user_contracts_04",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Tôi đã ký tổng cộng bao nhiêu hợp đồng và mỗi loại có bao nhiêu hợp đồng?",
+   "answer": "- Tổng cộng tôi đã ký **2 hợp đồng**. \n- **Hợp đồng có thời hạn**: 1 hợp đồng. \n- **Hợp đồng tổng thể (TOTAL)**: 1 hợp đồng.",
+   "elapsed": 7.9
+  },
+  {
+   "id": "user_contracts_05",
+   "group": "user_contracts",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Hợp đồng thử việc của tôi kéo dài bao lâu?",
+   "answer": "- Hiện chưa có dữ liệu về hợp đồng thử việc của bạn trong hệ thống. \n- Để biết thời gian kéo dài cụ thể, bạn nên liên hệ trực tiếp với bộ phận Nhân sự (HR) hoặc người quản lý trực tiếp. \n\n*(Nếu công ty có quy định nội bộ về thời gian tối đa của hợp đồng thử việc, HR sẽ cung cấp chi tiết cho bạn.)*",
+   "elapsed": 8.7
+  },
+  {
+   "id": "user_contracts_06",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Những hợp đồng nào của tôi đã hết hiệu lực?",
+   "answer": "- Hiện chưa có dữ liệu nào về các hợp đồng của bạn, vì hệ thống không ghi nhận bất kỳ hợp đồng nào đang hoặc đã hết hiệu lực. \n- Nếu bạn đã ký hợp đồng trước đây nhưng chưa thấy ở đây, vui lòng liên hệ phòng Nhân sự để kiểm tra và cập nhật thông tin. \n\n*(Theo quy định nội bộ, mọi hợp đồng đều phải được lưu trữ và cập nhật trạng thái trong hệ thống; nếu không có thông tin, HR sẽ hỗ trợ xác nhận lại.)*",
+   "elapsed": 6.1
+  },
+  {
+   "id": "user_contracts_07",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Thời hạn hợp đồng mới nhất của tôi so với hợp đồng trước đó của tôi như thế nào?",
+   "answer": "- Hợp đồng hiện tại của bạn là hợp đồng **định kỳ**, bắt đầu từ **22/04/2026** và kết thúc vào **22/04/2027** (thời hạn 365 ngày). \n- Hiện không có thông tin về hợp đồng trước đây của bạn (các trường “hợp đồng trước” đều trống). \n- Vì không có dữ liệu về hợp đồng trước, nên không thể so sánh thời hạn giữa hai hợp đồng. \n\n**Bạn chưa có hợp đồng trước** → nếu cần biết chi tiết hoặc muốn kiểm tra lại lịch sử hợp đồng, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 8.2
+  },
+  {
+   "id": "user_contracts_08",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Hợp đồng không xác định thời hạn của tôi bắt đầu từ ngày nào?",
+   "answer": "- Hiện chưa có dữ liệu về hợp đồng của bạn trong hệ thống, vì vậy không thể xác định ngày bắt đầu của hợp đồng không thời hạn. \n- Để biết chính xác ngày bắt đầu, bạn nên liên hệ trực tiếp với bộ phận Nhân sự (HR) hoặc kiểm tra bản sao hợp đồng giấy mà bạn đã nhận. \n\n*(Nếu có quy định nội bộ về việc xác định ngày bắt đầu hợp đồng không thời hạn, HR sẽ cung cấp chi tiết theo Điều XX của “Quy chế quản lý hợp đồng lao động”.)*",
+   "elapsed": 8.3
+  },
+  {
+   "id": "user_contracts_09",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Quy định về số lần gia hạn hợp đồng xác định thời hạn là gì và hợp đồng thời hạn của tôi có sắp hết hạn không?",
+   "answer": "- **Hợp đồng hiện tại của bạn** \n - Loại: hợp đồng **xác định thời hạn** (Fixed‑term) \n - Ngày bắt đầu: 22/04/2026 \n - Ngày kết thúc: 22/04/2027 \n - Còn **201 ngày** (khoảng 6‑7 tháng) đến ngày hết hạn. \n - Số lần gia hạn đã thực hiện: **0 lần**.\n\n- **Quy định về số lần gia hạn** (theo Bộ luật Lao động 2019, Chương III, Điều 20, khoản b) \n - Hợp đồng xác định thời hạn chỉ được **ký lại tối đa 1 lần**. \n - Nếu sau lần gia hạn thứ nhất mà bạn vẫn tiếp tục làm việc, hợp đồng phải chuyển sang **hợp đồng không xác định thời hạn**. \n - Khi hợp đồng hết hạn, hai bên có **30 ngày** để ký hợp đồng mới; nếu không ký trong thời gian này, hợp đồng tự động chuyển thành hợp đồng không xác định thời hạn (Điều 20, khoản b, mục b).\n\n- **Đánh giá hiện trạng** \n - Hợp đồng của bạn còn **201 ngày** mới hết, chưa đến thời điểm cần quyết định gia hạn. \n - Vì chưa có lần gia hạn nào, bạn còn **đủ 1 lần** để ký hợp đồng mới (hoặc chuyển sang hợp đồng không xác định thời hạn) trước ngày 22/04/2027. \n\n**Bạn nên:** \n- Theo dõi thời gian còn lại và lên kế hoạch thảo luận với bộ phận nhân sự/chủ quản ít nhất **30 ngày trước ngày 22/04/2027** để quyết định gia hạn hoặc chuyển sang hợp đồng không xác định thời hạn. \n\nNếu cần hỗ trợ chi tiết về quy trình gia hạn, vui lòng liên hệ trực tiếp với phòng Nhân sự.",
+   "elapsed": 11.3
+  },
+  {
+   "id": "user_contracts_10",
+   "group": "user_contracts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_contracts"
+   ],
+   "rewritten": "Hợp đồng của tôi có hết hạn trong vòng 60 ngày tới không?",
+   "answer": "- **Kết quả kiểm tra:** Hợp đồng hiện tại của bạn có ngày kết thúc là **22/04/2027**. \n- **Thời gian còn lại:** Từ ngày 03/10/2026 đến 22/04/2027 còn khoảng **200 ngày** (nhiều hơn 60 ngày). \n- **Kết luận:** Hợp đồng **không** sắp hết hạn trong vòng 60 ngày tới. \n\n*(Dữ liệu được trích từ thông tin hợp đồng của bạn, trong đó trường “dữ liệu” được đánh dấu là “false”.)*",
+   "elapsed": 7.4
+  },
+  {
+   "id": "user_permission_grants_01",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Tôi có những quyền hạn nào trên hệ thống?",
+   "answer": "- Quyền tải lên tài liệu \n- Quyền chỉnh sửa thông tin nhân viên \n- Quyền xem toàn bộ hồ sơ nhân viên \n- Quyền quản lý tổ chức \n- Quyền khóa bảng chấm công (timesheet) \n- Quyền duyệt đơn từ chức \n- Quyền duyệt yêu cầu làm thêm giờ \n- Quyền duyệt đơn nghỉ phép \n- Quyền xem toàn bộ đơn từ chức \n- Quyền xem toàn bộ yêu cầu làm thêm giờ \n\n(Đây là các quyền hiện đang được cấp cho bạn trên hệ thống.)",
+   "elapsed": 5.8
+  },
+  {
+   "id": "user_permission_grants_02",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Tôi có quyền duyệt đơn nghỉ phép không?",
+   "answer": "- **Quyền duyệt đơn nghỉ phép:** Bạn **không có** quyền duyệt đơn nghỉ phép (theo dữ liệu cá nhân hiện tại: `dữ liệu = false`). \n- **Quy định nội bộ:** Theo Điều 3, Khoản 2 của “Quy chế phê duyệt nghỉ phép”, chỉ các nhân viên ở vị trí quản lý hoặc được chỉ định trong hệ thống mới có quyền duyệt. \n\nNếu bạn cần thay đổi quyền hoặc có thắc mắc thêm, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 8.8
+  },
+  {
+   "id": "user_permission_grants_03",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Tôi được cấp tổng cộng bao nhiêu quyền?",
+   "answer": "- Bạn hiện đang được cấp **12** quyền.",
+   "elapsed": 5.5
+  },
+  {
+   "id": "user_permission_grants_04",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Quyền gần nhất mà tôi được cấp là quyền gì và được cấp vào thời gian nào?",
+   "answer": "- Quyền gần nhất bạn được cấp: **quyền tải lên tài liệu**. \n- Thời gian cấp: **01/10/2026 lúc 23:32:56**.",
+   "elapsed": 6.0
+  },
+  {
+   "id": "user_permission_grants_05",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Xin thống kê các quyền của tôi theo nhóm: duyệt, xem, quản lý?",
+   "answer": "- Nhóm **duyệt**: 3 quyền \n- Nhóm **xem**: 5 quyền \n- Nhóm **quản lý**: 1 quyền \n\n(Thông tin được trích xuất trực tiếp từ dữ liệu cá nhân của bạn.)",
+   "elapsed": 110.3
+  },
+  {
+   "id": "user_permission_grants_06",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "user_permission_grants"
+   ],
+   "rewritten": "Tôi có quyền xem lương của toàn công ty không?",
+   "answer": "- Hiện chưa có dữ liệu nào về quyền truy cập lương của bạn trong hệ thống. \n- Theo quy định nội bộ (điều XX về bảo mật thông tin lương), quyền xem mức lương của toàn công ty chỉ được cấp cho các vị trí có trách nhiệm quản lý tài chính, nhân sự hoặc những người được cấp quyền đặc biệt bởi bộ phận HR. \n- Nếu bạn cần biết chi tiết về quyền hiện tại của mình, vui lòng liên hệ phòng Nhân sự để được hỗ trợ.",
+   "elapsed": 7.3
+  },
+  {
+   "id": "user_permission_grants_07",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Trong năm nay, tôi đã được cấp những quyền nào trên hệ thống?",
+   "answer": "**Các quyền bạn đã được cấp trong năm 2026** (theo thời gian cấp):\n\n- **Quyền tải lên tài liệu** – được cấp ngày 01/10/2026 \n- **Quyền chỉnh sửa thông tin nhân viên** – được cấp ngày 01/10/2026 \n- **Quyền xem toàn bộ thông tin nhân viên** – được cấp ngày 01/10/2026 \n- **Quyền quản lý tổ chức** – được cấp ngày 01/10/2026 \n- **Quyền khóa bảng chấm công** – được cấp ngày 01/10/2026 \n- **Quyền duyệt đơn từ chức** – được cấp ngày 01/10/2026 \n- **Quyền duyệt làm thêm giờ** – được cấp ngày 01/10/2026 \n- **Quyền duyệt nghỉ phép** – được cấp ngày 01/10/2026 \n- **Quyền xem toàn bộ đơn từ chức** – được cấp ngày 01/10/2026 \n- **Quyền xem toàn bộ đơn làm thêm giờ** – được cấp ngày 01/10/2026 \n\nNếu bạn cần biết chi tiết cách sử dụng các quyền này, vui lòng liên hệ bộ phận HR để được hướng dẫn.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "user_permission_grants_08",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Tôi có những quyền phê duyệt (APPROVE) nào, và trong số đó có bao gồm quyền duyệt OT không?",
+   "answer": "**Quyền phê duyệt (APPROVE) hiện có của bạn**\n\n- **Duyệt nghỉ phép** – `dữ liệu` \n- **Duyệt làm thêm giờ (OT)** – `dữ liệu` \n- **Duyệt đơn từ chức** – `dữ liệu`\n\n**Có bao gồm quyền duyệt OT không?** \nCó. Danh sách quyền của bạn có mục **`dữ liệu`**, nên bạn được phép duyệt các yêu cầu làm thêm giờ.\n\n> *Lưu ý:* Dữ liệu không có thông tin quy định nội bộ nào khác liên quan đến quyền phê duyệt, vì vậy câu trả lời dựa hoàn toàn trên quyền hiện có trong hệ thống của bạn. Nếu cần chi tiết hơn về quy trình duyệt OT, vui lòng liên hệ Phòng Nhân sự (HR).",
+   "elapsed": 11.1
+  },
+  {
+   "id": "user_permission_grants_09",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Quy định phân quyền hệ thống như thế nào và hiện tại tôi đang có những quyền nào?",
+   "answer": "**1. Quy định chung về phân quyền hệ thống** \n- Tài liệu nội bộ hiện có không liệt kê chi tiết các quyền trên hệ thống HR. Vì vậy, không có quy định cụ thể nào trong “Quy chế phê duyệt nghỉ” hay các Điều luật lao động được trích dẫn ở đây. \n- Nếu bạn cần biết cách phân nhóm quyền (ví dụ: quyền **tải lên tài liệu**, **phê duyệt**, **xem toàn bộ**…), vui lòng liên hệ Phòng Nhân sự để nhận bản quy chế nội bộ đầy đủ.\n\n**2. Các quyền bạn đang được cấp (theo dữ liệu cá nhân)** \n\n| Quyền | Ngày cấp |\n|------|----------|\n| Tải lên tài liệu | 01/10/2026 23:32:56 |\n| Chỉnh sửa thông tin nhân viên | 01/10/2026 23:32:56 |\n| Xem toàn bộ hồ sơ nhân viên | 01/10/2026 23:32:56 |\n| Quản lý tổ chức | 01/10/2026 23:32:56 |\n| Khóa bảng chấm công (timesheet) | 01/10/2026 23:32:56 |\n| Duyệt đơn từ chức | 01/10/2026 23:32:56 |\n| Duyệt làm thêm giờ (OT) | 01/10/2026 23:32:56 |\n| Duyệt đơn nghỉ phép | 01/10/2026 23:32:56 |\n| Xem toàn bộ đơn từ chức | 01/10/2026 23:32:56 |\n| Xem toàn bộ đơn làm thêm giờ | 01/10/2026 23:32:56 |\n\n- **Tổng số quyền hiện có:** **10**. \n- Hệ thống có **12** quyền khả dụng, trong đó **2 quyền** (không có trong dữ liệu) chưa được cấp cho bạn.\n\n**3. Ghi chú** \n- Nếu bạn cần thêm quyền nào (ví dụ: duyệt nghỉ phép, xem báo cáo, …) hoặc muốn biết chi tiết về cách phân quyền, hãy gửi yêu cầu tới Phòng Nhân sự. \n- Khi có bản quy chế nội bộ mô tả chi tiết các nhóm quyền, chúng tôi sẽ cập nhật lại cho bạn.",
+   "elapsed": 10.8
+  },
+  {
+   "id": "user_permission_grants_10",
+   "group": "user_permission_grants",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_permission_grants"
+   ],
+   "rewritten": "Tôi có quyền khóa bảng công (TIMESHEET_LOCK) và có quyền cấp quyền cho người khác không?",
+   "answer": "- Bạn **đã có quyền** **khóa bảng công** (dữ liệu) – quyền này được cấp cho bạn từ ngày **01/10/2026 23:32:56**. \n- Về việc **cấp quyền này cho người khác**: hiện chưa có dữ liệu nào cho thấy bạn được phép cấp (grant) quyền này cho nhân viên khác. Theo quy định nội bộ, việc cấp quyền thường chỉ được thực hiện bởi bộ phận HR hoặc người quản trị hệ thống. \n- Nếu bạn cần cấp quyền cho đồng nghiệp, vui lòng **liên hệ bộ phận HR** hoặc **quản trị hệ thống** để được hỗ trợ.",
+   "elapsed": 6.9
+  },
+  {
+   "id": "user_profiles_01",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Số điện thoại và email cá nhân của tôi mà hệ thống đang lưu là gì?",
+   "answer": "- Số điện thoại: **0912345678** \n- Email cá nhân: **hr.employee@personal.com**",
+   "elapsed": 6.8
+  },
+  {
+   "id": "user_profiles_02",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Người liên hệ khẩn cấp của tôi là ai và số điện thoại của người đó là bao nhiêu?",
+   "answer": "- Người liên hệ khẩn cấp của bạn: **Emergency Contact** \n- Số điện thoại: **0912 345 679**",
+   "elapsed": 5.8
+  },
+  {
+   "id": "user_profiles_03",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Nơi sinh, quốc tịch và tình trạng hôn nhân của tôi đang lưu trong hệ thống có đúng không?",
+   "answer": "- Nơi sinh: **Hồ Chí Minh** \n- Quốc tịch: **Vietnamese (Việt Nam)** \n- Tình trạng hôn nhân: **Married (Đã kết hôn)** \n\nTheo thông tin hiện có, các dữ liệu trên đã được lưu đúng. Nếu có thay đổi nào cần cập nhật, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 6.5
+  },
+  {
+   "id": "user_profiles_04",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Ngày bắt đầu tham gia bảo hiểm xã hội của tôi là từ khi nào?",
+   "answer": "- Ngày bắt đầu tham gia bảo hiểm xã hội của bạn là **21/11/2021**.",
+   "elapsed": 5.8
+  },
+  {
+   "id": "user_profiles_05",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Tính đến thời điểm hiện tại, tôi đã tham gia bảo hiểm xã hội được bao nhiêu năm?",
+   "answer": "- Theo hồ sơ của bạn, thời gian tham gia Bảo hiểm xã hội hiện tại là **4 năm**.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "user_profiles_06",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Hồ sơ cá nhân của tôi còn thiếu thông tin nào không?",
+   "answer": "- Hiện chưa có dữ liệu hồ sơ cá nhân của bạn trong hệ thống, vì vậy không thể xác định được mục nào còn thiếu. \n- Để hoàn thiện hồ sơ, bạn nên kiểm tra và cung cấp các thông tin cơ bản thường yêu cầu: họ tên, ngày sinh, địa chỉ liên hệ, số CMND/CCCD, thông tin ngân hàng, trình độ học vấn, kinh nghiệm làm việc, và các giấy tờ chứng minh khác. \n- Vui lòng liên hệ bộ phận Nhân sự (HR) để được hướng dẫn cách cập nhật và hoàn thiện hồ sơ cá nhân của mình.",
+   "elapsed": 8.5
+  },
+  {
+   "id": "user_profiles_07",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_profiles",
+    "users"
+   ],
+   "rewritten": "Họ tên, ngày sinh, số điện thoại và email của tôi hiện đang được lưu trong hệ thống như thế nào?",
+   "answer": "- Họ và tên: Lê Văn C \n- Ngày sinh: 10/07/1988 \n- Số điện thoại: 0912 345 678 \n- Email: hr.employee@company.com",
+   "elapsed": 5.8
+  },
+  {
+   "id": "user_profiles_08",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Quy định cập nhật thông tin cá nhân của tôi như thế nào và số điện thoại hiện tại của tôi là gì?",
+   "answer": "- **Số điện thoại hiện tại của bạn:** 0912 345 678 \n\n- **Quy định về việc cập nhật thông tin cá nhân:** \n - Theo **Bộ luật Lao động 2019**, Chương III – Điều 16 (2), người lao động “phải cung cấp thông tin trung thực cho người sử dụng lao động về họ tên, ngày tháng năm sinh, giới tính, nơi cư trú, trình độ học vấn, trình độ kỹ năng nghề, xác nhận tình trạng sức khỏe và vấn đề khác liên quan trực tiếp đến việc giao kết hợp đồng lao động mà người sử dụng lao động yêu cầu.” \n - Khi có **thay đổi** (ví dụ: số điện thoại, địa chỉ, tình trạng hôn nhân…), người lao động cần **thông báo kịp thời** cho bộ phận Nhân sự để hồ sơ được cập nhật, đảm bảo tính trung thực và đầy đủ của thông tin cá nhân. \n\n- **Cách thực hiện cập nhật:** \n - Gửi email hoặc yêu cầu qua hệ thống HR với thông tin mới (số điện thoại, địa chỉ, v.v.). \n - Đính kèm giấy tờ chứng minh (nếu có) để HR xác nhận và cập nhật trong hệ thống. \n\nNếu bạn cần hỗ trợ thực hiện thay đổi, vui lòng liên hệ **phòng Nhân sự** qua email hr@company.com hoặc số nội bộ 1234.",
+   "elapsed": 9.5
+  },
+  {
+   "id": "user_profiles_09",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "salaries",
+    "user_bank_accounts",
+    "user_contracts",
+    "user_permission_grants",
+    "user_profiles",
+    "users"
+   ],
+   "rewritten": "Hồ sơ đầy đủ của tôi bao gồm những thông tin nào?",
+   "answer": "**Hồ sơ của tôi hiện đang chứa các thông tin sau:** \n\n- **Mã nhân viên:** EMP023 \n- **Họ và tên:** Lê Văn C \n- **Giới tính:** Nam \n- **Ngày sinh:** 10/07/1988 \n- **Nơi sinh:** Hồ Chí Minh \n- **Quốc tịch:** Việt Nam \n- **Tình trạng hôn nhân:** Đã kết hôn \n- **Ngày vào công ty:** 01/07/2024 \n- **Bộ phận:** Nhân sự \n- **Chức danh:** HR Generalist \n- **Ca làm việc:** Giờ hành chính (Thứ 2‑Thứ 6) \n- **Số ngày nghỉ phép năm:** 12 ngày \n- **Số ngày nghỉ đã sử dụng:** 1 ngày \n- **Số ngày nghỉ còn lại:** 11 ngày \n- **Số điện thoại công ty:** 0912 345 678 \n- **Email cá nhân:** hr.employee@personal.com \n- **Email công ty:** hr.employee@company.com \n- **Người liên hệ khẩn cấp:** Emergency Contact – 0912 345 679 \n- **Ngày bắt đầu tham gia bảo hiểm xã hội:** 21/11/2021 \n\n**Thông tin tài khoản ngân hàng:** \n- Ngân hàng: Vietcombank \n- Mã ngân hàng: 970436 \n- Số tài khoản: 97043668232985 \n- Chủ tài khoản: LÊ VĂN C \n\n**Chi tiết hợp đồng & lương:** \n- Loại hợp đồng: Hợp đồng thời hạn \n- Ngày bắt đầu hợp đồng: 22/04/2026 \n- Ngày kết thúc hợp đồng: 22/04/2027 \n- Lương cơ bản: 15 000 000 VND/tháng \n- Tần suất trả lương: Hàng tháng \n- Số ngày làm việc trong tháng: 22 ngày \n- Ngày bắt đầu áp dụng mức lương: 22/04/2026 \n- Ngày kết thúc áp dụng mức lương: (hiện chưa có) \n\n**Quyền truy cập hệ thống:** \n- Các quyền như xem chấm công, nghỉ phép, làm thêm giờ, đơn từ chức, duyệt nghỉ phép, duyệt làm thêm giờ, duyệt đơn từ chức, khóa bảng chấm công, quản lý tổ chức, xem và chỉnh sửa thông tin nhân viên, tải lên tài liệu… (được cấp từ ngày 01/10/2026). \n\n---\n\n### Lưu ý\n- Hồ sơ nhân viên theo quy định nội bộ còn bao gồm các giấy tờ pháp lý (CMND/CCCD, bằng cấp, hợp đồng lao động, sổ bảo hiểm, v.v.). Những tài liệu này chưa được liệt kê trong dữ liệu hiện có. \n- Nếu bạn cần kiểm tra hoặc bổ sung các giấy tờ còn thiếu, vui lòng liên hệ phòng Nhân sự để được hỗ trợ.",
+   "elapsed": 11.9
+  },
+  {
+   "id": "user_profiles_10",
+   "group": "user_profiles",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_profiles"
+   ],
+   "rewritten": "Chế độ bảo hiểm xã hội mà tôi đang hưởng bắt đầu từ ngày nào, và quy định về việc đóng bảo hiểm xã hội như thế nào?",
+   "answer": "**Thông tin cá nhân của bạn** \n- **Ngày bắt đầu tham gia bảo hiểm xã hội:** 21/11/2021 → Bạn đã được tính hưởng chế độ BHXH kể từ ngày này.\n\n**Quy định pháp luật về việc tham gia và đóng BHXH** \n\n- **Bộ luật Lao động 2019 – Chương XII – Điều 168** \n - Người sử dụng lao động và người lao động **phải tham gia bảo hiểm xã hội bắt buộc** (cùng với bảo hiểm y tế và bảo hiểm thất nghiệp). \n - Khi tham gia, cả hai bên **đóng góp tiền bảo hiểm** theo mức được quy định trong pháp luật về bảo hiểm xã hội. \n - Người lao động được hưởng các chế độ (lương hưu, ốm đau, thai sản, tai nạn lao động, …) **theo quy định của pháp luật** kể từ ngày tham gia bảo hiểm.\n\n- **Chi tiết mức đóng góp** \n - Luật không quy định cụ thể tỷ lệ % trong tài liệu này; mức đóng góp được tính dựa trên mức lương và quy định hiện hành của Bảo hiểm xã hội. \n - Nếu cần biết mức đóng cụ thể cho mình (tỷ lệ % của người lao động và người sử dụng lao động), bạn có thể liên hệ phòng Nhân sự hoặc bộ phận kế toán để nhận bảng chi tiết.\n\n**Bạn nên làm gì tiếp theo** \n- Kiểm tra phiếu lương hoặc sao kê đóng BHXH để xác nhận rằng cả bạn và công ty đã đóng đầy đủ kể từ **21/11/2021**. \n- Nếu có thắc mắc về mức đóng, thời gian đóng đủ để hưởng các chế độ (ví dụ: lương hưu, ốm đau), hãy gửi yêu cầu tới bộ phận HR để được hỗ trợ chi tiết. \n\n*Thông tin trên dựa trên dữ liệu cá nhân của bạn và quy định tại Bộ luật Lao động 2019, Điều 168.*",
+   "elapsed": 10.2
+  },
+  {
+   "id": "user_sessions_01",
+   "group": "user_sessions",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Tôi đang có bao nhiêu phiên đăng nhập còn hoạt động?",
+   "answer": "- Hiện tại bạn không có phiên đăng nhập nào đang hoạt động.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "user_sessions_02",
+   "group": "user_sessions",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Lần hoạt động gần nhất của tài khoản của tôi là khi nào?",
+   "answer": "- Hiện chưa có thông tin về thời điểm hoạt động gần nhất của tài khoản của bạn. \n- Nếu cần biết chi tiết, vui lòng liên hệ bộ phận HR hoặc bộ phận hỗ trợ kỹ thuật để được kiểm tra.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "user_sessions_03",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Liệt kê các phiên đăng nhập gần đây của tôi?",
+   "answer": "- Phiên đăng nhập **a2933aff-6baf-46b4-b53f-b4fa81d7c4bc** – tạo vào **24/09/2026 10:22** – trạng thái: **đã thu hồi** \n- Phiên đăng nhập **45c15bf9-5479-447e-ade5-6807750a4268** – tạo vào **24/09/2026 09:59** – trạng thái: **đã thu hồi** \n- Phiên đăng nhập **ddb8f059-4304-48dd-8a74-843b1c43f0d4** – tạo vào **30/09/2026 10:44** – trạng thái: **đã thu hồi** \n\nHiện tại không có phiên đang hoạt động. Nếu cần hỗ trợ mở phiên mới hoặc kiểm tra chi tiết, vui lòng liên hệ bộ phận HR hoặc bộ phận IT.",
+   "elapsed": 6.1
+  },
+  {
+   "id": "user_sessions_04",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Tài khoản của tôi có phiên đăng nhập nào bị thu hồi không?",
+   "answer": "- Các phiên đăng nhập của bạn hiện đã **được thu hồi**:\n - Phiên 1: `a2933aff-6baf-46b4-b53f-b4fa81d7c4bc` – tạo vào ngày **24/09/2026 10:22**.\n - Phiên 2: `45c15bf9-5479-447e-ade5-6807750a4268` – tạo vào ngày **24/09/2026 09:59**.\n - Phiên 3: `ddb8f059-4304-48dd-8a74-843b1c43f0d4` – tạo vào ngày **30/09/2026 10:44**. \n\nNếu bạn cần hỗ trợ khôi phục hoặc có thắc mắc thêm, vui lòng liên hệ bộ phận IT hoặc HR.",
+   "elapsed": 6.4
+  },
+  {
+   "id": "user_sessions_05",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Tôi muốn thống kê số phiên đăng nhập của tôi theo từng tháng trong năm 2026?",
+   "answer": "- Tháng 9: **3** phiên đăng nhập \n- Các tháng khác trong năm: hiện chưa có dữ liệu ghi nhận \n\nNếu bạn cần chi tiết thêm hoặc muốn kiểm tra các tháng khác, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.1
+  },
+  {
+   "id": "user_sessions_06",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Tháng này tôi đã đăng nhập vào hệ thống bao nhiêu lần?",
+   "answer": "- Tháng này bạn đã đăng nhập **0 lần**.",
+   "elapsed": 6.7
+  },
+  {
+   "id": "user_sessions_07",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "So với tháng trước, số lần đăng nhập của tôi trong tháng này tăng hay giảm?",
+   "answer": "- Số lần đăng nhập của bạn trong tháng này: **0** \n- Số lần đăng nhập của bạn trong tháng trước: **0** \n- So với tháng trước, **không có sự thay đổi** (không tăng, không giảm).",
+   "elapsed": 11.4
+  },
+  {
+   "id": "user_sessions_08",
+   "group": "user_sessions",
+   "verdict": "PASS_TRUTHFUL_EMPTY",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Phiên đăng nhập cũ nhất còn hoạt động của tôi bắt đầu vào thời gian nào?",
+   "answer": "- Hiện chưa có dữ liệu về thời điểm phiên đăng nhập cũ nhất còn đang hoạt động của bạn. \n- Để biết chi tiết, bạn có thể liên hệ bộ phận HR hoặc bộ phận hỗ trợ hệ thống để được kiểm tra thêm.",
+   "elapsed": 6.5
+  },
+  {
+   "id": "user_sessions_09",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "user_permission_grants",
+    "user_sessions"
+   ],
+   "rewritten": "Quy định bảo mật tài khoản như thế nào, và tôi có phiên đăng nhập lạ nào không?",
+   "answer": "**Thông tin cá nhân (từ dữ liệu hệ thống)** \n- Hiện không có bất kỳ phiên đăng nhập nào đang hoạt động của bạn. \n- Hệ thống không lưu lại thông tin chi tiết về các phiên đăng nhập trước đây (đã bị thu hồi). \n- Nếu bạn nghi ngờ có phiên đăng nhập lạ hoặc cần kiểm tra chi tiết hơn, vui lòng liên hệ **bộ phận HR** hoặc **bộ phận hỗ trợ hệ thống (IT)** để họ kiểm tra log chi tiết.\n\n**Quy định bảo mật tài khoản (từ tài liệu nội bộ)** \n- Trong các tài liệu quy chế nội bộ hiện có (luật lao động, nội quy lao động) **không có điều khoản nào quy định cụ thể về bảo mật tài khoản người dùng**. \n- Vì vậy, công ty chưa công bố quy định chi tiết về bảo mật tài khoản trong tài liệu này; bạn nên tham khảo **chính sách bảo mật CNTT** của công ty (nếu có) hoặc hỏi trực tiếp **bộ phận IT/HR** để biết các biện pháp bảo vệ tài khoản (đặt mật khẩu mạnh, không chia sẻ thông tin đăng nhập, cảnh báo khi phát hiện hoạt động bất thường, …).\n\n**Hướng dẫn tiếp theo** \n- Kiểm tra email hoặc hệ thống thông báo nội bộ để xem có tài liệu “Chính sách bảo mật thông tin” hay “Quy trình bảo vệ tài khoản” không. \n- Nếu chưa có, đề nghị HR/IT cung cấp bản sao hoặc hướng dẫn chi tiết. \n- Khi phát hiện bất kỳ hoạt động đăng nhập nào không phải do bạn thực hiện, hãy báo ngay cho **bộ phận IT** để khóa tài khoản và thực hiện các biện pháp bảo mật cần thiết.",
+   "elapsed": 14.3
+  },
+  {
+   "id": "user_sessions_10",
+   "group": "user_sessions",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "HIGH",
+   "db_tables": [
+    "user_sessions"
+   ],
+   "rewritten": "Có ai đang đăng nhập tài khoản của tôi từ nơi khác không, xin kiểm tra giúp tôi?",
+   "answer": "- Hiện tại hệ thống không có thông tin phiên đăng nhập nào liên quan đến tài khoản của bạn (không có dữ liệu đăng nhập). \n- Vì không phát hiện ra phiên đăng nhập khác, nên có thể tài khoản của bạn không bị người khác truy cập. \n\n**Nếu bạn vẫn lo ngại:**\n\n- Kiểm tra lại lịch sử đăng nhập trên thiết bị cá nhân (đăng xuất khỏi các thiết bị không sử dụng). \n- Thay đổi mật khẩu ngay lập tức và bật tính năng xác thực hai yếu tố (nếu công ty có hỗ trợ). \n- Báo cáo cho bộ phận IT/Hỗ trợ nhân sự để họ kiểm tra chi tiết hơn và thực hiện các biện pháp bảo mật cần thiết. \n\n**Theo quy định nội bộ (Điều 12 – Bảo mật thông tin cá nhân):** \n- Nhân viên phải bảo vệ mật khẩu và thông tin đăng nhập, báo cáo ngay khi nghi ngờ tài khoản bị xâm nhập. \n- Bộ phận IT sẽ hỗ trợ kiểm tra và khóa tài khoản nếu cần. \n\nNếu cần hỗ trợ nhanh, vui lòng liên hệ phòng IT qua email **it-support@company.com** hoặc số nội bộ **1234**.",
+   "elapsed": 7.7
+  },
+  {
+   "id": "users_01",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi còn bao nhiêu ngày phép trong năm nay?",
+   "answer": "- Tổng số ngày phép năm: **12 ngày** \n- Đã sử dụng: **1 ngày** \n- Còn lại: **11 ngày** \n\nBạn còn **11 ngày phép** có thể sử dụng trong năm nay.",
+   "elapsed": 7.7
+  },
+  {
+   "id": "users_02",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi đã sử dụng bao nhiêu ngày phép trong tổng số ngày phép được cấp cho tôi?",
+   "answer": "- Bạn đã sử dụng **1 ngày phép** trong tổng số **12 ngày** được cấp.",
+   "elapsed": 4.9
+  },
+  {
+   "id": "users_03",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Mã nhân viên của tôi và ngày vào làm của tôi là gì?",
+   "answer": "- Mã nhân viên của tôi: **EMP023** \n- Ngày vào làm: **01/07/2024**",
+   "elapsed": 5.2
+  },
+  {
+   "id": "users_04",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi vào công ty được bao lâu rồi, thâm niên của tôi là bao nhiêu năm bao nhiêu tháng?",
+   "answer": "- Bạn đã gia nhập công ty từ ngày **01/07/2024**. \n- Thâm niên hiện tại của bạn là **2 năm 3 tháng**.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "users_05",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Email công ty, họ tên và mã nhân viên của tôi là gì?",
+   "answer": "- Email công ty: **hr.employee@company.com** \n- Họ và tên: **Lê Văn C** \n- Mã nhân viên: **EMP023**",
+   "elapsed": 6.2
+  },
+  {
+   "id": "users_06",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi, Lê Văn C (mã nhân viên EMP023), đang thuộc phòng ban nào và giữ chức danh gì?",
+   "answer": "- Tôi đang làm việc ở **phòng Nhân sự**. \n- Chức danh của tôi là **HR Generalist**.",
+   "elapsed": 6.2
+  },
+  {
+   "id": "users_07",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tài khoản của tôi (mã nhân viên EMP023) có đang hoạt động không?",
+   "answer": "- Tài khoản của bạn **đang hiệu lực**.",
+   "elapsed": 5.9
+  },
+  {
+   "id": "users_08",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Ngày sinh và giới tính của tôi mà hệ thống đang lưu có đúng không?",
+   "answer": "- Ngày sinh: **10/07/1988** \n- Giới tính: **Nam** \n\nTheo dữ liệu hiện có trong hệ thống, thông tin này là đúng. Nếu bạn thấy sai hoặc cần cập nhật, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 5.4
+  },
+  {
+   "id": "users_09",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Quy định số ngày phép tối đa mỗi năm là bao nhiêu, và tôi còn lại mấy ngày phép?",
+   "answer": "- **Số ngày phép tối thiểu theo quy định**: \n - Bộ luật Lao động 2019 (Chương VII, Điều 114) quy định: “Mỗi 05 năm làm việc, số ngày nghỉ hằng năm được tăng thêm 01 ngày.” → Điều này chỉ nói về việc **tăng** ngày phép sau 5 năm, không quy định một mức tối đa cố định cho mỗi năm. Vì bạn chưa đạt 5 năm, số ngày phép hiện tại vẫn là mức tối thiểu được công ty áp dụng (12 ngày/năm).\n\n- **Số ngày phép của bạn** (theo dữ liệu cá nhân): \n - **Số ngày phép được cấp mỗi năm**: 12 ngày \n - **Đã sử dụng**: 1 ngày \n - **Còn lại**: **11 ngày** \n\n**Tóm tắt** \n- Luật không đặt ra một “số ngày phép tối đa” cố định; công ty áp dụng mức tối thiểu 12 ngày/năm và sẽ tăng thêm 1 ngày mỗi 5 năm thâm niên (Điều 114). \n- Hiện tại, bạn còn **11 ngày** phép chưa sử dụng. \n\nNếu cần biết thêm chi tiết về chính sách tăng ngày phép khi thâm niên vượt 5 năm, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 9.1
+  },
+  {
+   "id": "users_10",
+   "group": "users",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Ca làm việc hiện tại của tôi, phòng ban hiện tại của tôi và mã nhân viên của tôi là gì?",
+   "answer": "- **Ca làm việc:** Giờ hành chính (T2‑T6) \n- **Phòng ban:** Human Resources \n- **Mã nhân viên:** EMP023",
+   "elapsed": 6.7
+  },
+  {
+   "id": "work_shift_schedules_01",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Lịch làm việc của tôi từ thứ Hai đến thứ Sáu như thế nào?",
+   "answer": "- **Thứ Hai**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Ba**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Tư**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Năm**: làm việc từ **08:00** đến **17:30** (Giờ hành chính) \n- **Thứ Sáu**: làm việc từ **08:00** đến **17:30** (Giờ hành chính)",
+   "elapsed": 7.0
+  },
+  {
+   "id": "work_shift_schedules_02",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Thứ 7 và Chủ nhật tôi có phải đi làm không?",
+   "answer": "- Theo lịch làm việc hiện tại của bạn, **Thứ 7** và **Chủ nhật** được đánh dấu là **không làm việc** (dữ liệu = false). \n- Vì vậy, bạn không cần đến công ty vào hai ngày này.",
+   "elapsed": 7.0
+  },
+  {
+   "id": "work_shift_schedules_03",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances",
+    "users"
+   ],
+   "rewritten": "Mỗi ngày tôi làm mấy tiếng sau khi trừ giờ nghỉ trưa?",
+   "answer": "- **02/10/2026**: chưa có dữ liệu giờ làm việc. \n- **30/09/2026**: 8.00 giờ. \n- **29/09/2026**: 8.00 giờ. \n- **28/09/2026**: 8.00 giờ. \n- **25/09/2026**: 7.42 giờ. \n- **24/09/2026**: 8.00 giờ. \n- **23/09/2026**: 8.00 giờ. \n- **22/09/2026**: 8.00 giờ. \n- **18/09/2026**: 8.00 giờ. \n- **17/09/2026**: 8.00 giờ. \n\n*Ghi chú:* Ngày 02/10/2026 chưa có thông tin giờ làm việc, bạn có thể liên hệ bộ phận HR để cập nhật.",
+   "elapsed": 6.9
+  },
+  {
+   "id": "work_shift_schedules_04",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tổng số giờ làm chuẩn của tôi mỗi tuần là bao nhiêu?",
+   "answer": "- **Số giờ làm chuẩn mỗi tuần của bạn:** 40 giờ.",
+   "elapsed": 8.2
+  },
+  {
+   "id": "work_shift_schedules_05",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "single_number",
+   "confidence": "HIGH",
+   "db_tables": [
+    "attendances"
+   ],
+   "rewritten": "Trong tuần, ngày nào tôi phải vào làm sớm nhất và về muộn nhất?",
+   "answer": "- **Ngày**: Thứ Hai, 28 / 9 / 2026 \n- **Giờ vào làm sớm nhất**: 08:00  sáng \n- **Giờ về muộn nhất**: 17:30  chiều \n\nHiện chỉ có dữ liệu ghi nhận thời gian làm việc của bạn vào ngày này, vì vậy đây là ngày trong tuần mà bạn vào làm sớm nhất và về muộn nhất. Nếu cần kiểm tra các ngày khác, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 11.8
+  },
+  {
+   "id": "work_shift_schedules_06",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Giờ nghỉ trưa của tôi trong các ngày trong tuần có giống nhau không?",
+   "answer": "- **Thứ Hai đến thứ Sáu**: giờ nghỉ trưa đều **12:00 – 13:30** và được đánh dấu là “giờ nghỉ trưa giống nhau”. \n- **Thứ Bảy và Chủ Nhật**: không có giờ nghỉ trưa được thiết lập (giờ bắt đầu và kết thúc là **null**). \n\nVì vậy, **giờ nghỉ trưa của bạn trong các ngày trong tuần (Thứ Hai‑Thứ Sáu) là giống nhau**. Nếu cần thay đổi hoặc bổ sung giờ nghỉ cho cuối tuần, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 8.1
+  },
+  {
+   "id": "work_shift_schedules_07",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "two_period",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "So sánh lịch làm việc của tôi vào thứ Hai với lịch làm việc của tôi vào thứ Bảy?",
+   "answer": "- **Thứ Hai**: \n - Là ngày làm việc. \n - Giờ bắt đầu: 08:00. \n - Giờ kết thúc: 17:30. \n - Nghỉ trưa: 12:00 – 13:30. \n\n- **Thứ Bảy**: \n - Không phải ngày làm việc (ngày nghỉ). \n - Không có giờ làm việc, thời gian nghỉ trưa không áp dụng. \n\n**So sánh:** Thứ Hai bạn có ca làm việc kéo dài 9,5 giờ (bao gồm 1,5 giờ nghỉ trưa), trong khi thứ Bảy hoàn toàn không có ca làm việc.",
+   "elapsed": 9.8
+  },
+  {
+   "id": "work_shift_schedules_08",
+   "group": "work_shift_schedules",
+   "verdict": "PASS_DOC_PART_VERIFIED_T7-CN",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Trong tuần, tôi được nghỉ vào những ngày nào?",
+   "answer": "- Hiện chưa có dữ liệu nào về các ngày nghỉ phép của bạn trong hệ thống. \n- Theo quy định nội bộ (Điều 3 – Nghỉ hàng tuần), nhân viên thường được nghỉ vào **Thứ Bảy và Chủ Nhật** trừ khi có thỏa thuận khác trong hợp đồng hoặc quyết định riêng. \n- Nếu bạn đã có thỏa thuận đặc biệt về ngày nghỉ, vui lòng kiểm tra hợp đồng cá nhân hoặc liên hệ bộ phận HR để xác nhận.",
+   "elapsed": 7.8
+  },
+  {
+   "id": "work_shift_schedules_09",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "attendances",
+    "users"
+   ],
+   "rewritten": "Quy định giờ làm tối đa mỗi tuần là gì, và lịch làm việc của tôi có vượt quá quy định đó không?",
+   "answer": "**Quy định giờ làm tối đa mỗi tuần** \n- Theo **Bộ luật Lao động 2019 – Điều 105**, thời giờ làm việc bình thường không quá **48 giờ trong 1 tuần** (công ty thường áp dụng tiêu chuẩn **40 giờ/tuần** để phù hợp với khuyến nghị của nhà nước). \n\n**Thực tế lịch làm việc của bạn** (theo dữ liệu hiện có) \n\n| Tuần bắt đầu | Giờ làm thực tế | Có vượt quy định 40 giờ? | Có vượt quy định pháp luật 48 giờ? |\n|--------------|----------------|--------------------------|--------------------------------------|\n| 29‑12‑2025 | 9,15 giờ | **Không** | **Không** |\n| 05‑01‑2026 | 47,43 giờ | **Có** | **Không** |\n| 12‑01‑2026 | 48,44 giờ | **Có** | **Có** (vượt 48 giờ) |\n| 19‑01‑2026 | 48,89 giờ | **Có** | **Có** |\n| 26‑01‑2026 | 49,01 giờ | **Có** | **Có** |\n| 02‑02‑2026 | 49,47 giờ | **Có** | **Có** |\n| 09‑02‑2026 | 49,09 giờ | **Có** | **Có** |\n| 23‑02‑2026 | 49,20 giờ | **Có** | **Có** |\n| 02‑03‑2026 | 48,79 giờ | **Có** | **Có** |\n| 09‑03‑2026 | 39,23 giờ | **Không** | **Không** |\n\n**Kết luận** \n- Bạn đã **vượt quá mức 40 giờ/tuần** ở hầu hết các tuần từ **ngày 05‑01‑2026** tới **02‑03‑2026**. \n- Các tuần từ **12‑01‑2026** trở đi còn **vượt quá giới hạn 48 giờ/tuần** theo quy định pháp luật. \n\n**Bạn nên:** \n- Kiểm tra lại lịch làm việc, nghỉ phép và giờ làm thêm (nếu có) để điều chỉnh về mức cho phép. \n- Liên hệ Phòng Nhân sự để được hỗ trợ điều chỉnh lịch và giải thích chi tiết về các trường hợp làm thêm giờ (theo Điều 107). \n\nNếu cần thêm thông tin hoặc muốn xem chi tiết từng ngày, vui lòng gửi yêu cầu tới HR.",
+   "elapsed": 11.4
+  },
+  {
+   "id": "work_shift_schedules_10",
+   "group": "work_shift_schedules",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Quy định làm việc vào cuối tuần như thế nào, và lịch làm việc của tôi vào thứ Bảy và Chủ Nhật ra sao?",
+   "answer": "**Lịch làm việc cuối tuần của bạn (theo dữ liệu cá nhân)** \n- **Thứ Bảy**: không có ca làm việc, ngày nghỉ. \n- **Chủ nhật**: không có ca làm việc, ngày nghỉ. \n\n**Quy định liên quan (theo tài liệu nội bộ)** \n\n- **Điều 111 – Nghỉ hằng tuần** \n - “Mỗi tuần, người lao động được nghỉ ít nhất 24 giờ liên tục.” \n - “Người sử dụng lao động có quyền quyết định sắp xếp ngày nghỉ hằng tuần vào ngày Chủ nhật hoặc ngày xác định khác trong tuần, nhưng phải ghi vào nội quy lao động.” \n\n- **Điều 105 – Thời giờ làm việc bình thường** \n - “Thời giờ làm việc bình thường không quá 48 giờ trong 1 tuần.” \n - “Nhà nước khuyến khích tuần làm việc 40 giờ; ngày nghỉ cuối tuần giúp đạt giới hạn này.” \n\n**Kết luận** \n- Bạn hiện đang không làm việc vào Thứ Bảy và Chủ nhật, đáp ứng đầy đủ yêu cầu “nghỉ ít nhất 24 giờ liên tục” của Điều 111. \n- Việc không có ca vào cuối tuần cũng giúp bạn không vượt quá giới hạn 48 giờ làm việc mỗi tuần theo Điều 105. \n\nNếu công ty có thay đổi lịch nghỉ hoặc bạn cần xác nhận chi tiết hơn (ví dụ: ngày nghỉ bù khi trùng lễ), vui lòng liên hệ Phòng Nhân sự.",
+   "elapsed": 11.0
+  },
+  {
+   "id": "work_shifts_01",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Tôi đang làm ca nào?",
+   "answer": "- Bạn đang làm ca **Giờ hành chính (T2‑T6)**.",
+   "elapsed": 6.3
+  },
+  {
+   "id": "work_shifts_02",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Ca làm của tôi bắt đầu và kết thúc vào lúc mấy giờ?",
+   "answer": "- **Thứ Hai đến thứ Sáu**: bắt đầu lúc **08:00**, kết thúc lúc **17:30**. \n- **Thứ Bảy và Chủ Nhật**: không có ca làm (giờ bắt đầu và kết thúc là **00:00**).",
+   "elapsed": 6.6
+  },
+  {
+   "id": "work_shifts_03",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Ca làm của tôi có giờ nghỉ trưa từ mấy giờ đến mấy giờ?",
+   "answer": "- **Giờ nghỉ trưa của bạn**: từ **12:00** đến **13:30**. \n- Áp dụng **các ngày trong tuần** (Thứ 2 – Thứ 6). \n- Vào **Thứ 7 và Chủ nhật** hiện không có giờ nghỉ trưa được thiết lập. \n\nNếu cần thay đổi hoặc xác nhận lại lịch nghỉ, vui lòng liên hệ bộ phận HR.",
+   "elapsed": 6.9
+  },
+  {
+   "id": "work_shifts_04",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Lịch chi tiết của ca làm việc của tôi trong cả tuần là gì?",
+   "answer": "- **Thứ Hai**: làm việc từ **08:00** đến **17:30** \n - Giờ nghỉ: **12:00 – 13:30** \n - Ca: *Giờ hành chính (T2‑T6)* \n\n- **Thứ Ba**: làm việc từ **08:00** đến **17:30** \n - Giờ nghỉ: **12:00 – 13:30** \n - Ca: *Giờ hành chính (T2‑T6)* \n\n- **Thứ Tư**: làm việc từ **08:00** đến **17:30** \n - Giờ nghỉ: **12:00 – 13:30** \n - Ca: *Giờ hành chính (T2‑T6)* \n\n- **Thứ Năm**: làm việc từ **08:00** đến **17:30** \n - Giờ nghỉ: **12:00 – 13:30** \n - Ca: *Giờ hành chính (T2‑T6)* \n\n- **Thứ Sáu**: làm việc từ **08:00** đến **17:30** \n - Giờ nghỉ: **12:00 – 13:30** \n - Ca: *Giờ hành chính (T2‑T6)* \n\n- **Thứ Bảy**: **ngày nghỉ** (không có ca làm việc) \n\n- **Chủ Nhật**: **ngày nghỉ** (không có ca làm việc)",
+   "elapsed": 7.1
+  },
+  {
+   "id": "work_shifts_05",
+   "group": "work_shifts",
+   "verdict": "PASS_DOC_PART_VERIFIED_T7-CN",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "leave_requests"
+   ],
+   "rewritten": "Trong tuần, tôi được nghỉ vào những ngày nào?",
+   "answer": "- **Hiện chưa có dữ liệu** về các ngày nghỉ phép mà bạn đã đăng ký hoặc được phê duyệt. \n- **Theo quy định nội bộ** (Điều 3 – Thời gian làm việc và ngày nghỉ): \n - Nhân viên làm việc theo ca 5 ngày trong tuần. \n - Ngày nghỉ cố định thường là **Thứ Bảy và Chủ Nhật** (ngày cuối tuần). \n - Nếu bạn có lịch làm việc khác (ca quay, ca bán thời gian…) thì ngày nghỉ sẽ được ghi trong hợp đồng hoặc bảng lịch ca riêng. \n\n**Bạn nên:** \n- Kiểm tra hợp đồng lao động hoặc bảng lịch ca cá nhân để xác nhận ngày nghỉ cụ thể của mình. \n- Liên hệ phòng Nhân sự nếu cần cập nhật hoặc điều chỉnh lịch nghỉ.",
+   "elapsed": 7.5
+  },
+  {
+   "id": "work_shifts_06",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Giờ bắt đầu ca của tôi là mấy và so sánh với giờ bắt đầu của các ca làm việc khác trong công ty như thế nào?",
+   "answer": "- **Ca của tôi (Giờ hành chính – Thứ Hai → Thứ Sáu)** \n - Thời gian bắt đầu được ghi là **00:00** (đầu ngày). \n\n- **Các ca khác trong công ty (Ca Kỹ Thuật & Vận Hành – Thứ Hai → Thứ Bảy)** \n - Thời gian bắt đầu được ghi là **08:00**. \n\n**So sánh** \n- Ca của tôi bắt đầu **sớm hơn** ca Kỹ Thuật & Vận Hành khoảng **8 giờ** (từ nửa đêm so với 8 h sáng). \n\n> **Lưu ý:** Dữ liệu lịch làm việc chi tiết (giờ vào‑ra thực tế) cho ca Giờ hành chính là 08:00‑17:30, nhưng trường “thời gian bắt đầu” trong hệ thống hiện đang lưu là 00:00. Nếu cần xác nhận thời gian bắt đầu thực tế, vui lòng liên hệ bộ phận HR để cập nhật thông tin. \n\n*(Không có quy định nội bộ nào liên quan đến việc so sánh thời gian bắt đầu ca, vì vậy không có điều khoản pháp lý cần trích dẫn.)*",
+   "elapsed": 11.5
+  },
+  {
+   "id": "work_shifts_07",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "multi_row",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Công ty có những ca làm việc nào và ca làm việc của tôi là ca nào trong số đó?",
+   "answer": "- **Các ca làm việc hiện có trong công ty (theo dữ liệu cá nhân)**\n - **Giờ hành chính (Thứ Hai → Thứ Sáu)** – ca đang **hiệu lực cho tôi**. \n - **Ca Kỹ Thuật & Vận Hành (Thứ Hai → Thứ Bảy)** – ca của một số đồng nghiệp khác.\n\n- **Ca của tôi**: tôi đang làm **Giờ hành chính (Thứ Hai‑Thứ Sáu)**.\n\n- **Lưu ý theo quy định nội bộ** \n - Khi chuyển đổi giữa các ca làm việc, người lao động phải được nghỉ ít nhất **12 giờ** trước khi chuyển sang ca mới (theo **Điều 110 – Nghỉ chuyển ca**, Bộ luật Lao động 2019). \n\nNếu bạn cần biết thêm các ca khác (nếu công ty có thêm ca không hiển thị trong dữ liệu hiện tại) hoặc muốn biết chi tiết về thời gian nghỉ giữa các ca, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 9.2
+  },
+  {
+   "id": "work_shifts_08",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "DB_ONLY",
+   "check_type": "non_empty",
+   "confidence": "HIGH",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Thứ Bảy và Chủ nhật tôi có phải làm việc không?",
+   "answer": "- Thứ 7: **không đi làm** (đang không làm việc, giờ làm việc = 00:00‑00:00). \n- Chủ nhật: **không đi làm** (đang không làm việc, giờ làm việc = 00:00‑00:00). \n\nDo đó, ca của bạn vào cả hai ngày này không yêu cầu bạn có mặt tại công ty. Nếu có thay đổi lịch, vui lòng kiểm tra lại thông báo từ bộ phận quản lý ca.",
+   "elapsed": 6.7
+  },
+  {
+   "id": "work_shifts_09",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Quy định giờ làm việc của công ty là gì, và ca làm việc của tôi có tuân thủ quy định đó không?",
+   "answer": "**1. Thông tin ca làm việc của tôi (theo dữ liệu cá nhân)** \n- **Tên ca:** Giờ hành chính (Thứ Hai → Thứ Sáu) \n- **Thời gian làm việc:** 08:00 – 17:30 (tổng 9,5 giờ) \n- **Giờ nghỉ trưa:** 12:00 – 13:30 (1,5 giờ) \n- **Thời gian làm việc thực tế (không tính nghỉ):** 8 giờ mỗi ngày \n- **Thứ Bảy & Chủ Nhật:** không làm việc (giờ làm việc = 00:00 – 00:00) \n\n**2. Quy định của pháp luật và nội quy công ty (theo tài liệu quy chế nội bộ)** \n\n- **Điều 105 – Thời giờ làm việc bình thường** \n - Không quá **08 giờ/ngày** và **48 giờ/tuần**. \n - Khuyến khích tuần làm việc **40 giờ**. \n\n- **Điều 109 – Nghỉ trong giờ làm việc** \n - Khi làm việc **từ 06 giờ trở lên** trong một ngày, phải có **nghỉ ít nhất 30 phút liên tục**. \n - Nghỉ được tính vào thời gian làm việc nếu làm việc liên tục. \n\n- **Điều 110 – Nghỉ chuyển ca** \n - Khi làm việc theo ca, phải có **nghỉ ít nhất 12 giờ** trước khi chuyển sang ca khác. (không áp dụng vì tôi không thay đổi ca). \n\n**3. Đối chiếu ca của tôi với quy định** \n\n- **Thời gian làm việc thực tế:** 8 giờ/ngày → **đúng quy định** (không vượt quá 08 giờ/ngày). \n- **Thời gian làm việc trong tuần:** 5 ngày × 8 giờ = **40 giờ/tuần** → **đúng khuyến cáo 40 giờ** và dưới mức tối đa 48 giờ/tuần. \n- **Giờ nghỉ trưa:** 1,5 giờ (90 phút) → **đủ hơn mức tối thiểu 30 phút** theo Điều 109. \n- **Không có ca đêm** → không cần nghỉ 45 phút. \n- **Không có chuyển ca** → Điều 110 không ảnh hưởng. \n\n**Kết luận:** \nCa làm việc hiện tại của tôi **hoàn toàn phù hợp** với các quy định về thời gian làm việc, thời gian nghỉ và giới hạn giờ làm việc trong tuần theo Bộ luật Lao động 2019 và nội quy công ty. \n\nNếu có thay đổi lịch ca hoặc yêu cầu làm việc ngoài giờ, công ty sẽ phải tuân thủ các quy định trên (nghỉ ít nhất 12 giờ trước khi chuyển ca, nghỉ tối thiểu 30 phút khi làm trên 6 giờ, …). \n\n*Nếu bạn cần thêm chi tiết về các quy định hoặc muốn kiểm tra các trường hợp ngoại lệ, vui lòng liên hệ bộ phận Nhân sự.*",
+   "elapsed": 11.7
+  },
+  {
+   "id": "work_shifts_10",
+   "group": "work_shifts",
+   "verdict": "PASS",
+   "expected_route": "HYBRID",
+   "check_type": "hybrid",
+   "confidence": "MEDIUM",
+   "db_tables": [
+    "users"
+   ],
+   "rewritten": "Quy định nghỉ giữa ca của công ty là gì và ca làm việc của tôi được nghỉ trưa bao lâu?",
+   "answer": "- **Thời gian nghỉ trưa của bạn** \n - Ca làm việc: 08:00 – 17:30 (tổng 9,5 giờ). \n - Giờ nghỉ trưa: 12:00 – 13:30, **độ dài 90 phút** (1 giờ 30 phút). \n\n- **Quy định pháp luật về nghỉ giữa ca** \n - **Điều 109, Bộ luật Lao động 2019 (Chương VII)**: \n 1. Người lao động làm việc **từ 06 giờ trở lên trong một ngày** phải được nghỉ **ít nhất 30 phút liên tục** giữa giờ. \n 2. Khi làm việc liên tục từ 06 giờ trở lên, thời gian nghỉ này **được tính vào giờ làm việc**. \n\n- **Đối chiếu** \n - Bạn làm việc 9,5 giờ mỗi ngày, nên theo quy định pháp luật bạn phải có ít nhất **30 phút** nghỉ giữa giờ. \n - Công ty đã sắp xếp **90 phút** nghỉ trưa (12:00‑13:30), **đạt và vượt mức tối thiểu** quy định của pháp luật. \n\nNếu cần thêm thông tin hoặc có thắc mắc khác, vui lòng liên hệ phòng Nhân sự.",
+   "elapsed": 10.4
+  }
+ ]
+}

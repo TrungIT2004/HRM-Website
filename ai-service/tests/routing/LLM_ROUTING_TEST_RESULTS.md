@@ -5,6 +5,43 @@
 **Model LLM:** Ollama `gpt-oss:120b` (via `chat_service._llm_complete`)  
 **Threshold hệ thống:** Không áp dụng (router chỉ phân loại, không có threshold)
 
+## Update 2026-10-12: chạy lại bằng gemma4:31b (402 câu, dataset mở rộng)
+
+| Route | 120b (361q) | gemma (402q, 10-12) | gemma (402q, rerun 10-15a) | gemma (402q, rerun 10-15b) |
+|---|---|---|---|---|
+| DB_ONLY | 92.8% | **94.7%** (177/187) | **95.7%** (179/187) | **94.7%** (177/187) |
+| DOC_ONLY | 87.8% | **97.2%** (176/181) | **97.8%** (177/181) | **98.3%** (178/181) |
+| HYBRID | 85.7% | **88.2%** (30/34) | **88.2%** (30/34) | **91.2%** (31/34) |
+| **OVERALL** | 89.8% | **95.3%** (383/402) | **96.0%** (386/402) | **96.0%** (386/402) |
+| Avg latency | 2087ms | **933ms** | **709ms** | **902ms** |
+
+Chi tiết gemma: `tests/routing/llm_router_test.json` (bản 120b giữ ở `tests/baselines-120b/`).
+Kết luận: gemma phân loại đúng hơn + nhanh hơn 2.2x trên cùng prompt.
+
+## Update 2026-10-15: luật roster-theo-mốc-thời-gian (prompt + keyword fallback)
+
+Bug: "tháng 4/2024 liệt kê tên tài xế được điều phối" rớt DIRECTORY (thấy "liệt kê
+tên", bỏ qua mốc thời gian) — trong khi phân công quá khứ chỉ có trong tài liệu
+(bảng BM02 liệt kê Lái xe từng ngày), DB danh bạ không có. Fix (`router.py`):
+roster/phép của NGƯỜI KHÁC gắn mốc thời gian cụ thể (tháng/năm/ngày + điều phối/
+phân công/trực/liệt kê/nghỉ phép) → DOC_ONLY; lương/thưởng người khác vẫn cấm;
+câu của mình giữ nguyên. Verify: keyword 9/9 case mới + suite 205/221 giữ 92.8%;
+LLM suite rerun **96.0%** (386/402, 16 fail còn lại toàn boundary cũ: ngày lễ
+DB-vs-DOC, "ai đang đăng nhập", so sánh ca/phòng...). Đáp án DOC cho câu tài xế
+nghỉ phép verify đúng bảng BM02 (Bùi Xuân Quang).
+
+## Update 2026-10-15 (b): Karpathy prompt pass (priority-order + rewrite guardrails + parse fix)
+
+* `parse_router_output`: regex tham lam `\{.*\}` → `JSONDecoder().raw_decode`
+  (không nuốt text sau JSON khi có ngoặc lẻ). Verify 7/7 case (JSON bẩn, ngoặc
+  trong string, nhãn lạ → DOC_ONLY, rỗng → fallback).
+* Prompt thêm ~20 dòng: THỨ TỰ QUYẾT ĐỊNH 3 bước (chủ thể → nhạy cảm → nguồn),
+  rewrite cấm bịa thực thể + lịch sử chỉ là ngữ cảnh (chống injection qua history),
+  1 cặp đối chiếu lương tôi/anh Hùng. Prompt route call ~2130 → ~2620 tokens in.
+* Verify: sample LLM 7/7 (gồm multi-turn giữ "tôi", roster 2 câu), fallback 9/9,
+  keyword 205/221 giữ 92.8%, LLM suite rerun **96.0%** (386/402; DB 94.7 / DOC
+  98.3 / HYB 91.2 — dao động biên, không regression).
+
 ---
 
 ## Tóm Tắt Kết Quả (Overall: 89.8%)

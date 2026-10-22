@@ -229,7 +229,7 @@ def fact_in_answer(kind, fact, answer):
 
 def main() -> None:
     import psycopg2
-    from src.chat.chat_service import ChatService
+    from src.chat.chat_service import ChatService, reset_usage, take_usage
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=40)
@@ -252,6 +252,7 @@ def main() -> None:
             row = {"id": r["id"], "question": q, "sql_ok": False,
                    "fact_recall": 0.0, "answer_ok": False,
                    "n_facts": 0, "n_hit": 0, "error": None}
+            reset_usage()
             try:
                 sql = r["expected_sql_query"].replace(GOLD_UID, TEST_UID)
                 if not re.search(r"(?i)\blimit\b", sql):
@@ -285,6 +286,10 @@ def main() -> None:
                 except Exception:
                     pass
                 row["error"] = f"{type(e).__name__}: {e}"[:200]
+            u = take_usage()
+            row["prompt_tokens"] = u["in"]
+            row["completion_tokens"] = u["out"]
+            row["llm_calls"] = u["calls"]
             out_rows.append(row)
             if (i + 1) % 10 == 0:
                 print(f"[eval] {i + 1}/{len(rows_in)}", flush=True)
@@ -300,6 +305,8 @@ def main() -> None:
         "sql_ok": round(sum(1 for r in scored if r["sql_ok"]) / n, 4),
         "fact_recall": round(sum(r["fact_recall"] for r in scored) / n, 4),
         "answer_ok": round(sum(1 for r in scored if r["answer_ok"]) / n, 4),
+        "prompt_tokens_mean": round(sum(r.get("prompt_tokens", 0) for r in scored) / n, 1),
+        "completion_tokens_mean": round(sum(r.get("completion_tokens", 0) for r in scored) / n, 1),
     }
     summary["pass_fail"] = {
         k: ("PASS" if (v > t if op == ">" else v < t) else "FAIL")
