@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  # --- CACHE LAYER ---
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+
+  # --- BACKEND LAYER ---
+  backend:
+    image: your-docker-username/hrm-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://your-rds-endpoint:5432/hrm_db
+      - SPRING_DATASOURCE_USERNAME=your_user
+      - SPRING_DATASOURCE_PASSWORD=your_password
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PORT=6379
+    depends_on:
+      - redis
+    restart: always
+
+  # --- AI LAYER ---
+  ai-service:
+    image: your-docker-username/hrm-ai
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://your_user:your_password@your-rds-endpoint:5432/hrm_db
+      - INTERNAL_API_SECRET=your-shared-secret
+    restart: always
+
+  # --- FRONTEND LAYER ---
+  frontend:
+    image: your-docker-username/hrm-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=https://your-domain.duckdns.org/api
+    restart: always

@@ -20,18 +20,16 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.minhtrung.hrm.filters.JwtAuthFilter;
-import com.minhtrung.hrm.filters.RateLimitFilter;
+
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-    private final RateLimitFilter rateLimitFilter;
 
-    SecurityConfig(JwtAuthFilter jwtAuthFilter, RateLimitFilter rateLimitFilter) {
+    SecurityConfig(JwtAuthFilter jwtAuthFilter) {
         this.jwtAuthFilter = jwtAuthFilter;
-        this.rateLimitFilter = rateLimitFilter;
     }
 
     @Bean
@@ -45,7 +43,9 @@ public class SecurityConfig {
         config.setAllowedOriginPatterns(List.of(
             "http://localhost:[*]",
             "http://127.0.0.1:[*]",
-            "https://*.trycloudflare.com"
+            "https://*.trycloudflare.com",
+            "https://hrm-demo.duckdns.org",
+            "https://workapp.com.vn"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
@@ -85,10 +85,6 @@ public class SecurityConfig {
             .addFilterBefore(
                 jwtAuthFilter,
                 UsernamePasswordAuthenticationFilter.class
-            )
-            .addFilterBefore(
-                rateLimitFilter,
-                JwtAuthFilter.class
             );
 
         return http.build();
