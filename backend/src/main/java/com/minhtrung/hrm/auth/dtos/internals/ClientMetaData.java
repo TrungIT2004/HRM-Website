@@ -16,4 +16,6 @@ public class ClientMetaData {
     private String ipAddr;
     private String country;
     private String city;
+    private String isp;
+    private String userAgentRaw;
 }

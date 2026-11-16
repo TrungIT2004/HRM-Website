@@ -1,0 +1,6138 @@
+{
+  "rows": [
+    {
+      "id": "D001",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Phối hợp với nhân viên phụ trách xe (P.HC) qua điện thoại/zalo trước 16h00 ngày N-1",
+            "status": "có",
+            "quote": "Phối hợp qua điện thoại, zalo... trước 16h00 ngày N-1 (đối với đăng ký xe đột xuất)"
+          },
+          {
+            "point": "Gửi thông tin về đơn vị điều phối ít nhất 4 giờ trước khi vận chuyển, nêu rõ lý do và được quản lý cấp phòng trở lên phê duyệt",
+            "status": "thiếu",
+            "quote": "Trường hợp đột xuất cần nêu rõ lý do và được phê duyệt bởi quản lý cấp phòng trở lên (gửi thông tin về đơn vị điều phối ít nhất 4 giờ trước thời gian thực hiện vận chuyển)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Cung cấp thông tin cho P.HC trước 16h00 ngày N-1",
+            "status": "có",
+            "quote": "trước 16h00 ngày N-1"
+          },
+          {
+            "point": "Gửi thông tin điều phối ít nhất 4 giờ trước khi vận chuyển, nêu lý do và được quản lý cấp phòng phê duyệt",
+            "status": "có",
+            "quote": "ít nhất 4 giờ trước thời gian thực hiện vận chuyển... được phê duyệt bởi quản lý cấp phòng trở lên"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 129,
+      "len_gen": 711,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D002",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Gửi yêu cầu cho Phòng Hành chính",
+            "status": "có",
+            "quote": "Kính gửi: Phòng Hành chính"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Phòng ban tiếp nhận yêu cầu",
+            "status": "có",
+            "detail": "Phòng Hành chính (P.HC)"
+          },
+          {
+            "point": "Quy trình đăng ký (Bước 1: Phối hợp thông tin)",
+            "status": "có",
+            "detail": "phối hợp với nhân viên phụ trách xe... qua điện thoại hoặc Zalo"
+          },
+          {
+            "point": "Quy trình đăng ký (Bước 2: Ký đề xuất mẫu BM01)",
+            "status": "có",
+            "detail": "ký đề xuất xe theo mẫu BM01"
+          },
+          {
+            "point": "Quy trình đăng ký (Bước 3: Gửi bản ký)",
+            "status": "có",
+            "detail": "chuyển bản ký qua email hoặc Zalo"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 83,
+      "len_gen": 649,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D003",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Ngày nghỉ phép của Bùi Xuân Quang",
+            "status": "thiếu",
+            "detail": "Hệ thống báo 'Không tìm thấy nhân viên nào khớp' trong khi căn cứ BM02 ghi rõ ngày 10 Thứ 4: Nghỉ phép"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Ngày nghỉ phép của Bùi Xuân Quang tháng 04/2024",
+            "status": "có",
+            "quote": "10 | Thứ 4 | | Bùi Xuân Quang | | | | Nghỉ phép"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 61,
+      "len_gen": 129,
+      "len_warn": false,
+      "cite_in_context": 0.0
+    },
+    {
+      "id": "D004",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hiệu lực kể từ ngày ký",
+            "status": "có",
+            "quote": "có hiệu lực kể từ ngày ký"
+          },
+          {
+            "point": "Ngày ký là 08/09/2025",
+            "status": "có",
+            "quote": "ngày 08 tháng 9 năm 2025"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hiệu lực kể từ ngày ký",
+            "status": "có",
+            "quote": "có hiệu lực kể từ ngày ký"
+          },
+          {
+            "point": "Ngày ký là 08/09/2025",
+            "status": "có",
+            "quote": "ngày 08 tháng 9 năm 2025"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 68,
+      "len_gen": 280,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D005",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Nhu cầu chính đáng đã được phê duyệt",
+            "status": "có",
+            "quote": "nhu cầu đi lại chính đáng, đã được phê duyệt"
+          },
+          {
+            "point": "Tham dự các cuộc họp, hội nghị, hội thảo",
+            "status": "có",
+            "quote": "Tham dự các cuộc họp, hội nghị, hội thảo"
+          },
+          {
+            "point": "Đi công tác tại các cơ quan quản lý, đối tác, khách hàng",
+            "status": "có",
+            "quote": "Đi công tác tại các cơ quan quản lý, đối tác, khách hàng"
+          },
+          {
+            "point": "Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án",
+            "status": "có",
+            "quote": "Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án"
+          },
+          {
+            "point": "Nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty",
+            "status": "có",
+            "quote": "Các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Nhu cầu đi lại chính đáng, đã được phê duyệt",
+            "status": "có",
+            "quote": "nhu cầu đi lại chính đáng, đã được phê duyệt"
+          },
+          {
+            "point": "Tham dự các cuộc họp, hội nghị, hội thảo",
+            "status": "có",
+            "quote": "Tham dự các cuộc họp, hội nghị, hội thảo"
+          },
+          {
+            "point": "Đi công tác tại các cơ quan quản lý, đối tác, khách hàng",
+            "status": "có",
+            "quote": "Đi công tác tại các cơ quan quản lý, đối tác, khách hàng"
+          },
+          {
+            "point": "Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án",
+            "status": "có",
+            "quote": "Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án"
+          },
+          {
+            "point": "Các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty",
+            "status": "có",
+            "quote": "Các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 303,
+      "len_gen": 536,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D006",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Quãng đường dài trên 30km hoặc liên tỉnh",
+            "status": "có",
+            "quote": "Quãng đường dài (trên 30km), liên tỉnh"
+          },
+          {
+            "point": "Hàng hóa số lượng lớn, cồng kềnh hoặc cần xe chuyên dụng",
+            "status": "có",
+            "quote": "Hàng hóa số lượng lớn, cồng kềnh hoặc có yêu cầu xe chuyên dụng"
+          },
+          {
+            "point": "Xe công ty không có sẵn hoặc không phù hợp",
+            "status": "có",
+            "quote": "Xe công ty không có sẵn hoặc không phù hợp"
+          },
+          {
+            "point": "Nhu cầu khẩn cấp ngoài giờ hành chính/ngày nghỉ",
+            "status": "có",
+            "quote": "Nhu cầu khẩn cấp, phát sinh ngoài giờ hành chính hoặc ngày nghỉ"
+          },
+          {
+            "point": "Yêu cầu nhiều điểm giao nhận trong thời gian ngắn",
+            "status": "có",
+            "quote": "Yêu cầu nhiều điểm giao nhận trong thời gian ngắn"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          "Quãng đường dài (>30km)/liên tỉnh: Hệ thống có (Quãng đường dài trên 30km hoặc liên tỉnh)",
+          "Hàng hóa lớn/cồng kềnh/xe chuyên dụng: Hệ thống có (hàng hóa số lượng lớn, cồng kềnh hoặc cần xe chuyên dụng)",
+          "Xe công ty không sẵn có/không phù hợp: Hệ thống có (xe công ty không có sẵn hoặc không phù hợp)",
+          "Nhu cầu khẩn cấp/ngoài giờ/ngày nghỉ: Hệ thống có (nhu cầu khẩn cấp ngoài giờ hành chính/ngày nghỉ)",
+          "Nhiều điểm giao nhận thời gian ngắn: Hệ thống có (yêu cầu nhiều điểm giao nhận trong thời gian ngắn)"
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 304,
+      "len_gen": 623,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D007",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi yêu cầu trước 15h00 ngày hôm trước",
+            "status": "có",
+            "quote": "trước 15h00 ngày hôm trước"
+          },
+          {
+            "point": "Áp dụng cho kế hoạch đã được phê duyệt trước",
+            "status": "có",
+            "quote": "đối với kế hoạch đã được phê duyệt trước đó"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi yêu cầu cho kế hoạch phê duyệt trước là trước 15h00 ngày hôm trước",
+            "status": "có",
+            "quote": "gửi về đơn vị điều phối trước 15h00 ngày hôm trước (đối với kế hoạch đã được phê duyệt trước đó)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 105,
+      "len_gen": 247,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D008",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Định kỳ 6 tháng/lần",
+            "status": "có",
+            "quote": "cập nhật định kỳ 6 tháng/lần"
+          },
+          {
+            "point": "Theo chỉ đạo của Tổng Giám đốc",
+            "status": "có",
+            "quote": "hoặc theo chỉ đạo của Tổng Giám đốc"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Định kỳ cập nhật 6 tháng/lần",
+            "status": "có",
+            "quote": "cập nhật định kỳ 6 tháng/lần"
+          },
+          {
+            "point": "Cập nhật theo chỉ đạo của Tổng Giám đốc",
+            "status": "có",
+            "quote": "hoặc theo chỉ đạo của Tổng Giám đốc"
+          },
+          {
+            "point": "Mục đích cập nhật: phù hợp điều kiện thực tế và thay đổi pháp lý",
+            "status": "thiếu",
+            "quote": "nhằm phù hợp với điều kiện thực tế và thay đổi pháp lý liên quan"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 91,
+      "len_gen": 381,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D009",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "trong các tài liệu được cung cấp không có thông tin về số quyết định của văn bản",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Số quyết định là 15/2023/QĐ",
+            "status": "có",
+            "quote": "Số: 15/2023/QĐ"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Số quyết định của văn bản",
+            "status": "có",
+            "detail": "15/2023/QĐ"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 28,
+      "len_gen": 249,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D010",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "hoặc Hội đồng quản trị công ty",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Bộ luật lao động 2019",
+            "status": "có",
+            "quote": "Bộ luật lao động năm 2019"
+          },
+          {
+            "y": "Nghị định 145/2020/NĐ-CP",
+            "status": "có",
+            "quote": "Nghị định 145/2020/NĐ-CP"
+          },
+          {
+            "y": "Luật doanh nghiệp 59/2020/QH14",
+            "status": "có",
+            "quote": "Luật doanh nghiệp 2020 (Luật số 59/2020/QH14)"
+          },
+          {
+            "y": "Điều lệ tổ chức và hoạt động của Công ty",
+            "status": "có",
+            "quote": "Điều lệ tổ chức và hoạt động của Công ty"
+          },
+          {
+            "y": "Chức năng và quyền hạn của Ban Giám đốc",
+            "status": "có",
+            "quote": "Chức năng và quyền hạn của Ban Giám đốc Công ty"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Bộ luật lao động 2019",
+            "status": "có",
+            "quote": "Bộ luật lao động năm 2019"
+          },
+          {
+            "point": "Nghị định 145/2020/NĐ-CP",
+            "status": "có",
+            "quote": "Nghị định 145/2020/N Đ-CP"
+          },
+          {
+            "point": "Luật doanh nghiệp 2020",
+            "status": "có",
+            "quote": "Luật doanh nghiệp số 59/2020/QH14"
+          },
+          {
+            "point": "Điều lệ tổ chức và hoạt động của Công ty",
+            "status": "có",
+            "quote": "điều lệ tổ chức và hoạt động của Công ty"
+          },
+          {
+            "point": "Chức năng và quyền hạn của Ban Giám đốc",
+            "status": "có",
+            "quote": "chức năng và quyền hạn của Ban Giám đốc Công ty"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 234,
+      "len_gen": 662,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D011",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Khuyến khích làm việc, hoàn thành tốt công việc, đóng góp SXKD",
+            "status": "có",
+            "quote": "khuyến khích người lao động làm việc, hoàn thành tốt công việc... đóng góp quan trọng vào việc hoàn thành kế hoạch sản xuất kinh doanh"
+          },
+          {
+            "point": "Tạo động lực nâng cao kiến thức, tích lũy kinh nghiệm",
+            "status": "có",
+            "quote": "Tạo động lực thúc đẩy người lao động nâng cao kiến thức và tích lũy kinh nghiệm"
+          },
+          {
+            "point": "Thực hiện đúng quy định pháp luật lao động",
+            "status": "có",
+            "quote": "Thực hiện đúng quy định của pháp luật lao động về lương thưởng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Khuyến khích làm việc, hoàn thành tốt công việc, đóng góp vào kế hoạch SXKD",
+            "status": "có",
+            "quote": "khuyến khích người lao động làm việc, hoàn thành tốt công việc... đóng góp vào kế hoạch sản xuất kinh doanh"
+          },
+          {
+            "point": "Tạo động lực nâng cao kiến thức, tích lũy kinh nghiệm",
+            "status": "có",
+            "quote": "tạo động lực nâng cao kiến thức, tích lũy kinh nghiệm"
+          },
+          {
+            "point": "Thực hiện đúng quy định pháp luật lao động",
+            "status": "có",
+            "quote": "thực hiện đúng quy định pháp luật lao động"
+          },
+          {
+            "point": "Quy định các khoản người lao động được nhận",
+            "status": "thiếu",
+            "quote": null
+          },
+          {
+            "point": "Quy định cách tính tiền thưởng, lương, phụ cấp",
+            "status": "thiếu",
+            "quote": null
+          },
+          {
+            "point": "Đảm bảo đời sống, mức sống cơ bản cho người lao động",
+            "status": "thiếu",
+            "quote": null
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 272,
+      "len_gen": 878,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D012",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Điều lệ công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC và Quy chế nội bộ về quản trị công ty",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Bộ luật Lao động 2019",
+            "status": "co",
+            "quote": "Bộ luật Lao động 2019"
+          },
+          {
+            "point": "Nghị định 145/2020/NĐ-CP",
+            "status": "co",
+            "quote": "nghị định 145/2020/NĐ-CP"
+          },
+          {
+            "point": "Luật doanh nghiệp 2020",
+            "status": "co",
+            "quote": "Luật doanh nghiệp số 59/2020/QH14"
+          },
+          {
+            "point": "Điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước",
+            "status": "co",
+            "quote": "Điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước"
+          },
+          {
+            "point": "Chức năng, quyền hạn của Hội đồng quản trị công ty",
+            "status": "thieu",
+            "quote": "không xuất hiện trong đáp án B"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Luật doanh nghiệp 2020",
+            "status": "có",
+            "quote": "Luật doanh nghiệp số 59/2020/QH14"
+          },
+          {
+            "point": "Bộ luật Lao động 2019",
+            "status": "có",
+            "quote": "Bộ luật Lao động 2019"
+          },
+          {
+            "point": "Nghị định 145/2020/NĐ-CP",
+            "status": "có",
+            "quote": "nghị định 145/2020/NĐ-CP"
+          },
+          {
+            "point": "Pháp luật dân sự",
+            "status": "có",
+            "quote": "pháp luật về dân sự"
+          },
+          {
+            "point": "Điều lệ Công ty",
+            "status": "có",
+            "quote": "Điều lệ công ty"
+          },
+          {
+            "point": "Quy chế nội bộ quản trị công ty",
+            "status": "có",
+            "quote": "Quy chế nội bộ về quản trị Công ty"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 207,
+      "len_gen": 951,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D013",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "việc trả lương còn dựa vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Kết quả SXKD chung và mức độ đóng góp",
+            "status": "có",
+            "quote": "kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp"
+          },
+          {
+            "point": "Nguyên tắc làm nhiều hưởng nhiều, làm ít hưởng ít",
+            "status": "có",
+            "quote": "làm nhiều hưởng nhiều, làm ít hưởng ít"
+          },
+          {
+            "point": "Hưởng lương theo công việc và chức vụ",
+            "status": "có",
+            "quote": "làm công việc gì, chức vụ gì hưởng lương theo công việc và chức vụ đó"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Kết quả SXKD chung và mức độ đóng góp (làm nhiều hưởng nhiều, làm ít hưởng ít)",
+            "status": "có",
+            "quote": "kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp"
+          },
+          {
+            "point": "Hưởng lương theo công việc và chức vụ đảm nhiệm",
+            "status": "có",
+            "quote": "làm công việc gì, chức vụ gì hưởng lương theo công việc và chức vụ đó"
+          },
+          {
+            "point": "Gắn liền với năng suất, chất lượng, hiệu quả SXKD theo quy định Nhà nước",
+            "status": "thiếu",
+            "quote": "gắn liền với năng suất chất lượng, hiệu quả sản xuất kinh doanh"
+          },
+          {
+            "point": "Lương tăng theo hiệu quả thực tế phù hợp Quỹ lương Giám đốc phê duyệt",
+            "status": "thiếu",
+            "quote": "tiền lương của người lao động tăng theo hiệu quả thực tế phù hợp với Quỹ tiền lương"
+          },
+          {
+            "point": "Lương Giám đốc do HĐQT quyết định",
+            "status": "thiếu",
+            "quote": "Tiền lương và thưởng của Giám đốc do Hội đồng quản trị quyết định"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 243,
+      "len_gen": 1112,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D014",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hưởng 100% mức lương cơ bản (theo quy chế công ty)",
+            "status": "có",
+            "quote": "Hưởng 100% mức lương cơ bản"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Quy chế công ty: hưởng 100% lương cơ bản",
+            "status": "có",
+            "quote": "Hưởng 100% mức lương cơ bản"
+          },
+          {
+            "point": "Bộ luật Lao động 2019: thỏa thuận nhưng ít nhất 85%",
+            "status": "có",
+            "quote": "ít nhất phải bằng 85% mức lương"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 69,
+      "len_gen": 466,
+      "len_warn": true,
+      "cite_in_context": 0.6
+    },
+    {
+      "id": "D015",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Lương cơ bản được xác định qua quá trình xem xét vai trò, trách nhiệm của các vị trí công việc thông qua hệ thống bản mô tả công việc do Công ty quy định và căn cứ trên hệ thống thang bảng lương Công ty",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Công thức tính lương cơ bản = Mức lương tối thiểu vùng x Hệ số lương",
+            "status": "có",
+            "quote": "Lương cơ bản = Mức lương tối thiểu vùng... x Hệ số lương"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Công thức tính lương cơ bản (Lương tối thiểu vùng x Hệ số lương)",
+            "status": "có",
+            "quote": "Lương cơ bản = Mức lương tối thiểu vùng... x Hệ số lương"
+          },
+          {
+            "point": "Căn cứ xác định qua vai trò, trách nhiệm, mô tả công việc và thang bảng lương",
+            "status": "thiếu",
+            "quote": "không có trong đáp án B"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 189,
+      "len_gen": 663,
+      "len_warn": true,
+      "cite_in_context": 0.6
+    },
+    {
+      "id": "D016",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "trả lương",
+            "status": "có",
+            "quote": "dùng để trả lương"
+          },
+          {
+            "point": "cơ sở đóng BHXH bắt buộc",
+            "status": "có",
+            "quote": "làm cơ sở đóng các loại BHXH bắt buộc"
+          },
+          {
+            "point": "giải quyết chế độ, chính sách",
+            "status": "có",
+            "quote": "giải quyết chế độ, chính sách đối với người lao động"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Dùng để trả lương",
+            "status": "có",
+            "quote": "dùng để trả lương"
+          },
+          {
+            "point": "Cơ sở đóng BHXH bắt buộc",
+            "status": "có",
+            "quote": "làm cơ sở đóng các loại BHXH bắt buộc"
+          },
+          {
+            "point": "Giải quyết chế độ, chính sách theo quy định Nhà nước",
+            "status": "có",
+            "quote": "giải quyết chế độ, chính sách đối với người lao động theo quy định của Nhà nước"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 157,
+      "len_gen": 269,
+      "len_warn": false,
+      "cite_in_context": 0.6
+    },
+    {
+      "id": "D017",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Quy trình đánh giá... Tiêu chí đánh giá",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Công thức tính phụ cấp HQCV",
+            "status": "sai",
+            "detail": "Hệ thống thiếu chia cho 'Số ngày làm việc trong tháng' so với đáp án mẫu, tuy nhiên NGU CĂN CỨ cung cấp bảng biểu bị lỗi hiển thị (lặp lại cụm 'Số ngày làm việc trong tháng' ở dòng dưới) khiến công thức không rõ ràng."
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Quy trình đánh giá... Tiêu chí đánh giá: Kết quả công việc được đánh giá theo 2 tiêu chí là Khối lượng và chất lượng công việc hoàn thành",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Công thức tính phụ cấp HQCV",
+            "status": "co",
+            "detail": "Mức phụ cấp x Tỷ lệ % x Số ngày làm việc thực tế"
+          },
+          {
+            "y": "Quy trình đánh giá",
+            "status": "thieu",
+            "detail": "Ngu can cu khong cung cap thong tin quy trinh"
+          },
+          {
+            "y": "Tiêu chí đánh giá",
+            "status": "thieu",
+            "detail": "Ngu can cu khong cung cap thong tin tieu chi"
+          }
+        ]
+      },
+      "final": "DISPUTED",
+      "len_gt": 149,
+      "len_gen": 718,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D018",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Ban Giám đốc loại A là 2.2",
+            "status": "co",
+            "quote": "Ban Giám đốc | 2.2"
+          },
+          {
+            "y": "Công nhân loại A là 2.0",
+            "status": "co",
+            "quote": "Công nhân | 2.0"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Ban Giám đốc loại A: 2.2",
+            "status": "có",
+            "quote": "Ban Giám đốc là 2.2"
+          },
+          {
+            "point": "Công nhân loại A: 2.0",
+            "status": "có",
+            "quote": "Công nhân là 2.0"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 65,
+      "len_gen": 164,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D019",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hoàn thành xuất sắc nhiệm vụ đảm bảo chất lượng và tiến độ công việc",
+            "status": "có",
+            "quote": "Hoàn thành xuất sắc nhiệm vụ đảm bảo chất lượng và tiến độ công việc"
+          },
+          {
+            "point": "Sẵn sàng nhận thêm việc và hoàn thành tốt công việc nhận thêm",
+            "status": "có",
+            "quote": "sẵn sàng nhận thêm việc và hoàn thành tốt công việc nhận thêm"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hoàn thành xuất sắc nhiệm vụ đảm bảo chất lượng và tiến độ công việc",
+            "status": "có",
+            "quote": "Hoàn thành xuất sắc nhiệm vụ đảm bảo chất lượng và tiến độ công việc"
+          },
+          {
+            "point": "Sẵn sàng nhận thêm việc và hoàn thành tốt công việc nhận thêm",
+            "status": "có",
+            "quote": "sẵn sàng nhận thêm việc và hoàn thành tốt công việc nhận thêm"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 160,
+      "len_gen": 268,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D020",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Phụ cấp ăn trưa của công nhân là 730.000",
+            "status": "có",
+            "quote": "Công nhân | 730.000"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Phụ cấp ăn trưa của công nhân là 730.000 đồng",
+            "status": "có",
+            "quote": "Công nhân | 730.000"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 41,
+      "len_gen": 131,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D021",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Các dịp liên hoan: kỷ niệm thành lập, tết dương lịch, âm lịch",
+            "status": "có",
+            "quote": "ngày kỷ niệm thành lập Công ty, ngày tết dương lịch, âm lịch"
+          },
+          {
+            "point": "Thời gian và địa điểm do Ban Giám đốc quyết định",
+            "status": "có",
+            "quote": "Ban Giám đốc sẽ có quyết định về thời gian, địa điểm tổ chức"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Các dịp tổ chức liên hoan (kỷ niệm thành lập, tết dương lịch, âm lịch)",
+            "status": "có",
+            "quote": "ngày kỷ niệm thành lập Công ty, ngày tết dương lịch, âm lịch"
+          },
+          {
+            "point": "Quyết định về thời gian và địa điểm do Ban Giám đốc quyết định",
+            "status": "có",
+            "quote": "Ban Giám đốc sẽ có quyết định về thời gian, địa điểm tổ chức"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 108,
+      "len_gen": 284,
+      "len_warn": false,
+      "cite_in_context": 0.2
+    },
+    {
+      "id": "D022",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Ngày ban hành Quyết định số 15/2023/QĐ",
+            "status": "có",
+            "detail": "10 tháng 01 năm 2023"
+          },
+          {
+            "point": "Địa điểm ban hành",
+            "status": "có",
+            "detail": "TP. Hồ Chí Minh"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Ngày ban hành Quyết định số 15/2023/QĐ",
+            "status": "có",
+            "quote": "TP. Hồ Chí Minh, ngày 10 tháng 01 năm 2023"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 85,
+      "len_gen": 254,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D023",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Khuyến khích hoàn thành tốt công việc/đóng góp SXKD",
+            "status": "có",
+            "quote": "khuyến khích người lao động hoàn thành tố công việc theo chức danh và đóng góp quan trong vào việc hoàn thành kế hoạch sản xuất kinh doanh"
+          },
+          {
+            "point": "Quy định các khoản nhận được khi làm việc chính thức",
+            "status": "có",
+            "quote": "Quy định về các khoản mà người lao động được nhận khi l"
+          },
+          {
+            "point": "Cách tính lương thưởng, phụ cấp",
+            "status": "có",
+            "quote": "Quy định về cách tính tiền thưởng, tiền lương"
+          },
+          {
+            "point": "Thực thi đúng pháp luật lao động",
+            "status": "có",
+            "quote": "Thực hiện đúng quy định của pháp luật lao động"
+          },
+          {
+            "point": "Đảm bảo đời sống cơ bản cho người lao động",
+            "status": "có",
+            "quote": "đáp ứng mức sống cơ bản cho người lao động"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Khuyến khích NLĐ hoàn thành tốt công việc/đóng góp SXKD",
+            "status": "có",
+            "quote": "khuyến khích người lao động làm việc, hoàn thành tốt công việc"
+          },
+          {
+            "point": "Thúc đẩy nâng cao kiến thức, kinh nghiệm",
+            "status": "có",
+            "quote": "Tạo động lực thúc đẩy người lao động nâng cao kiến thức"
+          },
+          {
+            "point": "Thực hiện đúng quy định pháp luật lao động",
+            "status": "có",
+            "quote": "Thực hiện đúng quy định của pháp luật lao động"
+          },
+          {
+            "point": "Quy định các khoản NLĐ được nhận",
+            "status": "có",
+            "quote": "Quy định về các khoản mà người lao động được nhận"
+          },
+          {
+            "point": "Quy định cách tính lương, thưởng, phụ cấp",
+            "status": "có",
+            "quote": "Quy định về cách tính tiền thưởng, tiền lương"
+          },
+          {
+            "point": "Đảm bảo đời sống, mức sống cơ bản cho NLĐ",
+            "status": "có",
+            "quote": "Đảm bảo đời sống cho người lao động"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 292,
+      "len_gen": 1445,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D024",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Xác định theo Nghị định 153/2016/NĐ-CP về mức lương tối thiểu vùng",
+            "status": "có",
+            "quote": "xác định theo quy định tại Nghị đinh 153/2016/NĐ-CP về mức lương tối thiểu vùng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Xác định theo Nghị định 153/2016/NĐ-CP về mức lương tối thiểu vùng",
+            "status": "có",
+            "quote": "xác định theo quy định tại Nghị đinh 153/2016/NĐ-CP"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 99,
+      "len_gen": 233,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D025",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức lương cho cá nhân làm việc thời vụ, vụ việc, thời gian nhất định, theo khối lượng chi tiết qua hợp đồng khoán việc",
+            "status": "có",
+            "quote": "mức lương dành cho cá nhân trực tiếp làm công việc có tính chất thời vụ, vụ việc..."
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức lương cho cá nhân làm việc thời vụ, vụ việc, thời gian nhất định, khối lượng chi tiết qua hợp đồng khoán",
+            "status": "có",
+            "quote": "mức lương dành cho cá nhân trực tiếp làm công việc có tính chất thời vụ, vụ việc..."
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 204,
+      "len_gen": 278,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D026",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức phụ cấp trách nhiệm Trưởng phòng kinh doanh là 2.000.000 đồng",
+            "status": "có",
+            "quote": "Trưởng phòng kinh doanh | 2.000.000 đồng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức phụ cấp trách nhiệm Trưởng phòng kinh doanh là 2.000.000 đồng",
+            "status": "có",
+            "quote": "Trưởng phòng kinh doanh | 2.000.000 đồng"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 76,
+      "len_gen": 159,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D027",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Ăn trưa 680.000 đồng",
+            "status": "có",
+            "quote": "Nhân viên kinh doan | 680.000 đồng"
+          },
+          {
+            "point": "Điện thoại 300.000 đồng",
+            "status": "có",
+            "quote": "Nhân viên kinh doan | 300.000 đồng"
+          },
+          {
+            "point": "Xăng xe 350.000 đồng",
+            "status": "có",
+            "quote": "Nhân viên kinh doan | 350.000 đồng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Phụ cấp ăn trưa 680.000 đồng",
+            "status": "co",
+            "quote": "Nhân viên kinh doan | 680.000 đồng"
+          },
+          {
+            "y": "Phụ cấp điện thoại 300.000 đồng",
+            "status": "co",
+            "quote": "Nhân viên kinh doan | 300.000 đồng"
+          },
+          {
+            "y": "Phụ cấp xăng xe 350.000 đồng",
+            "status": "co",
+            "quote": "Nhân viên kinh doan | 350.000 đồng"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 125,
+      "len_gen": 258,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D028",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "HĐLĐ dưới 03 tháng (thời vụ, khoán, thử việc) thỏa thuận phụ cấp cụ thể trong HĐLĐ",
+            "status": "có",
+            "quote": "Được thỏa thuận các khoản phụ cấp cụ thể trong HĐLĐ"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "HĐLĐ dưới 03 tháng (thời vụ, khoán, thử việc) được thỏa thuận phụ cấp cụ thể trong HĐLĐ",
+            "status": "có",
+            "quote": "Được thỏa thuận các khoản phụ cấp cụ thể trong HĐLĐ"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 129,
+      "len_gen": 263,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D029",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Được hỗ trợ tiền thuê nhà",
+            "status": "có",
+            "quote": "được hưởng thêm khoản tiền hỗ trợ thuê nhà"
+          },
+          {
+            "y": "Mức hưởng từ 1.000.000 đến 2.000.000 đồng/tháng",
+            "status": "có",
+            "quote": "từ 1.000.000 đến 2.000.000 đồng mỗi tháng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Được hỗ trợ tiền thuê nhà",
+            "status": "có",
+            "quote": "được hưởng khoản tiền hỗ trợ thuê nhà"
+          },
+          {
+            "point": "Mức hưởng từ 1.000.000 đến 2.000.000 đồng/tháng",
+            "status": "có",
+            "quote": "từ 1.000.000 đến 2.000.000 đồng mỗi tháng"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 142,
+      "len_gen": 188,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D030",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Công thức tính lương tháng",
+            "status": "có",
+            "quote": "Tiền lương tháng = (Tiền lương chính + Phụ cấp, trợ cấp nếu có): 26 x số ngày làm việc thực tế"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hình thức tính: trả lương theo thời gian làm việc thực tế",
+            "status": "có",
+            "quote": "Sử dụng hình thức trả lương theo thời gian làm việc thực tế"
+          },
+          {
+            "point": "Cơ sở tính lương: căn cứ bảng chấm công, chính xác số liệu, đúng thời gian",
+            "status": "có",
+            "quote": "Căn cứ vào thời gian làm việc tại bảng chấm công... Chính xác về số liệu"
+          },
+          {
+            "point": "Công thức tính: (Lương chính + Phụ cấp) : 26 x ngày làm việc thực tế",
+            "status": "có",
+            "quote": "Tiền lương tháng = (Tiền lương chính + Phụ cấp, trợ cấp nếu có): 26 x số ngày làm việc thực tế"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 96,
+      "len_gen": 679,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D031",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Ngày thường 150%",
+            "status": "có",
+            "quote": "150%"
+          },
+          {
+            "y": "Ngày Chủ nhật 200%",
+            "status": "có",
+            "quote": "200%"
+          },
+          {
+            "y": "Ngày Lễ, Tết 300%",
+            "status": "có",
+            "quote": "300%"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Ngày thường: 150%",
+            "status": "có",
+            "quote": "Ngày thường = Lương giờ x 150%"
+          },
+          {
+            "y": "Ngày Chủ nhật: 200%",
+            "status": "có",
+            "quote": "Ngày Chủ nhật = Lương giờ x 200%"
+          },
+          {
+            "y": "Ngày Lễ, Tết: 300%",
+            "status": "có",
+            "quote": "Ngày Lễ, Tết = Lương giờ x 300%"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 186,
+      "len_gen": 552,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D032",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức phụ cấp lưu trú tại Hà Nội, Đà Nẵng, TP.HCM khi đi cách ngày là 450.000 đồng/ngày",
+            "status": "có",
+            "quote": "450.000 đồng/ngày"
+          },
+          {
+            "point": "Được thanh toán chi phí ăn ở, đi lại theo thực tế phát sinh",
+            "status": "có",
+            "quote": "thanh toán tất cả chi phí ăn ở, đi lại theo thực tế phát sinh"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức phụ cấp lưu trú tại HN, ĐN, HCM là 450.000 đồng/ngày",
+            "status": "có",
+            "quote": "450.000 đồng/ngày"
+          },
+          {
+            "point": "Được thanh toán chi phí ăn ở, đi lại theo thực tế phát sinh",
+            "status": "thiếu",
+            "quote": "thanh toán tất cả chi phí ăn ở, đi lại theo thực tế phát sinh"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 139,
+      "len_gen": 399,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D033",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Tháng 04 hàng năm",
+            "status": "có",
+            "quote": "tháng 04 hàng năm"
+          },
+          {
+            "y": "Thâm niên 02 năm hưởng một mức lương",
+            "status": "có",
+            "quote": "thâm niên 02 năm hưởng một mức lương"
+          },
+          {
+            "y": "Hoàn thành tốt công việc",
+            "status": "có",
+            "quote": "hoàn thành tốt công việc được giao"
+          },
+          {
+            "y": "Không vi phạm quy định lao động",
+            "status": "có",
+            "quote": "không vi phạm quy định lao động"
+          },
+          {
+            "y": "Xử lý khi vi phạm (xét năm sau nếu không tái phạm)",
+            "status": "có",
+            "quote": "năm sau mới được xét nâng lương... không tái phạm"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thâm niên 02 năm hưởng một mức lương",
+            "status": "có",
+            "quote": "đủ thâm niên 02 năm hưởng một mức lương"
+          },
+          {
+            "point": "Hoàn thành tốt công việc",
+            "status": "có",
+            "quote": "hoàn thành tốt công việc được giao"
+          },
+          {
+            "point": "Không vi phạm quy định lao động",
+            "status": "có",
+            "quote": "không vi phạm quy định lao động"
+          },
+          {
+            "point": "Trường hợp vi phạm xét vào năm sau nếu không tái phạm",
+            "status": "thiếu",
+            "quote": null
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 170,
+      "len_gen": 554,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D034",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đạt doanh thu do Ban Giám đốc giao",
+            "status": "có",
+            "quote": "đạt doanh thu do Ban Giám đốc giao"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Điều kiện: đạt doanh thu do Ban Giám đốc giao",
+            "status": "có",
+            "quote": "đạt doanh thu do Ban Giám đốc giao"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 124,
+      "len_gen": 223,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D035",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mã hiệu quy trình là QT.ACT.HC-05",
+            "status": "có",
+            "quote": "QT.ACT.HC-05"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mã hiệu quy trình là QT.ACT.HC-05",
+            "status": "có",
+            "quote": "QT.ACT.HC-05"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 85,
+      "len_gen": 148,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D036",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mã hiệu quy trình là QT.ACT.HC-05",
+            "status": "có",
+            "quote": "QT.ACT.HC-05"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mã hiệu quy trình là QT.ACT.HC-05",
+            "status": "có",
+            "quote": "QT.ACT.HC-05"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 85,
+      "len_gen": 199,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D037",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Định mức khối văn phòng: 120.000/người/tháng",
+            "status": "có",
+            "quote": "Đối với khối văn phòng: Định mức sử dụng VPP và mực in: 120.000/người/tháng"
+          },
+          {
+            "point": "Định mức nhân viên văn phòng tại trung tâm khu vực: 120.000/người/tháng",
+            "status": "có",
+            "quote": "Đối với trung tâm khu vực: Định mức sử dụng VPP và mực in: 120.000/người/tháng với nhân viên văn phòng"
+          },
+          {
+            "point": "Không áp dụng cho Cộng tác viên",
+            "status": "thiếu",
+            "quote": "Định mức sử dụng VPP, vệ sinh phẩm và mực in không áp dụng với Cộng tác viên"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Định mức khối văn phòng: 120.000/người/tháng",
+            "status": "có",
+            "quote": "Đối với khối văn phòng: Định mức sử dụng VPP và mực in: 120.000/người/tháng"
+          },
+          {
+            "point": "Định mức nhân viên văn phòng tại trung tâm khu vực: 120.000/người/tháng",
+            "status": "có",
+            "quote": "Đối với trung tâm khu vực: Định mức sử dụng VPP và mực in: 120.000/người/tháng với nhân viên văn phòng"
+          },
+          {
+            "point": "Không áp dụng cho Cộng tác viên",
+            "status": "có",
+            "quote": "Định mức sử dụng VPP, vệ sinh phẩm và mực in không áp dụng với Cộng tác viên"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 143,
+      "len_gen": 386,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D038",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tên mẫu đơn: Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng",
+            "status": "có",
+            "quote": "Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng"
+          },
+          {
+            "point": "Mã hiệu: BM02-QT.ACT.HC-05",
+            "status": "có",
+            "quote": "BM02 - QT.ACT.HC-05"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tên mẫu đơn: Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng",
+            "status": "có",
+            "quote": "Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng"
+          },
+          {
+            "point": "Mã hiệu: BM02 - QT.ACT.HC-05",
+            "status": "có",
+            "quote": "BM02 - QT.ACT.HC-05"
+          },
+          {
+            "point": "Thời gian lập đề nghị: 25 đến 30 hàng tháng",
+            "status": "có",
+            "quote": "Vào ngày 25 đến 30 hàng tháng"
+          },
+          {
+            "point": "Quy trình: Lập BM02 -> P.HC xem xét -> Kiểm tra định mức -> TP.HC duyệt -> Mua và cấp phát",
+            "status": "có",
+            "quote": "lập giấy đề nghị... BM02... chuyển Phòng HC xem xét... kiểm tra định mức... Trưởng phòng HC duyệt... mua VPP và vệ sinh phẩm"
+          },
+          {
+            "point": "Thời gian cấp phát: ngày 5 đến ngày 10 tháng tiếp theo",
+            "status": "có",
+            "quote": "thực hiện từ ngày 5 đến ngày 10 của tháng tiếp theo"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 147,
+      "len_gen": 654,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D039",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đơn giá giấy photocopy Double AA A4 80gsm",
+            "status": "có",
+            "quote": "81.000"
+          },
+          {
+            "point": "Đơn vị tính là ream",
+            "status": "có",
+            "quote": "Ream"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đơn giá giấy photocopy Double AA A4 80gsm",
+            "status": "có",
+            "quote": "81.000"
+          },
+          {
+            "point": "Đơn vị tính là ream",
+            "status": "có",
+            "quote": "Ream"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 87,
+      "len_gen": 136,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D040",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bìa 3 dây Thảo Linh gáy 20 phân là 15.000 đồng/cái (chưa VAT)",
+            "status": "có",
+            "quote": "Bìa 3 dây Thảo Linh gáy 20 phân | Cái | 15.000"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bìa 3 dây Thảo Linh gáy 20 phân",
+            "status": "có",
+            "quote": "15.000 VNĐ/Cái"
+          },
+          {
+            "point": "Thuế VAT",
+            "status": "có",
+            "quote": "chưa VAT"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 70,
+      "len_gen": 308,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D041",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bút bi UNI SX101 Jestream 0.7mm xanh là 20.000 VNĐ",
+            "status": "có",
+            "quote": "Bút bi UNI SX101 Jestream 0.7mm xanh | Cây | 20.000"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bút bi UNI SX101 Jestream 0.7mm xanh là 20.000 VNĐ",
+            "status": "co",
+            "quote": "Bút bi UNI SX101 Jestream 0.7mm xanh ... 20.000"
+          },
+          {
+            "point": "Đơn giá chưa VAT",
+            "status": "co",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 78,
+      "len_gen": 139,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D042",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bìa nhựa 60 lá Flexoffice FO-DB03 là 55.000 đồng",
+            "status": "có",
+            "quote": "Bìa nhựa 60 lá Flexoffice FO-DB03... 55.000"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bìa nhựa 60 lá Flexoffice FO-DB03 là 55.000 VNĐ",
+            "status": "có",
+            "quote": "Bìa nhựa 60 lá Flexoffice FO-DB03... 55.000"
+          },
+          {
+            "point": "Đơn giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 74,
+      "len_gen": 214,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D043",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đơn giá máy tính Casio FX-580VNX là 680.000 đồng",
+            "status": "có",
+            "quote": "680.000"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đơn giá máy tính Casio FX-580VNX là 680.000 VNĐ",
+            "status": "có",
+            "quote": "680.000"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 72,
+      "len_gen": 312,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D044",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 2,
+        "hallucination": true,
+        "hallucination_quote": "quy chế hiện tại của công ty không có thông tin về giá của \"bao thư trắng F100 (12x22)\"",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Giá bao thư trắng F100 (12x22) là 33.000 đồng/xấp",
+            "status": "thiếu",
+            "detail": "Hệ thống báo không có thông tin"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bao thư trắng F100 (12x22)",
+            "status": "có",
+            "detail": "33.000 đồng (chưa VAT)"
+          },
+          {
+            "point": "Quy cách đóng gói",
+            "status": "có",
+            "detail": "100 cái/xấp"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 83,
+      "len_gen": 456,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D045",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá thước kéo JUNXO 67/ G-STAR 76 loại 5 mét là 19.000 đồng",
+            "status": "có",
+            "quote": "Thước kéo JUNXO 67/ G-STAR 76 loại 5 mét | Cái | 19.000"
+          },
+          {
+            "point": "Giá chưa bao gồm VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá thước kéo JUNXO 67/ G-STAR 76 loại 5 mét",
+            "status": "có",
+            "quote": "19.000"
+          },
+          {
+            "point": "Đơn giá chưa VAT",
+            "status": "có",
+            "quote": "Đơn giá (Chưa VAT)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 75,
+      "len_gen": 230,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D046",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá kẹp acco sắt SDI loại 1 là 50.000 đồng/hộp (chưa VAT)",
+            "status": "có",
+            "quote": "Kẹp acco sắt SDI loại 1 (Hãng) | Hộp | 50.000"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá kẹp acco sắt SDI loại 1 là 50.000 VNĐ/hộp (chưa VAT)",
+            "status": "có",
+            "quote": "Kẹp acco sắt SDI loại 1 (Hãng) | Hộp | 50.000"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 69,
+      "len_gen": 236,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D047",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá khẩu trang xanh 4 lớp (50 cái/hộp) là 35.000 đồng chưa VAT",
+            "status": "có",
+            "quote": "35.000"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá khẩu trang xanh 4 lớp (50 cái/hộp) là 35.000 VNĐ chưa VAT",
+            "status": "có",
+            "quote": "Khẩu trang xanh 4 lớp - (50 cái/hộp) | Hộp | 35.000"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 77,
+      "len_gen": 242,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D048",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bình xịt thơm phòng Sumo 400ml là 50.000 đồng/chai (chưa VAT)",
+            "status": "có",
+            "quote": "Bình xịt thơm phòng Sumo 400ml | Chai | 50.000 | (Chưa VAT)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giá bình xịt thơm phòng Sumo 400ml là 50.000 VNĐ chưa VAT",
+            "status": "có",
+            "quote": "Bình xịt thơm phòng Sumo 400ml... 50.000"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 70,
+      "len_gen": 232,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D049",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tổng số tiền thanh toán là 587.740 đồng",
+            "status": "có",
+            "quote": "Tổng tiền thanh toán: 587.740"
+          },
+          {
+            "point": "Số tiền viết bằng chữ: Năm trăm tám mươi bảy nghìn bảy trăm bốn mươi đồng chẵn",
+            "status": "có",
+            "quote": "Năm trăm tám mươi bảy nghìn bảy trăm bốn mươi đồng chẵn"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tổng số tiền thanh toán là 587.740 đồng",
+            "status": "có",
+            "quote": "Tổng tiền thanh toán: 587.740"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 95,
+      "len_gen": 152,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D050",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Người lập là Đỗ Thị Ánh Nguyệt",
+            "status": "có",
+            "quote": "Họ và tên : Đỗ Thị Ánh Nguyệt"
+          },
+          {
+            "point": "Thuộc Phòng Hành chính",
+            "status": "có",
+            "quote": "Đơn vị công tác : PHÒNG HÀNH CHÍNH"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Người lập là Đỗ Thị Ánh Nguyệt",
+            "status": "có",
+            "quote": "Họ và tên : Đỗ Thị Ánh Nguyệt"
+          },
+          {
+            "point": "Thuộc Phòng Hành chính",
+            "status": "có",
+            "quote": "Đơn vị công tác : PHÒNG HÀNH CHÍNH"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 81,
+      "len_gen": 240,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D051",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Quy chế này bao gồm 36 Điều, 10 chương, quy định các nội dung sau: * Nguyên tắc quản trị Công ty... * Quy định về Người quản trị công ty.",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Trình ĐHĐCĐ xem xét, thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực",
+            "status": "có",
+            "quote": "Về việc ban hành Quy chế Quản trị nội bộ Công ty Tài chính Cổ phần Điện lực"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Căn cứ theo nội dung dự thảo, Quy chế này bao gồm 36 Điều, 10 chương, quy định các nội dung sau: ... (toàn bộ danh sách các quy định)",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Trình thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực",
+            "status": "có",
+            "quote": "Về việc ban hành Quy chế Quản trị nội bộ Công ty Tài chính Cổ phần Điện lực"
+          },
+          {
+            "point": "Chi tiết nội dung Quy chế (36 Điều, 10 chương, các quy định cụ thể)",
+            "status": "thiếu",
+            "quote": "không có trong NGU CAN CU"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 142,
+      "len_gen": 900,
+      "len_warn": true,
+      "cite_in_context": 0.4
+    },
+    {
+      "id": "D052",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Bảo vệ quyền và lợi ích hợp pháp của cổ đông và Công ty",
+            "status": "có",
+            "quote": "bảo vệ quyền và lợi ích hợp pháp của cổ đông và Công ty Tài chính cổ phần Điện lực"
+          },
+          {
+            "point": "Đảm bảo hoạt động phù hợp pháp luật, Điều lệ, chuẩn mực, thông lệ để đạt hiệu quả cao nhất",
+            "status": "có",
+            "quote": "đảm bảo Công ty hoạt động phù hợp với quy định của pháp luật, Điều lệ Công ty và các chuẩn mực, thông lệ... đạt hiệu quả kinh doanh cao nhất"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "bảo vệ quyền và lợi ích hợp pháp của cổ đông và Công ty",
+            "status": "có",
+            "quote": "bảo vệ quyền và lợi ích hợp pháp của cổ đông và Công ty Tài chính cổ phần Điện lực"
+          },
+          {
+            "point": "đảm bảo hoạt động phù hợp pháp luật, Điều lệ, chuẩn mực, thông lệ để đạt hiệu quả cao nhất",
+            "status": "có",
+            "quote": "đảm bảo Công ty hoạt động phù hợp với quy định của pháp luật, Điều lệ Công ty và các chuẩn mực, thông lệ trong hoạt động kinh doanh Công ty nhằm đạt hiệu quả kinh doanh cao nhất"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 298,
+      "len_gen": 431,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D053",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tổng Giám đốc",
+            "status": "có",
+            "quote": "Tổng Giám đốc"
+          },
+          {
+            "point": "Phó Tổng Giám đốc",
+            "status": "có",
+            "quote": "Phó Tổng Giám đốc"
+          },
+          {
+            "point": "Kế toán trưởng",
+            "status": "có",
+            "quote": "Kế toán trưởng"
+          },
+          {
+            "point": "Các vị trí quản lý khác được HĐQT bổ nhiệm",
+            "status": "thiếu",
+            "quote": "Giám đốc Chi nhánh"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Giám đốc Chi nhánh",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Tổng Giám đốc",
+            "status": "có",
+            "quote": "Tổng Giám đốc"
+          },
+          {
+            "point": "Phó Tổng Giám đốc",
+            "status": "có",
+            "quote": "Phó Tổng Giám đốc"
+          },
+          {
+            "point": "Kế toán trưởng",
+            "status": "có",
+            "quote": "Kế toán trưởng"
+          },
+          {
+            "point": "Các vị trí quản lý khác được HĐQT bổ nhiệm",
+            "status": "thiếu",
+            "quote": "Giám đốc Chi nhánh"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 91,
+      "len_gen": 303,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D054",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đại hội đồng cổ đông",
+            "status": "có",
+            "quote": "1. Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Hội đồng Quản trị",
+            "status": "có",
+            "quote": "2. Hội đồng Quản trị"
+          },
+          {
+            "point": "Ban Kiểm soát",
+            "status": "có",
+            "quote": "3. Ban Kiểm soát"
+          },
+          {
+            "point": "Tổng Giám đốc",
+            "status": "có",
+            "quote": "4. Tổng Giám đốc"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đại hội đồng cổ đông",
+            "status": "có",
+            "quote": "1. Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Hội đồng Quản trị",
+            "status": "có",
+            "quote": "2. Hội đồng Quản trị"
+          },
+          {
+            "point": "Ban Kiểm soát",
+            "status": "có",
+            "quote": "3. Ban Kiểm soát"
+          },
+          {
+            "point": "Tổng Giám đốc",
+            "status": "có",
+            "quote": "4. Tổng Giám đốc"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 119,
+      "len_gen": 185,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D055",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo mời họp ĐHĐCĐ",
+            "status": "sai",
+            "detail": "Đáp án A ghi 'hai mươi ngày', trong khi NGU CAN CU (Luật doanh nghiệp, MWG, PMSC) đều ghi '21 ngày' hoặc 'hai mươi mốt (21) ngày'. Chỉ có một đoạn nhỏ cuối tài liệu ghi 'hai mươi ngày' nhưng mâu thuẫn với các quy định chính phía trên."
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Đối với MWG: Thông báo mời họp phải được gửi chậm nhất là hai mươi mốt (21) ngày trước ngày khai mạc Đại hội đồng cổ đông.",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo mời họp ĐHĐCĐ",
+            "system_status": "sai",
+            "detail": "Hệ thống ghi 21 ngày cho cả PMSC và MWG, nhưng NGU CĂN CỨ cho thấy MWG quy định 'chậm nhất hai mươi ngày trước ngày khai mạc'."
+          }
+        ]
+      },
+      "final": "DISPUTED",
+      "len_gt": 117,
+      "len_gen": 728,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D056",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hoàn thành và thông qua trước khi bế mạc/kết thúc cuộc họp",
+            "status": "có",
+            "quote": "hoàn thành và thông qua trước khi bế mạc cuộc họp / lập xong và thông qua trước khi kết thúc cuộc họp"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hoàn thành và thông qua trước khi bế mạc/kết thúc cuộc họp",
+            "status": "có",
+            "quote": "hoàn thành và thông qua trước khi bế mạc cuộc họp / lập xong và thông qua trước khi kết thúc cuộc họp"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 79,
+      "len_gen": 464,
+      "len_warn": true,
+      "cite_in_context": 0.2
+    },
+    {
+      "id": "D057",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng thành viên HĐQT không ít hơn 05 và không quá 11",
+            "status": "có",
+            "quote": "không ít hơn 05 thành viên và không quá 11 thành viên"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng thành viên HĐQT PMSC là 05 người",
+            "status": "có",
+            "quote": "Số lượng thành viên Hội đồng quản trị là 05 người"
+          },
+          {
+            "point": "Số lượng thành viên HĐQT EVNFinance từ 5 đến 11 người",
+            "status": "có",
+            "quote": "không ít hơn 05 thành viên và không quá 11 thành viên"
+          },
+          {
+            "point": "Số lượng thành viên HĐQT MWG từ 5 đến 11 người",
+            "status": "có",
+            "quote": "không ít hơn năm (5) người, không vượt quá mười một (11) người"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 92,
+      "len_gen": 632,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D058",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời hạn công bố: tối thiểu 10 ngày trước ngày khai mạc",
+            "status": "có",
+            "quote": "tối thiểu 10 ngày trước ngày khai mạc"
+          },
+          {
+            "point": "Họ tên, ngày tháng năm sinh",
+            "status": "có",
+            "quote": "Họ tên, ngày, tháng, năm sinh"
+          },
+          {
+            "point": "Trình độ chuyên môn",
+            "status": "có",
+            "quote": "Trình độ chuyên môn"
+          },
+          {
+            "point": "Quá trình công tác",
+            "status": "có",
+            "quote": "Quá trình công tác"
+          },
+          {
+            "point": "Chức danh quản lý/HĐQT công ty khác",
+            "status": "có",
+            "quote": "Các chức danh quản lý khác (bao gồm cả chức danh Hội đồng quản trị của công ty khác)"
+          },
+          {
+            "point": "Lợi ích liên quan tới Công ty",
+            "status": "có",
+            "quote": "Lợi ích có liên quan tới công ty và các bên có liên quan của công ty"
+          },
+          {
+            "point": "Thông tin khác",
+            "status": "có",
+            "quote": "Các thông tin khác (nếu có)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời hạn công bố: tối thiểu 10 ngày trước ngày khai mạc họp ĐHĐCĐ",
+            "status": "có",
+            "quote": "tối thiểu 10 ngày trước ngày khai mạc họp Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Nội dung: Họ tên, ngày tháng năm sinh",
+            "status": "có",
+            "quote": "Họ tên, ngày, tháng, năm sinh"
+          },
+          {
+            "point": "Nội dung: Trình độ chuyên môn",
+            "status": "có",
+            "quote": "Trình độ chuyên môn"
+          },
+          {
+            "point": "Nội dung: Quá trình công tác",
+            "status": "có",
+            "quote": "Quá trình công tác"
+          },
+          {
+            "point": "Nội dung: Chức danh quản lý khác/HĐQT công ty khác",
+            "status": "có",
+            "quote": "Các chức danh quản lý khác (bao gồm cả chức danh Hội đồng quản trị của công ty khác)"
+          },
+          {
+            "point": "Nội dung: Lợi ích liên quan tới công ty và các bên liên quan",
+            "status": "có",
+            "quote": "Lợi ích có liên quan tới công ty và các bên có liên quan của công ty"
+          },
+          {
+            "point": "Nội dung: Thông tin khác theo Điều lệ",
+            "status": "có",
+            "quote": "Các thông tin khác (nếu có) theo quy định tại Điều lệ công ty"
+          },
+          {
+            "point": "Trách nhiệm công bố chi tiết về các công ty đang nắm giữ chức vụ/lợi ích",
+            "status": "có",
+            "quote": "Công ty có trách nhiệm công bố thông tin về các công ty mà ứng cử viên đang nắm giữ chức vụ thành viên Hội đồng quản trị..."
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 303,
+      "len_gen": 821,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D059",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời gian công bố: tối thiểu 10 ngày trước khai mạc",
+            "status": "có",
+            "quote": "tối thiểu mười (10) ngày trước ngày khai mạc họp ĐHĐCĐ"
+          },
+          {
+            "point": "Nội dung: Họ tên, ngày sinh",
+            "status": "có",
+            "quote": "Họ tên, ngày tháng năm sinh"
+          },
+          {
+            "point": "Nội dung: Trình độ chuyên môn",
+            "status": "có",
+            "quote": "Trình độ chuyên môn"
+          },
+          {
+            "point": "Nội dung: Quá trình công tác",
+            "status": "có",
+            "quote": "Quá trình công tác"
+          },
+          {
+            "point": "Nội dung: Tên các Công ty nắm giữ chức vụ BKS/quản lý",
+            "status": "có",
+            "quote": "Tên các Công ty mà ứng cử viên đang nắm giữ chức vụ thành viên Ban Kiểm soát và các chức danh quản lý khác"
+          },
+          {
+            "point": "Nội dung: Lợi ích liên quan tới Công ty",
+            "status": "có",
+            "quote": "Các lợi ích có liên quan tới Công ty (nếu có)"
+          },
+          {
+            "point": "Nội dung: Thông tin khác",
+            "status": "có",
+            "quote": "Các thông tin khác (nếu có)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời gian công bố: tối thiểu 10 ngày trước khai mạc ĐHĐCĐ",
+            "status": "có",
+            "quote": "tối thiểu 10 ngày"
+          },
+          {
+            "point": "Địa điểm công bố: trang thông tin điện tử của Công ty",
+            "status": "có",
+            "quote": "trên trang thông tin điện tử của Công ty"
+          },
+          {
+            "point": "Nội dung: Họ tên, ngày tháng năm sinh",
+            "status": "có",
+            "quote": "Họ tên, ngày tháng năm sinh"
+          },
+          {
+            "point": "Nội dung: Trình độ chuyên môn",
+            "status": "có",
+            "quote": "Trình độ chuyên môn"
+          },
+          {
+            "point": "Nội dung: Quá trình công tác",
+            "status": "có",
+            "quote": "Quá trình công tác"
+          },
+          {
+            "point": "Nội dung: Tên các Công ty nắm giữ chức vụ BKS và quản lý khác",
+            "status": "có",
+            "quote": "Tên các Công ty mà ứng cử viên đang nắm giữ chức vụ thành viên Ban Kiểm soát và các chức danh quản lý khác"
+          },
+          {
+            "point": "Nội dung: Lợi ích liên quan tới Công ty",
+            "status": "có",
+            "quote": "Các lợi ích có liên quan tới Công ty (nếu có)"
+          },
+          {
+            "point": "Nội dung: Các thông tin khác",
+            "status": "có",
+            "quote": "Các thông tin khác (nếu có)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 305,
+      "len_gen": 516,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D060",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Bằng cấp: Đại học trở lên về kinh tế, quản trị kinh doanh hoặc luật",
+            "status": "có",
+            "detail": "Hệ thống liệt kê đúng cho EVNFinance"
+          },
+          {
+            "point": "Kinh nghiệm 1: 05 năm làm người điều hành TCTD",
+            "status": "có",
+            "detail": "Hệ thống liệt kê đúng cho EVNFinance"
+          },
+          {
+            "point": "Kinh nghiệm 2: 05 năm TGĐ/Phó TGĐ DN vốn pháp định + 05 năm tài chính/ngân hàng/kế toán/kiểm toán",
+            "status": "có",
+            "detail": "Hệ thống liệt kê đúng cho EVNFinance"
+          },
+          {
+            "point": "Kinh nghiệm 3: 10 năm làm trực tiếp tài chính/ngân hàng/kế toán/kiểm toán",
+            "status": "có",
+            "detail": "Hệ thống liệt kê đúng cho EVNFinance"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tiêu chuẩn TGĐ EVNFinance: Bằng ĐH kinh tế/quản trị/luật; KN 5 năm điều hành TCTD hoặc 5 năm TGĐ/PTGĐ DN vốn pháp định + 5 năm tài chính/ngân hàng/kế toán/kiểm toán hoặc 10 năm tài chính/ngân hàng/kế toán/kiểm toán",
+            "status": "có",
+            "quote": "Bằng Đại học trở lên về một trong các ngành kinh tế, quản trị kinh doanh, luật... 05 năm làm người điều hành của tổ chức tín dụng..."
+          },
+          {
+            "point": "Tiêu chuẩn TGĐ MWG: Bằng ĐH trở lên; KN quản trị kinh doanh ngành chính; ít nhất 3 năm làm việc tại Công ty/công ty con; kiến thức kinh tế/chính trị/pháp luật/thị trường",
+            "status": "có",
+            "quote": "Có trình độ đại học trở lên... ít nhất 3 năm liên tục làm việc tại Công ty..."
+          },
+          {
+            "point": "Tiêu chuẩn Giám đốc Petrolimex-PMSC: Trình độ chuyên môn, kinh nghiệm quản trị kinh doanh",
+            "status": "có",
+            "quote": "Có trình độ chuyên môn, kinh nghiệm trong quản trị kinh doanh của công ty"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 414,
+      "len_gen": 1610,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D061",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Điều 64 - QuyCheQuanTri-Petrolimex-PMSC.pdf",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Ban Kiểm soát không có quyền biểu quyết đối với nghị quyết HĐQT",
+            "status": "có",
+            "quote": "không được biểu quyết"
+          },
+          {
+            "point": "Ban Kiểm soát có quyền dự họp, thảo luận/phát biểu ý kiến",
+            "status": "có",
+            "quote": "có quyền dự các cuộc họp Hội đồng quản trị; có quyền thảo luận"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Ban Kiểm soát không có quyền biểu quyết đối với nghị quyết HĐQT",
+            "status": "có",
+            "quote": "không được biểu quyết"
+          },
+          {
+            "point": "Có quyền dự họp và thảo luận/phát biểu ý kiến",
+            "status": "có",
+            "quote": "có quyền dự các cuộc họp Hội đồng quản trị; có quyền thảo luận"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 149,
+      "len_gen": 702,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D062",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty (đối với EVNFinance)",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thông báo bằng văn bản cho HĐQT",
+            "status": "có",
+            "quote": "thông báo bằng văn bản với Hội đồng Quản trị"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Đối với EVNFinance: ... Thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty.",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thông báo bằng văn bản cho HĐQT trong 48 giờ",
+            "status": "có",
+            "quote": "thông báo bằng văn bản cho Hội đồng quản trị trong thời hạn 48 giờ"
+          },
+          {
+            "point": "Yêu cầu chấm dứt vi phạm và khắc phục hậu quả",
+            "status": "có",
+            "quote": "yêu cầu người có hành vi vi phạm chấm dứt vi phạm và có giải pháp khắc phục hậu quả"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 120,
+      "len_gen": 1003,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D063",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Kết quả thực hiện công việc",
+            "status": "có",
+            "quote": "Kết quả thực hiện công việc được giao"
+          },
+          {
+            "point": "Phẩm chất đạo đức, lối sống, tuân thủ Điều lệ và pháp luật",
+            "status": "có",
+            "quote": "Phẩm chất đạo đức, lối sống... tuân thủ và chấp hành Điều lệ của EVNFinance... quy định của pháp luật"
+          },
+          {
+            "point": "Tinh thần học tập, trung thực, kỷ luật, trách nhiệm",
+            "status": "có",
+            "quote": "Tinh thần học tập nâng cao trình độ, tính trung thực... kỷ luật, tinh thần trách nhiệm"
+          },
+          {
+            "point": "Khả năng, phong cách, thái độ quản lý",
+            "status": "có",
+            "quote": "Khả năng quản lý, phong cách, thái độ trong quản lý công việc"
+          },
+          {
+            "point": "Sự đoàn kết, phối hợp và mức độ tín nhiệm",
+            "status": "có",
+            "quote": "Đoàn kết, phối hợp... mức độ tín nhiệm với nhân viên"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          "Kết quả thực hiện công việc (mức độ hoàn thành, khối lượng, chất lượng, hiệu quả): Hệ thống có (EVNFinance)",
+          "Phẩm chất đạo đức, lối sống, tuân thủ Điều lệ và pháp luật: Hệ thống có (EVNFinance)",
+          "Tinh thần học tập, trung thực, kỷ luật, trách nhiệm: Hệ thống có (EVNFinance)",
+          "Khả năng, phong cách, thái độ quản lý: Hệ thống có (EVNFinance)",
+          "Đoàn kết, phối hợp và mức độ tín nhiệm: Hệ thống có (EVNFinance)",
+          "Tiêu chuẩn đánh giá HĐQT/Giám đốc PMSC (hài hòa lợi ích, chỉ số tài chính/phi tài chính): Hệ thống A có, hệ thống B thiếu",
+          "Phương thức đánh giá Kiểm soát viên PMSC (theo cơ cấu tổ chức BKS): Hệ thống A có, hệ thống B thiếu"
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 344,
+      "len_gen": 1719,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D064",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Đối với MWG: Thông báo họp phải được gửi trước cho các thành viên HĐQT ít nhất năm (05) ngày trước khi tổ chức họp.",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo mời họp HĐQT",
+            "status": "có",
+            "detail": "Hệ thống liệt kê nhiều mốc thời gian (05 ngày, 03 ngày) tùy công ty."
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Đối với EVN Finance: Thông báo mời họp phải được gửi ít nhất 05 (năm) ngày làm việc trước ngày họp. Đối với MWG: Thông báo họp phải được gửi trước cho các thành viên HĐQT ít nhất năm (05) ngày trước khi tổ chức họp.",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời hạn thông báo họp HĐQT của PMSC",
+            "status": "có",
+            "detail": "chậm nhất là [03 ngày] làm việc"
+          },
+          {
+            "point": "Thời hạn thông báo họp HĐQT của EVN Finance",
+            "status": "thiếu",
+            "detail": "không có trong NGU CAN CU"
+          },
+          {
+            "point": "Thời hạn thông báo họp HĐQT của MWG",
+            "status": "thiếu",
+            "detail": "không có trong NGU CAN CU"
+          },
+          {
+            "point": "Thời hạn thông báo họp HĐQT chung (mục 1 đầu NGU CAN CU)",
+            "status": "thiếu",
+            "detail": "ít nhất 05 (năm) ngày làm việc"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 83,
+      "len_gen": 714,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D065",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đại hội đồng cổ đông",
+            "status": "có",
+            "quote": "Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Thành viên HĐQT, UB kiểm toán nội bộ, Người quản lý, Người điều hành và người có liên quan",
+            "status": "có",
+            "quote": "Thành viên Hội đồng quản trị, thành viên Ủy ban kiểm toán nội bộ, Người quản lý, Người điều hành và tổ chức, cá nhân và người có liên quan"
+          },
+          {
+            "point": "Tổ chức và cá nhân có quyền lợi liên quan đến Công ty",
+            "status": "có",
+            "quote": "Tổ chức và cá nhân có quyền lợi liên quan đến Công ty"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Đại hội đồng cổ đông",
+            "status": "có",
+            "quote": "Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Thành viên HĐQT, UB kiểm toán nội bộ, Người quản lý, Người điều hành và người có liên quan",
+            "status": "có",
+            "quote": "Thành viên Hội đồng quản trị, thành viên Ủy ban kiểm toán nội bộ, Người quản lý, Người điều hành và tổ chức, cá nhân và người có liên quan"
+          },
+          {
+            "point": "Tổ chức và cá nhân có quyền lợi liên quan đến Công ty",
+            "status": "có",
+            "quote": "Tổ chức và cá nhân có quyền lợi liên quan đến Công ty"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 265,
+      "len_gen": 412,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D066",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo mời họp chậm nhất là 21 ngày trước ngày khai mạc",
+            "status": "có",
+            "quote": "chậm nhất là hai mươi mốt (21) ngày"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo mời họp",
+            "status": "có",
+            "detail": "chậm nhất 21 ngày trước ngày khai mạc"
+          },
+          {
+            "point": "Điều kiện đi kèm (Điều lệ quy định dài hơn)",
+            "status": "có",
+            "detail": "nếu Điều lệ công ty không quy định thời hạn dài hơn"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 130,
+      "len_gen": 728,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D067",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          "Giấy ủy quyền có chữ ký cổ đông và thông tin hợp lệ: Hệ thống có (MWG: 'giấy ủy quyền có chữ ký của bạn', Petrolimex: 'chữ ký của bên ủy quyền')",
+          "Không bắt buộc công chứng: Hệ thống có (MWG: 'không bắt buộc phải chứng thực bởi công chứng viên')",
+          "CMND/Hộ chiếu của người được ủy quyền: Hệ thống có (MWG: 'mang theo Chứng minh nhân dân hoặc Hộ chiếu')",
+          "Nộp bản gốc giấy ủy quyền: Hệ thống có (MWG: 'nộp lại bản gốc giấy ủy quyền')",
+          "Yêu cầu chi tiết văn bản ủy quyền (tên, số cổ phần, phạm vi...): Hệ thống có (Petrolimex: 'tên cổ đông... số lượng cổ phần... nội dung, phạm vi...')"
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giấy ủy quyền lập thành văn bản theo mẫu công ty",
+            "status": "có",
+            "quote": "lập thành văn bản theo mẫu của Công ty đã gửi kèm"
+          },
+          {
+            "point": "Có chữ ký cổ đông, không bắt buộc công chứng",
+            "status": "có",
+            "quote": "có chữ ký của Cổ đông... không bắt buộc phải chứng thực bởi công chứng viên"
+          },
+          {
+            "point": "Thông tin hợp lệ của cổ đông được mời họp",
+            "status": "có",
+            "quote": "thông tin hợp lệ của Cổ đông được mời họp"
+          },
+          {
+            "point": "Người được ủy quyền mang theo CMND/Hộ chiếu",
+            "status": "có",
+            "quote": "mang theo chứng minh nhân dân hoặc hộ chiếu"
+          },
+          {
+            "point": "Nộp bản gốc giấy ủy quyền trước khi vào họp",
+            "status": "có",
+            "quote": "nộp lại văn bản bản gốc giấy ủy quyền trước khi vào họp"
+          },
+          {
+            "point": "Xác định cụ thể số cổ phần/phiếu bầu nếu cử nhiều đại diện",
+            "status": "có",
+            "quote": "phải xác định cụ thể số cổ phần và số phiếu bầu của người đại diện"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 287,
+      "len_gen": 1746,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D068",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hình thức biểu quyết",
+            "status": "system_correct",
+            "detail": "Hệ thống liệt kê đúng: giơ thẻ, bỏ phiếu trực tiếp, bỏ phiếu điện tử (Điều 13.1)"
+          },
+          {
+            "point": "Điều kiện hợp lệ về hình thức",
+            "status": "system_correct",
+            "detail": "Hệ thống liệt kê đúng: mẫu in sẵn, không tẩy xóa/cạo sửa/rách nát, không viết thêm nội dung (Điều 12.2.a)"
+          },
+          {
+            "point": "Điều kiện hợp lệ về xác nhận",
+            "status": "system_correct",
+            "detail": "Hệ thống liệt kê đúng: có chữ ký và họ tên viết tay (Điều 12.2.a)"
+          },
+          {
+            "point": "Điều kiện hợp lệ về nội dung",
+            "status": "system_correct",
+            "detail": "Hệ thống liệt kê đúng: chọn 1 trong 3 ô Tán thành, Không tán thành, Không có ý kiến (Điều 12.2.a)"
+          },
+          {
+            "point": "Điều kiện hợp lệ về thời hạn",
+            "status": "system_correct",
+            "detail": "Hệ thống liệt kê đúng: gửi về Ban kiểm phiếu trước khi mở niêm phong thùng phiếu (Điều 12.2.a)"
+          },
+          {
+            "point": "Lưu ý về thẻ biểu quyết",
+            "status": "system_correct",
+            "detail": "Hệ thống liệt kê đúng: giơ mặt trước hướng Chủ tọa, không giơ quá 1 lần (Điều 13.a)"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hình thức biểu quyết",
+            "status": "có",
+            "detail": "Giơ thẻ, bỏ phiếu trực tiếp, điện tử (Hệ thống liệt kê đủ)"
+          },
+          {
+            "point": "Điều kiện hợp lệ: Mẫu in sẵn",
+            "status": "có",
+            "detail": "mẫu in sẵn do BTC phát ra"
+          },
+          {
+            "point": "Điều kiện hợp lệ: Không tẩy xóa, sửa chữa",
+            "status": "có",
+            "detail": "không tẩy xóa, cạo sửa, rách, nát"
+          },
+          {
+            "point": "Điều kiện hợp lệ: Không viết thêm nội dung",
+            "status": "có",
+            "detail": "không viết thêm nội dung nào khác"
+          },
+          {
+            "point": "Điều kiện hợp lệ: Chữ ký và họ tên viết tay",
+            "status": "có",
+            "detail": "có chữ ký... họ tên được viết tay"
+          },
+          {
+            "point": "Điều kiện hợp lệ: Chọn 1 trong 3 ô",
+            "status": "có",
+            "detail": "đánh dấu chọn một (01) trong ba (03) ô vuông"
+          },
+          {
+            "point": "Điều kiện hợp lệ: Thời hạn gửi",
+            "status": "có",
+            "detail": "trước thời điểm mở niêm phong thùng phiếu"
+          },
+          {
+            "point": "Lưu ý giơ thẻ biểu quyết",
+            "status": "có",
+            "detail": "giơ cao hướng về Đoàn Chủ tọa, không giơ quá 1 lần"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 350,
+      "len_gen": 1321,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D069",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Trường hợp được yêu cầu mua lại: biểu quyết phản đối nghị quyết tổ chức lại công ty hoặc thay đổi quyền, nghĩa vụ cổ đông",
+            "status": "có",
+            "quote": "biểu quyết phản đối nghị quyết về việc tổ chức lại Công ty hoặc thay đổi quyền, nghĩa vụ của Cổ đông"
+          },
+          {
+            "point": "Thời hạn gửi yêu cầu: 10 ngày kể từ ngày ĐHĐCĐ thông qua nghị quyết",
+            "status": "có",
+            "quote": "trong thời hạn 10 ngày, kể từ ngày Đại hội đồng cổ đông thông qua nghị quyết"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Trường hợp được yêu cầu mua lại: biểu quyết phản đối/không thông qua nghị quyết về tổ chức lại công ty hoặc thay đổi quyền, nghĩa vụ cổ đông",
+            "status": "có",
+            "quote": "Cổ đông biểu quyết phản đối nghị quyết về việc tổ chức lại Công ty hoặc thay đổi quyền, nghĩa vụ của Cổ đông"
+          },
+          {
+            "point": "Thời hạn gửi yêu cầu: 10 ngày kể từ ngày ĐHĐCĐ thông qua nghị quyết",
+            "status": "có",
+            "quote": "gửi đến Công ty trong thời hạn 10 ngày, kể từ ngày Đại hội đồng cổ đông thông qua nghị quyết"
+          },
+          {
+            "point": "Hình thức và nội dung yêu cầu: văn bản, tên, địa chỉ, số lượng cổ phần, giá dự định bán, lý do",
+            "status": "có",
+            "quote": "Yêu cầu phải bằng văn bản, trong đó nêu rõ tên, địa chỉ của Cổ đông, số lượng cổ phần từng loại, giá dự định bán, lý do yêu cầu"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 275,
+      "len_gen": 927,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D070",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng thành viên HĐQT",
+            "status": "sai",
+            "detail": "Đáp án mẫu ghi 5-11 người, nhưng NGU CĂN CỨ cho thấy mỗi công ty có quy định riêng (PMSC: 5; EVNFinance: 5-11; MWG: 5-11)."
+          },
+          {
+            "point": "Nhiệm kỳ HĐQT",
+            "status": "sai",
+            "detail": "Đáp án mẫu ghi không quá 4 năm, nhưng NGU CĂN CỨ cho thấy PMSC và EVNFinance là không quá 5 năm, chỉ MWG là không quá 4 năm."
+          },
+          {
+            "point": "Số nhiệm kỳ bầu lại",
+            "status": "có",
+            "detail": "Hệ thống nêu đúng 'số nhiệm kỳ không hạn chế' cho cả 3 công ty."
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Số lượng và nhiệm kỳ PMSC",
+            "status": "có",
+            "detail": "05 người, không quá 05 năm"
+          },
+          {
+            "y": "Số lượng và nhiệm kỳ EVNFinance",
+            "status": "có",
+            "detail": "5-11 thành viên, nhiệm kỳ 05 năm"
+          },
+          {
+            "y": "Số lượng và nhiệm kỳ MWG",
+            "status": "có",
+            "detail": "5-11 người, không quá 04 năm"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 185,
+      "len_gen": 1507,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D071",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không đủ tư cách/Luật DN/Điều lệ",
+            "status": "có",
+            "quote": "không đủ tư cách làm thành viên Hội đồng quản trị theo quy định của Luật Doanh nghiệp và Điều lệ"
+          },
+          {
+            "point": "Đơn xin từ chức",
+            "status": "có",
+            "quote": "gửi đơn bằng văn bản xin từ chức"
+          },
+          {
+            "point": "Rối loạn tâm thần",
+            "status": "có",
+            "quote": "bị rối loạn tâm thần... không còn năng lực hành vi"
+          },
+          {
+            "point": "Vắng họp 6 tháng",
+            "status": "có",
+            "quote": "không tham dự các cuộc họp... liên tục trong vòng sáu (06) tháng"
+          },
+          {
+            "point": "ĐHĐCĐ bãi nhiệm",
+            "status": "có",
+            "quote": "bị bãi nhiệm theo quyết định của Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Phá sản",
+            "status": "có",
+            "quote": "bị phá sản"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "PMSC: Miễn nhiệm (Luật DN Đ155, đơn từ chức, thôi đại diện vốn, Điều lệ)",
+            "status": "có",
+            "quote": "Không có đủ tiêu chuẩn... Có đơn từ chức... Thôi đại diện phần vốn..."
+          },
+          {
+            "point": "PMSC: Bãi nhiệm (Vắng 6 tháng, Điều lệ, ĐHĐCĐ quyết định)",
+            "status": "có",
+            "quote": "Không tham gia... trong 06 tháng... Đại hội đồng cổ đông quyết định thay thế..."
+          },
+          {
+            "point": "MWG: Miễn/Bãi nhiệm (Luật DN/Điều lệ, đơn từ chức, tâm thần, vắng 6 tháng, ĐHĐCĐ bãi nhiệm, phá sản)",
+            "status": "có",
+            "quote": "không đủ tư cách... gửi đơn... rối loạn tâm thần... không tham dự... bị bãi nhiệm... bị phá sản"
+          },
+          {
+            "point": "EVNFinance: Theo Điều lệ",
+            "status": "có",
+            "quote": "được thực hiện theo quy định tại Điều lệ Công ty"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 285,
+      "len_gen": 1996,
+      "len_warn": true,
+      "cite_in_context": 0.6
+    },
+    {
+      "id": "D072",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Chậm nhất là [03 ngày] làm việc trước ngày họp",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo",
+            "status": "sai",
+            "detail": "Hệ thống ghi '03 ngày làm việc', nhưng NGU CĂN CỨ (Điều 20) ghi 'ít nhất năm (05) ngày'"
+          },
+          {
+            "point": "Ngôn ngữ văn bản",
+            "status": "thiếu",
+            "detail": "Hệ thống không nhắc đến 'văn bản tiếng Việt'"
+          },
+          {
+            "point": "Nội dung: Thời gian, địa điểm",
+            "status": "có",
+            "detail": "xác định cụ thể thời gian và địa điểm họp"
+          },
+          {
+            "point": "Nội dung: Chương trình, vấn đề thảo luận/quyết định",
+            "status": "có",
+            "detail": "nêu rõ chương trình, các vấn đề thảo luận và quyết định"
+          },
+          {
+            "point": "Nội dung: Tài liệu kèm theo và phiếu biểu quyết",
+            "status": "có",
+            "detail": "kèm theo tài liệu sử dụng tại cuộc họp và phiếu biểu quyết"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi thông báo",
+            "status": "sai",
+            "detail": "Hệ thống ghi '03 ngày làm việc' (theo Điều 59), nhưng trong NGU CĂN CỨ còn có Điều 20 ghi 'ít nhất năm (05) ngày'. Tuy nhiên, Điều 59 là nội dung chính xác nhất của Quy chế quản trị PMSC hiện tại."
+          },
+          {
+            "point": "Nội dung: Thời gian, địa điểm",
+            "status": "có",
+            "detail": "xác định cụ thể thời gian và địa điểm họp"
+          },
+          {
+            "point": "Nội dung: Chương trình, vấn đề thảo luận/quyết định",
+            "status": "có",
+            "detail": "nêu rõ chương trình, các vấn đề thảo luận và quyết định"
+          },
+          {
+            "point": "Nội dung: Tài liệu và phiếu biểu quyết",
+            "status": "có",
+            "detail": "kèm theo tài liệu sử dụng tại cuộc họp và phiếu biểu quyết"
+          }
+        ]
+      },
+      "final": "DISPUTED",
+      "len_gt": 244,
+      "len_gen": 421,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D073",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Đối với công ty MWG (theo QuyCheQuanTri-MWG.pdf)",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hiểu biết lĩnh vực phụ trách hoặc kinh nghiệm quản lý, điều hành",
+            "status": "có",
+            "quote": "có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp"
+          },
+          {
+            "point": "Ít nhất một thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực phụ trách",
+            "status": "có",
+            "quote": "ít nhất phải có một (01) thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Đối với công ty MWG (theo QuyCheQuanTri-MWG.pdf)... Đối với công ty Petrolimex-PMSC (theo QuyCheQuanTri-Petrolimex-PMSC.pdf): Tài liệu không quy định chi tiết về tiêu chuẩn năng lực/chuyên môn",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hiểu biết về lĩnh vực phụ trách hoặc kinh nghiệm quản lý, điều hành",
+            "status": "có",
+            "quote": "phải có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp"
+          },
+          {
+            "point": "Ít nhất một thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực phụ trách",
+            "status": "có",
+            "quote": "ít nhất phải có một (01) thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 248,
+      "len_gen": 1136,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D074",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Số lượng tối thiểu 02 thành viên",
+            "status": "có",
+            "quote": "tối thiểu là hai (02) thành viên"
+          },
+          {
+            "point": "Thành phần gồm thành viên HĐQT và thành viên bên ngoài",
+            "status": "có",
+            "quote": "bao gồm thành viên của Hội đồng quản trị và thành viên bên ngoài"
+          },
+          {
+            "point": "Thành viên độc lập HĐQT hoặc không điều hành chiếm đa số",
+            "status": "có",
+            "quote": "Thành viên độc lập Hội đồng quản trị hoặc thành viên Hội đồng quản trị không điều hành chiếm đa số"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Số lượng thành viên tối thiểu: 02",
+            "status": "có",
+            "quote": "tối thiểu hai (02) thành viên"
+          },
+          {
+            "point": "Thành phần: thành viên HĐQT và thành viên bên ngoài",
+            "status": "có",
+            "quote": "bao gồm thành viên của Hội đồng quản trị và thành viên bên ngoài"
+          },
+          {
+            "point": "Cơ cấu: Thành viên độc lập/không điều hành chiếm đa số",
+            "status": "có",
+            "quote": "Thành viên độc lập HĐQT hoặc thành viên HĐQT không điều hành phải chiếm đa số"
+          },
+          {
+            "point": "Bổ nhiệm Trưởng tiểu ban",
+            "status": "thiếu",
+            "quote": "một trong số các thành viên này được bổ nhiệm làm Trưởng tiểu ban"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 216,
+      "len_gen": 552,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D075",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Trình độ đại học trở lên",
+            "status": "có",
+            "quote": "Có trình độ đại học trở lên"
+          },
+          {
+            "point": "Chuyên môn và kinh nghiệm quản trị kinh doanh trong ngành nghề chủ yếu",
+            "status": "có",
+            "quote": "Có trình độ chuyên môn, kinh nghiệm thực tế về quản trị kinh doanh trong ngành nghề kinh doanh chủ yếu của Công ty"
+          },
+          {
+            "point": "Ít nhất 3 năm liên tục làm việc tại Công ty hoặc công ty con",
+            "status": "có",
+            "quote": "Có ít nhất 3 năm liên tục làm việc tại Công ty hoặc các công ty con của Công ty trở lên"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tiêu chuẩn EVNFinance: Bằng Đại học (kinh tế, quản trị kinh doanh, luật) và kinh nghiệm (5 năm điều hành TCTD hoặc 5 năm TGĐ/PTGĐ doanh nghiệp tương đương + 5 năm tài chính/ngân hàng hoặc 10 năm tài chính/ngân hàng)",
+            "status": "có",
+            "quote": "Có bằng Đại học trở lên về một trong các ngành kinh tế... Có ít nhất 05 năm làm người điều hành..."
+          },
+          {
+            "point": "Tiêu chuẩn MWG: Bằng đại học trở lên, kinh nghiệm quản trị kinh doanh ngành chính, ít nhất 3 năm làm việc tại Công ty/công ty con",
+            "status": "có",
+            "quote": "Có trình độ đại học trở lên... Có ít nhất 3 năm liên tục làm việc tại Công ty..."
+          },
+          {
+            "point": "Tiêu chuẩn Petrolimex-PMSC: Trình độ chuyên môn, kinh nghiệm quản trị kinh doanh",
+            "status": "có",
+            "quote": "Có trình độ chuyên môn, kinh nghiệm trong quản trị kinh doanh của công ty"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 256,
+      "len_gen": 1603,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D076",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không hoàn thành nhiệm vụ hoặc vi phạm nội quy, quy chế của Công ty",
+            "status": "có",
+            "quote": "Không hoàn thành nhiệm vụ hoặc vi phạm nội quy, quy chế của Công ty"
+          },
+          {
+            "point": "Vi phạm pháp luật đến mức bị truy cứu trách nhiệm hình sự hoặc buộc phải chấm dứt hợp đồng lao động",
+            "status": "có",
+            "quote": "Vi phạm pháp luật đến mức bị truy cứu trách nhiệm hình sự hoặc buộc phải chấm dứt hợp đồng lao động"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không hoàn thành nhiệm vụ hoặc vi phạm nội quy, quy chế của Công ty",
+            "status": "có",
+            "quote": "Không hoàn thành nhiệm vụ hoặc vi phạm nội quy, quy chế của Công ty"
+          },
+          {
+            "point": "Vi phạm pháp luật đến mức bị truy cứu trách nhiệm hình sự hoặc buộc phải chấm dứt hợp đồng lao động",
+            "status": "có",
+            "quote": "Vi phạm pháp luật đến mức bị truy cứu trách nhiệm hình sự hoặc buộc phải chấm dứt hợp đồng lao động"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 228,
+      "len_gen": 289,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D077",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true,
+        "hallucination_quote": "quy chế hiện tại của công ty không có thông tin về nhiệm kỳ và việc bổ nhiệm lại của Người phụ trách quản trị công ty",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Nhiệm kỳ do HĐQT quyết định",
+            "status": "thiếu",
+            "quote": "HĐQT quyết định"
+          },
+          {
+            "point": "Tối đa 05 năm",
+            "status": "thiếu",
+            "quote": "tối đa là (05) năm"
+          },
+          {
+            "point": "Có thể được bổ nhiệm lại",
+            "status": "thiếu",
+            "quote": "có thể được bổ nhiệm lại"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Nhiệm kỳ do HĐQT quyết định, tối đa 05 năm",
+            "status": "có",
+            "quote": "Nhiệm kỳ của Người phụ trách quản trị công ty do HĐQT quyết định, tối đa là (05) năm"
+          },
+          {
+            "point": "Có thể được bổ nhiệm lại",
+            "status": "có",
+            "quote": "có thể được bổ nhiệm lại"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 113,
+      "len_gen": 278,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D078",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "HĐQT có quyền miễn nhiệm",
+            "status": "có",
+            "quote": "HĐQT có thể bãi nhiệm/miễn nhiệm"
+          },
+          {
+            "point": "Điều kiện: không trái pháp luật lao động",
+            "status": "có",
+            "quote": "không trái với các quy định pháp luật hiện hành về lao động"
+          },
+          {
+            "point": "Đại hội đồng cổ đông có quyền bãi nhiệm",
+            "status": "thiếu",
+            "quote": "Người phụ trách quản trị công ty có thể bị bãi nhiệm theo nghị quyết của Đại hội đồng cổ đông"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "HĐQT có quyền miễn nhiệm/bãi nhiệm",
+            "status": "có",
+            "quote": "HĐQT có thể bãi nhiệm/miễn nhiệm"
+          },
+          {
+            "point": "Điều kiện: không trái pháp luật lao động",
+            "status": "có",
+            "quote": "không trái với các quy định pháp luật hiện hành về lao động"
+          },
+          {
+            "point": "Đại hội đồng cổ đông có quyền bãi nhiệm",
+            "status": "thiếu",
+            "quote": "bị bãi nhiệm theo nghị quyết của Đại hội đồng cổ đông"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 140,
+      "len_gen": 429,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D079",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Luật Chứng khoán số 54/2019/QH14",
+            "status": "có",
+            "quote": "Luật Chứng khoán số 54/2019/QH14"
+          },
+          {
+            "point": "Luật Doanh nghiệp số 59/2020/QH14",
+            "status": "có",
+            "quote": "Luật Doanh nghiệp số 59/2020/QH14"
+          },
+          {
+            "point": "Nghị định số 155/2020/NĐ-CP",
+            "status": "có",
+            "quote": "Nghị định số 155/2020/NĐ-CP"
+          },
+          {
+            "point": "Thông tư số 116/2020/TT-BTC",
+            "status": "có",
+            "quote": "Thông tư số 116/2020/TT-BTC"
+          },
+          {
+            "point": "Điều lệ Tổ chức và Hoạt động của Công ty Cổ phần Cơ khí Xăng dầu - PMSC",
+            "status": "có",
+            "quote": "Điều lệ Tổ chức và Hoạt động của Công ty Cổ phần Cơ khí Xăng dầu - PMSC"
+          },
+          {
+            "point": "Nghị quyết Đại hội đồng cổ đông",
+            "status": "có",
+            "quote": "Nghị quyết Đại hội đồng cổ đông"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Luật Chứng khoán 54/2019/QH14",
+            "status": "co",
+            "detail": "Luật Chứng khoán số 54/2019/QH14"
+          },
+          {
+            "y": "Luật Doanh nghiệp 59/2020/QH14",
+            "status": "co",
+            "detail": "Luật Doanh nghiệp số 59/2020/QH14"
+          },
+          {
+            "y": "Nghị định 155/2020/NĐ-CP",
+            "status": "co",
+            "detail": "Nghị định số 155/2020/NĐ-CP"
+          },
+          {
+            "y": "Thông tư 116/2020/TT-BTC",
+            "status": "co",
+            "detail": "Thông tư số 116/2020/TT-BTC"
+          },
+          {
+            "y": "Điều lệ Tổ chức và Hoạt động PMSC",
+            "status": "co",
+            "detail": "Điều lệ Tổ chức và Hoạt động của Công ty Cổ phần Cơ khí Xăng dầu - PMSC"
+          },
+          {
+            "y": "Nghị quyết Đại hội đồng cổ đông",
+            "status": "co",
+            "detail": "Nghị quyết Đại hội đồng cổ đông số ... ngày... tháng... năm..."
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 255,
+      "len_gen": 917,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D080",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Khen thưởng tại Điều 96",
+            "status": "có",
+            "quote": "Điều 96. Khen thưởng"
+          },
+          {
+            "point": "Kỷ luật tại Điều 97",
+            "status": "có",
+            "quote": "Điều 97. Kỷ luật"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Khen thưởng tại Điều 96",
+            "status": "có",
+            "quote": "Điều 96. Khen thưởng"
+          },
+          {
+            "point": "Kỷ luật tại Điều 97",
+            "status": "có",
+            "quote": "Điều 97. Kỷ luật"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 75,
+      "len_gen": 216,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D081",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Ghi chép đầy đủ, trung thực nội dung Đại hội",
+            "status": "có",
+            "quote": "Ghi chép đầy đủ, trung thực nội dung Đại hội"
+          },
+          {
+            "point": "Tiếp nhận phiếu đăng ký phát biểu",
+            "status": "có",
+            "quote": "Tiếp nhận phiếu đăng ký phát biểu của cổ đông/Đại biểu"
+          },
+          {
+            "point": "Lập Biên bản họp và soạn thảo Nghị quyết",
+            "status": "có",
+            "quote": "Lập Biên bản họp và soạn thảo Nghị quyết Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Hỗ trợ Chủ tọa công bố thông tin và thông báo cổ đông",
+            "status": "có",
+            "quote": "Hỗ trợ Chủ tọa công bố thông tin liên quan đến cuộc họp Đại hội đồng cổ đông và thông báo đến các Cổ đông"
+          },
+          {
+            "point": "Thực hiện nhiệm vụ khác theo yêu cầu Chủ tọa",
+            "status": "có",
+            "quote": "Các nhiệm vụ khác theo yêu cầu của Chủ Tọa"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Ghi chép đầy đủ, trung thực nội dung Đại hội",
+            "status": "có",
+            "quote": "Ghi chép đầy đủ, trung thực nội dung Đại hội"
+          },
+          {
+            "point": "Tiếp nhận phiếu đăng ký phát biểu của cổ đông/Đại biểu",
+            "status": "có",
+            "quote": "Tiếp nhận phiếu đăng ký phát biểu của cổ đông/Đại biểu"
+          },
+          {
+            "point": "Lập Biên bản họp và soạn thảo Nghị quyết Đại hội đồng cổ đông",
+            "status": "có",
+            "quote": "Lập Biên bản họp và soạn thảo Nghị quyết Đại hội đồng cổ đông"
+          },
+          {
+            "point": "Hỗ trợ Chủ tọa công bố thông tin và thông báo đến Cổ đông",
+            "status": "có",
+            "quote": "Hỗ trợ Chủ tọa công bố thông tin liên quan đến cuộc họp... và thông báo đến các Cổ đông"
+          },
+          {
+            "point": "Các nhiệm vụ khác theo yêu cầu của Chủ Tọa",
+            "status": "có",
+            "quote": "Các nhiệm vụ khác theo yêu cầu của Chủ Tọa"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 341,
+      "len_gen": 561,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D082",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Đăng ký theo Thông báo họp (liên hệ Công ty hoặc gửi Giấy đăng ký)",
+            "status": "có",
+            "quote": "liên hệ Công ty hoặc gửi Giấy đăng ký tham dự Đại hội"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Cách thức đăng ký chung (liên hệ Công ty/gửi Giấy đăng ký)",
+            "status": "có",
+            "quote": "liên hệ Công ty hoặc gửi Giấy đăng ký tham dự Đại hội"
+          },
+          {
+            "point": "Các hình thức tham dự (trực tiếp, trực tuyến, gửi phiếu, ủy quyền)",
+            "status": "có",
+            "quote": "trực tuyến, bỏ phiếu điện tử... ủy quyền cho một đại diện"
+          },
+          {
+            "point": "Điều kiện và yêu cầu kỹ thuật tham dự trực tuyến",
+            "status": "có",
+            "quote": "truy cập vào hệ thống bằng các thông tin truy cập"
+          },
+          {
+            "point": "Quy định chi tiết về văn bản ủy quyền",
+            "status": "có",
+            "quote": "thực hiện ủy quyền theo quy định tại"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 184,
+      "len_gen": 1998,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D083",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mẫu in sẵn do BTC phát ra",
+            "status": "có",
+            "quote": "phiếu theo mẫu in sẵn do BTC phát ra"
+          },
+          {
+            "point": "Không tẩy xóa, cạo sửa, rách nát, không viết thêm nội dung",
+            "status": "có",
+            "quote": "không tẩy xoá, cạo sửa, rách, nát,... không viết thêm nội dung nào khác"
+          },
+          {
+            "point": "Có chữ ký và họ tên viết tay",
+            "status": "có",
+            "quote": "phải có chữ ký, dưới chữ ký phải có đầy đủ họ tên được viết tay"
+          },
+          {
+            "point": "Gửi Ban kiểm phiếu trước khi mở niêm phong thùng phiếu",
+            "status": "có",
+            "quote": "gửi về cho Ban kiểm phiếu trước thời điểm mở niêm phong thùng phiếu"
+          },
+          {
+            "point": "Đánh dấu chọn 1 trong 3 ô vuông",
+            "status": "có",
+            "quote": "đánh dấu chọn một (01) trong ba (03) ô vuông biểu quyết"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mẫu in sẵn do BTC phát ra",
+            "status": "co",
+            "quote": "phiếu theo mẫu in sẵn do BTC phát ra"
+          },
+          {
+            "point": "Không tẩy xóa, cạo sửa, rách nát, không viết thêm nội dung",
+            "status": "co",
+            "quote": "không tẩy xoá, cạo sửa, rách, nát,... không viết thêm nội dung nào khác"
+          },
+          {
+            "point": "Có chữ ký và họ tên viết tay",
+            "status": "co",
+            "quote": "phải có chữ ký, dưới chữ ký phải có đầy đủ họ tên được viết tay"
+          },
+          {
+            "point": "Đánh dấu chọn 1 trong 3 ô vuông",
+            "status": "co",
+            "quote": "đánh dấu chọn một (01) trong ba (03) ô vuông biểu quyết"
+          },
+          {
+            "point": "Gửi về Ban kiểm phiếu trước khi mở niêm phong",
+            "status": "co",
+            "quote": "gửi về cho Ban kiểm phiếu trước thời điểm mở niêm phong thùng phiếu"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 319,
+      "len_gen": 832,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D084",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hình thức yêu cầu bằng văn bản",
+            "status": "có",
+            "quote": "Yêu cầu phải bằng văn bản"
+          },
+          {
+            "point": "Nội dung văn bản (tên, địa chỉ, số lượng cổ phần, giá bán, lý do)",
+            "status": "có",
+            "quote": "nêu rõ tên, địa chỉ của Cổ đông, số lượng cổ phần từng loại, giá dự định bán, lý do yêu cầu Công ty mua lại"
+          },
+          {
+            "point": "Thời hạn gửi yêu cầu trong 10 ngày",
+            "status": "có",
+            "quote": "gửi đến Công ty trong thời hạn 10 ngày"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hình thức yêu cầu: văn bản",
+            "status": "có",
+            "quote": "Yêu cầu phải bằng văn bản"
+          },
+          {
+            "point": "Nội dung văn bản: tên, địa chỉ, số lượng cổ phần, giá dự định bán, lý do",
+            "status": "có",
+            "quote": "nêu rõ tên, địa chỉ của Cổ đông, số lượng cổ phần từng loại, giá dự định bán, lý do yêu cầu Công ty mua lại"
+          },
+          {
+            "point": "Thời hạn gửi yêu cầu: 10 ngày kể từ ngày thông qua nghị quyết",
+            "status": "có",
+            "quote": "gửi đến Công ty trong thời hạn 10 ngày, kể từ ngày Đại hội đồng cổ đông thông qua nghị quyết"
+          },
+          {
+            "point": "Thời hạn công ty mua lại: 90 ngày",
+            "status": "có",
+            "quote": "trong thời hạn 90 ngày, kể từ ngày nhận được yêu cầu"
+          },
+          {
+            "point": "Giá mua lại: giá thị trường hoặc theo Điều lệ",
+            "status": "có",
+            "quote": "với giá thị trường hoặc giá được tính theo nguyên tắc quy định tại Điều lệ công ty"
+          },
+          {
+            "point": "Xử lý khi không thỏa thuận được giá: thẩm định giá chuyên nghiệp",
+            "status": "có",
+            "quote": "yêu cầu một tổ chức thẩm định giá chuyên nghiệp định giá"
+          },
+          {
+            "point": "Quy chế Petrolimex-PMSC: giới thiệu ít nhất 03 tổ chức thẩm định giá",
+            "status": "có",
+            "quote": "Công ty giới thiệu ít nhất 03 tổ chức thẩm định giá để cổ đông lựa chọn"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 234,
+      "len_gen": 1116,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D085",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Hình thức gửi phiếu: thư, fax, thư điện tử",
+            "status": "có",
+            "quote": "gửi thư, fax hoặc thư điện tử"
+          },
+          {
+            "point": "Yêu cầu gửi thư: chữ ký (cá nhân/đại diện), phong bì dán kín, không mở trước khi kiểm phiếu",
+            "status": "có",
+            "quote": "có chữ ký của cổ đông là cá nhân, của người đại diện... đựng trong phong bì dán kín và không ai được quyền mở trước khi kiểm phiếu"
+          },
+          {
+            "point": "Yêu cầu gửi fax/email: giữ bí mật đến khi kiểm phiếu",
+            "status": "có",
+            "quote": "phải được giữ bí mật đến thời điểm kiểm phiếu"
+          },
+          {
+            "point": "Điều kiện không hợp lệ: gửi sau thời hạn, bị mở (thư), bị tiết lộ (fax/email)",
+            "status": "có",
+            "quote": "gửi về Công ty sau thời hạn... bị mở trong trường hợp gửi thư và bị tiết lộ trong trường hợp gửi fax, thư điện tử là không hợp lệ"
+          },
+          {
+            "point": "Phiếu không gửi về coi là không tham gia biểu quyết",
+            "status": "có",
+            "quote": "Phiếu lấy ý kiến không được gửi về được coi là phiếu không tham gia biểu quyết"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          "Hình thức gửi: thư, fax, thư điện tử (Hệ thống: Có)",
+          "Yêu cầu gửi thư: chữ ký cá nhân/đại diện, phong bì dán kín, không mở trước khi kiểm phiếu (Hệ thống: Có)",
+          "Yêu cầu gửi fax/email: giữ bí mật đến khi kiểm phiếu (Hệ thống: Có)",
+          "Điều kiện không hợp lệ: gửi sau thời hạn, bị mở (thư), bị tiết lộ (fax/email) (Hệ thống: Có)",
+          "Phiếu không gửi về: coi là không tham gia biểu quyết (Hệ thống: Có)"
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 310,
+      "len_gen": 857,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D086",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Điền đầy đủ thông tin và hoàn thành ủy quyền trực tuyến",
+            "status": "có",
+            "quote": "điền đầy đủ các thông tin theo mẫu ủy quyền trực tuyến và hoàn thành thực hiện ủy quyền trực tuyến"
+          },
+          {
+            "point": "Giấy ủy quyền in ra có đủ chữ ký, họ tên, đóng dấu (nếu là tổ chức) của cả hai bên",
+            "status": "có",
+            "quote": "Giấy ủy quyền được in ra... có đầy đủ chữ ký, ghi rõ họ tên, đóng dấu (nếu là tổ chức) của bên ủy quyền và cả bên nhận ủy quyền"
+          },
+          {
+            "point": "Công ty nhận được bản chính trước khi khai mạc",
+            "status": "có",
+            "quote": "Công ty nhận được Giấy ủy quyền bản chính gửi về trước lúc đại hội khai mạc chính thức"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Điền đầy đủ thông tin và hoàn thành ủy quyền trực tuyến",
+            "status": "có",
+            "quote": "điền đầy đủ các thông tin theo mẫu ủy quyền trực tuyến và hoàn thành thực hiện ủy quyền trực tuyến"
+          },
+          {
+            "point": "Giấy ủy quyền in ra có đủ chữ ký, họ tên, đóng dấu (nếu là tổ chức) của cả hai bên",
+            "status": "có",
+            "quote": "có đầy đủ chữ ký, ghi rõ họ tên, đóng dấu (nếu là tổ chức) của bên ủy quyền và cả bên nhận ủy quyền"
+          },
+          {
+            "point": "Công ty nhận được bản chính trước khi khai mạc",
+            "status": "có",
+            "quote": "Công ty nhận được Giấy ủy quyền bản chính gửi về trước lúc đại hội khai mạc chính thức"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 313,
+      "len_gen": 571,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D087",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Quyền theo Luật Chứng khoán, pháp luật liên quan, Điều lệ, quy chế nội bộ",
+            "status": "có",
+            "quote": "đầy đủ các quyền theo quy định của Luật Chứng khoán, pháp luật liên quan và Điều lệ công ty, quy chế quản trị nội bộ công ty"
+          },
+          {
+            "point": "Quyền được cung cấp thông tin, tài liệu tài chính và hoạt động kinh doanh của công ty và các đơn vị trong công ty",
+            "status": "có",
+            "quote": "quyền được cung cấp các thông tin, tài liệu về tình hình tài chính, hoạt động kinh doanh của công ty và của các đơn vị trong công ty"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Quyền được cung cấp thông tin, tài liệu về tài chính, hoạt động kinh doanh của công ty và các đơn vị trong công ty",
+            "status": "có",
+            "quote": "quyền được cung cấp các thông tin, tài liệu về tình hình tài chính, hoạt động kinh doanh của công ty và của các đơn vị trong công ty"
+          },
+          {
+            "point": "Quyền theo Luật Chứng khoán, pháp luật liên quan, Điều lệ, quy chế nội bộ",
+            "status": "có",
+            "quote": "có đầy đủ các quyền theo quy định của Luật Chứng khoán, pháp luật liên quan và Điều lệ công ty, quy chế quản trị nội bộ công ty"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 280,
+      "len_gen": 309,
+      "len_warn": false,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D088",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn công bố thông tin ứng cử viên HĐQT",
+            "status": "có",
+            "detail": "tối thiểu 10 ngày trước ngày khai mạc"
+          },
+          {
+            "point": "Hình thức công bố",
+            "status": "có",
+            "detail": "trên trang thông tin điện tử của công ty"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn công bố thông tin ứng cử viên HĐQT",
+            "status": "có",
+            "detail": "tối thiểu 10 ngày trước ngày khai mạc"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 180,
+      "len_gen": 582,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D089",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không được tính vào tỷ lệ tối thiểu khi không có quyền biểu quyết do lợi ích mâu thuẫn",
+            "status": "có",
+            "quote": "Thành viên Hội đồng quản trị không được tính vào tỷ lệ thành viên tối thiểu có mặt... về những quyết định mà thành viên đó không có quyền biểu quyết"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không được tính khi không có quyền biểu quyết do lợi ích mâu thuẫn",
+            "status": "có",
+            "quote": "không được tính vào tỷ lệ thành viên tối thiểu có mặt... về những quyết định mà thành viên đó không có quyền biểu quyết"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 241,
+      "len_gen": 772,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D090",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng thành viên tối thiểu của tiểu ban là 02 người",
+            "status": "có",
+            "quote": "tối thiểu là 02 người"
+          },
+          {
+            "point": "Thành phần bao gồm thành viên HĐQT và thành viên bên ngoài",
+            "status": "có",
+            "quote": "bao gồm thành viên của Hội đồng quản trị và thành viên bên ngoài"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Số lượng thành viên tối thiểu của tiểu ban là 02 người",
+            "status": "có",
+            "quote": "tối thiểu là 02 người"
+          },
+          {
+            "point": "Thành phần bao gồm thành viên HĐQT và thành viên bên ngoài",
+            "status": "có",
+            "quote": "bao gồm thành viên của Hội đồng quản trị và thành viên bên ngoài"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 156,
+      "len_gen": 535,
+      "len_warn": true,
+      "cite_in_context": 0.8
+    },
+    {
+      "id": "D091",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không thuộc đối tượng khoản 2 Điều 17 Luật Doanh nghiệp",
+            "status": "có",
+            "quote": "Không thuộc đối tượng theo quy định tại khoản 2 Điều 17 của Luật Doanh nghiệp"
+          },
+          {
+            "point": "Đào tạo chuyên ngành kinh tế, tài chính, kế toán, kiểm toán, luật, quản trị kinh doanh hoặc phù hợp",
+            "status": "có",
+            "quote": "Được đào tạo một trong các chuyên ngành về kinh tế, tài chính, kế toán, kiểm toán, luật, quản trị kinh doanh hoặc chuyên ngành phù hợp"
+          },
+          {
+            "point": "Không có quan hệ gia đình với thành viên HĐQT, Giám đốc và người quản lý khác",
+            "status": "có",
+            "quote": "Không phải là người có quan hệ gia đình của thành viên Hội đồng quản trị, Giám đốc hoặc Giám đốc và người quản lý khác"
+          },
+          {
+            "point": "Không phải là người quản lý công ty",
+            "status": "có",
+            "quote": "Không phải là người quản lý công ty"
+          },
+          {
+            "point": "Không làm việc tại bộ phận kế toán, tài chính",
+            "status": "có",
+            "quote": "Không phải là người làm việc trong bộ phận kế toán, tài chính của Công ty"
+          },
+          {
+            "point": "Không là thành viên/nhân viên công ty kiểm toán độc lập thực hiện kiểm toán công ty",
+            "status": "có",
+            "quote": "Không phải là thành viên hay nhân viên của công ty kiểm toán độc lập thực hiện kiểm toán các báo cáo tài chính của công ty trong 03 năm liền trước đó"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Tiêu chuẩn chung (Khoản 2 Điều 17, chuyên ngành đào tạo, quan hệ gia đình, không là người quản lý, không làm kế toán/tài chính, không làm kiểm toán độc lập 3 năm trước, điều lệ công ty)",
+            "status": "có",
+            "detail": "Hệ thống liệt kê đầy đủ các ý chính"
+          },
+          {
+            "point": "Điều kiện đối với Kiểm soát viên doanh nghiệp nhà nước (quan hệ gia đình người quản lý công ty mẹ, đại diện vốn nhà nước)",
+            "status": "thiếu",
+            "detail": "Hệ thống bỏ qua mục này"
+          },
+          {
+            "point": "Điều kiện đối với Trưởng Ban kiểm soát (bằng đại học trở lên)",
+            "status": "thiếu",
+            "detail": "Hệ thống bỏ qua mục này"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 453,
+      "len_gen": 1616,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D092",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đối tượng có quyền đề cử: Ban Giám đốc và các thành viên HĐQT",
+            "status": "có",
+            "quote": "Ban Giám đốc, các thành viên HĐQT có quyền đề cử"
+          },
+          {
+            "point": "Điều kiện đề cử: Theo tiêu chuẩn và điều kiện tại Điều 82",
+            "status": "có",
+            "quote": "theo đúng các tiêu chuẩn và điều kiện quy định tại Điều 82"
+          },
+          {
+            "point": "Quy trình: Trình lên HĐQT xem xét",
+            "status": "có",
+            "quote": "trình lên HĐQT xem xét"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đối tượng có quyền đề cử: Ban Giám đốc và các thành viên HĐQT",
+            "status": "có",
+            "quote": "Ban Giám đốc, các thành viên HĐQT có quyền đề cử"
+          },
+          {
+            "point": "Điều kiện: Theo tiêu chuẩn Điều 82",
+            "status": "có",
+            "quote": "theo đúng các tiêu chuẩn và điều kiện quy định tại Điều 82"
+          },
+          {
+            "point": "Quy trình: Trình lên HĐQT xem xét",
+            "status": "có",
+            "quote": "trình lên HĐQT xem xét"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 166,
+      "len_gen": 368,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D093",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Loại báo cáo hằng năm về nghĩa vụ môi trường, cộng đồng, người lao động",
+            "status": "có",
+            "detail": "Hệ thống nêu đúng đây là nội dung báo cáo của Giám đốc với HĐQT"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Báo cáo hằng năm về việc triển khai thực hiện các nghĩa vụ đối với môi trường, cộng đồng, người lao động",
+            "status": "có",
+            "detail": "Hệ thống nêu đúng tên báo cáo"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 105,
+      "len_gen": 414,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D094",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi kiến nghị cho HĐQT",
+            "status": "có",
+            "quote": "sớm nhất có thể nhưng không ít hơn bảy (07) ngày trước ngày nội dung đó cần được quyết định"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn gửi kiến nghị phương án cơ cấu tổ chức/quy chế quản lý nội bộ",
+            "status": "có",
+            "detail": "sớm nhất có thể nhưng không ít hơn bảy (07) ngày trước ngày nội dung đó cần được quyết định"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 114,
+      "len_gen": 275,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D095",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm",
+            "status": "có",
+            "quote": "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm",
+            "status": "có",
+            "quote": "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 70,
+      "len_gen": 231,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D096",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Phụ lục HĐLĐ không được dùng để sửa đổi thời hạn HĐLĐ",
+            "status": "có",
+            "quote": "không được sửa đổi thời hạn của hợp đồng lao động"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không được dùng phụ lục để sửa đổi thời hạn hợp đồng",
+            "status": "có",
+            "quote": "không được sửa đổi thời hạn của hợp đồng lao động"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 159,
+      "len_gen": 418,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D097",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giải quyết theo quy định của pháp luật",
+            "status": "có",
+            "quote": "giải quyết theo quy định của pháp luật"
+          },
+          {
+            "point": "Ký sai thẩm quyền thì ký lại",
+            "status": "có",
+            "quote": "do ký sai thẩm quyền thì hai bên ký lại"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Giải quyết theo quy định của pháp luật",
+            "status": "có",
+            "quote": "giải quyết theo quy định của pháp luật"
+          },
+          {
+            "point": "Ký sai thẩm quyền thì ký lại",
+            "status": "có",
+            "quote": "do ký sai thẩm quyền thì hai bên sẽ ký lại"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 189,
+      "len_gen": 370,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D098",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đàm phán, thỏa thuận giữa tổ chức đại diện NLĐ và NSDLĐ/đại diện NSDLĐ",
+            "status": "có",
+            "quote": "đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao động hoặc tổ chức đại diện người sử dụng lao động"
+          },
+          {
+            "point": "Nhằm xác lập điều kiện lao động, quy định mối quan hệ giữa các bên",
+            "status": "có",
+            "quote": "nhằm xác lập điều kiện lao động, quy định về mối quan hệ giữa các bên"
+          },
+          {
+            "point": "Xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định",
+            "status": "có",
+            "quote": "xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Định nghĩa thương lượng tập thể (đàm phán, thỏa thuận giữa tổ chức đại diện NLĐ và NSDLĐ/đại diện NSDLĐ)",
+            "status": "có",
+            "quote": "đàm phán, thỏa thuận giữa một hoặc nhiều tổ chức đại diện người lao động với một hoặc nhiều người sử dụng lao động"
+          },
+          {
+            "point": "Mục đích (xác lập điều kiện lao động, quy định mối quan hệ, xây dựng quan hệ lao động tiến bộ, hài hòa, ổn định)",
+            "status": "có",
+            "quote": "nhằm xác lập điều kiện lao động, quy định về mối quan hệ giữa các bên và xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 298,
+      "len_gen": 396,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D099",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn từ 01 đến 03 năm",
+            "status": "có",
+            "quote": "thời hạn từ 01 năm đến 03 năm"
+          },
+          {
+            "point": "Thời hạn cụ thể do các bên thỏa thuận và ghi trong thỏa ước",
+            "status": "có",
+            "quote": "do các bên thỏa thuận và ghi trong thỏa ước"
+          },
+          {
+            "point": "Quyền thỏa thuận thời hạn khác nhau đối với các nội dung",
+            "status": "có",
+            "quote": "quyền thỏa thuận thời hạn khác nhau đối với các nội dung"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hạn từ 01 đến 03 năm",
+            "status": "có",
+            "quote": "từ 01 năm đến 03 năm"
+          },
+          {
+            "point": "Thời hạn cụ thể do các bên thỏa thuận và ghi trong thỏa ước",
+            "status": "có",
+            "quote": "do các bên thỏa thuận và ghi trong thỏa ước"
+          },
+          {
+            "point": "Quyền thỏa thuận thời hạn khác nhau đối với các nội dung",
+            "status": "thiếu",
+            "quote": null
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 137,
+      "len_gen": 304,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D100",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh",
+            "status": "có",
+            "quote": "Thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh"
+          },
+          {
+            "point": "Thực hiện công việc bảo vệ tính mạng con người, tài sản trong phòng ngừa, khắc phục hậu quả thiên tai, hỏa hoạn, dịch bệnh nguy hiểm và thảm họa (trừ trường hợp nguy cơ ảnh hưởng tính mạng, sức khỏe)",
+            "status": "có",
+            "quote": "Thực hiện các công việc nhằm bảo vệ tính mạng con người, tài sản... trừ trường hợp có nguy cơ ảnh hưởng đến tính mạng, sức khỏe"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thực hiện lệnh động viên, huy động quốc phòng, an ninh",
+            "status": "có",
+            "quote": "Thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh"
+          },
+          {
+            "point": "Bảo vệ tính mạng, tài sản trong thiên tai, hỏa hoạn, dịch bệnh, thảm họa (trừ khi nguy hiểm cho NLĐ)",
+            "status": "có",
+            "quote": "Thực hiện công việc bảo vệ tính mạng con người, tài sản trong phòng ngừa, khắc phục hậu quả thiên tai, hỏa hoạn, dịch bệnh nguy hiểm và thảm họa"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 370,
+      "len_gen": 694,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D101",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Buộc xuất cảnh hoặc trục xuất theo quy định pháp luật nhập cảnh, xuất cảnh, quá cảnh, cư trú",
+            "status": "có",
+            "quote": "bị buộc xuất cảnh hoặc trục xuất"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Buộc xuất cảnh hoặc trục xuất theo quy định pháp luật nhập cảnh, xuất cảnh, quá cảnh, cư trú",
+            "status": "có",
+            "quote": "bị buộc xuất cảnh hoặc trục xuất"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 194,
+      "len_gen": 305,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D102",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Lộ trình điều chỉnh đến 62 tuổi (nam - 2028) và 60 tuổi (nữ - 2035)",
+            "status": "có",
+            "quote": "đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035"
+          },
+          {
+            "point": "Tuổi nghỉ hưu từ năm 2021: nam 60 tuổi 3 tháng, nữ 55 tuổi 4 tháng",
+            "status": "có",
+            "quote": "đủ 60 tuổi 03 tháng đối với lao động nam và đủ 55 tuổi 04 tháng đối với lao động nữ"
+          },
+          {
+            "point": "Mức tăng hàng năm: nam 3 tháng, nữ 4 tháng",
+            "status": "có",
+            "quote": "mỗi năm tăng thêm 03 tháng đối với lao động nam và 04 tháng đối với lao động nữ"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Lộ trình điều chỉnh đến 62 tuổi (nam - 2028) và 60 tuổi (nữ - 2035)",
+            "status": "có",
+            "quote": "đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035"
+          },
+          {
+            "point": "Mốc năm 2021: nam 60 tuổi 03 tháng, nữ 55 tuổi 04 tháng",
+            "status": "có",
+            "quote": "đủ 60 tuổi 03 tháng đối với lao động nam và đủ 55 tuổi 04 tháng đối với lao động nữ"
+          },
+          {
+            "point": "Mức tăng hàng năm: nam 03 tháng, nữ 04 tháng",
+            "status": "có",
+            "quote": "cứ mỗi năm tăng thêm 03 tháng đối với lao động nam và 04 tháng đối với lao động nữ"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 260,
+      "len_gen": 613,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D103",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đầu mối tiếp nhận, phân loại, hướng dẫn, hỗ trợ",
+            "status": "có",
+            "quote": "đầu mối tiếp nhận yêu cầu... phân loại, hướng dẫn, hỗ trợ"
+          },
+          {
+            "point": "Thời hạn 05 ngày làm việc để xử lý",
+            "status": "có",
+            "quote": "Trong thời hạn 05 ngày làm việc"
+          },
+          {
+            "point": "Chuyển đến hòa giải viên (nếu bắt buộc)",
+            "status": "có",
+            "quote": "chuyển yêu cầu đến hòa giải viên lao động đối với trường hợp bắt buộc"
+          },
+          {
+            "point": "Chuyển đến Hội đồng trọng tài (nếu có yêu cầu)",
+            "status": "có",
+            "quote": "chuyển đến Hội đồng trọng tài trong trường hợp yêu cầu"
+          },
+          {
+            "point": "Hướng dẫn gửi đến Tòa án",
+            "status": "có",
+            "quote": "hướng dẫn gửi đến Tòa án để giải quyết"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đầu mối tiếp nhận, phân loại, hướng dẫn, hỗ trợ",
+            "status": "có",
+            "quote": "đầu mối tiếp nhận yêu cầu... phân loại, hướng dẫn, hỗ trợ"
+          },
+          {
+            "point": "Thời hạn xử lý 05 ngày làm việc",
+            "status": "có",
+            "quote": "Trong thời hạn 05 ngày làm việc"
+          },
+          {
+            "point": "Chuyển yêu cầu đến hòa giải viên (trường hợp bắt buộc)",
+            "status": "có",
+            "quote": "chuyển yêu cầu đến hòa giải viên lao động đối với trường hợp bắt buộc"
+          },
+          {
+            "point": "Chuyển đến Hội đồng trọng tài (trường hợp yêu cầu)",
+            "status": "có",
+            "quote": "chuyển đến Hội đồng trọng tài trong trường hợp yêu cầu"
+          },
+          {
+            "point": "Hướng dẫn gửi đến Tòa án",
+            "status": "có",
+            "quote": "hướng dẫn gửi đến Tòa án để giải quyết"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 283,
+      "len_gen": 835,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D104",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đe dọa quốc phòng, an ninh, trật tự công cộng, sức khỏe con người",
+            "status": "có",
+            "quote": "quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người"
+          },
+          {
+            "point": "Chính phủ quy định danh mục chi tiết",
+            "status": "thiếu",
+            "quote": "Chính phủ quy định danh mục nơi sử dụng lao động không được đình công"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Đe dọa quốc phòng, an ninh, trật tự công cộng, sức khỏe con người",
+            "status": "có",
+            "quote": "đe dọa đến quốc phòng, an ninh, trật tự công cộng hoặc sức khỏe của con người"
+          },
+          {
+            "y": "Chính phủ quy định danh mục chi tiết và việc giải quyết tranh chấp",
+            "status": "thiếu",
+            "quote": null
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 150,
+      "len_gen": 382,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D105",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Tổng thu nhập Gross tháng 8/2026 của bà Phạm Thị Cúc là 31,339,285.73 VNĐ",
+            "status": "thiếu",
+            "quote": "Hệ thống từ chối trả lời"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Tổng thu nhập Gross tháng 8/2026 của bà Phạm Thị Cúc",
+            "status": "có",
+            "quote": "31,339,285.73"
+          }
+        ]
+      },
+      "final": "GT",
+      "len_gt": 76,
+      "len_gen": 148,
+      "len_warn": false,
+      "cite_in_context": 0.0
+    },
+    {
+      "id": "D106",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Người lao động được hỗ trợ 1.000.000 đồng/người/lần",
+            "status": "có",
+            "quote": "Người lao động: 1.000.000 đồng/người/lần"
+          },
+          {
+            "point": "Vợ, chồng, bố mẹ, anh, chị, em ruột được hỗ trợ 500.000 đồng/người/lần",
+            "status": "có",
+            "quote": "Vợ, chồng, bố mẹ, anh, chị, em ruột: 500.000 đồng/người/lần"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Mức hỗ trợ người lao động",
+            "status": "co",
+            "detail": "Hệ thống nêu cả 2 mức 2 triệu (A) và 1 triệu (B)"
+          },
+          {
+            "y": "Mức hỗ trợ người thân (vợ/chồng, bố mẹ, anh chị em ruột)",
+            "status": "co",
+            "detail": "Hệ thống nêu đúng 500.000 đồng"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 124,
+      "len_gen": 578,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D107",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số ngày nghỉ khi kết hôn",
+            "status": "có",
+            "quote": "nghỉ 03 ngày"
+          },
+          {
+            "point": "Hưởng nguyên lương",
+            "status": "có",
+            "quote": "hưởng nguyên lương"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số ngày nghỉ khi kết hôn",
+            "status": "có",
+            "quote": "nghỉ 03 ngày"
+          },
+          {
+            "point": "Chế độ lương",
+            "status": "có",
+            "quote": "hưởng nguyên lương"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 55,
+      "len_gen": 249,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D108",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời điểm nhận thưởng cho NV trên 3 năm là đợt chi trả lương tháng cuối cùng trong năm",
+            "status": "có",
+            "quote": "đợt chi trả lương tháng cuối cùng trong năm"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời điểm nhận thưởng cho NV trên 3 năm là đợt chi trả lương tháng cuối cùng trong năm",
+            "status": "có",
+            "quote": "đợt chi trả lương tháng cuối cùng trong năm"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 120,
+      "len_gen": 201,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D109",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Công ty nếu kinh doanh có lãi sẽ trích lợi nhuận để thưởng tặng quà cho nhân viên, mức thưởng tùy thuộc vào lợi nhuận của từng năm",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Thưởng 01 tháng lương cơ bản của năm trước liền kề",
+            "status": "có",
+            "quote": "Mức thưởng: 01 tháng lương cơ bản của năm trước liền kề"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thưởng 01 tháng lương cơ bản năm trước liền kề",
+            "status": "có",
+            "quote": "Mức thưởng: 01 tháng lương cơ bản của năm trước liền kề"
+          },
+          {
+            "point": "Thưởng tùy thuộc lợi nhuận nếu kinh doanh có lãi",
+            "status": "có",
+            "quote": "Công ty nếu kinh doanh có lãi sẽ trích lợi nhuận để thưởng tặng quà cho nhân viên, mức thưởng tùy thuộc vào lợi nhuận của từng năm"
+          }
+        ]
+      },
+      "final": "DISPUTED",
+      "len_gt": 107,
+      "len_gen": 535,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D110",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Kết hôn được nghỉ 03 ngày hưởng nguyên lương",
+            "status": "có",
+            "quote": "Kết hôn: nghỉ 03 ngày"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Nghỉ 03 ngày khi kết hôn",
+            "status": "có",
+            "quote": "nghỉ 03 ngày"
+          },
+          {
+            "point": "Hưởng nguyên lương",
+            "status": "có",
+            "quote": "hưởng nguyên lương"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 74,
+      "len_gen": 226,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D111",
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức hỗ trợ đi TP HCM là 2.000.000 đồng/ngày",
+            "status": "có",
+            "quote": "TP Hồ Chí Minh... mức hỗ trợ: 2.000.000 đồng/ngày"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Mức hỗ trợ 2.000.000 đồng/ngày (đi từ 2 ngày trở lên)",
+            "status": "có",
+            "quote": "TP Hồ Chí Minh... mức hỗ trợ: 2.000.000 đồng/ngày"
+          },
+          {
+            "point": "Mức phụ cấp 450.000 đồng/ngày (đi về cách ngày)",
+            "status": "có",
+            "quote": "thành phố Hồ Chí Minh... hưởng phụ cấp 450.000 đồng/ngày"
+          },
+          {
+            "point": "Thanh toán chi phí ăn ở, đi lại theo thực tế",
+            "status": "có",
+            "quote": "thanh toán tất cả chi phí ăn ở, đi lại theo thực tế phát sinh"
+          }
+        ]
+      },
+      "final": "GEN",
+      "len_gt": 95,
+      "len_gen": 654,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D112",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng đồng phục: 4 bộ/năm",
+            "status": "có",
+            "quote": "4 bộ đồng phục/năm"
+          },
+          {
+            "point": "Thời điểm cấp: 2 đợt vào tháng 01 và tháng 07",
+            "status": "có",
+            "quote": "2 đợt vào tháng 01 và tháng 07 hàng năm"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Số lượng: 4 bộ/năm",
+            "status": "có",
+            "quote": "4 bộ đồng phục/năm"
+          },
+          {
+            "y": "Thời điểm: 2 đợt tháng 01 và tháng 07",
+            "status": "có",
+            "quote": "2 đợt vào tháng 01 và tháng 07 hàng năm"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 97,
+      "len_gen": 199,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D113",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true,
+        "hallucination_quote": "Tự nhận xét đánh giá; Đánh giá hoạt động hằng năm được tiến hành vào dịp cuối năm; Đánh giá đột xuất; Cách thức khác do Hội đồng quản trị lựa chọn vào từng thời điểm.",
+        "citations_ok": false,
+        "evidence": [
+          {
+            "point": "Tự nhận xét đánh giá",
+            "status": "missing",
+            "detail": "Hệ thống không tìm thấy ý này trong NGU CAN CU"
+          },
+          {
+            "point": "Đánh giá hoạt động hằng năm vào dịp cuối năm",
+            "status": "missing",
+            "detail": "Hệ thống không tìm thấy ý này trong NGU CAN CU"
+          },
+          {
+            "point": "Đánh giá đột xuất",
+            "status": "missing",
+            "detail": "Hệ thống không tìm thấy ý này trong NGU CAN CU"
+          },
+          {
+            "point": "Cách thức khác do HĐQT lựa chọn",
+            "status": "missing",
+            "detail": "Hệ thống không tìm thấy ý này trong NGU CAN CU"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          "EVNFinance: Tự nhận xét đánh giá (Có), Đánh giá hằng năm (Có), Đánh giá đột xuất (Có), Cách thức khác do HĐQT lựa chọn (Có)",
+          "Petrolimex-PMSC (HĐQT): Đánh giá hàng năm căn cứ chức năng, nhiệm vụ, tiêu chuẩn (Có)",
+          "Petrolimex-PMSC (Kiểm soát viên): Theo phương thức tại cơ cấu tổ chức và hoạt động của BKS (Có)",
+          "Petrolimex-PMSC (Giám đốc/điều hành): Theo quy định nội bộ hoặc bản tự đánh giá (Có)"
+        ]
+      },
+      "final": "DISPUTED",
+      "len_gt": 204,
+      "len_gen": 1142,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D114",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng người phụ trách quản trị công ty tối thiểu",
+            "status": "có",
+            "detail": "ít nhất 01 người"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Số lượng người phụ trách quản trị công ty tối thiểu",
+            "status": "có",
+            "detail": "ít nhất 01 người"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 103,
+      "len_gen": 598,
+      "len_warn": true,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D115",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Hợp đồng lao động không xác định thời hạn",
+            "status": "có",
+            "quote": "Hợp đồng lao động không xác định thời hạn"
+          },
+          {
+            "point": "Hợp đồng lao động xác định thời hạn (không quá 36 tháng)",
+            "status": "có",
+            "quote": "Hợp đồng lao động xác định thời hạn... không quá 36 tháng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "y": "Hợp đồng lao động không xác định thời hạn",
+            "status": "có",
+            "quote": "Hợp đồng lao động không xác định thời hạn"
+          },
+          {
+            "y": "Hợp đồng lao động xác định thời hạn (không quá 36 tháng)",
+            "status": "có",
+            "quote": "Hợp đồng lao động xác định thời hạn (thời gian không quá 36 tháng)"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 200,
+      "len_gen": 506,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D116",
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Đủ tuổi nghỉ hưu (trừ thỏa thuận khác)",
+            "status": "có",
+            "quote": "người lao động đủ tuổi nghỉ hưu"
+          },
+          {
+            "point": "Tự ý bỏ việc không lý do chính đáng từ 05 ngày làm việc liên tục trở lên",
+            "status": "có",
+            "quote": "tự ý bỏ việc... từ 05 ngày làm việc liên tục trở lên"
+          },
+          {
+            "point": "Không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31",
+            "status": "thiếu",
+            "quote": "không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Người lao động không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31",
+            "status": "có",
+            "quote": "không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31"
+          },
+          {
+            "point": "Người lao động tự ý bỏ việc không lý do chính đáng từ 05 ngày làm việc liên tục trở lên",
+            "status": "có",
+            "quote": "tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên"
+          }
+        ]
+      },
+      "final": "DISPUTED",
+      "len_gt": 277,
+      "len_gen": 386,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D117",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không được ép buộc chi tiêu lương mua hàng hóa/dịch vụ của NSDLĐ hoặc đơn vị được chỉ định",
+            "status": "có",
+            "quote": "không được ép buộc người lao động chi tiêu lương vào việc mua hàng hóa, sử dụng dịch vụ của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Không được ép buộc chi tiêu lương mua hàng hóa/dịch vụ của công ty hoặc đơn vị chỉ định",
+            "status": "có",
+            "quote": "không được ép buộc người lao động chi tiêu lương vào việc mua hàng hóa, sử dụng dịch vụ của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 194,
+      "len_gen": 222,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D118",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Trộm cắp, tham ô, đánh bạc, cố ý gây thương tích, ma túy",
+            "status": "có",
+            "quote": "trộm cắp, tham ô, đánh bạc, cố ý gây thương tích, sử dụng ma túy"
+          },
+          {
+            "point": "Tiết lộ bí mật, xâm phạm SHTT, gây thiệt hại nghiêm trọng, quấy rối tình dục",
+            "status": "có",
+            "quote": "tiết lộ bí mật kinh doanh, bí mật công nghệ, xâm phạm quyền sở hữu trí tuệ... gây thiệt hại nghiêm trọng... quấy rối tình dục"
+          },
+          {
+            "point": "Tái phạm khi bị kéo dài nâng lương hoặc cách chức",
+            "status": "có",
+            "quote": "bị xử lý kỷ luật kéo dài thời hạn nâng lương hoặc cách chức mà tái phạm"
+          },
+          {
+            "point": "Tự ý bỏ việc 5 ngày/30 ngày hoặc 20 ngày/365 ngày",
+            "status": "có",
+            "quote": "tự ý bỏ việc 05 ngày cộng dồn trong thời hạn 30 ngày hoặc 20 ngày cộng dồn trong thời hạn 365 ngày"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Trộm cắp, tham ô, đánh bạc, cố ý gây thương tích, ma túy",
+            "status": "có",
+            "quote": "Trộm cắp, tham ô, đánh bạc, cố ý gây thương tích, sử dụng ma túy"
+          },
+          {
+            "point": "Tiết lộ bí mật, xâm phạm SHTT, gây thiệt hại nghiêm trọng, quấy rối tình dục",
+            "status": "có",
+            "quote": "Tiết lộ bí mật kinh doanh/công nghệ, xâm phạm quyền sở hữu trí tuệ, gây thiệt hại nghiêm trọng/đặc biệt nghiêm trọng... hoặc quấy rối tình dục"
+          },
+          {
+            "point": "Tái phạm kỷ luật nâng lương/cách chức",
+            "status": "có",
+            "quote": "Tái phạm khi đang bị kỷ luật kéo dài thời hạn nâng lương hoặc cách chức"
+          },
+          {
+            "point": "Tự ý bỏ việc 5 ngày/30 ngày hoặc 20 ngày/365 ngày",
+            "status": "có",
+            "quote": "Tự ý bỏ việc 05 ngày cộng dồn trong 30 ngày hoặc 20 ngày cộng dồn trong 365 ngày"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 494,
+      "len_gen": 1164,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D119",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời gian nghỉ thai sản 06 tháng",
+            "status": "có",
+            "quote": "nghỉ thai sản trước và sau khi sinh con là 06 tháng"
+          },
+          {
+            "point": "Nghỉ trước khi sinh tối đa 02 tháng",
+            "status": "có",
+            "quote": "thời gian nghỉ trước khi sinh không quá 02 tháng"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời gian nghỉ thai sản 06 tháng",
+            "status": "có",
+            "quote": "nghỉ thai sản trước và sau khi sinh con là 06 tháng"
+          },
+          {
+            "point": "Nghỉ trước khi sinh tối đa 02 tháng",
+            "status": "có",
+            "quote": "thời gian nghỉ trước khi sinh không quá 02 tháng"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 128,
+      "len_gen": 202,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    },
+    {
+      "id": "D120",
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hiệu yêu cầu Tòa án giải quyết tranh chấp lao động tập thể về quyền là 01 năm kể từ ngày phát hiện ra hành vi vi phạm",
+            "status": "có",
+            "quote": "01 năm kể từ ngày phát hiện ra hành vi"
+          }
+        ]
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false,
+        "hallucination_quote": "",
+        "citations_ok": true,
+        "evidence": [
+          {
+            "point": "Thời hiệu yêu cầu Tòa án giải quyết tranh chấp lao động tập thể về quyền là 01 năm kể từ ngày phát hiện ra hành vi vi phạm",
+            "status": "có",
+            "quote": "01 năm kể từ ngày phát hiện ra hành vi"
+          }
+        ]
+      },
+      "final": "TIE",
+      "len_gt": 177,
+      "len_gen": 261,
+      "len_warn": false,
+      "cite_in_context": 1.0
+    }
+  ],
+  "summary": {
+    "n": 120,
+    "GT": 12,
+    "GEN": 38,
+    "TIE": 64,
+    "DISPUTED": 6,
+    "correctness_rate": 0.85,
+    "relevance_mean": 4.88,
+    "hallucination_rate": 0.15,
+    "citations_ok_rate": 0.7667,
+    "len_warn": 58,
+    "cite_in_context_mean": 0.9233
+  }
+}

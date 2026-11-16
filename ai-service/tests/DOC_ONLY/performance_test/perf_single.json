@@ -1,0 +1,86 @@
+{
+  "question": "Ai là người lập Giấy cấp phát khăn giấy?",
+  "runs": [
+    {
+      "run": 1,
+      "ttft_s": 2.39,
+      "gen_window_s": 0.86,
+      "total_s": 3.25,
+      "answer_chars": 240,
+      "chars_per_s": 279.1,
+      "tokens_per_s_est": 69.8,
+      "prompt_tokens": 1942,
+      "completion_tokens": 30,
+      "llm_calls": 1,
+      "ram_rss_mib": [
+        2078,
+        2466
+      ],
+      "vram_process_peak_mib": 2608,
+      "vram_board_mib": [
+        {
+          "used_mib": 4621,
+          "total_mib": 6141
+        },
+        {
+          "used_mib": 4616,
+          "total_mib": 6141
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "ttft_s": 1.41,
+      "gen_window_s": 0.77,
+      "total_s": 2.18,
+      "answer_chars": 240,
+      "chars_per_s": 312.3,
+      "tokens_per_s_est": 78.1,
+      "prompt_tokens": 1942,
+      "completion_tokens": 30,
+      "llm_calls": 1,
+      "ram_rss_mib": [
+        2466,
+        2468
+      ],
+      "vram_process_peak_mib": 2608,
+      "vram_board_mib": [
+        {
+          "used_mib": 4616,
+          "total_mib": 6141
+        },
+        {
+          "used_mib": 4616,
+          "total_mib": 6141
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "ttft_s": 1.87,
+      "gen_window_s": 1.33,
+      "total_s": 3.23,
+      "answer_chars": 240,
+      "chars_per_s": 180.7,
+      "tokens_per_s_est": 45.2,
+      "prompt_tokens": 1942,
+      "completion_tokens": 30,
+      "llm_calls": 1,
+      "ram_rss_mib": [
+        2468,
+        2470
+      ],
+      "vram_process_peak_mib": 2608,
+      "vram_board_mib": [
+        {
+          "used_mib": 4616,
+          "total_mib": 6141
+        },
+        {
+          "used_mib": 4616,
+          "total_mib": 6141
+        }
+      ]
+    }
+  ]
+}

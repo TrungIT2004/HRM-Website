@@ -1,0 +1,4406 @@
+{
+  "rows": [
+    {
+      "id": "M01T01",
+      "conversation_id": "M01",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 325,
+      "len_gen": 1594,
+      "len_warn": true
+    },
+    {
+      "id": "M01T02",
+      "conversation_id": "M01",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 145,
+      "len_gen": 235,
+      "len_warn": false
+    },
+    {
+      "id": "M01T03",
+      "conversation_id": "M01",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 129,
+      "len_gen": 457,
+      "len_warn": true
+    },
+    {
+      "id": "M01T04",
+      "conversation_id": "M01",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 45,
+      "len_gen": 151,
+      "len_warn": true
+    },
+    {
+      "id": "M01T05",
+      "conversation_id": "M01",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 64,
+      "len_gen": 305,
+      "len_warn": true
+    },
+    {
+      "id": "M01T06",
+      "conversation_id": "M01",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 145,
+      "len_gen": 151,
+      "len_warn": false
+    },
+    {
+      "id": "M01T07",
+      "conversation_id": "M01",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 126,
+      "len_gen": 180,
+      "len_warn": false
+    },
+    {
+      "id": "M01T08",
+      "conversation_id": "M01",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 217,
+      "len_gen": 574,
+      "len_warn": false
+    },
+    {
+      "id": "M01T09",
+      "conversation_id": "M01",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 268,
+      "len_gen": 401,
+      "len_warn": false
+    },
+    {
+      "id": "M01T10",
+      "conversation_id": "M01",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 144,
+      "len_gen": 347,
+      "len_warn": false
+    },
+    {
+      "id": "M01T11",
+      "conversation_id": "M01",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 125,
+      "len_gen": 362,
+      "len_warn": false
+    },
+    {
+      "id": "M01T12",
+      "conversation_id": "M01",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 207,
+      "len_gen": 535,
+      "len_warn": false
+    },
+    {
+      "id": "M02T01",
+      "conversation_id": "M02",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 151,
+      "len_gen": 586,
+      "len_warn": true
+    },
+    {
+      "id": "M02T02",
+      "conversation_id": "M02",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 171,
+      "len_gen": 392,
+      "len_warn": false
+    },
+    {
+      "id": "M02T03",
+      "conversation_id": "M02",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 81,
+      "len_gen": 260,
+      "len_warn": true
+    },
+    {
+      "id": "M02T04",
+      "conversation_id": "M02",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 207,
+      "len_gen": 766,
+      "len_warn": true
+    },
+    {
+      "id": "M02T05",
+      "conversation_id": "M02",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 117,
+      "len_gen": 309,
+      "len_warn": false
+    },
+    {
+      "id": "M02T06",
+      "conversation_id": "M02",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 178,
+      "len_gen": 377,
+      "len_warn": false
+    },
+    {
+      "id": "M02T07",
+      "conversation_id": "M02",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 166,
+      "len_gen": 368,
+      "len_warn": false
+    },
+    {
+      "id": "M02T08",
+      "conversation_id": "M02",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 71,
+      "len_gen": 208,
+      "len_warn": false
+    },
+    {
+      "id": "M02T09",
+      "conversation_id": "M02",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 57,
+      "len_gen": 216,
+      "len_warn": true
+    },
+    {
+      "id": "M02T10",
+      "conversation_id": "M02",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 140,
+      "len_gen": 456,
+      "len_warn": true
+    },
+    {
+      "id": "M02T11",
+      "conversation_id": "M02",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 110,
+      "len_gen": 287,
+      "len_warn": false
+    },
+    {
+      "id": "M02T12",
+      "conversation_id": "M02",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 96,
+      "len_gen": 147,
+      "len_warn": false
+    },
+    {
+      "id": "M03T01",
+      "conversation_id": "M03",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 199,
+      "len_gen": 360,
+      "len_warn": false
+    },
+    {
+      "id": "M03T02",
+      "conversation_id": "M03",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 153,
+      "len_gen": 360,
+      "len_warn": false
+    },
+    {
+      "id": "M03T03",
+      "conversation_id": "M03",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 155,
+      "len_gen": 619,
+      "len_warn": true
+    },
+    {
+      "id": "M03T04",
+      "conversation_id": "M03",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 159,
+      "len_gen": 324,
+      "len_warn": false
+    },
+    {
+      "id": "M03T05",
+      "conversation_id": "M03",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 73,
+      "len_gen": 293,
+      "len_warn": true
+    },
+    {
+      "id": "M03T06",
+      "conversation_id": "M03",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 57,
+      "len_gen": 268,
+      "len_warn": true
+    },
+    {
+      "id": "M03T07",
+      "conversation_id": "M03",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 160,
+      "len_gen": 363,
+      "len_warn": false
+    },
+    {
+      "id": "M03T08",
+      "conversation_id": "M03",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 184,
+      "len_gen": 315,
+      "len_warn": false
+    },
+    {
+      "id": "M03T09",
+      "conversation_id": "M03",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 67,
+      "len_gen": 278,
+      "len_warn": true
+    },
+    {
+      "id": "M03T10",
+      "conversation_id": "M03",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 61,
+      "len_gen": 134,
+      "len_warn": false
+    },
+    {
+      "id": "M03T11",
+      "conversation_id": "M03",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 65,
+      "len_gen": 367,
+      "len_warn": true
+    },
+    {
+      "id": "M04T01",
+      "conversation_id": "M04",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 189,
+      "len_gen": 351,
+      "len_warn": false
+    },
+    {
+      "id": "M04T02",
+      "conversation_id": "M04",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 84,
+      "len_gen": 346,
+      "len_warn": true
+    },
+    {
+      "id": "M04T03",
+      "conversation_id": "M04",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 98,
+      "len_gen": 894,
+      "len_warn": true
+    },
+    {
+      "id": "M04T04",
+      "conversation_id": "M04",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 88,
+      "len_gen": 893,
+      "len_warn": true
+    },
+    {
+      "id": "M04T05",
+      "conversation_id": "M04",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 101,
+      "len_gen": 730,
+      "len_warn": true
+    },
+    {
+      "id": "M04T06",
+      "conversation_id": "M04",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 73,
+      "len_gen": 170,
+      "len_warn": false
+    },
+    {
+      "id": "M04T07",
+      "conversation_id": "M04",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 67,
+      "len_gen": 169,
+      "len_warn": false
+    },
+    {
+      "id": "M04T08",
+      "conversation_id": "M04",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 48,
+      "len_gen": 132,
+      "len_warn": false
+    },
+    {
+      "id": "M04T09",
+      "conversation_id": "M04",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 50,
+      "len_gen": 323,
+      "len_warn": true
+    },
+    {
+      "id": "M04T10",
+      "conversation_id": "M04",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 115,
+      "len_gen": 1914,
+      "len_warn": true
+    },
+    {
+      "id": "M04T11",
+      "conversation_id": "M04",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "DISPUTED",
+      "len_gt": 138,
+      "len_gen": 550,
+      "len_warn": true
+    },
+    {
+      "id": "M04T12",
+      "conversation_id": "M04",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 69,
+      "len_gen": 210,
+      "len_warn": true
+    },
+    {
+      "id": "M05T01",
+      "conversation_id": "M05",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 193,
+      "len_gen": 273,
+      "len_warn": false
+    },
+    {
+      "id": "M05T02",
+      "conversation_id": "M05",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 4,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "DISPUTED",
+      "len_gt": 75,
+      "len_gen": 274,
+      "len_warn": true
+    },
+    {
+      "id": "M05T03",
+      "conversation_id": "M05",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 129,
+      "len_gen": 250,
+      "len_warn": false
+    },
+    {
+      "id": "M05T04",
+      "conversation_id": "M05",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 107,
+      "len_gen": 225,
+      "len_warn": false
+    },
+    {
+      "id": "M05T05",
+      "conversation_id": "M05",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 118,
+      "len_gen": 570,
+      "len_warn": true
+    },
+    {
+      "id": "M05T06",
+      "conversation_id": "M05",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 137,
+      "len_gen": 450,
+      "len_warn": true
+    },
+    {
+      "id": "M05T07",
+      "conversation_id": "M05",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 167,
+      "len_gen": 557,
+      "len_warn": true
+    },
+    {
+      "id": "M05T08",
+      "conversation_id": "M05",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 108,
+      "len_gen": 293,
+      "len_warn": false
+    },
+    {
+      "id": "M05T09",
+      "conversation_id": "M05",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 119,
+      "len_gen": 938,
+      "len_warn": true
+    },
+    {
+      "id": "M05T10",
+      "conversation_id": "M05",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 2,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 107,
+      "len_gen": 1235,
+      "len_warn": true
+    },
+    {
+      "id": "M05T12",
+      "conversation_id": "M05",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 91,
+      "len_gen": 415,
+      "len_warn": true
+    },
+    {
+      "id": "M06T01",
+      "conversation_id": "M06",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 112,
+      "len_gen": 932,
+      "len_warn": true
+    },
+    {
+      "id": "M06T02",
+      "conversation_id": "M06",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 193,
+      "len_gen": 298,
+      "len_warn": false
+    },
+    {
+      "id": "M06T03",
+      "conversation_id": "M06",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 82,
+      "len_gen": 374,
+      "len_warn": true
+    },
+    {
+      "id": "M06T04",
+      "conversation_id": "M06",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 114,
+      "len_gen": 298,
+      "len_warn": false
+    },
+    {
+      "id": "M06T05",
+      "conversation_id": "M06",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 106,
+      "len_gen": 199,
+      "len_warn": false
+    },
+    {
+      "id": "M06T06",
+      "conversation_id": "M06",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 49,
+      "len_gen": 270,
+      "len_warn": true
+    },
+    {
+      "id": "M06T07",
+      "conversation_id": "M06",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 68,
+      "len_gen": 166,
+      "len_warn": false
+    },
+    {
+      "id": "M06T08",
+      "conversation_id": "M06",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 87,
+      "len_gen": 192,
+      "len_warn": false
+    },
+    {
+      "id": "M06T09",
+      "conversation_id": "M06",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 35,
+      "len_gen": 262,
+      "len_warn": true
+    },
+    {
+      "id": "M06T10",
+      "conversation_id": "M06",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 30,
+      "len_gen": 243,
+      "len_warn": true
+    },
+    {
+      "id": "M06T11",
+      "conversation_id": "M06",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 98,
+      "len_gen": 929,
+      "len_warn": true
+    },
+    {
+      "id": "M06T12",
+      "conversation_id": "M06",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 172,
+      "len_gen": 247,
+      "len_warn": false
+    },
+    {
+      "id": "M07T01",
+      "conversation_id": "M07",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 54,
+      "len_gen": 134,
+      "len_warn": false
+    },
+    {
+      "id": "M07T02",
+      "conversation_id": "M07",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 51,
+      "len_gen": 82,
+      "len_warn": false
+    },
+    {
+      "id": "M07T03",
+      "conversation_id": "M07",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 112,
+      "len_gen": 196,
+      "len_warn": false
+    },
+    {
+      "id": "M07T04",
+      "conversation_id": "M07",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 159,
+      "len_gen": 222,
+      "len_warn": false
+    },
+    {
+      "id": "M07T05",
+      "conversation_id": "M07",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 75,
+      "len_gen": 121,
+      "len_warn": false
+    },
+    {
+      "id": "M07T06",
+      "conversation_id": "M07",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 75,
+      "len_gen": 121,
+      "len_warn": false
+    },
+    {
+      "id": "M07T07",
+      "conversation_id": "M07",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 103,
+      "len_gen": 245,
+      "len_warn": false
+    },
+    {
+      "id": "M07T08",
+      "conversation_id": "M07",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 70,
+      "len_gen": 143,
+      "len_warn": false
+    },
+    {
+      "id": "M07T09",
+      "conversation_id": "M07",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 98,
+      "len_gen": 339,
+      "len_warn": true
+    },
+    {
+      "id": "M07T10",
+      "conversation_id": "M07",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 52,
+      "len_gen": 119,
+      "len_warn": false
+    },
+    {
+      "id": "M07T11",
+      "conversation_id": "M07",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 111,
+      "len_gen": 433,
+      "len_warn": true
+    },
+    {
+      "id": "M07T12",
+      "conversation_id": "M07",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 106,
+      "len_gen": 122,
+      "len_warn": false
+    },
+    {
+      "id": "M08T01",
+      "conversation_id": "M08",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 80,
+      "len_gen": 234,
+      "len_warn": false
+    },
+    {
+      "id": "M08T02",
+      "conversation_id": "M08",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 63,
+      "len_gen": 234,
+      "len_warn": true
+    },
+    {
+      "id": "M08T03",
+      "conversation_id": "M08",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 98,
+      "len_gen": 412,
+      "len_warn": true
+    },
+    {
+      "id": "M08T04",
+      "conversation_id": "M08",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 120,
+      "len_gen": 437,
+      "len_warn": true
+    },
+    {
+      "id": "M08T05",
+      "conversation_id": "M08",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 87,
+      "len_gen": 659,
+      "len_warn": true
+    },
+    {
+      "id": "M08T06",
+      "conversation_id": "M08",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 70,
+      "len_gen": 400,
+      "len_warn": true
+    },
+    {
+      "id": "M08T07",
+      "conversation_id": "M08",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 69,
+      "len_gen": 233,
+      "len_warn": true
+    },
+    {
+      "id": "M08T08",
+      "conversation_id": "M08",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 83,
+      "len_gen": 313,
+      "len_warn": true
+    },
+    {
+      "id": "M08T09",
+      "conversation_id": "M08",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 40,
+      "len_gen": 243,
+      "len_warn": true
+    },
+    {
+      "id": "M08T10",
+      "conversation_id": "M08",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "DISPUTED",
+      "len_gt": 61,
+      "len_gen": 342,
+      "len_warn": true
+    },
+    {
+      "id": "M08T11",
+      "conversation_id": "M08",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 47,
+      "len_gen": 258,
+      "len_warn": true
+    },
+    {
+      "id": "M08T12",
+      "conversation_id": "M08",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 41,
+      "len_gen": 119,
+      "len_warn": false
+    },
+    {
+      "id": "M09T01",
+      "conversation_id": "M09",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 57,
+      "len_gen": 210,
+      "len_warn": true
+    },
+    {
+      "id": "M09T02",
+      "conversation_id": "M09",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 53,
+      "len_gen": 200,
+      "len_warn": true
+    },
+    {
+      "id": "M09T03",
+      "conversation_id": "M09",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 117,
+      "len_gen": 253,
+      "len_warn": false
+    },
+    {
+      "id": "M09T04",
+      "conversation_id": "M09",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 105,
+      "len_gen": 760,
+      "len_warn": true
+    },
+    {
+      "id": "M09T05",
+      "conversation_id": "M09",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 97,
+      "len_gen": 222,
+      "len_warn": false
+    },
+    {
+      "id": "M09T06",
+      "conversation_id": "M09",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 64,
+      "len_gen": 215,
+      "len_warn": true
+    },
+    {
+      "id": "M09T07",
+      "conversation_id": "M09",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 64,
+      "len_gen": 319,
+      "len_warn": true
+    },
+    {
+      "id": "M09T08",
+      "conversation_id": "M09",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 110,
+      "len_gen": 274,
+      "len_warn": false
+    },
+    {
+      "id": "M09T09",
+      "conversation_id": "M09",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 57,
+      "len_gen": 325,
+      "len_warn": true
+    },
+    {
+      "id": "M09T10",
+      "conversation_id": "M09",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 69,
+      "len_gen": 321,
+      "len_warn": true
+    },
+    {
+      "id": "M09T11",
+      "conversation_id": "M09",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 57,
+      "len_gen": 119,
+      "len_warn": false
+    },
+    {
+      "id": "M09T12",
+      "conversation_id": "M09",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 50,
+      "len_gen": 145,
+      "len_warn": false
+    },
+    {
+      "id": "M10T01",
+      "conversation_id": "M10",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 63,
+      "len_gen": 206,
+      "len_warn": true
+    },
+    {
+      "id": "M10T02",
+      "conversation_id": "M10",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 193,
+      "len_gen": 845,
+      "len_warn": true
+    },
+    {
+      "id": "M10T03",
+      "conversation_id": "M10",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 82,
+      "len_gen": 845,
+      "len_warn": true
+    },
+    {
+      "id": "M10T04",
+      "conversation_id": "M10",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 111,
+      "len_gen": 278,
+      "len_warn": false
+    },
+    {
+      "id": "M10T05",
+      "conversation_id": "M10",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "DISPUTED",
+      "len_gt": 190,
+      "len_gen": 448,
+      "len_warn": false
+    },
+    {
+      "id": "M10T06",
+      "conversation_id": "M10",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 148,
+      "len_gen": 1366,
+      "len_warn": true
+    },
+    {
+      "id": "M10T07",
+      "conversation_id": "M10",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 97,
+      "len_gen": 619,
+      "len_warn": true
+    },
+    {
+      "id": "M10T08",
+      "conversation_id": "M10",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 75,
+      "len_gen": 332,
+      "len_warn": true
+    },
+    {
+      "id": "M10T09",
+      "conversation_id": "M10",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 120,
+      "len_gen": 575,
+      "len_warn": true
+    },
+    {
+      "id": "M10T10",
+      "conversation_id": "M10",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 137,
+      "len_gen": 1048,
+      "len_warn": true
+    },
+    {
+      "id": "M10T11",
+      "conversation_id": "M10",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 95,
+      "len_gen": 708,
+      "len_warn": true
+    },
+    {
+      "id": "M10T12",
+      "conversation_id": "M10",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 102,
+      "len_gen": 430,
+      "len_warn": true
+    },
+    {
+      "id": "M11T01",
+      "conversation_id": "M11",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 220,
+      "len_gen": 1734,
+      "len_warn": true
+    },
+    {
+      "id": "M11T02",
+      "conversation_id": "M11",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 214,
+      "len_gen": 1645,
+      "len_warn": true
+    },
+    {
+      "id": "M11T03",
+      "conversation_id": "M11",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 147,
+      "len_gen": 857,
+      "len_warn": true
+    },
+    {
+      "id": "M11T04",
+      "conversation_id": "M11",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 120,
+      "len_gen": 601,
+      "len_warn": true
+    },
+    {
+      "id": "M11T05",
+      "conversation_id": "M11",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 179,
+      "len_gen": 1180,
+      "len_warn": true
+    },
+    {
+      "id": "M11T06",
+      "conversation_id": "M11",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 141,
+      "len_gen": 862,
+      "len_warn": true
+    },
+    {
+      "id": "M11T07",
+      "conversation_id": "M11",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 181,
+      "len_gen": 1409,
+      "len_warn": true
+    },
+    {
+      "id": "M11T09",
+      "conversation_id": "M11",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 32,
+      "len_gen": 106,
+      "len_warn": true
+    },
+    {
+      "id": "M11T10",
+      "conversation_id": "M11",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 131,
+      "len_gen": 159,
+      "len_warn": false
+    },
+    {
+      "id": "M11T11",
+      "conversation_id": "M11",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 94,
+      "len_gen": 577,
+      "len_warn": true
+    },
+    {
+      "id": "M11T12",
+      "conversation_id": "M11",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 127,
+      "len_gen": 223,
+      "len_warn": false
+    },
+    {
+      "id": "M12T01",
+      "conversation_id": "M12",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 215,
+      "len_gen": 425,
+      "len_warn": false
+    },
+    {
+      "id": "M12T02",
+      "conversation_id": "M12",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 125,
+      "len_gen": 917,
+      "len_warn": true
+    },
+    {
+      "id": "M12T03",
+      "conversation_id": "M12",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 133,
+      "len_gen": 347,
+      "len_warn": false
+    },
+    {
+      "id": "M12T04",
+      "conversation_id": "M12",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 167,
+      "len_gen": 386,
+      "len_warn": false
+    },
+    {
+      "id": "M12T05",
+      "conversation_id": "M12",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 80,
+      "len_gen": 1653,
+      "len_warn": true
+    },
+    {
+      "id": "M12T06",
+      "conversation_id": "M12",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 145,
+      "len_gen": 1103,
+      "len_warn": true
+    },
+    {
+      "id": "M12T07",
+      "conversation_id": "M12",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 127,
+      "len_gen": 544,
+      "len_warn": true
+    },
+    {
+      "id": "M12T08",
+      "conversation_id": "M12",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 121,
+      "len_gen": 341,
+      "len_warn": false
+    },
+    {
+      "id": "M12T09",
+      "conversation_id": "M12",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 146,
+      "len_gen": 362,
+      "len_warn": false
+    },
+    {
+      "id": "M12T10",
+      "conversation_id": "M12",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 211,
+      "len_gen": 375,
+      "len_warn": false
+    },
+    {
+      "id": "M12T11",
+      "conversation_id": "M12",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 112,
+      "len_gen": 435,
+      "len_warn": true
+    },
+    {
+      "id": "M12T12",
+      "conversation_id": "M12",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 183,
+      "len_gen": 930,
+      "len_warn": true
+    },
+    {
+      "id": "M13T01",
+      "conversation_id": "M13",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 215,
+      "len_gen": 689,
+      "len_warn": true
+    },
+    {
+      "id": "M13T02",
+      "conversation_id": "M13",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 2,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 2,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 160,
+      "len_gen": 1134,
+      "len_warn": true
+    },
+    {
+      "id": "M13T03",
+      "conversation_id": "M13",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 151,
+      "len_gen": 361,
+      "len_warn": false
+    },
+    {
+      "id": "M13T04",
+      "conversation_id": "M13",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 65,
+      "len_gen": 583,
+      "len_warn": true
+    },
+    {
+      "id": "M13T05",
+      "conversation_id": "M13",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 212,
+      "len_gen": 425,
+      "len_warn": false
+    },
+    {
+      "id": "M13T06",
+      "conversation_id": "M13",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 111,
+      "len_gen": 216,
+      "len_warn": false
+    },
+    {
+      "id": "M13T07",
+      "conversation_id": "M13",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 167,
+      "len_gen": 311,
+      "len_warn": false
+    },
+    {
+      "id": "M13T08",
+      "conversation_id": "M13",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 127,
+      "len_gen": 205,
+      "len_warn": false
+    },
+    {
+      "id": "M13T09",
+      "conversation_id": "M13",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 181,
+      "len_gen": 213,
+      "len_warn": false
+    },
+    {
+      "id": "M13T10",
+      "conversation_id": "M13",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 86,
+      "len_gen": 175,
+      "len_warn": false
+    },
+    {
+      "id": "M13T12",
+      "conversation_id": "M13",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 260,
+      "len_gen": 410,
+      "len_warn": false
+    },
+    {
+      "id": "M14T01",
+      "conversation_id": "M14",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 251,
+      "len_gen": 1503,
+      "len_warn": true
+    },
+    {
+      "id": "M14T02",
+      "conversation_id": "M14",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 130,
+      "len_gen": 302,
+      "len_warn": false
+    },
+    {
+      "id": "M14T03",
+      "conversation_id": "M14",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 181,
+      "len_gen": 642,
+      "len_warn": true
+    },
+    {
+      "id": "M14T04",
+      "conversation_id": "M14",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 131,
+      "len_gen": 330,
+      "len_warn": false
+    },
+    {
+      "id": "M14T05",
+      "conversation_id": "M14",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 191,
+      "len_gen": 777,
+      "len_warn": true
+    },
+    {
+      "id": "M14T06",
+      "conversation_id": "M14",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 95,
+      "len_gen": 238,
+      "len_warn": false
+    },
+    {
+      "id": "M14T07",
+      "conversation_id": "M14",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 99,
+      "len_gen": 1179,
+      "len_warn": true
+    },
+    {
+      "id": "M14T08",
+      "conversation_id": "M14",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 76,
+      "len_gen": 519,
+      "len_warn": true
+    },
+    {
+      "id": "M14T09",
+      "conversation_id": "M14",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 163,
+      "len_gen": 459,
+      "len_warn": false
+    },
+    {
+      "id": "M14T10",
+      "conversation_id": "M14",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 133,
+      "len_gen": 495,
+      "len_warn": true
+    },
+    {
+      "id": "M14T11",
+      "conversation_id": "M14",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 148,
+      "len_gen": 197,
+      "len_warn": false
+    },
+    {
+      "id": "M15T01",
+      "conversation_id": "M15",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 119,
+      "len_gen": 358,
+      "len_warn": true
+    },
+    {
+      "id": "M15T02",
+      "conversation_id": "M15",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 119,
+      "len_gen": 173,
+      "len_warn": false
+    },
+    {
+      "id": "M15T03",
+      "conversation_id": "M15",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 174,
+      "len_gen": 537,
+      "len_warn": true
+    },
+    {
+      "id": "M15T04",
+      "conversation_id": "M15",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 178,
+      "len_gen": 270,
+      "len_warn": false
+    },
+    {
+      "id": "M15T05",
+      "conversation_id": "M15",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 92,
+      "len_gen": 1346,
+      "len_warn": true
+    },
+    {
+      "id": "M15T06",
+      "conversation_id": "M15",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 131,
+      "len_gen": 1232,
+      "len_warn": true
+    },
+    {
+      "id": "M15T07",
+      "conversation_id": "M15",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 112,
+      "len_gen": 529,
+      "len_warn": true
+    },
+    {
+      "id": "M15T08",
+      "conversation_id": "M15",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 65,
+      "len_gen": 152,
+      "len_warn": false
+    },
+    {
+      "id": "M15T09",
+      "conversation_id": "M15",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 229,
+      "len_gen": 726,
+      "len_warn": true
+    },
+    {
+      "id": "M15T10",
+      "conversation_id": "M15",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 162,
+      "len_gen": 432,
+      "len_warn": false
+    },
+    {
+      "id": "M15T11",
+      "conversation_id": "M15",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 199,
+      "len_gen": 284,
+      "len_warn": false
+    },
+    {
+      "id": "M15T12",
+      "conversation_id": "M15",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 2,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 180,
+      "len_gen": 268,
+      "len_warn": false
+    },
+    {
+      "id": "M16T01",
+      "conversation_id": "M16",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 260,
+      "len_gen": 837,
+      "len_warn": true
+    },
+    {
+      "id": "M16T02",
+      "conversation_id": "M16",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 195,
+      "len_gen": 739,
+      "len_warn": true
+    },
+    {
+      "id": "M16T03",
+      "conversation_id": "M16",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 113,
+      "len_gen": 557,
+      "len_warn": true
+    },
+    {
+      "id": "M16T04",
+      "conversation_id": "M16",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 341,
+      "len_gen": 885,
+      "len_warn": false
+    },
+    {
+      "id": "M16T05",
+      "conversation_id": "M16",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 122,
+      "len_gen": 705,
+      "len_warn": true
+    },
+    {
+      "id": "M16T06",
+      "conversation_id": "M16",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 163,
+      "len_gen": 338,
+      "len_warn": false
+    },
+    {
+      "id": "M16T07",
+      "conversation_id": "M16",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 83,
+      "len_gen": 449,
+      "len_warn": true
+    },
+    {
+      "id": "M16T08",
+      "conversation_id": "M16",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 151,
+      "len_gen": 268,
+      "len_warn": false
+    },
+    {
+      "id": "M16T09",
+      "conversation_id": "M16",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 155,
+      "len_gen": 507,
+      "len_warn": true
+    },
+    {
+      "id": "M16T10",
+      "conversation_id": "M16",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 94,
+      "len_gen": 1051,
+      "len_warn": true
+    },
+    {
+      "id": "M16T11",
+      "conversation_id": "M16",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 86,
+      "len_gen": 1232,
+      "len_warn": true
+    },
+    {
+      "id": "M16T12",
+      "conversation_id": "M16",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GEN",
+      "len_gt": 175,
+      "len_gen": 1004,
+      "len_warn": true
+    },
+    {
+      "id": "M17T01",
+      "conversation_id": "M17",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 162,
+      "len_gen": 721,
+      "len_warn": true
+    },
+    {
+      "id": "M17T02",
+      "conversation_id": "M17",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 117,
+      "len_gen": 715,
+      "len_warn": true
+    },
+    {
+      "id": "M17T06",
+      "conversation_id": "M17",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 179,
+      "len_gen": 345,
+      "len_warn": false
+    },
+    {
+      "id": "M17T07",
+      "conversation_id": "M17",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "TIE",
+      "len_gt": 168,
+      "len_gen": 1000,
+      "len_warn": true
+    },
+    {
+      "id": "M17T09",
+      "conversation_id": "M17",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 2,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 2,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 90,
+      "len_gen": 400,
+      "len_warn": true
+    },
+    {
+      "id": "M17T10",
+      "conversation_id": "M17",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 220,
+      "len_gen": 911,
+      "len_warn": true
+    },
+    {
+      "id": "M17T11",
+      "conversation_id": "M17",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 109,
+      "len_gen": 1024,
+      "len_warn": true
+    },
+    {
+      "id": "M17T12",
+      "conversation_id": "M17",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "final": "GT",
+      "len_gt": 147,
+      "len_gen": 552,
+      "len_warn": true
+    },
+    {
+      "id": "M18T01",
+      "conversation_id": "M18",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 386,
+      "len_gen": 1352,
+      "len_warn": true
+    },
+    {
+      "id": "M18T02",
+      "conversation_id": "M18",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 131,
+      "len_gen": 219,
+      "len_warn": false
+    },
+    {
+      "id": "M18T03",
+      "conversation_id": "M18",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 229,
+      "len_gen": 836,
+      "len_warn": true
+    },
+    {
+      "id": "M18T04",
+      "conversation_id": "M18",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 66,
+      "len_gen": 197,
+      "len_warn": false
+    },
+    {
+      "id": "M18T05",
+      "conversation_id": "M18",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 40,
+      "len_gen": 594,
+      "len_warn": true
+    },
+    {
+      "id": "M18T06",
+      "conversation_id": "M18",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 179,
+      "len_gen": 458,
+      "len_warn": false
+    },
+    {
+      "id": "M18T07",
+      "conversation_id": "M18",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 73,
+      "len_gen": 528,
+      "len_warn": true
+    },
+    {
+      "id": "M18T08",
+      "conversation_id": "M18",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 76,
+      "len_gen": 223,
+      "len_warn": false
+    },
+    {
+      "id": "M18T09",
+      "conversation_id": "M18",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 168,
+      "len_gen": 351,
+      "len_warn": false
+    },
+    {
+      "id": "M18T10",
+      "conversation_id": "M18",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 188,
+      "len_gen": 861,
+      "len_warn": true
+    },
+    {
+      "id": "M18T11",
+      "conversation_id": "M18",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 133,
+      "len_gen": 380,
+      "len_warn": false
+    },
+    {
+      "id": "M18T12",
+      "conversation_id": "M18",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 138,
+      "len_gen": 836,
+      "len_warn": true
+    },
+    {
+      "id": "M19T01",
+      "conversation_id": "M19",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 161,
+      "len_gen": 609,
+      "len_warn": true
+    },
+    {
+      "id": "M19T02",
+      "conversation_id": "M19",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 104,
+      "len_gen": 182,
+      "len_warn": false
+    },
+    {
+      "id": "M19T03",
+      "conversation_id": "M19",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 89,
+      "len_gen": 189,
+      "len_warn": false
+    },
+    {
+      "id": "M19T04",
+      "conversation_id": "M19",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 272,
+      "len_gen": 386,
+      "len_warn": false
+    },
+    {
+      "id": "M19T05",
+      "conversation_id": "M19",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 181,
+      "len_gen": 328,
+      "len_warn": false
+    },
+    {
+      "id": "M19T06",
+      "conversation_id": "M19",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 3,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 118,
+      "len_gen": 1008,
+      "len_warn": true
+    },
+    {
+      "id": "M19T07",
+      "conversation_id": "M19",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 222,
+      "len_gen": 388,
+      "len_warn": false
+    },
+    {
+      "id": "M19T08",
+      "conversation_id": "M19",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 204,
+      "len_gen": 390,
+      "len_warn": false
+    },
+    {
+      "id": "M19T09",
+      "conversation_id": "M19",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 253,
+      "len_gen": 471,
+      "len_warn": false
+    },
+    {
+      "id": "M19T10",
+      "conversation_id": "M19",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 122,
+      "len_gen": 375,
+      "len_warn": true
+    },
+    {
+      "id": "M19T11",
+      "conversation_id": "M19",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 105,
+      "len_gen": 160,
+      "len_warn": false
+    },
+    {
+      "id": "M19T12",
+      "conversation_id": "M19",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 127,
+      "len_gen": 756,
+      "len_warn": true
+    },
+    {
+      "id": "M20T01",
+      "conversation_id": "M20",
+      "turn_index": 1,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 161,
+      "len_gen": 609,
+      "len_warn": true
+    },
+    {
+      "id": "M20T02",
+      "conversation_id": "M20",
+      "turn_index": 2,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 110,
+      "len_gen": 182,
+      "len_warn": false
+    },
+    {
+      "id": "M20T03",
+      "conversation_id": "M20",
+      "turn_index": 3,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 89,
+      "len_gen": 189,
+      "len_warn": false
+    },
+    {
+      "id": "M20T04",
+      "conversation_id": "M20",
+      "turn_index": 4,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GT",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GT",
+      "len_gt": 292,
+      "len_gen": 386,
+      "len_warn": false
+    },
+    {
+      "id": "M20T05",
+      "conversation_id": "M20",
+      "turn_index": 5,
+      "run1": {
+        "verdict": "GT",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 1,
+        "hallucination": true
+      },
+      "final": "DISPUTED",
+      "len_gt": 118,
+      "len_gen": 703,
+      "len_warn": true
+    },
+    {
+      "id": "M20T06",
+      "conversation_id": "M20",
+      "turn_index": 6,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 163,
+      "len_gen": 425,
+      "len_warn": false
+    },
+    {
+      "id": "M20T07",
+      "conversation_id": "M20",
+      "turn_index": 7,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 222,
+      "len_gen": 448,
+      "len_warn": false
+    },
+    {
+      "id": "M20T08",
+      "conversation_id": "M20",
+      "turn_index": 8,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 110,
+      "len_gen": 168,
+      "len_warn": false
+    },
+    {
+      "id": "M20T09",
+      "conversation_id": "M20",
+      "turn_index": 9,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 253,
+      "len_gen": 444,
+      "len_warn": false
+    },
+    {
+      "id": "M20T10",
+      "conversation_id": "M20",
+      "turn_index": 10,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 92,
+      "len_gen": 202,
+      "len_warn": false
+    },
+    {
+      "id": "M20T11",
+      "conversation_id": "M20",
+      "turn_index": 11,
+      "run1": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "GEN",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "GEN",
+      "len_gt": 113,
+      "len_gen": 519,
+      "len_warn": true
+    },
+    {
+      "id": "M20T12",
+      "conversation_id": "M20",
+      "turn_index": 12,
+      "run1": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "run2": {
+        "verdict": "TIE",
+        "relevance": 5,
+        "hallucination": false
+      },
+      "final": "TIE",
+      "len_gt": 105,
+      "len_gen": 163,
+      "len_warn": false
+    }
+  ],
+  "summary": {
+    "n": 231,
+    "GT": 26,
+    "GEN": 80,
+    "TIE": 113,
+    "DISPUTED": 12,
+    "correctness_rate": 0.8355,
+    "relevance_mean": 4.75,
+    "hallucination_rate": 0.2857,
+    "citations_ok_rate": 0.0,
+    "len_warn": 123,
+    "cite_in_context_mean": 0.0
+  }
+}

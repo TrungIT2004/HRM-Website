@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.domain.Specification;
 
+import com.minhtrung.hrm.common.specifications.SpecificationScopes;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
 import com.minhtrung.hrm.employees.entities.Department;
 import com.minhtrung.hrm.employees.entities.Job;
@@ -63,6 +64,20 @@ public class LeaveRequestSpecification {
     // 2. ROUTE DUYỆT ĐƠN: GET /api/leave/approvals
     // =========================================================================
     public static Specification<LeaveRequest> forApprovals(UserRole userRole, LeaveFilterRequest filter) {
+        return forApprovals(userRole, filter, false);
+    }
+
+    // ponytail: grant APPROVE = bỏ qua chuỗi phân cấp, thấy MỌI đơn toàn công ty kể cả đã xử lý
+    // (chỉ trừ đơn của chính mình — filter status là optional nên không tự lọc pending).
+    // Trần: đây là cố ý, và UI /admin đã ghi rõ "toàn công ty" trong nhãn quyền. Nếu muốn siết thì
+    // thêm predicate status=PENDING vào nhánh này, hoặc tách LEAVE_APPROVE_ALL khỏi LEAVE_APPROVE.
+    public static Specification<LeaveRequest> forApprovals(UserRole userRole, LeaveFilterRequest filter, boolean hasApproveGrant) {
+        return forApprovals(userRole, filter, hasApproveGrant, false);
+    }
+
+    // hasDeptGrant (LEAVE_VIEW_DEPT / LEAVE_APPROVE_DEPT): chỉ thấy đơn phòng mình,
+    // cùng luật loại trừ như trưởng phòng (không thấy đơn trưởng phòng khác).
+    public static Specification<LeaveRequest> forApprovals(UserRole userRole, LeaveFilterRequest filter, boolean hasApproveGrant, boolean hasDeptGrant) {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             Join<LeaveRequest, User> requestorJoin = root.join("requestor", JoinType.INNER);
@@ -76,36 +91,9 @@ public class LeaveRequestSpecification {
             // Không tự duyệt chính mình
             predicates.add(cb.notEqual(requestorJoin.get("userId"), currentUserId));
 
-            boolean isExecutive = myDepartment.equals("Executive Leadership");
-            boolean isDepartmentHead = myJob.startsWith("Department Head");
-
-            if (isExecutive && myJob.contains("Chairman")) {
-                Predicate isExecDept = cb.equal(deptJoin.get("name"), "Executive Leadership");
-                Predicate isDirectors = cb.or(
-                    cb.like(jobJoin.get("title"), "%Director%"),
-                    cb.like(jobJoin.get("title"), "%Deputy%")
-                );
-                predicates.add(cb.and(isExecDept, isDirectors));
-            } 
-            else if (isExecutive && myJob.contains("Director") && !myJob.contains("Deputy") && !myJob.contains("Vice")) {
-                Predicate isViceDirector = cb.and(
-                    cb.equal(deptJoin.get("name"), "Executive Leadership"),
-                    cb.or(cb.like(jobJoin.get("title"), "%Deputy%"), cb.like(jobJoin.get("title"), "%Vice%"))
-                );
-                Predicate isDepartmentHeads = cb.like(jobJoin.get("title"), "Department Head%");
-                predicates.add(cb.or(isViceDirector, isDepartmentHeads));
-            } 
-            else if (isExecutive && (myJob.contains("Deputy") || myJob.contains("Vice"))) {
-                predicates.add(cb.like(jobJoin.get("title"), "Department Head%"));
-            } 
-            else if (isDepartmentHead) {
-                Predicate sameDept = cb.equal(deptJoin.get("name"), myDepartment);
-                Predicate notAnotherHead = cb.notLike(jobJoin.get("title"), "Department Head%");
-                predicates.add(cb.and(sameDept, notAnotherHead));
-            } 
-            else {
-                predicates.add(cb.disjunction());
-            }
+            // Chung 1 luật phân cấp với attendance/overtime (SpecificationScopes) — lệch là rò dữ liệu
+            SpecificationScopes.applyManagementHierarchy(
+                    predicates, deptJoin, jobJoin, cb, myDepartment, myJob, hasDeptGrant, hasApproveGrant);
 
             // Lọc ngày & trạng thái
             applyDateAndStatusFilters(predicates, root, cb, filter);

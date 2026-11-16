@@ -1,5 +1,6 @@
 package com.minhtrung.hrm.payroll.controllers;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -132,13 +133,17 @@ public class PayrollController {
     /**
      * Kế toán kích hoạt tính toán bảng lương tự động từ MonthlyTimesheet (LOCKED)
      * Cho phép tính toán lại nếu kỳ lương đang ở trạng thái DRAFT.
+     * {@code filter} giữ nguyên bộ lọc đang xem (từ khoá, phòng ban) để phạm vi
+     * tính toán khớp với những dòng người dùng đang nhìn thấy trên bảng.
      */
     @PostMapping("/generate")
     public ResponseEntity<Map<String, Object>> generatePayroll(
             @RequestParam int month,
-            @RequestParam int year) {
+            @RequestParam int year,
+            @ModelAttribute CompanyPayrollFilterRequest filter,
+            @RequestParam(required = false) List<UUID> userIds) {
         UserRole userRole = getCurrentUserRole();
-        return ResponseEntity.ok(payrollService.generatePayroll(month, year, userRole));
+        return ResponseEntity.ok(payrollService.generatePayroll(month, year, userRole, filter, userIds));
     }
 
     /**
