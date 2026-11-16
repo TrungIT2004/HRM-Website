@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetAssignmentRepository.java",
+      "type": "document",
+      "name": "AssetAssignmentRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetAssignmentRepository.java",
+      "summary": "AssetAssignment repository: JPA repository with findByAssetId, findByUserIdAndStatus, findOverdueAssignments, findByDateRange. Used for assignment tracking and overdue alerts.",
+      "tags": ["backend", "asset", "repository", "assignment", "jpa", "overdue", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetCategoryRepository.java",
+      "type": "document",
+      "name": "AssetCategoryRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetCategoryRepository.java",
+      "summary": "AssetCategory repository: JPA repository with findByCode, findByParentCategoryId, findActiveCategories, findTree. Supports category hierarchy traversal.",
+      "tags": ["backend", "asset", "repository", "category", "jpa", "hierarchy", "tree", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetImageRepository.java",
+      "type": "document",
+      "name": "AssetImageRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetImageRepository.java",
+      "summary": "AssetImage repository: JPA repository with findByAssetId, findPrimaryByAssetId. Image management per asset.",
+      "tags": ["backend", "asset", "repository", "image", "jpa", "primary", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetInventoryLogRepository.java",
+      "type": "document",
+      "name": "AssetInventoryLogRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetInventoryLogRepository.java",
+      "summary": "AssetInventoryLog repository: JPA repository with findByAssetIdOrderByPerformedAtDesc, findByAction, findByDateRange, findByPerformedBy. Audit trail queries.",
+      "tags": ["backend", "asset", "repository", "inventory", "log", "jpa", "audit", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetMaintenanceRepository.java",
+      "type": "document",
+      "name": "AssetMaintenanceRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetMaintenanceRepository.java",
+      "summary": "AssetMaintenance repository: JPA repository with findByAssetId, findByStatus, findOverdueMaintenance, findByScheduledDateBetween, findByMaintenanceType. Maintenance scheduling and tracking.",
+      "tags": ["backend", "asset", "repository", "maintenance", "jpa", "overdue", "scheduling", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRepository.java",
+      "type": "document",
+      "name": "AssetRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRepository.java",
+      "summary": "Asset repository: JPA repository with findByCode, findByCategoryId, findByStatus, findByAssignedUserId, searchByNameOrCode, findAssetsNeedingMaintenance, findAssetsNearWarrantyExpiry. Core asset queries.",
+      "tags": ["backend", "asset", "repository", "jpa", "search", "maintenance", "warranty", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRequestRepository.java",
+      "type": "document",
+      "name": "AssetRequestRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRequestRepository.java",
+      "summary": "AssetRequest repository: JPA repository with findByUserId, findByStatus, findByCategoryId, findPendingRequests, findByDateRange. Request tracking and approval workflow.",
+      "tags": ["backend", "asset", "repository", "request", "jpa", "pending", "approval", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/services/AssetCategorySeeder.java",
+      "type": "document",
+      "name": "AssetCategorySeeder.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetCategorySeeder.java",
+      "summary": "Asset category seeder: CommandLineRunner that populates default asset categories (Laptop, Monitor, Phone, Furniture, Vehicle, Software License, Peripheral) on application startup if empty.",
+      "tags": ["backend", "asset", "service", "seeder", "startup", "default-data", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "type": "document",
+      "name": "AssetService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "summary": "Asset service: core business logic for asset lifecycle (create, update, delete, assign, return, maintenance, depreciation calculation, inventory logging). Integrates with FileStorageService for images, AssetRepository, AssetAssignmentRepository, AssetCategoryRepository, AssetImageRepository, AssetInventoryLogRepository, AssetMaintenanceRepository, AssetRequestRepository.",
+      "tags": ["backend", "asset", "service", "lifecycle", "depreciation", "inventory", "filestorage", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/dashboard/controllers/DashboardController.java",
+      "type": "document",
+      "name": "DashboardController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/dashboard/controllers/DashboardController.java",
+      "summary": "Dashboard REST controller: endpoints for getSummary (role-based: admin/hr sees company stats, manager sees team stats, staff sees personal stats), getAttendanceTrends, getLeaveBalance, getUpcomingEvents, getNotifications. Aggregates data from multiple services.",
+      "tags": ["backend", "dashboard", "controller", "summary", "role-based", "aggregation", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/dashboard/dtos/responses/DashboardSummaryResponse.java",
+      "type": "document",
+      "name": "DashboardSummaryResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/dashboard/dtos/responses/DashboardSummaryResponse.java",
+      "summary": "Dashboard summary response DTO: role-specific fields. Admin/HR: totalEmployees, pendingLeaves, pendingOvertime, pendingAssets, activeTickets, payrollStatus. Manager: teamSize, teamPendingLeaves, teamPendingOvertime, teamAttendanceRate. Staff: myAttendanceStatus, myLeaveBalance, myPendingRequests, myUpcomingShifts.",
+      "tags": ["backend", "dashboard", "dto", "response", "summary", "role-based", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/dashboard/services/DashboardService.java",
+      "type": "document",
+      "name": "DashboardService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/dashboard/services/DashboardService.java",
+      "summary": "Dashboard service: aggregates data from UserProfileRepository, AttendanceRepository, LeaveRequestRepository, OvertimeRecordRepository, AssetRequestRepository, ItTicketRepository, PayrollRepository. Builds role-specific summary. Uses SpecificationScopes for dynamic filtering.",
+      "tags": ["backend", "dashboard", "service", "aggregation", "multi-repo", "specification", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/controllers/DocumentController.java",
+      "type": "document",
+      "name": "DocumentController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/controllers/DocumentController.java",
+      "summary": "Document REST controller: endpoints for uploadDocument, getDocuments (paginated, filtered), getDocumentDetail, downloadDocument, deleteDocument, updateDocumentMetadata, getDocumentCategories. Integrates with ai-service for indexing via DocumentService.",
+      "tags": ["backend", "documents", "controller", "upload", "download", "metadata", "indexing", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/dtos/requests/UpsertDocumentRequest.java",
+      "type": "document",
+      "name": "UpsertDocumentRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/dtos/requests/UpsertDocumentRequest.java",
+      "summary": "Upsert document request DTO: documentId (optional for update), title, category, tags, description, file (MultipartFile). Validation for file type/size and required fields.",
+      "tags": ["backend", "documents", "dto", "upsert", "multipart", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/dtos/responses/DocumentResponse.java",
+      "type": "document",
+      "name": "DocumentResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/dtos/responses/DocumentResponse.java",
+      "summary": "Document response DTO: documentId, title, category, tags, description, fileUrl, fileType, fileSize, uploadedBy, uploadedAt, indexedAt, indexStatus. Metadata for document listing and detail.",
+      "tags": ["backend", "documents", "dto", "response", "metadata", "index", "status", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java",
+      "type": "document",
+      "name": "Document.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java",
+      "summary": "Document JPA entity: id, title, category, tags (JSON array), description, filePath, fileType, fileSize, minioBucket, minioObjectKey, uploadedBy, uploadedAt, indexedAt, indexStatus (PENDING, INDEXED, FAILED), indexError. Links to MinIO storage and ai-service indexing.",
+      "tags": ["backend", "documents", "entity", "jpa", "minio", "indexing", "tags", "json", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "type": "document",
+      "name": "DocumentCategory.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "summary": "DocumentCategory enum: POLICY, CONTRACT, HANDBOOK, FORM, REPORT, TEMPLATE, LEGAL, TRAINING, OTHER. Classification for document organization and retrieval filtering.",
+      "tags": ["backend", "documents", "enum", "category", "classification", "retrieval", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java",
+      "type": "document",
+      "name": "DocumentErrorCode.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java",
+      "summary": "DocumentErrorCode enum: DOCUMENT_NOT_FOUND, INVALID_FILE_TYPE, FILE_TOO_LARGE, UPLOAD_FAILED, DELETE_FAILED, INDEXING_FAILED, CATEGORY_NOT_FOUND, PERMISSION_DENIED. Used by DocumentException.",
+      "tags": ["backend", "documents", "enum", "error-code", "upload", "indexing", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java",
+      "type": "document",
+      "name": "DocumentFileType.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java",
+      "summary": "DocumentFileType enum: PDF, DOCX, XLSX, PPTX, TXT, PNG, JPG, JPEG. Allowed file types for upload validation.",
+      "tags": ["backend", "documents", "enum", "file-type", "validation", "allowed", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java",
+      "type": "document",
+      "name": "DocumentException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java",
+      "summary": "Document exception: extends RuntimeException with DocumentErrorCode. Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "documents", "exception", "error-code", "runtime-exception", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/repositories/DocumentRepository.java",
+      "type": "document",
+      "name": "DocumentRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/repositories/DocumentRepository.java",
+      "summary": "Document repository: JPA repository with findByCategory, findByUploadedBy, findByIndexStatus, searchByTitleOrTags, findByDateRange, findPendingIndexing. Supports pagination and sorting.",
+      "tags": ["backend", "documents", "repository", "jpa", "search", "indexing", "pagination", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java",
+      "type": "document",
+      "name": "DocumentService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java",
+      "summary": "Document service: handles upload (MinIO via FileStorageService), metadata management, deletion, and triggers ai-service indexing via async call. Manages index status lifecycle (PENDING -> INDEXED/FAILED).",
+      "tags": ["backend", "documents", "service", "upload", "minio", "indexing", "async", "filestorage", "java"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRepository.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/dashboard/services/DashboardService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/dashboard/controllers/DashboardController.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

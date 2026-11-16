@@ -1,0 +1,165 @@
+{
+  "nodes": [
+    {
+      "id": "document:.env.example",
+      "type": "document",
+      "name": ".env.example",
+      "filePath": ".env.example",
+      "summary": "Environment variables template with 25 lines defining all required environment variables for the HRM platform including database, Redis, JWT, Google Gemini API keys (6 keys), AI service configuration, and frontend/backend ports.",
+      "tags": ["config", "environment", "hrm", "api-keys", "gemini", "template"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "AI agent instructions for the HRM project with 370 lines covering development workflow, code standards, testing procedures, Git practices, and project-specific guidelines for AI assistants working on this codebase.",
+      "tags": ["documentation", "ai-agents", "guidelines", "hrm", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Claude Code project instructions with 97 lines covering AI service API key rotation, quota management, chatbot test results tracking, and quick test commands for the HRM platform.",
+      "tags": ["documentation", "claude-code", "instructions", "hrm", "ai-service", "quota"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM_AI_Postman_Collection.json",
+      "type": "document",
+      "name": "HRM_AI_Postman_Collection.json",
+      "filePath": "HRM_AI_Postman_Collection.json",
+      "summary": "Postman collection for HRM AI service API testing with 759 lines defining endpoints for chat, document retrieval, SQL generation, and health checks with example requests and responses.",
+      "tags": ["api", "postman", "testing", "hrm", "ai-service", "collection", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project README with 286 lines covering HRM platform overview, architecture diagram, tech stack (React, Spring Boot, Python), setup instructions, deployment guides, and service descriptions.",
+      "tags": ["documentation", "readme", "hrm", "overview", "architecture", "setup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SPEC_CHATBOT_FULL_TEST_COVERAGE.md",
+      "type": "document",
+      "name": "SPEC_CHATBOT_FULL_TEST_COVERAGE.md",
+      "filePath": "SPEC_CHATBOT_FULL_TEST_COVERAGE.md",
+      "summary": "Chatbot full test coverage specification with 257 lines defining test scenarios for text2SQL, document retrieval, routing, hybrid queries, and generation quality across all chatbot routes.",
+      "tags": ["specification", "testing", "chatbot", "hrm", "text2sql", "retrieval", "coverage"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SPEC_TEXT2SQL_EX_IMPROVEMENT.md",
+      "type": "document",
+      "name": "SPEC_TEXT2SQL_EX_IMPROVEMENT.md",
+      "filePath": "SPEC_TEXT2SQL_EX_IMPROVEMENT.md",
+      "summary": "Text2SQL execution accuracy improvement specification v1 with 136 lines detailing tickets for timezone-aware quota reset, Gemma model restriction enforcement, few-shot column errors, and incremental save/resume.",
+      "tags": ["specification", "text2sql", "improvement", "hrm", "tickets", "accuracy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md",
+      "type": "document",
+      "name": "SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md",
+      "filePath": "SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md",
+      "summary": "Text2SQL execution accuracy improvement specification v2 with 165 lines extending v1 with model name discrepancy fixes, full evaluation runs, and additional quality gates for SQL generation.",
+      "tags": ["specification", "text2sql", "improvement", "hrm", "v2", "quality-gates"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docker-compose.yml",
+      "type": "document",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "summary": "Docker Compose configuration with 189 lines defining services for PostgreSQL, Redis, backend (Spring Boot), frontend (Next.js), AI service (Python), and nginx reverse proxy with health checks and volume mounts.",
+      "tags": ["infra", "docker", "compose", "hrm", "postgresql", "redis", "spring-boot", "nextjs", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:opencode.json",
+      "type": "document",
+      "name": "opencode.json",
+      "filePath": "opencode.json",
+      "summary": "OpenCode configuration with 54 lines defining agent settings, model preferences, and project-specific commands for the HRM codebase.",
+      "tags": ["config", "opencode", "ai", "hrm", "agents", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:package.json",
+      "type": "document",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Root package.json with 8 lines defining workspace configuration for the HRM monorepo with npm workspaces for frontend, backend, and AI service packages.",
+      "tags": ["config", "npm", "workspace", "hrm", "monorepo", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:postman.json",
+      "type": "document",
+      "name": "postman.json",
+      "filePath": "postman.json",
+      "summary": "Main Postman collection with 7,170 lines containing comprehensive API endpoints for all HRM services including auth, employees, departments, attendance, leave, payroll, and AI chatbot.",
+      "tags": ["api", "postman", "testing", "hrm", "collection", "json", "comprehensive"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:test_result.txt",
+      "type": "document",
+      "name": "test_result.txt",
+      "filePath": "test_result.txt",
+      "summary": "Test result output file (empty - 0 lines) for capturing test execution results.",
+      "tags": ["test", "output", "hrm", "results", "txt"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.env.example",
+      "target": "document:docker-compose.yml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:README.md",
+      "target": "document:docker-compose.yml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:SPEC_TEXT2SQL_EX_IMPROVEMENT.md",
+      "target": "document:SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM_AI_Postman_Collection.json",
+      "target": "document:postman.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:CLAUDE.md",
+      "target": "document:.env.example",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:AGENTS.md",
+      "target": "document:README.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

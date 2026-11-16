@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "postgres-hrm": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${HRM_DATABASE_URL}"
+      ]
+    },
+    "postgres-hrm-ai": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${AI_DATABASE_URL}"
+      ]
+    }
+  }
+}

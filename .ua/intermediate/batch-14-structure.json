@@ -1,0 +1,39 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 0,
+  "filesSkipped": [
+    ".agents/skills/ui-ux-pro-max/data/stacks/angular.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/astro.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/react.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/uno.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+    ".agents/skills/ui-ux-pro-max/data/stacks/vue.csv"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 0,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": []
+}

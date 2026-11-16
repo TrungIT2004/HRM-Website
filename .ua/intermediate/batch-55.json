@@ -1,0 +1,95 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/latency/breakdown.py",
+      "type": "document",
+      "name": "breakdown.py",
+      "filePath": "ai-service/tests/latency/breakdown.py",
+      "summary": "Latency breakdown (tests/latency): legacy version of test_v2/latency/breakdown.py. Instruments pipeline stages for latency profiling. Kept for backward compatibility with older test scripts.",
+      "tags": ["ai-service", "test", "latency", "breakdown", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/latency/load_breakdown.py",
+      "type": "document",
+      "name": "load_breakdown.py",
+      "filePath": "ai-service/tests/latency/load_breakdown.py",
+      "summary": "Load latency breakdown (tests/latency): legacy version of test_v2/latency/load_breakdown.py. Concurrent load testing with worker pool. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "latency", "load", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/latency/ttft.py",
+      "type": "document",
+      "name": "ttft.py",
+      "filePath": "ai-service/tests/latency/ttft.py",
+      "summary": "TTFT measurement (tests/latency): legacy version of test_v2/latency/ttft.py. Time-to-first-token for streaming responses. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "latency", "ttft", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/build_internal.py",
+      "type": "document",
+      "name": "build_internal.py",
+      "filePath": "ai-service/tests/memory/build_internal.py",
+      "summary": "Memory internal dataset builder: reads blueprint JSON files (bp1-bp6, bp_fix), generates memory_internal.csv with 360 turns (30 conv × 12) or 600 turns (50 conv × 12). Handles conversation threading, gold rewrites, and document references. Fixes merge bug for incremental blueprint additions.",
+      "tags": ["ai-service", "test", "memory", "build", "blueprint", "dataset", "csv", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/data/memory_dataset.csv",
+      "type": "document",
+      "name": "memory_dataset.csv",
+      "filePath": "ai-service/tests/memory/data/memory_dataset.csv",
+      "summary": "QRECC memory dataset CSV: 1240 turns / 250 sessions from QRECC (general knowledge, non-HR domain). Used for baseline memory rewrite evaluation (rewrite_score 0.863 on prod path). External benchmark for comparison.",
+      "tags": ["ai-service", "test", "memory", "dataset", "qrecc", "csv", "external"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/memory/internal/RESULTS.md",
+      "summary": "Memory internal test results: documents multiple experimental runs with different models (gemma-4-31b-it, EmbeddingGemma, DocLock, soft-band, prompt tuning). Records rewrite scores, generation scores, latency, and token usage per configuration. Best: gemma-4-31b-it rewrite 0.863, generation 0.463.",
+      "tags": ["ai-service", "test", "memory", "results", "markdown", "benchmark", "gemma", "embeddinggemma", "doclock"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/latency/breakdown.py",
+      "target": "document:ai-service/test_v2/latency/breakdown.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/latency/load_breakdown.py",
+      "target": "document:ai-service/test_v2/latency/load_breakdown.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/latency/ttft.py",
+      "target": "document:ai-service/test_v2/latency/ttft.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/build_internal.py",
+      "target": "document:ai-service/tests/memory/data/memory_dataset.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/tests/memory/build_internal.py",
+      "target": "document:ai-service/tests/memory/internal/RESULTS.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

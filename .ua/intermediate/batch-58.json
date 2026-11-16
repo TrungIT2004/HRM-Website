@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java",
+      "type": "document",
+      "name": "SignInRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java",
+      "summary": "Sign-in request DTO: username/email and password fields with validation annotations (@NotBlank, @Size). Used by authentication endpoint.",
+      "tags": ["backend", "auth", "dto", "signin", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java",
+      "type": "document",
+      "name": "SignUpRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java",
+      "summary": "Sign-up request DTO: username, email, password, confirmPassword, fullName, phoneNumber with validation (@Email, @NotBlank, @Size, @Pattern). Password confirmation validation.",
+      "tags": ["backend", "auth", "dto", "signup", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "type": "document",
+      "name": "AuthenticationException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "summary": "Custom authentication exception: extends RuntimeException with error code enum (INVALID_CREDENTIALS, TOKEN_EXPIRED, TOKEN_INVALID, ACCOUNT_LOCKED, ACCOUNT_DISABLED). Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "auth", "exception", "error-code", "runtime-exception", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "type": "document",
+      "name": "UserSessionRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "summary": "User session repository: JPA repository for UserSession entity. Methods: findByUserIdAndRefreshToken, deleteByUserId, deleteExpiredSessions, countActiveSessionsByUserId. Used for JWT refresh token management and concurrent session limits.",
+      "tags": ["backend", "auth", "repository", "session", "jpa", "refresh-token", "java"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

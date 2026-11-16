@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/slides/references/copywriting-formulas.md",
+      "type": "document",
+      "name": "copywriting-formulas.md",
+      "filePath": ".agents/skills/slides/references/copywriting-formulas.md",
+      "summary": "Copywriting formulas reference for slide creation covering 5 core formulas: PAS (Problem-Agitate-Solution), AIDA (Attention-Interest-Desire-Action), FAB (Features-Advantages-Benefits), Cost of Inaction, and Before-After-Bridge. Includes formula-to-slide mapping, headline patterns, power words, contrast patterns, social proof patterns, and search commands.",
+      "tags": ["documentation", "reference", "design-system", "slides", "copywriting", "formulas"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/slides/references/create.md",
+      "type": "document",
+      "name": "create.md",
+      "filePath": ".agents/skills/slides/references/create.md",
+      "summary": "Minimal slides creation task reference with single task heading.",
+      "tags": ["documentation", "reference", "design-system", "slides"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/slides/references/html-template.md",
+      "type": "document",
+      "name": "html-template.md",
+      "filePath": ".agents/skills/slides/references/html-template.md",
+      "summary": "HTML slide template with base structure, Chart.js integration for charts, animation classes for transitions, background image handling, and CSS variables reference for building presentation slides.",
+      "tags": ["documentation", "reference", "design-system", "slides", "html", "template", "css", "chartjs"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/slides/references/layout-patterns.md",
+      "type": "document",
+      "name": "layout-patterns.md",
+      "filePath": ".agents/skills/slides/references/layout-patterns.md",
+      "summary": "Slide layout patterns reference with layout selection by use case, CSS structures for title slides, two-column splits, feature grids (3 columns), metrics dashboards (4 columns), component variants (card styles, metric styles), visual treatments, search commands, and layout decision flow.",
+      "tags": ["documentation", "reference", "design-system", "slides", "layout", "css"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/slides/references/slide-strategies.md",
+      "type": "document",
+      "name": "slide-strategies.md",
+      "filePath": ".agents/skills/slides/references/slide-strategies.md",
+      "summary": "Slide strategies reference with strategy selection guide, common structures (YC Seed Deck 10 slides, Sales Pitch 9 slides, Product Demo 6 slides), Duarte Sparkline pattern, search commands, and matching strategy to context guide.",
+      "tags": ["documentation", "reference", "design-system", "slides", "strategies", "presentation"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/slides/references/copywriting-formulas.md",
+      "target": "document:.agents/skills/slides/references/html-template.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/slides/references/copywriting-formulas.md",
+      "target": "document:.agents/skills/slides/references/layout-patterns.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/slides/references/copywriting-formulas.md",
+      "target": "document:.agents/skills/slides/references/slide-strategies.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/slides/references/html-template.md",
+      "target": "document:.agents/skills/slides/references/layout-patterns.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/slides/references/layout-patterns.md",
+      "target": "document:.agents/skills/slides/references/slide-strategies.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

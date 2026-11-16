@@ -1,0 +1,131 @@
+{
+  "nodes": [
+    {
+      "id": "document:HRM Website/src/app/attendance/leave/page.tsx",
+      "type": "document",
+      "name": "leave/page.tsx",
+      "filePath": "HRM Website/src/app/attendance/leave/page.tsx",
+      "summary": "Leave management page: displays leave balance, request form (type, dates, reason), approval workflow visualization, leave history table with status filters, and calendar view. Uses leaveService for API calls and LeaveForm component for validation.",
+      "tags": ["frontend", "hrm-website", "attendance", "leave", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/attendance/overtime/page.tsx",
+      "type": "document",
+      "name": "overtime/page.tsx",
+      "filePath": "HRM Website/src/app/attendance/overtime/page.tsx",
+      "summary": "Overtime management page: overtime request form (date, hours, reason, attachment), pre-approval workflow, overtime balance tracker, history with filter by month/status, and export to Excel. Integrates with overtimeService and WorkShift context.",
+      "tags": ["frontend", "hrm-website", "attendance", "overtime", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/attendance/overview/page.tsx",
+      "type": "document",
+      "name": "overview/page.tsx",
+      "filePath": "HRM Website/src/app/attendance/overview/page.tsx",
+      "summary": "Attendance dashboard overview: real-time status (checked in/out), today's schedule, leave balance summary, overtime hours this month, late/early stats, and quick actions (check-in, request leave, request OT). Uses AttendanceOverviewTab component.",
+      "tags": ["frontend", "hrm-website", "attendance", "overview", "dashboard", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/attendance/schedule/page.tsx",
+      "type": "document",
+      "name": "schedule/page.tsx",
+      "filePath": "HRM Website/src/app/attendance/schedule/page.tsx",
+      "summary": "Work schedule page: weekly/monthly calendar view, shift assignments with color coding, swap request workflow, shift template management, and conflict detection. Uses WorkShiftTab and ScheduleCalendar components.",
+      "tags": ["frontend", "hrm-website", "attendance", "schedule", "shift", "calendar", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/chat/page.tsx",
+      "type": "document",
+      "name": "chat/page.tsx",
+      "filePath": "HRM Website/src/app/chat/page.tsx",
+      "summary": "AI Chat interface: conversation list sidebar, message thread with streaming responses, citation display, document preview modal, suggested prompts, conversation history, and model selector. Integrates with aiService for streaming chat and document retrieval.",
+      "tags": ["frontend", "hrm-website", "chat", "ai", "streaming", "page", "react", "typescript"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:HRM Website/src/app/dashboard/page.tsx",
+      "type": "document",
+      "name": "dashboard/page.tsx",
+      "filePath": "HRM Website/src/app/dashboard/page.tsx",
+      "summary": "Main dashboard: KPI cards (headcount, pending requests, upcoming birthdays, expiring contracts), recent activity feed, quick action shortcuts, and personalized widgets based on user role. Server component with Suspense boundaries.",
+      "tags": ["frontend", "hrm-website", "dashboard", "kpi", "page", "react", "typescript", "server-component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/employees/page.tsx",
+      "type": "document",
+      "name": "employees/page.tsx",
+      "filePath": "HRM Website/src/app/employees/page.tsx",
+      "summary": "Employee directory: searchable table with filters (department, status, role), pagination, column sorting, bulk actions, export CSV, and detail drawer with tabs (profile, contract, salary, attendance, assets). Uses employeeService and EmployeeTable component.",
+      "tags": ["frontend", "hrm-website", "employees", "directory", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/assets/page.tsx",
+      "type": "document",
+      "name": "assets/page.tsx",
+      "filePath": "HRM Website/src/app/assets/page.tsx",
+      "summary": "Asset management: asset catalog with categories, assignment tracking, request workflow (create, approve, assign, return), maintenance scheduling, and depreciation reports. Integrates with assetService and AssetRequestModal.",
+      "tags": ["frontend", "hrm-website", "assets", "management", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/it-tickets/page.tsx",
+      "type": "document",
+      "name": "it-tickets/page.tsx",
+      "filePath": "HRM Website/src/app/it-tickets/page.tsx",
+      "summary": "IT Ticket system: ticket list with status/priority filters, create ticket form (category, description, attachment, SLA), assignment workflow, comment thread, resolution tracking, and SLA dashboard. Uses ticketService and TicketDetailModal.",
+      "tags": ["frontend", "hrm-website", "it-tickets", "support", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/performance-reviews/page.tsx",
+      "type": "document",
+      "name": "performance-reviews/page.tsx",
+      "filePath": "HRM Website/src/app/performance-reviews/page.tsx",
+      "summary": "Performance review hub: cycle management, self-assessment form, manager review workflow, calibration session, score distribution analytics, and export. Tabs: overview, history, management. Uses performanceService.",
+      "tags": ["frontend", "hrm-website", "performance", "reviews", "page", "react", "typescript"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:HRM Website/src/app/attendance/overview/page.tsx",
+      "target": "document:HRM Website/src/app/attendance/leave/page.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:HRM Website/src/app/attendance/overview/page.tsx",
+      "target": "document:HRM Website/src/app/attendance/overtime/page.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:HRM Website/src/app/attendance/overview/page.tsx",
+      "target": "document:HRM Website/src/app/attendance/schedule/page.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:HRM Website/src/app/chat/page.tsx",
+      "target": "document:HRM Website/src/services/aiService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/app/dashboard/page.tsx",
+      "target": "document:HRM Website/src/app/employees/page.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

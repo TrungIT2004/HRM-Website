@@ -1,0 +1,22 @@
+Test 1 - user_permission_grants_07 with placeholders:
+OK: True, Error: 
+Clean: SELECT permission, granted_at FROM user_permission_grants WHERE user_id = %(uid)s AND EXTRACT(YEAR FROM granted_at) = %(year)s ORDER BY granted_at LIMIT 100
+
+Test 2 - monthly_timesheets_07 with placeholders:
+OK: True, Error: 
+
+Test 3 - asset_requests_03 with placeholders:
+OK: True, Error: 
+
+Test 4 - it_tickets_05 with placeholders:
+OK: True, Error: 
+
+Test 5 - performance_reviews_06 with placeholders:
+OK: True, Error: 
+
+Test 6 - overtime_records correct column:
+OK: True, Error: 
+
+Test 7 - overtime_records WRONG column (should pass validation):
+OK: True, Error: 
+

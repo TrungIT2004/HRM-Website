@@ -1,0 +1,6 @@
+```sql
+SELECT annual_leave_days, used_leave_days,
+       (annual_leave_days - used_leave_days) AS remaining_days
+FROM users 
+WHERE users.user_id = %(uid)s
+```

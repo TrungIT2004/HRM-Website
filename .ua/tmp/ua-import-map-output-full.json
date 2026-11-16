@@ -1,0 +1,2479 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 885,
+    "filesWithImports": 321,
+    "totalEdges": 1262
+  },
+  "failures": [],
+  "importMap": {
+    ".agents/skills/architect/SKILL.md": [],
+    ".agents/skills/audit/SKILL.md": [],
+    ".agents/skills/banner-design/SKILL.md": [],
+    ".agents/skills/banner-design/references/banner-sizes-and-styles.md": [],
+    ".agents/skills/brand/SKILL.md": [],
+    ".agents/skills/brand/references/approval-checklist.md": [],
+    ".agents/skills/brand/references/asset-organization.md": [],
+    ".agents/skills/brand/references/brand-guideline-template.md": [],
+    ".agents/skills/brand/references/color-palette-management.md": [],
+    ".agents/skills/brand/references/consistency-checklist.md": [],
+    ".agents/skills/brand/references/logo-usage-rules.md": [],
+    ".agents/skills/brand/references/messaging-framework.md": [],
+    ".agents/skills/brand/references/typography-specifications.md": [],
+    ".agents/skills/brand/references/update.md": [],
+    ".agents/skills/brand/references/visual-identity.md": [],
+    ".agents/skills/brand/references/voice-framework.md": [],
+    ".agents/skills/brand/scripts/extract-colors.cjs": [],
+    ".agents/skills/brand/scripts/inject-brand-context.cjs": [],
+    ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs": [],
+    ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py": [],
+    ".agents/skills/brand/scripts/validate-asset.cjs": [],
+    ".agents/skills/brand/templates/brand-guidelines-starter.md": [],
+    ".agents/skills/debug/SKILL.md": [],
+    ".agents/skills/design-system/SKILL.md": [],
+    ".agents/skills/design-system/data/slide-backgrounds.csv": [],
+    ".agents/skills/design-system/data/slide-charts.csv": [],
+    ".agents/skills/design-system/data/slide-color-logic.csv": [],
+    ".agents/skills/design-system/data/slide-copy.csv": [],
+    ".agents/skills/design-system/data/slide-layout-logic.csv": [],
+    ".agents/skills/design-system/data/slide-layouts.csv": [],
+    ".agents/skills/design-system/data/slide-strategies.csv": [],
+    ".agents/skills/design-system/data/slide-typography.csv": [],
+    ".agents/skills/design-system/references/component-specs.md": [],
+    ".agents/skills/design-system/references/component-tokens.md": [],
+    ".agents/skills/design-system/references/primitive-tokens.md": [],
+    ".agents/skills/design-system/references/semantic-tokens.md": [],
+    ".agents/skills/design-system/references/states-and-variants.md": [],
+    ".agents/skills/design-system/references/tailwind-integration.md": [],
+    ".agents/skills/design-system/references/token-architecture.md": [],
+    ".agents/skills/design-system/scripts/embed-tokens.cjs": [],
+    ".agents/skills/design-system/scripts/fetch-background.py": [],
+    ".agents/skills/design-system/scripts/generate-slide.py": [],
+    ".agents/skills/design-system/scripts/generate-tokens.cjs": [],
+    ".agents/skills/design-system/scripts/html-token-validator.py": [],
+    ".agents/skills/design-system/scripts/search-slides.py": [
+      ".agents/skills/design-system/scripts/slide_search_core.py"
+    ],
+    ".agents/skills/design-system/scripts/slide-token-validator.py": [],
+    ".agents/skills/design-system/scripts/slide_search_core.py": [],
+    ".agents/skills/design-system/scripts/tests/test_validate_tokens.py": [],
+    ".agents/skills/design-system/scripts/validate-tokens.cjs": [],
+    ".agents/skills/design-system/templates/design-tokens-starter.json": [],
+    ".agents/skills/design/SKILL.md": [],
+    ".agents/skills/design/data/cip/deliverables.csv": [],
+    ".agents/skills/design/data/cip/industries.csv": [],
+    ".agents/skills/design/data/cip/mockup-contexts.csv": [],
+    ".agents/skills/design/data/cip/styles.csv": [],
+    ".agents/skills/design/data/icon/styles.csv": [],
+    ".agents/skills/design/data/logo/colors.csv": [],
+    ".agents/skills/design/data/logo/industries.csv": [],
+    ".agents/skills/design/data/logo/styles.csv": [],
+    ".agents/skills/design/references/banner-sizes-and-styles.md": [],
+    ".agents/skills/design/references/cip-deliverable-guide.md": [],
+    ".agents/skills/design/references/cip-design.md": [],
+    ".agents/skills/design/references/cip-prompt-engineering.md": [],
+    ".agents/skills/design/references/cip-style-guide.md": [],
+    ".agents/skills/design/references/design-routing.md": [],
+    ".agents/skills/design/references/icon-design.md": [],
+    ".agents/skills/design/references/logo-color-psychology.md": [],
+    ".agents/skills/design/references/logo-design.md": [],
+    ".agents/skills/design/references/logo-prompt-engineering.md": [],
+    ".agents/skills/design/references/logo-style-guide.md": [],
+    ".agents/skills/design/references/slides-copywriting-formulas.md": [],
+    ".agents/skills/design/references/slides-create.md": [],
+    ".agents/skills/design/references/slides-html-template.md": [],
+    ".agents/skills/design/references/slides-layout-patterns.md": [],
+    ".agents/skills/design/references/slides-strategies.md": [],
+    ".agents/skills/design/references/slides.md": [],
+    ".agents/skills/design/references/social-photos-design.md": [],
+    ".agents/skills/design/scripts/cip/core.py": [],
+    ".agents/skills/design/scripts/cip/generate.py": [
+      ".agents/skills/design/scripts/cip/core.py"
+    ],
+    ".agents/skills/design/scripts/cip/render-html.py": [
+      ".agents/skills/design/scripts/cip/core.py"
+    ],
+    ".agents/skills/design/scripts/cip/search.py": [
+      ".agents/skills/design/scripts/cip/core.py"
+    ],
+    ".agents/skills/design/scripts/icon/generate.py": [],
+    ".agents/skills/design/scripts/logo/core.py": [],
+    ".agents/skills/design/scripts/logo/generate.py": [],
+    ".agents/skills/design/scripts/logo/search.py": [
+      ".agents/skills/design/scripts/logo/core.py"
+    ],
+    ".agents/skills/karpathy-guidelines/SKILL.md": [],
+    ".agents/skills/slides/SKILL.md": [],
+    ".agents/skills/slides/references/copywriting-formulas.md": [],
+    ".agents/skills/slides/references/create.md": [],
+    ".agents/skills/slides/references/html-template.md": [],
+    ".agents/skills/slides/references/layout-patterns.md": [],
+    ".agents/skills/slides/references/slide-strategies.md": [],
+    ".agents/skills/ui-styling/LICENSE.txt": [],
+    ".agents/skills/ui-styling/SKILL.md": [],
+    ".agents/skills/ui-styling/references/canvas-design-system.md": [],
+    ".agents/skills/ui-styling/references/shadcn-accessibility.md": [],
+    ".agents/skills/ui-styling/references/shadcn-components.md": [],
+    ".agents/skills/ui-styling/references/shadcn-theming.md": [],
+    ".agents/skills/ui-styling/references/tailwind-customization.md": [],
+    ".agents/skills/ui-styling/references/tailwind-responsive.md": [],
+    ".agents/skills/ui-styling/references/tailwind-utilities.md": [],
+    ".agents/skills/ui-styling/scripts/requirements.txt": [],
+    ".agents/skills/ui-styling/scripts/shadcn_add.py": [],
+    ".agents/skills/ui-styling/scripts/tailwind_config_gen.py": [],
+    ".agents/skills/ui-styling/scripts/tests/coverage-ui.json": [],
+    ".agents/skills/ui-styling/scripts/tests/requirements.txt": [],
+    ".agents/skills/ui-styling/scripts/tests/test_shadcn_add.py": [
+      ".agents/skills/ui-styling/scripts/shadcn_add.py"
+    ],
+    ".agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py": [
+      ".agents/skills/ui-styling/scripts/tailwind_config_gen.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/SKILL.md": [],
+    ".agents/skills/ui-ux-pro-max/data/app-interface.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/catalog-summary.json": [],
+    ".agents/skills/ui-ux-pro-max/data/charts.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/colors.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/data-provenance.json": [],
+    ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json": [],
+    ".agents/skills/ui-ux-pro-max/data/google-fonts.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/icons.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/landing.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/motion.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json": [],
+    ".agents/skills/ui-ux-pro-max/data/products.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/react-performance.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/angular.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/astro.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/flutter.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/javafx.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/laravel.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/react-native.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/react.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/svelte.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/threejs.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/uno.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/uwp.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/vue.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/winui.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/stacks/wpf.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/styles.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/typography.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/ui-reasoning.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/ux-guidelines.csv": [],
+    ".agents/skills/ui-ux-pro-max/scripts/core.py": [],
+    ".agents/skills/ui-ux-pro-max/scripts/design_system.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py": [],
+    ".agents/skills/ui-ux-pro-max/scripts/search.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/design_system.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/design_system.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/validate_data.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      ".agents/skills/ui-ux-pro-max/scripts/validate_data.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/design_system.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/validate_data.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py": [],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/design_system.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/validate_data.py"
+    ],
+    ".agents/skills/ui-ux-pro-max/scripts/validate_data.py": [
+      ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py"
+    ],
+    ".claude/settings.json": [],
+    ".env.example": [],
+    ".github/workflows/ci.yml": [],
+    ".scratch/text2sql-ex-improvement/issues/01-timezone-aware-quota-reset.md": [],
+    ".scratch/text2sql-ex-improvement/issues/02-enforce-gemma-restriction.md": [],
+    ".scratch/text2sql-ex-improvement/issues/03-complete-fewshots-column-errors.md": [],
+    ".scratch/text2sql-ex-improvement/issues/04-verify-incremental-save-resume.md": [],
+    ".scratch/text2sql-ex-improvement/issues/05-fix-model-name-discrepancy.md": [],
+    ".scratch/text2sql-ex-improvement/issues/06-full-evaluation-run.md": [],
+    ".scratch/text2sql-ex-improvement/issues/README.md": [],
+    "AGENTS.md": [],
+    "CLAUDE.md": [],
+    "Check Attendance/README.md": [],
+    "Check Attendance/README_DEPLOY.md": [],
+    "Check Attendance/embeddings/.gitkeep": [],
+    "Check Attendance/faces/.gitkeep": [],
+    "Check Attendance/index.html": [],
+    "Check Attendance/insert_employees.sql": [],
+    "Check Attendance/requirements.txt": [],
+    "Check Attendance/src/attendance.py": [],
+    "Check Attendance/src/attendance_standalone.py": [],
+    "Check Attendance/src/cascades/face_detection_yunet_2023mar.onnx": [],
+    "Check Attendance/src/cascades/haarcascade_eye.xml": [],
+    "Check Attendance/src/cascades/haarcascade_frontalface_default.xml": [],
+    "Check Attendance/src/cascades/haarcascade_profileface.xml": [],
+    "Check Attendance/src/db_config.py.example": [],
+    "Check Attendance/src/faces/.gitkeep": [],
+    "Check Attendance/src/register.py": [],
+    "Check Attendance/src/register_standalone.py": [],
+    "HRM Website/.dockerignore": [],
+    "HRM Website/AGENTS.md": [],
+    "HRM Website/CLAUDE.md": [],
+    "HRM Website/Dockerfile": [],
+    "HRM Website/design-system/workpulse/MASTER.md": [],
+    "HRM Website/eslint.config.mjs": [],
+    "HRM Website/next.config.ts": [],
+    "HRM Website/package.json": [],
+    "HRM Website/postcss.config.mjs": [],
+    "HRM Website/scripts/test-admin-browser.mjs": [],
+    "HRM Website/scripts/test-session-modal.mjs": [],
+    "HRM Website/scripts/test-shift-and-search.mjs": [],
+    "HRM Website/scripts/test-timetable.mjs": [],
+    "HRM Website/src/app/admin/AdminWorkspace.tsx": [
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/adminService.ts",
+      "HRM Website/src/services/organizationService.ts",
+      "HRM Website/src/services/workShiftService.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/admin/accounts/page.tsx": [
+      "HRM Website/src/app/admin/AdminWorkspace.tsx"
+    ],
+    "HRM Website/src/app/admin/onboarding/page.tsx": [
+      "HRM Website/src/app/admin/AdminWorkspace.tsx"
+    ],
+    "HRM Website/src/app/admin/permissions/page.tsx": [
+      "HRM Website/src/app/admin/AdminWorkspace.tsx"
+    ],
+    "HRM Website/src/app/assets/labels.ts": [],
+    "HRM Website/src/app/assets/manageAssets.tsx": [
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/assets/management/assetDetail.tsx": [
+      "HRM Website/src/app/assets/labels.ts",
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/assets/management/categories/page.tsx": [
+      "HRM Website/src/app/assets/manageAssets.tsx",
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/assets/management/forms/page.tsx": [
+      "HRM Website/src/app/assets/labels.ts",
+      "HRM Website/src/app/assets/manageAssets.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/services/organizationService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/assets/management/life-cycle/page.tsx": [
+      "HRM Website/src/app/assets/manageAssets.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/assets/management/page.tsx": [],
+    "HRM Website/src/app/assets/management/reminders/page.tsx": [
+      "HRM Website/src/app/assets/manageAssets.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/assets/management/storage/page.tsx": [
+      "HRM Website/src/app/assets/labels.ts",
+      "HRM Website/src/app/assets/manageAssets.tsx",
+      "HRM Website/src/app/assets/management/assetDetail.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/assets/page.tsx": [
+      "HRM Website/src/app/assets/requestAsset.tsx",
+      "HRM Website/src/app/assets/useMyAssets.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/assets/requestAsset.tsx": [
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/assets/requests/page.tsx": [
+      "HRM Website/src/app/assets/labels.ts",
+      "HRM Website/src/app/assets/requestAsset.tsx",
+      "HRM Website/src/app/assets/useMyAssets.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/assets/useMyAssets.ts": [
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/assetService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/attendance/AttendanceWorkspace.tsx": [
+      "HRM Website/src/components/attendance/MyOverviewTab.tsx",
+      "HRM Website/src/components/attendance/WorkShiftTab.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx",
+      "HRM Website/src/services/attendanceService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/dateRange.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/attendance/daily/page.tsx": [
+      "HRM Website/src/app/attendance/AttendanceWorkspace.tsx"
+    ],
+    "HRM Website/src/app/attendance/leave/page.tsx": [
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/leaveService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/dateRange.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/attendance/overtime/page.tsx": [
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/overtimeService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/dateRange.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/attendance/overview/page.tsx": [
+      "HRM Website/src/app/attendance/AttendanceWorkspace.tsx"
+    ],
+    "HRM Website/src/app/attendance/schedule/page.tsx": [
+      "HRM Website/src/app/attendance/AttendanceWorkspace.tsx"
+    ],
+    "HRM Website/src/app/chat/page.tsx": [
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/aiService.ts"
+    ],
+    "HRM Website/src/app/documents/page.tsx": [
+      "HRM Website/src/components/DocumentPreviewModal.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/aiService.ts",
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/services/documentService.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/employees/[id]/page.tsx": [
+      "HRM Website/src/components/TodayStatusBadge.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx",
+      "HRM Website/src/services/employeeService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/employees/page.tsx": [
+      "HRM Website/src/components/TodayStatusBadge.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx",
+      "HRM Website/src/services/employeeService.ts",
+      "HRM Website/src/services/organizationService.ts",
+      "HRM Website/src/services/workShiftService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/globals.css": [],
+    "HRM Website/src/app/home/page.tsx": [
+      "HRM Website/src/context/AuthContext.tsx"
+    ],
+    "HRM Website/src/app/layout.tsx": [
+      "HRM Website/src/app/globals.css",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx"
+    ],
+    "HRM Website/src/app/login/page.tsx": [
+      "HRM Website/src/context/AuthContext.tsx"
+    ],
+    "HRM Website/src/app/management/ManageWorkspace.tsx": [
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "HRM Website/src/components/attendance/LeaveOvertimeHubTab.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx",
+      "HRM Website/src/services/attendanceService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/dateRange.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/management/daily/page.tsx": [
+      "HRM Website/src/app/management/ManageWorkspace.tsx"
+    ],
+    "HRM Website/src/app/management/overview/page.tsx": [
+      "HRM Website/src/app/management/ManageWorkspace.tsx"
+    ],
+    "HRM Website/src/app/management/requests/page.tsx": [
+      "HRM Website/src/app/management/ManageWorkspace.tsx"
+    ],
+    "HRM Website/src/app/management/summary/page.tsx": [
+      "HRM Website/src/app/management/ManageWorkspace.tsx"
+    ],
+    "HRM Website/src/app/my-profile/page.tsx": [
+      "HRM Website/src/app/employees/[id]/page.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx"
+    ],
+    "HRM Website/src/app/organization/OrgWorkspace.tsx": [
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/employeeService.ts",
+      "HRM Website/src/services/organizationService.ts",
+      "HRM Website/src/services/workShiftService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/organization/manage/page.tsx": [
+      "HRM Website/src/app/organization/OrgWorkspace.tsx"
+    ],
+    "HRM Website/src/app/organization/overview/page.tsx": [
+      "HRM Website/src/app/organization/OrgWorkspace.tsx"
+    ],
+    "HRM Website/src/app/organization/structure/page.tsx": [
+      "HRM Website/src/app/organization/OrgWorkspace.tsx"
+    ],
+    "HRM Website/src/app/page.tsx": [],
+    "HRM Website/src/app/payroll/page.tsx": [
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/constants/departments.ts",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx",
+      "HRM Website/src/services/payrollService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/performance-reviews/ReviewDetail.tsx": [
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/performanceService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/performance-reviews/ScopePill.tsx": [],
+    "HRM Website/src/app/performance-reviews/history/page.tsx": [
+      "HRM Website/src/app/performance-reviews/ReviewDetail.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/performanceService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/performance-reviews/management/overview/page.tsx": [
+      "HRM Website/src/app/performance-reviews/ScopePill.tsx",
+      "HRM Website/src/components/MomLine.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/performanceService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/performance-reviews/management/page.tsx": [],
+    "HRM Website/src/app/performance-reviews/management/records/page.tsx": [
+      "HRM Website/src/app/performance-reviews/ReviewDetail.tsx",
+      "HRM Website/src/app/performance-reviews/ScopePill.tsx",
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/performanceService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/performance-reviews/page.tsx": [
+      "HRM Website/src/app/performance-reviews/ReviewDetail.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/performanceService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/recruitment/page.tsx": [
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/adminService.ts",
+      "HRM Website/src/services/organizationService.ts",
+      "HRM Website/src/services/workShiftService.ts"
+    ],
+    "HRM Website/src/app/recruitment/pending/page.tsx": [
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/adminService.ts"
+    ],
+    "HRM Website/src/app/resignations/page.tsx": [
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/resignationService.ts",
+      "HRM Website/src/utils/format.ts",
+      "HRM Website/src/utils/useTabFromUrl.ts"
+    ],
+    "HRM Website/src/app/security/SecurityWorkspace.tsx": [
+      "HRM Website/src/components/ConfirmDialog.tsx",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/adminService.ts",
+      "HRM Website/src/services/authService.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/security/password/page.tsx": [
+      "HRM Website/src/app/security/SecurityWorkspace.tsx"
+    ],
+    "HRM Website/src/app/security/sessions/page.tsx": [
+      "HRM Website/src/app/security/SecurityWorkspace.tsx"
+    ],
+    "HRM Website/src/app/tickets/TicketCard.tsx": [
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/tickets/TicketDetail.tsx": [
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/services/ticketService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/app/tickets/labels.ts": [],
+    "HRM Website/src/app/tickets/manage/done/page.tsx": [
+      "HRM Website/src/app/tickets/TicketCard.tsx",
+      "HRM Website/src/app/tickets/TicketDetail.tsx",
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/app/tickets/useTicketDirectory.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/ticketService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/tickets/manage/overview/page.tsx": [
+      "HRM Website/src/app/tickets/TicketDetail.tsx",
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/app/tickets/useTicketDirectory.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/ticketService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/tickets/manage/page.tsx": [],
+    "HRM Website/src/app/tickets/manage/queues/page.tsx": [
+      "HRM Website/src/app/tickets/TicketCard.tsx",
+      "HRM Website/src/app/tickets/TicketDetail.tsx",
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/app/tickets/useTicketDirectory.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/ticketService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/tickets/new/page.tsx": [
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/services/ticketService.ts"
+    ],
+    "HRM Website/src/app/tickets/page.tsx": [
+      "HRM Website/src/app/tickets/TicketCard.tsx",
+      "HRM Website/src/app/tickets/TicketDetail.tsx",
+      "HRM Website/src/app/tickets/labels.ts",
+      "HRM Website/src/app/tickets/useTicketDirectory.ts",
+      "HRM Website/src/components/layout/AppShell.tsx",
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/ticketService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/app/tickets/useTicketDirectory.ts": [
+      "HRM Website/src/context/AuthContext.tsx"
+    ],
+    "HRM Website/src/components/ConfirmDialog.tsx": [],
+    "HRM Website/src/components/DocumentPreviewModal.tsx": [],
+    "HRM Website/src/components/MomLine.tsx": [],
+    "HRM Website/src/components/TodayStatusBadge.tsx": [],
+    "HRM Website/src/components/attendance/AttendanceOverviewTab.tsx": [
+      "HRM Website/src/components/MomLine.tsx",
+      "HRM Website/src/services/attendanceService.ts"
+    ],
+    "HRM Website/src/components/attendance/LeaveOvertimeHubTab.tsx": [
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/leaveService.ts",
+      "HRM Website/src/services/overtimeService.ts",
+      "HRM Website/src/types/index.ts",
+      "HRM Website/src/utils/dateRange.ts",
+      "HRM Website/src/utils/format.ts"
+    ],
+    "HRM Website/src/components/attendance/MyOverviewTab.tsx": [
+      "HRM Website/src/services/attendanceService.ts",
+      "HRM Website/src/services/dashboardService.ts",
+      "HRM Website/src/services/leaveService.ts",
+      "HRM Website/src/services/overtimeService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/components/attendance/WorkShiftTab.tsx": [
+      "HRM Website/src/services/workShiftService.ts"
+    ],
+    "HRM Website/src/components/layout/AppShell.tsx": [
+      "HRM Website/src/components/layout/Navbar.tsx",
+      "HRM Website/src/components/layout/Sidebar.tsx",
+      "HRM Website/src/context/AuthContext.tsx"
+    ],
+    "HRM Website/src/components/layout/Navbar.tsx": [
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/context/HRMDataContext.tsx",
+      "HRM Website/src/services/attendanceService.ts"
+    ],
+    "HRM Website/src/components/layout/Sidebar.tsx": [
+      "HRM Website/src/context/AuthContext.tsx"
+    ],
+    "HRM Website/src/constants/departments.ts": [],
+    "HRM Website/src/context/AuthContext.tsx": [
+      "HRM Website/src/services/authService.ts",
+      "HRM Website/src/services/employeeService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/context/HRMDataContext.tsx": [
+      "HRM Website/src/context/AuthContext.tsx",
+      "HRM Website/src/services/attendanceService.ts",
+      "HRM Website/src/services/employeeService.ts",
+      "HRM Website/src/services/leaveService.ts",
+      "HRM Website/src/services/overtimeService.ts",
+      "HRM Website/src/services/payrollService.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/adminService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/services/aiService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/services/apiClient.ts": [],
+    "HRM Website/src/services/assetService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/attendanceService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/authService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/dashboardService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/services/documentService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/services/employeeService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/leaveService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/organizationService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/services/overtimeService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/payrollService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/performanceService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/resignationService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/services/ticketService.ts": [
+      "HRM Website/src/services/apiClient.ts",
+      "HRM Website/src/types/index.ts"
+    ],
+    "HRM Website/src/services/workShiftService.ts": [
+      "HRM Website/src/services/apiClient.ts"
+    ],
+    "HRM Website/src/types/index.ts": [],
+    "HRM Website/src/utils/dateRange.ts": [],
+    "HRM Website/src/utils/format.ts": [],
+    "HRM Website/src/utils/useTabFromUrl.ts": [],
+    "HRM Website/tsconfig.json": [],
+    "HRM_AI_Postman_Collection.json": [],
+    "README.md": [],
+    "SPEC_CHATBOT_FULL_TEST_COVERAGE.md": [],
+    "SPEC_TEXT2SQL_EX_IMPROVEMENT.md": [],
+    "SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md": [],
+    "ai-service/.dockerignore": [],
+    "ai-service/.env.example": [],
+    "ai-service/CUsersadDesktoprouter_test_output.txt": [],
+    "ai-service/Dockerfile": [],
+    "ai-service/db_failures.txt": [],
+    "ai-service/debug_cases.py": [
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/debug_cases2.py": [
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/debug_cases3.py": [
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/debug_cases4.py": [
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/failures.txt": [],
+    "ai-service/full_prompt.txt": [],
+    "ai-service/hybrid_sample.json": [],
+    "ai-service/main.py": [
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/pipeline.py"
+    ],
+    "ai-service/prompt.txt": [],
+    "ai-service/requirements.txt": [],
+    "ai-service/scripts/backfill_questions_vector.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py"
+    ],
+    "ai-service/scripts/generate_test_questions.py": [
+      "ai-service/src/metadata/metadata_enricher.py",
+      "ai-service/src/pipeline.py"
+    ],
+    "ai-service/scripts/ingest_gemini_batch.py": [
+      "ai-service/src/chunkers/legal_chunker.py",
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/metadata/metadata_enricher.py",
+      "ai-service/src/parsers/docx_parser.py",
+      "ai-service/src/parsers/pdf_parser.py",
+      "ai-service/src/pipeline.py"
+    ],
+    "ai-service/scripts/reembed_vectors.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/scripts/tmpbake2.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py"
+    ],
+    "ai-service/sql/add_tsv_column.sql": [],
+    "ai-service/sql/create_semantic_cache.sql": [],
+    "ai-service/sql/init_db.sql": [],
+    "ai-service/sql/migration_bank_accounts.sql": [],
+    "ai-service/sql/readonly_role.sql": [],
+    "ai-service/sql_output.txt": [],
+    "ai-service/src/cache/semantic_cache.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py"
+    ],
+    "ai-service/src/chat/chat_service.py": [
+      "ai-service/src/cache/semantic_cache.py",
+      "ai-service/src/db/session.py",
+      "ai-service/src/retrievers/hybrid_retriever.py",
+      "ai-service/src/sql/executor.py",
+      "ai-service/src/sql/router.py",
+      "ai-service/src/utils/gemini_key_manager.py",
+      "ai-service/src/utils/llm_completion.py"
+    ],
+    "ai-service/src/chunkers/__init__.py": [
+      "ai-service/src/chunkers/legal_chunker.py",
+      "ai-service/src/chunkers/table_preserver.py"
+    ],
+    "ai-service/src/chunkers/legal_chunker.py": [
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/src/chunkers/table_preserver.py": [],
+    "ai-service/src/db/session.py": [],
+    "ai-service/src/embeddings/local_embedder.py": [
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/src/metadata/__init__.py": [
+      "ai-service/src/metadata/metadata_enricher.py"
+    ],
+    "ai-service/src/metadata/metadata_enricher.py": [
+      "ai-service/src/models/schema.py",
+      "ai-service/src/utils/gemini_key_manager.py"
+    ],
+    "ai-service/src/models/__init__.py": [
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/src/models/schema.py": [],
+    "ai-service/src/parsers/__init__.py": [
+      "ai-service/src/parsers/docx_parser.py",
+      "ai-service/src/parsers/excel_parser.py",
+      "ai-service/src/parsers/pdf_parser.py"
+    ],
+    "ai-service/src/parsers/docx_parser.py": [
+      "ai-service/src/chunkers/table_preserver.py",
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/src/parsers/excel_parser.py": [
+      "ai-service/src/chunkers/table_preserver.py",
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/src/parsers/pdf_parser.py": [
+      "ai-service/src/chunkers/table_preserver.py",
+      "ai-service/src/models/schema.py"
+    ],
+    "ai-service/src/pipeline.py": [
+      "ai-service/src/chunkers/legal_chunker.py",
+      "ai-service/src/metadata/metadata_enricher.py",
+      "ai-service/src/models/schema.py",
+      "ai-service/src/parsers/docx_parser.py",
+      "ai-service/src/parsers/excel_parser.py",
+      "ai-service/src/parsers/pdf_parser.py"
+    ],
+    "ai-service/src/rerankers/cross_encoder_reranker.py": [],
+    "ai-service/src/retrievers/hybrid_retriever.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/rerankers/cross_encoder_reranker.py"
+    ],
+    "ai-service/src/sql/__init__.py": [],
+    "ai-service/src/sql/executor.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/sql/schema_registry.py",
+      "ai-service/src/sql/text2sql.py"
+    ],
+    "ai-service/src/sql/router.py": [],
+    "ai-service/src/sql/router_restored.py": [],
+    "ai-service/src/sql/router_v2.py": [],
+    "ai-service/src/sql/schema_registry.py": [],
+    "ai-service/src/sql/text2sql.py": [
+      "ai-service/src/sql/schema_registry.py"
+    ],
+    "ai-service/src/utils/gemini_key_manager.py": [],
+    "ai-service/src/utils/llm_completion.py": [
+      "ai-service/src/utils/gemini_key_manager.py"
+    ],
+    "ai-service/test_v2/__init__.py": [],
+    "ai-service/test_v2/common/__init__.py": [],
+    "ai-service/test_v2/db_only/retrieval/eval_db_answer.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/db_only/retrieval/eval_db_generation.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/db_only/retrieval/eval_db_retrieval.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/db_only/retrieval/seed_db_eval.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/hybrid/eval_hybrid.py": [
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/sql/executor.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/latency/breakdown.py": [
+      "ai-service/main.py",
+      "ai-service/src/cache/semantic_cache.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/rerankers/cross_encoder_reranker.py",
+      "ai-service/src/retrievers/hybrid_retriever.py"
+    ],
+    "ai-service/test_v2/latency/load_breakdown.py": [
+      "ai-service/main.py",
+      "ai-service/src/cache/semantic_cache.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/rerankers/cross_encoder_reranker.py",
+      "ai-service/src/retrievers/hybrid_retriever.py"
+    ],
+    "ai-service/test_v2/latency/ttft.py": [
+      "ai-service/main.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/test_v2/memory/answers_memory.json": [],
+    "ai-service/test_v2/memory/eval_memory.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/memory/internal/test_answers.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/test_v2/memory/internal/test_memory_sessions.py": [
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/test_v2/memory/test_conversational_memory.py": [],
+    "ai-service/test_v2/memory/test_qrecc_memory_client.py": [
+      "ai-service/main.py"
+    ],
+    "ai-service/test_v2/memory/test_rewrite_direct.py": [
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/test_v2/outputs/db_generation_eval.json": [],
+    "ai-service/test_v2/outputs/db_retrieval_eval.json": [],
+    "ai-service/test_v2/outputs/hybrid_eval.json": [],
+    "ai-service/test_v2/outputs/llm_router_test.json": [],
+    "ai-service/test_v2/outputs/retrieval_eval.json": [],
+    "ai-service/test_v2/overall_test_results.md": [],
+    "ai-service/test_v2/quota/test_key_rotation.py": [
+      "ai-service/src/utils/gemini_key_manager.py"
+    ],
+    "ai-service/test_v2/quota/test_validator.py": [
+      "ai-service/src/sql/executor.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/quota/test_validator2.py": [
+      "ai-service/src/sql/executor.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/rag/generation/eval_ragas_full.py": [],
+    "ai-service/test_v2/rag/generation/judge_gemma.py": [],
+    "ai-service/test_v2/rag/generation/judge_pairwise.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/rag/generation/judged_questions.json": [],
+    "ai-service/test_v2/rag/generation/llm_judge_evaluation.md": [],
+    "ai-service/test_v2/rag/generation/ragas_eval_results.json": [],
+    "ai-service/test_v2/rag/generation/rejudge7.py": [],
+    "ai-service/test_v2/rag/retrieval/eval_retrieval.py": [
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/rag/retrieval/ingest_evalret.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/pipeline.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/rag/retrieval/ocr_easyocr_review.py": [],
+    "ai-service/test_v2/rag/retrieval/test_lexical_idf.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/retrievers/hybrid_retriever.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/rag/retrieval/test_threshold_calib.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/test_v2/routers/test_directory.py": [
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/sql/router.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/routers/test_llm_router_full.py": [
+      "ai-service/src/sql/router.py",
+      "ai-service/src/utils/llm_completion.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/routers/test_router_accuracy.py": [
+      "ai-service/src/sql/router.py",
+      "ai-service/test_v2/common/__init__.py"
+    ],
+    "ai-service/test_v2/stress/drill.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/test_v2/stress/stress.py": [],
+    "ai-service/test_v2/stress/stress3.py": [],
+    "ai-service/test_v2/text2sql/EVALUATION_STATUS.md": [],
+    "ai-service/test_v2/text2sql/benchmarks/hrm_db_only-predictions.json": [],
+    "ai-service/test_v2/text2sql/benchmarks/hrm_db_only-schema.json": [],
+    "ai-service/test_v2/text2sql/benchmarks/hrm_db_only.jsonl": [],
+    "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions.json": [],
+    "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval.json": [],
+    "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.csv": [],
+    "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.json": [],
+    "ai-service/test_v2/text2sql/hrm_eval_wrapper.py": [],
+    "ai-service/test_v2/text2sql/quota_state.json": [],
+    "ai-service/test_v2/text2sql/run_hrm_evaluation_fixed.py": [
+      "ai-service/test_v2/text2sql/hrm_eval_wrapper.py"
+    ],
+    "ai-service/test_v2/tokens/tokens.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/tests/DOC_ONLY/datasets/doc_only_120.csv": [],
+    "ai-service/tests/DOC_ONLY/datasets/doc_only_120.json": [],
+    "ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.csv": [],
+    "ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.json": [],
+    "ai-service/tests/DOC_ONLY/datasets/fill_missing.py": [
+      "ai-service/tests/DOC_ONLY/datasets/generate_doc_only.py"
+    ],
+    "ai-service/tests/DOC_ONLY/datasets/generate_doc_only.py": [],
+    "ai-service/tests/DOC_ONLY/datasets/generate_memory_20x12.py": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/RESULTS.md": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.bak-20261015.json": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.bak-20261014.csv": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.csv": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.bak-20261015.json": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.json": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge_pairwise.py": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/latency_per_question.csv": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/latency_stats.py": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/make_audit.py": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/negatives.json": [],
+    "ai-service/tests/DOC_ONLY/generation_metrics_tests/run_answers.py": [],
+    "ai-service/tests/DOC_ONLY/memory_test/RESULTS.md": [],
+    "ai-service/tests/DOC_ONLY/memory_test/answers_memory.json": [],
+    "ai-service/tests/DOC_ONLY/memory_test/eval_memory.py": [],
+    "ai-service/tests/DOC_ONLY/memory_test/judge_memory.json": [],
+    "ai-service/tests/DOC_ONLY/memory_test/latency_per_turn.csv": [],
+    "ai-service/tests/DOC_ONLY/memory_test/latency_stats.py": [],
+    "ai-service/tests/DOC_ONLY/performance_test/RESULTS.md": [],
+    "ai-service/tests/DOC_ONLY/performance_test/perf_single.json": [],
+    "ai-service/tests/DOC_ONLY/performance_test/perf_single.py": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/RESULTS.md": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_new.json": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_old.json": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval.json": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_topk10.json": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_x12.json": [],
+    "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/x12_top5.json": [],
+    "ai-service/tests/EVAL_SUMMARY.md": [],
+    "ai-service/tests/_archive/EVAL_RESULTS.md": [],
+    "ai-service/tests/_archive/TEST_RESULTS.md": [],
+    "ai-service/tests/_archive/VIQUAD_EVAL_RESULTS.md": [],
+    "ai-service/tests/_archive/analyze_threshold.py": [],
+    "ai-service/tests/_archive/cleanup_eval.py": [
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/tests/_archive/diag_retrieve.py": [
+      "ai-service/src/retrievers/hybrid_retriever.py"
+    ],
+    "ai-service/tests/_archive/ocr_tesseract_compare.py": [],
+    "ai-service/tests/_archive/output_chunks.json": [],
+    "ai-service/tests/_archive/qrecc-test.json": [],
+    "ai-service/tests/_archive/split_results.py": [],
+    "ai-service/tests/_archive/test_4_features.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/tests/_archive/test_chat_query.py": [],
+    "ai-service/tests/_archive/test_eval_metrics.py": [],
+    "ai-service/tests/_archive/test_excel_slice.py": [
+      "ai-service/src/chunkers/table_preserver.py",
+      "ai-service/src/parsers/excel_parser.py"
+    ],
+    "ai-service/tests/_archive/test_load_csv.py": [],
+    "ai-service/tests/_archive/test_pipeline.py": [
+      "ai-service/src/pipeline.py"
+    ],
+    "ai-service/tests/_archive/test_production_ingestion.py": [],
+    "ai-service/tests/_archive/test_standard_eval.py": [],
+    "ai-service/tests/_archive/test_update_document.py": [],
+    "ai-service/tests/_archive/test_upload.py": [],
+    "ai-service/tests/_archive/viquad.json": [],
+    "ai-service/tests/_archive/viquad_eval_results.json": [],
+    "ai-service/tests/baselines-120b/db_answer_eval.json": [],
+    "ai-service/tests/baselines-120b/db_generation_eval.json": [],
+    "ai-service/tests/baselines-120b/db_retrieval_eval.json": [],
+    "ai-service/tests/baselines-120b/llm_200q_report.json": [],
+    "ai-service/tests/baselines-120b/llm_router_test.json": [],
+    "ai-service/tests/baselines-120b/memory_rewrite_results.json": [],
+    "ai-service/tests/baselines-120b/ragas_eval_results.json": [],
+    "ai-service/tests/baselines-120b/threshold_calib_results.json": [],
+    "ai-service/tests/calib_neg_20new.json": [],
+    "ai-service/tests/data/memory_dataset.csv": [],
+    "ai-service/tests/db_only_hybrid_questions.json": [],
+    "ai-service/tests/db_only_hybrid_questions_with_answers.json": [],
+    "ai-service/tests/eval_neg_leak.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/tests/generation/db_only/RESULTS.md": [],
+    "ai-service/tests/generation/db_only/llm_200q_report.json": [],
+    "ai-service/tests/generation/db_only/test_text2sql.py": [
+      "ai-service/src/sql/__init__.py",
+      "ai-service/src/sql/executor.py",
+      "ai-service/src/sql/router.py",
+      "ai-service/src/sql/text2sql.py"
+    ],
+    "ai-service/tests/generation/doc_only/RESULTS.md": [],
+    "ai-service/tests/generation/doc_only/draft_golds_batch1.json": [],
+    "ai-service/tests/generation/doc_only/eval_ragas_full.py": [],
+    "ai-service/tests/generation/doc_only/judge_gemma.py": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_100.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_batch1.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_batch2.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_batchA.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_batchB.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_batchC.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_gemma.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_gemma_judged.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_gemma_rejudge7.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_rerun.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_rerun_b1.json": [],
+    "ai-service/tests/generation/doc_only/ragas_eval_results.json": [],
+    "ai-service/tests/generation/doc_only/rejudge7.py": [],
+    "ai-service/tests/generation/doc_only/review_100.json": [],
+    "ai-service/tests/generation/doc_only/review_100_gemma.json": [],
+    "ai-service/tests/generation/doc_only/review_100_gemma_judged.json": [],
+    "ai-service/tests/generation/doc_only/review_30_manual.json": [],
+    "ai-service/tests/generation/doc_only/review_70_extra.json": [],
+    "ai-service/tests/latency/RESULTS.md": [],
+    "ai-service/tests/latency/breakdown.py": [
+      "ai-service/main.py",
+      "ai-service/src/cache/semantic_cache.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/rerankers/cross_encoder_reranker.py",
+      "ai-service/src/retrievers/hybrid_retriever.py"
+    ],
+    "ai-service/tests/latency/load_breakdown.py": [
+      "ai-service/main.py",
+      "ai-service/src/cache/semantic_cache.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/rerankers/cross_encoder_reranker.py",
+      "ai-service/src/retrievers/hybrid_retriever.py"
+    ],
+    "ai-service/tests/latency/ttft.py": [
+      "ai-service/main.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/tests/memory/RESULTS.md": [],
+    "ai-service/tests/memory/build_internal.py": [],
+    "ai-service/tests/memory/data/memory_dataset.csv": [],
+    "ai-service/tests/memory/internal/RESULTS.md": [],
+    "ai-service/tests/memory/internal/blueprints/bp1.json": [],
+    "ai-service/tests/memory/internal/blueprints/bp2.json": [],
+    "ai-service/tests/memory/internal/blueprints/bp3.json": [],
+    "ai-service/tests/memory/internal/blueprints/bp4.json": [],
+    "ai-service/tests/memory/internal/blueprints/bp5.json": [],
+    "ai-service/tests/memory/internal/blueprints/bp6.json": [],
+    "ai-service/tests/memory/internal/blueprints/bp_fix.json": [],
+    "ai-service/tests/memory/internal/memory_answer_20new.json": [],
+    "ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json": [],
+    "ai-service/tests/memory/internal/memory_answer_20new_lock.json": [],
+    "ai-service/tests/memory/internal/memory_answer_20new_nolock.json": [],
+    "ai-service/tests/memory/internal/memory_answer_20new_retry.json": [],
+    "ai-service/tests/memory/internal/memory_answer_20new_softband.json": [],
+    "ai-service/tests/memory/internal/memory_answer_baseline30.json": [],
+    "ai-service/tests/memory/internal/memory_internal.csv": [],
+    "ai-service/tests/memory/internal/memory_internal_results.json": [],
+    "ai-service/tests/memory/internal/test_answers.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/tests/memory/internal/test_memory_sessions.py": [
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/tests/memory/internal/verdicts_20new.json": [],
+    "ai-service/tests/memory/internal/verdicts_20new_gemmaT066.json": [],
+    "ai-service/tests/memory/internal/verdicts_20new_nolock.json": [],
+    "ai-service/tests/memory/internal/verdicts_20new_softband.json": [],
+    "ai-service/tests/memory/internal/verdicts_32.json": [],
+    "ai-service/tests/memory/memory_rewrite_results.json": [],
+    "ai-service/tests/memory/memory_session_results.json": [],
+    "ai-service/tests/memory/test_conversational_memory.py": [],
+    "ai-service/tests/memory/test_qrecc_memory_client.py": [
+      "ai-service/main.py"
+    ],
+    "ai-service/tests/memory/test_rewrite_direct.py": [
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/tests/retrieval_db_only/DB_RETRIEVAL_RESULTS.md": [],
+    "ai-service/tests/retrieval_db_only/db_answer_eval.json": [],
+    "ai-service/tests/retrieval_db_only/db_generation_eval.json": [],
+    "ai-service/tests/retrieval_db_only/db_retrieval_eval.json": [],
+    "ai-service/tests/retrieval_db_only/eval_db_answer.py": [],
+    "ai-service/tests/retrieval_db_only/eval_db_generation.py": [],
+    "ai-service/tests/retrieval_db_only/eval_db_retrieval.py": [],
+    "ai-service/tests/retrieval_db_only/seed_db_eval.py": [],
+    "ai-service/tests/retrieval_doc_only/GENERATION_DOC_RESULTS.md": [],
+    "ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md": [],
+    "ai-service/tests/retrieval_doc_only/eval_retrieval.py": [],
+    "ai-service/tests/retrieval_doc_only/ingest_evalret.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/embeddings/local_embedder.py",
+      "ai-service/src/pipeline.py"
+    ],
+    "ai-service/tests/retrieval_doc_only/ocr_easyocr_review.py": [],
+    "ai-service/tests/retrieval_doc_only/ocr_review/214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.txt": [],
+    "ai-service/tests/retrieval_doc_only/ocr_review/917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.txt": [],
+    "ai-service/tests/retrieval_doc_only/ocr_review/QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.txt": [],
+    "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-EVNFinance.txt": [],
+    "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-MWG.txt": [],
+    "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-Petrolimex-PMSC.txt": [],
+    "ai-service/tests/retrieval_doc_only/retrieval_eval.json": [],
+    "ai-service/tests/retrieval_doc_only/test_lexical_idf.py": [
+      "ai-service/src/db/session.py",
+      "ai-service/src/retrievers/hybrid_retriever.py"
+    ],
+    "ai-service/tests/retrieval_doc_only/test_threshold_calib.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/tests/retrieval_doc_only/threshold_calib_results.json": [],
+    "ai-service/tests/routing/LLM_ROUTING_TEST_RESULTS.md": [],
+    "ai-service/tests/routing/llm_router_test.json": [],
+    "ai-service/tests/routing/test_directory.py": [
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/tests/routing/test_llm_router_full.py": [
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/tests/routing/test_router_accuracy.py": [
+      "ai-service/src/sql/router.py"
+    ],
+    "ai-service/tests/rr_curve.json": [],
+    "ai-service/tests/stress/RESULTS.md": [],
+    "ai-service/tests/stress/drill.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/tests/stress/prov.py": [
+      "ai-service/src/chat/chat_service.py"
+    ],
+    "ai-service/tests/stress/stress.py": [],
+    "ai-service/tests/stress/stress3.py": [],
+    "ai-service/tests/threshold_calib_20new.json": [],
+    "ai-service/tests/tokens/RESULTS.md": [],
+    "ai-service/tests/tokens/tokens.py": [
+      "ai-service/main.py",
+      "ai-service/src/chat/chat_service.py",
+      "ai-service/src/db/session.py"
+    ],
+    "ai-service/tests/weight_curve.json": [],
+    "ai-service/tests/weight_grid.json": [],
+    "ai-service/validator_fixed_output.txt": [],
+    "ai-service/validator_test_output.txt": [],
+    "ai-service/validator_test_output2.txt": [],
+    "backend/.dockerignore": [],
+    "backend/.mvn/wrapper/maven-wrapper.properties": [],
+    "backend/Dockerfile": [],
+    "backend/mvnw": [],
+    "backend/mvnw.cmd": [],
+    "backend/pom.xml": [],
+    "backend/src/main/java/com/minhtrung/hrm/HrmApplication.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/controllers/AdminController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminResetPasswordRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminUpdateStatusRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/CreatePendingUserRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/ProvisionAccountRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/RejectPendingUserRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/SavePermissionsRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminAccountResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminSessionResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/PendingUserResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/UserPermissionResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminResetPasswordRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminUpdateStatusRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/CreatePendingUserRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/ProvisionAccountRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/RejectPendingUserRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/SavePermissionsRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminAccountResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminSessionResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/PendingUserResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/UserPermissionResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminResetPasswordRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminUpdateStatusRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/CreatePendingUserRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/ProvisionAccountRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/RejectPendingUserRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminAccountResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminSessionResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/PendingUserResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/UserPermissionResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/PendingUser.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/PendingUserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserContract.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/JobRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserContractRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/ai/controllers/AiController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/ChatQueryRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/UpdateConversationTitleRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/enums/DepartmentName.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/ChatQueryRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/UpdateConversationTitleRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/CitationResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java": [
+      "backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java",
+      "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/controllers/AssetController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceType.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceType.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetAssignmentRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetCategoryRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetImageRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetInventoryLogRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetMaintenanceRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRequestRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetCategorySeeder.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetCategoryRepository.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetAssignmentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetCategoryRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetImageRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetInventoryLogRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetMaintenanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRequestRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/controllers/AttendanceController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/EditAttendanceRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/MonthlyTimesheetEditRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/AttendanceOverviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/CompanyMonthlyTimesheetResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/HrAttendanceResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/ManagerAttendanceResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffAttendanceResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffMonthlyTimesheetResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceOverviewService.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/controllers/WorkShiftController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CreateWorkShiftRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/WorkShiftResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/services/WorkShiftService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CreateWorkShiftRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/EditAttendanceRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/MonthlyTimesheetEditRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/AttendanceOverviewResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/CompanyMonthlyTimesheetResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/HrAttendanceResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/ManagerAttendanceResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffAttendanceResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffMonthlyTimesheetResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/WorkShiftResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/MonthlyTimesheetRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftScheduleRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceOverviewService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/AttendanceOverviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceService.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/repositories/LeaveRequestRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceScheduler.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/EditAttendanceRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/MonthlyTimesheetEditRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/CompanyMonthlyTimesheetResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/HrAttendanceResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/ManagerAttendanceResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffAttendanceResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffMonthlyTimesheetResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/MonthlyTimesheetRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftScheduleRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/specifications/AttendanceSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/specifications/MonthlyTimesheetSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/repositories/LeaveRequestRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/services/WorkShiftService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CreateWorkShiftRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/WorkShiftResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftScheduleRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/specifications/AttendanceSpecification.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/attendance/specifications/MonthlyTimesheetSpecification.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/controllers/AuthController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/ChangePasswordRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/response/SignInResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/enums/AuthErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/AuthService.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/UserAuthInfo.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/ChangePasswordRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/dtos/response/SignInResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/entities/PendingUser.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/enums/AuthErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/enums/AuthErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/repositories/PendingUserRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/PendingUser.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/services/AuthService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/UserAuthInfo.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/ChangePasswordRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/response/SignInResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/enums/AuthErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/JobRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/services/ClientInfoService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/services/EmailService.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/auth/services/JwtService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/configs/SecurityConfig.java": [
+      "backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/configs/WebConfig.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/dashboard/controllers/DashboardController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/dashboard/dtos/responses/DashboardSummaryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/dashboard/services/DashboardService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/dashboard/dtos/responses/DashboardSummaryResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/dashboard/services/DashboardService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/MonthlyTimesheetRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceService.java",
+      "backend/src/main/java/com/minhtrung/hrm/dashboard/dtos/responses/DashboardSummaryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/repositories/LeaveRequestRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/specifications/LeaveRequestSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/specification/OvertimeSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/controllers/DocumentController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/dtos/requests/UpsertDocumentRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/dtos/responses/DocumentResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/dtos/requests/UpsertDocumentRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/dtos/responses/DocumentResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java": [
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/repositories/DocumentRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/documents/dtos/requests/UpsertDocumentRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/dtos/responses/DocumentResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/repositories/DocumentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/controllers/DepartmentController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateDepartmentRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/DepartmentResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/services/OrganizationService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/controllers/EmployeeController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateContractRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateEmployeeRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/RenewContractRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateAssignmentRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateBasicInfoRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateContractRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateEmployeeStatusRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateLegalProfileRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdatePayrollRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateProfileRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/AvatarUploadResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/ContractResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDetailResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDirectoryItemResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeePublicProfile.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/services/EmployeeService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/controllers/JobController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateJobRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/JobResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/services/OrganizationService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserDetailedInfo.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateContractRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateDepartmentRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateEmployeeRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateJobRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/RenewContractRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateAssignmentRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateBasicInfoRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateContractRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateEmployeeStatusRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateLegalProfileRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdatePayrollRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateProfileRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/AvatarUploadResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/ContractResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/DepartmentResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDetailResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDirectoryItemResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeePublicProfile.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/JobResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/OrganizationOverviewResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserBankAccount.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserContract.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/enums/DepartmentName.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/JobRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserBankAccountRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserBankAccount.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserContractRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserContract.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/UserAuthInfo.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserDetailedInfo.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/services/EmployeeService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftScheduleRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/PendingUser.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/PendingUserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserDetailedInfo.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateContractRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateEmployeeRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/RenewContractRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateAssignmentRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateBasicInfoRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateContractRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateEmployeeStatusRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateLegalProfileRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdatePayrollRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateProfileRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/AvatarUploadResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/ContractResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDetailResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDirectoryItemResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeePublicProfile.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserBankAccount.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserContract.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/JobRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserBankAccountRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserContractRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/employees/services/OrganizationService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateDepartmentRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateJobRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/DepartmentResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/JobResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/OrganizationOverviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/JobRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/enums/AuthErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/ClientInfoService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/JwtService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/controllers/ItTicketController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketCategory.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketPriority.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketCategory.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketPriority.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/repositories/ItTicketRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java",
+      "backend/src/main/java/com/minhtrung/hrm/itticket/repositories/ItTicketRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/controllers/LeaveController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/CreateLeaveReqRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/HandleLeaveReqApiRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/HrLeaveResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/LeavePreviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/ManagerLeaveResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/StaffLeaveResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/services/LeaveService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/CreateLeaveReqRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/HandleLeaveReqApiRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/HrLeaveResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/LeavePreviewResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/ManagerLeaveResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/StaffLeaveResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/repositories/LeaveRequestRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/services/LeaveService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/CreateLeaveReqRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/HandleLeaveReqApiRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/HrLeaveResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/LeavePreviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/ManagerLeaveResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/StaffLeaveResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/repositories/LeaveRequestRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/specifications/LeaveRequestSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/leave/specifications/LeaveRequestSpecification.java": [
+      "backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/controllers/OvertimeController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/HandleOvertimeReqApiRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeWorkTimeRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/HrOvertimeResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/ManagerOvertimeResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/OvertimePreviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/StaffOvertimeResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/services/OvertimeService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/HandleOvertimeReqApiRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeWorkTimeRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/HrOvertimeResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/ManagerOvertimeResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/OvertimePreviewResponse.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/StaffOvertimeResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/entities/Holiday.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/Holiday.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/services/OvertimeService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftScheduleRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceService.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/HandleOvertimeReqApiRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeWorkTimeRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/HrOvertimeResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/ManagerOvertimeResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/OvertimePreviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/StaffOvertimeResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/specification/OvertimeSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/overtime/specification/OvertimeSpecification.java": [
+      "backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/controllers/PayrollController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/EditPayrollRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/CompanyPayrollResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/MonthlyPayrollSummaryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/StaffPayrollResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/services/PayrollService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/EditPayrollRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/CompanyPayrollResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/MonthlyPayrollSummaryResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/StaffPayrollResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/repositories/MonthlyPayrollSummaryRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/repositories/PayrollRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/services/PayrollService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/MonthlyTimesheetRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/EditPayrollRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/CompanyPayrollResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/MonthlyPayrollSummaryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/StaffPayrollResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/repositories/MonthlyPayrollSummaryRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/repositories/PayrollRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/specifications/PayrollSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/payroll/specifications/PayrollSpecification.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/controllers/PerformanceController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ManagerScoreRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/SelfSubmitRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceOverviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ManagerScoreRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ScoreItemRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/SelfSubmitRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceOverviewResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceScore.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceReviewRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceScoreRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceScore.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ManagerScoreRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ScoreItemRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/SelfSubmitRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceOverviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceScore.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceReviewRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceScoreRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/specifications/PerformanceSpecification.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/performance/specifications/PerformanceSpecification.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java": [
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionBackfillRunner.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/controllers/ResignationController.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/ApproveResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/CreateResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/responses/ResignationResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/ApproveResignationRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/CreateResignationRequest.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/responses/ResignationResponse.java": [
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java": [],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java": [
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/repositories/ResignationRequestRepository.java": [
+      "backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationScheduler.java": [
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/repositories/ResignationRequestRepository.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java": [
+      "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserContract.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserContractRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/ApproveResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/CreateResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/responses/ResignationResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java",
+      "backend/src/main/java/com/minhtrung/hrm/resignation/repositories/ResignationRequestRepository.java"
+    ],
+    "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java": [],
+    "backend/src/main/resources/application.properties.example": [],
+    "backend/src/test/java/com/minhtrung/hrm/HrmApplicationTests.java": [],
+    "backend/src/test/java/com/minhtrung/hrm/ai/AiServiceClientTest.java": [
+      "backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java",
+      "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java",
+      "backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java"
+    ],
+    "diagrams/architecture-hrm-exploded.html": [],
+    "diagrams/architecture-hrm.html": [],
+    "diagrams/auth-token-lifecycle.html": [],
+    "diagrams/database-hrm-erd.html": [],
+    "diagrams/resignation-flow.html": [],
+    "docker-compose.yml": [],
+    "docs/agents/domain.md": [],
+    "docs/agents/issue-tracker.md": [],
+    "docs/api-reference.md": [],
+    "init-db/README.md": [],
+    "opencode.json": [],
+    "package.json": [],
+    "postman.json": [],
+    "test_result.txt": []
+  }
+}

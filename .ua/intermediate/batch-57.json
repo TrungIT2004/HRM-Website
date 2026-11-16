@@ -1,0 +1,122 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/HrmApplication.java",
+      "type": "document",
+      "name": "HrmApplication.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/HrmApplication.java",
+      "summary": "Spring Boot application entry point. Enables JPA auditing, async processing, and scheduling. Component scans com.minhtrung.hrm package.",
+      "tags": ["backend", "spring-boot", "entry-point", "jpa", "async", "scheduling", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/configs/WebConfig.java",
+      "type": "document",
+      "name": "WebConfig.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/configs/WebConfig.java",
+      "summary": "Web MVC configuration: CORS setup for frontend origin, static resource handling for uploaded files, async task executor configuration, and Jackson object mapper customization (date format, serialization).",
+      "tags": ["backend", "config", "web", "cors", "async", "jackson", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/configs/SecurityConfig.java",
+      "type": "document",
+      "name": "SecurityConfig.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/configs/SecurityConfig.java",
+      "summary": "Spring Security configuration: JWT authentication filter chain, stateless session management, public/private endpoint rules, password encoder (BCrypt), and method-level security enablement. Integrates JwtAuthFilter.",
+      "tags": ["backend", "config", "security", "spring-security", "jwt", "bcrypt", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "document",
+      "name": "GlobalExceptionHandler.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "summary": "Global exception handler: @ControllerAdvice handling AuthenticationException, AttendanceException, LeaveException, OvertimeException, PayrollException, PerformanceException, AssetException, ItTicketException, DocumentException, ResignationException, and generic exceptions. Returns standardized ApiErrorResponse with error code, message, and timestamp.",
+      "tags": ["backend", "exception", "global-handler", "controller-advice", "error-response", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "type": "document",
+      "name": "JwtAuthFilter.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "summary": "JWT authentication filter: extracts token from Authorization header, validates signature and expiration, loads user details, sets SecurityContext. Handles token refresh logic and RequestContext population with user ID and roles.",
+      "tags": ["backend", "filter", "jwt", "authentication", "security-context", "token-refresh", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "type": "document",
+      "name": "FileStorageService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "summary": "File storage service: MinIO integration for upload/download/delete operations. Generates presigned URLs, handles multipart uploads, enforces file type/size limits, and organizes files by bucket (documents, avatars, assets, offboarding).",
+      "tags": ["backend", "service", "file-storage", "minio", "presigned-url", "multipart", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "type": "document",
+      "name": "RequestContext.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "summary": "Request context holder: thread-local storage for current request metadata (userId, userRoles, requestId, ipAddress, userAgent). Used by services for audit logging and tenant isolation.",
+      "tags": ["backend", "common", "context", "thread-local", "request-metadata", "audit", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "type": "document",
+      "name": "RequestContextHolder.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "summary": "RequestContext holder utility: static accessor methods for getting/setting/clearing RequestContext. Provides safe access with null checks and auto-cleanup via try-with-resources pattern.",
+      "tags": ["backend", "common", "context", "holder", "utility", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java",
+      "type": "document",
+      "name": "SpecificationScopes.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java",
+      "summary": "JPA Specification scopes: reusable predicate builders for common query patterns (byUserId, byDepartmentId, byDateRange, byStatus, searchText). Composable with and/or for dynamic filtering across repositories.",
+      "tags": ["backend", "common", "specifications", "jpa", "predicate", "dynamic-query", "java"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/configs/SecurityConfig.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

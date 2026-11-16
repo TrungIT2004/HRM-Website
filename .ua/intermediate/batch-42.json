@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "document:diagrams/architecture-hrm-exploded.html",
+      "type": "document",
+      "name": "architecture-hrm-exploded.html",
+      "filePath": "diagrams/architecture-hrm-exploded.html",
+      "summary": "Exploded HRM architecture diagram HTML (33,597 chars) showing detailed component breakdown: Frontend (Next.js), Backend (Spring Boot), AI Service (FastAPI), PostgreSQL, Redis, MinIO, Nginx, and inter-service communication flows with API endpoints and data flows.",
+      "tags": ["docs", "architecture", "diagram", "hrm", "exploded", "frontend", "backend", "ai-service", "html"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:diagrams/architecture-hrm.html",
+      "type": "document",
+      "name": "architecture-hrm.html",
+      "filePath": "diagrams/architecture-hrm.html",
+      "summary": "HRM system architecture diagram HTML (29,011 chars) showing high-level overview: 3-tier architecture (Presentation: Next.js/React, Application: Spring Boot + FastAPI AI, Data: PostgreSQL/Redis/MinIO), authentication flow (JWT + refresh tokens), and deployment topology (Docker Compose / Kubernetes).",
+      "tags": ["docs", "architecture", "diagram", "hrm", "overview", "3-tier", "jwt", "docker", "html"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:diagrams/auth-token-lifecycle.html",
+      "type": "document",
+      "name": "auth-token-lifecycle.html",
+      "filePath": "diagrams/auth-token-lifecycle.html",
+      "summary": "Authentication token lifecycle diagram HTML (16,627 chars) illustrating JWT access token (15min) + refresh token (7d) flow: login → token pair issuance → access token usage → expiry → refresh token rotation → new token pair → logout/revocation. Shows Spring Security filter chain integration.",
+      "tags": ["docs", "architecture", "diagram", "auth", "jwt", "refresh-token", "lifecycle", "spring-security", "html"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:diagrams/database-hrm-erd.html",
+      "type": "document",
+      "name": "database-hrm-erd.html",
+      "filePath": "diagrams/database-hrm-erd.html",
+      "summary": "HRM database ERD diagram HTML (24,317 chars) showing entity relationships: Users, Departments, Jobs, Salaries, Assets, AssetRequests, AssetAssignments, ITTickets, Attendance, Overtime, Leave, Payroll, PerformanceReviews, PerformanceScores, Resignations, Holidays, WorkShifts. Includes FK relationships and key indexes.",
+      "tags": ["docs", "architecture", "diagram", "database", "erd", "postgresql", "entities", "relationships", "html"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:diagrams/resignation-flow.html",
+      "type": "document",
+      "name": "resignation-flow.html",
+      "filePath": "diagrams/resignation-flow.html",
+      "summary": "Resignation workflow diagram HTML (14,011 chars) showing end-to-end process: Employee submits resignation → Manager approval → HR review → Exit interview scheduling → Asset return checklist → Final settlement calculation → Offboarding completion → Account deactivation. Includes state transitions and notification triggers.",
+      "tags": ["docs", "architecture", "diagram", "resignation", "workflow", "offboarding", "state-machine", "html"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:diagrams/architecture-hrm.html",
+      "target": "document:diagrams/architecture-hrm-exploded.html",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:diagrams/architecture-hrm.html",
+      "target": "document:diagrams/database-hrm-erd.html",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:diagrams/architecture-hrm.html",
+      "target": "document:diagrams/auth-token-lifecycle.html",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:diagrams/auth-token-lifecycle.html",
+      "target": "document:diagrams/resignation-flow.html",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

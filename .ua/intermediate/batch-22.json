@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:HRM Website/AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "HRM Website/AGENTS.md",
+      "summary": "HRM Website AI agent instructions with 9 lines providing frontend-specific development guidelines for Next.js, React, TypeScript, and Tailwind CSS.",
+      "tags": ["documentation", "ai-agents", "guidelines", "hrm-website", "frontend", "nextjs"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "HRM Website/CLAUDE.md",
+      "summary": "HRM Website Claude Code instructions (minimal - 1 line) referencing root CLAUDE.md for project-wide AI service configuration.",
+      "tags": ["documentation", "claude-code", "hrm-website", "frontend", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/package.json",
+      "type": "document",
+      "name": "package.json",
+      "filePath": "HRM Website/package.json",
+      "summary": "HRM Website package.json with 33 lines defining Next.js 14 dependencies, React 18, TypeScript, Tailwind CSS, Radix UI, and development tooling for the frontend application.",
+      "tags": ["config", "npm", "nextjs", "react", "typescript", "tailwind", "radix-ui", "hrm-website"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/tsconfig.json",
+      "type": "document",
+      "name": "tsconfig.json",
+      "filePath": "HRM Website/tsconfig.json",
+      "summary": "HRM Website TypeScript configuration with 34 lines defining strict mode, path aliases (@/*), Next.js plugin, and compilation targets for the frontend codebase.",
+      "tags": ["config", "typescript", "nextjs", "hrm-website", "strict-mode", "path-aliases"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:HRM Website/package.json",
+      "target": "document:HRM Website/tsconfig.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/AGENTS.md",
+      "target": "document:HRM Website/package.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:HRM Website/CLAUDE.md",
+      "target": "document:CLAUDE.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

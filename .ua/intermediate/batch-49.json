@@ -1,0 +1,138 @@
+{
+  "nodes": [
+    {
+      "id": "document:HRM Website/src/components/TodayStatusBadge.tsx",
+      "type": "document",
+      "name": "TodayStatusBadge.tsx",
+      "filePath": "HRM Website/src/components/TodayStatusBadge.tsx",
+      "summary": "TodayStatusBadge component: displays current attendance status (checked in, checked out, on leave, remote) with colored indicator dot, timestamp, and location. Real-time updates via SWR polling. Used in dashboard header and attendance overview.",
+      "tags": ["frontend", "hrm-website", "component", "attendance", "badge", "real-time", "react", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "type": "document",
+      "name": "AttendanceOverviewTab.tsx",
+      "filePath": "HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "summary": "AttendanceOverviewTab component: tabbed interface for attendance dashboard (overview, leave, overtime, schedule). Manages active tab state, lazy loads tab panels, and handles data fetching coordination. Parent of TodayStatusBadge, LeaveOvertimeHubTab, MyOverviewTab, WorkShiftTab.",
+      "tags": ["frontend", "hrm-website", "component", "attendance", "tabs", "lazy-load", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/components/attendance/LeaveOvertimeHubTab.tsx",
+      "type": "document",
+      "name": "LeaveOvertimeHubTab.tsx",
+      "filePath": "HRM Website/src/components/attendance/LeaveOvertimeHubTab.tsx",
+      "summary": "LeaveOvertimeHubTab component: combined leave and overtime summary with balance cards, recent requests list, quick action buttons, and status filters. Shared between employee and manager views with role-based content.",
+      "tags": ["frontend", "hrm-website", "component", "attendance", "leave", "overtime", "summary", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/components/attendance/MyOverviewTab.tsx",
+      "type": "document",
+      "name": "MyOverviewTab.tsx",
+      "filePath": "HRM Website/src/components/attendance/MyOverviewTab.tsx",
+      "summary": "MyOverviewTab component: personal attendance metrics (working hours, late count, leave used, OT hours) with period selector, trend mini-charts, and comparison to team average. Employee self-view only.",
+      "tags": ["frontend", "hrm-website", "component", "attendance", "personal", "metrics", "charts", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/components/attendance/WorkShiftTab.tsx",
+      "type": "document",
+      "name": "WorkShiftTab.tsx",
+      "filePath": "HRM Website/src/components/attendance/WorkShiftTab.tsx",
+      "summary": "WorkShiftTab component: shift calendar with drag-drop assignment, shift template selector, conflict detection badge, swap request button, and weekly/monthly view toggle. Manager editable, employee read-only.",
+      "tags": ["frontend", "hrm-website", "component", "attendance", "shift", "calendar", "drag-drop", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/components/chat/ChatMessage.tsx",
+      "type": "document",
+      "name": "ChatMessage.tsx",
+      "filePath": "HRM Website/src/components/chat/ChatMessage.tsx",
+      "summary": "ChatMessage component: renders user/assistant messages with markdown, code syntax highlighting, citation chips with DocumentPreviewModal trigger, streaming text animation, copy button, and feedback actions (thumbs up/down).",
+      "tags": ["frontend", "hrm-website", "component", "chat", "message", "markdown", "citations", "streaming", "react", "typescript"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:HRM Website/src/components/chat/DocumentPreviewModal.tsx",
+      "type": "document",
+      "name": "DocumentPreviewModal.tsx",
+      "filePath": "HRM Website/src/components/chat/DocumentPreviewModal.tsx",
+      "summary": "DocumentPreviewModal component: modal dialog for previewing cited documents (PDF iframe, image gallery, text snippet). Highlights matched text, shows relevance score, and provides download/open-in-new-tab actions. Lazy loaded.",
+      "tags": ["frontend", "hrm-website", "component", "chat", "document", "preview", "modal", "pdf", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/components/ui/Button.tsx",
+      "type": "document",
+      "name": "Button.tsx",
+      "filePath": "HRM Website/src/components/ui/Button.tsx",
+      "summary": "Button component: variant (primary, secondary, outline, ghost, destructive), size (sm, md, lg), loading state with spinner, disabled state, icon support (left/right), and asChild for polymorphic rendering. Built on Radix Slot.",
+      "tags": ["frontend", "hrm-website", "component", "ui", "button", "radix", "polymorphic", "react", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/src/components/ui/Table.tsx",
+      "type": "document",
+      "name": "Table.tsx",
+      "filePath": "HRM Website/src/components/ui/Table.tsx",
+      "summary": "Table component: sortable columns, pagination, row selection, expandable rows, column resizing, sticky header, empty state, and virtualized rows for large datasets. Composable sub-components (Header, Body, Row, Cell, Pagination).",
+      "tags": ["frontend", "hrm-website", "component", "ui", "table", "pagination", "virtualized", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/components/ui/Modal.tsx",
+      "type": "document",
+      "name": "Modal.tsx",
+      "filePath": "HRM Website/src/components/ui/Modal.tsx",
+      "summary": "Modal component: Radix Dialog wrapper with sizes (sm, md, lg, xl, full), close on overlay/escape, focus trap, portal rendering, scroll lock, and animation variants (fade, slide). Used for all forms and confirmations.",
+      "tags": ["frontend", "hrm-website", "component", "ui", "modal", "radix", "dialog", "portal", "react", "typescript"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "target": "document:HRM Website/src/components/TodayStatusBadge.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "target": "document:HRM Website/src/components/attendance/LeaveOvertimeHubTab.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "target": "document:HRM Website/src/components/attendance/MyOverviewTab.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "target": "document:HRM Website/src/components/attendance/WorkShiftTab.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/components/chat/ChatMessage.tsx",
+      "target": "document:HRM Website/src/components/chat/DocumentPreviewModal.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/components/ui/Button.tsx",
+      "target": "document:HRM Website/src/components/ui/Modal.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

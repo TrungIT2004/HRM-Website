@@ -1,0 +1,124 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "type": "document",
+      "name": "google-api.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "summary": "Google API test fixture JSON with 36 lines containing mock Google Fonts API response data for testing catalog synchronization in the UI/UX Pro Max design system.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "google-fonts", "catalog", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "type": "document",
+      "name": "google-catalog.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "summary": "Google catalog test fixture JSON with 33 lines containing expected catalog structure for Google Fonts integration testing in the UI/UX Pro Max design system.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "google-fonts", "catalog", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv",
+      "type": "document",
+      "name": "google-existing.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv",
+      "summary": "Google existing fonts test fixture CSV with 3 lines listing pre-existing Google Font families for catalog synchronization testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "google-fonts", "catalog", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "type": "document",
+      "name": "google-metadata.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "summary": "Google metadata test fixture JSON with 17 lines containing font family metadata for Google Fonts catalog testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "google-fonts", "metadata", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json",
+      "type": "document",
+      "name": "google-overrides.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json",
+      "summary": "Google overrides test fixture JSON with 7 lines defining font family overrides for Google Fonts catalog testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "google-fonts", "overrides", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv",
+      "type": "document",
+      "name": "icons-curated.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv",
+      "summary": "Curated icons test fixture CSV with 4 lines listing curated icon sets for Phosphor Icons catalog testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "phosphor-icons", "icons", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "type": "document",
+      "name": "phosphor-core.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "summary": "Phosphor core test fixture JSON with 23 lines containing core Phosphor Icons package data for catalog testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "phosphor-icons", "catalog", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "type": "document",
+      "name": "phosphor-package.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "summary": "Phosphor package test fixture JSON with 13 lines containing package.json structure for Phosphor Icons React package testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "phosphor-icons", "package", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json",
+      "type": "document",
+      "name": "phosphor-react-exports.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json",
+      "summary": "Phosphor React exports test fixture JSON with 4 lines defining React export mappings for Phosphor Icons testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "phosphor-icons", "react", "exports", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "type": "document",
+      "name": "phosphor-react-package.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "summary": "Phosphor React package test fixture JSON with 5 lines containing React package configuration for Phosphor Icons testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "phosphor-icons", "react", "package", "json"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

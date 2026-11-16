@@ -1,0 +1,257 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/memory/internal/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/memory/internal/RESULTS.md",
+      "summary": "Comprehensive memory rewrite test results for internal HR dataset (30 conv × 12 turns = 360 turns) with rewrite_score progression 0.333 → 0.348 → 0.390 → 0.463 (gemma-4-31b), route analysis, failure mode breakdown (LLM keeps original, misreads verbs, wrong thread anchoring, route errors), threshold calibration (T=0.64 no clean separation), embedding swap to google/embeddinggemma-300m (refused 66%→26%), soft-band retrieval [0.50, 0.66), DocLock allowlist, prompt tuning (priority doc + list all deadlines), decimal lexical fix, retry rewrite. Includes judge LLM verdicts (ĐÚNG/ĐÚNG 1 PHẦN/SAI/Từ chối oan) across multiple runs.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "rewrite", "retrieval", "gemma", "embeddinggemma", "threshold", "doclock", "markdown"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_20new.json",
+      "type": "document",
+      "name": "memory_answer_20new.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_20new.json",
+      "summary": "End-to-end answer evaluation for 20 new conversations (240 turns) with baseline gemma-4-31b model: 66% refused (159/240), 81 answered with avg overlap 0.73, 17 in review queue, 0 DB errors. Latency p50 5.6s / p95 10.3s, tokens 744.794 total.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "20new", "gemma", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json",
+      "type": "document",
+      "name": "memory_answer_20new_gemmaT066.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json",
+      "summary": "End-to-end answers with EmbeddingGemma + T=0.66: refused 62/240 (26%), overlap 0.80, p50 4.6s / p95 8.0s. 3 hallucinated with citations, 2 PII leaks in directory branch.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "20new", "embeddinggemma", "T066", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_20new_lock.json",
+      "type": "document",
+      "name": "memory_answer_20new_lock.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_20new_lock.json",
+      "summary": "End-to-end answers with DocLock allowlist (214/917/mwg/pmsc/petrolimex/evn/qt/hc/act/blld/luong): refused 158/240, overlap 0.326. Fixed some doc misrouting but threshold remains bottleneck.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "20new", "doclock", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_20new_nolock.json",
+      "type": "document",
+      "name": "memory_answer_20new_nolock.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_20new_nolock.json",
+      "summary": "End-to-end answers without DocLock, with full prompt (list all deadlines, prioritize conv doc): refused 8/240, overlap improved (1046: 0.22→0.68), 14 partial flips to ĐÚNG. 7-8 refused in noise zone.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "20new", "nolock", "prompt-tuning", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_20new_retry.json",
+      "type": "document",
+      "name": "memory_answer_20new_retry.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_20new_retry.json",
+      "summary": "End-to-end answers with retry rewrite on floor failure: 5 refused converted to partial, 5 remained refused. Decimal lexical fix (UNION tsvector with original form) verified: 809.091 top1 from outside top-40 → 0.53.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "20new", "retry", "lexical-fix", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_20new_softband.json",
+      "type": "document",
+      "name": "memory_answer_20new_softband.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_20new_softband.json",
+      "summary": "End-to-end answers with soft band [0.50, 0.66): refused 7/240 (vs 62), overlap 0.80 on answered, leak end-to-end 10/30 same set. Band doesn't add new leaks.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "20new", "softband", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_answer_baseline30.json",
+      "type": "document",
+      "name": "memory_answer_baseline30.json",
+      "filePath": "ai-service/tests/memory/internal/memory_answer_baseline30.json",
+      "summary": "Baseline end-to-end answers for 30 conversations (360 turns): 71% refused (254/360), 91 answered with avg overlap 0.63, ~15 DB personalization turns, route errors (price→OUT_OF_SCOPE), DB personalization overrides doc queries, PII leak (phone numbers), rewrite hallucinates details.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "answers", "baseline30", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_internal.csv",
+      "type": "document",
+      "name": "memory_internal.csv",
+      "filePath": "ai-service/tests/memory/internal/memory_internal.csv",
+      "summary": "Internal memory test dataset CSV with 360 rows (30 conversations × 12 turns, sids 1001-1030) covering HR topics: vehicles, salaries, office supplies, EVN/MWG/Petrolimex, administration. Used for memory rewrite and end-to-end evaluation.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "csv", "hr-topics"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/memory_internal_results.json",
+      "type": "document",
+      "name": "memory_internal_results.json",
+      "filePath": "ai-service/tests/memory/internal/memory_internal_results.json",
+      "summary": "Memory rewrite evaluation results for 360 turns (internal dataset) with per-turn rewrite scores, route classification (DOC_ONLY 344, DB_ONLY 11, DIRECTORY 3), llm_rewrote counts, and graded turns. Extended to 600 turns (50 conv) with gemma-4-31b: total rewrite_score 0.463.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "rewrite", "route", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/test_answers.py",
+      "type": "document",
+      "name": "test_answers.py",
+      "filePath": "ai-service/tests/memory/internal/test_answers.py",
+      "summary": "Python script to run end-to-end answer evaluation via POST /chat/query for multi-turn conversations. Produces memory_answer_*.json output files with latency, tokens, overlap, and refusal metrics.",
+      "tags": ["test", "script", "ai-service", "memory", "internal", "answers", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/test_memory_sessions.py",
+      "type": "document",
+      "name": "test_memory_sessions.py",
+      "filePath": "ai-service/tests/memory/internal/test_memory_sessions.py",
+      "summary": "Python script to run memory rewrite evaluation on internal dataset using rewrite_and_route_step. Produces memory_internal_results.json with per-turn rewrite scores and route classification.",
+      "tags": ["test", "script", "ai-service", "memory", "internal", "rewrite", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/verdicts_20new.json",
+      "type": "document",
+      "name": "verdicts_20new.json",
+      "filePath": "ai-service/tests/memory/internal/verdicts_20new.json",
+      "summary": "LLM judge verdicts for 240 turns (20 new conversations): ĐÚNG trọng tâm 55 (23%), ĐÚNG 1 PHẦN 11, SAI 15 (doc confusion MWG↔Petrolimex, wrong chunk, wrong anchor, wrong bonus), 1 PII leak, Từ chối oan 159 (66%). Answered turns correct 68%.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "verdicts", "judge", "20new", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/verdicts_20new_gemmaT066.json",
+      "type": "document",
+      "name": "verdicts_20new_gemmaT066.json",
+      "filePath": "ai-service/tests/memory/internal/verdicts_20new_gemmaT066.json",
+      "summary": "LLM judge verdicts for EmbeddingGemma + T=0.66 run (178 answered turns): ĐÚNG trọng tâm 118 (49% of 240), ĐÚNG 1 PHẦN 40, SAI 20 (doc confusion MWG↔PMSC/214↔917, wrong chunk, wrong anchor), Từ chối oan 62 (26%). No PII leaks.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "verdicts", "judge", "20new", "gemmaT066", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/verdicts_20new_nolock.json",
+      "type": "document",
+      "name": "verdicts_20new_nolock.json",
+      "filePath": "ai-service/tests/memory/internal/verdicts_20new_nolock.json",
+      "summary": "LLM judge verdicts for nolock run (full 240 turns): ĐÚNG trọng tâm 161 (67%), ĐÚNG 1 PHẦN 54, SAI 17 (doc confusion when rewrite drops name, wrong chunk, wrong anchor), Từ chối oan 8 (3.3%). Best run: +5 correct, -5 SAI vs softband.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "verdicts", "judge", "20new", "nolock", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/verdicts_20new_softband.json",
+      "type": "document",
+      "name": "verdicts_20new_softband.json",
+      "filePath": "ai-service/tests/memory/internal/verdicts_20new_softband.json",
+      "summary": "LLM judge verdicts for softband run (233 answered turns): ĐÚNG trọng tâm 156 (65%), ĐÚNG 1 PHẦN 55, SAI 22 (doc confusion when rewrite drops name, wrong chunk, wrong anchor), Từ chối oan 7 (3%). Refused 7/240.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "verdicts", "judge", "20new", "softband", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/verdicts_32.json",
+      "type": "document",
+      "name": "verdicts_32.json",
+      "filePath": "ai-service/tests/memory/internal/verdicts_32.json",
+      "summary": "Manual judge verdicts for 32 selected turns (17 low overlap + 15 high overlap): ĐÚNG 22, ĐÚNG 1 PHẦN 4, SAI 3 (route error price, directory fail, wrong topic), NGHI 3 (gold issues: THIEU THONG TIN, tenure discrepancy, HĐQT vs HDTV conflict). Conclusion: low overlap mostly metric-punished, not truly wrong.",
+      "tags": ["test", "results", "ai-service", "memory", "internal", "verdicts", "manual", "32", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/memory/internal/RESULTS.md",
+      "target": "document:ai-service/tests/memory/internal/memory_internal_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/RESULTS.md",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new.json",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new_lock.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_lock.json",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new_softband.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_softband.json",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new_nolock.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_nolock.json",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new_retry.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_internal.csv",
+      "target": "document:ai-service/tests/memory/internal/memory_internal_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/test_memory_sessions.py",
+      "target": "document:ai-service/tests/memory/internal/memory_internal_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/test_answers.py",
+      "target": "document:ai-service/tests/memory/internal/memory_answer_20new.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new.json",
+      "target": "document:ai-service/tests/memory/internal/verdicts_20new.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json",
+      "target": "document:ai-service/tests/memory/internal/verdicts_20new_gemmaT066.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_nolock.json",
+      "target": "document:ai-service/tests/memory/internal/verdicts_20new_nolock.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/memory_answer_20new_softband.json",
+      "target": "document:ai-service/tests/memory/internal/verdicts_20new_softband.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

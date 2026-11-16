@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/RESULTS.md",
+      "summary": "DOC_ONLY generation metrics results with 119 lines summarizing RAGAS scores, LLM judge pairwise win rates, hallucination audit results, and latency metrics for document-only generation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "generation", "ragas", "llm-judge", "hallucination", "latency", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.bak-20261015.json",
+      "type": "document",
+      "name": "answers.bak-20261015.json",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.bak-20261015.json",
+      "summary": "Backup of generated answers JSON with 7,329 lines from October 15, 2026 evaluation run for document-only generation testing.",
+      "tags": ["test", "backup", "ai-service", "doc-only", "generation", "answers", "json", "2026-10-15"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "type": "document",
+      "name": "answers.json",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "summary": "Generated answers JSON with 6,755 lines containing model responses for all document-only test questions used in generation quality evaluation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "generation", "answers", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.bak-20261014.csv",
+      "type": "document",
+      "name": "audit_hallucination.bak-20261014.csv",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.bak-20261014.csv",
+      "summary": "Hallucination audit backup CSV with 516 lines from October 14, 2026 tracking fabricated claims in generated answers for document-only route.",
+      "tags": ["test", "backup", "ai-service", "doc-only", "hallucination", "audit", "csv", "2026-10-14"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.csv",
+      "type": "document",
+      "name": "audit_hallucination.csv",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.csv",
+      "summary": "Hallucination audit CSV with 512 lines tracking fabricated claims, unsupported statements, and factual errors in generated answers for document-only route.",
+      "tags": ["test", "results", "ai-service", "doc-only", "hallucination", "audit", "csv", "fabrication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.bak-20261015.json",
+      "type": "document",
+      "name": "judge.bak-20261015.json",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.bak-20261015.json",
+      "summary": "LLM judge backup JSON with 6,137 lines from October 15, 2026 containing pairwise comparison judgments for answer quality evaluation.",
+      "tags": ["test", "backup", "ai-service", "doc-only", "llm-judge", "pairwise", "judgments", "json", "2026-10-15"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.json",
+      "type": "document",
+      "name": "judge.json",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.json",
+      "summary": "LLM judge JSON with 5,934 lines containing pairwise comparison judgments for answer quality evaluation using Gemma as judge model.",
+      "tags": ["test", "results", "ai-service", "doc-only", "llm-judge", "pairwise", "judgments", "gemma", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/latency_per_question.csv",
+      "type": "document",
+      "name": "latency_per_question.csv",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/latency_per_question.csv",
+      "summary": "Latency per question CSV with 131 lines recording response times for each document-only test question including retrieval and generation phases.",
+      "tags": ["test", "metrics", "ai-service", "doc-only", "latency", "response-time", "csv", "performance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/negatives.json",
+      "type": "document",
+      "name": "negatives.json",
+      "filePath": "ai-service/tests/DOC_ONLY/generation_metrics_tests/negatives.json",
+      "summary": "Negative test cases JSON with 12 lines defining questions expected to fail or return no answer for robustness testing of document-only route.",
+      "tags": ["test", "cases", "ai-service", "doc-only", "negatives", "robustness", "json"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "target": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "target": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/RESULTS.md",
+      "target": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.bak-20261015.json",
+      "target": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.bak-20261015.json",
+      "target": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.bak-20261014.csv",
+      "target": "document:ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

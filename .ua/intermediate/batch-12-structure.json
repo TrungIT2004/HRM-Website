@@ -1,0 +1,217 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [
+    ".agents/skills/ui-ux-pro-max/data/app-interface.csv",
+    ".agents/skills/ui-ux-pro-max/data/charts.csv",
+    ".agents/skills/ui-ux-pro-max/data/colors.csv",
+    ".agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+    ".agents/skills/ui-ux-pro-max/data/icons.csv",
+    ".agents/skills/ui-ux-pro-max/data/landing.csv",
+    ".agents/skills/ui-ux-pro-max/data/motion.csv",
+    ".agents/skills/ui-ux-pro-max/data/products.csv",
+    ".agents/skills/ui-ux-pro-max/data/react-performance.csv",
+    ".agents/skills/ui-ux-pro-max/data/styles.csv",
+    ".agents/skills/ui-ux-pro-max/data/typography.csv",
+    ".agents/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+    ".agents/skills/ui-ux-pro-max/data/ux-guidelines.csv"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 4
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 78,
+      "nonEmptyLines": 78,
+      "sections": [
+        {
+          "heading": "schemaVersion",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "verifiedAt",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "counts",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "snapshots",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "promotionPolicy",
+          "level": 1,
+          "line": 39
+        },
+        {
+          "heading": "pendingCandidates",
+          "level": 1,
+          "line": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1348,
+      "nonEmptyLines": 1348,
+      "sections": [
+        {
+          "heading": "schemaVersion",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "generatedAt",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "freshnessPolicy",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "records",
+          "level": 1,
+          "line": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 20185,
+      "nonEmptyLines": 20185,
+      "sections": [
+        {
+          "heading": "schemaVersion",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "source",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "familyCount",
+          "level": 1,
+          "line": 8
+        },
+        {
+          "heading": "families",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "excludedFamilies",
+          "level": 1,
+          "line": 20127
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 32582,
+      "nonEmptyLines": 32582,
+      "sections": [
+        {
+          "heading": "schemaVersion",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "source",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "status",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "verifiedAt",
+          "level": 1,
+          "line": 11
+        },
+        {
+          "heading": "iconCount",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "weights",
+          "level": 1,
+          "line": 13
+        },
+        {
+          "heading": "reactImports",
+          "level": 1,
+          "line": 21
+        },
+        {
+          "heading": "curatedValidatedCount",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "icons",
+          "level": 1,
+          "line": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    }
+  ]
+}

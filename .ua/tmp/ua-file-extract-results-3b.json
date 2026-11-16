@@ -1,0 +1,645 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 6
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/brand/references/logo-usage-rules.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 185,
+      "nonEmptyLines": 154,
+      "sections": [
+        {
+          "heading": "Logo Usage Rules",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Logo Variants",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Primary Variants",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "Color Variants",
+          "level": 3,
+          "line": 15
+        },
+        {
+          "heading": "Clear Space",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Minimum Clear Space",
+          "level": 3,
+          "line": 25
+        },
+        {
+          "heading": "Minimum Size",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Digital",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Print",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Color Usage",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Approved Backgrounds",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Color Rules",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Incorrect Usage",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Absolute Don'ts",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Visual Examples",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Co-branding",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Partner Logo Guidelines",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Layout Options",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "File Formats",
+          "level": 2,
+          "line": 117
+        },
+        {
+          "heading": "Recommended Formats",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "File Organization",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "Platform-Specific Guidelines",
+          "level": 2,
+          "line": 146
+        },
+        {
+          "heading": "Social Media",
+          "level": 3,
+          "line": 148
+        },
+        {
+          "heading": "Website",
+          "level": 3,
+          "line": 156
+        },
+        {
+          "heading": "Documents",
+          "level": 3,
+          "line": 164
+        },
+        {
+          "heading": "Logo Approval Process",
+          "level": 2,
+          "line": 171
+        },
+        {
+          "heading": "Before Using Logo",
+          "level": 3,
+          "line": 173
+        },
+        {
+          "heading": "Requesting Approval",
+          "level": 3,
+          "line": 180
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 28
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/messaging-framework.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 85,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Messaging Framework",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Framework Structure",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Core Statements",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "Mission Statement",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "Vision Statement",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "Value Proposition",
+          "level": 3,
+          "line": 31
+        },
+        {
+          "heading": "Positioning Statement",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "Message Architecture",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "Primary Message",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Supporting Messages (3-5)",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Elevator Pitches",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Message by Audience",
+          "level": 2,
+          "line": 72
+        },
+        {
+          "heading": "Message Testing",
+          "level": 2,
+          "line": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/typography-specifications.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 214,
+      "nonEmptyLines": 176,
+      "sections": [
+        {
+          "heading": "Typography Specifications",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Font Stack Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Primary Fonts",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "Font Loading",
+          "level": 3,
+          "line": 19
+        },
+        {
+          "heading": "Type Scale",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "Base System",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Scale Definition",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "Responsive Adjustments",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Font Weights",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Weight Scale",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Weight Pairing",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Line Height Guidelines",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "Rules",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Letter Spacing",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Guidelines",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Paragraph Spacing",
+          "level": 2,
+          "line": 98
+        },
+        {
+          "heading": "Margins",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Maximum Line Length",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "CSS Implementation",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Full Variables",
+          "level": 3,
+          "line": 124
+        },
+        {
+          "heading": "Tailwind Config",
+          "level": 3,
+          "line": 159
+        },
+        {
+          "heading": "Common Font Pairings",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Clean & Modern",
+          "level": 3,
+          "line": 183
+        },
+        {
+          "heading": "Professional",
+          "level": 3,
+          "line": 187
+        },
+        {
+          "heading": "Startup/Tech",
+          "level": 3,
+          "line": 191
+        },
+        {
+          "heading": "Editorial",
+          "level": 3,
+          "line": 195
+        },
+        {
+          "heading": "Accessibility",
+          "level": 2,
+          "line": 199
+        },
+        {
+          "heading": "Minimum Sizes",
+          "level": 3,
+          "line": 201
+        },
+        {
+          "heading": "Contrast Requirements",
+          "level": 3,
+          "line": 206
+        },
+        {
+          "heading": "Best Practices",
+          "level": 3,
+          "line": 210
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 30
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/update.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 118,
+      "nonEmptyLines": 83,
+      "sections": [
+        {
+          "heading": "Overview",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Step 1: Gather Brand Input",
+          "level": 3,
+          "line": 14
+        },
+        {
+          "heading": "Step 2: Update Brand Guidelines",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Step 3: Sync to Design Tokens",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Step 4: Verify Sync",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Step 5: Report",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Files Modified",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Skills Used",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "Examples",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "Color Presets",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "Important",
+          "level": 2,
+          "line": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/visual-identity.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 96,
+      "nonEmptyLines": 75,
+      "sections": [
+        {
+          "heading": "Visual Identity Basics",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Core Visual Elements",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Logo",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "Color Palette",
+          "level": 3,
+          "line": 12
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "Visual Guidelines Template",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Quick Checks",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Logo",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Colors",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 93
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/voice-framework.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 88,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Brand Voice Framework",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Voice vs. Tone",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Voice Dimensions",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Tone Spectrum",
+          "level": 3,
+          "line": 12
+        },
+        {
+          "heading": "Language Spectrum",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "Character Spectrum",
+          "level": 3,
+          "line": 24
+        },
+        {
+          "heading": "Emotion Spectrum",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Voice Development Process",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Step 1: Define Personality Traits",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Step 2: Create Voice Chart",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Step 3: Context Adaptation",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Voice Testing",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Voice Guide Template",
+          "level": 2,
+          "line": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    }
+  ]
+}

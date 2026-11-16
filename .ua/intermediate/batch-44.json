@@ -1,0 +1,192 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/design/data/icon/styles.csv",
+      "type": "document",
+      "name": "icon styles.csv",
+      "filePath": ".agents/skills/design/data/icon/styles.csv",
+      "summary": "Icon styles CSV dataset for design system icon library: defines style variants (outline, filled, sharp, rounded, two-tone), weight mappings, size scales, and usage guidelines for 105 searchable icons in ui-ux-pro-max.",
+      "tags": ["skill", "design", "icon", "styles", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/cip/core.py",
+      "type": "document",
+      "name": "cip core.py",
+      "filePath": ".agents/skills/design/scripts/cip/core.py",
+      "summary": "CIP (Component Instance Protocol) core Python module defining base classes for component generation: ComponentSpec, Variant, Slot, Prop, and render logic. Shared by generate.py and render-html.py for design system component code generation.",
+      "tags": ["skill", "design", "cip", "core", "component", "generation", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/cip/generate.py",
+      "type": "document",
+      "name": "cip generate.py",
+      "filePath": ".agents/skills/design/scripts/cip/generate.py",
+      "summary": "CIP component generation script: reads component specifications from CSV/data files, instantiates ComponentSpec objects, and outputs React/TypeScript component code with props, variants, slots, and TypeScript interfaces.",
+      "tags": ["skill", "design", "cip", "generate", "component", "react", "typescript", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/cip/render-html.py",
+      "type": "document",
+      "name": "cip render-html.py",
+      "filePath": ".agents/skills/design/scripts/cip/render-html.py",
+      "summary": "CIP HTML rendering script: generates interactive HTML previews for design system components with variant selectors, prop controls, and live editing. Used for component documentation and visual regression testing.",
+      "tags": ["skill", "design", "cip", "render", "html", "preview", "documentation", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/cip/search.py",
+      "type": "document",
+      "name": "cip search.py",
+      "filePath": ".agents/skills/design/scripts/cip/search.py",
+      "summary": "CIP component search script: provides CLI search over component library with filters for category, props, variants, and framework. Returns matching component specs for use in design-system queries.",
+      "tags": ["skill", "design", "cip", "search", "cli", "component-library", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/icon/generate.py",
+      "type": "document",
+      "name": "icon generate.py",
+      "filePath": ".agents/skills/design/scripts/icon/generate.py",
+      "summary": "Icon generation script: processes SVG icon sources, applies style transformations (outline/filled/sharp/rounded/two-tone), optimizes with SVGO, and outputs React component wrappers with consistent props (size, color, strokeWidth).",
+      "tags": ["skill", "design", "icon", "generate", "svg", "react", "svgo", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/logo/core.py",
+      "type": "document",
+      "name": "logo core.py",
+      "filePath": ".agents/skills/design/scripts/logo/core.py",
+      "summary": "Logo generation core module: defines LogoSpec with variants (primary, secondary, mark, wordmark), color modes (light, dark, mono), size scales, clear space rules, and export formats (SVG, PNG, favicon).",
+      "tags": ["skill", "design", "logo", "core", "brand", "variants", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/logo/generate.py",
+      "type": "document",
+      "name": "logo generate.py",
+      "filePath": ".agents/skills/design/scripts/logo/generate.py",
+      "summary": "Logo generation script: reads brand configuration (colors, typography, icon), applies LogoSpec templates, generates all variant combinations, and exports production-ready assets with correct naming and directory structure.",
+      "tags": ["skill", "design", "logo", "generate", "brand", "assets", "export", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/scripts/logo/search.py",
+      "type": "document",
+      "name": "logo search.py",
+      "filePath": ".agents/skills/design/scripts/logo/search.py",
+      "summary": "Logo search script: queries logo variant library by category (primary/mark/wordmark), color mode, and usage context. Returns matching LogoSpec for design-system integration and brand consistency checks.",
+      "tags": ["skill", "design", "logo", "search", "brand", "variants", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/deliverables.csv",
+      "type": "document",
+      "name": "cip deliverables.csv",
+      "filePath": ".agents/skills/design/data/cip/deliverables.csv",
+      "summary": "CIP deliverables CSV: defines component deliverable types (component, pattern, template, page-section) with required specs, documentation standards, and acceptance criteria for design system contributions.",
+      "tags": ["skill", "design", "cip", "deliverables", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/industries.csv",
+      "type": "document",
+      "name": "cip industries.csv",
+      "filePath": ".agents/skills/design/data/cip/industries.csv",
+      "summary": "CIP industries CSV: maps industry verticals (fintech, healthcare, e-commerce, SaaS, enterprise) to recommended component patterns, color schemes, compliance requirements, and design priorities.",
+      "tags": ["skill", "design", "cip", "industries", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/mockup-contexts.csv",
+      "type": "document",
+      "name": "cip mockup-contexts.csv",
+      "filePath": ".agents/skills/design/data/cip/mockup-contexts.csv",
+      "summary": "CIP mockup contexts CSV: defines presentation contexts for component previews (mobile, desktop, tablet, dark-mode, high-contrast, RTL) with viewport settings and device frame configurations.",
+      "tags": ["skill", "design", "cip", "mockup", "contexts", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/styles.csv",
+      "type": "document",
+      "name": "cip styles.csv",
+      "filePath": ".agents/skills/design/data/cip/styles.csv",
+      "summary": "CIP styles CSV: defines visual style tokens (color palettes, spacing scales, typography, borders, shadows, radius) with semantic names and CSS variable mappings for design system theming.",
+      "tags": ["skill", "design", "cip", "styles", "tokens", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/data/logo/colors.csv",
+      "type": "document",
+      "name": "logo colors.csv",
+      "filePath": ".agents/skills/design/data/logo/colors.csv",
+      "summary": "Logo colors CSV: defines brand color palette with primary/secondary/accent/neutral roles, hex values, usage ratios, accessibility contrast ratios, and color-blind safe alternatives.",
+      "tags": ["skill", "design", "logo", "colors", "palette", "accessibility", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/data/logo/industries.csv",
+      "type": "document",
+      "name": "logo industries.csv",
+      "filePath": ".agents/skills/design/data/logo/industries.csv",
+      "summary": "Logo industries CSV: maps industries to logo style recommendations (minimal, bold, playful, corporate, tech) with rationale and example brand references for logo generation guidance.",
+      "tags": ["skill", "design", "logo", "industries", "styles", "csv", "dataset"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/data/logo/styles.csv",
+      "type": "document",
+      "name": "logo styles.csv",
+      "filePath": ".agents/skills/design/data/logo/styles.csv",
+      "summary": "Logo styles CSV: defines logo style categories (wordmark, lettermark, pictorial, abstract, emblem, combination) with structural characteristics, scalability ratings, and industry fit scores.",
+      "tags": ["skill", "design", "logo", "styles", "categories", "csv", "dataset"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/design/scripts/cip/core.py",
+      "target": "document:.agents/skills/design/scripts/cip/generate.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/scripts/cip/core.py",
+      "target": "document:.agents/skills/design/scripts/cip/render-html.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/scripts/cip/core.py",
+      "target": "document:.agents/skills/design/scripts/cip/search.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/scripts/logo/core.py",
+      "target": "document:.agents/skills/design/scripts/logo/generate.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/scripts/logo/core.py",
+      "target": "document:.agents/skills/design/scripts/logo/search.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/scripts/icon/generate.py",
+      "target": "document:.agents/skills/design/data/icon/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

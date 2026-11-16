@@ -1,0 +1,17 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/slides/references/copywriting-formulas.md", "language": "markdown", "sizeLines": 84, "fileCategory": "docs"},
+    {"path": ".agents/skills/slides/references/create.md", "language": "markdown", "sizeLines": 4, "fileCategory": "docs"},
+    {"path": ".agents/skills/slides/references/html-template.md", "language": "markdown", "sizeLines": 295, "fileCategory": "docs"},
+    {"path": ".agents/skills/slides/references/layout-patterns.md", "language": "markdown", "sizeLines": 137, "fileCategory": "docs"},
+    {"path": ".agents/skills/slides/references/slide-strategies.md", "language": "markdown", "sizeLines": 94, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/slides/references/copywriting-formulas.md": [],
+    ".agents/skills/slides/references/create.md": [],
+    ".agents/skills/slides/references/html-template.md": [],
+    ".agents/skills/slides/references/layout-patterns.md": [],
+    ".agents/skills/slides/references/slide-strategies.md": []
+  }
+}

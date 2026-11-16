@@ -1,0 +1,21 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/ui-styling/references/canvas-design-system.md", "language": "markdown", "sizeLines": 320, "fileCategory": "docs"},
+    {"path": ".agents/skills/ui-styling/references/shadcn-accessibility.md", "language": "markdown", "sizeLines": 471, "fileCategory": "docs"},
+    {"path": ".agents/skills/ui-styling/references/shadcn-components.md", "language": "markdown", "sizeLines": 424, "fileCategory": "docs"},
+    {"path": ".agents/skills/ui-styling/references/shadcn-theming.md", "language": "markdown", "sizeLines": 373, "fileCategory": "docs"},
+    {"path": ".agents/skills/ui-styling/references/tailwind-customization.md", "language": "markdown", "sizeLines": 483, "fileCategory": "docs"},
+    {"path": ".agents/skills/ui-styling/references/tailwind-responsive.md", "language": "markdown", "sizeLines": 382, "fileCategory": "docs"},
+    {"path": ".agents/skills/ui-styling/references/tailwind-utilities.md", "language": "markdown", "sizeLines": 455, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/ui-styling/references/canvas-design-system.md": [],
+    ".agents/skills/ui-styling/references/shadcn-accessibility.md": [],
+    ".agents/skills/ui-styling/references/shadcn-components.md": [],
+    ".agents/skills/ui-styling/references/shadcn-theming.md": [],
+    ".agents/skills/ui-styling/references/tailwind-customization.md": [],
+    ".agents/skills/ui-styling/references/tailwind-responsive.md": [],
+    ".agents/skills/ui-styling/references/tailwind-utilities.md": []
+  }
+}

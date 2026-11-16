@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/src/metadata/metadata_enricher.py",
+      "type": "document",
+      "name": "metadata_enricher.py",
+      "filePath": "ai-service/src/metadata/metadata_enricher.py",
+      "summary": "Metadata enricher: extracts document metadata (title, author, dates, document codes like 214.HD-ACT-HC) from PDF/DOCX using regex patterns and LLM fallback. Enriches chunks with structured metadata for improved retrieval filtering and citation display.",
+      "tags": ["ai-service", "metadata", "enrichment", "pdf", "docx", "regex", "llm", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/src/models/__init__.py",
+      "type": "document",
+      "name": "models/__init__.py",
+      "filePath": "ai-service/src/models/__init__.py",
+      "summary": "Models package init: exports Pydantic models for API requests/responses (ChatQuery, ChatResponse, Citation, Document, SearchResult), database entities (User, Conversation, Message), and configuration settings (Settings, ModelConfig).",
+      "tags": ["ai-service", "models", "pydantic", "api", "database", "config", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/src/models/schema.py",
+      "type": "document",
+      "name": "schema.py",
+      "filePath": "ai-service/src/models/schema.py",
+      "summary": "Database schema models: SQLAlchemy models for User, Conversation, Message, Document, Chunk, Embedding, and metadata tables. Defines relationships, indexes, and constraints. Used with async SQLAlchemy 2.0 and asyncpg.",
+      "tags": ["ai-service", "models", "sqlalchemy", "schema", "database", "async", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/src/parsers/__init__.py",
+      "type": "document",
+      "name": "parsers/__init__.py",
+      "filePath": "ai-service/src/parsers/__init__.py",
+      "summary": "Parsers package init: exports document parsing functions (parse_pdf, parse_docx, parse_txt), chunking strategies (semantic, fixed-size, recursive), and OCR pipeline (tesseract, layout analysis). Registry pattern for extensibility.",
+      "tags": ["ai-service", "parsers", "pdf", "docx", "ocr", "chunking", "registry", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/src/parsers/pdf_parser.py",
+      "type": "document",
+      "name": "pdf_parser.py",
+      "filePath": "ai-service/src/parsers/pdf_parser.py",
+      "summary": "PDF parser: uses pdfplumber for text extraction, Tesseract OCR for scanned pages (tuned: vie, psm 6, oem 1, dpi 400), layout detection (tables, headers), and metadata extraction. Handles Vietnamese diacritics preservation. Called by ingest pipeline.",
+      "tags": ["ai-service", "parsers", "pdf", "ocr", "tesseract", "vietnamese", "layout", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/src/parsers/docx_parser.py",
+      "type": "document",
+      "name": "docx_parser.py",
+      "filePath": "ai-service/src/parsers/docx_parser.py",
+      "summary": "DOCX parser: uses python-docx for text, tables, images, and styles extraction. Preserves document structure (headings, lists, tables) for semantic chunking. Extracts document codes from headers/footers.",
+      "tags": ["ai-service", "parsers", "docx", "python-docx", "structure", "chunking", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/src/sql/executor.py",
+      "type": "document",
+      "name": "executor.py",
+      "filePath": "ai-service/src/sql/executor.py",
+      "summary": "SQL executor: core Text2SQL pipeline with get_llm_complete() implementing 6-key Gemini API rotation (round-robin on 429, shared RPM limit, per-key daily quota persistence to quota_state.json, project-level 60s cooldown, max 18 attempts). Executes generated SQL with guard validation (uid filter, readonly role).",
+      "tags": ["ai-service", "sql", "executor", "text2sql", "gemini", "rotation", "quota", "guard", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/src/sql/router.py",
+      "type": "document",
+      "name": "router.py",
+      "filePath": "ai-service/src/sql/router.py",
+      "summary": "LLM Router: classifies queries into routes (DB_ONLY, DOC_ONLY, HYBRID, DIRECTORY, OUT_OF_SCOPE) using Gemma-4-31B with rewrite_and_route_step prompt. Keyword fallback for new domains. Route guards in chat_service.py. Prompt rules for rewrite (keep doc names, handle pronouns).",
+      "tags": ["ai-service", "sql", "router", "llm", "classification", "gemma", "rewrite", "prompt", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/src/sql/schema_registry.py",
+      "type": "document",
+      "name": "schema_registry.py",
+      "filePath": "ai-service/src/sql/schema_registry.py",
+      "summary": "Schema registry: dynamic database schema introspection (tables, columns, FKs, indexes) cached in Redis. Provides table descriptions, column types, and relationship hints for Text2SQL prompt construction. Syncs with PostgreSQL information_schema on startup.",
+      "tags": ["ai-service", "sql", "schema", "registry", "introspection", "redis", "cache", "text2sql", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/src/sql/text2sql.py",
+      "type": "document",
+      "name": "text2sql.py",
+      "filePath": "ai-service/src/sql/text2sql.py",
+      "summary": "Text2SQL generator: builds prompts with schema context, few-shot examples, and guard rules. Uses Gemini 3.5 Flash-Lite for SQL generation. Post-processes: validates syntax, applies guard (uid filter), executes with timeout, and returns results with explanations.",
+      "tags": ["ai-service", "sql", "text2sql", "prompt", "gemini", "guard", "execution", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/src/utils/gemini_key_manager.py",
+      "type": "document",
+      "name": "gemini_key_manager.py",
+      "filePath": "ai-service/src/utils/gemini_key_manager.py",
+      "summary": "Gemini API key manager: round-robin rotation across 6 keys (GEMINI_API_KEY_1..5 + GEMINI_API_KEY), per-key RPM/daily quota tracking, 429 handling with exponential backoff, quota_state.json persistence, and project-level cooldown. Shared RPM limit (15) enforced globally.",
+      "tags": ["ai-service", "utils", "gemini", "key-manager", "rotation", "quota", "rate-limit", "python"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/src/sql/executor.py",
+      "target": "document:ai-service/src/sql/router.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/src/sql/executor.py",
+      "target": "document:ai-service/src/sql/text2sql.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/src/sql/executor.py",
+      "target": "document:ai-service/src/utils/gemini_key_manager.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/src/sql/router.py",
+      "target": "document:ai-service/src/sql/schema_registry.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/src/parsers/pdf_parser.py",
+      "target": "document:ai-service/src/metadata/metadata_enricher.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

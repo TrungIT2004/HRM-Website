@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/test_v2/outputs/db_generation_eval.json",
+      "type": "document",
+      "name": "db_generation_eval.json",
+      "filePath": "ai-service/test_v2/outputs/db_generation_eval.json",
+      "summary": "DB generation evaluation results JSON with 621 lines containing SQL generation accuracy metrics, execution accuracy, and error breakdown for database-only query route.",
+      "tags": ["test", "results", "ai-service", "db-generation", "evaluation", "sql", "accuracy", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/outputs/db_retrieval_eval.json",
+      "type": "document",
+      "name": "db_retrieval_eval.json",
+      "filePath": "ai-service/test_v2/outputs/db_retrieval_eval.json",
+      "summary": "DB retrieval evaluation results JSON with 711 lines containing retrieval accuracy metrics (Hit@K, MRR), schema linking scores, and table/column recall for database-only route.",
+      "tags": ["test", "results", "ai-service", "db-retrieval", "evaluation", "retrieval", "hit-at-k", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/outputs/hybrid_eval.json",
+      "type": "document",
+      "name": "hybrid_eval.json",
+      "filePath": "ai-service/test_v2/outputs/hybrid_eval.json",
+      "summary": "Hybrid evaluation results JSON with 580 lines containing combined retrieval+generation metrics for hybrid query route including routing accuracy and end-to-end execution accuracy.",
+      "tags": ["test", "results", "ai-service", "hybrid", "evaluation", "routing", "end-to-end", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/outputs/llm_router_test.json",
+      "type": "document",
+      "name": "llm_router_test.json",
+      "filePath": "ai-service/test_v2/outputs/llm_router_test.json",
+      "summary": "LLM router test results JSON with 2,394 lines containing routing accuracy per route (DB_ONLY, DOC_ONLY, HYBRID), confusion matrix, and per-query routing decisions.",
+      "tags": ["test", "results", "ai-service", "llm-router", "routing", "accuracy", "confusion-matrix", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/outputs/retrieval_eval.json",
+      "type": "document",
+      "name": "retrieval_eval.json",
+      "filePath": "ai-service/test_v2/outputs/retrieval_eval.json",
+      "summary": "Document retrieval evaluation results JSON with 992 lines containing Hit@1/5/10, MRR, NDCG scores, and per-query retrieval rankings for RAG pipeline assessment.",
+      "tags": ["test", "results", "ai-service", "retrieval", "rag", "hit-at-k", "mrr", "ndcg", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/test_v2/outputs/llm_router_test.json",
+      "target": "document:ai-service/test_v2/outputs/db_generation_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/test_v2/outputs/llm_router_test.json",
+      "target": "document:ai-service/test_v2/outputs/db_retrieval_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/test_v2/outputs/llm_router_test.json",
+      "target": "document:ai-service/test_v2/outputs/hybrid_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/outputs/llm_router_test.json",
+      "target": "document:ai-service/test_v2/outputs/retrieval_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/test_v2/outputs/db_retrieval_eval.json",
+      "target": "document:ai-service/test_v2/outputs/db_generation_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

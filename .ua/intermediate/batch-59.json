@@ -1,0 +1,149 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "type": "document",
+      "name": "UserRole.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "summary": "UserRole enum: ADMIN, HR, MANAGER, STAFF. Defines role hierarchy and permission scopes. Used in JWT claims and authorization checks.",
+      "tags": ["backend", "employees", "dto", "enum", "role", "authorization", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateAssignmentRequest.java",
+      "type": "document",
+      "name": "UpdateAssignmentRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateAssignmentRequest.java",
+      "summary": "Update assignment request DTO: departmentId, jobId, managerId, effectiveDate with validation. Used for employee role/department/job changes.",
+      "tags": ["backend", "employees", "dto", "assignment", "department", "job", "manager", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateBasicInfoRequest.java",
+      "type": "document",
+      "name": "UpdateBasicInfoRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateBasicInfoRequest.java",
+      "summary": "Update basic info request DTO: fullName, email, phoneNumber, address, dateOfBirth, gender, avatarUrl with validation annotations.",
+      "tags": ["backend", "employees", "dto", "basic-info", "profile", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateLegalProfileRequest.java",
+      "type": "document",
+      "name": "UpdateLegalProfileRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateLegalProfileRequest.java",
+      "summary": "Update legal profile request DTO: idNumber, idIssueDate, idIssuePlace, taxCode, bankAccount, bankName, emergencyContact, emergencyPhone with validation.",
+      "tags": ["backend", "employees", "dto", "legal-profile", "tax", "bank", "emergency", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateProfileRequest.java",
+      "type": "document",
+      "name": "UpdateProfileRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateProfileRequest.java",
+      "summary": "Update profile request DTO: combines basic info and legal profile fields. Used for comprehensive profile updates by employee or HR.",
+      "tags": ["backend", "employees", "dto", "profile", "comprehensive", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "type": "document",
+      "name": "Department.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "summary": "Department JPA entity: id, name, code, description, parentDepartment (self-referential), managerId, isActive, createdAt, updatedAt. Tree structure for org hierarchy.",
+      "tags": ["backend", "employees", "entity", "department", "jpa", "tree", "hierarchy", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "type": "document",
+      "name": "Job.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "summary": "Job JPA entity: id, title, code, description, grade, minSalary, maxSalary, departmentId, isActive. Defines position hierarchy and salary bands.",
+      "tags": ["backend", "employees", "entity", "job", "jpa", "salary-band", "grade", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "type": "document",
+      "name": "Salary.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "summary": "Salary JPA entity: id, userId, baseSalary, allowances, bonuses, deductions, payFrequency, effectiveDate, endDate, currency. Tracks compensation history.",
+      "tags": ["backend", "employees", "entity", "salary", "jpa", "compensation", "history", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "type": "document",
+      "name": "UserProfile.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "summary": "UserProfile JPA entity: id, userId (FK to auth), employeeCode, fullName, email, phone, address, dob, gender, avatarUrl, departmentId, jobId, managerId, hireDate, status, idNumber, taxCode, bankAccount, emergencyContact. Central employee record linking auth, department, job, salary.",
+      "tags": ["backend", "employees", "entity", "user-profile", "jpa", "central-record", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java",
+      "type": "document",
+      "name": "PayFrequency.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java",
+      "summary": "PayFrequency enum: MONTHLY, BI_WEEKLY, WEEKLY, DAILY. Used in Salary entity and payroll calculations.",
+      "tags": ["backend", "employees", "enum", "pay-frequency", "payroll", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "type": "document",
+      "name": "SalaryRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "summary": "Salary repository: JPA repository with findByUserIdOrderByEffectiveDateDesc, findCurrentSalaryByUserId, findByUserIdAndEffectiveDateBetween. Used for salary history and current compensation lookup.",
+      "tags": ["backend", "employees", "repository", "salary", "jpa", "history", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java",
+      "type": "document",
+      "name": "UserProfileRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java",
+      "summary": "UserProfile repository: JPA repository with findByEmployeeCode, findByEmail, findByDepartmentId, findByManagerId, findByStatus, searchByNameOrCode. Supports pagination and sorting for employee directory.",
+      "tags": ["backend", "employees", "repository", "user-profile", "jpa", "search", "pagination", "java"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

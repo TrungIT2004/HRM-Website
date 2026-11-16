@@ -1,0 +1,228 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/angular.csv",
+      "type": "document",
+      "name": "angular.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/angular.csv",
+      "summary": "Angular stack data CSV with 51 lines defining Angular-specific UI components, patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "angular", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "type": "document",
+      "name": "astro.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "summary": "Astro stack data CSV with 54 lines defining Astro-specific UI components, island patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "astro", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+      "type": "document",
+      "name": "avalonia.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+      "summary": "Avalonia stack data CSV with 57 lines defining Avalonia-specific UI components, XAML patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "avalonia", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "type": "document",
+      "name": "flutter.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "summary": "Flutter stack data CSV with 53 lines defining Flutter-specific UI widgets, Material/Cupertino patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "flutter", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "type": "document",
+      "name": "html-tailwind.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "summary": "HTML/Tailwind stack data CSV with 60 lines defining vanilla HTML with Tailwind CSS components, utility patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "html", "tailwind", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+      "type": "document",
+      "name": "javafx.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+      "summary": "JavaFX stack data CSV with 76 lines defining JavaFX-specific UI controls, FXML patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "javafx", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "type": "document",
+      "name": "jetpack-compose.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "summary": "Jetpack Compose stack data CSV with 53 lines defining Compose-specific UI components, Material3 patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "jetpack-compose", "android", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+      "type": "document",
+      "name": "laravel.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+      "summary": "Laravel stack data CSV with 51 lines defining Laravel-specific Blade components, Livewire patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "laravel", "php", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "type": "document",
+      "name": "nextjs.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "summary": "Next.js stack data CSV with 62 lines defining Next.js-specific App Router components, Server Components patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "nextjs", "react", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "type": "document",
+      "name": "nuxt-ui.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "summary": "Nuxt UI stack data CSV with 71 lines defining Nuxt UI-specific components, Vue patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "nuxt", "vue", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "type": "document",
+      "name": "nuxtjs.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "summary": "Nuxt.js stack data CSV with 68 lines defining Nuxt.js-specific components, SSR patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "nuxtjs", "vue", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "type": "document",
+      "name": "react-native.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "summary": "React Native stack data CSV with 52 lines defining React Native-specific components, mobile patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "react-native", "mobile", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "type": "document",
+      "name": "react.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "summary": "React stack data CSV with 62 lines defining React-specific components, hooks patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "react", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "type": "document",
+      "name": "shadcn.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "summary": "shadcn/ui stack data CSV with 69 lines defining shadcn/ui-specific components, Radix UI patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "shadcn", "radix-ui", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "type": "document",
+      "name": "svelte.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "summary": "Svelte stack data CSV with 56 lines defining Svelte-specific components, stores patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "svelte", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "type": "document",
+      "name": "swiftui.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "summary": "SwiftUI stack data CSV with 51 lines defining SwiftUI-specific views, property wrappers patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "swiftui", "ios", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+      "type": "document",
+      "name": "threejs.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+      "summary": "Three.js stack data CSV with 54 lines defining Three.js-specific 3D components, WebGL patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "threejs", "3d", "webgl", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "type": "document",
+      "name": "uno.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "summary": "Uno Platform stack data CSV with 60 lines defining Uno-specific cross-platform UI components, XAML patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "uno", "cross-platform", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+      "type": "document",
+      "name": "uwp.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+      "summary": "UWP stack data CSV with 56 lines defining UWP-specific XAML controls, Fluent Design patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "uwp", "windows", "stack", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "type": "document",
+      "name": "vue.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "summary": "Vue.js stack data CSV with 50 lines defining Vue-specific components, Composition API patterns, and design specifications for the UI/UX Pro Max design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "vue", "stack", "csv"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

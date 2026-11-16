@@ -1,0 +1,24 @@
+Test 1 - user_permission_grants_07 model SQL:
+OK: True, Error: 
+Clean: SELECT permission, granted_at FROM user_permission_grants WHERE user_id = %(uid)s AND EXTRACT(YEAR FROM granted_at) = %(year)s ORDER BY granted_at LIMIT 100
+
+Test 2 - wrong user_col (requestor_id):
+OK: False, Error: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)
+
+Test 3 - monthly_timesheets_07 model SQL:
+OK: True, Error: 
+
+Test 4 - asset_requests_03 model SQL:
+OK: True, Error: 
+
+Test 5 - it_tickets_05 model SQL:
+OK: True, Error: 
+
+Test 6 - performance_reviews_06 model SQL:
+OK: True, Error: 
+
+Test 7 - EXTRACT with granted_at:
+OK: True, Error: 
+
+Test 8 - with alias upg:
+OK: True, Error: 

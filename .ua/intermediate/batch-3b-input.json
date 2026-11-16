@@ -1,0 +1,19 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/brand/references/logo-usage-rules.md", "language": "markdown", "sizeLines": 185, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/messaging-framework.md", "language": "markdown", "sizeLines": 85, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/typography-specifications.md", "language": "markdown", "sizeLines": 214, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/update.md", "language": "markdown", "sizeLines": 118, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/visual-identity.md", "language": "markdown", "sizeLines": 96, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/voice-framework.md", "language": "markdown", "sizeLines": 88, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/brand/references/logo-usage-rules.md": [],
+    ".agents/skills/brand/references/messaging-framework.md": [],
+    ".agents/skills/brand/references/typography-specifications.md": [],
+    ".agents/skills/brand/references/update.md": [],
+    ".agents/skills/brand/references/visual-identity.md": [],
+    ".agents/skills/brand/references/voice-framework.md": []
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/core.py",
+      "type": "document",
+      "name": "core.py",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      "summary": "UI/UX Pro Max core module (42,227 chars): defines data models (Style, Palette, FontPairing, UXGuideline, Icon, GSAPPreset, ChartType, Stack), search indexes, scoring algorithms, and query parsing for the design intelligence engine. Loads all CSV/JSON datasets into memory for fast local search.",
+      "tags": ["skill", "ui-ux", "core", "data-models", "search-index", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "type": "document",
+      "name": "design_system.py",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "summary": "Design system generator (72,580 chars): --design-system CLI command that analyzes product type/industry/keywords and generates complete design system specification: color palette (primary/secondary/neutral/semantic), typography scale, spacing system, component library structure, dark mode, and accessibility baseline. Outputs JSON + markdown documentation.",
+      "tags": ["skill", "ui-ux", "design-system", "generator", "palette", "typography", "components", "cli", "python"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/search.py",
+      "type": "document",
+      "name": "search.py",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/search.py",
+      "summary": "Search CLI (9,294 chars): --domain and --stack query interface for design intelligence. Domains: style, color, typography, ux, icons, motion, charts, landing, react-performance. Stacks: 22 frameworks (nextjs, react, vue, html-tailwind, flutter, etc.). Returns top-k ranked results with reasoning profiles.",
+      "tags": ["skill", "ui-ux", "search", "cli", "domain", "stack", "ranking", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      "type": "document",
+      "name": "reasoning_contract.py",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      "summary": "Reasoning contract module (5,947 chars): defines structured output schema for design recommendations including rationale, tradeoffs, alternatives considered, confidence score, and verification steps. Ensures consistent, auditable design decision output.",
+      "tags": ["skill", "ui-ux", "reasoning", "contract", "schema", "decision-log", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "type": "document",
+      "name": "validate_data.py",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "summary": "Data validation script (53,155 chars): validates all CSV/JSON datasets for schema compliance, referential integrity (cross-file IDs), duplicate detection, completeness checks, and format consistency. Runs as pre-commit hook and CI gate for design intelligence data quality.",
+      "tags": ["skill", "ui-ux", "validate", "data-quality", "schema", "ci", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "type": "document",
+      "name": "catalog-summary.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "summary": "Catalog summary JSON: aggregate statistics for design intelligence dataset - 79 styles, 192 product palettes, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, 22 stacks. Used for quick dataset health checks and skill description.",
+      "tags": ["skill", "ui-ux", "catalog", "summary", "statistics", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "type": "document",
+      "name": "data-provenance.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "summary": "Data provenance JSON: tracks source, license, retrieval date, and transformation history for each dataset (Google Fonts, Phosphor Icons, product palettes from public design systems, UX guidelines from Nielsen Norman Group, charts from Observable/Chart.js docs). Ensures license compliance.",
+      "tags": ["skill", "ui-ux", "provenance", "license", "attribution", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "type": "document",
+      "name": "google-font-licenses.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "summary": "Google Fonts licenses JSON: maps 79 font families to their SIL Open Font License terms, permitted uses (commercial, modification, redistribution), and attribution requirements. Used for font pairing recommendations with legal compliance.",
+      "tags": ["skill", "ui-ux", "google-fonts", "licenses", "sil-ofl", "compliance", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "type": "document",
+      "name": "phosphor-icons-upstream.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "summary": "Phosphor Icons upstream JSON: complete icon catalog (105 icons × 6 weights = 630 variants) from phosphor-icons repository with metadata: name, category, tags, Unicode mappings, and style variants (thin, light, regular, bold, fill, duotone).",
+      "tags": ["skill", "ui-ux", "phosphor-icons", "catalog", "variants", "metadata", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/app-interface.csv",
+      "type": "document",
+      "name": "app-interface.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/app-interface.csv",
+      "summary": "App interface patterns CSV: mobile/desktop app UI patterns (navigation, onboarding, settings, profiles, empty states, permissions, offline) with platform-specific implementations (iOS, Android, React Native, Flutter) and accessibility notes.",
+      "tags": ["skill", "ui-ux", "app-interface", "patterns", "mobile", "desktop", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/charts.csv",
+      "type": "document",
+      "name": "charts.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/charts.csv",
+      "summary": "Charts CSV: 25 chart type definitions (bar, line, area, scatter, pie, heatmap, treemap, sankey, radar, gantt, etc.) with use cases, data requirements, encoding channels, accessibility patterns, and library recommendations (Recharts, Chart.js, D3, Observable Plot).",
+      "tags": ["skill", "ui-ux", "charts", "data-viz", "types", "accessibility", "libraries", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/colors.csv",
+      "type": "document",
+      "name": "colors.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/colors.csv",
+      "summary": "Colors CSV: 192 product palette entries with industry, style keywords, primary/secondary/accent/neutral hex values, color-blind safe ratings, contrast ratios, and psychological associations. Powers design-system palette generation.",
+      "tags": ["skill", "ui-ux", "colors", "palettes", "192", "industry", "accessibility", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "type": "document",
+      "name": "google-fonts.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "summary": "Google Fonts CSV: 79 font families with category (sans, serif, mono, display, handwriting), weights, variable font support, language subsets, popularity rank, and pairing affinity scores. Source for font pairing recommendations.",
+      "tags": ["skill", "ui-ux", "google-fonts", "fonts", "79", "variable", "pairing", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/icons.csv",
+      "type": "document",
+      "name": "icons.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/icons.csv",
+      "summary": "Icons CSV: 105 icon entries with name, category (navigation, action, status, media, communication, etc.), Phosphor variant availability, semantic meaning, and recommended usage contexts. Powers icon search and selection.",
+      "tags": ["skill", "ui-ux", "icons", "105", "categories", "phosphor", "semantic", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/landing.csv",
+      "type": "document",
+      "name": "landing.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/landing.csv",
+      "summary": "Landing page patterns CSV: section templates (hero, features, testimonials, pricing, FAQ, CTA, footer) with layout variants, copy frameworks, conversion patterns, and A/B test insights from SaaS/e-commerce/product landing pages.",
+      "tags": ["skill", "ui-ux", "landing", "patterns", "conversion", "saas", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/motion.csv",
+      "type": "document",
+      "name": "motion.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/motion.csv",
+      "summary": "Motion CSV: 17 GSAP preset definitions (fade, slide, scale, stagger, morph, scroll-trigger, parallax, text-reveal) with easing, duration, stagger parameters, performance notes, and accessibility reduced-motion alternatives.",
+      "tags": ["skill", "ui-ux", "motion", "gsap", "presets", "animation", "reduced-motion", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/products.csv",
+      "type": "document",
+      "name": "products.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/products.csv",
+      "summary": "Products CSV: 192 product references with company, industry, design system name, public URL, notable patterns (color, typography, components), and extraction date. Source corpus for palette and style extraction.",
+      "tags": ["skill", "ui-ux", "products", "design-systems", "references", "corpus", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/react-performance.csv",
+      "type": "document",
+      "name": "react-performance.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/react-performance.csv",
+      "summary": "React performance CSV: optimization patterns (memo, useMemo, useCallback, virtualization, code-splitting, Suspense, selective hydration) with before/after metrics, bundle impact, and tradeoff analysis for dashboard/list/form scenarios.",
+      "tags": ["skill", "ui-ux", "react", "performance", "optimization", "memo", "virtualization", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "type": "document",
+      "name": "nextjs.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "summary": "Next.js stack CSV: framework-specific patterns (App Router, Server Components, streaming, middleware, image optimization, font loading, i18n, auth) with code snippets, performance tips, and common pitfalls for UI implementation.",
+      "tags": ["skill", "ui-ux", "nextjs", "stack", "app-router", "server-components", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "type": "document",
+      "name": "react-native.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "summary": "React Native stack CSV: mobile-specific patterns (safe areas, gestures, keyboard handling, navigation, native modules, Hermes, Flipper debugging, OTA updates) with iOS/Android differences and Expo managed vs bare workflow.",
+      "tags": ["skill", "ui-ux", "react-native", "stack", "mobile", "ios", "android", "expo", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "type": "document",
+      "name": "html-tailwind.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "summary": "HTML + Tailwind CSS stack CSV: utility-first patterns (responsive, dark mode, container queries, arbitrary values, JIT, plugins) with component examples (buttons, cards, forms, modals, tables) and purge/config optimization.",
+      "tags": ["skill", "ui-ux", "html-tailwind", "stack", "utility-first", "jit", "components", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "type": "document",
+      "name": "flutter.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "summary": "Flutter stack CSV: widget patterns (Material/Cupertino, custom painters, animations, state management, platform channels, testing) with Dart specifics, performance profiling, and web/desktop/mobile target differences.",
+      "tags": ["skill", "ui-ux", "flutter", "stack", "dart", "widgets", "platform-channels", "csv"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/search.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/core.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/colors.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/search.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/icons.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/colors.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

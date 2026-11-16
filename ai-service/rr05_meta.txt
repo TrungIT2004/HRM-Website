@@ -1,0 +1,7 @@
+{
+  "original_id": "resignation_requests_05",
+  "table": "resignation_requests",
+  "check_type": "non_empty",
+  "variant": "loc status REJECTED / CANCELLED / MANAGER_REJECTED",
+  "expected_route": "DB_ONLY"
+}

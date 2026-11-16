@@ -1,0 +1,1814 @@
+{
+  "asset_assignments": {
+    "columns": [
+      {
+        "name": "assignment_id",
+        "type": "uuid"
+      },
+      {
+        "name": "assigned_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "condition_on_assign",
+        "type": "text"
+      },
+      {
+        "name": "condition_on_return",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "expected_return_date",
+        "type": "date"
+      },
+      {
+        "name": "notes",
+        "type": "text"
+      },
+      {
+        "name": "returned_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "asset_id",
+        "type": "uuid"
+      },
+      {
+        "name": "assigned_by",
+        "type": "uuid"
+      },
+      {
+        "name": "request_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "department_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "asset_categories": {
+    "columns": [
+      {
+        "name": "category_id",
+        "type": "uuid"
+      },
+      {
+        "name": "code_prefix",
+        "type": "character varying"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "description",
+        "type": "character varying"
+      },
+      {
+        "name": "name",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      }
+    ]
+  },
+  "asset_images": {
+    "columns": [
+      {
+        "name": "image_id",
+        "type": "uuid"
+      },
+      {
+        "name": "caption",
+        "type": "character varying"
+      },
+      {
+        "name": "is_cover",
+        "type": "boolean"
+      },
+      {
+        "name": "image_url",
+        "type": "character varying"
+      },
+      {
+        "name": "taken_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "asset_id",
+        "type": "uuid"
+      },
+      {
+        "name": "assignment_id",
+        "type": "uuid"
+      },
+      {
+        "name": "inventory_log_id",
+        "type": "uuid"
+      },
+      {
+        "name": "maintenance_id",
+        "type": "uuid"
+      },
+      {
+        "name": "taken_by",
+        "type": "uuid"
+      }
+    ]
+  },
+  "asset_inventory_logs": {
+    "columns": [
+      {
+        "name": "log_id",
+        "type": "uuid"
+      },
+      {
+        "name": "checked_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "condition_note",
+        "type": "text"
+      },
+      {
+        "name": "found",
+        "type": "boolean"
+      },
+      {
+        "name": "asset_id",
+        "type": "uuid"
+      },
+      {
+        "name": "checked_by",
+        "type": "uuid"
+      }
+    ]
+  },
+  "asset_maintenances": {
+    "columns": [
+      {
+        "name": "maintenance_id",
+        "type": "uuid"
+      },
+      {
+        "name": "cost",
+        "type": "double precision"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "name": "returned_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "sent_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "type",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "vendor",
+        "type": "character varying"
+      },
+      {
+        "name": "asset_id",
+        "type": "uuid"
+      },
+      {
+        "name": "handled_by",
+        "type": "uuid"
+      },
+      {
+        "name": "reported_by",
+        "type": "uuid"
+      }
+    ]
+  },
+  "asset_requests": {
+    "columns": [
+      {
+        "name": "request_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "expected_return_date",
+        "type": "date"
+      },
+      {
+        "name": "needed_by_date",
+        "type": "date"
+      },
+      {
+        "name": "reason",
+        "type": "text"
+      },
+      {
+        "name": "rejection_reason",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "approver_id",
+        "type": "uuid"
+      },
+      {
+        "name": "category_id",
+        "type": "uuid"
+      },
+      {
+        "name": "requestor_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "assets": {
+    "columns": [
+      {
+        "name": "asset_id",
+        "type": "uuid"
+      },
+      {
+        "name": "asset_code",
+        "type": "character varying"
+      },
+      {
+        "name": "condition_note",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "location",
+        "type": "text"
+      },
+      {
+        "name": "name",
+        "type": "character varying"
+      },
+      {
+        "name": "purchase_cost",
+        "type": "double precision"
+      },
+      {
+        "name": "purchase_date",
+        "type": "date"
+      },
+      {
+        "name": "serial_number",
+        "type": "character varying"
+      },
+      {
+        "name": "specs",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "supplier",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "useful_life_months",
+        "type": "integer"
+      },
+      {
+        "name": "warranty_until",
+        "type": "date"
+      },
+      {
+        "name": "category_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_by",
+        "type": "uuid"
+      },
+      {
+        "name": "current_holder_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "attendances": {
+    "columns": [
+      {
+        "name": "attendance_id",
+        "type": "uuid"
+      },
+      {
+        "name": "clock_in_time",
+        "type": "time without time zone"
+      },
+      {
+        "name": "clock_out_time",
+        "type": "time without time zone"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "work_date",
+        "type": "date"
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "is_edited",
+        "type": "boolean"
+      },
+      {
+        "name": "edited_by",
+        "type": "uuid"
+      },
+      {
+        "name": "edited_reason",
+        "type": "character varying"
+      },
+      {
+        "name": "is_deleted",
+        "type": "boolean"
+      }
+    ]
+  },
+  "comment_reactions": {
+    "columns": [
+      {
+        "name": "reaction_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "reaction",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "comment_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "comments": {
+    "columns": [
+      {
+        "name": "comment_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "media_url",
+        "type": "character varying"
+      },
+      {
+        "name": "reaction_count",
+        "type": "integer"
+      },
+      {
+        "name": "reply_count",
+        "type": "integer"
+      },
+      {
+        "name": "text_content",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "parent_comment_id",
+        "type": "uuid"
+      },
+      {
+        "name": "interactable_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "departments": {
+    "columns": [
+      {
+        "name": "department_id",
+        "type": "uuid"
+      },
+      {
+        "name": "name",
+        "type": "character varying"
+      }
+    ]
+  },
+  "documents": {
+    "columns": [
+      {
+        "name": "document_id",
+        "type": "uuid"
+      },
+      {
+        "name": "category",
+        "type": "character varying"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "document_name",
+        "type": "character varying"
+      },
+      {
+        "name": "document_title",
+        "type": "character varying"
+      },
+      {
+        "name": "file_path",
+        "type": "character varying"
+      },
+      {
+        "name": "file_size",
+        "type": "bigint"
+      },
+      {
+        "name": "file_type",
+        "type": "character varying"
+      },
+      {
+        "name": "file_url",
+        "type": "character varying"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean"
+      },
+      {
+        "name": "summary",
+        "type": "text"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "uploader_id",
+        "type": "uuid"
+      },
+      {
+        "name": "uploader_name",
+        "type": "character varying"
+      }
+    ]
+  },
+  "hashtags": {
+    "columns": [
+      {
+        "name": "hashtag_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "hashtag_name",
+        "type": "character varying"
+      }
+    ]
+  },
+  "holidays": {
+    "columns": [
+      {
+        "name": "holiday_id",
+        "type": "uuid"
+      },
+      {
+        "name": "date",
+        "type": "date"
+      },
+      {
+        "name": "description",
+        "type": "character varying"
+      }
+    ]
+  },
+  "interactables": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid"
+      },
+      {
+        "name": "type",
+        "type": "character varying"
+      }
+    ]
+  },
+  "it_tickets": {
+    "columns": [
+      {
+        "name": "ticket_id",
+        "type": "uuid"
+      },
+      {
+        "name": "device_info",
+        "type": "text"
+      },
+      {
+        "name": "category",
+        "type": "character varying"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "name": "location",
+        "type": "text"
+      },
+      {
+        "name": "image_url",
+        "type": "character varying"
+      },
+      {
+        "name": "priority",
+        "type": "character varying"
+      },
+      {
+        "name": "reporter_id",
+        "type": "uuid"
+      },
+      {
+        "name": "assignee_id",
+        "type": "uuid"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "resolve_note",
+        "type": "text"
+      },
+      {
+        "name": "resolved_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      }
+    ]
+  },
+  "jobs": {
+    "columns": [
+      {
+        "name": "job_id",
+        "type": "uuid"
+      },
+      {
+        "name": "title",
+        "type": "character varying"
+      },
+      {
+        "name": "department_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "leave_requests": {
+    "columns": [
+      {
+        "name": "request_id",
+        "type": "uuid"
+      },
+      {
+        "name": "from_date",
+        "type": "date"
+      },
+      {
+        "name": "reason",
+        "type": "character varying"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "approver_id",
+        "type": "uuid"
+      },
+      {
+        "name": "requestor_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "to_date",
+        "type": "date"
+      },
+      {
+        "name": "paid_leave_days",
+        "type": "integer"
+      },
+      {
+        "name": "rejection_reason",
+        "type": "character varying"
+      }
+    ]
+  },
+  "monthly_payroll_summaries": {
+    "columns": [
+      {
+        "name": "summary_id",
+        "type": "uuid"
+      },
+      {
+        "name": "period_month",
+        "type": "integer"
+      },
+      {
+        "name": "period_year",
+        "type": "integer"
+      },
+      {
+        "name": "total_employees",
+        "type": "integer"
+      },
+      {
+        "name": "total_gross_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "total_net_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "total_basic_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "total_overtime_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "total_bonus_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "total_allowance_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "total_personal_income_tax",
+        "type": "numeric"
+      },
+      {
+        "name": "total_employee_insurance",
+        "type": "numeric"
+      },
+      {
+        "name": "total_company_insurance",
+        "type": "numeric"
+      },
+      {
+        "name": "total_union_fee",
+        "type": "numeric"
+      },
+      {
+        "name": "total_company_cost",
+        "type": "numeric"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "approved_by",
+        "type": "uuid"
+      },
+      {
+        "name": "approved_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      }
+    ]
+  },
+  "monthly_timesheets": {
+    "columns": [
+      {
+        "name": "timesheet_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "period_month",
+        "type": "integer"
+      },
+      {
+        "name": "period_year",
+        "type": "integer"
+      },
+      {
+        "name": "standard_working_days",
+        "type": "integer"
+      },
+      {
+        "name": "actual_worked_days",
+        "type": "numeric"
+      },
+      {
+        "name": "actual_work_hours",
+        "type": "numeric"
+      },
+      {
+        "name": "late_count",
+        "type": "integer"
+      },
+      {
+        "name": "total_late_minutes",
+        "type": "integer"
+      },
+      {
+        "name": "early_departure_count",
+        "type": "integer"
+      },
+      {
+        "name": "absent_days",
+        "type": "numeric"
+      },
+      {
+        "name": "paid_leave_days",
+        "type": "numeric"
+      },
+      {
+        "name": "unpaid_leave_days",
+        "type": "numeric"
+      },
+      {
+        "name": "total_actual_ot_hours",
+        "type": "numeric"
+      },
+      {
+        "name": "total_paid_ot_hours",
+        "type": "numeric"
+      },
+      {
+        "name": "ot_details",
+        "type": "jsonb"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "note",
+        "type": "character varying"
+      },
+      {
+        "name": "locked_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "locked_by",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone"
+      }
+    ]
+  },
+  "notifications": {
+    "columns": [
+      {
+        "name": "notification_id",
+        "type": "uuid"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "entity_id",
+        "type": "uuid"
+      },
+      {
+        "name": "entity_type",
+        "type": "character varying"
+      },
+      {
+        "name": "is_read",
+        "type": "boolean"
+      },
+      {
+        "name": "is_seen",
+        "type": "boolean"
+      },
+      {
+        "name": "type",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "recipent_id",
+        "type": "uuid"
+      },
+      {
+        "name": "sender_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "overtime_records": {
+    "columns": [
+      {
+        "name": "overtime_record_id",
+        "type": "uuid"
+      },
+      {
+        "name": "approved_date",
+        "type": "date"
+      },
+      {
+        "name": "approved_end_time",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "approved_start_time",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "clock_in_time",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "clock_out_time",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "is_holiday",
+        "type": "boolean"
+      },
+      {
+        "name": "is_night_time",
+        "type": "boolean"
+      },
+      {
+        "name": "is_weekend",
+        "type": "boolean"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "approver_id",
+        "type": "uuid"
+      },
+      {
+        "name": "requestor_id",
+        "type": "uuid"
+      },
+      {
+        "name": "reason",
+        "type": "character varying"
+      },
+      {
+        "name": "rejection_reason",
+        "type": "character varying"
+      }
+    ]
+  },
+  "payrolls": {
+    "columns": [
+      {
+        "name": "payroll_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "timesheet_id",
+        "type": "uuid"
+      },
+      {
+        "name": "period_month",
+        "type": "integer"
+      },
+      {
+        "name": "period_year",
+        "type": "integer"
+      },
+      {
+        "name": "base_salary",
+        "type": "numeric"
+      },
+      {
+        "name": "hourly_rate",
+        "type": "numeric"
+      },
+      {
+        "name": "basic_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "overtime_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "allowance_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "bonus_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "gross_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "insurance_deduction",
+        "type": "numeric"
+      },
+      {
+        "name": "tax_deduction",
+        "type": "numeric"
+      },
+      {
+        "name": "other_deduction",
+        "type": "numeric"
+      },
+      {
+        "name": "total_deduction",
+        "type": "numeric"
+      },
+      {
+        "name": "net_pay",
+        "type": "numeric"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "note",
+        "type": "character varying"
+      },
+      {
+        "name": "calculated_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "approved_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "paid_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      }
+    ]
+  },
+  "pending_users": {
+    "columns": [
+      {
+        "name": "pending_id",
+        "type": "uuid"
+      },
+      {
+        "name": "first_name",
+        "type": "character varying"
+      },
+      {
+        "name": "last_name",
+        "type": "character varying"
+      },
+      {
+        "name": "gender",
+        "type": "character varying"
+      },
+      {
+        "name": "birth_date",
+        "type": "date"
+      },
+      {
+        "name": "personal_email",
+        "type": "character varying"
+      },
+      {
+        "name": "phone_number",
+        "type": "character varying"
+      },
+      {
+        "name": "citizen_id",
+        "type": "character varying"
+      },
+      {
+        "name": "place_of_birth",
+        "type": "character varying"
+      },
+      {
+        "name": "department_id",
+        "type": "uuid"
+      },
+      {
+        "name": "job_id",
+        "type": "uuid"
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid"
+      },
+      {
+        "name": "base_salary",
+        "type": "numeric"
+      },
+      {
+        "name": "contract_type",
+        "type": "character varying"
+      },
+      {
+        "name": "contract_start_date",
+        "type": "date"
+      },
+      {
+        "name": "contract_end_date",
+        "type": "date"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "rejection_reason",
+        "type": "character varying"
+      },
+      {
+        "name": "created_by",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone"
+      }
+    ]
+  },
+  "performance_reviews": {
+    "columns": [
+      {
+        "name": "review_id",
+        "type": "uuid"
+      },
+      {
+        "name": "avg_manager",
+        "type": "double precision"
+      },
+      {
+        "name": "avg_self",
+        "type": "double precision"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "department_name",
+        "type": "character varying"
+      },
+      {
+        "name": "evaluator_name",
+        "type": "character varying"
+      },
+      {
+        "name": "leader_confirmed",
+        "type": "boolean"
+      },
+      {
+        "name": "locked_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "locked_by",
+        "type": "uuid"
+      },
+      {
+        "name": "manager_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "next_goals",
+        "type": "text"
+      },
+      {
+        "name": "overall_summary",
+        "type": "text"
+      },
+      {
+        "name": "period_month",
+        "type": "integer"
+      },
+      {
+        "name": "period_type",
+        "type": "character varying"
+      },
+      {
+        "name": "period_year",
+        "type": "integer"
+      },
+      {
+        "name": "reviewee_name",
+        "type": "character varying"
+      },
+      {
+        "name": "self_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "evaluator_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "performance_scores": {
+    "columns": [
+      {
+        "name": "score_id",
+        "type": "uuid"
+      },
+      {
+        "name": "criterion_code",
+        "type": "character varying"
+      },
+      {
+        "name": "criterion_text",
+        "type": "character varying"
+      },
+      {
+        "name": "manager_score",
+        "type": "integer"
+      },
+      {
+        "name": "note",
+        "type": "character varying"
+      },
+      {
+        "name": "self_score",
+        "type": "integer"
+      },
+      {
+        "name": "sort_order",
+        "type": "integer"
+      },
+      {
+        "name": "review_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "post_hashtag": {
+    "columns": [
+      {
+        "name": "post_id",
+        "type": "uuid"
+      },
+      {
+        "name": "hashtag_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "post_reactions": {
+    "columns": [
+      {
+        "name": "reaction_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "reaction",
+        "type": "character varying"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "interactable_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "posts": {
+    "columns": [
+      {
+        "name": "post_id",
+        "type": "uuid"
+      },
+      {
+        "name": "comment_count",
+        "type": "integer"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "media_urls",
+        "type": "jsonb"
+      },
+      {
+        "name": "reaction_count",
+        "type": "integer"
+      },
+      {
+        "name": "share_count",
+        "type": "integer"
+      },
+      {
+        "name": "text",
+        "type": "character varying"
+      },
+      {
+        "name": "updatedd_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "visibility",
+        "type": "character varying"
+      },
+      {
+        "name": "interactable_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "resignation_requests": {
+    "columns": [
+      {
+        "name": "resignation_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "hr_approved_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "hr_comment",
+        "type": "character varying"
+      },
+      {
+        "name": "last_working_date",
+        "type": "date"
+      },
+      {
+        "name": "manager_approved_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "manager_comment",
+        "type": "character varying"
+      },
+      {
+        "name": "reason",
+        "type": "character varying"
+      },
+      {
+        "name": "status",
+        "type": "character varying"
+      },
+      {
+        "name": "submitted_time",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "hr_or_executive_id",
+        "type": "uuid"
+      },
+      {
+        "name": "manager_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "salaries": {
+    "columns": [
+      {
+        "name": "salary_id",
+        "type": "uuid"
+      },
+      {
+        "name": "base_salary",
+        "type": "double precision"
+      },
+      {
+        "name": "end_date",
+        "type": "date"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean"
+      },
+      {
+        "name": "pay_frequency",
+        "type": "character varying"
+      },
+      {
+        "name": "start_date",
+        "type": "date"
+      },
+      {
+        "name": "work_days",
+        "type": "double precision"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "shares": {
+    "columns": [
+      {
+        "name": "share_id",
+        "type": "uuid"
+      },
+      {
+        "name": "comment_count",
+        "type": "integer"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "reaction_count",
+        "type": "integer"
+      },
+      {
+        "name": "text_content",
+        "type": "character varying"
+      },
+      {
+        "name": "visibility",
+        "type": "character varying"
+      },
+      {
+        "name": "interactable_id",
+        "type": "uuid"
+      },
+      {
+        "name": "post_id",
+        "type": "uuid"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "user_bank_accounts": {
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "account_number",
+        "type": "character varying"
+      },
+      {
+        "name": "bank_name",
+        "type": "character varying"
+      },
+      {
+        "name": "id",
+        "type": "uuid"
+      },
+      {
+        "name": "bank_code",
+        "type": "character varying"
+      },
+      {
+        "name": "account_holder_name",
+        "type": "character varying"
+      },
+      {
+        "name": "is_default",
+        "type": "boolean"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone"
+      }
+    ]
+  },
+  "user_contracts": {
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "contract_end_date",
+        "type": "date"
+      },
+      {
+        "name": "contract_start_date",
+        "type": "date"
+      },
+      {
+        "name": "contract_type",
+        "type": "character varying"
+      },
+      {
+        "name": "contract_id",
+        "type": "uuid"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean"
+      }
+    ]
+  },
+  "user_permission_grants": {
+    "columns": [
+      {
+        "name": "permission",
+        "type": "character varying"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "granted_at",
+        "type": "timestamp without time zone"
+      },
+      {
+        "name": "granted_by",
+        "type": "uuid"
+      }
+    ]
+  },
+  "user_profiles": {
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "citizen_id_number",
+        "type": "character varying"
+      },
+      {
+        "name": "emergency_contact_name",
+        "type": "character varying"
+      },
+      {
+        "name": "emergency_contact_phone",
+        "type": "character varying"
+      },
+      {
+        "name": "marital_status",
+        "type": "character varying"
+      },
+      {
+        "name": "nationality",
+        "type": "character varying"
+      },
+      {
+        "name": "personal_email",
+        "type": "character varying"
+      },
+      {
+        "name": "phone_number",
+        "type": "character varying"
+      },
+      {
+        "name": "place_of_birth",
+        "type": "character varying"
+      },
+      {
+        "name": "social_insurance_number",
+        "type": "character varying"
+      },
+      {
+        "name": "social_insurance_start_date",
+        "type": "date"
+      },
+      {
+        "name": "tax_identification_number",
+        "type": "character varying"
+      }
+    ]
+  },
+  "user_sessions": {
+    "columns": [
+      {
+        "name": "session_id",
+        "type": "uuid"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone"
+      },
+      {
+        "name": "device_id",
+        "type": "uuid"
+      },
+      {
+        "name": "meta_data",
+        "type": "jsonb"
+      },
+      {
+        "name": "revoked",
+        "type": "boolean"
+      },
+      {
+        "name": "token",
+        "type": "text"
+      },
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "last_active_at",
+        "type": "timestamp with time zone"
+      }
+    ]
+  },
+  "users": {
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "uuid"
+      },
+      {
+        "name": "annual_leave_days",
+        "type": "integer"
+      },
+      {
+        "name": "birth_date",
+        "type": "date"
+      },
+      {
+        "name": "email",
+        "type": "character varying"
+      },
+      {
+        "name": "first_name",
+        "type": "character varying"
+      },
+      {
+        "name": "gender",
+        "type": "character varying"
+      },
+      {
+        "name": "joined_date",
+        "type": "date"
+      },
+      {
+        "name": "last_name",
+        "type": "character varying"
+      },
+      {
+        "name": "password",
+        "type": "character varying"
+      },
+      {
+        "name": "profile_pic_url",
+        "type": "character varying"
+      },
+      {
+        "name": "used_leave_days",
+        "type": "integer"
+      },
+      {
+        "name": "department_id",
+        "type": "uuid"
+      },
+      {
+        "name": "job_id",
+        "type": "uuid"
+      },
+      {
+        "name": "face_embedding",
+        "type": "USER-DEFINED"
+      },
+      {
+        "name": "employee_code",
+        "type": "character varying"
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid"
+      },
+      {
+        "name": "is_active",
+        "type": "boolean"
+      }
+    ]
+  },
+  "work_shift_schedules": {
+    "columns": [
+      {
+        "name": "schedule_id",
+        "type": "uuid"
+      },
+      {
+        "name": "day_of_week",
+        "type": "integer"
+      },
+      {
+        "name": "end_time",
+        "type": "time without time zone"
+      },
+      {
+        "name": "is_working",
+        "type": "boolean"
+      },
+      {
+        "name": "rest_end_time",
+        "type": "time without time zone"
+      },
+      {
+        "name": "rest_start_time",
+        "type": "time without time zone"
+      },
+      {
+        "name": "start_time",
+        "type": "time without time zone"
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid"
+      }
+    ]
+  },
+  "work_shifts": {
+    "columns": [
+      {
+        "name": "shift_id",
+        "type": "uuid"
+      },
+      {
+        "name": "name",
+        "type": "character varying"
+      }
+    ]
+  }
+}

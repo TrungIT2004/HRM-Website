@@ -1,0 +1,232 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/controllers/LeaveController.java",
+      "type": "document",
+      "name": "LeaveController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/controllers/LeaveController.java",
+      "summary": "Leave REST controller: endpoints for createLeaveRequest, getMyLeaveRequests, getLeaveRequestDetail, cancelLeaveRequest, handleLeaveRequest (approve/reject by manager/HR), getTeamLeaveRequests, getLeaveBalance, getLeaveTypes. Role-based access control.",
+      "tags": ["backend", "leave", "controller", "rest", "crud", "approval", "balance", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/CreateLeaveReqRequest.java",
+      "type": "document",
+      "name": "CreateLeaveReqRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/CreateLeaveReqRequest.java",
+      "summary": "Create leave request DTO: leaveTypeId, startDate, endDate, startTime, endTime, reason, attachmentUrl. Validation for date ranges and overlapping requests.",
+      "tags": ["backend", "leave", "dto", "create", "request", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/HandleLeaveReqApiRequest.java",
+      "type": "document",
+      "name": "HandleLeaveReqApiRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/HandleLeaveReqApiRequest.java",
+      "summary": "Handle leave request DTO: action (APPROVE, REJECT), comment. Used by manager/HR to process pending leave requests.",
+      "tags": ["backend", "leave", "dto", "handle", "approve", "reject", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "type": "document",
+      "name": "LeaveFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "summary": "Leave filter request DTO: userId, departmentId, leaveTypeId, status, dateFrom, dateTo, page, size, sortBy, sortDir. Used for paginated leave queries.",
+      "tags": ["backend", "leave", "dto", "filter", "pagination", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/HrLeaveResponse.java",
+      "type": "document",
+      "name": "HrLeaveResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/HrLeaveResponse.java",
+      "summary": "HR leave response DTO: requestId, userId, employeeCode, fullName, department, leaveType, startDate, endDate, duration, status, reason, approver, approvedAt. Full HR view.",
+      "tags": ["backend", "leave", "dto", "response", "hr", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/LeavePreviewResponse.java",
+      "type": "document",
+      "name": "LeavePreviewResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/LeavePreviewResponse.java",
+      "summary": "Leave preview response DTO: leaveType, startDate, endDate, duration, conflicts (overlapping requests), balanceImpact. Pre-submission validation preview.",
+      "tags": ["backend", "leave", "dto", "response", "preview", "conflict", "balance", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/ManagerLeaveResponse.java",
+      "type": "document",
+      "name": "ManagerLeaveResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/ManagerLeaveResponse.java",
+      "summary": "Manager leave response DTO: requestId, userId, employeeCode, fullName, leaveType, startDate, endDate, duration, status, reason. Manager view for team requests.",
+      "tags": ["backend", "leave", "dto", "response", "manager", "team", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/StaffLeaveResponse.java",
+      "type": "document",
+      "name": "StaffLeaveResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/StaffLeaveResponse.java",
+      "summary": "Staff leave response DTO: requestId, leaveType, startDate, endDate, duration, status, reason, attachmentUrl. Employee self-view.",
+      "tags": ["backend", "leave", "dto", "response", "staff", "self", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "type": "document",
+      "name": "LeaveRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "summary": "LeaveRequest JPA entity: id, userId, leaveTypeId, startDate, endDate, startTime, endTime, duration (hours), status (PENDING, APPROVED, REJECTED, CANCELLED), reason, attachmentUrl, approverId, approvedAt, createdAt, updatedAt. Supports half-day and hourly leave.",
+      "tags": ["backend", "leave", "entity", "jpa", "request", "half-day", "hourly", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "type": "document",
+      "name": "LeaveRequestStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "summary": "LeaveRequestStatus enum: PENDING, APPROVED, REJECTED, CANCELLED. Workflow states for leave request lifecycle.",
+      "tags": ["backend", "leave", "enum", "status", "workflow", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java",
+      "type": "document",
+      "name": "LeaveException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java",
+      "summary": "Leave exception: extends RuntimeException with error codes (INSUFFICIENT_BALANCE, OVERLAPPING_REQUEST, INVALID_DATE_RANGE, LEAVE_TYPE_NOT_FOUND, REQUEST_NOT_FOUND, INVALID_STATUS_TRANSITION, APPROVER_REQUIRED). Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "leave", "exception", "error-code", "balance", "overlap", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/HandleOvertimeReqApiRequest.java",
+      "type": "document",
+      "name": "HandleOvertimeReqApiRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/HandleOvertimeReqApiRequest.java",
+      "summary": "Handle overtime request DTO: action (APPROVE, REJECT), comment. Used by manager to process overtime requests.",
+      "tags": ["backend", "overtime", "dto", "handle", "approve", "reject", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "type": "document",
+      "name": "OvertimeFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "summary": "Overtime filter request DTO: userId, departmentId, status, dateFrom, dateTo, page, size, sortBy, sortDir. Paginated overtime queries.",
+      "tags": ["backend", "overtime", "dto", "filter", "pagination", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeWorkTimeRequest.java",
+      "type": "document",
+      "name": "OvertimeWorkTimeRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeWorkTimeRequest.java",
+      "summary": "Overtime work time request DTO: workDate, startTime, endTime, reason, attachmentUrl. Validation for business hours and maximum daily overtime.",
+      "tags": ["backend", "overtime", "dto", "work-time", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/HrOvertimeResponse.java",
+      "type": "document",
+      "name": "HrOvertimeResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/HrOvertimeResponse.java",
+      "summary": "HR overtime response DTO: recordId, userId, employeeCode, fullName, department, workDate, startTime, endTime, duration, status, reason, approver, approvedAt. Full HR view.",
+      "tags": ["backend", "overtime", "dto", "response", "hr", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/ManagerOvertimeResponse.java",
+      "type": "document",
+      "name": "ManagerOvertimeResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/ManagerOvertimeResponse.java",
+      "summary": "Manager overtime response DTO: recordId, userId, employeeCode, fullName, workDate, startTime, endTime, duration, status, reason. Manager view for team.",
+      "tags": ["backend", "overtime", "dto", "response", "manager", "team", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/StaffOvertimeResponse.java",
+      "type": "document",
+      "name": "StaffOvertimeResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/StaffOvertimeResponse.java",
+      "summary": "Staff overtime response DTO: recordId, workDate, startTime, endTime, duration, status, reason, attachmentUrl. Employee self-view.",
+      "tags": ["backend", "overtime", "dto", "response", "staff", "self", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/entities/Holiday.java",
+      "type": "document",
+      "name": "Holiday.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/entities/Holiday.java",
+      "summary": "Holiday JPA entity: id, name, date, isRecurring, description. Used for overtime calculation (holiday pay rates) and leave balance.",
+      "tags": ["backend", "overtime", "entity", "holiday", "jpa", "recurring", "pay-rate", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "type": "document",
+      "name": "OvertimeRecord.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "summary": "OvertimeRecord JPA entity: id, userId, workDate, startTime, endTime, duration (hours), status (PENDING, APPROVED, REJECTED), reason, attachmentUrl, approverId, approvedAt, createdAt, updatedAt. Daily overtime record.",
+      "tags": ["backend", "overtime", "entity", "record", "jpa", "daily", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "type": "document",
+      "name": "OvertimeRecordStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "summary": "OvertimeRecordStatus enum: PENDING, APPROVED, REJECTED. Workflow states for overtime approval.",
+      "tags": ["backend", "overtime", "enum", "status", "workflow", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java",
+      "type": "document",
+      "name": "OvertimeException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java",
+      "summary": "Overtime exception: extends RuntimeException with error codes (EXCEEDS_DAILY_LIMIT, EXCEEDS_MONTHLY_LIMIT, INVALID_WORK_TIME, OVERLAPPING_RECORD, RECORD_NOT_FOUND, INVALID_STATUS_TRANSITION, APPROVER_REQUIRED, HOLIDAY_CALCULATION_ERROR). Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "overtime", "exception", "error-code", "limit", "holiday", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java",
+      "type": "document",
+      "name": "HolidayRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java",
+      "summary": "Holiday repository: JPA repository with findByDate, findByDateBetween, findRecurringHolidays. Used for overtime pay calculation and leave balance.",
+      "tags": ["backend", "overtime", "repository", "holiday", "jpa", "pay-calculation", "java"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/leave/controllers/LeaveController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/overtime/entities/Holiday.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

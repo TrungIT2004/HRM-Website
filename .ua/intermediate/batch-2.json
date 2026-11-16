@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/banner-design/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/banner-design/SKILL.md",
+      "summary": "Banner Design skill defining a multi-format creative banner system with a 5-step workflow: gather requirements, research art direction, design options, export to images, and iterate. Includes size quick reference, top 10 art direction styles, and design rules.",
+      "tags": ["documentation", "skill", "design-system", "banner", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "type": "document",
+      "name": "banner-sizes-and-styles.md",
+      "filePath": ".agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "summary": "Comprehensive reference for banner sizes across social media, web/display ads, website, and print formats. Documents 22 art direction styles with design principles including visual hierarchy (3-zone rule), safe zones, CTA rules, typography, text-to-image ratios, print specs, and Pinterest research queries.",
+      "tags": ["documentation", "reference", "design-system", "banner", "specifications"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/banner-design/SKILL.md",
+      "target": "document:.agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

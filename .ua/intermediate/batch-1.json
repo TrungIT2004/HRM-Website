@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/architect/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/architect/SKILL.md",
+      "summary": "Architect skill that guides designing system architecture and scoping new features before implementation. Defines a 5-step process including reading AGENTS.md, interviewing the user with 3 key questions, proposing a design, and getting approval before coding.",
+      "tags": ["documentation", "architecture", "design", "planning", "skill"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/audit/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/audit/SKILL.md",
+      "summary": "Audit skill that scans the codebase to create or update the AGENTS.md context file. Enforces read-only, fact-driven analysis with no secrets, preserving existing context. Outputs a structured AGENTS.md covering architecture, tech stack, data flows, database, API conventions, coding standards, build commands, environment variables, constraints, and known issues.",
+      "tags": ["documentation", "audit", "codebase-analysis", "context", "skill"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/architect/SKILL.md",
+      "target": "document:.agents/skills/audit/SKILL.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

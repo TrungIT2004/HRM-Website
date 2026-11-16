@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/design-system/references/component-specs.md",
+      "type": "document",
+      "name": "component-specs.md",
+      "filePath": ".agents/skills/design-system/references/component-specs.md",
+      "summary": "Detailed specifications for 7 core UI components (Button, Input, Card, Badge, Alert, Dialog, Table) including variants, sizes, states, and anatomy diagrams.",
+      "tags": ["documentation", "design-system", "component-specs", "ui-components"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design-system/references/component-tokens.md",
+      "type": "document",
+      "name": "component-tokens.md",
+      "filePath": ".agents/skills/design-system/references/component-tokens.md",
+      "summary": "Component-specific CSS custom properties mapping semantic tokens to component-level tokens for Button, Input, Card, Badge, Alert, Dialog, and Table with usage examples.",
+      "tags": ["documentation", "design-system", "tokens", "css-variables", "component-tokens"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design-system/references/primitive-tokens.md",
+      "type": "document",
+      "name": "primitive-tokens.md",
+      "filePath": ".agents/skills/design-system/references/primitive-tokens.md",
+      "summary": "Foundation design tokens including color scales (gray, blue, status colors), 4px-base spacing scale, typography scale, border radius, shadows, motion durations, and z-index layers.",
+      "tags": ["documentation", "design-system", "tokens", "primitive-tokens", "foundation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design-system/references/semantic-tokens.md",
+      "type": "document",
+      "name": "semantic-tokens.md",
+      "filePath": ".agents/skills/design-system/references/semantic-tokens.md",
+      "summary": "Purpose-based semantic token aliases referencing primitives, covering color semantics (background, primary, secondary, muted, destructive, status), spacing semantics, typography semantics, interactive states, and dark mode overrides.",
+      "tags": ["documentation", "design-system", "tokens", "semantic-tokens", "theming", "dark-mode"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design-system/references/states-and-variants.md",
+      "type": "document",
+      "name": "states-and-variants.md",
+      "filePath": ".agents/skills/design-system/references/states-and-variants.md",
+      "summary": "Component state definitions (default, hover, focus, active, disabled, loading) with priority ordering, focus ring specifications, disabled/loading/error state treatments, variant patterns for color and size, and accessibility requirements including ARIA states.",
+      "tags": ["documentation", "design-system", "states", "variants", "accessibility", "interaction-patterns"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design-system/references/tailwind-integration.md",
+      "type": "document",
+      "name": "tailwind-integration.md",
+      "filePath": ".agents/skills/design-system/references/tailwind-integration.md",
+      "summary": "Tailwind CSS configuration mapping design system tokens via CSS variables in HSL format, including color configuration, component classes (Button example), spacing integration, animation tokens, dark mode toggle, and shadcn/ui alignment.",
+      "tags": ["documentation", "design-system", "tailwind", "css-variables", "shadcn-ui", "integration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design-system/references/token-architecture.md",
+      "type": "document",
+      "name": "token-architecture.md",
+      "filePath": ".agents/skills/design-system/references/token-architecture.md",
+      "summary": "Three-layer token architecture (Primitive → Semantic → Component) with rationale, layer definitions, dark mode implementation, naming conventions, file organization, migration guide from flat tokens, and W3C DTCG alignment.",
+      "tags": ["documentation", "design-system", "architecture", "tokens", "token-architecture", "w3c-dtcg"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/design-system/references/token-architecture.md",
+      "target": "document:.agents/skills/design-system/references/primitive-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/token-architecture.md",
+      "target": "document:.agents/skills/design-system/references/semantic-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/token-architecture.md",
+      "target": "document:.agents/skills/design-system/references/component-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/semantic-tokens.md",
+      "target": "document:.agents/skills/design-system/references/primitive-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/component-tokens.md",
+      "target": "document:.agents/skills/design-system/references/semantic-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/states-and-variants.md",
+      "target": "document:.agents/skills/design-system/references/semantic-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/component-specs.md",
+      "target": "document:.agents/skills/design-system/references/component-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/component-specs.md",
+      "target": "document:.agents/skills/design-system/references/states-and-variants.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/tailwind-integration.md",
+      "target": "document:.agents/skills/design-system/references/semantic-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/tailwind-integration.md",
+      "target": "document:.agents/skills/design-system/references/component-tokens.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:.agents/skills/design-system/references/tailwind-integration.md",
+      "target": "document:.agents/skills/design-system/references/token-architecture.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

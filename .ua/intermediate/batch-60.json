@@ -1,0 +1,171 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java",
+      "type": "document",
+      "name": "AttendanceFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java",
+      "summary": "Attendance filter request DTO: userId, departmentId, dateFrom, dateTo, status, page, size, sortBy, sortDir. Used for paginated attendance queries.",
+      "tags": ["backend", "attendance", "dto", "filter", "pagination", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java",
+      "type": "document",
+      "name": "CompanyTimesheetFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java",
+      "summary": "Company timesheet filter request DTO: departmentId, dateFrom, dateTo, status, page, size. HR/admin view for company-wide timesheet reporting.",
+      "tags": ["backend", "attendance", "dto", "timesheet", "company", "hr", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/EditAttendanceRequest.java",
+      "type": "document",
+      "name": "EditAttendanceRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/EditAttendanceRequest.java",
+      "summary": "Edit attendance request DTO: attendanceId, checkInTime, checkOutTime, status, note. Used by HR/manager to correct attendance records.",
+      "tags": ["backend", "attendance", "dto", "edit", "correction", "hr", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java",
+      "type": "document",
+      "name": "ManagerTimesheetFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java",
+      "summary": "Manager timesheet filter request DTO: teamId, dateFrom, dateTo, status, page, size. Manager view for team timesheet approval.",
+      "tags": ["backend", "attendance", "dto", "timesheet", "manager", "team", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/MonthlyTimesheetEditRequest.java",
+      "type": "document",
+      "name": "MonthlyTimesheetEditRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/MonthlyTimesheetEditRequest.java",
+      "summary": "Monthly timesheet edit request DTO: userId, month, year, dailyRecords (list of day, checkIn, checkOut, status), submittedBy. Bulk monthly correction.",
+      "tags": ["backend", "attendance", "dto", "timesheet", "monthly", "bulk", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java",
+      "type": "document",
+      "name": "StaffTimesheetFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java",
+      "summary": "Staff timesheet filter request DTO: dateFrom, dateTo, status, page, size. Employee self-view for personal timesheet.",
+      "tags": ["backend", "attendance", "dto", "timesheet", "staff", "self", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/CompanyMonthlyTimesheetResponse.java",
+      "type": "document",
+      "name": "CompanyMonthlyTimesheetResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/CompanyMonthlyTimesheetResponse.java",
+      "summary": "Company monthly timesheet response DTO: userId, employeeCode, fullName, department, dailyRecords, totalWorkingHours, totalOvertimeHours, leaveDays. Aggregated for HR reporting.",
+      "tags": ["backend", "attendance", "dto", "response", "timesheet", "monthly", "company", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/HrAttendanceResponse.java",
+      "type": "document",
+      "name": "HrAttendanceResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/HrAttendanceResponse.java",
+      "summary": "HR attendance response DTO: attendanceId, userId, employeeCode, fullName, department, checkInTime, checkOutTime, status, location, note. HR view with all fields.",
+      "tags": ["backend", "attendance", "dto", "response", "hr", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/ManagerAttendanceResponse.java",
+      "type": "document",
+      "name": "ManagerAttendanceResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/ManagerAttendanceResponse.java",
+      "summary": "Manager attendance response DTO: attendanceId, userId, employeeCode, fullName, checkInTime, checkOutTime, status, location. Manager view (subset of HR).",
+      "tags": ["backend", "attendance", "dto", "response", "manager", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffAttendanceResponse.java",
+      "type": "document",
+      "name": "StaffAttendanceResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffAttendanceResponse.java",
+      "summary": "Staff attendance response DTO: attendanceId, checkInTime, checkOutTime, status, location, note. Employee self-view (minimal fields).",
+      "tags": ["backend", "attendance", "dto", "response", "staff", "self", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffMonthlyTimesheetResponse.java",
+      "type": "document",
+      "name": "StaffMonthlyTimesheetResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffMonthlyTimesheetResponse.java",
+      "summary": "Staff monthly timesheet response DTO: month, year, dailyRecords, totalWorkingHours, totalOvertimeHours, leaveDays, pendingRequests. Employee self-view summary.",
+      "tags": ["backend", "attendance", "dto", "response", "timesheet", "monthly", "staff", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "type": "document",
+      "name": "Attendance.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "summary": "Attendance JPA entity: id, userId, checkInTime, checkOutTime, status (PRESENT, ABSENT, LATE, EARLY_LEAVE, ON_LEAVE, REMOTE), location, ipAddress, deviceInfo, note, createdAt, updatedAt. Daily attendance record with geofence/IP validation.",
+      "tags": ["backend", "attendance", "entity", "jpa", "checkin", "checkout", "geofence", "status", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "type": "document",
+      "name": "MonthlyTimesheet.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "summary": "MonthlyTimesheet JPA entity: id, userId, month, year, status (DRAFT, SUBMITTED, APPROVED, REJECTED), totalWorkingHours, totalOvertimeHours, leaveDays, submittedAt, approvedAt, approvedBy. Monthly summary for payroll.",
+      "tags": ["backend", "attendance", "entity", "timesheet", "jpa", "monthly", "payroll", "approval", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "type": "document",
+      "name": "TimesheetStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "summary": "TimesheetStatus enum: DRAFT, SUBMITTED, APPROVED, REJECTED. Workflow states for monthly timesheet approval process.",
+      "tags": ["backend", "attendance", "enum", "timesheet", "status", "workflow", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "type": "document",
+      "name": "AttendanceException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "summary": "Attendance exception: extends RuntimeException with error codes (ALREADY_CHECKED_IN, NOT_CHECKED_IN, INVALID_LOCATION, OUTSIDE_GEOFENCE, INVALID_TIME, TIMESHEET_LOCKED, INVALID_STATUS_TRANSITION). Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "attendance", "exception", "error-code", "geofence", "timesheet", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "type": "document",
+      "name": "WorkShiftRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "summary": "WorkShift repository: JPA repository for WorkShift entity (defined in asset module). Methods: findByDepartmentId, findActiveByUserId, findByDateRange. Used for shift-based attendance validation.",
+      "tags": ["backend", "attendance", "repository", "workshift", "jpa", "shift", "validation", "java"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.5
+    }
+  ]
+}

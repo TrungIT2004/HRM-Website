@@ -1,0 +1,168 @@
+{
+  "nodes": [
+    {
+      "id": "document:HRM Website/src/services/resignationService.ts",
+      "type": "document",
+      "name": "resignationService.ts",
+      "filePath": "HRM Website/src/services/resignationService.ts",
+      "summary": "Resignation service: API calls for submitResignation, getResignationStatus, approveResignation, rejectResignation, scheduleExitInterview, submitHandoverPlan, getFinalSettlement, and uploadOffboardingDoc. Uses apiClient with retry logic and Zod response validation.",
+      "tags": ["frontend", "hrm-website", "service", "resignation", "api", "zod", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/services/ticketService.ts",
+      "type": "document",
+      "name": "ticketService.ts",
+      "filePath": "HRM Website/src/services/ticketService.ts",
+      "summary": "IT Ticket service: createTicket, getTickets (with filters), getTicketDetail, addComment, updateStatus, assignTicket, escalateTicket, getSLAStatus, and exportTickets. Implements optimistic updates for status changes and real-time subscription for comments.",
+      "tags": ["frontend", "hrm-website", "service", "ticket", "it-support", "optimistic-update", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/services/workShiftService.ts",
+      "type": "document",
+      "name": "workShiftService.ts",
+      "filePath": "HRM Website/src/services/workShiftService.ts",
+      "summary": "Work Shift service: getShifts, getShiftTemplates, createShift, assignShift, swapShiftRequest, approveSwap, getShiftCalendar, detectConflicts, and bulkAssign. Integrates with attendance service for check-in validation.",
+      "tags": ["frontend", "hrm-website", "service", "shift", "schedule", "conflict-detection", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/services/aiService.ts",
+      "type": "document",
+      "name": "aiService.ts",
+      "filePath": "HRM Website/src/services/aiService.ts",
+      "summary": "AI Chat service: streamChat (Server-Sent Events), sendMessage, getConversations, getConversationHistory, deleteConversation, updateTitle, and uploadDocument. Handles streaming response parsing, citation extraction, and error retry with exponential backoff.",
+      "tags": ["frontend", "hrm-website", "service", "ai", "chat", "streaming", "sse", "citations", "typescript"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:HRM Website/src/services/apiClient.ts",
+      "type": "document",
+      "name": "apiClient.ts",
+      "filePath": "HRM Website/src/services/apiClient.ts",
+      "summary": "Core API client: Axios instance with interceptors for auth token attachment, automatic refresh on 401, request/response logging, Zod schema validation, error normalization (ApiError), and request deduplication. Base URL from NEXT_PUBLIC_API_URL.",
+      "tags": ["frontend", "hrm-website", "service", "api", "axios", "interceptors", "auth", "zod", "typescript"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:HRM Website/src/services/employeeService.ts",
+      "type": "document",
+      "name": "employeeService.ts",
+      "filePath": "HRM Website/src/services/employeeService.ts",
+      "summary": "Employee service: getEmployees (pagination, filters, search), getEmployeeDetail, createEmployee, updateEmployee, terminateEmployee, getOrgChart, importEmployees, and exportEmployees. Handles avatar upload to MinIO and department sync.",
+      "tags": ["frontend", "hrm-website", "service", "employee", "directory", "org-chart", "minio", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/services/assetService.ts",
+      "type": "document",
+      "name": "assetService.ts",
+      "filePath": "HRM Website/src/services/assetService.ts",
+      "summary": "Asset service: getAssets, getAssetCategories, createAssetRequest, approveRequest, assignAsset, returnAsset, scheduleMaintenance, getDepreciationReport, and bulkImport. Tracks asset lifecycle from procurement to disposal.",
+      "tags": ["frontend", "hrm-website", "service", "asset", "lifecycle", "maintenance", "depreciation", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/services/attendanceService.ts",
+      "type": "document",
+      "name": "attendanceService.ts",
+      "filePath": "HRM Website/src/services/attendanceService.ts",
+      "summary": "Attendance service: checkIn, checkOut, getAttendanceStatus, getLeaveBalance, requestLeave, requestOvertime, getTimesheet, submitTimesheet, and getTeamAttendance (manager). Validates geofence and work shift alignment.",
+      "tags": ["frontend", "hrm-website", "service", "attendance", "checkin", "leave", "overtime", "timesheet", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/services/performanceService.ts",
+      "type": "document",
+      "name": "performanceService.ts",
+      "filePath": "HRM Website/src/services/performanceService.ts",
+      "summary": "Performance service: getReviewCycles, getSelfReviews, getTeamReviews, submitSelfReview, submitManagerReview, calibrateScores, getScoreDistribution, and exportReviewData. Supports multi-rater (360) and calibration workflows.",
+      "tags": ["frontend", "hrm-website", "service", "performance", "review", "calibration", "360", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/types/index.ts",
+      "type": "document",
+      "name": "index.ts",
+      "filePath": "HRM Website/src/types/index.ts",
+      "summary": "TypeScript type definitions: API response types (ApiResponse, PaginatedResponse), domain models (User, Employee, Asset, Ticket, Leave, Overtime, Payroll, Review), form schemas (Zod), and utility types (Nullable, OptionalKeys, DeepPartial).",
+      "tags": ["frontend", "hrm-website", "types", "typescript", "zod", "domain-models", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/utils/dateRange.ts",
+      "type": "document",
+      "name": "dateRange.ts",
+      "filePath": "HRM Website/src/utils/dateRange.ts",
+      "summary": "Date range utilities: parseRange, formatRange, getPresets (today, week, month, quarter, year), isInRange, addBusinessDays, getWorkingDays, and Vietnamese locale formatting (DD/MM/YYYY). Used across filters and reports.",
+      "tags": ["frontend", "hrm-website", "utils", "date", "range", "vietnamese", "locale", "typescript"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/aiService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/employeeService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/assetService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/attendanceService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/performanceService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/resignationService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/ticketService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/services/apiClient.ts",
+      "target": "document:HRM Website/src/services/workShiftService.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/types/index.ts",
+      "target": "document:HRM Website/src/services/apiClient.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

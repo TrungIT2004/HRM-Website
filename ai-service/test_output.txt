@@ -1,0 +1,475 @@
+[GeminiKeyManager] Loaded persisted state for key0_AQ.Ab8RN...: route=0/14000, sql=0/500, ans=0/500, vision=0/500
+[GeminiKeyManager] Loaded persisted state for key1_AQ.Ab8RN...: route=20/14000, sql=8/500, ans=6/500, vision=0/500
+[GeminiKeyManager] Loaded persisted state for key2_AQ.Ab8RN...: route=17/14000, sql=8/500, ans=6/500, vision=0/500
+[GeminiKeyManager] Loaded persisted state for key3_AQ.Ab8RN...: route=17/14000, sql=8/500, ans=6/500, vision=0/500
+[GeminiKeyManager] Loaded persisted state for key4_AQ.Ab8RN...: route=23/14000, sql=8/500, ans=6/500, vision=0/500
+[GeminiKeyManager] Loaded persisted state for key5_AQ.Ab8RN...: route=20/14000, sql=7/500, ans=6/500, vision=0/500
+[GeminiKeyManager] Initialized 6 key(s) for rotation
+  key0_AQ.Ab8RN...: route_daily=14000, sql_daily=500, ans_daily=500, vision_daily=500
+  key1_AQ.Ab8RN...: route_daily=14000, sql_daily=500, ans_daily=500, vision_daily=500
+  key2_AQ.Ab8RN...: route_daily=14000, sql_daily=500, ans_daily=500, vision_daily=500
+  key3_AQ.Ab8RN...: route_daily=14000, sql_daily=500, ans_daily=500, vision_daily=500
+  key4_AQ.Ab8RN...: route_daily=14000, sql_daily=500, ans_daily=500, vision_daily=500
+  key5_AQ.Ab8RN...: route_daily=14000, sql_daily=500, ans_daily=500, vision_daily=500
+Total questions: 341 (DOC=120, DB/HYB=221)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=1 tokens_in=1866 tokens_out=32 rpm=1/30 daily=18/14000
+[1/341] ✅ [DOC_ONLY] Tôi muốn đăng ký xe đi công tác đột xuất thì cần thực hiện t... (57545ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key3_AQ.Ab8RN... calls=1 tokens_in=1864 tokens_out=30 rpm=1/30 daily=18/14000
+[2/341] ✅ [DOC_ONLY] Tôi muốn đăng ký xe đi công tác thì cần gửi yêu cầu cho phòn... (125135ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key5_AQ.Ab8RN... calls=1 tokens_in=1863 tokens_out=29 rpm=1/30 daily=21/14000
+[3/341] ✅ [DOC_ONLY] Trong tháng 04/2024, lái xe Bùi Xuân Quang nghỉ phép vào ngà... (72869ms)
+[LLM usage] route key=key1_AQ.Ab8RN... calls=1 tokens_in=1869 tokens_out=34 rpm=1/30 daily=21/14000
+[4/341] ✅ [DOC_ONLY] Quyết định số 917./QĐ-ACT về việc đăng ký và sử dụng xe công... (84827ms)
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key5_AQ.Ab8RN... calls=2 tokens_in=1870 tokens_out=36 rpm=1/30 daily=22/14000
+[5/341] ✅ [DOC_ONLY] Xe ô tô phục vụ công tác của Công ty Cổ phần Viễn thông ACT ... (104447ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key5_AQ.Ab8RN... calls=3 tokens_in=1865 tokens_out=30 rpm=1/30 daily=23/14000
+[6/341] ✅ [DOC_ONLY] Khi nào tôi nên sử dụng dịch vụ vận chuyển thuê ngoài thay v... (179232ms)
+[LLM usage] route key=key1_AQ.Ab8RN... calls=2 tokens_in=1872 tokens_out=37 rpm=1/30 daily=22/14000
+[7/341] ✅ [DOC_ONLY] Tôi cần đăng ký xe công tác cho kế hoạch đã được phê duyệt t... (63027ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key4_AQ.Ab8RN... calls=1 tokens_in=1873 tokens_out=39 rpm=1/30 daily=24/14000
+[8/341] ✅ [DOC_ONLY] Quy định về phân quyền và nguyên tắc sử dụng phương tiện vận... (68930ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=2 tokens_in=1857 tokens_out=23 rpm=1/30 daily=19/14000
+[9/341] ✅ [DOC_ONLY] Số quyết định của văn bản này là bao nhiêu?... (83293ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key4_AQ.Ab8RN... calls=2 tokens_in=1879 tokens_out=45 rpm=1/30 daily=25/14000
+[10/341] ✅ [DOC_ONLY] Quy chế lương thưởng và chế độ cho người lao động của Công t... (39065ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=3 tokens_in=1866 tokens_out=32 rpm=1/30 daily=20/14000
+[11/341] ✅ [DOC_ONLY] Mục đích của việc trả lương và thưởng cho cá nhân, bộ phận t... (36227ms)
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key4_AQ.Ab8RN... calls=3 tokens_in=1866 tokens_out=31 rpm=1/30 daily=26/14000
+[12/341] ✅ [DOC_ONLY] Quy định của công ty được căn cứ trên những văn bản pháp luậ... (132032ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key1_AQ.Ab8RN... calls=3 tokens_in=1865 tokens_out=31 rpm=1/30 daily=23/14000
+[13/341] ✅ [DOC_ONLY] Việc chi trả lương và thưởng của công ty được căn cứ vào nhữ... (45179ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key5_AQ.Ab8RN... calls=4 tokens_in=1861 tokens_out=27 rpm=1/30 daily=24/14000
+[14/341] ✅ [DOC_ONLY] Mức lương thử việc đối với nhân viên được tính như thế nào?... (142761ms)
+[LLM usage] route key=key1_AQ.Ab8RN... calls=4 tokens_in=1862 tokens_out=28 rpm=1/30 daily=24/14000
+[15/341] ✅ [DOC_ONLY] Cách tính lương cơ bản của nhân viên được quy định như thế n... (28199ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key3_AQ.Ab8RN... calls=2 tokens_in=1860 tokens_out=25 rpm=1/30 daily=19/14000
+[16/341] ✅ [DOC_ONLY] Mức lương cơ bản được sử dụng cho những mục đích gì?... (56978ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key5_AQ.Ab8RN... calls=5 tokens_in=1859 tokens_out=24 rpm=1/30 daily=25/14000
+[17/341] ✅ [DOC_ONLY] Cách tính phụ cấp HQCV được quy định như thế nào?... (37715ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key4_AQ.Ab8RN... calls=4 tokens_in=1863 tokens_out=28 rpm=1/30 daily=27/14000
+[18/341] ✅ [DOC_ONLY] Định mức loại A dành cho Ban Giám đốc và Công nhân là bao nh... (111261ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key1_AQ.Ab8RN... calls=5 tokens_in=1859 tokens_out=25 rpm=1/30 daily=25/14000
+[19/341] ✅ [DOC_ONLY] Tiêu chí để đánh giá mức A đối với công nhân là gì?... (25237ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=4 tokens_in=1857 tokens_out=23 rpm=1/30 daily=21/14000
+[20/341] ✅ [DOC_ONLY] Phụ cấp ăn trưa của công nhân là bao nhiêu?... (23265ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=5 tokens_in=1859 tokens_out=25 rpm=1/30 daily=22/14000
+[21/341] ✅ [DOC_ONLY] Công ty thường tổ chức liên hoan vào những dịp nào?... (89448ms)
+[LLM usage] route key=key3_AQ.Ab8RN... calls=3 tokens_in=1860 tokens_out=25 rpm=1/30 daily=20/14000
+[22/341] ✅ [DOC_ONLY] Quyết định số 15/2023/QĐ được ban hành vào ngày nào?... (34035ms)
+[LLM usage] route key=key4_AQ.Ab8RN... calls=5 tokens_in=1871 tokens_out=37 rpm=1/30 daily=28/14000
+[23/341] ✅ [DOC_ONLY] Mục đích của Quy chế tiền lương, tiền thưởng cho người lao đ... (46157ms)
+[LLM usage] route key=key5_AQ.Ab8RN... calls=6 tokens_in=1871 tokens_out=37 rpm=1/30 daily=26/14000
+[24/341] ✅ [DOC_ONLY] Mức lương cho người lao động làm hành chính trong điều kiện ... (77308ms)
+[LLM usage] route key=key1_AQ.Ab8RN... calls=6 tokens_in=1852 tokens_out=18 rpm=1/30 daily=26/14000
+[25/341] ✅ [DOC_ONLY] Lương khoán việc là gì?... (37440ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key5_AQ.Ab8RN... calls=7 tokens_in=1864 tokens_out=30 rpm=1/30 daily=27/14000
+[26/341] ✅ [DOC_ONLY] Mức hưởng phụ cấp trách nhiệm của Trưởng phòng kinh doanh là... (50219ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=6 tokens_in=1870 tokens_out=36 rpm=1/30 daily=23/14000
+[27/341] ✅ [DOC_ONLY] Nhân viên kinh doanh được hưởng phụ cấp ăn trưa, điện thoại ... (69960ms)
+[Quota] Key key3_AQ.Ab8RN... exhausted for route, rotating...
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key4_AQ.Ab8RN... calls=6 tokens_in=1871 tokens_out=37 rpm=1/30 daily=29/14000
+[28/341] ✅ [DOC_ONLY] Người lao động ký hợp đồng lao động dưới 03 tháng thì các kh... (132128ms)
+[Quota] Key key5_AQ.Ab8RN... exhausted for route, rotating...
+[LLM usage] route key=key1_AQ.Ab8RN... calls=7 tokens_in=1878 tokens_out=43 rpm=1/30 daily=27/14000
+[29/341] ✅ [DOC_ONLY] Tôi là nhân viên chính thức ký hợp đồng từ 6 tháng trở lên t... (38220ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=7 tokens_in=1865 tokens_out=30 rpm=1/30 daily=24/14000
+[30/341] ✅ [DOC_ONLY] Cách tính tiền lương tháng của người lao động được quy định ... (36037ms)
+[Quota] Key key4_AQ.Ab8RN... exhausted for route, rotating...
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=8 tokens_in=1871 tokens_out=36 rpm=1/30 daily=25/14000
+[31/341] ✅ [DOC_ONLY] Cách tính tiền lương khi làm thêm giờ vào ngày thường, ngày ... (91410ms)
+[LLM usage] route key=key1_AQ.Ab8RN... calls=8 tokens_in=1871 tokens_out=37 rpm=1/30 daily=28/14000
+[32/341] ✅ [DOC_ONLY] Phụ cấp lưu trú khi đi công tác về cách ngày tại Hà Nội, Đà ... (42663ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[Quota] Key key1_AQ.Ab8RN... exhausted for route, rotating...
+[LLM usage] route key=key2_AQ.Ab8RN... calls=9 tokens_in=1861 tokens_out=27 rpm=1/30 daily=26/14000
+[33/341] ✅ [DOC_ONLY] Điều kiện để nhân viên được xét tăng lương hàng năm là gì?... (27844ms)
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=10 tokens_in=1871 tokens_out=36 rpm=1/30 daily=27/14000
+[34/341] ✅ [DOC_ONLY] Điều kiện để phòng kinh doanh được hưởng phần trăm doanh thu... (109638ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=11 tokens_in=1868 tokens_out=34 rpm=1/30 daily=28/14000
+[35/341] ✅ [DOC_ONLY] Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in của... (56163ms)
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[GeminiKeyManager] route  error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=12 tokens_in=1874 tokens_out=39 rpm=1/30 daily=29/14000
+[36/341] ✅ [DOC_ONLY] Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in của... (130133ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=13 tokens_in=1869 tokens_out=35 rpm=1/30 daily=30/14000
+[37/341] ✅ [DOC_ONLY] Định mức sử dụng văn phòng phẩm và mực in hàng tháng cho nhâ... (52571ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=14 tokens_in=1869 tokens_out=35 rpm=1/30 daily=31/14000
+[38/341] ✅ [DOC_ONLY] Tôi muốn đề xuất mua văn phòng phẩm và vệ sinh phẩm hàng thá... (67025ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=15 tokens_in=1865 tokens_out=30 rpm=2/30 daily=32/14000
+[39/341] ✅ [DOC_ONLY] Đơn giá của một ream giấy photocopy Double AA A4 loại 80gsm ... (53470ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=16 tokens_in=1860 tokens_out=25 rpm=1/30 daily=33/14000
+[40/341] ✅ [DOC_ONLY] Giá của bìa 3 dây Thảo Linh gáy 20 phân là bao nhiêu?... (30764ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=17 tokens_in=1863 tokens_out=29 rpm=2/30 daily=34/14000
+[41/341] ✅ [DOC_ONLY] Giá của một cây bút bi UNI SX101 Jestream 0.7mm xanh là bao ... (71603ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=18 tokens_in=1863 tokens_out=28 rpm=1/30 daily=35/14000
+[42/341] ✅ [DOC_ONLY] Giá của một quyển bìa nhựa 60 lá Flexoffice FO-DB03 là bao n... (63457ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=19 tokens_in=1859 tokens_out=25 rpm=1/30 daily=36/14000
+[43/341] ✅ [DOC_ONLY] Đơn giá của máy tính Casio FX-580VNX là bao nhiêu?... (53344ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=20 tokens_in=1861 tokens_out=26 rpm=2/30 daily=37/14000
+[44/341] ✅ [DOC_ONLY] Giá của một xấp bao thư trắng F100 (12x22) là bao nhiêu?... (42482ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=21 tokens_in=1862 tokens_out=28 rpm=1/30 daily=38/14000
+[45/341] ✅ [DOC_ONLY] Giá của thước kéo JUNXO 67/ G-STAR 76 loại 5 mét là bao nhiê... (42284ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=22 tokens_in=1860 tokens_out=25 rpm=2/30 daily=39/14000
+[46/341] ✅ [DOC_ONLY] Giá của một hộp kẹp acco sắt SDI loại 1 là bao nhiêu?... (44318ms)
+[LLM usage] route key=key2_AQ.Ab8RN... calls=23 tokens_in=1863 tokens_out=28 rpm=1/30 daily=40/14000
+[47/341] ✅ [DOC_ONLY] Giá của một hộp khẩu trang xanh 4 lớp (50 cái/hộp) là bao nh... (15908ms)
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[GeminiKeyManager] route  error: 500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}
+[LLM usage] route key=key2_AQ.Ab8RN... calls=24 tokens_in=1861 tokens_out=26 rpm=2/30 daily=41/14000
+[48/341] ✅ [DOC_ONLY] Giá của một bình xịt thơm phòng Sumo 400ml là bao nhiêu?... (35017ms)
+[Quota] Key key2_AQ.Ab8RN... exhausted for route, rotating...
+[49/341] ✅ [DOC_ONLY] Tổng số tiền thanh toán cho đơn cấp phát văn phòng phẩm này ... (563ms)
+[50/341] ❌ [DB_ONLY] Ai là người lập Giấy cấp phát khăn giấy?... (0ms)
+[51/341] ✅ [DOC_ONLY] Hội đồng quản trị Công ty Tài chính Cổ phần Điện lực trình Đ... (1ms)
+[52/341] ✅ [DOC_ONLY] Mục đích ban hành Quy chế quản trị Công ty Tài chính cổ phần... (1ms)
+[53/341] ✅ [DOC_ONLY] Theo quy chế này, Người Điều hành bao gồm những chức danh nà... (0ms)
+[54/341] ✅ [DOC_ONLY] Cơ cấu quản trị của Công ty bao gồm những thành phần nào?... (0ms)
+[55/341] ❌ [DB_ONLY] Thông báo mời họp Đại hội đồng cổ đông phải được gửi đến các... (0ms)
+[56/341] ✅ [DOC_ONLY] Biên bản họp ĐHĐCĐ phải được hoàn thành và thông qua vào thờ... (1ms)
+[57/341] ✅ [DOC_ONLY] Số lượng thành viên trong Hội đồng Quản trị của Công ty được... (0ms)
+[58/341] ✅ [DOC_ONLY] Thông tin về các ứng viên Hội đồng Quản trị được công bố trư... (0ms)
+[59/341] ✅ [DOC_ONLY] Thông tin về các ứng viên Ban Kiểm soát được công bố trước n... (0ms)
+[60/341] ✅ [DOC_ONLY] Tiêu chuẩn về bằng cấp và kinh nghiệm đối với vị trí Tổng Gi... (0ms)
+[61/341] ✅ [DOC_ONLY] Ban Kiểm soát có quyền biểu quyết đối với các nghị quyết của... (2ms)
+[62/341] ✅ [DOC_ONLY] Khi Ban Kiểm soát phát hiện thành viên Hội đồng Quản trị hoặ... (0ms)
+[63/341] ✅ [DOC_ONLY] Tiêu chí đánh giá hoạt động của các thành viên Hội đồng quản... (0ms)
+[64/341] ✅ [DOC_ONLY] Thời hạn gửi thông báo mời họp Hội đồng Quản trị là bao lâu?... (0ms)
+[65/341] ✅ [DOC_ONLY] Đối tượng nào được áp dụng Quy chế quản trị nội bộ của Công ... (1ms)
+[66/341] ❌ [DB_ONLY] Thông báo mời họp Đại hội đồng cổ đông phải được gửi cho cổ ... (0ms)
+[67/341] ✅ [DOC_ONLY] Nếu tôi là cổ đông cá nhân và muốn ủy quyền cho người khác d... (0ms)
+[68/341] ✅ [DOC_ONLY] Có những hình thức biểu quyết nào tại Đại hội và điều kiện đ... (0ms)
+[69/341] ✅ [DOC_ONLY] Cổ đông có quyền yêu cầu Công ty mua lại cổ phần trong trườn... (1ms)
+[70/341] ✅ [DOC_ONLY] Tiêu chuẩn về số lượng và nhiệm kỳ của thành viên Hội đồng q... (0ms)
+[71/341] ✅ [DOC_ONLY] Thành viên Hội đồng quản trị bị miễn nhiệm hoặc bãi nhiệm tr... (0ms)
+[72/341] ✅ [DOC_ONLY] Thông báo họp Hội đồng quản trị cần được gửi trước bao lâu v... (0ms)
+[73/341] ✅ [DOC_ONLY] Tiêu chuẩn đối với thành viên của các tiểu ban thuộc Hội đồn... (1ms)
+[74/341] ✅ [DOC_ONLY] Thành phần và số lượng thành viên tối thiểu của Ủy ban kiểm ... (0ms)
+[75/341] ✅ [DOC_ONLY] Tiêu chuẩn về trình độ học vấn và kinh nghiệm làm việc đối v... (0ms)
+[76/341] ✅ [DOC_ONLY] Những trường hợp nào Người điều hành sẽ bị bãi nhiệm?... (0ms)
+[77/341] ✅ [DOC_ONLY] Nhiệm kỳ của Người phụ trách quản trị công ty là bao lâu và ... (1ms)
+[78/341] ✅ [DOC_ONLY] Ai có quyền miễn nhiệm Người phụ trách quản trị công ty và c... (0ms)
+[79/341] ✅ [DOC_ONLY] Quy chế nội bộ về quản trị công ty của Công ty Cổ phần Cơ kh... (0ms)
+[80/341] ✅ [DOC_ONLY] Quy chế nội bộ về quản trị Công ty của PMSC quy định về khen... (0ms)
+[81/341] ✅ [DOC_ONLY] Thư ký đại hội đồng cổ đông có những nhiệm vụ cụ thể nào?... (0ms)
+[82/341] ✅ [DOC_ONLY] Tôi muốn đăng ký tham dự Đại hội đồng cổ đông thì thực hiện ... (1ms)
+[83/341] ✅ [DOC_ONLY] Thế nào là một phiếu biểu quyết hợp lệ?... (0ms)
+[84/341] ✅ [DOC_ONLY] Tôi là cổ đông không thông qua nghị quyết về việc tổ chức lạ... (0ms)
+[85/341] ✅ [DOC_ONLY] Cổ đông có thể gửi phiếu lấy ý kiến về Công ty bằng những hì... (0ms)
+[86/341] ✅ [DOC_ONLY] Điều kiện để việc ủy quyền trực tuyến cho người đại diện dự ... (0ms)
+[87/341] ✅ [DOC_ONLY] Thành viên Hội đồng quản trị có những quyền hạn gì trong việ... (1ms)
+[88/341] ❌ [DB_ONLY] Thông tin về ứng cử viên Hội đồng quản trị phải được công bố... (0ms)
+[89/341] ✅ [DOC_ONLY] Thành viên Hội đồng quản trị được tính vào tỷ lệ thành viên ... (1ms)
+[90/341] ✅ [DOC_ONLY] Số lượng thành viên tối thiểu của các tiểu ban trực thuộc Hộ... (0ms)
+[91/341] ✅ [DOC_ONLY] Tiêu chuẩn và điều kiện để trở thành Kiểm soát viên của công... (0ms)
+[92/341] ✅ [DOC_ONLY] Ai có quyền đề cử ứng viên Giám đốc khi Công ty có nhu cầu t... (0ms)
+[93/341] ✅ [DOC_ONLY] Các loại báo cáo hằng năm về việc triển khai thực hiện nghĩa... (0ms)
+[94/341] ❌ [DIRECTORY] Khi có kiến nghị về phương án cơ cấu tổ chức hoặc quy chế qu... (0ms)
+[95/341] ✅ [DOC_ONLY] Việc làm được định nghĩa như thế nào?... (1ms)
+[96/341] ✅ [DOC_ONLY] Phụ lục hợp đồng lao động có được dùng để sửa đổi thời hạn c... (0ms)
+[97/341] ✅ [DOC_ONLY] Trường hợp hợp đồng lao động bị tuyên bố vô hiệu toàn bộ thì... (0ms)
+[98/341] ✅ [DOC_ONLY] Thương lượng tập thể là gì?... (0ms)
+[99/341] ✅ [DOC_ONLY] Thời hạn của thỏa ước lao động tập thể là bao lâu?... (0ms)
+[100/341] ❌ [DB_ONLY] Trong những trường hợp nào tôi không được từ chối yêu cầu là... (1ms)
+[101/341] ✅ [DOC_ONLY] Người lao động nước ngoài làm việc tại Việt Nam mà không có ... (0ms)
+[102/341] ✅ [DOC_ONLY] Tuổi nghỉ hưu của lao động nam và nữ trong điều kiện bình th... (0ms)
+[103/341] ✅ [DOC_ONLY] Khi có yêu cầu giải quyết tranh chấp lao động, cơ quan chuyê... (0ms)
+[104/341] ❌ [DB_ONLY] Những trường hợp nào không được phép đình công tại nơi sử dụ... (1ms)
+[105/341] ✅ [DOC_ONLY] Tổng thu nhập Gross tháng 8/2026 của bà Phạm Thị Cúc là bao ... (0ms)
+[106/341] ✅ [DOC_ONLY] Khi có việc hiếu hỉ, tôi và người thân trong gia đình được h... (0ms)
+[107/341] ✅ [DOC_ONLY] Tôi được nghỉ bao nhiêu ngày khi bản thân kết hôn?... (0ms)
+[108/341] ✅ [DOC_ONLY] Nhân viên làm việc tại Công ty trên 03 năm sẽ nhận mức thưởn... (0ms)
+[109/341] ✅ [DOC_ONLY] Mức thưởng Tết âm lịch hàng năm của nhân viên được tính như ... (1ms)
+[110/341] ✅ [DOC_ONLY] Khi bản thân kết hôn, tôi được nghỉ bao nhiêu ngày mà vẫn hư... (0ms)
+[111/341] ✅ [DOC_ONLY] Mức hỗ trợ công tác phí một ngày khi đi công tác tại TP Hồ C... (0ms)
+[112/341] ✅ [DOC_ONLY] Nhân viên kỹ thuật được cấp bao nhiêu bộ đồng phục mỗi năm v... (0ms)
+[113/341] ✅ [DOC_ONLY] Việc đánh giá hiệu quả làm việc của thành viên Hội đồng quản... (0ms)
+[114/341] ✅ [DOC_ONLY] Hội đồng Quản trị cần bổ nhiệm ít nhất bao nhiêu người làm n... (1ms)
+[115/341] ✅ [DOC_ONLY] Kể từ ngày 01/01/2021, có những loại hợp đồng lao động nào?... (0ms)
+[116/341] ✅ [DOC_ONLY] Trong trường hợp nào người sử dụng lao động đơn phương chấm ... (0ms)
+[117/341] ❌ [DB_ONLY] Công ty có được phép ép buộc tôi dùng lương để mua hàng hóa ... (1ms)
+[118/341] ✅ [DOC_ONLY] Những trường hợp nào người lao động sẽ bị xử lý kỷ luật sa t... (0ms)
+[119/341] ✅ [DOC_ONLY] Thời gian nghỉ thai sản của lao động nữ là bao lâu và được n... (0ms)
+[120/341] ✅ [DOC_ONLY] Thời hiệu để yêu cầu Tòa án giải quyết tranh chấp lao động t... (0ms)
+[121/341] ✅ [DB_ONLY] Tôi còn bao nhiêu ngày phép năm nay?... (0ms)
+[122/341] ✅ [DB_ONLY] Tôi đã dùng bao nhiêu ngày phép trên tổng số ngày được cấp?... (1ms)
+[123/341] ✅ [DB_ONLY] Mã nhân viên và ngày vào làm của tôi là gì?... (0ms)
+[124/341] ✅ [DB_ONLY] Tôi vào công ty được bao lâu rồi, thâm niên của tôi là mấy n... (0ms)
+[125/341] ✅ [DB_ONLY] Email công ty, họ tên và mã nhân viên của tôi là gì?... (0ms)
+[126/341] ❌ [DOC_ONLY] Tôi đang thuộc phòng ban nào và giữ chức danh gì?... (0ms)
+[127/341] ✅ [DB_ONLY] Tài khoản của tôi có đang hoạt động không?... (0ms)
+[128/341] ✅ [DB_ONLY] Ngày sinh và giới tính của tôi mà hệ thống đang lưu có đúng ... (0ms)
+[129/341] ❌ [DOC_ONLY] Quy định số ngày phép tối đa mỗi năm là bao nhiêu, và tôi cò... (0ms)
+[130/341] ✅ [DB_ONLY] Ca làm việc, phòng ban và mã nhân viên hiện tại của tôi là g... (0ms)
+[131/341] ✅ [DB_ONLY] Hôm nay tôi check-in lúc mấy giờ, check-out lúc mấy giờ?... (1ms)
+[132/341] ✅ [DB_ONLY] Tháng này tôi đi muộn mấy lần?... (0ms)
+[133/341] ✅ [DB_ONLY] Thống kê số lần đi muộn và về sớm của tôi theo từng tháng tr... (0ms)
+[134/341] ✅ [DB_ONLY] Tháng này so với tháng trước, tôi đi muộn nhiều hơn hay ít h... (0ms)
+[135/341] ✅ [DB_ONLY] Tổng số giờ làm việc thực tế của tôi trong tuần này là bao n... (0ms)
+[136/341] ✅ [DB_ONLY] Những ngày nào trong tháng này tôi bị tính vắng không phép?... (0ms)
+[137/341] ✅ [DB_ONLY] Tháng nào trong năm nay tôi đi muộn nhiều nhất?... (0ms)
+[138/341] ✅ [DB_ONLY] Cho tôi xem lịch sử chấm công 10 ngày gần nhất của tôi?... (0ms)
+[139/341] ❌ [DB_ONLY] Quy định đi muộn bị xử lý thế nào, và tháng này tôi đã đi mu... (0ms)
+[140/341] ❌ [DB_ONLY] Số ngày công đủ (SUFFICIENT) của tôi trong tháng này có bị t... (0ms)
+[141/341] ✅ [DB_ONLY] Năm nay tôi làm tổng cộng bao nhiêu giờ, bao nhiêu ngày công... (0ms)
+[142/341] ✅ [DB_ONLY] Tháng này tôi đi muộn mấy lần, tổng cộng bao nhiêu phút?... (0ms)
+[143/341] ✅ [DB_ONLY] Liệt kê giờ làm và ngày công của tôi theo từng tháng trong n... (0ms)
+[144/341] ✅ [DB_ONLY] Năm nay so với năm ngoái, tổng giờ làm của tôi tăng hay giảm... (0ms)
+[145/341] ✅ [DB_ONLY] Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?... (1ms)
+[146/341] ✅ [DB_ONLY] Quý 1 năm nay tôi nghỉ phép mấy ngày, vắng mặt mấy ngày?... (0ms)
+[147/341] ✅ [DB_ONLY] Giờ OT thực tế và giờ OT được trả của tôi trong tháng này ch... (0ms)
+[148/341] ✅ [DB_ONLY] Những tháng nào trong năm nay tôi đi muộn trên 3 lần?... (0ms)
+[149/341] ✅ [HYBRID] Quy định ngày công chuẩn một tháng là bao nhiêu, công thực t... (0ms)
+[150/341] ✅ [DB_ONLY] Bảng công 3 tháng gần nhất của tôi như thế nào, tháng nào đi... (0ms)
+[151/341] ✅ [DB_ONLY] Năm nay tôi đã nghỉ phép tổng cộng bao nhiêu ngày?... (0ms)
+[152/341] ✅ [DB_ONLY] Đơn xin nghỉ phép gần nhất của tôi đang ở trạng thái nào?... (0ms)
+[153/341] ✅ [DB_ONLY] Thống kê số đơn nghỉ phép của tôi theo từng trạng thái (chờ ... (0ms)
+[154/341] ✅ [DB_ONLY] Tháng nào trong năm nay tôi nghỉ phép nhiều nhất?... (1ms)
+[155/341] ✅ [DB_ONLY] Liệt kê 10 đơn xin nghỉ gần nhất của tôi kèm lý do?... (0ms)
+[156/341] ✅ [DB_ONLY] Đơn xin nghỉ nào của tôi bị từ chối và lý do từ chối là gì?... (0ms)
+[157/341] ✅ [DB_ONLY] Quý này so với quý trước, tôi nghỉ phép nhiều hơn hay ít hơn... (0ms)
+[158/341] ✅ [DB_ONLY] Hiện tại tôi có đơn xin nghỉ nào đang chờ duyệt không?... (0ms)
+[159/341] ❌ [DB_ONLY] Quy định nghỉ phép năm thế nào, năm nay tôi đã dùng hết phép... (0ms)
+[160/341] ✅ [DB_ONLY] Ai là người duyệt đơn nghỉ phép của tôi, đơn gần nhất ai duy... (0ms)
+[161/341] ✅ [DB_ONLY] Năm nay tôi làm thêm (OT) tổng cộng bao nhiêu giờ?... (0ms)
+[162/341] ✅ [DB_ONLY] Thống kê tổng giờ OT của tôi theo từng tháng trong năm nay?... (0ms)
+[163/341] ✅ [DB_ONLY] Tháng nào trong năm nay tôi OT nhiều giờ nhất?... (0ms)
+[164/341] ✅ [DB_ONLY] Quý này so với quý trước, giờ OT của tôi tăng hay giảm?... (1ms)
+[165/341] ✅ [DB_ONLY] Tôi có bao nhiêu giờ OT vào ban đêm, cuối tuần và ngày lễ tr... (0ms)
+[166/341] ✅ [DB_ONLY] Đơn OT nào của tôi đang chờ duyệt, đơn nào bị từ chối và vì ... (0ms)
+[167/341] ✅ [DB_ONLY] Liệt kê 10 lần OT gần nhất của tôi, mỗi lần mấy giờ và lý do... (0ms)
+[168/341] ✅ [DB_ONLY] Năm nay tôi có bao nhiêu đơn OT được duyệt, trung bình mỗi đ... (0ms)
+[169/341] ❌ [DOC_ONLY] Quy định tính lương OT ngày thường, cuối tuần, ngày lễ thế n... (0ms)
+[170/341] ✅ [DB_ONLY] Tuần nào trong năm nay tôi OT nhiều giờ nhất?... (0ms)
+[171/341] ✅ [DB_ONLY] Lương tháng này của tôi thực lĩnh bao nhiêu?... (0ms)
+[172/341] ✅ [DB_ONLY] Tổng thu nhập thực lĩnh cả năm nay của tôi là bao nhiêu?... (0ms)
+[173/341] ✅ [DB_ONLY] Liệt kê lương từng tháng trong năm nay của tôi?... (0ms)
+[174/341] ✅ [DB_ONLY] Giải thích chi tiết các khoản khấu trừ trong lương tháng này... (0ms)
+[175/341] ✅ [DB_ONLY] Tháng nào trong năm nay lương của tôi cao nhất, có phải do t... (0ms)
+[176/341] ✅ [DB_ONLY] So với tháng trước, lương tháng này của tôi tăng hay giảm ba... (1ms)
+[177/341] ✅ [DB_ONLY] Tổng tiền thưởng và phụ cấp tôi nhận được trong năm nay là b... (0ms)
+[178/341] ✅ [DB_ONLY] Năm nay tôi đã đóng tổng cộng bao nhiêu tiền thuế TNCN và bả... (0ms)
+[179/341] ❌ [DOC_ONLY] Quy định khấu trừ BHXH và thuế TNCN thế nào, tháng này tôi b... (0ms)
+[180/341] ✅ [DB_ONLY] Các phiếu lương đã thanh toán (PAID) của tôi trong năm nay, ... (0ms)
+[181/341] ✅ [DB_ONLY] Lương cơ bản hiện tại của tôi là bao nhiêu?... (0ms)
+[182/341] ✅ [DB_ONLY] Liệt kê lịch sử các mức lương của tôi từ trước tới nay?... (0ms)
+[183/341] ❌ [DOC_ONLY] Lương hiện tại của tôi tăng bao nhiêu so với mức lương trước... (0ms)
+[184/341] ✅ [DB_ONLY] Kỳ trả lương của tôi là theo tháng hay theo tuần?... (0ms)
+[185/341] ✅ [DB_ONLY] Số ngày công chuẩn để tính lương của tôi là bao nhiêu ngày?... (0ms)
+[186/341] ❌ [DOC_ONLY] Mức lương cao nhất tôi từng nhận là bao nhiêu, áp dụng từ kh... (0ms)
+[187/341] ✅ [DB_ONLY] Mức lương hiện tại của tôi có hiệu lực từ ngày nào đến ngày ... (1ms)
+[188/341] ✅ [DB_ONLY] Lương cơ bản và tài khoản ngân hàng nhận lương hiện tại của ... (0ms)
+[189/341] ❌ [DB_ONLY] Quy định nâng bậc lương thế nào, lương hiện tại của tôi đang... (0ms)
+[190/341] ❌ [DOC_ONLY] Trung bình các mức lương tôi từng nhận là bao nhiêu?... (0ms)
+[191/341] ✅ [DB_ONLY] Hợp đồng hiện tại của tôi là loại gì và có hiệu lực đến khi ... (0ms)
+[192/341] ✅ [DB_ONLY] Liệt kê tất cả các hợp đồng tôi đã ký với công ty?... (0ms)
+[193/341] ✅ [DB_ONLY] Hợp đồng của tôi còn bao nhiêu ngày nữa thì hết hạn?... (0ms)
+[194/341] ✅ [DB_ONLY] Tôi đã ký tổng cộng bao nhiêu hợp đồng, mỗi loại bao nhiêu?... (0ms)
+[195/341] ✅ [DB_ONLY] Hợp đồng thử việc của tôi kéo dài bao lâu?... (0ms)
+[196/341] ✅ [DB_ONLY] Những hợp đồng nào của tôi đã hết hiệu lực?... (0ms)
+[197/341] ✅ [DB_ONLY] So sánh thời hạn hợp đồng mới nhất với hợp đồng trước đó của... (0ms)
+[198/341] ✅ [DB_ONLY] Hợp đồng không xác định thời hạn của tôi bắt đầu từ khi nào?... (1ms)
+[199/341] ❌ [DB_ONLY] Quy định về số lần gia hạn hợp đồng xác định thời hạn thế nà... (0ms)
+[200/341] ✅ [DB_ONLY] Hợp đồng của tôi có hết hạn trong 60 ngày tới không?... (0ms)
+[201/341] ✅ [DB_ONLY] Số điện thoại và email cá nhân của tôi mà hệ thống đang lưu ... (0ms)
+[202/341] ✅ [DB_ONLY] Người liên hệ khẩn cấp của tôi là ai và số điện thoại bao nh... (0ms)
+[203/341] ✅ [DB_ONLY] Nơi sinh, quốc tịch và tình trạng hôn nhân của tôi đang lưu ... (0ms)
+[204/341] ✅ [DB_ONLY] Ngày bắt đầu tham gia bảo hiểm xã hội của tôi là từ khi nào?... (0ms)
+[205/341] ✅ [DB_ONLY] Tính đến nay tôi đã tham gia BHXH được bao nhiêu năm?... (0ms)
+[206/341] ✅ [DB_ONLY] Hồ sơ cá nhân của tôi còn thiếu thông tin gì không?... (0ms)
+[207/341] ✅ [DB_ONLY] Họ tên, ngày sinh, số điện thoại và email của tôi hiện lưu t... (1ms)
+[208/341] ❌ [DB_ONLY] Quy định cập nhật thông tin cá nhân thế nào, số điện thoại h... (0ms)
+[209/341] ✅ [DB_ONLY] Hồ sơ đầy đủ của tôi gồm những thông tin gì?... (0ms)
+[210/341] ❌ [DB_ONLY] Chế độ BHXH tôi đang hưởng tính từ khi nào, quy định đóng BH... (0ms)
+[211/341] ✅ [DB_ONLY] Tài khoản ngân hàng nhận lương của tôi là số nào, ở ngân hàn... (0ms)
+[212/341] ✅ [DB_ONLY] Tôi có tổng cộng bao nhiêu tài khoản ngân hàng trong hệ thốn... (0ms)
+[213/341] ✅ [DB_ONLY] Liệt kê tất cả tài khoản ngân hàng của tôi?... (0ms)
+[214/341] ✅ [DB_ONLY] Tên chủ tài khoản nhận lương của tôi có khớp với tên tôi khô... (0ms)
+[215/341] ✅ [DB_ONLY] Ngoài tài khoản nhận lương chính, tôi còn tài khoản phụ nào ... (0ms)
+[216/341] ✅ [DB_ONLY] Mã ngân hàng (bank_code) của tài khoản nhận lương của tôi là... (0ms)
+[217/341] ✅ [DB_ONLY] Lương cơ bản hiện tại và tài khoản ngân hàng nhận lương của ... (0ms)
+[218/341] ✅ [DB_ONLY] Tài khoản nhận lương gần đây nhất của tôi là tài khoản nào?... (1ms)
+[219/341] ❌ [DB_ONLY] Thủ tục đổi tài khoản nhận lương thế nào, tài khoản hiện tại... (0ms)
+[220/341] ❌ [DB_ONLY] Chính sách trả lương qua ngân hàng của công ty thế nào, tôi ... (0ms)
+[221/341] ✅ [DB_ONLY] Tôi có những quyền hạn nào trên hệ thống?... (0ms)
+[222/341] ✅ [DB_ONLY] Tôi có quyền duyệt đơn nghỉ phép không?... (0ms)
+[223/341] ✅ [DB_ONLY] Tôi được cấp tổng cộng bao nhiêu quyền?... (0ms)
+[224/341] ❌ [DOC_ONLY] Quyền gần nhất tôi được cấp là quyền gì, cấp khi nào?... (0ms)
+[225/341] ✅ [DB_ONLY] Thống kê quyền của tôi theo nhóm: duyệt, xem, quản lý?... (1ms)
+[226/341] ✅ [DB_ONLY] Tôi có quyền xem lương toàn công ty không?... (0ms)
+[227/341] ✅ [DB_ONLY] Những quyền nào của tôi được cấp trong năm nay?... (0ms)
+[228/341] ❌ [DOC_ONLY] Tôi có những quyền phê duyệt (APPROVE) nào, có bao gồm duyệt... (0ms)
+[229/341] ❌ [DOC_ONLY] Quy định phân quyền hệ thống thế nào, hiện tại tôi đang có n... (0ms)
+[230/341] ✅ [DB_ONLY] Tôi có quyền khóa bảng công (TIMESHEET_LOCK) hay cấp quyền c... (0ms)
+[231/341] ✅ [DB_ONLY] Tôi đang có bao nhiêu phiên đăng nhập còn hoạt động?... (0ms)
+[232/341] ✅ [DB_ONLY] Lần hoạt động gần nhất của tài khoản tôi là khi nào?... (1ms)
+[233/341] ✅ [DB_ONLY] Liệt kê các phiên đăng nhập gần đây của tôi?... (0ms)
+[234/341] ✅ [DB_ONLY] Tài khoản của tôi có phiên đăng nhập nào bị thu hồi không?... (0ms)
+[235/341] ✅ [DB_ONLY] Thống kê số phiên đăng nhập của tôi theo từng tháng năm nay?... (0ms)
+[236/341] ✅ [DB_ONLY] Tháng này tôi đã đăng nhập bao nhiêu lần?... (0ms)
+[237/341] ✅ [DB_ONLY] So với tháng trước, số lần đăng nhập tháng này của tôi tăng ... (0ms)
+[238/341] ✅ [DB_ONLY] Phiên đăng nhập cũ nhất còn hoạt động của tôi bắt đầu từ khi... (0ms)
+[239/341] ❌ [DB_ONLY] Quy định bảo mật tài khoản thế nào, tôi có phiên đăng nhập l... (0ms)
+[240/341] ❌ [DB_ONLY] Có ai đang đăng nhập tài khoản của tôi ở nơi khác không, kiể... (0ms)
+[241/341] ✅ [DB_ONLY] Đơn xin nghỉ việc của tôi hiện đang ở trạng thái nào?... (0ms)
+[242/341] ✅ [DB_ONLY] Từ trước tới nay tôi đã gửi bao nhiêu đơn xin nghỉ việc?... (1ms)
+[243/341] ✅ [DB_ONLY] Ngày làm việc cuối cùng của tôi là ngày nào?... (0ms)
+[244/341] ✅ [DB_ONLY] Đơn xin nghỉ việc của tôi đã được quản lý và HR duyệt chưa?... (0ms)
+[245/341] ✅ [DB_ONLY] Đơn xin nghỉ nào của tôi bị từ chối hoặc đã hủy?... (0ms)
+[246/341] ✅ [DB_ONLY] Từ lúc tôi gửi đơn đến ngày làm việc cuối cùng, tôi đã báo t... (0ms)
+[247/341] ✅ [DB_ONLY] Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?... (0ms)
+[248/341] ✅ [DB_ONLY] Liệt kê lịch sử các đơn xin nghỉ việc của tôi?... (0ms)
+[249/341] ❌ [DB_ONLY] Quy định thời gian báo trước khi nghỉ việc thế nào, đơn của ... (0ms)
+[250/341] ❌ [DB_ONLY] Thủ tục bàn giao khi nghỉ việc gồm những gì, đơn của tôi đan... (0ms)
+[251/341] ✅ [DB_ONLY] Tôi đang làm ca nào?... (1ms)
+[252/341] ✅ [DB_ONLY] Ca làm của tôi bắt đầu và kết thúc lúc mấy giờ?... (0ms)
+[253/341] ✅ [DB_ONLY] Ca của tôi có giờ nghỉ trưa từ mấy giờ đến mấy giờ?... (0ms)
+[254/341] ✅ [DB_ONLY] Lịch chi tiết cả tuần của ca tôi như thế nào?... (0ms)
+[255/341] ✅ [DB_ONLY] Những ngày nào trong tuần ca của tôi được nghỉ?... (0ms)
+[256/341] ✅ [DB_ONLY] So sánh giờ bắt đầu ca của tôi với các ca làm khác trong côn... (0ms)
+[257/341] ✅ [DB_ONLY] Công ty có những ca làm việc nào, ca của tôi là ca nào trong... (0ms)
+[258/341] ✅ [DB_ONLY] Thứ 7 và Chủ nhật ca của tôi có phải đi làm không?... (0ms)
+[259/341] ❌ [DB_ONLY] Quy định giờ làm việc của công ty thế nào, ca của tôi có đún... (0ms)
+[260/341] ❌ [DOC_ONLY] Quy định nghỉ giữa ca thế nào, ca tôi được nghỉ trưa bao lâu... (0ms)
+[261/341] ✅ [DB_ONLY] Lịch làm việc của tôi từ thứ 2 đến thứ 6 như thế nào?... (0ms)
+[262/341] ✅ [DB_ONLY] Thứ 7 và Chủ nhật tôi có phải đi làm không?... (0ms)
+[263/341] ✅ [DB_ONLY] Mỗi ngày tôi làm mấy tiếng sau khi trừ giờ nghỉ trưa?... (0ms)
+[264/341] ✅ [DB_ONLY] Tổng số giờ làm chuẩn của tôi mỗi tuần là bao nhiêu?... (2ms)
+[265/341] ✅ [DB_ONLY] Ngày nào trong tuần tôi phải vào làm sớm nhất và về muộn nhấ... (0ms)
+[266/341] ✅ [DB_ONLY] Giờ nghỉ trưa các ngày trong tuần của tôi có giống nhau khôn... (0ms)
+[267/341] ✅ [DB_ONLY] So sánh lịch làm thứ 2 với thứ 7 của tôi?... (0ms)
+[268/341] ✅ [DB_ONLY] Những ngày nào trong tuần tôi được nghỉ?... (0ms)
+[269/341] ❌ [DB_ONLY] Quy định giờ làm tối đa mỗi tuần thế nào, lịch của tôi có vư... (0ms)
+[270/341] ❌ [DB_ONLY] Quy định làm việc cuối tuần thế nào, lịch thứ 7 Chủ nhật của... (0ms)
+[271/341] ✅ [DB_ONLY] Tôi đang thuộc phòng ban nào?... (0ms)
+[272/341] ✅ [DB_ONLY] Chức danh và phòng ban hiện tại của tôi là gì?... (0ms)
+[273/341] ✅ [DB_ONLY] Phòng ban, ca làm và mã nhân viên của tôi là gì?... (0ms)
+[274/341] ✅ [DB_ONLY] Tôi vào công ty khi nào và hiện đang ở phòng ban nào?... (0ms)
+[275/341] ✅ [DB_ONLY] Công ty có những phòng ban nào, phòng hiện tại của tôi là ph... (0ms)
+[276/341] ✅ [DB_ONLY] Trong phòng ban của tôi có những chức danh nào?... (0ms)
+[277/341] ✅ [DB_ONLY] Mã phòng ban của tôi là gì?... (2ms)
+[278/341] ✅ [DB_ONLY] Chức danh của tôi trong phòng ban là gì?... (0ms)
+[279/341] ❌ [DB_ONLY] Quy định chuyển phòng ban thế nào, hiện tại tôi đang ở phòng... (0ms)
+[280/341] ❌ [DOC_ONLY] Cơ cấu tổ chức các phòng ban theo quy định ra sao, tôi thuộc... (0ms)
+[281/341] ✅ [DB_ONLY] Chức danh hiện tại của tôi là gì?... (0ms)
+[282/341] ✅ [DB_ONLY] Chức danh của tôi thuộc phòng ban nào?... (0ms)
+[283/341] ✅ [DB_ONLY] Trong phòng ban của tôi có những chức danh nào?... (1ms)
+[284/341] ✅ [DB_ONLY] Chức danh và mã nhân viên của tôi là gì?... (0ms)
+[285/341] ✅ [DB_ONLY] Công ty có những chức danh nào, chức danh của tôi là vị trí ... (0ms)
+[286/341] ✅ [DB_ONLY] So với các chức danh khác trong phòng, vị trí của tôi là gì?... (0ms)
+[287/341] ❌ [DOC_ONLY] Mức lương cơ bản cho chức danh hiện tại của tôi là bao nhiêu... (1ms)
+[288/341] ❌ [DOC_ONLY] Chức danh của tôi đang có những quyền hạn gì trên hệ thống?... (0ms)
+[289/341] ✅ [HYBRID] Lộ trình thăng tiến từ chức danh của tôi theo quy định thế n... (0ms)
+[290/341] ❌ [DOC_ONLY] Mô tả công việc của chức danh tôi theo quy định là gì?... (0ms)
+[291/341] ❌ [DOC_ONLY] Tháng này có những ngày lễ nào tôi được nghỉ?... (0ms)
+[292/341] ❌ [DOC_ONLY] Năm nay có tổng cộng bao nhiêu ngày lễ?... (0ms)
+[293/341] ❌ [DOC_ONLY] Liệt kê các ngày lễ trong năm nay theo thứ tự thời gian?... (0ms)
+[294/341] ✅ [DB_ONLY] Ngày lễ sắp tới gần nhất mà tôi được nghỉ là ngày nào?... (0ms)
+[295/341] ✅ [DB_ONLY] Quý 2 năm nay có những ngày lễ nào?... (1ms)
+[296/341] ✅ [DB_ONLY] 6 tháng đầu năm và 6 tháng cuối năm, nửa nào có nhiều ngày l... (0ms)
+[297/341] ✅ [DB_ONLY] Tháng nào trong năm nay có nhiều ngày lễ nhất?... (0ms)
+[298/341] ✅ [DB_ONLY] Dịp lễ 30/4 - 1/5 năm nay tôi được nghỉ những ngày nào?... (0ms)
+[299/341] ❌ [DOC_ONLY] Quy định nghỉ lễ hưởng nguyên lương thế nào, năm nay tôi đượ... (0ms)
+[300/341] ❌ [DOC_ONLY] Ngày lễ rơi vào cuối tuần có được nghỉ bù không, các ngày lễ... (0ms)
+[301/341] ✅ [DB_ONLY] Kết quả đánh giá hiệu suất của tôi trong năm nay như thế nào... (1ms)
+[302/341] ✅ [DB_ONLY] Điểm trung bình quản lý đánh giá tôi kỳ gần nhất là bao nhiê... (0ms)
+[303/341] ✅ [DB_ONLY] Điểm tự đánh giá của tôi kỳ này chênh lệch với điểm quản lý ... (0ms)
+[304/341] ✅ [DB_ONLY] Ai là người đánh giá hiệu suất của tôi kỳ vừa rồi?... (0ms)
+[305/341] ✅ [DB_ONLY] Mục tiêu kỳ tới của tôi được ghi nhận là gì?... (0ms)
+[306/341] ✅ [DB_ONLY] Đánh giá hiệu suất của tôi đã được lãnh đạo xác nhận chưa?... (0ms)
+[307/341] ✅ [DB_ONLY] So với kỳ trước, điểm đánh giá của tôi tăng hay giảm?... (0ms)
+[308/341] ✅ [DB_ONLY] Nhận xét tổng quan của quản lý về hiệu suất của tôi là gì?... (0ms)
+[309/341] ❌ [DOC_ONLY] Quy định đánh giá hiệu suất thế nào, điểm trung bình của tôi... (0ms)
+[310/341] ✅ [DB_ONLY] Năm nay tôi đã được đánh giá bao nhiêu kỳ?... (1ms)
+[311/341] ✅ [DB_ONLY] Chi tiết điểm từng tiêu chí đánh giá của tôi kỳ vừa rồi?... (0ms)
+[312/341] ✅ [DB_ONLY] Tiêu chí nào tôi bị quản lý chấm thấp nhất kỳ này?... (0ms)
+[313/341] ✅ [DB_ONLY] Tiêu chí nào tôi tự chấm cao hơn quản lý chấm nhiều nhất?... (0ms)
+[314/341] ❌ [DOC_ONLY] Kỳ này tôi được chấm bao nhiêu tiêu chí?... (0ms)
+[315/341] ❌ [DB_ONLY] Thang điểm đánh giá theo quy định thế nào, tiêu chí nào của ... (0ms)
+[316/341] ✅ [DB_ONLY] Tôi đang được cấp những tài sản, thiết bị nào?... (0ms)
+[317/341] ✅ [DB_ONLY] Tôi đang giữ tổng cộng bao nhiêu tài sản công ty?... (0ms)
+[318/341] ✅ [DB_ONLY] Laptop của tôi được cấp khi nào, tình trạng lúc nhận ra sao?... (0ms)
+[319/341] ✅ [DB_ONLY] Những tài sản nào tôi đã trả lại công ty?... (0ms)
+[320/341] ✅ [DB_ONLY] Tài sản tôi đang giữ có hạn trả dự kiến khi nào?... (0ms)
+[321/341] ✅ [DB_ONLY] Ai là người duyệt cấp tài sản cho tôi?... (1ms)
+[322/341] ✅ [DB_ONLY] Ghi chú bàn giao tài sản của tôi có nội dung gì?... (0ms)
+[323/341] ❌ [DB_ONLY] Quy định sử dụng tài sản công ty thế nào, tôi đang giữ những... (0ms)
+[324/341] ✅ [DB_ONLY] Yêu cầu cấp tài sản gần nhất của tôi đang ở trạng thái nào?... (0ms)
+[325/341] ✅ [DB_ONLY] Liệt kê các yêu cầu cấp thiết bị tôi đã gửi trong năm nay?... (0ms)
+[326/341] ✅ [DB_ONLY] Yêu cầu nào của tôi bị từ chối và lý do là gì?... (0ms)
+[327/341] ✅ [DB_ONLY] Năm nay tôi đã gửi bao nhiêu yêu cầu cấp tài sản?... (0ms)
+[328/341] ✅ [DB_ONLY] Ai duyệt yêu cầu cấp tài sản của tôi?... (0ms)
+[329/341] ❌ [DB_ONLY] Thủ tục xin cấp laptop mới thế nào, đơn của tôi tới bước nào... (0ms)
+[330/341] ✅ [DB_ONLY] Thông tin chi tiết laptop công ty đang cấp cho tôi?... (1ms)
+[331/341] ✅ [DB_ONLY] Laptop của tôi còn bảo hành đến khi nào?... (0ms)
+[332/341] ✅ [DB_ONLY] Tình trạng hiện tại của thiết bị tôi đang giữ?... (0ms)
+[333/341] ❌ [DB_ONLY] Quy định bảo quản tài sản thế nào, laptop của tôi còn bảo hà... (0ms)
+[334/341] ✅ [DB_ONLY] Ticket sự cố IT gần nhất tôi báo đang ở trạng thái nào?... (1ms)
+[335/341] ✅ [DB_ONLY] Liệt kê các ticket IT tôi đã báo trong năm nay?... (0ms)
+[336/341] ✅ [DB_ONLY] Năm nay tôi đã báo bao nhiêu sự cố IT?... (0ms)
+[337/341] ✅ [DB_ONLY] Ticket máy in của tôi đã được xử lý xong chưa, ghi chú xử lý... (0ms)
+[338/341] ✅ [DB_ONLY] Ai đang xử lý ticket sự cố mạng tôi báo?... (0ms)
+[339/341] ✅ [DB_ONLY] Những ticket nào của tôi vẫn đang mở chưa xử lý xong?... (0ms)
+[340/341] ✅ [DB_ONLY] Ticket ưu tiên HIGH của tôi có những cái nào?... (0ms)
+[341/341] ❌ [DB_ONLY] Quy trình báo sự cố IT thế nào, ticket của tôi đang tới bước... (1ms)
+
+=== ROUTER ACCURACY: 289/341 = 84.8% ===
+Avg latency: 9264ms | Total time: 3158.9s
+
+=== PER-ROUTE ACCURACY ===
+  DB_ONLY: 175/187 = 93.6%
+  DOC_ONLY: 112/120 = 93.3%
+  HYBRID: 2/34 = 5.9%
+
+Saved: C:\Users\ad\Desktop\HRM\ai-service\test_v2\outputs\llm_router_test.json

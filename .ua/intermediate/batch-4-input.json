@@ -1,0 +1,21 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/brand/scripts/extract-colors.cjs", "language": "javascript", "sizeLines": 341, "fileCategory": "code"},
+    {"path": ".agents/skills/brand/scripts/inject-brand-context.cjs", "language": "javascript", "sizeLines": 349, "fileCategory": "code"},
+    {"path": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs", "language": "javascript", "sizeLines": 248, "fileCategory": "code"},
+    {"path": ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py", "language": "python", "sizeLines": 52, "fileCategory": "code"},
+    {"path": ".agents/skills/brand/scripts/validate-asset.cjs", "language": "javascript", "sizeLines": 387, "fileCategory": "code"},
+    {"path": ".agents/skills/brand/templates/brand-guidelines-starter.md", "language": "markdown", "sizeLines": 275, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/brand/scripts/extract-colors.cjs": [],
+    ".agents/skills/brand/scripts/inject-brand-context.cjs": [],
+    ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs": [],
+    ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py": [
+      "test_sync_parses_bundled_starter_template"
+    ],
+    ".agents/skills/brand/scripts/validate-asset.cjs": [],
+    ".agents/skills/brand/templates/brand-guidelines-starter.md": []
+  }
+}

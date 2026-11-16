@@ -1,6 +1,6 @@
 package com.minhtrung.hrm.auth.entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -45,6 +45,9 @@ public class UserSession {
     private boolean revoked = false;
 
     @CreationTimestamp
-    @Column(nullable = false)
-    private LocalDate createdAt;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "last_active_at")
+    private LocalDateTime lastActiveAt;
 }

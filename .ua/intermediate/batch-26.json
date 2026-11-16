@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/test_v2/rag/generation/judged_questions.json",
+      "type": "document",
+      "name": "judged_questions.json",
+      "filePath": "ai-service/test_v2/rag/generation/judged_questions.json",
+      "summary": "LLM-judged questions JSON with 73 lines containing pairwise comparison results for RAG answer quality evaluation using Gemma as judge.",
+      "tags": ["test", "results", "ai-service", "rag", "generation", "llm-judge", "pairwise", "gemma", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/rag/generation/llm_judge_evaluation.md",
+      "type": "document",
+      "name": "llm_judge_evaluation.md",
+      "filePath": "ai-service/test_v2/rag/generation/llm_judge_evaluation.md",
+      "summary": "LLM judge evaluation report with 181 lines documenting RAG answer quality assessment methodology, scoring criteria, and aggregated results from Gemma-based pairwise comparisons.",
+      "tags": ["test", "report", "ai-service", "rag", "generation", "llm-judge", "evaluation", "gemma", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/rag/generation/ragas_eval_results.json",
+      "type": "document",
+      "name": "ragas_eval_results.json",
+      "filePath": "ai-service/test_v2/rag/generation/ragas_eval_results.json",
+      "summary": "RAGAS evaluation results JSON with 522 lines containing faithfulness, answer relevance, context precision, context recall, and context relevance scores for RAG pipeline.",
+      "tags": ["test", "results", "ai-service", "rag", "generation", "ragas", "faithfulness", "relevance", "precision", "recall", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/test_v2/rag/generation/judged_questions.json",
+      "target": "document:ai-service/test_v2/rag/generation/llm_judge_evaluation.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/rag/generation/judged_questions.json",
+      "target": "document:ai-service/test_v2/rag/generation/ragas_eval_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/test_v2/rag/generation/llm_judge_evaluation.md",
+      "target": "document:ai-service/test_v2/rag/generation/ragas_eval_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

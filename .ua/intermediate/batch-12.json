@@ -1,0 +1,222 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/app-interface.csv",
+      "type": "document",
+      "name": "app-interface.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/app-interface.csv",
+      "summary": "App interface data CSV with 33 lines defining interface specifications for UI/UX design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "app-interface", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "type": "document",
+      "name": "catalog-summary.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "summary": "Catalog summary configuration JSON with schema version, verification timestamp, counts, snapshots, promotion policy, and pending candidates for the UI/UX Pro Max component catalog.",
+      "tags": ["config", "design-system", "ui-ux-pro-max", "catalog", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/charts.csv",
+      "type": "document",
+      "name": "charts.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/charts.csv",
+      "summary": "Charts data CSV with 26 lines defining chart types, configurations, and usage guidelines for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "charts", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/colors.csv",
+      "type": "document",
+      "name": "colors.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/colors.csv",
+      "summary": "Colors data CSV with 193 lines defining color palettes, semantic color mappings, and usage guidelines for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "colors", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "type": "document",
+      "name": "data-provenance.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "summary": "Data provenance configuration JSON with schema version, generation timestamp, freshness policy, and detailed records tracking data lineage and sources for the UI/UX Pro Max design system.",
+      "tags": ["config", "design-system", "ui-ux-pro-max", "data-provenance", "json", "lineage"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "type": "document",
+      "name": "google-font-licenses.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "summary": "Google Font licenses JSON with schema version, source, family count, and detailed license information for all Google Font families used in the design system (20,000+ lines).",
+      "tags": ["config", "design-system", "ui-ux-pro-max", "fonts", "licenses", "google-fonts", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "type": "document",
+      "name": "google-fonts.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "summary": "Google Fonts data CSV with 1,935 lines cataloging font families, weights, styles, and metadata for the design system typography.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "fonts", "google-fonts", "typography", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/icons.csv",
+      "type": "document",
+      "name": "icons.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/icons.csv",
+      "summary": "Icons data CSV with 106 lines defining icon sets, categories, and usage mappings for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "icons", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/landing.csv",
+      "type": "document",
+      "name": "landing.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/landing.csv",
+      "summary": "Landing page data CSV with 35 lines defining landing page components, sections, and patterns for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "landing", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/motion.csv",
+      "type": "document",
+      "name": "motion.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/motion.csv",
+      "summary": "Motion data CSV with 18 lines defining animation/motion specifications, durations, and easing curves for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "motion", "animation", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "type": "document",
+      "name": "phosphor-icons-upstream.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "summary": "Phosphor Icons upstream JSON with schema version, source, status, verification timestamp, icon count (1,000+), weights, React imports, curated validated count, and full icon catalog for the design system (32,000+ lines).",
+      "tags": ["config", "design-system", "ui-ux-pro-max", "icons", "phosphor", "json", "upstream"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/products.csv",
+      "type": "document",
+      "name": "products.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/products.csv",
+      "summary": "Products data CSV with 193 lines defining product categories, UI patterns, and design specifications for different product types in the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "products", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/react-performance.csv",
+      "type": "document",
+      "name": "react-performance.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/react-performance.csv",
+      "summary": "React performance data CSV with 45 lines defining performance benchmarks, optimization patterns, and metrics for React components in the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "react", "performance", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/styles.csv",
+      "type": "document",
+      "name": "styles.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/styles.csv",
+      "summary": "Styles data CSV with 89 lines defining visual style archetypes, design tokens, and styling patterns for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "styles", "design-tokens", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/typography.csv",
+      "type": "document",
+      "name": "typography.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/typography.csv",
+      "summary": "Typography data CSV with 75 lines defining type scales, font stacks, weights, line heights, and spacing for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "typography", "fonts", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "type": "document",
+      "name": "ui-reasoning.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "summary": "UI reasoning data CSV with 193 lines defining decision frameworks, design rationale, and reasoning patterns for UI/UX design decisions in the system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "ui-reasoning", "design-decisions", "csv"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "type": "document",
+      "name": "ux-guidelines.csv",
+      "filePath": ".agents/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "summary": "UX guidelines data CSV with 120 lines defining user experience principles, patterns, accessibility requirements, and best practices for the design system.",
+      "tags": ["data", "design-system", "ui-ux-pro-max", "ux-guidelines", "accessibility", "best-practices", "csv"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/icons.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/colors.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/typography.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/react-performance.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/motion.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/products.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/landing.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/data/app-interface.csv",
+      "target": "document:.agents/skills/ui-ux-pro-max/data/components.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

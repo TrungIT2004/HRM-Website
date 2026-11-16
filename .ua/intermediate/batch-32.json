@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/EVAL_SUMMARY.md",
+      "type": "document",
+      "name": "EVAL_SUMMARY.md",
+      "filePath": "ai-service/tests/EVAL_SUMMARY.md",
+      "summary": "Evaluation summary with 130 lines providing overview of all test suite results including Text2SQL, retrieval, generation, routing, and hybrid metrics with best achieved scores.",
+      "tags": ["test", "summary", "ai-service", "evaluation", "text2sql", "retrieval", "generation", "routing", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/calib_neg_20new.json",
+      "type": "document",
+      "name": "calib_neg_20new.json",
+      "filePath": "ai-service/tests/calib_neg_20new.json",
+      "summary": "Negative calibration JSON (empty - 0 lines) for threshold calibration with 20 new negative test cases.",
+      "tags": ["test", "calibration", "ai-service", "negatives", "threshold", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/db_only_hybrid_questions.json",
+      "type": "document",
+      "name": "db_only_hybrid_questions.json",
+      "filePath": "ai-service/tests/db_only_hybrid_questions.json",
+      "summary": "DB-only and hybrid test questions JSON with 3,642 lines containing question sets for database-only and hybrid route evaluation with expected SQL and document contexts.",
+      "tags": ["test", "dataset", "ai-service", "db-only", "hybrid", "questions", "sql", "context", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/db_only_hybrid_questions_with_answers.json",
+      "type": "document",
+      "name": "db_only_hybrid_questions_with_answers.json",
+      "filePath": "ai-service/tests/db_only_hybrid_questions_with_answers.json",
+      "summary": "DB-only and hybrid questions with answers JSON with 7,588 lines containing ground truth answers and SQL for comprehensive route evaluation.",
+      "tags": ["test", "dataset", "ai-service", "db-only", "hybrid", "questions", "answers", "ground-truth", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/rr_curve.json",
+      "type": "document",
+      "name": "rr_curve.json",
+      "filePath": "ai-service/tests/rr_curve.json",
+      "summary": "Reciprocal rank curve JSON (empty - 0 lines) for retrieval ranking quality visualization.",
+      "tags": ["test", "metrics", "ai-service", "reciprocal-rank", "curve", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/threshold_calib_20new.json",
+      "type": "document",
+      "name": "threshold_calib_20new.json",
+      "filePath": "ai-service/tests/threshold_calib_20new.json",
+      "summary": "Threshold calibration JSON with 423 lines defining similarity score thresholds for retrieval filtering with 20 new calibration points.",
+      "tags": ["test", "calibration", "ai-service", "threshold", "similarity", "retrieval", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/weight_curve.json",
+      "type": "document",
+      "name": "weight_curve.json",
+      "filePath": "ai-service/tests/weight_curve.json",
+      "summary": "Weight curve JSON with 178 lines defining weighting functions for hybrid retrieval combining semantic and keyword scores.",
+      "tags": ["test", "config", "ai-service", "weights", "hybrid", "semantic", "keyword", "curve", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/weight_grid.json",
+      "type": "document",
+      "name": "weight_grid.json",
+      "filePath": "ai-service/tests/weight_grid.json",
+      "summary": "Weight grid search JSON with 33 lines defining parameter grid for hybrid retrieval weight optimization.",
+      "tags": ["test", "config", "ai-service", "weights", "grid-search", "optimization", "hybrid", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/EVAL_SUMMARY.md",
+      "target": "document:ai-service/tests/db_only_hybrid_questions.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/db_only_hybrid_questions.json",
+      "target": "document:ai-service/tests/db_only_hybrid_questions_with_answers.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/threshold_calib_20new.json",
+      "target": "document:ai-service/tests/weight_curve.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/weight_curve.json",
+      "target": "document:ai-service/tests/weight_grid.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

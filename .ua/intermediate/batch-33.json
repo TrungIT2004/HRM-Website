@@ -1,0 +1,97 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/_archive/EVAL_RESULTS.md",
+      "type": "document",
+      "name": "EVAL_RESULTS.md",
+      "filePath": "ai-service/tests/_archive/EVAL_RESULTS.md",
+      "summary": "Archived evaluation results with 45 lines summarizing historical Text2SQL and RAG evaluation metrics from previous test runs.",
+      "tags": ["archive", "test", "results", "ai-service", "evaluation", "historical", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/TEST_RESULTS.md",
+      "type": "document",
+      "name": "TEST_RESULTS.md",
+      "filePath": "ai-service/tests/_archive/TEST_RESULTS.md",
+      "summary": "Archived test results with 154 lines documenting historical test outcomes, issues, and fixes for AI service components.",
+      "tags": ["archive", "test", "results", "ai-service", "historical", "issues", "fixes", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/VIQUAD_EVAL_RESULTS.md",
+      "type": "document",
+      "name": "VIQUAD_EVAL_RESULTS.md",
+      "filePath": "ai-service/tests/_archive/VIQUAD_EVAL_RESULTS.md",
+      "summary": "VIQuAD evaluation results with 133 lines summarizing Vietnamese question answering dataset evaluation metrics for retrieval and generation.",
+      "tags": ["archive", "test", "results", "ai-service", "viquad", "vietnamese", "qa", "evaluation", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/output_chunks.json",
+      "type": "document",
+      "name": "output_chunks.json",
+      "filePath": "ai-service/tests/_archive/output_chunks.json",
+      "summary": "Archived output chunks JSON with 270 lines containing document chunk processing results from historical pipeline runs.",
+      "tags": ["archive", "test", "ai-service", "chunks", "processing", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/qrecc-test.json",
+      "type": "document",
+      "name": "qrecc-test.json",
+      "filePath": "ai-service/tests/_archive/qrecc-test.json",
+      "summary": "QReCC test dataset JSON with 290,588 lines containing conversational question answering dataset with context rewriting for retrieval evaluation (very large).",
+      "tags": ["archive", "test", "dataset", "ai-service", "qrecc", "conversational", "qa", "context-rewriting", "json", "large"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/viquad.json",
+      "type": "document",
+      "name": "viquad.json",
+      "filePath": "ai-service/tests/_archive/viquad.json",
+      "summary": "VIQuAD dataset JSON with 343,443 lines containing Vietnamese question answering dataset with paragraphs, questions, and answers for RAG evaluation (very large).",
+      "tags": ["archive", "test", "dataset", "ai-service", "viquad", "vietnamese", "qa", "paragraphs", "json", "large"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/viquad_eval_results.json",
+      "type": "document",
+      "name": "viquad_eval_results.json",
+      "filePath": "ai-service/tests/_archive/viquad_eval_results.json",
+      "summary": "VIQuAD evaluation results JSON with 2,014 lines containing detailed retrieval and generation metrics on the Vietnamese QA dataset.",
+      "tags": ["archive", "test", "results", "ai-service", "viquad", "evaluation", "retrieval", "generation", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/_archive/VIQUAD_EVAL_RESULTS.md",
+      "target": "document:ai-service/tests/_archive/viquad.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/_archive/viquad.json",
+      "target": "document:ai-service/tests/_archive/viquad_eval_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/_archive/qrecc-test.json",
+      "target": "document:ai-service/tests/_archive/viquad.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/tests/_archive/EVAL_RESULTS.md",
+      "target": "document:ai-service/tests/_archive/TEST_RESULTS.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,1186 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 7,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 7
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/ui-styling/references/canvas-design-system.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 320,
+      "nonEmptyLines": 255,
+      "sections": [
+        {
+          "heading": "Canvas Design System",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Design Philosophy Approach",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Phase 1: Design Philosophy Creation",
+          "level": 3,
+          "line": 9
+        },
+        {
+          "heading": "Phase 2: Visual Expression",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "Core Principles",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "1. Visual Communication First",
+          "level": 3,
+          "line": 37
+        },
+        {
+          "heading": "2. Minimal Text Integration",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "3. Expert Craftsmanship",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "4. Systematic Patterns",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Design Movement Examples",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Concrete Poetry",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Chromatic Language",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Analog Meditation",
+          "level": 3,
+          "line": 97
+        },
+        {
+          "heading": "Organic Systems",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Geometric Silence",
+          "level": 3,
+          "line": 121
+        },
+        {
+          "heading": "Implementation Guidelines",
+          "level": 2,
+          "line": 134
+        },
+        {
+          "heading": "Subtle Reference Integration",
+          "level": 3,
+          "line": 136
+        },
+        {
+          "heading": "Color Approach",
+          "level": 3,
+          "line": 146
+        },
+        {
+          "heading": "Typography System",
+          "level": 3,
+          "line": 163
+        },
+        {
+          "heading": "Composition Rules",
+          "level": 3,
+          "line": 178
+        },
+        {
+          "heading": "Canvas Boundaries",
+          "level": 3,
+          "line": 196
+        },
+        {
+          "heading": "Multi-Page Design Systems",
+          "level": 2,
+          "line": 206
+        },
+        {
+          "heading": "Approach",
+          "level": 3,
+          "line": 210
+        },
+        {
+          "heading": "Consistency Elements",
+          "level": 3,
+          "line": 217
+        },
+        {
+          "heading": "Variation Strategy",
+          "level": 3,
+          "line": 224
+        },
+        {
+          "heading": "Execution Checklist",
+          "level": 2,
+          "line": 231
+        },
+        {
+          "heading": "Quality Standards",
+          "level": 2,
+          "line": 249
+        },
+        {
+          "heading": "What to Avoid",
+          "level": 3,
+          "line": 251
+        },
+        {
+          "heading": "What to Achieve",
+          "level": 3,
+          "line": 261
+        },
+        {
+          "heading": "Refinement Process",
+          "level": 2,
+          "line": 271
+        },
+        {
+          "heading": "Initial Pass",
+          "level": 3,
+          "line": 273
+        },
+        {
+          "heading": "Second Pass (Critical)",
+          "level": 3,
+          "line": 276
+        },
+        {
+          "heading": "Final Verification",
+          "level": 3,
+          "line": 285
+        },
+        {
+          "heading": "Output Format",
+          "level": 2,
+          "line": 290
+        },
+        {
+          "heading": "Use Cases",
+          "level": 2,
+          "line": 308
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 35
+      }
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 471,
+      "nonEmptyLines": 376,
+      "sections": [
+        {
+          "heading": "shadcn/ui Accessibility Patterns",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Foundation: Radix UI Primitives",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Keyboard Navigation",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Focus Management",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "Dialog/Modal Navigation",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Dropdown/Menu Navigation",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Command Palette Navigation",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Screen Reader Support",
+          "level": 2,
+          "line": 105
+        },
+        {
+          "heading": "Semantic HTML",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "ARIA Labels",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Screen Reader Only Text",
+          "level": 3,
+          "line": 141
+        },
+        {
+          "heading": "Live Regions",
+          "level": 3,
+          "line": 165
+        },
+        {
+          "heading": "Form Accessibility",
+          "level": 2,
+          "line": 191
+        },
+        {
+          "heading": "Labels and Descriptions",
+          "level": 3,
+          "line": 193
+        },
+        {
+          "heading": "Error Handling",
+          "level": 3,
+          "line": 222
+        },
+        {
+          "heading": "Required Fields",
+          "level": 3,
+          "line": 246
+        },
+        {
+          "heading": "Fieldset and Legend",
+          "level": 3,
+          "line": 258
+        },
+        {
+          "heading": "Component-Specific Patterns",
+          "level": 2,
+          "line": 274
+        },
+        {
+          "heading": "Accordion",
+          "level": 3,
+          "line": 276
+        },
+        {
+          "heading": "Tabs",
+          "level": 3,
+          "line": 295
+        },
+        {
+          "heading": "Select",
+          "level": 3,
+          "line": 313
+        },
+        {
+          "heading": "Checkbox and Radio",
+          "level": 3,
+          "line": 330
+        },
+        {
+          "heading": "Alert",
+          "level": 3,
+          "line": 345
+        },
+        {
+          "heading": "Color Contrast",
+          "level": 2,
+          "line": 359
+        },
+        {
+          "heading": "Focus Indicators",
+          "level": 2,
+          "line": 384
+        },
+        {
+          "heading": "Motion and Animation",
+          "level": 2,
+          "line": 411
+        },
+        {
+          "heading": "Testing Checklist",
+          "level": 2,
+          "line": 432
+        },
+        {
+          "heading": "Tools",
+          "level": 2,
+          "line": 449
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 28
+      }
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-components.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 424,
+      "nonEmptyLines": 359,
+      "sections": [
+        {
+          "heading": "shadcn/ui Component Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Installation",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Form & Input Components",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Button",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "Input",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "Form (with React Hook Form + Zod)",
+          "level": 3,
+          "line": 43
+        },
+        {
+          "heading": "Select",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Checkbox",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Radio Group",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "Textarea",
+          "level": 3,
+          "line": 126
+        },
+        {
+          "heading": "Switch",
+          "level": 3,
+          "line": 133
+        },
+        {
+          "heading": "Date Picker",
+          "level": 3,
+          "line": 144
+        },
+        {
+          "heading": "Layout & Navigation",
+          "level": 2,
+          "line": 168
+        },
+        {
+          "heading": "Card",
+          "level": 3,
+          "line": 170
+        },
+        {
+          "heading": "Tabs",
+          "level": 3,
+          "line": 188
+        },
+        {
+          "heading": "Accordion",
+          "level": 3,
+          "line": 202
+        },
+        {
+          "heading": "Navigation Menu",
+          "level": 3,
+          "line": 222
+        },
+        {
+          "heading": "Overlays & Dialogs",
+          "level": 2,
+          "line": 239
+        },
+        {
+          "heading": "Dialog",
+          "level": 3,
+          "line": 241
+        },
+        {
+          "heading": "Drawer",
+          "level": 3,
+          "line": 258
+        },
+        {
+          "heading": "Popover",
+          "level": 3,
+          "line": 277
+        },
+        {
+          "heading": "Toast",
+          "level": 3,
+          "line": 287
+        },
+        {
+          "heading": "Command",
+          "level": 3,
+          "line": 304
+        },
+        {
+          "heading": "Alert Dialog",
+          "level": 3,
+          "line": 321
+        },
+        {
+          "heading": "Feedback & Status",
+          "level": 2,
+          "line": 344
+        },
+        {
+          "heading": "Alert",
+          "level": 3,
+          "line": 346
+        },
+        {
+          "heading": "Progress",
+          "level": 3,
+          "line": 361
+        },
+        {
+          "heading": "Skeleton",
+          "level": 3,
+          "line": 368
+        },
+        {
+          "heading": "Display Components",
+          "level": 2,
+          "line": 381
+        },
+        {
+          "heading": "Table",
+          "level": 3,
+          "line": 383
+        },
+        {
+          "heading": "Avatar",
+          "level": 3,
+          "line": 406
+        },
+        {
+          "heading": "Badge",
+          "level": 3,
+          "line": 416
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 32
+      }
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-theming.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 373,
+      "nonEmptyLines": 308,
+      "sections": [
+        {
+          "heading": "shadcn/ui Theming & Customization",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Dark Mode Setup",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Next.js App Router",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "Vite / Other Frameworks",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "CSS Variable System",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "Color Format",
+          "level": 3,
+          "line": 140
+        },
+        {
+          "heading": "Tailwind Configuration",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Color Customization",
+          "level": 2,
+          "line": 200
+        },
+        {
+          "heading": "Method 1: Update CSS Variables",
+          "level": 3,
+          "line": 202
+        },
+        {
+          "heading": "Method 2: Theme Generator",
+          "level": 3,
+          "line": 218
+        },
+        {
+          "heading": "Method 3: Multiple Themes",
+          "level": 3,
+          "line": 224
+        },
+        {
+          "heading": "Component Customization",
+          "level": 2,
+          "line": 247
+        },
+        {
+          "heading": "Customize Variants",
+          "level": 3,
+          "line": 251
+        },
+        {
+          "heading": "Customize Styles",
+          "level": 3,
+          "line": 287
+        },
+        {
+          "heading": "Override with className",
+          "level": 3,
+          "line": 308
+        },
+        {
+          "heading": "Base Color Presets",
+          "level": 2,
+          "line": 318
+        },
+        {
+          "heading": "Style Variants",
+          "level": 2,
+          "line": 330
+        },
+        {
+          "heading": "Radius Customization",
+          "level": 2,
+          "line": 348
+        },
+        {
+          "heading": "Best Practices",
+          "level": 2,
+          "line": 365
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-customization.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 483,
+      "nonEmptyLines": 398,
+      "sections": [
+        {
+          "heading": "Tailwind CSS Customization",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "@theme Directive",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Color Customization",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Custom Color Palette",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Semantic Colors",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Typography Customization",
+          "level": 2,
+          "line": 86
+        },
+        {
+          "heading": "Custom Fonts",
+          "level": 3,
+          "line": 88
+        },
+        {
+          "heading": "Custom Font Sizes",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Spacing Customization",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "Custom Utilities",
+          "level": 2,
+          "line": 143
+        },
+        {
+          "heading": "Custom Variants",
+          "level": 2,
+          "line": 170
+        },
+        {
+          "heading": "Layer Organization",
+          "level": 2,
+          "line": 191
+        },
+        {
+          "heading": "@apply Directive",
+          "level": 2,
+          "line": 251
+        },
+        {
+          "heading": "Plugins",
+          "level": 2,
+          "line": 276
+        },
+        {
+          "heading": "Official Plugins",
+          "level": 3,
+          "line": 278
+        },
+        {
+          "heading": "Custom Plugin",
+          "level": 3,
+          "line": 311
+        },
+        {
+          "heading": "Configuration Examples",
+          "level": 2,
+          "line": 344
+        },
+        {
+          "heading": "Complete Tailwind Config",
+          "level": 3,
+          "line": 346
+        },
+        {
+          "heading": "Dark Mode Configuration",
+          "level": 2,
+          "line": 415
+        },
+        {
+          "heading": "Content Configuration",
+          "level": 2,
+          "line": 440
+        },
+        {
+          "heading": "Safelist",
+          "level": 3,
+          "line": 457
+        },
+        {
+          "heading": "Best Practices",
+          "level": 2,
+          "line": 474
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 22
+      }
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-responsive.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 382,
+      "nonEmptyLines": 295,
+      "sections": [
+        {
+          "heading": "Tailwind CSS Responsive Design",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Mobile-First Approach",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Breakpoint System",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Responsive Patterns",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "Layout Changes",
+          "level": 3,
+          "line": 35
+        },
+        {
+          "heading": "Visibility",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Spacing",
+          "level": 3,
+          "line": 83
+        },
+        {
+          "heading": "Width",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "Common Responsive Layouts",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Sidebar Layout",
+          "level": 3,
+          "line": 114
+        },
+        {
+          "heading": "Card Grid",
+          "level": 3,
+          "line": 130
+        },
+        {
+          "heading": "Hero Section",
+          "level": 3,
+          "line": 141
+        },
+        {
+          "heading": "Navigation",
+          "level": 3,
+          "line": 166
+        },
+        {
+          "heading": "Max-Width Queries",
+          "level": 2,
+          "line": 191
+        },
+        {
+          "heading": "Range Queries",
+          "level": 2,
+          "line": 209
+        },
+        {
+          "heading": "Container Queries",
+          "level": 2,
+          "line": 225
+        },
+        {
+          "heading": "Custom Breakpoints",
+          "level": 2,
+          "line": 239
+        },
+        {
+          "heading": "Responsive State Variants",
+          "level": 2,
+          "line": 256
+        },
+        {
+          "heading": "Best Practices",
+          "level": 2,
+          "line": 272
+        },
+        {
+          "heading": "1. Mobile-First Design",
+          "level": 3,
+          "line": 274
+        },
+        {
+          "heading": "2. Consistent Breakpoint Usage",
+          "level": 3,
+          "line": 286
+        },
+        {
+          "heading": "3. Test at Breakpoint Boundaries",
+          "level": 3,
+          "line": 296
+        },
+        {
+          "heading": "4. Use Container for Content Width",
+          "level": 3,
+          "line": 300
+        },
+        {
+          "heading": "5. Progressive Enhancement",
+          "level": 3,
+          "line": 310
+        },
+        {
+          "heading": "6. Avoid Too Many Breakpoints",
+          "level": 3,
+          "line": 324
+        },
+        {
+          "heading": "Common Responsive Utilities",
+          "level": 2,
+          "line": 336
+        },
+        {
+          "heading": "Responsive Display",
+          "level": 3,
+          "line": 338
+        },
+        {
+          "heading": "Responsive Position",
+          "level": 3,
+          "line": 346
+        },
+        {
+          "heading": "Responsive Order",
+          "level": 3,
+          "line": 354
+        },
+        {
+          "heading": "Responsive Overflow",
+          "level": 3,
+          "line": 363
+        },
+        {
+          "heading": "Testing Checklist",
+          "level": 2,
+          "line": 371
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 32
+      }
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-utilities.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 455,
+      "nonEmptyLines": 359,
+      "sections": [
+        {
+          "heading": "Tailwind CSS Utility Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Layout Utilities",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Display",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "Flexbox",
+          "level": 3,
+          "line": 20
+        },
+        {
+          "heading": "Grid",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Positioning",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Z-Index",
+          "level": 3,
+          "line": 107
+        },
+        {
+          "heading": "Spacing Utilities",
+          "level": 2,
+          "line": 116
+        },
+        {
+          "heading": "Padding",
+          "level": 3,
+          "line": 118
+        },
+        {
+          "heading": "Margin",
+          "level": 3,
+          "line": 130
+        },
+        {
+          "heading": "Space Between",
+          "level": 3,
+          "line": 141
+        },
+        {
+          "heading": "Spacing Scale",
+          "level": 3,
+          "line": 148
+        },
+        {
+          "heading": "Typography",
+          "level": 2,
+          "line": 163
+        },
+        {
+          "heading": "Font Size",
+          "level": 3,
+          "line": 165
+        },
+        {
+          "heading": "Font Weight",
+          "level": 3,
+          "line": 179
+        },
+        {
+          "heading": "Text Alignment",
+          "level": 3,
+          "line": 191
+        },
+        {
+          "heading": "Line Height",
+          "level": 3,
+          "line": 200
+        },
+        {
+          "heading": "Combined Font Utilities",
+          "level": 3,
+          "line": 210
+        },
+        {
+          "heading": "Text Transform",
+          "level": 3,
+          "line": 218
+        },
+        {
+          "heading": "Text Decoration",
+          "level": 3,
+          "line": 227
+        },
+        {
+          "heading": "Text Overflow",
+          "level": 3,
+          "line": 235
+        },
+        {
+          "heading": "Colors",
+          "level": 2,
+          "line": 243
+        },
+        {
+          "heading": "Text Colors",
+          "level": 3,
+          "line": 245
+        },
+        {
+          "heading": "Background Colors",
+          "level": 3,
+          "line": 256
+        },
+        {
+          "heading": "Color Scale",
+          "level": 3,
+          "line": 265
+        },
+        {
+          "heading": "Opacity Modifiers",
+          "level": 3,
+          "line": 274
+        },
+        {
+          "heading": "Gradients",
+          "level": 3,
+          "line": 282
+        },
+        {
+          "heading": "Borders",
+          "level": 2,
+          "line": 295
+        },
+        {
+          "heading": "Border Width",
+          "level": 3,
+          "line": 297
+        },
+        {
+          "heading": "Border Color",
+          "level": 3,
+          "line": 309
+        },
+        {
+          "heading": "Border Radius",
+          "level": 3,
+          "line": 317
+        },
+        {
+          "heading": "Border Style",
+          "level": 3,
+          "line": 332
+        },
+        {
+          "heading": "Shadows",
+          "level": 2,
+          "line": 340
+        },
+        {
+          "heading": "Colored Shadows",
+          "level": 3,
+          "line": 352
+        },
+        {
+          "heading": "Width & Height",
+          "level": 2,
+          "line": 358
+        },
+        {
+          "heading": "Width",
+          "level": 3,
+          "line": 360
+        },
+        {
+          "heading": "Height",
+          "level": 3,
+          "line": 376
+        },
+        {
+          "heading": "Arbitrary Values",
+          "level": 2,
+          "line": 389
+        },
+        {
+          "heading": "Aspect Ratio",
+          "level": 2,
+          "line": 413
+        },
+        {
+          "heading": "Overflow",
+          "level": 2,
+          "line": 421
+        },
+        {
+          "heading": "Opacity",
+          "level": 2,
+          "line": 431
+        },
+        {
+          "heading": "Cursor",
+          "level": 2,
+          "line": 440
+        },
+        {
+          "heading": "User Select",
+          "level": 2,
+          "line": 449
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 43
+      }
+    }
+  ]
+}

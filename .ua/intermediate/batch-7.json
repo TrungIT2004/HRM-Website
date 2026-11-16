@@ -1,0 +1,84 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/design/data/cip/deliverables.csv",
+      "type": "document",
+      "name": "deliverables.csv",
+      "filePath": ".agents/skills/design/data/cip/deliverables.csv",
+      "summary": "Defines 50 brand deliverable items across 11 categories including Core Identity (logos), Stationery (business cards, letterhead), Security Access (badges, lanyards), Office Environment (signage, wall graphics), Apparel (uniforms), Promotional items (pens, bottles, bags), Vehicle branding, Digital assets (social, email, website), Product packaging, Events (booths, banners), and Documents (certificates). Each entry specifies dimensions, file formats, logo placement, color usage, typography, mockup context, best practices, and what to avoid.",
+      "tags": ["brand-identity", "deliverables", "design-system", "corporate-identity", "cip"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/industries.csv",
+      "type": "document",
+      "name": "industries.csv",
+      "filePath": ".agents/skills/design/data/cip/industries.csv",
+      "summary": "Maps 20 industries to their recommended brand style guidelines including CIP style category (e.g., Modern Tech, Corporate Minimal, Luxury Premium), primary/secondary color palettes, typography recommendations, key deliverables per industry, mood descriptors, best practices, and design elements to avoid. Provides industry-specific branding guidance for Technology, Finance, Legal, Healthcare, Real Estate, Hospitality, Food & Beverage, Fashion, Beauty, Education, Sports, Entertainment, Automotive, Construction, Agriculture, Non-Profit, Consulting, Retail, Manufacturing, and Logistics.",
+      "tags": ["brand-identity", "industry-guidelines", "design-system", "corporate-identity", "cip"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/mockup-contexts.csv",
+      "type": "document",
+      "name": "mockup-contexts.csv",
+      "filePath": ".agents/skills/design/data/cip/mockup-contexts.csv",
+      "summary": "Defines 20 mockup context scenes for photographing or rendering brand deliverables in realistic environments. Categories include Stationery (marble desk, wooden table, concrete surface), Premium (dark background, white studio), Environment (office lobby, meeting room, retail store), Vehicle (street scene, parking lot, highway motion), Events (trade show, conference, outdoor event), Product (lifestyle desk, hand holding, flat lay, unboxing), Apparel (fashion model), and Catalog (product grid). Each context specifies lighting, environment, props, camera angle, background, style notes, best use cases, and AI prompt modifiers.",
+      "tags": ["brand-identity", "mockup-contexts", "photography", "rendering", "cip"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/data/cip/styles.csv",
+      "type": "document",
+      "name": "styles.csv",
+      "filePath": ".agents/skills/design/data/cip/styles.csv",
+      "summary": "Defines 20 visual brand style archetypes with detailed specifications including style name, category (Professional, Premium, Heritage, Contemporary, Energetic, Natural, Feminine, Sophisticated, Fun, Industrial, Minimal, Nostalgic, Abstract, Organic, Digital), keywords, description, primary/secondary color palettes, typography, recommended materials and finishes, mood descriptors, best-fit industries, and industries to avoid. Styles range from Corporate Minimal, Modern Tech, Luxury Premium, Classic Traditional to Gradient Modern, Nature Biophilic, Art Deco, Swiss Minimal, and Memphis Bold.",
+      "tags": ["brand-identity", "visual-styles", "design-system", "corporate-identity", "cip"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/design/data/cip/deliverables.csv",
+      "target": "document:.agents/skills/design/data/cip/industries.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/data/cip/deliverables.csv",
+      "target": "document:.agents/skills/design/data/cip/mockup-contexts.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/data/cip/deliverables.csv",
+      "target": "document:.agents/skills/design/data/cip/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/data/cip/industries.csv",
+      "target": "document:.agents/skills/design/data/cip/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/data/cip/mockup-contexts.csv",
+      "target": "document:.agents/skills/design/data/cip/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/design/data/cip/industries.csv",
+      "target": "document:.agents/skills/design/data/cip/mockup-contexts.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

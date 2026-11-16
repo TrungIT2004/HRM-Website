@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/.env.example",
+      "type": "document",
+      "name": ".env.example",
+      "filePath": "ai-service/.env.example",
+      "summary": "AI Service environment template with 44 lines defining Google Gemini API keys (6 keys: GEMINI_API_KEY_1 through GEMINI_API_KEY_5 + GEMINI_API_KEY), model configurations (Gemma 4 31B, Flash-Lite), RPM/daily quotas, database URLs, Redis, and service ports.",
+      "tags": ["config", "environment", "ai-service", "gemini", "api-keys", "quota", "models", "template"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/CUsersadDesktoprouter_test_output.txt",
+      "type": "document",
+      "name": "router_test_output.txt",
+      "filePath": "ai-service/CUsersadDesktoprouter_test_output.txt",
+      "summary": "Router test output log with 4 lines capturing LLM router test execution results for query routing validation.",
+      "tags": ["test", "output", "ai-service", "router", "llm", "log"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/db_failures.txt",
+      "type": "document",
+      "name": "db_failures.txt",
+      "filePath": "ai-service/db_failures.txt",
+      "summary": "Database failure log with 38 lines recording SQL execution failures, connection errors, and query timeouts for debugging Text2SQL pipeline issues.",
+      "tags": ["test", "failures", "ai-service", "database", "sql", "errors", "log"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/failures.txt",
+      "type": "document",
+      "name": "failures.txt",
+      "filePath": "ai-service/failures.txt",
+      "summary": "General failure log with 73 lines capturing various pipeline failures including API errors, timeout errors, and validation failures for debugging.",
+      "tags": ["test", "failures", "ai-service", "pipeline", "errors", "log"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/full_prompt.txt",
+      "type": "document",
+      "name": "full_prompt.txt",
+      "filePath": "ai-service/full_prompt.txt",
+      "summary": "Full prompt template with 285 lines containing the complete system prompt for SQL generation including schema context, few-shot examples, and generation instructions.",
+      "tags": ["prompt", "ai-service", "sql-generation", "few-shot", "schema", "template"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/hybrid_sample.json",
+      "type": "document",
+      "name": "hybrid_sample.json",
+      "filePath": "ai-service/hybrid_sample.json",
+      "summary": "Hybrid query sample JSON with 11 lines demonstrating a combined document retrieval and SQL generation query for testing the hybrid route.",
+      "tags": ["test", "sample", "ai-service", "hybrid", "retrieval", "sql", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/prompt.txt",
+      "type": "document",
+      "name": "prompt.txt",
+      "filePath": "ai-service/prompt.txt",
+      "summary": "Prompt template with 285 lines (duplicate of full_prompt.txt) containing SQL generation prompt with schema and examples.",
+      "tags": ["prompt", "ai-service", "sql-generation", "template"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "ai-service/requirements.txt",
+      "summary": "AI Service Python dependencies with 32 lines listing Google GenerativeAI, SQLAlchemy, FastAPI, Pydantic, Pandas, and other packages for the AI service.",
+      "tags": ["config", "python", "dependencies", "ai-service", "google-generativeai", "fastapi", "requirements"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/sql_output.txt",
+      "type": "document",
+      "name": "sql_output.txt",
+      "filePath": "ai-service/sql_output.txt",
+      "summary": "SQL generation output sample with 5 lines showing generated SQL query for a test question.",
+      "tags": ["test", "output", "ai-service", "sql", "generation", "sample"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/validator_fixed_output.txt",
+      "type": "document",
+      "name": "validator_fixed_output.txt",
+      "filePath": "ai-service/validator_fixed_output.txt",
+      "summary": "Validator fixed output with 22 lines showing corrected SQL validation results after fixing column name issues.",
+      "tags": ["test", "output", "ai-service", "validator", "sql", "fixed", "column-names"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/validator_test_output.txt",
+      "type": "document",
+      "name": "validator_test_output.txt",
+      "filePath": "ai-service/validator_test_output.txt",
+      "summary": "Validator test output with 10 lines showing SQL validation test results for syntax and schema compliance.",
+      "tags": ["test", "output", "ai-service", "validator", "sql", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/validator_test_output2.txt",
+      "type": "document",
+      "name": "validator_test_output2.txt",
+      "filePath": "ai-service/validator_test_output2.txt",
+      "summary": "Validator test output 2 with 24 lines showing additional SQL validation test results.",
+      "tags": ["test", "output", "ai-service", "validator", "sql", "validation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/.env.example",
+      "target": "document:ai-service/requirements.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/full_prompt.txt",
+      "target": "document:ai-service/prompt.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 1.0
+    },
+    {
+      "source": "document:ai-service/.env.example",
+      "target": "document:ai-service/full_prompt.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/db_failures.txt",
+      "target": "document:ai-service/failures.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/validator_test_output.txt",
+      "target": "document:ai-service/validator_test_output2.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/validator_fixed_output.txt",
+      "target": "document:ai-service/validator_test_output.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

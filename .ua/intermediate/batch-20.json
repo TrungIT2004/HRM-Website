@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "document:Check Attendance/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "Check Attendance/README.md",
+      "summary": "Check Attendance project README with 173 lines documenting a face recognition-based attendance system using OpenCV, Haar cascades, and Python with setup instructions, usage guide, and architecture overview.",
+      "tags": ["documentation", "readme", "attendance", "face-recognition", "opencv", "python", "check-attendance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:Check Attendance/README_DEPLOY.md",
+      "type": "document",
+      "name": "README_DEPLOY.md",
+      "filePath": "Check Attendance/README_DEPLOY.md",
+      "summary": "Check Attendance deployment guide with 30 lines covering production deployment steps, environment configuration, and server setup for the face recognition attendance system.",
+      "tags": ["documentation", "deployment", "attendance", "face-recognition", "ops"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:Check Attendance/index.html",
+      "type": "document",
+      "name": "index.html",
+      "filePath": "Check Attendance/index.html",
+      "summary": "Check Attendance web interface HTML with 970 lines providing a dashboard for attendance monitoring, camera feed display, employee management, and real-time recognition results using vanilla JavaScript.",
+      "tags": ["markup", "frontend", "attendance", "dashboard", "html", "javascript", "camera"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:Check Attendance/insert_employees.sql",
+      "type": "document",
+      "name": "insert_employees.sql",
+      "filePath": "Check Attendance/insert_employees.sql",
+      "summary": "Employee database seed SQL with 119 lines containing INSERT statements for sample employee records including IDs, names, departments, and face encoding references for the attendance system.",
+      "tags": ["data", "sql", "attendance", "employees", "seed", "database", "face-encoding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:Check Attendance/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "Check Attendance/requirements.txt",
+      "summary": "Python dependencies for Check Attendance with 69 lines listing OpenCV, NumPy, Flask, face-recognition, and other packages required for the face recognition attendance system.",
+      "tags": ["config", "python", "dependencies", "attendance", "opencv", "flask", "requirements"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:Check Attendance/README.md",
+      "target": "document:Check Attendance/requirements.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:Check Attendance/index.html",
+      "target": "document:Check Attendance/insert_employees.sql",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:Check Attendance/README_DEPLOY.md",
+      "target": "document:Check Attendance/README.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

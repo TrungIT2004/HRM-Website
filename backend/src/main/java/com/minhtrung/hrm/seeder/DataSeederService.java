@@ -374,7 +374,7 @@ public class DataSeederService {
                     att.setUser(u);
                     att.setShift(shift);
                     att.setWorkDate(d);
-                    att.setStatus(AttendanceStatus.LEAVE);
+                    att.setStatus(AttendanceStatus.PAID_LEAVE);
                     batch.add(att);
                     continue;
                 }

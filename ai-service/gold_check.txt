@@ -1,0 +1,9 @@
+monthly_timesheets_05: Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?
+  GOLD: SELECT period_month, unpaid_leave_days FROM monthly_timesheets WHERE user_id = %(uid)s AND period_year = %(year)s ORDER BY unpaid_leave_days DESC LIMIT 1
+
+resignation_requests_05: Đơn xin nghỉ nào của tôi bị từ chối hoặc đã hủy?
+  GOLD: SELECT status, reason, submitted_time FROM resignation_requests WHERE user_id = %(uid)s AND status IN ('REJECTED','CANCELLED','MANAGER_REJECTED') ORDER BY submitted_time DESC
+
+resignation_requests_07: Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?
+  GOLD: SELECT created_at, reason FROM leave_requests WHERE requestor_id = %(uid)s ORDER BY created_at DESC LIMIT 1
+

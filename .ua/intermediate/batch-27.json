@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions.json",
+      "type": "document",
+      "name": "hrm_db_only-predictions.json",
+      "filePath": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions.json",
+      "summary": "Text2SQL DB-only predictions JSON with 5,236 lines containing generated SQL queries for all benchmark test cases in the database-only route.",
+      "tags": ["test", "results", "ai-service", "text2sql", "db-only", "predictions", "sql", "benchmark", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval.json",
+      "type": "document",
+      "name": "hrm_db_only-predictions_eval.json",
+      "filePath": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval.json",
+      "summary": "Text2SQL DB-only evaluation JSON with 9,449 lines containing detailed execution accuracy, syntax correctness, and semantic equivalence results for each predicted SQL query.",
+      "tags": ["test", "results", "ai-service", "text2sql", "db-only", "evaluation", "execution-accuracy", "semantic-equivalence", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.csv",
+      "type": "document",
+      "name": "hrm_db_only-predictions_eval_summary.csv",
+      "filePath": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.csv",
+      "summary": "Text2SQL DB-only evaluation summary CSV with 2 lines containing aggregate metrics (execution accuracy, syntax accuracy) for the database-only benchmark.",
+      "tags": ["test", "results", "ai-service", "text2sql", "db-only", "summary", "csv", "accuracy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.json",
+      "type": "document",
+      "name": "hrm_db_only-predictions_eval_summary.json",
+      "filePath": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.json",
+      "summary": "Text2SQL DB-only evaluation summary JSON with 92 lines containing structured aggregate metrics for the database-only benchmark including accuracy breakdowns.",
+      "tags": ["test", "results", "ai-service", "text2sql", "db-only", "summary", "json", "metrics"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions.json",
+      "target": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval.json",
+      "target": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.json",
+      "target": "document:ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

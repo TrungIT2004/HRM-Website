@@ -1,0 +1,252 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceReviewRepository.java",
+      "type": "document",
+      "name": "PerformanceReviewRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceReviewRepository.java",
+      "summary": "PerformanceReview repository: JPA repository with findByCycleId, findByRevieweeId, findByReviewerId, findByStatus, findByCycleIdAndStatus, findPendingCalibration. Supports calibration workflow queries.",
+      "tags": ["backend", "performance", "repository", "review", "jpa", "calibration", "cycle", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceScoreRepository.java",
+      "type": "document",
+      "name": "PerformanceScoreRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceScoreRepository.java",
+      "summary": "PerformanceScore repository: JPA repository with findByReviewId, findByCompetencyId, findByScoredBy, findAverageScoreByCompetency. Statistical queries for score distribution.",
+      "tags": ["backend", "performance", "repository", "score", "jpa", "competency", "average", "distribution", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java",
+      "type": "document",
+      "name": "PerformanceService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java",
+      "summary": "Performance service: core logic for review cycles (create, update, close), self/manager review submission, calibration (score normalization, forced distribution), score distribution calculation, export to Excel/CSV. Integrates with PerformanceReviewRepository, PerformanceScoreRepository, UserProfileRepository, PerformanceSpecification.",
+      "tags": ["backend", "performance", "service", "cycle", "calibration", "distribution", "export", "forced-distribution", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/specifications/PerformanceSpecification.java",
+      "type": "document",
+      "name": "PerformanceSpecification.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/specifications/PerformanceSpecification.java",
+      "summary": "Performance JPA specifications: reusable predicates for review filtering (byCycleId, byRevieweeId, byReviewerId, byStatus, byDepartmentId, byDateRange, searchText). Composable with SpecificationScopes for dynamic queries.",
+      "tags": ["backend", "performance", "specification", "jpa", "predicate", "filter", "dynamic", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "type": "document",
+      "name": "PermissionGrant.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "summary": "PermissionGrant JPA entity: id, userId, permissionKey (PermissionKey enum), granted (boolean), grantedBy, grantedAt, expiresAt (optional). Granular per-user permission overrides beyond role-based defaults.",
+      "tags": ["backend", "permissions", "entity", "grant", "jpa", "granular", "override", "expiry", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "type": "document",
+      "name": "PermissionKey.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "summary": "PermissionKey enum: comprehensive list of granular permissions (e.g., EMPLOYEE_VIEW, EMPLOYEE_CREATE, EMPLOYEE_EDIT, EMPLOYEE_DELETE, LEAVE_APPROVE, LEEVE_VIEW_TEAM, PAYROLL_VIEW, PAYROLL_EDIT, ASSET_ASSIGN, TICKET_ASSIGN, REPORT_VIEW, ADMIN_USERS, ADMIN_PERMISSIONS). Maps to frontend feature flags.",
+      "tags": ["backend", "permissions", "enum", "key", "granular", "feature-flag", "frontend", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java",
+      "type": "document",
+      "name": "PermissionGrantRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java",
+      "summary": "PermissionGrant repository: JPA repository with findByUserId, findByUserIdAndPermissionKey, findEffectivePermissions (combines role defaults with grants). Used by auth filter for authorization.",
+      "tags": ["backend", "permissions", "repository", "grant", "jpa", "effective", "authorization", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionBackfillRunner.java",
+      "type": "document",
+      "name": "PermissionBackfillRunner.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionBackfillRunner.java",
+      "summary": "Permission backfill runner: CommandLineRunner that syncs default role permissions to PermissionGrant table on startup. Ensures new permissions are available for existing users.",
+      "tags": ["backend", "permissions", "service", "backfill", "startup", "role-sync", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "type": "document",
+      "name": "PermissionService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "summary": "Permission service: manages permission grants (grant, revoke, bulkUpdate), computes effective permissions (role defaults + explicit grants), checks hasPermission(userId, permissionKey). Used by AdminService, JwtAuthFilter, and controllers for authorization.",
+      "tags": ["backend", "permissions", "service", "grant", "revoke", "effective", "check", "authorization", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/controllers/ResignationController.java",
+      "type": "document",
+      "name": "ResignationController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/controllers/ResignationController.java",
+      "summary": "Resignation REST controller: endpoints for submitResignation, getMyResignation, getResignationDetail, withdrawResignation, approveResignation (manager), rejectResignation (manager), hrApprove (HR), hrReject (HR), scheduleExitInterview, submitHandoverPlan, getFinalSettlement, uploadOffboardingDoc. Multi-stage approval workflow.",
+      "tags": ["backend", "resignation", "controller", "workflow", "approval", "exit-interview", "handover", "settlement", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/ApproveResignationRequest.java",
+      "type": "document",
+      "name": "ApproveResignationRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/ApproveResignationRequest.java",
+      "summary": "Approve resignation request DTO: resignationId, approvedLastDay, comment. Manager/HR approval with last working day confirmation.",
+      "tags": ["backend", "resignation", "dto", "approve", "last-day", "comment", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/CreateResignationRequest.java",
+      "type": "document",
+      "name": "CreateResignationRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/CreateResignationRequest.java",
+      "summary": "Create resignation request DTO: requestedLastDay, reason, noticePeriodDays. Employee resignation submission with notice period.",
+      "tags": ["backend", "resignation", "dto", "create", "notice-period", "reason", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java",
+      "type": "document",
+      "name": "TransferRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java",
+      "summary": "Transfer request DTO: resignationId, handoverToUserId, handoverDetails, documents (list of doc IDs). Knowledge transfer during offboarding.",
+      "tags": ["backend", "resignation", "dto", "transfer", "handover", "knowledge", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/dtos/responses/ResignationResponse.java",
+      "type": "document",
+      "name": "ResignationResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/responses/ResignationResponse.java",
+      "summary": "Resignation response DTO: resignationId, userId, employeeCode, fullName, department, requestedLastDay, approvedLastDay, status, reason, noticePeriodDays, exitInterviewDate, handoverStatus, finalSettlementStatus, createdAt, updatedAt. Full lifecycle view.",
+      "tags": ["backend", "resignation", "dto", "response", "lifecycle", "settlement", "handover", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java",
+      "type": "document",
+      "name": "ResignationRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java",
+      "summary": "ResignationRequest JPA entity: id, userId, requestedLastDay, approvedLastDay, status (SUBMITTED, MANAGER_APPROVED, MANAGER_REJECTED, HR_APPROVED, HR_REJECTED, WITHDRAWN, COMPLETED), reason, noticePeriodDays, managerId, managerApprovedAt, hrId, hrApprovedAt, exitInterviewDate, handoverToUserId, handoverDetails, finalSettlementAmount, finalSettlementStatus, offboardingDocs (JSON). Complete offboarding tracker.",
+      "tags": ["backend", "resignation", "entity", "jpa", "offboarding", "multi-stage", "handover", "settlement", "json", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java",
+      "type": "document",
+      "name": "ResignationErrorCode.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java",
+      "summary": "ResignationErrorCode enum: RESIGNATION_NOT_FOUND, INVALID_STATUS_TRANSITION, RESIGNATION_ALREADY_PROCESSED, INVALID_NOTICE_PERIOD, WITHDRAWAL_NOT_ALLOWED, HANDOVER_REQUIRED, SETTLEMENT_PENDING, PERMISSION_DENIED. Used by ResignationException.",
+      "tags": ["backend", "resignation", "enum", "error-code", "transition", "withdrawal", "handover", "settlement", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java",
+      "type": "document",
+      "name": "ResignationStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java",
+      "summary": "ResignationStatus enum: SUBMITTED, MANAGER_APPROVED, MANAGER_REJECTED, HR_APPROVED, HR_REJECTED, WITHDRAWN, COMPLETED. Multi-stage approval workflow with withdrawal option.",
+      "tags": ["backend", "resignation", "enum", "status", "workflow", "multi-stage", "withdrawal", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java",
+      "type": "document",
+      "name": "ResignationException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java",
+      "summary": "Resignation exception: extends RuntimeException with ResignationErrorCode. Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "resignation", "exception", "error-code", "runtime-exception", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/repositories/ResignationRequestRepository.java",
+      "type": "document",
+      "name": "ResignationRequestRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/repositories/ResignationRequestRepository.java",
+      "summary": "ResignationRequest repository: JPA repository with findByUserId, findByStatus, findByManagerId, findByHrId, findPendingApprovals, findByDateRange. Supports approval workflow queries.",
+      "tags": ["backend", "resignation", "repository", "jpa", "approval", "pending", "manager", "hr", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationScheduler.java",
+      "type": "document",
+      "name": "ResignationScheduler.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationScheduler.java",
+      "summary": "Resignation scheduler: @Scheduled job that checks for upcoming last days (sends reminders), overdue handovers, pending exit interviews, and auto-completes resignations past final settlement. Runs daily.",
+      "tags": ["backend", "resignation", "service", "scheduler", "scheduled", "reminder", "auto-complete", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java",
+      "type": "document",
+      "name": "ResignationService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java",
+      "summary": "Resignation service: core logic for resignation lifecycle (submit, approve/reject at each stage, withdraw, schedule exit interview, handover management, final settlement calculation, offboarding document tracking). Integrates with ResignationRequestRepository, UserProfileRepository, AssetAssignmentRepository (asset return), FileStorageService.",
+      "tags": ["backend", "resignation", "service", "lifecycle", "approval", "handover", "settlement", "asset-return", "filestorage", "java"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceReviewRepository.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/performance/specifications/PerformanceSpecification.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/resignation/controllers/ResignationController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationScheduler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetAssignmentRepository.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

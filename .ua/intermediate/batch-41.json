@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/ocr_review/214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.txt",
+      "type": "document",
+      "name": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.txt",
+      "filePath": "ai-service/tests/retrieval_doc_only/ocr_review/214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.txt",
+      "summary": "OCR output for document 214.HD-ACT-HC (Vehicle Registration Guide for Business Trips) - 6,122 chars. Contains procedures for weekly/sudden vehicle registration, approval responsibilities, external rental process, monthly consolidated reports, registration form fields, and April 2024 vehicle schedule with driver assignments.",
+      "tags": ["test", "dataset", "ai-service", "retrieval", "doc-only", "ocr", "vehicle-registration", "214", "txt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/ocr_review/917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.txt",
+      "type": "document",
+      "name": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.txt",
+      "filePath": "ai-service/tests/retrieval_doc_only/ocr_review/917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.txt",
+      "summary": "OCR output for document 917.QĐ-ACT (Decision on Vehicle Registration, Dispatch, and Usage Regulations at ACT Telecom) - 11,024 chars. Contains official decision establishing vehicle management regulations, scope, responsibilities, registration procedures, dispatch rules, usage policies, and violation handling.",
+      "tags": ["test", "dataset", "ai-service", "retrieval", "doc-only", "ocr", "vehicle-regulation", "917", "decision", "txt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/ocr_review/QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.txt",
+      "type": "document",
+      "name": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.txt",
+      "filePath": "ai-service/tests/retrieval_doc_only/ocr_review/QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.txt",
+      "summary": "OCR output for document QT.ACT.HC-05 (Office Supplies, Hygiene Products, and Ink Management Process) - 62,249 chars. Detailed process for VPP procurement, allocation, usage tracking, ink/toner management, inventory thresholds, request forms, approval workflows, and departmental quotas.",
+      "tags": ["test", "dataset", "ai-service", "retrieval", "doc-only", "ocr", "office-supplies", "vpp", "process", "txt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-EVNFinance.txt",
+      "type": "document",
+      "name": "QuyCheQuanTri-EVNFinance.txt",
+      "filePath": "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-EVNFinance.txt",
+      "summary": "OCR output for EVN Finance Corporate Charter (Quy chế quản trị) - 64,799 chars. Contains governance structure, shareholder rights, General Meeting procedures, Board of Directors roles, Supervisory Board, executive management, financial reporting, dividend policy, and audit requirements for EVN Finance.",
+      "tags": ["test", "dataset", "ai-service", "retrieval", "doc-only", "ocr", "corporate-charter", "evn", "finance", "governance", "txt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-MWG.txt",
+      "type": "document",
+      "name": "QuyCheQuanTri-MWG.txt",
+      "filePath": "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-MWG.txt",
+      "summary": "OCR output for MWG (Mobile World Group) Corporate Charter - 56,446 chars. Covers corporate governance framework: General Meeting of Shareholders, Board of Directors, Supervisory Board, Chief Executive Officer, financial management, profit distribution, risk management, and information disclosure.",
+      "tags": ["test", "dataset", "ai-service", "retrieval", "doc-only", "ocr", "corporate-charter", "mwg", "governance", "txt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-Petrolimex-PMSC.txt",
+      "type": "document",
+      "name": "QuyCheQuanTri-Petrolimex-PMSC.txt",
+      "filePath": "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-Petrolimex-PMSC.txt",
+      "summary": "OCR output for Petrolimex-PMSC Corporate Charter (Quy chế quản trị) - 176,528 chars. Largest document covering: Chapter 1 General Provisions, Chapter 2 General Meeting of Shareholders (convening, agenda, voting), Chapter 3 Board of Directors, Chapter 4 Supervisory Board, Chapter 5 General Director, Chapter 6 Financial Regime, Chapter 7 Audit, Chapter 8 Dissolution. Detailed tables for salary grades, bonus policies, and organizational structure.",
+      "tags": ["test", "dataset", "ai-service", "retrieval", "doc-only", "ocr", "corporate-charter", "petrolimex", "pmsc", "governance", "txt"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/ocr_review/214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.txt",
+      "target": "document:ai-service/tests/retrieval_doc_only/ocr_review/917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/ocr_review/QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.txt",
+      "target": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-Petrolimex-PMSC.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-EVNFinance.txt",
+      "target": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-MWG.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-MWG.txt",
+      "target": "document:ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-Petrolimex-PMSC.txt",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

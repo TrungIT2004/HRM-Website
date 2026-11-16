@@ -1,0 +1,131 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/test_v2/hybrid/eval_hybrid.py",
+      "type": "document",
+      "name": "eval_hybrid.py",
+      "filePath": "ai-service/test_v2/hybrid/eval_hybrid.py",
+      "summary": "Hybrid evaluation script: tests combined DB+DOC retrieval and generation. Runs end-to-end queries through chat_service.py, measures route accuracy, SQL correctness, document relevance, answer quality, and latency. Outputs hybrid_eval_results.json.",
+      "tags": ["ai-service", "test", "hybrid", "eval", "end-to-end", "route", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/latency/breakdown.py",
+      "type": "document",
+      "name": "breakdown.py",
+      "filePath": "ai-service/test_v2/latency/breakdown.py",
+      "summary": "Latency breakdown script: instruments each pipeline stage (rewrite, route, retrieve, rerank, generate SQL, execute SQL, generate answer) with per-stage timing. Outputs latency_breakdown.json with p50/p95/max per stage across N queries.",
+      "tags": ["ai-service", "test", "latency", "breakdown", "profiling", "pipeline", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/latency/load_breakdown.py",
+      "type": "document",
+      "name": "load_breakdown.py",
+      "filePath": "ai-service/test_v2/latency/load_breakdown.py",
+      "summary": "Load latency breakdown: runs concurrent queries (configurable workers) to measure throughput, queue depth, and resource contention. Identifies bottlenecks under load (connection pool, GPU memory, rate limits). Outputs load_test_results.json.",
+      "tags": ["ai-service", "test", "latency", "load", "concurrent", "throughput", "bottleneck", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/latency/ttft.py",
+      "type": "document",
+      "name": "ttft.py",
+      "filePath": "ai-service/test_v2/latency/ttft.py",
+      "summary": "Time-to-first-token (TTFT) measurement: instruments streaming answer generation to measure first token latency vs total completion. Tests different models (Gemma-4-31B, Flash-Lite) and prompt sizes. Outputs ttft_results.json.",
+      "tags": ["ai-service", "test", "latency", "ttft", "streaming", "first-token", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/memory/answers_memory.json",
+      "type": "document",
+      "name": "answers_memory.json",
+      "filePath": "ai-service/test_v2/memory/answers_memory.json",
+      "summary": "Memory test answers JSON: end-to-end conversation answers for memory evaluation dataset. Contains per-turn question, rewrite, route, answer, citations, latency, and token usage. Used for memory rewrite and answer quality analysis.",
+      "tags": ["ai-service", "test", "memory", "answers", "conversation", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/routers/test_llm_router_full.py",
+      "type": "document",
+      "name": "test_llm_router_full.py",
+      "filePath": "ai-service/test_v2/routers/test_llm_router_full.py",
+      "summary": "Full LLM router test: evaluates routing accuracy on 200+ questions across all routes (DB_ONLY, DOC_ONLY, HYBRID, DIRECTORY, OUT_OF_SCOPE). Measures per-route precision/recall, confusion matrix, and rewrite quality. Outputs llm_router_test_results.json.",
+      "tags": ["ai-service", "test", "router", "llm", "accuracy", "confusion-matrix", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/routers/test_router_accuracy.py",
+      "type": "document",
+      "name": "test_router_accuracy.py",
+      "filePath": "ai-service/test_v2/routers/test_router_accuracy.py",
+      "summary": "Router accuracy test: focused on DB_ONLY vs DOC_ONLY confusion (known 40% issue). Tests keyword fallback vs LLM classification, measures false positive/negative rates per route, and evaluates prompt variations. Outputs router_accuracy_report.json.",
+      "tags": ["ai-service", "test", "router", "accuracy", "db-only", "doc-only", "confusion", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/stress/drill.py",
+      "type": "document",
+      "name": "drill.py",
+      "filePath": "ai-service/test_v2/stress/drill.py",
+      "summary": "Stress test drill: sustained load generator for AI pipeline. Configurable QPS, duration, query mix (DB/DOC/HYBRID). Monitors error rates, latency percentiles, quota consumption, and GPU memory. Alerts on quota exhaustion or error spikes.",
+      "tags": ["ai-service", "test", "stress", "load", "qps", "quota", "monitoring", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/stress/stress.py",
+      "type": "document",
+      "name": "stress.py",
+      "filePath": "ai-service/test_v2/stress/stress.py",
+      "summary": "Stress test framework: base class for stress tests with worker pool, result aggregation, metrics collection (latency, errors, tokens), and HTML report generation. Extended by drill.py, stress3.py for specific scenarios.",
+      "tags": ["ai-service", "test", "stress", "framework", "worker-pool", "report", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/test_v2/stress/stress3.py",
+      "type": "document",
+      "name": "stress3.py",
+      "filePath": "ai-service/test_v2/stress/stress3.py",
+      "summary": "Stress test v3: multi-scenario stress test (burst, sustained, ramp-up, soak). Tests quota rotation under concurrent load, measures key rotation fairness, and validates daily quota reset behavior. Outputs stress3_report.json.",
+      "tags": ["ai-service", "test", "stress", "v3", "burst", "soak", "quota-rotation", "python"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/test_v2/latency/breakdown.py",
+      "target": "document:ai-service/test_v2/latency/load_breakdown.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/latency/breakdown.py",
+      "target": "document:ai-service/test_v2/latency/ttft.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/routers/test_llm_router_full.py",
+      "target": "document:ai-service/test_v2/routers/test_router_accuracy.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/stress/stress.py",
+      "target": "document:ai-service/test_v2/stress/drill.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/test_v2/stress/stress.py",
+      "target": "document:ai-service/test_v2/stress/stress3.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

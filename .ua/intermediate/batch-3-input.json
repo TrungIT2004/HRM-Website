@@ -1,0 +1,19 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/brand/SKILL.md", "language": "markdown", "sizeLines": 97, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/approval-checklist.md", "language": "markdown", "sizeLines": 169, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/asset-organization.md", "language": "markdown", "sizeLines": 157, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/brand-guideline-template.md", "language": "markdown", "sizeLines": 140, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/color-palette-management.md", "language": "markdown", "sizeLines": 186, "fileCategory": "docs"},
+    {"path": ".agents/skills/brand/references/consistency-checklist.md", "language": "markdown", "sizeLines": 94, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/brand/SKILL.md": [],
+    ".agents/skills/brand/references/approval-checklist.md": [],
+    ".agents/skills/brand/references/asset-organization.md": [],
+    ".agents/skills/brand/references/brand-guideline-template.md": [],
+    ".agents/skills/brand/references/color-palette-management.md": [],
+    ".agents/skills/brand/references/consistency-checklist.md": []
+  }
+}

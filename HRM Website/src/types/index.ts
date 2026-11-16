@@ -274,3 +274,52 @@ export interface HolidayItem {
   date: string; // YYYY-MM-DD
   description: string;
 }
+
+// Notification Types
+export type NotificationType = 'LEAVE' | 'OVERTIME' | 'RESIGNATION' | 'ASSET_REQUEST' | 'GENERIC';
+
+export type NotificationAction = 'SUBMITTED' | 'APPROVED' | 'REJECTED' | 'CANCELLED' | 'REVOKED';
+
+export type NotificationPriority = 'NORMAL' | 'HIGH' | 'URGENT';
+
+export interface Notification {
+  notificationId: string;
+  recipientId: string;
+  senderId?: string;
+  requestType: NotificationType;
+  requestId: string;
+  action: NotificationAction;
+  title: string;
+  message: string;
+  priority: NotificationPriority;
+  metadata: Record<string, any>;
+  isRead: boolean;
+  isSeen: boolean;
+  count: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface NotificationEvent {
+  type: NotificationType;
+  requestId: string;
+  action: NotificationAction;
+  title: string;
+  message: string;
+  metadata: Record<string, any>;
+  priority: NotificationPriority;
+}
+
+export interface ToastNotification {
+  id: string;
+  notification: Notification;
+  visible: boolean;
+}
+
+export interface PageResponse<T> {
+  content: T[];
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
+}

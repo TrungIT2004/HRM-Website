@@ -1,0 +1,314 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 5
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/slides/references/copywriting-formulas.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 84,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Copywriting Formulas",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Core Formulas",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "PAS (Problem-Agitate-Solution)",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "AIDA (Attention-Interest-Desire-Action)",
+          "level": 3,
+          "line": 12
+        },
+        {
+          "heading": "FAB (Features-Advantages-Benefits)",
+          "level": 3,
+          "line": 17
+        },
+        {
+          "heading": "Cost of Inaction",
+          "level": 3,
+          "line": 22
+        },
+        {
+          "heading": "Before-After-Bridge",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "Formula-to-Slide Mapping",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Headline Patterns",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Power Words",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Contrast Patterns",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Social Proof Patterns",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Search Commands",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Quick Reference",
+          "level": 2,
+          "line": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": ".agents/skills/slides/references/create.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 4,
+      "nonEmptyLines": 3,
+      "sections": [
+        {
+          "heading": "Task",
+          "level": 2,
+          "line": 3
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": ".agents/skills/slides/references/html-template.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 295,
+      "nonEmptyLines": 258,
+      "sections": [
+        {
+          "heading": "HTML Slide Template",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Base Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Chart.js Integration",
+          "level": 2,
+          "line": 204
+        },
+        {
+          "heading": "Animation Classes",
+          "level": 2,
+          "line": 239
+        },
+        {
+          "heading": "Background Images",
+          "level": 2,
+          "line": 275
+        },
+        {
+          "heading": "CSS Variables Reference",
+          "level": 2,
+          "line": 286
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": ".agents/skills/slides/references/layout-patterns.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 137,
+      "nonEmptyLines": 116,
+      "sections": [
+        {
+          "heading": "Layout Patterns",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Layout Selection by Use Case",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "CSS Structures",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Title Slide",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "Two Column Split",
+          "level": 3,
+          "line": 37
+        },
+        {
+          "heading": "Feature Grid (3 columns)",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Metrics Dashboard (4 columns)",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Component Variants",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Card Styles",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Metric Styles",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Visual Treatments",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Search Commands",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Layout Decision Flow",
+          "level": 2,
+          "line": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": ".agents/skills/slides/references/slide-strategies.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 94,
+      "nonEmptyLines": 75,
+      "sections": [
+        {
+          "heading": "Slide Strategies",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Strategy Selection",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Common Structures",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "YC Seed Deck (10 slides)",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "Sales Pitch (9 slides)",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Product Demo (6 slides)",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Duarte Sparkline Pattern",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Search Commands",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Matching Strategy to Context",
+          "level": 2,
+          "line": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    }
+  ]
+}

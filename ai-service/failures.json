@@ -1,0 +1,254 @@
+[
+  [
+    "users_06",
+    "Tôi đang thuộc phòng ban nào và giữ chức danh gì?",
+    "SELECT d.department_id, d.name AS department, j.title AS job FROM users AS u LEFT JOIN departments AS d ON d.department_id = u.department_id LEFT JOIN jobs AS j ON j.job_id = u.job_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    ""
+  ],
+  [
+    "attendances_04",
+    "Tháng này so với tháng trước, tôi đi muộn nhiều hơn hay ít hơn?",
+    "WITH m AS (SELECT COUNT(*) FILTER(WHERE status IN ('LATE', 'LATE_AND_EARLY')) AS cnt, CAST(DATE_TRUNC('MONTH', work_date) AS DATE) AS mon FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND is_deleted = FALSE GROUP BY 2) SELECT (SELECT cnt FROM m WHERE mon = CAST(DATE_TRUNC('MONTH', CURRENT_DATE) AS DATE)) AS this_month, (SELECT cnt FROM m WHERE mon = CAST(DATE_TRUNC('MONTH', CURRENT_DATE) AS DATE) - INTERVAL '1 MONTH') AS last_month",
+    ""
+  ],
+  [
+    "attendances_05",
+    "Tổng số giờ làm việc thực tế của tôi trong tuần này là bao nhiêu?",
+    "SELECT ROUND(CAST(COALESCE(SUM(CAST(EXTRACT(EPOCH FROM (a.clock_out_time - a.clock_in_time)) AS DOUBLE PRECISION) / 3600), 0) AS DECIMAL), 2) AS total_hours FROM attendances AS a WHERE a.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND a.is_deleted = FALSE AND a.work_date >= CAST(DATE_TRUNC('WEEK', CURRENT_DATE) AS DATE) AND a.work_date < CAST(DATE_TRUNC('WEEK', CURRENT_DATE) AS DATE) + INTERVAL '7 DAY'",
+    ""
+  ],
+  [
+    "monthly_timesheets_05",
+    "Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?",
+    "SELECT CAST(EXTRACT(MONTH FROM from_date) AS INT) AS month, SUM(paid_leave_days) AS total_days FROM leave_requests WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status = 'accepted' AND EXTRACT(YEAR FROM from_date) = EXTRACT(YEAR FROM CURRENT_DATE) GROUP BY 1 ORDER BY total_days DESC NULLS LAST LIMIT 1",
+    ""
+  ],
+  [
+    "monthly_timesheets_07",
+    "Giờ OT thực tế và giờ OT được trả của tôi trong tháng này chênh lệch bao nhiêu?",
+    "SELECT period_month, total_actual_ot_hours, total_paid_ot_hours, (total_actual_ot_hours - total_paid_ot_hours) AS diff_hours FROM monthly_timesheets WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY period_year DESC NULLS LAST, period_month DESC NULLS LAST LIMIT 1",
+    ""
+  ],
+  [
+    "monthly_timesheets_08",
+    "Những tháng nào trong năm nay tôi đi muộn trên 3 lần?",
+    "SELECT period_month FROM monthly_timesheets WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_year = 2026 AND late_count > 3 ORDER BY period_month NULLS FIRST",
+    "SELECT period_month, late_count FROM monthly_timesheets WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_year = 2026 AND late_count > 3 ORDER BY period_month"
+  ],
+  [
+    "overtime_records_07",
+    "Liệt kê 10 lần OT gần nhất của tôi, mỗi lần mấy giờ và lý do gì?",
+    "SELECT approved_date, ROUND(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time)) / CAST(3600 AS DECIMAL), 2) AS hours, reason FROM overtime_records WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status = 'accepted' ORDER BY approved_date DESC NULLS LAST LIMIT 10",
+    ""
+  ],
+  [
+    "overtime_records_10",
+    "Tuần nào trong năm nay tôi OT nhiều giờ nhất?",
+    "SELECT TO_CHAR(DATE_TRUNC('WEEK', approved_date), 'YYYY-MM-DD') AS week, ROUND(CAST(SUM(CAST(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time)) AS DOUBLE PRECISION) / 3600) AS DECIMAL), 2) AS total_ot_hours FROM overtime_records WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status = 'accepted' AND EXTRACT(YEAR FROM approved_date) = 2026 GROUP BY 1 ORDER BY total_ot_hours DESC NULLS LAST LIMIT 1",
+    ""
+  ],
+  [
+    "payrolls_04",
+    "Giải thích chi tiết các khoản khấu trừ trong lương tháng này của tôi?",
+    "SELECT p.period_month, p.period_year, p.base_salary, p.gross_pay, p.insurance_deduction, p.tax_deduction, p.other_deduction, p.total_deduction, p.net_pay, p.status FROM payrolls AS p WHERE p.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY p.period_year DESC NULLS LAST, p.period_month DESC NULLS LAST LIMIT 1",
+    "SELECT base_salary, gross_pay, insurance_deduction, tax_deduction, other_deduction, total_deduction, net_pay FROM payrolls WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY period_year DESC, period_month DESC LIMIT 1"
+  ],
+  [
+    "payrolls_10",
+    "Các phiếu lương đã thanh toán (PAID) của tôi trong năm nay, trung bình mỗi tháng thực lĩnh bao nhiêu?",
+    "SELECT ROUND(CAST(AVG(p.net_pay) AS DECIMAL), 2) AS avg_net_pay FROM payrolls AS p WHERE p.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND p.status = 'PAID' AND p.period_year = 2026",
+    ""
+  ],
+  [
+    "salaries_03",
+    "Lương hiện tại của tôi tăng bao nhiêu so với mức lương trước đây?",
+    "",
+    ""
+  ],
+  [
+    "salaries_08",
+    "Lương cơ bản và tài khoản ngân hàng nhận lương hiện tại của tôi là gì?",
+    "SELECT s.base_salary, s.pay_frequency, b.bank_name, b.account_number, b.account_holder_name FROM salaries AS s LEFT JOIN user_bank_accounts AS b ON b.user_id = s.user_id AND b.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND b.is_default = TRUE WHERE s.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND s.is_active = TRUE",
+    "SELECT s.base_salary, s.pay_frequency, b.bank_name, b.account_number FROM salaries s LEFT JOIN user_bank_accounts b ON b.user_id = s.user_id AND b.is_default = TRUE WHERE s.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND s.is_active = TRUE"
+  ],
+  [
+    "user_contracts_03",
+    "Hợp đồng của tôi còn bao nhiêu ngày nữa thì hết hạn?",
+    "SELECT contract_type, contract_end_date, (contract_end_date - CURRENT_DATE) AS days_left FROM user_contracts WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND is_active = TRUE",
+    ""
+  ],
+  [
+    "user_contracts_07",
+    "So sánh thời hạn hợp đồng mới nhất với hợp đồng trước đó của tôi?",
+    "WITH c AS (SELECT contract_type, contract_start_date, contract_end_date, ROW_NUMBER() OVER (ORDER BY contract_start_date DESC NULLS LAST) AS rn FROM user_contracts WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') SELECT (SELECT contract_type FROM c WHERE rn = 1) AS latest_type, (SELECT contract_end_date - contract_start_date FROM c WHERE rn = 1) AS latest_duration, (SELECT contract_type FROM c WHERE rn = 2) AS previous_type, (SELECT contract_end_date - contract_start_date FROM c WHERE rn = 2) AS previous_duration, COALESCE((SELECT contract_end_date - contract_start_date FROM c WHERE rn = 1), 0) - COALESCE((SELECT contract_end_date - contract_start_date FROM c WHERE rn = 2), 0) AS diff_days",
+    ""
+  ],
+  [
+    "user_bank_accounts_07",
+    "Lương cơ bản hiện tại và tài khoản ngân hàng nhận lương của tôi là gì?",
+    "SELECT s.base_salary, s.pay_frequency, b.bank_name, b.account_number, b.account_holder_name FROM salaries AS s LEFT JOIN user_bank_accounts AS b ON b.user_id = s.user_id AND b.is_default = TRUE WHERE s.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND s.is_active = TRUE",
+    "SELECT s.base_salary, b.bank_name, b.account_number FROM salaries s LEFT JOIN user_bank_accounts b ON b.user_id = s.user_id AND b.is_default = TRUE WHERE s.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND s.is_active = TRUE"
+  ],
+  [
+    "user_permission_grants_01",
+    "Tôi có những quyền hạn nào trên hệ thống?",
+    "SELECT permission FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    "SELECT permission, granted_at FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY granted_at"
+  ],
+  [
+    "user_permission_grants_05",
+    "Thống kê quyền của tôi theo nhóm: duyệt, xem, quản lý?",
+    "",
+    ""
+  ],
+  [
+    "user_permission_grants_07",
+    "Những quyền nào của tôi được cấp trong năm nay?",
+    "SELECT permission FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND EXTRACT(YEAR FROM granted_at) = 2026",
+    "SELECT permission, granted_at FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND EXTRACT(YEAR FROM granted_at) = EXTRACT(YEAR FROM CURRENT_DATE) ORDER BY granted_at"
+  ],
+  [
+    "user_permission_grants_08",
+    "Tôi có những quyền phê duyệt (APPROVE) nào, có bao gồm duyệt OT không?",
+    "SELECT permission, granted_at FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND permission LIKE '%APPROVE%'",
+    ""
+  ],
+  [
+    "user_permission_grants_10",
+    "Tôi có quyền khóa bảng công (TIMESHEET_LOCK) hay cấp quyền cho người khác không?",
+    "SELECT permission, granted_at FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND permission IN ('TIMESHEET_LOCK', 'PERMISSION_GRANT')",
+    "SELECT permission FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND permission IN ('TIMESHEET_LOCK','PERMISSION_GRANT','USER_MANAGE','ROLE_ASSIGN')"
+  ],
+  [
+    "user_sessions_03",
+    "Liệt kê các phiên đăng nhập gần đây của tôi?",
+    "SELECT session_id, revoked, last_active_at, created_at FROM user_sessions WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY last_active_at DESC NULLS LAST LIMIT 20",
+    ""
+  ],
+  [
+    "user_sessions_07",
+    "So với tháng trước, số lần đăng nhập tháng này của tôi tăng hay giảm?",
+    "WITH m AS (SELECT COUNT(*) AS cnt, CAST(DATE_TRUNC('MONTH', created_at) AS DATE) AS mon FROM user_sessions WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' GROUP BY 2) SELECT (SELECT cnt FROM m WHERE mon = CAST(DATE_TRUNC('MONTH', CURRENT_DATE) AS DATE)) AS this_month, (SELECT cnt FROM m WHERE mon = CAST(DATE_TRUNC('MONTH', CURRENT_DATE) AS DATE) - INTERVAL '1 MONTH') AS last_month, COALESCE((SELECT cnt FROM m WHERE mon = CAST(DATE_TRUNC('MONTH', CURRENT_DATE) AS DATE)), 0) - COALESCE((SELECT cnt FROM m WHERE mon = CAST(DATE_TRUNC('MONTH', CURRENT_DATE) AS DATE) - INTERVAL '1 MONTH'), 0) AS diff_amount",
+    ""
+  ],
+  [
+    "resignation_requests_05",
+    "Đơn xin nghỉ nào của tôi bị từ chối hoặc đã hủy?",
+    "SELECT from_date, to_date, status, reason FROM leave_requests WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status IN ('rejected') ORDER BY from_date DESC NULLS LAST",
+    ""
+  ],
+  [
+    "resignation_requests_07",
+    "Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?",
+    "SELECT from_date, to_date, reason, created_at FROM leave_requests WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY created_at DESC NULLS LAST LIMIT 1",
+    "SELECT created_at, reason FROM leave_requests WHERE requestor_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY created_at DESC LIMIT 1"
+  ],
+  [
+    "work_shifts_06",
+    "So sánh giờ bắt đầu ca của tôi với các ca làm khác trong công ty?",
+    "SELECT ws.name AS shift_name, wss.day_of_week, wss.start_time, CASE WHEN u.shift_id = ws.shift_id THEN TRUE ELSE FALSE END AS is_my_shift FROM work_shifts AS ws JOIN work_shift_schedules AS wss ON wss.shift_id = ws.shift_id CROSS JOIN (SELECT shift_id FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') AS u WHERE wss.is_working = TRUE ORDER BY wss.day_of_week NULLS FIRST, ws.name NULLS FIRST",
+    ""
+  ],
+  [
+    "work_shifts_07",
+    "Công ty có những ca làm việc nào, ca của tôi là ca nào trong số đó?",
+    "SELECT ws.shift_id, ws.name, CASE WHEN ws.shift_id = u.shift_id THEN TRUE ELSE FALSE END AS is_mine FROM work_shifts AS ws CROSS JOIN (SELECT shift_id FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') AS u ORDER BY ws.name NULLS FIRST",
+    "SELECT s.name, CASE WHEN s.shift_id = u.shift_id THEN TRUE ELSE FALSE END AS is_mine FROM work_shifts s CROSS JOIN (SELECT shift_id FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') u ORDER BY s.name"
+  ],
+  [
+    "work_shifts_08",
+    "Thứ 7 và Chủ nhật ca của tôi có phải đi làm không?",
+    "SELECT wss.day_of_week, wss.is_working, wss.start_time, wss.end_time FROM work_shift_schedules AS wss JOIN users AS u ON u.shift_id = wss.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND wss.day_of_week IN (6, 7) ORDER BY wss.day_of_week NULLS FIRST",
+    "SELECT s.name, sc.day_of_week, sc.is_working, sc.start_time, sc.end_time FROM work_shifts s JOIN users u ON u.shift_id = s.shift_id JOIN work_shift_schedules sc ON sc.shift_id = s.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND sc.day_of_week IN (6, 7) ORDER BY sc.day_of_week"
+  ],
+  [
+    "work_shift_schedules_07",
+    "So sánh lịch làm thứ 2 với thứ 7 của tôi?",
+    "SELECT wss.day_of_week, wss.is_working, wss.start_time, wss.end_time, wss.rest_start_time, wss.rest_end_time FROM work_shift_schedules AS wss JOIN users AS u ON u.shift_id = wss.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND wss.day_of_week IN (1, 7) ORDER BY wss.day_of_week NULLS FIRST",
+    ""
+  ],
+  [
+    "work_shift_schedules_08",
+    "Những ngày nào trong tuần tôi được nghỉ?",
+    "SELECT s.name, sc.day_of_week FROM work_shifts AS s JOIN users AS u ON u.shift_id = s.shift_id JOIN work_shift_schedules AS sc ON sc.shift_id = s.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND sc.is_working = FALSE ORDER BY sc.day_of_week NULLS FIRST",
+    "SELECT sc.day_of_week FROM work_shift_schedules sc JOIN users u ON u.shift_id = sc.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND sc.is_working = FALSE ORDER BY sc.day_of_week"
+  ],
+  [
+    "departments_02",
+    "Chức danh và phòng ban hiện tại của tôi là gì?",
+    "SELECT u.employee_code, d.name AS department, j.title AS job FROM users AS u LEFT JOIN departments AS d ON d.department_id = u.department_id LEFT JOIN jobs AS j ON j.job_id = u.job_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    "SELECT d.name AS department, j.title AS job FROM users u LEFT JOIN departments d ON d.department_id = u.department_id LEFT JOIN jobs j ON j.job_id = u.job_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'"
+  ],
+  [
+    "departments_03",
+    "Phòng ban, ca làm và mã nhân viên của tôi là gì?",
+    "SELECT u.employee_code, d.name AS department, j.title AS job, s.name AS shift FROM users AS u LEFT JOIN departments AS d ON d.department_id = u.department_id LEFT JOIN jobs AS j ON j.job_id = u.job_id LEFT JOIN work_shifts AS s ON s.shift_id = u.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    "SELECT u.employee_code, d.name AS department, s.name AS shift FROM users u LEFT JOIN departments d ON d.department_id = u.department_id LEFT JOIN work_shifts s ON s.shift_id = u.shift_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'"
+  ],
+  [
+    "departments_07",
+    "Mã phòng ban của tôi là gì?",
+    "SELECT d.department_id, d.name FROM departments AS d JOIN users AS u ON u.department_id = d.department_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    "SELECT department_id FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'"
+  ],
+  [
+    "departments_08",
+    "Chức danh của tôi trong phòng ban là gì?",
+    "SELECT u.employee_code, d.name AS department, j.title AS job FROM users AS u LEFT JOIN departments AS d ON d.department_id = u.department_id LEFT JOIN jobs AS j ON j.job_id = u.job_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    "SELECT j.title AS job, d.name AS department FROM users u LEFT JOIN jobs j ON j.job_id = u.job_id LEFT JOIN departments d ON d.department_id = u.department_id WHERE u.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'"
+  ],
+  [
+    "jobs_06",
+    "So với các chức danh khác trong phòng, vị trí của tôi là gì?",
+    "SELECT j.title, CASE WHEN j.job_id = u.job_id THEN TRUE ELSE FALSE END AS is_mine FROM jobs AS j CROSS JOIN (SELECT job_id FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') AS u ORDER BY j.title NULLS FIRST",
+    ""
+  ],
+  [
+    "jobs_08",
+    "Chức danh của tôi đang có những quyền hạn gì trên hệ thống?",
+    "SELECT permission FROM user_permission_grants WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'",
+    ""
+  ],
+  [
+    "holidays_01",
+    "Tháng này có những ngày lễ nào tôi được nghỉ?",
+    "SELECT \"date\", description FROM holidays WHERE \"date\" >= CURRENT_DATE ORDER BY \"date\" NULLS FIRST LIMIT 1",
+    ""
+  ],
+  [
+    "performance_reviews_07",
+    "So với kỳ trước, điểm đánh giá của tôi tăng hay giảm?",
+    "WITH r AS (SELECT period_year, period_month, avg_manager, ROW_NUMBER() OVER (ORDER BY period_year DESC NULLS LAST, period_month DESC NULLS LAST) AS rn FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') SELECT (SELECT avg_manager FROM r WHERE rn = 1) AS this_period, (SELECT avg_manager FROM r WHERE rn = 2) AS last_period, (SELECT avg_manager FROM r WHERE rn = 1) - (SELECT avg_manager FROM r WHERE rn = 2) AS diff",
+    "WITH r AS (SELECT period_year, period_month, avg_manager, ROW_NUMBER() OVER (ORDER BY period_year DESC, period_month DESC) AS rn FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') SELECT (SELECT avg_manager FROM r WHERE rn = 1) AS latest, (SELECT avg_manager FROM r WHERE rn = 2) AS previous"
+  ],
+  [
+    "performance_scores_01",
+    "Chi tiết điểm từng tiêu chí đánh giá của tôi kỳ vừa rồi?",
+    "SELECT pr.period_year, pr.period_month, pr.status, ps.criterion_text, ps.self_score, ps.manager_score, ps.note FROM performance_scores AS ps JOIN performance_reviews AS pr ON pr.review_id = ps.review_id WHERE pr.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND pr.period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') AND pr.period_month = (SELECT MAX(period_month) FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af')) ORDER BY ps.sort_order NULLS FIRST",
+    "SELECT criterion_text, self_score, manager_score FROM performance_scores WHERE review_id = (SELECT review_id FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY period_year DESC, period_month DESC LIMIT 1) ORDER BY sort_order"
+  ],
+  [
+    "performance_scores_02",
+    "Tiêu chí nào tôi bị quản lý chấm thấp nhất kỳ này?",
+    "SELECT ps.criterion_text, ps.self_score, ps.manager_score, ps.note FROM performance_scores AS ps JOIN performance_reviews AS pr ON pr.review_id = ps.review_id WHERE pr.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND pr.period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af') AND pr.period_month = (SELECT MAX(period_month) FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af')) ORDER BY ps.manager_score ASC NULLS FIRST, ps.sort_order ASC NULLS FIRST LIMIT 1",
+    "SELECT criterion_text, manager_score FROM performance_scores WHERE review_id = (SELECT review_id FROM performance_reviews WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' ORDER BY period_year DESC, period_month DESC LIMIT 1) ORDER BY manager_score ASC NULLS LAST LIMIT 1"
+  ],
+  [
+    "asset_assignments_03",
+    "Laptop của tôi được cấp khi nào, tình trạng lúc nhận ra sao?",
+    "SELECT aa.asset_id, a.name AS asset_name, aa.assigned_at, aa.condition_on_assign FROM asset_assignments AS aa JOIN assets AS a ON a.asset_id = aa.asset_id WHERE aa.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND aa.status = 'active'",
+    ""
+  ],
+  [
+    "assets_01",
+    "Thông tin chi tiết laptop công ty đang cấp cho tôi?",
+    "SELECT a.asset_code, a.name, a.serial_number, a.specs, aa.status, aa.assigned_at FROM assets AS a JOIN asset_assignments AS aa ON aa.asset_id = a.asset_id WHERE aa.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND aa.status = 'active'",
+    "SELECT a.asset_code, a.name, a.serial_number, a.specs FROM assets a JOIN asset_assignments aa ON aa.asset_id = a.asset_id WHERE aa.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND aa.status = 'active'"
+  ],
+  [
+    "assets_03",
+    "Tình trạng hiện tại của thiết bị tôi đang giữ?",
+    "SELECT aa.asset_id, a.name AS asset_name, aa.status, aa.assigned_at FROM asset_assignments AS aa LEFT JOIN assets AS a ON a.asset_id = aa.asset_id WHERE aa.user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND aa.status = 'active'",
+    ""
+  ]
+]

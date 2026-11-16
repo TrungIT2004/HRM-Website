@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/memory/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/memory/RESULTS.md",
+      "summary": "Memory rewrite test results with 39 lines documenting rewrite_score 0.863 on 50 sessions (283/405 turns graded), route distribution OUT_OF_SCOPE 351 / DOC_ONLY 51 / DIRECTORY 3, and history of fixes to CONDENSE_PROMPT and REWRITE_ROUTE_PROMPT in src/sql/router.py.",
+      "tags": ["test", "results", "ai-service", "memory", "rewrite", "routing", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/memory_rewrite_results.json",
+      "type": "document",
+      "name": "memory_rewrite_results.json",
+      "filePath": "ai-service/tests/memory/memory_rewrite_results.json",
+      "summary": "Memory rewrite evaluation JSON with 3,456 lines containing per-turn rewrite scores for 50 sessions from QRECC dataset, measuring overlap against gold rewrites with route classification (OUT_OF_SCOPE, DOC_ONLY, DIRECTORY).",
+      "tags": ["test", "results", "ai-service", "memory", "rewrite", "qrecc", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/memory_session_results.json",
+      "type": "document",
+      "name": "memory_session_results.json",
+      "filePath": "ai-service/tests/memory/memory_session_results.json",
+      "summary": "Memory session evaluation JSON with 4,231 lines containing full conversation traces for 50 sessions including rewrite scores, answer scores, context summaries, recall scores, and citation metrics per turn.",
+      "tags": ["test", "results", "ai-service", "memory", "session", "conversation", "summary", "recall", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/memory/RESULTS.md",
+      "target": "document:ai-service/tests/memory/memory_rewrite_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/memory_rewrite_results.json",
+      "target": "document:ai-service/tests/memory/memory_session_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

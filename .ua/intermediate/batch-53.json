@@ -1,0 +1,133 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "type": "document",
+      "name": "eval_retrieval.py",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "summary": "DOC_ONLY retrieval evaluation: runs retrieval pipeline on test questions, computes Hit@K (1,3,5,10), MRR, NDCG, fallback rate, and latency. Gold matcher with keyword fallback. Outputs retrieval_eval.json. Supports --reuse flag for cached corpus.",
+      "tags": ["ai-service", "test", "retrieval", "doc-only", "hit-at-k", "mrr", "ndcg", "gold-matcher", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/analyze_threshold.py",
+      "type": "document",
+      "name": "analyze_threshold.py",
+      "filePath": "ai-service/tests/_archive/analyze_threshold.py",
+      "summary": "Threshold analysis script: analyzes score distributions for positive/negative retrieval results to find optimal RELEVANCE_THRESHOLD. Plots histograms, computes ROC curves, and recommends threshold balancing false positives vs false negatives.",
+      "tags": ["ai-service", "test", "archive", "threshold", "analysis", "roc", "distribution", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/cleanup_eval.py",
+      "type": "document",
+      "name": "cleanup_eval.py",
+      "filePath": "ai-service/tests/_archive/cleanup_eval.py",
+      "summary": "Evaluation cleanup script: removes test data from database (conversations, messages, embeddings) created during evaluation runs. Supports --cleanup flag for seed scripts. Ensures clean state between test runs.",
+      "tags": ["ai-service", "test", "archive", "cleanup", "database", "seed", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/diag_retrieve.py",
+      "type": "document",
+      "name": "diag_retrieve.py",
+      "filePath": "ai-service/tests/_archive/diag_retrieve.py",
+      "summary": "Retrieval diagnostic script: deep-dive into retrieval failures. Logs vector scores, BM25 scores, rerank scores, and gold rank per query. Identifies failure patterns (OCR issues, chunking, keyword mismatch). Outputs diagnostic JSON.",
+      "tags": ["ai-service", "test", "archive", "retrieval", "diagnostic", "failure-analysis", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/ocr_tesseract_compare.py",
+      "type": "document",
+      "name": "ocr_tesseract_compare.py",
+      "filePath": "ai-service/tests/_archive/ocr_tesseract_compare.py",
+      "summary": "OCR comparison script: benchmarks Tesseract settings (psm, oem, dpi, lang) on scanned PDFs. Measures character accuracy, diacritic preservation, and processing time. Used to tune pdf_parser.py OCR settings.",
+      "tags": ["ai-service", "test", "archive", "ocr", "tesseract", "benchmark", "pdf", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/latency/breakdown.py",
+      "type": "document",
+      "name": "breakdown.py",
+      "filePath": "ai-service/tests/latency/breakdown.py",
+      "summary": "Latency breakdown (tests/latency): legacy version of test_v2/latency/breakdown.py. Instruments pipeline stages for latency profiling. Kept for backward compatibility with older test scripts.",
+      "tags": ["ai-service", "test", "latency", "breakdown", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/latency/load_breakdown.py",
+      "type": "document",
+      "name": "load_breakdown.py",
+      "filePath": "ai-service/tests/latency/load_breakdown.py",
+      "summary": "Load latency breakdown (tests/latency): legacy version of test_v2/latency/load_breakdown.py. Concurrent load testing with worker pool. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "latency", "load", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/latency/ttft.py",
+      "type": "document",
+      "name": "ttft.py",
+      "filePath": "ai-service/tests/latency/ttft.py",
+      "summary": "TTFT measurement (tests/latency): legacy version of test_v2/latency/ttft.py. Time-to-first-token for streaming responses. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "latency", "ttft", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/build_internal.py",
+      "type": "document",
+      "name": "build_internal.py",
+      "filePath": "ai-service/tests/memory/build_internal.py",
+      "summary": "Memory internal dataset builder: reads blueprint JSON files (bp1-bp6, bp_fix), generates memory_internal.csv with 360 turns (30 conv × 12) or 600 turns (50 conv × 12). Handles conversation threading, gold rewrites, and document references. Fixes merge bug for incremental blueprint additions.",
+      "tags": ["ai-service", "test", "memory", "build", "blueprint", "dataset", "csv", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/data/memory_dataset.csv",
+      "type": "document",
+      "name": "memory_dataset.csv",
+      "filePath": "ai-service/tests/memory/data/memory_dataset.csv",
+      "summary": "QRECC memory dataset CSV: 1240 turns / 250 sessions from QRECC (general knowledge, non-HR domain). Used for baseline memory rewrite evaluation (rewrite_score 0.863 on prod path). External benchmark for comparison.",
+      "tags": ["ai-service", "test", "memory", "dataset", "qrecc", "csv", "external"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/stress/drill.py",
+      "type": "document",
+      "name": "drill.py",
+      "filePath": "ai-service/tests/stress/drill.py",
+      "summary": "Stress drill (tests/stress): legacy version of test_v2/stress/drill.py. Sustained load generator for AI pipeline with QPS control and quota monitoring. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "stress", "drill", "legacy", "python"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "target": "document:ai-service/tests/_archive/analyze_threshold.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/build_internal.py",
+      "target": "document:ai-service/tests/memory/data/memory_dataset.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/tests/latency/breakdown.py",
+      "target": "document:ai-service/test_v2/latency/breakdown.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/stress/drill.py",
+      "target": "document:ai-service/test_v2/stress/drill.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

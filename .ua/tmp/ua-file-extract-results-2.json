@@ -1,0 +1,191 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/banner-design/SKILL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 196,
+      "nonEmptyLines": 156,
+      "sections": [
+        {
+          "heading": "Banner Design - Multi-Format Creative Banner System",
+          "level": 1,
+          "line": 11
+        },
+        {
+          "heading": "When to Activate",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Prerequisites",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 28
+        },
+        {
+          "heading": "Step 1: Gather Requirements (AskUserQuestion)",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Step 2: Research & Art Direction",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "Step 3: Design & Generate Options",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Step 4: Export Banners to Images",
+          "level": 3,
+          "line": 102
+        },
+        {
+          "heading": "Step 5: Present Options & Iterate",
+          "level": 3,
+          "line": 138
+        },
+        {
+          "heading": "Banner Size Quick Reference",
+          "level": 2,
+          "line": 148
+        },
+        {
+          "heading": "Art Direction Styles (Top 10)",
+          "level": 2,
+          "line": 164
+        },
+        {
+          "heading": "Design Rules",
+          "level": 2,
+          "line": 181
+        },
+        {
+          "heading": "Security",
+          "level": 2,
+          "line": 190
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": ".agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 118,
+      "nonEmptyLines": 102,
+      "sections": [
+        {
+          "heading": "Banner Sizes & Art Direction Styles Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Complete Banner Sizes",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Social Media",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "Web / Display Ads (Google Display Network)",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "Website",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "Print",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "22 Art Direction Styles",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Design Principles",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Visual Hierarchy (3-Zone Rule)",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Safe Zones",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "CTA Rules",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Text-to-Image Ratio",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Print Specs",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Pinterest Research Queries",
+          "level": 2,
+          "line": 111
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

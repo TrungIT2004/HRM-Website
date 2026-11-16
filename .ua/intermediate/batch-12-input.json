@@ -1,0 +1,41 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/ui-ux-pro-max/data/app-interface.csv", "language": "csv", "sizeLines": 33, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/catalog-summary.json", "language": "json", "sizeLines": 78, "fileCategory": "config"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/charts.csv", "language": "csv", "sizeLines": 26, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/colors.csv", "language": "csv", "sizeLines": 193, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/data-provenance.json", "language": "json", "sizeLines": 1348, "fileCategory": "config"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json", "language": "json", "sizeLines": 20185, "fileCategory": "config"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/google-fonts.csv", "language": "csv", "sizeLines": 1935, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/icons.csv", "language": "csv", "sizeLines": 106, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/landing.csv", "language": "csv", "sizeLines": 35, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/motion.csv", "language": "csv", "sizeLines": 18, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json", "language": "json", "sizeLines": 32582, "fileCategory": "config"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/products.csv", "language": "csv", "sizeLines": 193, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/react-performance.csv", "language": "csv", "sizeLines": 45, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/styles.csv", "language": "csv", "sizeLines": 89, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/typography.csv", "language": "csv", "sizeLines": 75, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/ui-reasoning.csv", "language": "csv", "sizeLines": 193, "fileCategory": "data"},
+    {"path": ".agents/skills/ui-ux-pro-max/data/ux-guidelines.csv", "language": "csv", "sizeLines": 120, "fileCategory": "data"}
+  ],
+  "batchImportData": {
+    ".agents/skills/ui-ux-pro-max/data/app-interface.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/catalog-summary.json": [],
+    ".agents/skills/ui-ux-pro-max/data/charts.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/colors.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/data-provenance.json": [],
+    ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json": [],
+    ".agents/skills/ui-ux-pro-max/data/google-fonts.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/icons.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/landing.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/motion.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json": [],
+    ".agents/skills/ui-ux-pro-max/data/products.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/react-performance.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/styles.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/typography.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/ui-reasoning.csv": [],
+    ".agents/skills/ui-ux-pro-max/data/ux-guidelines.csv": []
+  }
+}

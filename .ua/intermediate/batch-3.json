@@ -1,0 +1,144 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/brand/SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": ".agents/skills/brand/SKILL.md",
+      "summary": "Main brand skill definition providing a complete workflow for brand consistency management including asset approval, organization, color palette management, and template creation. Defines 8 subcommands and references 8 supporting documents.",
+      "tags": ["documentation", "brand", "skill-definition", "entry-point", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/approval-checklist.md",
+      "type": "document",
+      "name": "approval-checklist.md",
+      "filePath": ".agents/skills/brand/references/approval-checklist.md",
+      "summary": "Comprehensive asset approval checklist covering visual elements (logo, color, typography, imagery), accessibility requirements, content quality, technical specifications, legal compliance, and reviewer sign-off process.",
+      "tags": ["documentation", "brand", "approval", "checklist", "compliance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/asset-organization.md",
+      "type": "document",
+      "name": "asset-organization.md",
+      "filePath": ".agents/skills/brand/references/asset-organization.md",
+      "summary": "Asset organization guide defining directory structure, naming conventions (format: {type}-{component}-{campaign}-{variant}.{ext}), metadata schema for manifest.json and version files, tagging system, and search patterns.",
+      "tags": ["documentation", "brand", "assets", "organization", "metadata"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/brand-guideline-template.md",
+      "type": "document",
+      "name": "brand-guideline-template.md",
+      "filePath": ".agents/skills/brand/references/brand-guideline-template.md",
+      "summary": "Brand guidelines template with standardized document structure, usage instructions, and extractable fields for creating consistent brand documentation across projects.",
+      "tags": ["documentation", "brand", "template", "guidelines", "standards"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/color-palette-management.md",
+      "type": "document",
+      "name": "color-palette-management.md",
+      "filePath": ".agents/skills/brand/references/color-palette-management.md",
+      "summary": "Color palette management guide covering color system hierarchy, documentation formats (markdown tables, CSS variables, Tailwind config), WCAG 2.1 accessibility requirements, color extraction methods, compliance validation, and usage examples for different brand archetypes.",
+      "tags": ["documentation", "brand", "color", "accessibility", "wcag", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/consistency-checklist.md",
+      "type": "document",
+      "name": "consistency-checklist.md",
+      "filePath": ".agents/skills/brand/references/consistency-checklist.md",
+      "summary": "Brand consistency checklist for auditing visual consistency (logo, colors, typography, imagery), voice consistency (tone, language, messaging), and channel-specific audits (website, social media, email, collateral) with recommended audit frequency.",
+      "tags": ["documentation", "brand", "consistency", "audit", "checklist"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/approval-checklist.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/asset-organization.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/brand-guideline-template.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/color-palette-management.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/consistency-checklist.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/logo-usage-rules.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/messaging-framework.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/SKILL.md",
+      "target": "document:.agents/skills/brand/references/typography-specifications.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/asset-organization.md",
+      "target": "document:.agents/skills/brand/references/approval-checklist.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/color-palette-management.md",
+      "target": "document:.agents/skills/brand/references/approval-checklist.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/consistency-checklist.md",
+      "target": "document:.agents/skills/brand/references/approval-checklist.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/consistency-checklist.md",
+      "target": "document:.agents/skills/brand/references/asset-organization.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

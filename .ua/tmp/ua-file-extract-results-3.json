@@ -1,0 +1,600 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 6
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/brand/SKILL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 97,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "Brand",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "When to Use",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Quick Start",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Brand Sync Workflow",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Subcommands",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "References",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "Scripts",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Templates",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "Routing",
+          "level": 2,
+          "line": 93
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/approval-checklist.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 169,
+      "nonEmptyLines": 134,
+      "sections": [
+        {
+          "heading": "Asset Approval Checklist",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Quick Review",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Visual Elements",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Logo Usage",
+          "level": 3,
+          "line": 15
+        },
+        {
+          "heading": "Color Compliance",
+          "level": 3,
+          "line": 23
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Imagery",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Accessibility",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Visual Accessibility",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "Content Accessibility",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Content Quality",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Copy Review",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Messaging",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "Technical Requirements",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "File Specifications",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Platform Requirements",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Legal & Compliance",
+          "level": 2,
+          "line": 97
+        },
+        {
+          "heading": "Intellectual Property",
+          "level": 3,
+          "line": 99
+        },
+        {
+          "heading": "Regulatory",
+          "level": 3,
+          "line": 106
+        },
+        {
+          "heading": "Review Status",
+          "level": 2,
+          "line": 113
+        },
+        {
+          "heading": "Reviewer Sign-off",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Final Approval",
+          "level": 3,
+          "line": 125
+        },
+        {
+          "heading": "Common Issues & Fixes",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "Automation Support",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Archival",
+          "level": 2,
+          "line": 162
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/asset-organization.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 157,
+      "nonEmptyLines": 135,
+      "sections": [
+        {
+          "heading": "Asset Organization Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Directory Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Naming Convention",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "Format",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "Components",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Examples",
+          "level": 3,
+          "line": 61
+        },
+        {
+          "heading": "Metadata Schema",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "Asset Entry (manifest.json)",
+          "level": 3,
+          "line": 72
+        },
+        {
+          "heading": "Version Entry (versions/{id}/v{n}.json)",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Tagging System",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Standard Tags",
+          "level": 3,
+          "line": 110
+        },
+        {
+          "heading": "Tag Usage",
+          "level": 3,
+          "line": 119
+        },
+        {
+          "heading": "File Organization Best Practices",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Search Patterns",
+          "level": 2,
+          "line": 131
+        },
+        {
+          "heading": "By Type",
+          "level": 3,
+          "line": 133
+        },
+        {
+          "heading": "By Campaign",
+          "level": 3,
+          "line": 139
+        },
+        {
+          "heading": "By Status",
+          "level": 3,
+          "line": 145
+        },
+        {
+          "heading": "Cleanup Workflow",
+          "level": 2,
+          "line": 151
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/brand-guideline-template.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 140,
+      "nonEmptyLines": 110,
+      "sections": [
+        {
+          "heading": "Brand Guidelines Template",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Document Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Usage",
+          "level": 2,
+          "line": 127
+        },
+        {
+          "heading": "Extractable Fields",
+          "level": 2,
+          "line": 134
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/color-palette-management.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 186,
+      "nonEmptyLines": 155,
+      "sections": [
+        {
+          "heading": "Color Palette Management",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Color System Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Hierarchy",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "Color Documentation Format",
+          "level": 2,
+          "line": 29
+        },
+        {
+          "heading": "Markdown Table",
+          "level": 3,
+          "line": 31
+        },
+        {
+          "heading": "CSS Variables",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Tailwind Config",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Accessibility Requirements",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Contrast Ratios (WCAG 2.1)",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Checking Contrast",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "Color Extraction",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "From Images",
+          "level": 3,
+          "line": 101
+        },
+        {
+          "heading": "From Brand Guidelines",
+          "level": 3,
+          "line": 108
+        },
+        {
+          "heading": "Brand Compliance Validation",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Rules",
+          "level": 3,
+          "line": 116
+        },
+        {
+          "heading": "Validation Output",
+          "level": 3,
+          "line": 122
+        },
+        {
+          "heading": "Color Usage Guidelines",
+          "level": 2,
+          "line": 138
+        },
+        {
+          "heading": "Do's",
+          "level": 3,
+          "line": 140
+        },
+        {
+          "heading": "Don'ts",
+          "level": 3,
+          "line": 146
+        },
+        {
+          "heading": "Color Palette Examples",
+          "level": 2,
+          "line": 152
+        },
+        {
+          "heading": "Tech/SaaS",
+          "level": 3,
+          "line": 154
+        },
+        {
+          "heading": "Marketing/Creative",
+          "level": 3,
+          "line": 163
+        },
+        {
+          "heading": "Professional/Corporate",
+          "level": 3,
+          "line": 172
+        },
+        {
+          "heading": "Tools & Resources",
+          "level": 2,
+          "line": 181
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 24
+      }
+    },
+    {
+      "path": ".agents/skills/brand/references/consistency-checklist.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 94,
+      "nonEmptyLines": 76,
+      "sections": [
+        {
+          "heading": "Brand Consistency Checklist",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Visual Consistency",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Logo",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "Colors",
+          "level": 3,
+          "line": 12
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "Imagery",
+          "level": 3,
+          "line": 24
+        },
+        {
+          "heading": "Voice Consistency",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "Tone",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "Language",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Messaging",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Channel Audit",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Website",
+          "level": 3,
+          "line": 52
+        },
+        {
+          "heading": "Social Media",
+          "level": 3,
+          "line": 58
+        },
+        {
+          "heading": "Email",
+          "level": 3,
+          "line": 64
+        },
+        {
+          "heading": "Collateral",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Common Issues",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "Audit Frequency",
+          "level": 2,
+          "line": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    }
+  ]
+}

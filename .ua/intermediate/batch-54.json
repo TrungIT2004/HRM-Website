@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "type": "document",
+      "name": "eval_retrieval.py",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "summary": "DOC_ONLY retrieval evaluation: runs retrieval pipeline on test questions, computes Hit@K (1,3,5,10), MRR, NDCG, fallback rate, and latency. Gold matcher with keyword fallback. Outputs retrieval_eval.json. Supports --reuse flag for cached corpus.",
+      "tags": ["ai-service", "test", "retrieval", "doc-only", "hit-at-k", "mrr", "ndcg", "gold-matcher", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/analyze_threshold.py",
+      "type": "document",
+      "name": "analyze_threshold.py",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/analyze_threshold.py",
+      "summary": "Threshold analysis script: analyzes score distributions for positive/negative retrieval results to find optimal RELEVANCE_THRESHOLD. Plots histograms, computes ROC curves, and recommends threshold balancing false positives vs false negatives.",
+      "tags": ["ai-service", "test", "retrieval", "threshold", "analysis", "roc", "distribution", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/cleanup_eval.py",
+      "type": "document",
+      "name": "cleanup_eval.py",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/cleanup_eval.py",
+      "summary": "Evaluation cleanup script: removes test data from database (conversations, messages, embeddings) created during evaluation runs. Supports --cleanup flag for seed scripts. Ensures clean state between test runs.",
+      "tags": ["ai-service", "test", "retrieval", "cleanup", "database", "seed", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/diag_retrieve.py",
+      "type": "document",
+      "name": "diag_retrieve.py",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/diag_retrieve.py",
+      "summary": "Retrieval diagnostic script: deep-dive into retrieval failures. Logs vector scores, BM25 scores, rerank scores, and gold rank per query. Identifies failure patterns (OCR issues, chunking, keyword mismatch). Outputs diagnostic JSON.",
+      "tags": ["ai-service", "test", "retrieval", "diagnostic", "failure-analysis", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/ocr_tesseract_compare.py",
+      "type": "document",
+      "name": "ocr_tesseract_compare.py",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/ocr_tesseract_compare.py",
+      "summary": "OCR comparison script: benchmarks Tesseract settings (psm, oem, dpi, lang) on scanned PDFs. Measures character accuracy, diacritic preservation, and processing time. Used to tune pdf_parser.py OCR settings.",
+      "tags": ["ai-service", "test", "retrieval", "ocr", "tesseract", "benchmark", "pdf", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/analyze_threshold.py",
+      "type": "document",
+      "name": "analyze_threshold.py",
+      "filePath": "ai-service/tests/_archive/analyze_threshold.py",
+      "summary": "Threshold analysis script (archive): analyzes score distributions for positive/negative retrieval results to find optimal RELEVANCE_THRESHOLD. Plots histograms, computes ROC curves. Archived version superseded by retrieval_metrics_tests version.",
+      "tags": ["ai-service", "test", "archive", "threshold", "analysis", "roc", "distribution", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/cleanup_eval.py",
+      "type": "document",
+      "name": "cleanup_eval.py",
+      "filePath": "ai-service/tests/_archive/cleanup_eval.py",
+      "summary": "Evaluation cleanup script (archive): removes test data from database created during evaluation runs. Supports --cleanup flag for seed scripts. Archived version.",
+      "tags": ["ai-service", "test", "archive", "cleanup", "database", "seed", "python"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/diag_retrieve.py",
+      "type": "document",
+      "name": "diag_retrieve.py",
+      "filePath": "ai-service/tests/_archive/diag_retrieve.py",
+      "summary": "Retrieval diagnostic script (archive): deep-dive into retrieval failures. Logs vector scores, BM25 scores, rerank scores, and gold rank. Archived version superseded by retrieval_metrics_tests version.",
+      "tags": ["ai-service", "test", "archive", "retrieval", "diagnostic", "failure-analysis", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/_archive/ocr_tesseract_compare.py",
+      "type": "document",
+      "name": "ocr_tesseract_compare.py",
+      "filePath": "ai-service/tests/_archive/ocr_tesseract_compare.py",
+      "summary": "OCR comparison script (archive): benchmarks Tesseract settings on scanned PDFs. Measures character accuracy, diacritic preservation, processing time. Archived version superseded by retrieval_metrics_tests version.",
+      "tags": ["ai-service", "test", "archive", "ocr", "tesseract", "benchmark", "pdf", "python"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "target": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/analyze_threshold.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "target": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/diag_retrieve.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/analyze_threshold.py",
+      "target": "document:ai-service/tests/_archive/analyze_threshold.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/cleanup_eval.py",
+      "target": "document:ai-service/tests/_archive/cleanup_eval.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/diag_retrieve.py",
+      "target": "document:ai-service/tests/_archive/diag_retrieve.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/ocr_tesseract_compare.py",
+      "target": "document:ai-service/tests/_archive/ocr_tesseract_compare.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

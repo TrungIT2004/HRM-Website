@@ -1,0 +1,267 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java",
+      "type": "document",
+      "name": "AiClientConfig.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java",
+      "summary": "AI client configuration: WebClient setup for ai-service communication. Base URL, timeouts, retry policy (exponential backoff), and circuit breaker configuration. Reads AI_SERVICE_URL from environment.",
+      "tags": ["backend", "ai", "config", "webclient", "retry", "circuit-breaker", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/controllers/AiController.java",
+      "type": "document",
+      "name": "AiController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/controllers/AiController.java",
+      "summary": "AI REST controller: endpoints for chatQuery (streaming via SSE), getConversations, getConversationHistory, deleteConversation, updateConversationTitle, uploadDocument. Proxies to ai-service via AiServiceClient.",
+      "tags": ["backend", "ai", "controller", "chat", "streaming", "sse", "conversation", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/ChatQueryRequest.java",
+      "type": "document",
+      "name": "ChatQueryRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/ChatQueryRequest.java",
+      "summary": "Chat query request DTO: message, conversationId (optional), stream (boolean), attachments (list of file IDs). Validation for message length.",
+      "tags": ["backend", "ai", "dto", "chat", "query", "stream", "attachment", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/UpdateConversationTitleRequest.java",
+      "type": "document",
+      "name": "UpdateConversationTitleRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/UpdateConversationTitleRequest.java",
+      "summary": "Update conversation title request DTO: conversationId, title. Simple rename operation.",
+      "tags": ["backend", "ai", "dto", "conversation", "title", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java",
+      "type": "document",
+      "name": "ChatQueryResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java",
+      "summary": "Chat query response DTO: conversationId, messageId, content, citations (list of CitationResponse), tokensUsed, latencyMs, route. Non-streaming response wrapper.",
+      "tags": ["backend", "ai", "dto", "response", "chat", "citation", "tokens", "route", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/CitationResponse.java",
+      "type": "document",
+      "name": "CitationResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/CitationResponse.java",
+      "summary": "Citation response DTO: documentId, documentName, snippet, relevanceScore, pageNumber, documentType. Source attribution for AI answers.",
+      "tags": ["backend", "ai", "dto", "citation", "relevance", "snippet", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "type": "document",
+      "name": "AiServiceClient.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "summary": "AI service client: WebClient wrapper for ai-service API calls. Methods: chatQuery (streaming and non-streaming), getConversations, getConversationHistory, deleteConversation, updateTitle, uploadDocument. Handles SSE parsing, error mapping, and timeout.",
+      "tags": ["backend", "ai", "service", "client", "webclient", "sse", "streaming", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/controllers/AssetController.java",
+      "type": "document",
+      "name": "AssetController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/controllers/AssetController.java",
+      "summary": "Asset REST controller: endpoints for asset CRUD (getAssets, getAssetDetail, createAsset, updateAsset, deleteAsset), asset requests (createRequest, approveRequest, rejectRequest), assignments (assignAsset, returnAsset, getAssignments), maintenance (scheduleMaintenance, completeMaintenance), categories, images, inventory logs, and depreciation reports. Role-based access.",
+      "tags": ["backend", "asset", "controller", "crud", "request", "assignment", "maintenance", "depreciation", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "type": "document",
+      "name": "Asset.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "summary": "Asset JPA entity: id, code, name, categoryId, status (AVAILABLE, ASSIGNED, MAINTENANCE, RETIRED, LOST), purchaseDate, purchasePrice, depreciationRate, currentValue, location, serialNumber, warrantyExpiry, specifications (JSON), notes, createdAt, updatedAt. Core asset record.",
+      "tags": ["backend", "asset", "entity", "jpa", "depreciation", "specifications", "json", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "type": "document",
+      "name": "AssetAssignment.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "summary": "AssetAssignment JPA entity: id, assetId, userId, assignedDate, returnedDate, status (ASSIGNED, RETURNED, OVERDUE), conditionOnAssign, conditionOnReturn, notes. Tracks asset custody chain.",
+      "tags": ["backend", "asset", "entity", "assignment", "jpa", "custody", "condition", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "type": "document",
+      "name": "AssetCategory.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "summary": "AssetCategory JPA entity: id, name, code, description, defaultDepreciationRate, parentCategoryId (self-ref for hierarchy), isActive. Category tree for asset classification.",
+      "tags": ["backend", "asset", "entity", "category", "jpa", "hierarchy", "depreciation", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java",
+      "type": "document",
+      "name": "AssetImage.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java",
+      "summary": "AssetImage JPA entity: id, assetId, imageUrl, isPrimary, caption, uploadedBy, uploadedAt. Multiple images per asset with primary flag.",
+      "tags": ["backend", "asset", "entity", "image", "jpa", "primary", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java",
+      "type": "document",
+      "name": "AssetInventoryLog.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java",
+      "summary": "AssetInventoryLog JPA entity: id, assetId, action (CREATED, UPDATED, ASSIGNED, RETURNED, MAINTENANCE, RETIRED), performedBy, performedAt, details (JSON). Audit trail for asset lifecycle.",
+      "tags": ["backend", "asset", "entity", "inventory", "log", "jpa", "audit", "json", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java",
+      "type": "document",
+      "name": "AssetMaintenance.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java",
+      "summary": "AssetMaintenance JPA entity: id, assetId, maintenanceType (PREVENTIVE, CORRECTIVE, CALIBRATION), scheduledDate, completedDate, status (SCHEDULED, IN_PROGRESS, COMPLETED, CANCELLED), cost, vendor, description, performedBy. Maintenance tracking.",
+      "tags": ["backend", "asset", "entity", "maintenance", "jpa", "preventive", "corrective", "vendor", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java",
+      "type": "document",
+      "name": "AssetRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java",
+      "summary": "AssetRequest JPA entity: id, userId, categoryId, requestedAssetId (optional), quantity, reason, urgency, status (PENDING, APPROVED, REJECTED, FULFILLED), approverId, approvedAt, createdAt. Asset procurement requests.",
+      "tags": ["backend", "asset", "entity", "request", "jpa", "procurement", "approval", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java",
+      "type": "document",
+      "name": "AssetErrorCode.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java",
+      "summary": "AssetErrorCode enum: ASSET_NOT_FOUND, ASSET_ALREADY_ASSIGNED, ASSET_NOT_ASSIGNED, INVALID_STATUS_TRANSITION, INSUFFICIENT_QUANTITY, CATEGORY_NOT_FOUND, MAINTENANCE_OVERDUE, DEPRECIATION_CALCULATION_ERROR. Used by AssetException.",
+      "tags": ["backend", "asset", "enum", "error-code", "assignment", "depreciation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java",
+      "type": "document",
+      "name": "AssetRequestStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java",
+      "summary": "AssetRequestStatus enum: PENDING, APPROVED, REJECTED, FULFILLED. Asset request workflow states.",
+      "tags": ["backend", "asset", "enum", "request", "status", "workflow", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java",
+      "type": "document",
+      "name": "AssetStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java",
+      "summary": "AssetStatus enum: AVAILABLE, ASSIGNED, MAINTENANCE, RETIRED, LOST. Asset lifecycle states.",
+      "tags": ["backend", "asset", "enum", "status", "lifecycle", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java",
+      "type": "document",
+      "name": "AssignmentStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java",
+      "summary": "AssignmentStatus enum: ASSIGNED, RETURNED, OVERDUE. Assignment custody states.",
+      "tags": ["backend", "asset", "enum", "assignment", "status", "custody", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceStatus.java",
+      "type": "document",
+      "name": "MaintenanceStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceStatus.java",
+      "summary": "MaintenanceStatus enum: SCHEDULED, IN_PROGRESS, COMPLETED, CANCELLED. Maintenance workflow states.",
+      "tags": ["backend", "asset", "enum", "maintenance", "status", "workflow", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceType.java",
+      "type": "document",
+      "name": "MaintenanceType.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceType.java",
+      "summary": "MaintenanceType enum: PREVENTIVE, CORRECTIVE, CALIBRATION. Maintenance classification for scheduling and reporting.",
+      "tags": ["backend", "asset", "enum", "maintenance", "type", "preventive", "corrective", "calibration", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java",
+      "type": "document",
+      "name": "AssetException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java",
+      "summary": "Asset exception: extends RuntimeException with AssetErrorCode. Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "asset", "exception", "error-code", "runtime-exception", "java"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/ai/controllers/AiController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/controllers/AssetController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

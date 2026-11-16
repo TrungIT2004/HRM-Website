@@ -1,0 +1,108 @@
+{
+  "nodes": [
+    {
+      "id": "document:HRM Website/src/app/performance-reviews/ScopePill.tsx",
+      "type": "document",
+      "name": "ScopePill.tsx",
+      "filePath": "HRM Website/src/app/performance-reviews/ScopePill.tsx",
+      "summary": "ScopePill component: displays review scope badge (self, peer, manager, 360) with color coding, tooltip with description, and click handler for filter. Used in review list and management views.",
+      "tags": ["frontend", "hrm-website", "performance", "component", "badge", "react", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/src/app/performance-reviews/history/page.tsx",
+      "type": "document",
+      "name": "history/page.tsx",
+      "filePath": "HRM Website/src/app/performance-reviews/history/page.tsx",
+      "summary": "Performance review history page: timeline of past cycles, scores received/given, feedback summaries, trend chart (radar/spider), and export PDF. Uses PerformanceHistoryChart and ReviewCard components.",
+      "tags": ["frontend", "hrm-website", "performance", "history", "timeline", "chart", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/performance-reviews/management/overview/page.tsx",
+      "type": "document",
+      "name": "management/overview/page.tsx",
+      "filePath": "HRM Website/src/app/performance-reviews/management/overview/page.tsx",
+      "summary": "Management review overview: team completion rates, score distribution histogram, calibration flags, overdue reviews, and bulk actions (send reminder, extend deadline). Manager-only access via middleware.",
+      "tags": ["frontend", "hrm-website", "performance", "management", "overview", "manager", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/performance-reviews/management/page.tsx",
+      "type": "document",
+      "name": "management/page.tsx",
+      "filePath": "HRM Website/src/app/performance-reviews/management/page.tsx",
+      "summary": "Performance management hub: tabs for overview, records, calibration, settings. Cycle configuration (dates, participants, weights), reviewer assignment matrix, and calibration session scheduler.",
+      "tags": ["frontend", "hrm-website", "performance", "management", "hub", "cycle", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/performance-reviews/management/records/page.tsx",
+      "type": "document",
+      "name": "management/records/page.tsx",
+      "filePath": "HRM Website/src/app/performance-reviews/management/records/page.tsx",
+      "summary": "Review records management: searchable table of all reviews in cycle, filter by status/score/reviewer, inline score editing, feedback moderation, and bulk export. Uses ReviewRecordTable and ScoreEditor components.",
+      "tags": ["frontend", "hrm-website", "performance", "records", "table", "editor", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/payroll/page.tsx",
+      "type": "document",
+      "name": "payroll/page.tsx",
+      "filePath": "HRM Website/src/app/payroll/page.tsx",
+      "summary": "Payroll page: monthly payroll runs, payslip generation, salary component breakdown, tax/deduction details, bank transfer status, and year-end reports. HR/Finance role required. Uses payrollService and PayslipViewer.",
+      "tags": ["frontend", "hrm-website", "payroll", "payslip", "salary", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/resignation/page.tsx",
+      "type": "document",
+      "name": "resignation/page.tsx",
+      "filePath": "HRM Website/src/app/resignation/page.tsx",
+      "summary": "Resignation workflow: submit request (notice period, reason, handover plan), approval chain visualization, exit interview scheduling, asset return checklist, final settlement calculator, and offboarding tracker.",
+      "tags": ["frontend", "hrm-website", "resignation", "offboarding", "workflow", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/settings/page.tsx",
+      "type": "document",
+      "name": "settings/page.tsx",
+      "filePath": "HRM Website/src/app/settings/page.tsx",
+      "summary": "User settings: profile (avatar, name, contact), notifications (email, push, in-app), security (password, 2FA, sessions), preferences (language, theme, timezone), and connected accounts. Uses settingsService.",
+      "tags": ["frontend", "hrm-website", "settings", "profile", "security", "preferences", "page", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/app/documents/page.tsx",
+      "type": "document",
+      "name": "documents/page.tsx",
+      "filePath": "HRM Website/src/app/documents/page.tsx",
+      "summary": "Document management: file browser with folders, upload (drag-drop, progress), version history, sharing permissions, OCR search, preview modal (PDF, images, Office), and bulk actions. Integrates with MinIO via apiClient.",
+      "tags": ["frontend", "hrm-website", "documents", "files", "ocr", "preview", "minio", "page", "react", "typescript"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:HRM Website/src/app/performance-reviews/management/page.tsx",
+      "target": "document:HRM Website/src/app/performance-reviews/management/overview/page.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/app/performance-reviews/management/page.tsx",
+      "target": "document:HRM Website/src/app/performance-reviews/management/records/page.tsx",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/src/app/documents/page.tsx",
+      "target": "document:HRM Website/src/services/apiClient.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

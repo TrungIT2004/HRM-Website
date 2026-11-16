@@ -4,12 +4,15 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useHRMData } from '@/context/HRMDataContext';
-import { 
-  Bell, 
-  Search, 
-  LogOut, 
-  User as UserIcon, 
-  ShieldCheck, 
+import { useNotifications } from '@/context/NotificationContext';
+import NotificationBell from './NotificationBell';
+import TabBadge from '@/components/ui/TabBadge';
+import {
+  Bell,
+  Search,
+  LogOut,
+  User as UserIcon,
+  ShieldCheck,
   Sparkles,
   CheckCircle2,
   Clock
@@ -18,6 +21,7 @@ import {
 export default function Navbar() {
   const { currentUser, roleLevel, logout } = useAuth();
   const { attendances } = useHRMData();
+  const { unreadCount } = useNotifications();
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const todayStr = '2026-09-04';
@@ -61,6 +65,10 @@ export default function Navbar() {
       {/* Right: Quick Attendance + User Profile */}
       <div className="flex items-center gap-3">
 
+        {/* Notification Bell */}
+        <NotificationBell unreadCount={unreadCount} />
+        <TabBadge />
+
         {/* Today Punch Status Indicator */}
         <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">
           <Clock className="h-3.5 w-3.5 text-slate-500" />
@@ -81,6 +89,7 @@ export default function Navbar() {
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
               className="flex items-center gap-2.5 rounded-lg p-1.5 hover:bg-slate-100 transition cursor-pointer"
+              data-testid="user-menu-trigger"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 font-bold text-sm text-slate-700 ring-2 ring-blue-500/20">
                 {currentUser.lastName?.[0] || currentUser.fullName?.[0]}

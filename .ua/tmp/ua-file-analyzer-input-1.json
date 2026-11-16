@@ -1,0 +1,11 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/architect/SKILL.md", "language": "markdown", "sizeLines": 24, "fileCategory": "docs"},
+    {"path": ".agents/skills/audit/SKILL.md", "language": "markdown", "sizeLines": 66, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/architect/SKILL.md": [],
+    ".agents/skills/audit/SKILL.md": []
+  }
+}

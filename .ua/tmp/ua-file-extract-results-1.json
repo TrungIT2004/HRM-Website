@@ -1,0 +1,86 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/architect/SKILL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 24,
+      "nonEmptyLines": 18,
+      "sections": [
+        {
+          "heading": "Architect",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "When to Use",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Steps",
+          "level": 2,
+          "line": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": ".agents/skills/audit/SKILL.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 66,
+      "nonEmptyLines": 45,
+      "sections": [
+        {
+          "heading": "Audit",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "Core Rules",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Scope & Exclusions",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Workflow & Output Structure",
+          "level": 2,
+          "line": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    }
+  ]
+}

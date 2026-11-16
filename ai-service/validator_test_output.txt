@@ -1,0 +1,10 @@
+OK: False, Error: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)
+Clean: 
+
+OK2: False, Error2: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)
+
+OK3: False, Error3: Thiếu điều kiện lọc theo user hiện tại (asset_requests.requestor_id = %(uid)s)
+
+OK4: False, Error4: Thiếu điều kiện lọc theo user hiện tại (it_tickets.reporter_id = %(uid)s)
+
+OK5: False, Error5: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)

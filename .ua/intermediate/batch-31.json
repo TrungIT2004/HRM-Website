@@ -1,0 +1,97 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/RESULTS.md",
+      "summary": "DOC_ONLY retrieval metrics results with 176 lines summarizing Hit@1/5/10, MRR, NDCG scores, and comparison between old and new retrieval configurations.",
+      "tags": ["test", "results", "ai-service", "doc-only", "retrieval", "hit-at-k", "mrr", "ndcg", "comparison", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_new.json",
+      "type": "document",
+      "name": "p1_new.json",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_new.json",
+      "summary": "Retrieval P1 (precision at 1) new config JSON with 841 lines containing per-query top-1 retrieval accuracy for updated retrieval pipeline.",
+      "tags": ["test", "metrics", "ai-service", "doc-only", "retrieval", "p1", "precision-at-1", "new-config", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_old.json",
+      "type": "document",
+      "name": "p1_old.json",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_old.json",
+      "summary": "Retrieval P1 (precision at 1) old config JSON with 841 lines containing per-query top-1 retrieval accuracy for baseline retrieval pipeline.",
+      "tags": ["test", "metrics", "ai-service", "doc-only", "retrieval", "p1", "precision-at-1", "old-config", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval.json",
+      "type": "document",
+      "name": "retrieval_eval.json",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval.json",
+      "summary": "Full retrieval evaluation JSON with 10,223 lines containing detailed Hit@K, MRR, NDCG per query for standard top-K retrieval assessment.",
+      "tags": ["test", "results", "ai-service", "doc-only", "retrieval", "evaluation", "hit-at-k", "mrr", "ndcg", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_topk10.json",
+      "type": "document",
+      "name": "retrieval_eval_topk10.json",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_topk10.json",
+      "summary": "Top-10 retrieval evaluation JSON with 10,223 lines containing extended retrieval metrics for top-10 results including recall@10 and diversity scores.",
+      "tags": ["test", "results", "ai-service", "doc-only", "retrieval", "topk10", "recall-at-10", "diversity", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_x12.json",
+      "type": "document",
+      "name": "retrieval_eval_x12.json",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_x12.json",
+      "summary": "Cross-12 retrieval evaluation JSON with 5,183 lines containing retrieval metrics across 12 different query variations for robustness testing.",
+      "tags": ["test", "results", "ai-service", "doc-only", "retrieval", "x12", "variations", "robustness", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/x12_top5.json",
+      "type": "document",
+      "name": "x12_top5.json",
+      "filePath": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/x12_top5.json",
+      "summary": "Cross-12 top-5 retrieval JSON with 841 lines containing top-5 retrieval results for 12 query variations.",
+      "tags": ["test", "results", "ai-service", "doc-only", "retrieval", "x12", "top5", "variations", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_new.json",
+      "target": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_old.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval.json",
+      "target": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_topk10.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/RESULTS.md",
+      "target": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_x12.json",
+      "target": "document:ai-service/tests/DOC_ONLY/retrieval_metrics_tests/x12_top5.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

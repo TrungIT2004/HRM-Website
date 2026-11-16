@@ -1,0 +1,2117 @@
+{
+  "summary": {
+    "n": 100,
+    "faithfulness_mean": 0.3478,
+    "answer_relevancy_mean": 0.4035,
+    "context_precision_mean": 0.3198,
+    "numeric_fidelity_mean": 0.8984,
+    "policy_grounding_mean": 0.7925,
+    "hallucination_score_mean": 0.8925,
+    "refusal_correctness_mean": 0.725,
+    "pass_faithfulness": 12,
+    "pass_relevancy": 41,
+    "pass_precision": 29,
+    "faithfulness_pass_rate": 0.12,
+    "relevancy_pass_rate": 0.41,
+    "precision_pass_rate": 0.29
+  },
+  "rows": [
+    {
+      "question": "Làm sao để đăng ký xe công ty cho chuyến công tác?",
+      "answer": "Để đăng ký xe công ty đi công tác, bạn thực hiện theo quy trình 5 bước sau:\n\n*   **Bước 1:** Phối hợp với nhân viên phụ trách xe (Phòng Hành chính) cung cấp thông tin: ngày giờ, điểm đi, điểm đến, số người... qua điện thoại hoặc Zalo.\n    *   Đăng ký theo kế hoạch tuần: Trước 12h thứ 7 hàng tuần.\n    *   Đăng ký xe đột xuất: Trước 16h00 ngày N-1.\n*   **Bước 2:** Sau khi thống nhất thông tin, Đơn vị thực hiện ký đề xuất xe theo mẫu BM01.\n*   **Bước 3:** Chuyển bản ký qua email hoặc Zalo cho nhân ",
+      "faithfulness": 0.7895,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9868,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.8,
+      "hallucination_score": 0.9868,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "mẫu BM02"
+      ],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm phê duyệt và điều phối việc sử dụng xe?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quyết định số bao nhiêu quy định về lương thưởng?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Làm thế nào để yêu cầu cấp văn phòng phẩm, vệ sinh phẩm hoặc mực in?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế quản trị nội bộ của công ty tài chính chi nhánh Điện lực sẽ được ban hành khi nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế này áp dụng cho những người nào trong công ty?",
+      "answer": "Vì bạn không nêu rõ đang hỏi về quy chế của công ty nào, tôi xin cung cấp thông tin đối tượng áp dụng của các quy chế có trong tài liệu như sau:\n\n*   **Đối với Công ty Cổ phần Đầu Tư Thế Giới Di Động:** Quy chế áp dụng cho:\n    *   Đại hội đồng cổ đông.\n    *   Thành viên Hội đồng quản trị, thành viên Ủy ban kiểm toán nội bộ, Người quản lý, Người điều hành và tổ chức, cá nhân và người có liên quan của các đối tượng này.\n    *   Tổ chức và cá nhân có quyền lợi liên quan đến Công ty.\n*   **Đối với",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8571,
+      "numeric_fidelity": 0.6667,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.8571,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "3"
+      ],
+      "unsupported_policies": [
+        "Điều 1.2",
+        "Điều 3",
+        "Điều 1.2"
+      ],
+      "hallucinated_keywords": [
+        "đang",
+        "cung",
+        "finance",
+        "phận",
+        "petrolimex",
+        "pmsc",
+        "trích",
+        "finance",
+        "petrolimex",
+        "pmsc"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Cơ sở pháp lý nào quy định về nhân sự Đại hội đồng cổ đông?",
+      "answer": "Cơ sở pháp lý quy định về nhân sự Đại hội đồng cổ đông bao gồm:\n- Điều 146 Luật doanh nghiệp số 59/2020/QH14.\n- Khoản 2 Điều 20 Điều lệ công ty.\n\nTrích dẫn: Điều 4, Chương 2 - Quy chế nội bộ về quản trị Công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC.",
+      "faithfulness": 0.2132,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.75,
+      "hallucination_score": 0.9474,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Thời gian đăng ký xe theo kế hoạch tuần và đăng ký khẩn cấp là bao giờ?",
+      "answer": "Thời gian đăng ký xe được quy định như sau:\n\n*   **Đăng ký theo kế hoạch tuần:** Phối hợp qua điện thoại, zalo trước 12h thứ 7 hàng tuần.\n*   **Đăng ký xe đột xuất:** Phối hợp qua điện thoại, zalo trước 16h00 ngày N-1.\n\nTrích dẫn: [TÀI LIỆU 1], [TÀI LIỆU 2] (Bước 1).",
+      "faithfulness": 0.9583,
+      "answer_relevancy": 0.8,
+      "context_precision": 0.9583,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9583,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy định này có hiệu lực từ ngày nào?",
+      "answer": "Vì bạn không nêu rõ đang hỏi về quy định/quy chế nào, tôi xin cung cấp thông tin hiệu lực của các văn bản có trong tài liệu như sau:\n\n*   **Quy chế Quản trị Petrolimex-PMSC:** Có hiệu lực toàn văn từ ngày 15 tháng 04 năm 2021.\n*   **Quy chế Quản trị MWG:** Có hiệu lực từ ngày 08 tháng 04 năm 2023 (thay thế cho Quy chế ngày 15 tháng 05 năm 2021).\n*   **Quy chế Lương (MauQuyCheLuong-sanKeToan-A):** Có hiệu lực kể từ ngày ký.\n\nTrích dẫn:\n- QuyCheQuanTri-Petrolimex-PMSC.pdf: Điều 99.\n- QuyCheQuanTri",
+      "faithfulness": 0.1312,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.4722,
+      "numeric_fidelity": 0.8333,
+      "policy_grounding": 0.3333,
+      "hallucination_score": 0.4722,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "05",
+        "52"
+      ],
+      "unsupported_policies": [
+        "Điều 99",
+        "Điều 52"
+      ],
+      "hallucinated_keywords": [
+        "đang",
+        "cung",
+        "quản",
+        "petrolimex",
+        "pmsc",
+        "quản",
+        "2023",
+        "thay",
+        "lương",
+        "mauquycheluong"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nội dung này là phần nào của tài liệu quy chế lương thưởng?",
+      "answer": "Vì bạn không cung cấp nội dung cụ thể mà bạn đang đề cập đến là \"nội dung này\", nên tôi không thể xác định chính xác nó thuộc phần nào của tài liệu. Bạn vui lòng cung cấp đoạn nội dung cần tra cứu để tôi hỗ trợ kiểm tra giúp bạn.\n\nTrích dẫn tài liệu: MauQuyCheLuong-sanKeToan-B.docx, MauQuyCheLuong-sanKeToan-A.docx, bo-luat-lao-dong-2019.docx.",
+      "faithfulness": 0.1739,
+      "answer_relevancy": 0.8077,
+      "context_precision": 0.1739,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.1739,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "cung",
+        "đang",
+        "chính",
+        "thuộc",
+        "cung",
+        "đoạn",
+        "kiểm",
+        "giúp",
+        "trích",
+        "mauquycheluong"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy trình này áp dụng cho những bộ phận hoặc phòng ban nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế này dựa trên những văn bản pháp luật nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Cổ đông lớn được định nghĩa như thế nào trong quy chế?",
+      "answer": "Theo Quy chế Quản trị nội bộ của Công ty Cổ phần Đầu Tư Thế Giới Di Động, cổ đông lớn được định nghĩa như sau:\n\nCổ đông lớn là Cổ đông sở hữu trực tiếp hoặc gián tiếp từ năm (05) phần trăm trở lên số cổ phần có quyền biểu quyết của Công ty được quy định tại Điều lệ.\n\nTrích dẫn: Điều 2, mục 2.6 - Quy chế Quản trị nội bộ Công ty Cổ phần Đầu Tư Thế Giới Di Động (Tài liệu 3, 6).",
+      "faithfulness": 0.7159,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9545,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9545,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "3, 6"
+      ],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế nội bộ về quản trị công ty PMSC nằm ở trang nào?",
+      "answer": "Quy chế nội bộ về quản trị Công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC xuất hiện tại các trang: 24, 35, 51 và 52.\n\nTrích dẫn:\n- Trang 24: Điều 26. Cung cấp thông tin đăng nhập và thực hiện bỏ phiếu điện tử.\n- Trang 35: Điều 61. Cách thức biểu quyết.\n- Trang 51 và 52: Điều 97. Kỷ luật.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.375,
+      "numeric_fidelity": 0.375,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.375,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "24",
+        "26",
+        "35",
+        "61",
+        "97"
+      ],
+      "unsupported_policies": [
+        "Điều 26",
+        "Điều 61",
+        "Điều 97"
+      ],
+      "hallucinated_keywords": [
+        "xuất",
+        "trích",
+        "điều",
+        "cung",
+        "đăng",
+        "nhập",
+        "thực",
+        "phiếu",
+        "điện",
+        "điều"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm duyệt và cấp xe cho đơn vị?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Các phòng ban nào phải thi hành quyết định này?",
+      "answer": "Vì bạn không nêu rõ đang hỏi về quyết định/quy trình nào, tôi xin cung cấp thông tin về các văn bản có trong tài liệu như sau:\n\n*   **Đối với Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe (Số 917./QĐ-ACT):** Giám đốc Khối Dịch vụ kỹ thuật, Giám đốc các khối, Trưởng Phòng/Ban và các đơn vị trực thuộc chịu trách nhiệm thi hành.\n*   **Đối với Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in (Mã hiệu QT.ACT.HC-05):** Ban hành tới các Khối, Phòng ban trực thuộc ",
+      "faithfulness": 0.1867,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.7778,
+      "numeric_fidelity": 0.6,
+      "policy_grounding": 0.4,
+      "hallucination_score": 0.7778,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "05",
+        "05"
+      ],
+      "unsupported_policies": [
+        "Quyết định số",
+        "QT.ACT.HC",
+        "QT.ACT.HC"
+      ],
+      "hallucinated_keywords": [
+        "đang",
+        "trình",
+        "cung",
+        "trình",
+        "phẩm",
+        "sinh",
+        "phẩm",
+        "trung",
+        "trích",
+        "trình"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Mẫu quy chế lương dựa trên căn cứ pháp lý nào?",
+      "answer": "Dựa trên các tài liệu được cung cấp, mẫu quy chế lương dựa trên các căn cứ pháp lý sau:\n\n**Theo tài liệu MauQuyCheLuong-sanKeToan-B.docx:**\n* Bộ luật lao động 2019 (thông qua ngày 20/11/2019).\n* Luật việc làm số 38/2013/QH13 (thông qua ngày 16/11/2013).\n* Luật doanh nghiệp 2020 (thông qua ngày 26/11/2014).\n* Điều lệ tổ chức và hoạt động của công ty.\n* Biên bản họp Hội đồng thành viên ngày 05/01/2023 về việc thông qua quy chế trả lương, thưởng của công ty từ năm 2023.\n\n**Theo tài liệu MauQuyCheLu",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8889,
+      "numeric_fidelity": 0.9032,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.8889,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "2",
+        "3",
+        "4"
+      ],
+      "unsupported_policies": [
+        "mẫu quy"
+      ],
+      "hallucinated_keywords": [
+        "cung",
+        "mauquycheluong",
+        "sanketoan",
+        "docx",
+        "mauquycheluong",
+        "sanketoan",
+        "docx",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy trình QT.ACT.HC-05 có hiệu lực từ ngày nào?",
+      "answer": "Quy trình QT.ACT.HC-05 có hiệu lực từ ngày 01/07/2024.\n\nTrích dẫn: Tài liệu 1, 2, 3, 4, 5, 6, 7.",
+      "faithfulness": 0.8,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.8,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai có thẩm quyền phê duyệt và ký ban hành Quy chế quản trị nội bộ?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai được coi là \"Người điều hành\" theo quy chế này?",
+      "answer": "Vì bạn không nêu rõ đang áp dụng quy chế của công ty nào, tôi xin cung cấp định nghĩa \"Người điều hành\" theo từng quy chế có trong tài liệu như sau:\n\n*   **Theo Quy chế Quản trị nội bộ của Công ty Cổ phần Đầu Tư Thế Giới Di Động:** Người điều hành là Tổng Giám đốc, Phó Tổng Giám đốc, Kế toán trưởng, và các vị trí quản lý khác trong Công ty được Hội đồng quản trị bổ nhiệm.\n*   **Theo Quy chế Quản trị của Công ty Tài chính cổ phần Điện lực (EVN Finance):** Người Điều hành gồm Tổng Giám đốc; Phó Tổ",
+      "faithfulness": 0.3125,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8333,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 0.5,
+      "hallucination_score": 0.8333,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "2.10"
+      ],
+      "unsupported_policies": [
+        "Điều 2"
+      ],
+      "hallucinated_keywords": [
+        "đang",
+        "cung",
+        "nghĩa",
+        "giới",
+        "nhiệm",
+        "trích",
+        "giới",
+        "khoản",
+        "khoản"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Làm sao tôi có thể xem được bảng biểu quy chế quản trị công ty trong tài liệu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nếu xe công ty không có, quy trình xin thuê xe ngoài và nộp dự toán chi phí như thế nào?",
+      "answer": "Trường hợp xe ô tô Công ty không đảm bảo, quy trình thực hiện như sau:\n\n*   **Đối với các chuyến đăng ký theo kế hoạch tuần:** Phòng Hành chính (P.HC) thực hiện đề xuất chi phí thuê xe ngoài, hoàn thành trước 01 ngày của kế hoạch đăng ký.\n*   **Đối với các chuyến phát sinh gấp:** P.HC xin ý kiến Ban TGĐ và các Bộ phận liên quan trước khi thuê xe và bổ sung đề xuất sau 24h.\n\nTrích dẫn: [TÀI LIỆU 1], [TÀI LIỆU 6] (Phần Ghi chú).",
+      "faithfulness": 0.7258,
+      "answer_relevancy": 0.9,
+      "context_precision": 0.9677,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9677,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "6"
+      ],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Những đơn vị nào trong công ty phải tuân thủ Quy định 917.QĐ-ACT?",
+      "answer": "Những đơn vị phải tuân thủ Quy định 917.QĐ-ACT bao gồm:\n\n*   Toàn thể các đơn vị trực thuộc công ty.\n*   Các cá nhân có liên quan đến hoạt động yêu cầu, điều phối, thực hiện hoặc phê duyệt công tác vận chuyển.\n*   Cụ thể, các đối tượng chịu trách nhiệm thi hành Quyết định này gồm: Giám đốc Khối Dịch vụ kỹ thuật, Giám đốc các khối, Trưởng Phòng/Ban và các đơn vị trực thuộc.\n\nTrích dẫn: Điều 2 (Quy định) và Điều 3 (Quyết định).",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.5333,
+      "numeric_fidelity": 0.6667,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.5333,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "917"
+      ],
+      "unsupported_policies": [
+        "Điều 2",
+        "Điều 3",
+        "Quyết định này"
+      ],
+      "hallucinated_keywords": [
+        "thuộc",
+        "hoạt",
+        "động",
+        "tượng",
+        "chịu",
+        "quyết",
+        "khối",
+        "dịch",
+        "thuật",
+        "khối"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nghị định 145/2020/NĐ-CP quy định gì về mức lương?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi cần cấp phát văn phòng phẩm đột xuất, quy trình và mẫu biểu cần nộp là gì?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế này ảnh hưởng như thế nào đến quyền lợi và nghĩa vụ của nhân viên?",
+      "answer": "Vì bạn không nêu rõ \"quy chế này\" là văn bản nào, tôi xin cung cấp thông tin về quyền lợi, nghĩa vụ của người lao động và các quy định liên quan dựa trên các tài liệu hiện có như sau:\n\n**1. Quyền của người lao động:**\n* Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc.\n* Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao đ",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 0.375,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.8942,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "2019",
+        "5",
+        "51",
+        "79",
+        "51"
+      ],
+      "unsupported_policies": [
+        "Điều 5",
+        "Điều 51",
+        "Điều 79",
+        "Điều 51"
+      ],
+      "hallucinated_keywords": [
+        "cung",
+        "quan",
+        "ngày",
+        "giao",
+        "thấp",
+        "phải",
+        "trách",
+        "miễn",
+        "nhiệm",
+        "nhưng"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế này được thông qua trong nghị quyết nào và vào ngày nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi cần tham khảo quy chế này để chuẩn bị nghị quyết Đại hội đồng cổ đông, nên truy cập tài liệu nào?",
+      "answer": "Để chuẩn bị nghị quyết Đại hội đồng cổ đông, bạn cần tham khảo tài liệu sau:\n\n*   **Quy chế nội bộ về quản trị Công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC**, cụ thể là:\n    *   **Điều 35** hoặc **Điều 45**: Về việc Công bố Nghị quyết, Biên bản họp Đại hội đồng cổ đông (các điều này hướng dẫn thực hiện theo quy định tại Điều 20 của Quy chế).\n\nTrích dẫn: Điều 35, Điều 45 - QuyCheQuanTri-Petrolimex-PMSC.pdf.",
+      "faithfulness": 0.3086,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8571,
+      "numeric_fidelity": 0.6,
+      "policy_grounding": 0.6,
+      "hallucination_score": 0.8571,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "35",
+        "35"
+      ],
+      "unsupported_policies": [
+        "Điều 35",
+        "Điều 35"
+      ],
+      "hallucinated_keywords": [
+        "việc",
+        "trích",
+        "quychequantri",
+        "petrolimex"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Báo cáo tổng hợp việc sử dụng xe phải nộp đến ngày bao nhiêu mỗi tháng?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Xe 6 tấn được dùng cho những mục đích nào và ai có quyền phê duyệt?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Luật doanh nghiệp 2020 ảnh hưởng như thế nào tới chính sách lương của công ty?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai là người duyệt yêu cầu cấp phát vệ sinh phẩm và mực in?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế này dựa trên những văn bản pháp luật nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ban điều hành bao gồm những vị trí nào?",
+      "answer": "Dựa trên tài liệu được cung cấp, thông tin về các vị trí trong Ban điều hành/Người điều hành được quy định như sau:\n\nTại tài liệu của EVN Finance, **Người Điều hành** bao gồm:\n* Tổng Giám đốc\n* Phó Tổng Giám đốc\n* Kế toán trưởng\n* Giám đốc Chi nhánh\n\nNgoài ra, **Ban Tổng Giám đốc** bao gồm:\n* Tổng Giám đốc\n* Các Phó Tổng Giám đốc\n\nTrích dẫn: [TÀI LIỆU 4], [TÀI LIỆU 5] - Điều 5. Giải thích từ ngữ.",
+      "faithfulness": 0.9333,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9333,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9333,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "cung",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "HĐQT có thể lấy ý kiến cổ đông bằng văn bản trong những trường hợp nào?",
+      "answer": "Dựa trên quy chế của Công ty Cổ phần Cơ khí Xăng dầu - PMSC, Hội đồng quản trị (HĐQT) có thể lấy ý kiến cổ đông bằng văn bản trong các trường hợp sau:\n\n*   Loại cổ phần và tổng số cổ phần của từng loại.\n*   Bầu, miễn nhiệm, bãi nhiệm thành viên HĐQT và Ban kiểm soát.\n*   Quyết định đầu tư hoặc bán số tài sản có giá trị bằng hoặc lớn hơn 35% tổng giá trị tài sản được ghi trong báo cáo tài chính gần nhất của công ty.\n*   Thông qua báo cáo tài chính hằng năm.\n*   Tổ chức lại, giải thể công ty.\n*   ",
+      "faithfulness": 0.9508,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9508,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9508,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trên",
+        "trích",
+        "petrolimex"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Cách thức đăng ký xe đi công tác theo hướng dẫn này là gì?",
+      "answer": "Quy trình đăng ký xe đi công tác được thực hiện theo 5 bước sau:\n\n*   **Bước 1:** Đơn vị có nhu cầu cung cấp thông tin (ngày giờ, điểm đi, điểm đến, số người...) cho nhân viên phụ trách xe (P.HC) qua điện thoại hoặc zalo. Thời hạn cung cấp:\n    *   Trước 12h thứ 7 hàng tuần (đối với đăng ký theo kế hoạch tuần).\n    *   Trước 16h00 ngày N-1 (đối với đăng ký xe đột xuất).\n*   **Bước 2:** Sau khi thống nhất thông tin, Đơn vị ký đề xuất xe theo mẫu BM01.\n*   **Bước 3:** Chuyển bản ký qua email hoặc ",
+      "faithfulness": 0.7448,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9775,
+      "numeric_fidelity": 0.9524,
+      "policy_grounding": 0.8,
+      "hallucination_score": 0.9775,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "214"
+      ],
+      "unsupported_policies": [
+        "mẫu BM02"
+      ],
+      "hallucinated_keywords": [
+        "thời",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy định này áp dụng cho các loại hình vận chuyển nào?",
+      "answer": "Quy định này áp dụng cho các loại hình vận chuyển sau:\n\n* Vận chuyển nội thành, ngoại thành, liên tỉnh, bao gồm cả vận chuyển giữa các văn phòng, kho, dự án,...\n* Vận chuyển định kỳ theo kế hoạch (lịch giao nhận thường xuyên) hoặc vận chuyển phát sinh, đột xuất.\n* Vận chuyển một chiều, hai chiều, hoặc nhiều điểm giao/nhận kết hợp.\n* Xe ô tô phục vụ công tác được bố trí nhằm đáp ứng nhu cầu đi lại chính đáng, đã được phê duyệt, của các đơn vị trong Công ty, bao gồm: Tham dự các cuộc họp, hội nghị",
+      "faithfulness": 0.9649,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9649,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9649,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích",
+        "khoản"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai có thẩm quyền phê duyệt và điều chỉnh quy chế lương?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Phòng HC phải làm gì để kiểm tra và ghi nhận mức tiêu thụ mực in?",
+      "answer": "Để kiểm tra và ghi nhận mức tiêu thụ mực in, Phòng HC thực hiện như sau:\n\n- **Quản lý số lượng:** Phòng HC trực tiếp quản lý số lượng mực in theo sổ theo dõi BM05 - QT.ACT.HC-05.\n- **Ghi nhận khi thay mực:** Khi các phòng ban sử dụng hết mực, họ có trách nhiệm mang hộp mực đã hết đến và ký nhận vào “Bảng theo dõi đổi mực” theo biểu mẫu BM06 - QT.ACT.HC-05 để Phòng HC quản lý và tiến hành nạp mực mới.\n- **Theo dõi và đề xuất:** Phòng HC theo dõi thời gian thay mực và đề xuất mua mới tùy vào nhu c",
+      "faithfulness": 0.9062,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9062,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9062,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "thời",
+        "gian",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế này có hiệu lực từ ngày nào và có thể thay đổi như thế nào?",
+      "answer": "Vì bạn không nêu rõ đang hỏi về quy chế của công ty nào, tôi xin cung cấp thông tin của cả hai đơn vị có trong tài liệu như sau:\n\n**1. Đối với Quy chế Quản trị Nội bộ của MWG:**\n*   **Ngày hiệu lực:** Ngày 08 tháng 04 năm 2023.\n*   **Cách thức thay đổi:** Khi có vấn đề mới phát sinh cần sửa đổi, bổ sung cho phù hợp với pháp luật và tình hình hoạt động thực tế, Hội đồng quản trị sẽ trình Đại hội đồng cổ đông xem xét, quyết định.\n\n**2. Đối với Quy chế nội bộ về quản trị Công ty của PMSC:**\n*   **N",
+      "faithfulness": 0.8704,
+      "answer_relevancy": 0.9,
+      "context_precision": 0.8704,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.8704,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "đang",
+        "cung",
+        "cách",
+        "cách",
+        "quychequantri",
+        "quychequantri",
+        "petrolimex"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Công ty phải gửi thông báo triệu tập đại hội đồng cổ đông ít nhất bao nhiêu ngày trước ngày họp?",
+      "answer": "Vì bạn không cung cấp tên công ty cụ thể, tôi xin gửi thông tin quy định về thời hạn gửi thông báo triệu tập Đại hội đồng cổ đông (ĐHĐCĐ) của các công ty có trong tài liệu như sau:\n\n*   **Đối với Công ty Cổ phần Cơ khí Xăng dầu - PMSC:** Thông báo mời họp phải được gửi đến tất cả cổ đông trong danh sách cổ đông có quyền dự họp chậm nhất là **21 ngày** trước ngày khai mạc (nếu Điều lệ công ty không quy định thời hạn dài hơn).\n*   **Đối với MWG:** Thông báo mời họp phải được gửi chậm nhất là **21 ",
+      "faithfulness": 0.3302,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.7925,
+      "numeric_fidelity": 0.8333,
+      "policy_grounding": 0.5,
+      "hallucination_score": 0.7925,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "20"
+      ],
+      "unsupported_policies": [
+        "Điều 5.1"
+      ],
+      "hallucinated_keywords": [
+        "phần",
+        "xăng",
+        "pmsc",
+        "evnfinance",
+        "trích",
+        "quychequantri",
+        "petrolimex",
+        "pmsc",
+        "quychequantri",
+        "quychequantri"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Điều 22 Điều lệ và Điều 21 quy chế quy định gì về việc lấy ý kiến cổ đông bằng văn bản?",
+      "answer": "Căn cứ theo tài liệu cung cấp, quy định về việc lấy ý kiến cổ đông bằng văn bản như sau:\n\n**1. Các nội dung có thể thông qua bằng hình thức lấy ý kiến cổ đông bằng văn bản (Điều 21):**\n* a. Sửa đổi, bổ sung các nội dung của Điều lệ công ty;\n* b. Định hướng phát triển công ty;\n* c. Loại cổ phần và tổng số cổ phần của từng loại;\n* d. Bầu, miễn nhiệm, bãi nhiệm thành viên HĐQT và Ban kiểm soát;\n* e. Quyết định đầu tư hoặc bán số tài sản có giá trị bằng hoặc lớn hơn 35% tổng giá trị tài sản được ghi",
+      "faithfulness": 0.241,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.4419,
+      "numeric_fidelity": 0.7273,
+      "policy_grounding": 0.75,
+      "hallucination_score": 0.4419,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "35",
+        "2",
+        "2"
+      ],
+      "unsupported_policies": [
+        "Quyết định đầu",
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "cung",
+        "loại",
+        "phần",
+        "tổng",
+        "phần",
+        "từng",
+        "loại",
+        "miễn",
+        "nhiệm",
+        "nhiệm"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Đơn vị nào phải phối hợp và phê duyệt phiếu đăng ký xe?",
+      "answer": "Dựa trên các tài liệu được cung cấp, việc phối hợp và phê duyệt phiếu đăng ký xe được quy định như sau:\n\n*   **Đơn vị phối hợp:** Đơn vị có nhu cầu sử dụng xe phối hợp với nhân viên phụ trách xe thuộc **Phòng Hành chính (P.HC)** để cung cấp thông tin (ngày giờ, điểm đi, điểm đến, số người...).\n*   **Đơn vị phê duyệt:** Phiếu đăng ký xe (mẫu BM01) cần có chữ ký phê duyệt của **Trưởng đơn vị** và **Phòng Hành chính**.\n\nTrích dẫn: [TÀI LIỆU 3], [TÀI LIỆU 4] (Bước 1, Bước 2) và [TÀI LIỆU 1], [TÀI LI",
+      "faithfulness": 0.3906,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.7812,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.5,
+      "hallucination_score": 0.7812,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "mẫu BM01",
+        "Mẫu BM01"
+      ],
+      "hallucinated_keywords": [
+        "cung",
+        "viên",
+        "trách",
+        "cung",
+        "trích",
+        "bước",
+        "bước"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Khi nào công ty ưu tiên sử dụng xe công ty thay vì thuê ngoài?",
+      "answer": "Công ty ưu tiên sử dụng xe công ty trong các trường hợp sau:\n\n*   **Về điều kiện vận chuyển (Điều 3):**\n    *   Quãng đường ngắn (nhỏ hơn hoặc bằng 30km).\n    *   Khối lượng hàng hóa nhỏ/lẻ, trọng lượng nhỏ hơn hoặc bằng 500kg, dễ xếp dỡ.\n    *   Điểm đến nằm trong lộ trình hiện có hoặc có thể ghép tuyến.\n    *   Phù hợp với điều kiện vận hành (đường cấm tải, giờ cấm, thời tiết...).\n    *   Xe có sẵn trong khung thời gian yêu cầu.\n\n*   **Về nguyên tắc sử dụng (Điều 4):**\n    *   Khi xe công ty c",
+      "faithfulness": 0.6407,
+      "answer_relevancy": 0.9231,
+      "context_precision": 0.9344,
+      "numeric_fidelity": 0.8571,
+      "policy_grounding": 0.8,
+      "hallucination_score": 0.9344,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "917"
+      ],
+      "unsupported_policies": [
+        "Quyết định số"
+      ],
+      "hallucinated_keywords": [
+        "trích",
+        "đăng",
+        "phần",
+        "viễn"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai có thẩm quyền quyết định tăng bậc lương cho nhân viên?",
+      "answer": "Ban Giám đốc là người có thẩm quyền quyết định điều chỉnh tăng bậc lương cho người lao động khi có thành tích xuất sắc, đem lại lợi ích kinh tế cho Công ty.\n\nTrích dẫn: MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.7619,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.7619,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "quyết định điều",
+        "CHƯƠNG 2"
+      ],
+      "hallucinated_keywords": [
+        "trích",
+        "mauquycheluong",
+        "sanketoan",
+        "docx",
+        "chương"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Khi hộp mực hoặc bình mực bị hỏng, tôi hoặc phòng ban phải chịu trách nhiệm như thế nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi có thể xem bản đầy đủ của Quy chế Quản trị Nội bộ ở đâu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Các hình thức nào được công ty chấp nhận để gửi thông báo triệu tập (điện tử, bưu điện, tin nhắn,…)?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có được lấy ý kiến cổ đông bằng văn bản cho các quyết định khác không?",
+      "answer": "HĐQT không được lấy ý kiến cổ đông bằng văn bản cho các vấn đề khác, trừ những trường hợp được quy định tại Điều 21 của quy chế này và Khoản 1 Điều 22 Điều lệ Công ty.\n\nTrích dẫn: Điều 22, Chương 2 - Quy chế quản trị Petrolimex-PMSC.",
+      "faithfulness": 0.6094,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8125,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.75,
+      "hallucination_score": 0.8125,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "trích",
+        "chương",
+        "petrolimex"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Mẫu phiếu đăng ký xe có những mục thông tin nào cần điền?",
+      "answer": "Mẫu phiếu đăng ký xe (BM01) bao gồm các mục thông tin cần điền như sau:\n\n*   **Thông tin chung:**\n    *   Đơn vị/ Phòng ban.\n    *   Số phiếu.\n    *   Ngày tháng năm lập phiếu.\n    *   Căn cứ đề xuất.\n*   **Chi tiết đăng ký xe (trong bảng):**\n    *   STT.\n    *   Đơn vị đề xuất.\n    *   Nội dung công việc.\n    *   Số người.\n    *   Người liên hệ và Số điện thoại.\n    *   Nơi đi.\n    *   Nơi đến.\n    *   Loại xe.\n    *   Ngày đi.\n    *   Ngày về.\n    *   Ghi chú.\n*   **Phần ký xác nhận:**\n    *  ",
+      "faithfulness": 0.2,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.75,
+      "hallucination_score": 0.8889,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "Mẫu phiếu"
+      ],
+      "hallucinated_keywords": [
+        "chung",
+        "bảng",
+        "trích"
+      ],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Các tiêu chí nào quyết định việc lựa chọn xe công ty cho vận chuyển hàng hoá?",
+      "answer": "Xe công ty được ưu tiên sử dụng cho vận chuyển hàng hóa khi đáp ứng các tiêu chí sau:\n\n*   Quãng đường ngắn (nhỏ hơn hoặc bằng 30km).\n*   Khối lượng hàng hóa nhỏ/lẻ, trọng lượng nhỏ hơn hoặc bằng 500kg và dễ xếp dỡ.\n*   Điểm đến nằm trong lộ trình hiện có hoặc có thể ghép tuyến.\n*   Phù hợp với điều kiện vận hành (thời tiết, giờ cấm, đường cấm tải...).\n*   Xe có sẵn trong khung thời gian yêu cầu.\n\nNgoài ra, theo nguyên tắc sử dụng, công ty ưu tiên sắp xếp theo thứ tự: yêu cầu phục vụ hoạt động S",
+      "faithfulness": 0.9608,
+      "answer_relevancy": 0.9706,
+      "context_precision": 0.9608,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9608,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trước",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Công ty có những khoản phụ cấp nào và chúng được trả khi nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Bao dưỡng máy photocopy được thực hiện như thế nào và cần chuẩn bị giấy tờ gì?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế quy định quyền lợi và nghĩa vụ của cổ đông như thế nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nếu thông tin liên lạc của tôi không chính xác, tôi sẽ chịu trách nhiệm như thế nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nếu muốn gửi ý kiến cổ đông bằng văn bản, cần tuân thủ quy định gì?",
+      "answer": "Các nội dung có thể được thông qua bằng hình thức lấy ý kiến cổ đông bằng văn bản bao gồm:\n\n*   Sửa đổi, bổ sung các nội dung của Điều lệ công ty;\n*   Định hướng phát triển công ty;\n*   Loại cổ phần và tổng số cổ phần của từng loại;\n*   Bầu, miễn nhiệm, bãi nhiệm thành viên HĐQT và Ban kiểm soát;\n*   Quyết định đầu tư hoặc bán số tài sản có giá trị bằng hoặc lớn hơn 35% tổng giá trị tài sản được ghi trong báo cáo tài chính gần nhất của công ty;\n*   Thông qua báo cáo tài chính hằng năm;\n*   Tổ ch",
+      "faithfulness": 0.1684,
+      "answer_relevancy": 0.8438,
+      "context_precision": 0.4211,
+      "numeric_fidelity": 0.6667,
+      "policy_grounding": 0.6,
+      "hallucination_score": 0.4211,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "35",
+        "2"
+      ],
+      "unsupported_policies": [
+        "Quyết định đầu",
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "loại",
+        "phần",
+        "tổng",
+        "phần",
+        "từng",
+        "loại",
+        "miễn",
+        "nhiệm",
+        "nhiệm",
+        "thành"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi có thể dùng xe công tác vào thời gian nào trong tháng 04?",
+      "answer": "Tôi chưa tra được dữ liệu của bạn lúc này. Bạn thử lại sau hoặc liên hệ Phòng Nhân sự (HR).",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nếu xe công ty không có sẵn, quy trình xin phép sử dụng dịch vụ thuê ngoài như thế nào?",
+      "answer": "Khi xe công ty không đảm bảo/không có sẵn, quy trình xin phép sử dụng dịch vụ thuê ngoài được thực hiện như sau:\n\n*   **Đối với các chuyến đăng ký theo kế hoạch tuần:** Phòng Hành chính (P.HC) thực hiện đề xuất chi phí thuê xe ngoài và phải hoàn thành trước 01 ngày của kế hoạch đăng ký.\n*   **Đối với các chuyến phát sinh gấp:** Phòng Hành chính (P.HC) xin ý kiến Ban Tổng Giám đốc và các Bộ phận liên quan trước khi thuê xe, sau đó bổ sung đề xuất sau 24 giờ.\n\nTrích dẫn: [TÀI LIỆU 1]: 214.HD-ACT-H",
+      "faithfulness": 0.214,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9512,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "214"
+      ],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "giám",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Phụ cấp có liên quan đến tình hình sản xuất kinh doanh của công ty không?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi có thể mua các loại bìa và giấy note nào và giá của chúng là bao nhiêu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Cổ đông lớn có thể đề nghị thay đổi quyết định của Hội đồng Quản trị như thế nào?",
+      "answer": "Dựa trên các tài liệu được cung cấp, không có thông tin quy định về việc Cổ đông lớn đề nghị thay đổi quyết định của Hội đồng Quản trị như thế nào. Tài liệu chỉ đề cập đến quyền đề cử ứng viên Hội đồng quản trị của Cổ đông hoặc nhóm Cổ đông nắm giữ từ 10% trở lên (Điều 15.1).\n\nRất tiếc, quy chế hiện tại của công ty không có thông tin về vấn đề này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.\n\nTrích dẫn: QuyCheQuanTri-MWG.pdf (Điều 15.1).",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.7619,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "Điều 15.1",
+        "Điều 15.1"
+      ],
+      "hallucinated_keywords": [
+        "trên",
+        "cung",
+        "giải",
+        "trích",
+        "quychequantri"
+      ],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm cung cấp danh sách cổ đông có quyền tham dự đại hội?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm thu thập và xử lý ý kiến cổ đông bằng văn bản?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có xe Santafe 7 chỗ sẵn sàng cho công tác từ 08h‑17h30 không?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có giới hạn về khoảng cách và khối lượng hàng hoá đối với việc dùng xe công ty không?",
+      "answer": "Có, việc sử dụng xe công ty được ưu tiên trong các trường hợp có giới hạn về khoảng cách và khối lượng hàng hóa như sau:\n\n*   **Khoảng cách:** Quãng đường ngắn (nhỏ hơn hoặc bằng 30km).\n*   **Khối lượng hàng hóa:** Hàng hóa nhỏ/lẻ, trọng lượng nhỏ hơn hoặc bằng 500kg và dễ xếp dỡ.\n\nTrích dẫn: Điều 3, Khoản 1, điểm a và b - Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.",
+      "faithfulness": 0.9429,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9429,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9429,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích",
+        "khoản"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi được cấp bao nhiêu phụ cấp ăn trưa?",
+      "answer": "Tôi chưa tra được dữ liệu của bạn lúc này. Bạn thử lại sau hoặc liên hệ Phòng Nhân sự (HR).",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm quản lý và cập nhật danh mục văn phòng phẩm theo QT.ACT.HC-05?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Cuộc họp Hội đồng Quản trị thường niên được triệu tập vào thời điểm nào trong năm?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Khi có quy định của pháp luật chuyên ngành mâu thuẫn với quy chế nội bộ, nên áp dụng quy định nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có thể công bố nghị quyết Đại hội đồng cổ đông bằng hình thức họp trực tiếp kết hợp với trực tuyến không?",
+      "answer": "Có, Đại hội đồng cổ đông có thể thông qua nghị quyết bằng hình thức hội nghị trực tiếp kết hợp với trực tuyến. Việc công bố Nghị quyết và Biên bản họp Đại hội đồng cổ đông trong trường hợp này được thực hiện theo quy định tại Điều 20 của Quy chế.\n\nTrích dẫn: Điều 35, Mục IV (Điều 36 đến Điều 44) - Quy chế quản trị Công ty.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.6522,
+      "numeric_fidelity": 0.0,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.6522,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "20",
+        "35",
+        "36",
+        "44"
+      ],
+      "unsupported_policies": [
+        "Điều 20",
+        "Điều 35",
+        "Điều 36",
+        "Điều 44"
+      ],
+      "hallucinated_keywords": [
+        "trường",
+        "thực",
+        "điều",
+        "trích",
+        "điều",
+        "điều",
+        "điều",
+        "quản"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai là người liên hệ nếu muốn đăng ký xe công tác?",
+      "answer": "Nếu muốn đăng ký xe công tác, bạn hãy phối hợp với nhân viên phụ trách xe thuộc Phòng Hành chính (P.HC).\n\nTrích dẫn: [TÀI LIỆU 2], [TÀI LIỆU 4] (Bước 1).",
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.75,
+      "context_precision": 0.6,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.6,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "viên",
+        "trách",
+        "trích",
+        "bước"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Bộ phận nào chịu trách nhiệm điều phối và phê duyệt việc sử dụng phương tiện trong công ty?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Mức khoán chi xăng xe cho công nhân là bao nhiêu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Các mã hàng và đơn vị đo lường của từng loại văn phòng phẩm là gì?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy trình thông báo danh sách cổ đông có quyền tham dự cuộc họp Hội đồng Quản trị ra sao?",
+      "answer": "Rất tiếc, quy chế hiện tại của công ty không có thông tin về quy trình thông báo danh sách cổ đông có quyền tham dự cuộc họp Hội đồng Quản trị. Các tài liệu cung cấp chỉ quy định về việc lập và thông báo danh sách cổ đông có quyền tham dự họp Đại hội đồng cổ đông.\n\nBạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.\n\nTrích dẫn: QuyCheQuanTri-Petrolimex-PMSC.pdf (Điều 5, Điều 6, Điều 7); QuyCheQuanTri-MWG.pdf (Điều 4, Điều 5, Điều 6).",
+      "faithfulness": 0.1667,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 0.8333,
+      "policy_grounding": 0.8333,
+      "hallucination_score": 0.8,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [
+        "7"
+      ],
+      "unsupported_policies": [
+        "Điều 7"
+      ],
+      "hallucinated_keywords": [
+        "giải",
+        "trích",
+        "quychequantri",
+        "petrolimex",
+        "pmsc",
+        "quychequantri"
+      ],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Làm sao để nộp phiếu biểu quyết trực tuyến qua ứng dụng hoặc website của công ty?",
+      "answer": "Để nộp phiếu biểu quyết trực tuyến qua ứng dụng hoặc website của công ty, bạn thực hiện theo hướng dẫn sau:\n\n*   **Hình thức thực hiện:** Sử dụng phiếu biểu quyết điện tử thông qua các ứng dụng (“app”) hoặc trang thông tin điện tử (“Website”) của Công ty.\n*   **Cách thức lựa chọn:** Đối với mỗi vấn đề biểu quyết, bạn chỉ được chọn một (01) trong ba (03) lựa chọn: Tán thành, Không tán thành, hoặc Không có ý kiến.\n*   **Điều kiện hợp lệ:**\n    *   Phải hoàn tất bỏ phiếu trước Thời Điểm Thu Phiếu d",
+      "faithfulness": 0.0537,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 0.25,
+      "hallucination_score": 0.9538,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "4"
+      ],
+      "unsupported_policies": [
+        "Điều 7.2",
+        "quyết định hoặc",
+        "quyết định thay"
+      ],
+      "hallucinated_keywords": [
+        "thực",
+        "thực",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Điều 20 quy chế quy định gì về việc công bố quyết định của Đại hội đồng cổ đông?",
+      "answer": "Điều 20 của quy chế quy định về việc công bố Nghị quyết, Biên bản họp Đại hội đồng cổ đông như sau:\n\n*   **Lưu giữ tài liệu:** Nghị quyết, Biên bản họp Đại hội đồng cổ đông, phụ lục danh sách cổ đông đăng ký dự họp, văn bản ủy quyền tham dự họp, tất cả các tài liệu đính kèm Biên bản (nếu có) và tài liệu có liên quan kèm theo thông báo mời họp phải được lưu giữ tại trụ sở chính của Công ty.\n*   **Công bố thông tin:** Nghị quyết, Biên bản họp Đại hội đồng cổ đông và tài liệu kèm theo trong biên bả",
+      "faithfulness": 0.2667,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.6,
+      "numeric_fidelity": 0.6667,
+      "policy_grounding": 0.6667,
+      "hallucination_score": 0.6,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "2"
+      ],
+      "unsupported_policies": [
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "danh",
+        "sách",
+        "đăng",
+        "quyền",
+        "tham",
+        "đính",
+        "quan",
+        "phải",
+        "chính",
+        "phải"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Bảng tổng hợp xe công tác tháng 04.2024 bao gồm những thông tin gì?",
+      "answer": "Bảng tổng hợp xe công tác tháng 04.2024 (theo mẫu BM02) bao gồm các thông tin sau:\n\n*   Ngày\n*   Thứ\n*   Loại xe\n*   Lái xe\n*   Đơn vị sử dụng\n*   Nội dung\n*   Thời gian sử dụng\n*   Ghi chú\n\nTrích dẫn: [TÀI LIỆU 1], [TÀI LIỆU 5] (BM02 - Bảng tổng hợp xe công tác tháng 04.2024).",
+      "faithfulness": 0.6296,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9444,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.6667,
+      "hallucination_score": 0.9444,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "mẫu BM02"
+      ],
+      "hallucinated_keywords": [
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi cần làm gì để đăng ký một chuyến vận chuyển bằng xe công ty?",
+      "answer": "Để đăng ký một chuyến vận chuyển bằng xe công ty, bạn cần thực hiện các yêu cầu sau:\n\n*   **Lập đề xuất:** Bạn phải lập đề xuất vận chuyển cụ thể và gửi về đơn vị điều phối.\n*   **Thời hạn gửi đề xuất:**\n    *   Đối với kế hoạch đã được phê duyệt trước đó: Gửi trước 15h00 ngày hôm trước.\n    *   Trường hợp đột xuất: Phải được phê duyệt bởi quản lý cấp phòng trở lên và gửi thông tin về đơn vị điều phối ít nhất 4 giờ trước thời gian thực hiện vận chuyển (cần nêu rõ lý do).\n*   **Thông tin bắt buộc",
+      "faithfulness": 0.2857,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.9524,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "buộc",
+        "trích",
+        "phần",
+        "viễn"
+      ],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có phụ cấp trang phục cho nhân viên không?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Giá của bút bi TL027 (0.5mm) là bao nhiêu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Cổ đông lớn có bị cấm lợi dụng ưu thế để ảnh hưởng đến quyền lợi của công ty và các cổ đông khác không?",
+      "answer": "Có, cổ đông lớn không được lợi dụng ưu thế của mình gây ảnh hưởng đến các quyền, lợi ích của Công ty và của các cổ đông khác theo quy định của pháp luật và Điều lệ Công ty.\n\nTrích dẫn: Điều 8, Khoản 1 - QuyCheQuanTri-EVNFinance.pdf.",
+      "faithfulness": 0.8,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.8,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích",
+        "quychequantri",
+        "evnfinance"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Thời điểm cuối cùng để gửi phiếu biểu quyết là bao giờ đối với các hình thức biểu quyết khác nhau?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Tôi có được nhận thù lao bổ sung khi đảm nhận chức vụ điều hành hoặc làm việc tại tiểu ban HĐQT không?",
+      "answer": "Có, bạn có thể được trả thêm thù lao.\n\nCụ thể, theo quy định tại Điều 56, khoản 4 của Quy chế quản trị Petrolimex-PMSC, thành viên Hội đồng quản trị nắm giữ chức vụ điều hành hoặc làm việc tại các tiểu ban của Hội đồng quản trị (hoặc thực hiện những công việc khác ngoài phạm vi nhiệm vụ thông thường của một thành viên Hội đồng quản trị) có thể được trả thêm thù lao dưới các hình thức sau theo quyết định của Hội đồng quản trị:\n* Một khoản tiền công trọn gói theo từng lần.\n* Lương.\n* Hoa hồng.\n* P",
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.9545,
+      "context_precision": 0.8929,
+      "numeric_fidelity": 0.5,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.8929,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "56",
+        "56"
+      ],
+      "unsupported_policies": [
+        "Điều 56",
+        "Điều 56",
+        "CHƯƠNG 3"
+      ],
+      "hallucinated_keywords": [
+        "petrolimex",
+        "pmsc",
+        "trích",
+        "quychequantri",
+        "petrolimex",
+        "pmsc"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có được phép dùng xe công ty cho mục đích cá nhân không?",
+      "answer": "Tuyệt đối không được sử dụng xe công ty vào mục đích cá nhân, không rõ ràng hoặc chưa được phê duyệt.\n\nTrích dẫn: Điều 4, khoản 4a - Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.",
+      "faithfulness": 0.6429,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.6429,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.6429,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "trích",
+        "khoản",
+        "đăng",
+        "phần",
+        "viễn"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Mức phụ cấp điện thoại cho bảo vệ là bao nhiêu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Mã sản phẩm và kích thước của bút gel UNI Signo UM-100 là gì?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai có thẩm quyền triệu tập họp Hội đồng Quản trị bất thường và theo quy định nào?",
+      "answer": "Chủ tịch Hội đồng quản trị là người triệu tập họp Hội đồng quản trị bất thường trong các trường hợp sau:\n\n* Có đề nghị của Ban kiểm soát hoặc thành viên độc lập Hội đồng quản trị;\n* Có đề nghị của Giám đốc hoặc ít nhất 05 người quản lý khác;\n* Có đề nghị của ít nhất 02 thành viên Hội đồng quản trị;\n* Các trường hợp khác do Điều lệ công ty quy định.\n\n**Lưu ý:** Trường hợp Chủ tịch Hội đồng quản trị không triệu tập họp theo đề nghị, người đề nghị có quyền thay thế Chủ tịch Hội đồng quản trị để tri",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9167,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.9167,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "58"
+      ],
+      "unsupported_policies": [
+        "Điều 58",
+        "CHƯƠNG 3"
+      ],
+      "hallucinated_keywords": [
+        "trích",
+        "quychequantri",
+        "petrolimex",
+        "pmsc",
+        "chương"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Khi biểu quyết, cổ đông có bao nhiêu lựa chọn và chúng có nghĩa gì?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Công ty sẽ thanh toán chi phí đi lại, ăn ở và các chi phí hợp lý khác khi tôi tham dự cuộc họp Đại hội đồng cổ đông hay Hội đồng quản trị?",
+      "answer": "Việc thanh toán chi phí đi lại, ăn ở và các chi phí hợp lý khác khi tham dự họp tùy thuộc vào vai trò của bạn như sau:\n\n*   **Nếu bạn là thành viên Hội đồng quản trị:** Bạn có quyền được thanh toán tất cả các chi phí đi lại, ăn, ở và các khoản chi phí hợp lý khác đã chi trả khi thực hiện trách nhiệm của mình, bao gồm cả chi phí phát sinh khi tham dự các cuộc họp Đại hội đồng cổ đông, Hội đồng quản trị hoặc các tiểu ban của Hội đồng quản trị.\n*   **Nếu bạn là cổ đông:** Khi tham dự cuộc họp Đại h",
+      "faithfulness": 0.3482,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.9286,
+      "numeric_fidelity": 0.75,
+      "policy_grounding": 0.5,
+      "hallucination_score": 0.9286,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "56"
+      ],
+      "unsupported_policies": [
+        "Điều 56"
+      ],
+      "hallucinated_keywords": [
+        "tiêu",
+        "hoàn",
+        "trích"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm khi có lỗi trong việc ghi nhật ký xe?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Quy chế tiền lương này có hiệu lực từ ngày nào?",
+      "answer": "Vì bạn không nêu rõ đang hỏi về quy chế tiền lương của đơn vị nào, tôi xin cung cấp thông tin dựa trên các tài liệu hiện có như sau:\n\n- Đối với quy chế của **Cty Cấp Nước An Phát** (Tài liệu 2, 3): Nội dung quy chế bắt đầu có hiệu lực thi hành kể từ ngày được Sở Lao Động – Thương binh xã hội ban hành.\n- Đối với quy chế tại **MauQuyCheLuong-sanKeToan-A.docx** (Tài liệu 6, 7): Quyết định có hiệu lực kể từ ngày ký.\n\nTrích dẫn:\n- MauQuyCheLuong-sanKeToan-B.docx > Mục II. CĂN CỨ PHÁP LÝ.\n- MauQuyCheL",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.5667,
+      "numeric_fidelity": 0.3333,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.5667,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "2, 3",
+        "6, 7"
+      ],
+      "unsupported_policies": [
+        "Điều 2",
+        "Quyết định có"
+      ],
+      "hallucinated_keywords": [
+        "đang",
+        "cung",
+        "trên",
+        "mauquycheluong",
+        "sanketoan",
+        "docx",
+        "trích",
+        "mauquycheluong",
+        "sanketoan",
+        "docx"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Có bao nhiêu loại bút được liệt kê trong danh sách này?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Thời gian tối đa để lấy ý kiến cổ đông bằng văn bản là bao lâu?",
+      "answer": "Dựa trên tài liệu được cung cấp, không có quy định về \"thời gian tối đa\" cho toàn bộ quá trình lấy ý kiến cổ đông bằng văn bản. Tuy nhiên, có các mốc thời gian cụ thể liên quan đến trình tự thực hiện như sau:\n\n*   **Công bố thông tin lập danh sách cổ đông:** Tối thiểu 20 ngày trước ngày đăng ký cuối cùng.\n*   **Gửi phiếu lấy ý kiến và tài liệu:** Hội đồng quản trị phải gửi phiếu lấy ý kiến, dự thảo nghị quyết và tài liệu giải trình đến cổ đông chậm nhất [10 ngày] trước thời hạn phải gửi lại phiế",
+      "faithfulness": 0.1382,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 0.5,
+      "hallucination_score": 0.9211,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [],
+      "unsupported_policies": [
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "cung",
+        "toàn",
+        "nhiên",
+        "quan",
+        "trích",
+        "chương"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nếu tôi gửi nhiều phiếu biểu quyết, phiếu nào sẽ được công nhận là quyết định cuối cùng?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Công ty có mua bảo hiểm trách nhiệm cho thành viên HĐQT không và bảo hiểm này bao gồm những gì?",
+      "answer": "Thành viên Hội đồng quản trị có thể được Công ty mua bảo hiểm trách nhiệm sau khi có sự chấp thuận của Đại hội đồng cổ đông.\n\nVề phạm vi bảo hiểm: Bảo hiểm này không bao gồm bảo hiểm cho những trách nhiệm của thành viên Hội đồng quản trị liên quan đến việc vi phạm pháp luật và Điều lệ công ty.\n\nTrích dẫn: Điều 56, Chương 3 - Quy chế quản trị nội bộ công ty.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.7419,
+      "numeric_fidelity": 0.0,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.7419,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "56",
+        "3"
+      ],
+      "unsupported_policies": [
+        "Điều 56",
+        "Chương 3"
+      ],
+      "hallucinated_keywords": [
+        "chấp",
+        "thuận",
+        "đông",
+        "phạm",
+        "việc",
+        "phạm",
+        "trích",
+        "chương"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Nếu chuyến đi phát sinh bất ngờ, tôi phải thông báo như thế nào?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Điều kiện để được hưởng trợ cấp và phụ cấp là gì?",
+      "answer": "Điều kiện để được hưởng trợ cấp và phụ cấp như sau:\n\n*   **Đối với phụ cấp:** Tất cả người lao động chính thức (ngoại trừ lao động thời vụ) ký hợp đồng lao động trên 03 tháng.\n*   **Đối với trợ cấp (cụ thể là hỗ trợ thuê nhà):** Tất cả lao động chính thức (ngoại trừ lao động thời vụ) ký hợp đồng lao động từ 06 tháng trở lên.\n\nTrích dẫn: MauQuyCheLuong-sanKeToan-B.docx > Chương 2 > Điều 7 và Điều 8.",
+      "faithfulness": 0.0,
+      "answer_relevancy": 1.0,
+      "context_precision": 0.8065,
+      "numeric_fidelity": 0.2,
+      "policy_grounding": 0.0,
+      "hallucination_score": 0.8065,
+      "refusal_correctness": 1.0,
+      "unsupported_numbers": [
+        "03",
+        "2",
+        "7",
+        "8"
+      ],
+      "unsupported_policies": [
+        "Điều 7",
+        "Điều 8",
+        "Chương 2"
+      ],
+      "hallucinated_keywords": [
+        "trên",
+        "trích",
+        "mauquycheluong",
+        "sanketoan",
+        "docx",
+        "chương"
+      ],
+      "refusal_status": "not_refusal",
+      "contexts_count": 3
+    },
+    {
+      "question": "Giá của máy tính Casio FX-570VN Plus là bao nhiêu?",
+      "answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+      "faithfulness": 0.06,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 0.2,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [
+        "phép",
+        "chính",
+        "đồng",
+        "khác"
+      ],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    },
+    {
+      "question": "Ai chịu trách nhiệm chuẩn bị và kiểm tra biên bản kiểm phiếu?",
+      "answer": "Rất tiếc, quy chế nội bộ hiện tại của công ty không có thông tin quy định về câu hỏi này. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được hướng dẫn chi tiết.",
+      "faithfulness": 0.3,
+      "answer_relevancy": 0.0,
+      "context_precision": 0.0,
+      "numeric_fidelity": 1.0,
+      "policy_grounding": 1.0,
+      "hallucination_score": 1.0,
+      "refusal_correctness": 0.5,
+      "unsupported_numbers": [],
+      "unsupported_policies": [],
+      "hallucinated_keywords": [],
+      "refusal_status": "partial_refusal_has_context",
+      "contexts_count": 3
+    }
+  ]
+}

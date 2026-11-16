@@ -1,0 +1,31 @@
+{
+  "gitCommitHash": "f647865b2d221e74ecadb4c6c590122815ae98fc",
+  "gitBranch": "feat/text2sql-ex-improvement",
+  "generatedAt": "2026-11-15T13:05:00.000Z",
+  "version": "1.0",
+  "phases": {
+    "phase0": "Pre-flight completed - project root resolved, plugin built, config loaded",
+    "phase0_5": "Ignore configuration - .understandignore generated and confirmed",
+    "phase1": "SCAN - 890 files scanned, 66 batches created via Louvain community detection",
+    "phase1_5": "BATCH - 66 batch JSON files created (batches 1-66)",
+    "phase2": "ANALYZE - File analyzer agents + structural extraction via extract-structure.mjs for all batches",
+    "phase3": "ASSEMBLE_REVIEW - Merge completed: 598 nodes, 364 edges. Review: 0 critical issues, 567 warnings. Graph approved.",
+    "phase4": "ARCHITECTURE - 7 logical layers identified: frontend (52), backend-api (171), ai-service (178), infrastructure (1), configuration (4), documentation (133), development-tools (24)",
+    "phase5": "TOUR - 12-step guided learning tour created (42 node references)",
+    "phase5_5": "CODE_LESSONS - Attempted but agents timed out; tour.json available for future lesson generation",
+    "phase6": "REVIEW - Graph reviewer validated: 0 critical issues, graph approved",
+    "phase7": "SAVE - knowledge-graph.json, layers.json, tour.json, meta.json, fingerprints.json saved"
+  },
+  "stats": {
+    "totalNodes": 598,
+    "totalEdges": 364,
+    "documentNodes": 565,
+    "fileNodes": 5,
+    "functionNodes": 28,
+    "layers": 7,
+    "tourSteps": 12,
+    "batchesProcessed": 66,
+    "filesScanned": 890
+  },
+  "outputLanguage": "en"
+}

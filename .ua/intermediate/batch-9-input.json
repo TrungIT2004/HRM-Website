@@ -1,0 +1,43 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/design/references/banner-sizes-and-styles.md", "language": "markdown", "sizeLines": 118, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/cip-deliverable-guide.md", "language": "markdown", "sizeLines": 95, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/cip-design.md", "language": "markdown", "sizeLines": 121, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/cip-prompt-engineering.md", "language": "markdown", "sizeLines": 84, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/cip-style-guide.md", "language": "markdown", "sizeLines": 68, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/design-routing.md", "language": "markdown", "sizeLines": 207, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/icon-design.md", "language": "markdown", "sizeLines": 122, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/logo-color-psychology.md", "language": "markdown", "sizeLines": 101, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/logo-design.md", "language": "markdown", "sizeLines": 92, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/logo-prompt-engineering.md", "language": "markdown", "sizeLines": 158, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/logo-style-guide.md", "language": "markdown", "sizeLines": 109, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/slides-copywriting-formulas.md", "language": "markdown", "sizeLines": 84, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/slides-create.md", "language": "markdown", "sizeLines": 4, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/slides-html-template.md", "language": "markdown", "sizeLines": 295, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/slides-layout-patterns.md", "language": "markdown", "sizeLines": 137, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/slides-strategies.md", "language": "markdown", "sizeLines": 94, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/slides.md", "language": "markdown", "sizeLines": 42, "fileCategory": "docs"},
+    {"path": ".agents/skills/design/references/social-photos-design.md", "language": "markdown", "sizeLines": 329, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/design/references/banner-sizes-and-styles.md": [],
+    ".agents/skills/design/references/cip-deliverable-guide.md": [],
+    ".agents/skills/design/references/cip-design.md": [],
+    ".agents/skills/design/references/cip-prompt-engineering.md": [],
+    ".agents/skills/design/references/cip-style-guide.md": [],
+    ".agents/skills/design/references/design-routing.md": [],
+    ".agents/skills/design/references/icon-design.md": [],
+    ".agents/skills/design/references/logo-color-psychology.md": [],
+    ".agents/skills/design/references/logo-design.md": [],
+    ".agents/skills/design/references/logo-prompt-engineering.md": [],
+    ".agents/skills/design/references/logo-style-guide.md": [],
+    ".agents/skills/design/references/slides-copywriting-formulas.md": [],
+    ".agents/skills/design/references/slides-create.md": [],
+    ".agents/skills/design/references/slides-html-template.md": [],
+    ".agents/skills/design/references/slides-layout-patterns.md": [],
+    ".agents/skills/design/references/slides-strategies.md": [],
+    ".agents/skills/design/references/slides.md": [],
+    ".agents/skills/design/references/social-photos-design.md": []
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "nodes": [
+    {
+      "id": "document:HRM Website/next.config.ts",
+      "type": "document",
+      "name": "next.config.ts",
+      "filePath": "HRM Website/next.config.ts",
+      "summary": "Next.js 15 configuration with App Router, TypeScript, React 19, Turbopack, image optimization (domains: MinIO, localhost), internationalization (vi, en), middleware for auth, and bundle analyzer. Configures rewrites for AI service proxy and API routes.",
+      "tags": ["frontend", "hrm-website", "nextjs", "config", "typescript", "app-router"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/postcss.config.mjs",
+      "type": "document",
+      "name": "postcss.config.mjs",
+      "filePath": "HRM Website/postcss.config.mjs",
+      "summary": "PostCSS configuration with Tailwind CSS v4, Autoprefixer, and CSS nesting plugin. Processes global styles and component-scoped CSS for the HRM Website design system.",
+      "tags": ["frontend", "hrm-website", "postcss", "tailwind", "config"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/scripts/test-admin-browser.mjs",
+      "type": "document",
+      "name": "test-admin-browser.mjs",
+      "filePath": "HRM Website/scripts/test-admin-browser.mjs",
+      "summary": "Playwright browser test script for admin panel: navigates login, verifies dashboard loads, checks sidebar navigation, tests user management CRUD, and validates role-based access control. Runs headless in CI.",
+      "tags": ["frontend", "hrm-website", "test", "playwright", "admin", "e2e", "javascript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/scripts/test-session-modal.mjs",
+      "type": "document",
+      "name": "test-session-modal.mjs",
+      "filePath": "HRM Website/scripts/test-session-modal.mjs",
+      "summary": "Playwright test for session management modal: verifies session list displays, tests revoke session action, checks concurrent session limit enforcement, and validates toast notifications.",
+      "tags": ["frontend", "hrm-website", "test", "playwright", "session", "modal", "javascript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/scripts/test-shift-and-search.mjs",
+      "type": "document",
+      "name": "test-shift-and-search.mjs",
+      "filePath": "HRM Website/scripts/test-shift-and-search.mjs",
+      "summary": "Playwright test for work shift management and employee search: creates shift templates, assigns shifts, tests date range filtering, verifies search autocomplete, and checks pagination.",
+      "tags": ["frontend", "hrm-website", "test", "playwright", "shift", "search", "javascript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/package.json",
+      "type": "document",
+      "name": "package.json",
+      "filePath": "HRM Website/package.json",
+      "summary": "HRM Website package.json: Next.js 15, React 19, TypeScript 5, Tailwind CSS 4, Radix UI, React Hook Form, Zod, Axios, SWR, date-fns, Lucide React. Scripts: dev, build, start, lint, test, test:e2e. Workspace dependencies: @hrm/ui, @hrm/api-client.",
+      "tags": ["frontend", "hrm-website", "package", "dependencies", "nextjs", "react", "typescript"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/tsconfig.json",
+      "type": "document",
+      "name": "tsconfig.json",
+      "filePath": "HRM Website/tsconfig.json",
+      "summary": "TypeScript 5 configuration: strict mode, path aliases (@/*, @hrm/*), target ES2022, moduleResolution bundler, JSX preserve, incremental builds. Extends base config from turbo repo.",
+      "tags": ["frontend", "hrm-website", "typescript", "config", "tsconfig"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/.env.example",
+      "type": "document",
+      "name": ".env.example",
+      "filePath": "HRM Website/.env.example",
+      "summary": "Frontend environment variables template: NEXT_PUBLIC_API_URL, NEXT_PUBLIC_AI_SERVICE_URL, NEXT_PUBLIC_MINIO_ENDPOINT, NEXT_PUBLIC_APP_NAME, AUTH_SECRET, NEXTAUTH_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET.",
+      "tags": ["frontend", "hrm-website", "env", "config", "environment"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:HRM Website/tailwind.config.ts",
+      "type": "document",
+      "name": "tailwind.config.ts",
+      "filePath": "HRM Website/tailwind.config.ts",
+      "summary": "Tailwind CSS v4 configuration: custom color palette (primary, secondary, semantic), spacing scale, typography (font families), border radius, shadows, dark mode class strategy, and plugin integrations (forms, typography, animate).",
+      "tags": ["frontend", "hrm-website", "tailwind", "config", "design-system", "theme"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:HRM Website/src/middleware.ts",
+      "type": "document",
+      "name": "middleware.ts",
+      "filePath": "HRM Website/src/middleware.ts",
+      "summary": "Next.js middleware for authentication: validates JWT access token, refreshes via refresh token cookie, redirects unauthenticated to login, enforces role-based route access (admin, manager, employee), and sets security headers.",
+      "tags": ["frontend", "hrm-website", "middleware", "auth", "jwt", "security", "typescript"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:HRM Website/next.config.ts",
+      "target": "document:HRM Website/package.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:HRM Website/next.config.ts",
+      "target": "document:HRM Website/tailwind.config.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:HRM Website/next.config.ts",
+      "target": "document:HRM Website/src/middleware.ts",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:HRM Website/package.json",
+      "target": "document:HRM Website/tsconfig.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "type": "document",
+      "name": "relevance-baseline.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "summary": "Relevance baseline test fixture JSON with 3,366 lines containing baseline relevance scores and expected outcomes for UI/UX Pro Max component relevance ranking algorithm testing.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "relevance", "ranking", "baseline", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "type": "document",
+      "name": "relevance-cases.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "summary": "Relevance test cases JSON with 111 lines defining test scenarios and expected relevance rankings for the UI/UX Pro Max component search and recommendation system.",
+      "tags": ["test", "fixture", "design-system", "ui-ux-pro-max", "relevance", "test-cases", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "type": "document",
+      "name": "relevance-thresholds.json",
+      "filePath": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "summary": "Relevance thresholds configuration JSON with 100 lines defining score thresholds, tier boundaries, and filtering criteria for the UI/UX Pro Max component relevance ranking system.",
+      "tags": ["config", "design-system", "ui-ux-pro-max", "relevance", "thresholds", "ranking", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "target": "document:.agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

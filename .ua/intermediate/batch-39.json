@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/retrieval_db_only/DB_RETRIEVAL_RESULTS.md",
+      "type": "document",
+      "name": "DB_RETRIEVAL_RESULTS.md",
+      "filePath": "ai-service/tests/retrieval_db_only/DB_RETRIEVAL_RESULTS.md",
+      "summary": "DB_ONLY retrieval test results for 187 questions (146 old + 41 new across 6 new tables: performance_reviews, performance_scores, asset_assignments, asset_requests, assets, it_tickets). All 3 gates PASS: route_acc 0.9626 (>0.85), sql_ok 0.9840 (>0.80), non_empty 0.9840 (>0.80). 3 failures: user_contracts_07 (wrong date diff function), asset_assignments_06 and asset_requests_05 (guard rejects JOIN users for approver name). Fix: app-side FK resolution in executor.directory_lines() + prompt rule 8 (SELECT id only). Schema registry synced for 10 new tables, router keywords updated, seed script created.",
+      "tags": ["test", "results", "ai-service", "retrieval", "db-only", "sql", "guard", "schema", "markdown"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_db_only/db_answer_eval.json",
+      "type": "document",
+      "name": "db_answer_eval.json",
+      "filePath": "ai-service/tests/retrieval_db_only/db_answer_eval.json",
+      "summary": "DB answer evaluation JSON with 187 questions: sql_ok 1.0, fact_recall 0.764 (FAIL <0.70 threshold), answer_ok 0.6054 (FAIL <0.60 threshold). Per-question facts from gold SQL checked against generated answer (Vietnamese normalization: numbers, dates, status). Variance 70-87% across runs due to LLM paraphrase. Checker v2 fixes: localization, gold ambiguity (current month vs latest period), bug fixes (work_days vs SUM, email fields, NULL diff, COUNT-zero). Recommendation: use sql_ok as gate, spot-check answers.",
+      "tags": ["test", "results", "ai-service", "retrieval", "db-only", "answer", "fact-recall", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_db_only/db_generation_eval.json",
+      "type": "document",
+      "name": "db_generation_eval.json",
+      "filePath": "ai-service/tests/retrieval_db_only/db_generation_eval.json",
+      "summary": "DB SQL generation evaluation JSON with 187 questions: sql_ok 0.9947 (PASS >0.80), rows_match 0.7005 (reference only). Latency mean 6391ms. Rows match low due to projection differences (column order, extra columns, float tolerance) not business logic errors. sql_ok is stable gate; rows_match for inspection only.",
+      "tags": ["test", "results", "ai-service", "retrieval", "db-only", "generation", "sql", "projection", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_db_only/db_retrieval_eval.json",
+      "type": "document",
+      "name": "db_retrieval_eval.json",
+      "filePath": "ai-service/tests/retrieval_db_only/db_retrieval_eval.json",
+      "summary": "DB retrieval evaluation JSON with 187 questions measuring route accuracy (DB_ONLY/HYBRID), sql_ok, non_empty, error_rate (0.016), latency_mean_ms (2381). Breakdown by check_type: single_number 52/52, non_empty 85/87, multi_row 37/37, two_period 10/11. Keyword routing accuracy 92.8% overall (41/41 new questions pass).",
+      "tags": ["test", "results", "ai-service", "retrieval", "db-only", "route", "sql-ok", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/retrieval_db_only/DB_RETRIEVAL_RESULTS.md",
+      "target": "document:ai-service/tests/retrieval_db_only/db_retrieval_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_db_only/db_retrieval_eval.json",
+      "target": "document:ai-service/tests/retrieval_db_only/db_generation_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_db_only/db_generation_eval.json",
+      "target": "document:ai-service/tests/retrieval_db_only/db_answer_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

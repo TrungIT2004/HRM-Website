@@ -1,0 +1,547 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "type": "file",
+      "name": "extract-colors.cjs",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "summary": "CLI utility that extracts color palettes from brand guidelines markdown files and images using ImageMagick, providing color compliance analysis and nearest-brand-color matching.",
+      "tags": ["cli", "color-extraction", "brand-tools", "utility", "image-processing"],
+      "complexity": "moderate",
+      "languageNotes": "Uses CommonJS modules with Node.js built-ins (fs, path, child_process) for file I/O and ImageMagick subprocess calls."
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:parseBrandColors",
+      "type": "function",
+      "name": "parseBrandColors",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [38, 78],
+      "summary": "Parses brand guidelines markdown to extract color palettes from Primary, Secondary, Neutral, and Semantic color sections using regex pattern matching.",
+      "tags": ["color-parsing", "markdown-processing", "brand-tools"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:rgbToHex",
+      "type": "function",
+      "name": "rgbToHex",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [97, 108],
+      "summary": "Converts RGB color values to uppercase hexadecimal format with zero-padding.",
+      "tags": ["color-conversion", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:colorDistance",
+      "type": "function",
+      "name": "colorDistance",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [113, 124],
+      "summary": "Calculates Euclidean distance between two colors in RGB space for nearest-color matching.",
+      "tags": ["color-analysis", "distance-calculation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:findNearestBrandColor",
+      "type": "function",
+      "name": "findNearestBrandColor",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [129, 142],
+      "summary": "Finds the closest brand color match for a given color by computing minimum RGB distance across all brand palette colors.",
+      "tags": ["color-matching", "brand-compliance", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:calculateCompliance",
+      "type": "function",
+      "name": "calculateCompliance",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [148, 162],
+      "summary": "Calculates brand color compliance percentage by matching extracted colors to nearest brand palette colors within a tolerance threshold.",
+      "tags": ["compliance-analysis", "brand-validation", "color-matching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:parseImageMagickOutput",
+      "type": "function",
+      "name": "parseImageMagickOutput",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [174, 195],
+      "summary": "Parses ImageMagick histogram output to extract dominant colors with pixel counts, sorted by frequency.",
+      "tags": ["image-processing", "color-extraction", "imagemagick"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:displayPalette",
+      "type": "function",
+      "name": "displayPalette",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [200, 228],
+      "summary": "Formats and prints a structured color palette report showing primary, secondary, neutral, and semantic colors with hex values.",
+      "tags": ["cli-output", "formatting", "brand-tools"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/extract-colors.cjs:main",
+      "type": "function",
+      "name": "main",
+      "filePath": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "lineRange": [233, 325],
+      "summary": "CLI entry point handling --file, --image, --json, and --palette flags to extract colors from guidelines or images and output results.",
+      "tags": ["entry-point", "cli", "command-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "type": "file",
+      "name": "inject-brand-context.cjs",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "summary": "Extracts comprehensive brand context (colors, typography, voice, imagery guidelines) from brand guidelines markdown and generates AI prompt additions for consistent brand-aware generation.",
+      "tags": ["brand-tools", "context-extraction", "ai-prompting", "cli", "markdown-processing"],
+      "complexity": "moderate",
+      "languageNotes": "CommonJS module using regex-based markdown section parsing for structured brand data extraction."
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractColorsFromTable",
+      "type": "function",
+      "name": "extractColorsFromTable",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [32, 60],
+      "summary": "Extracts color definitions from markdown tables in Primary, Secondary, Neutral, and Semantic color sections.",
+      "tags": ["color-extraction", "markdown-parsing", "table-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractTypography",
+      "type": "function",
+      "name": "extractTypography",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [65, 93],
+      "summary": "Parses typography section for font stack, type scale, and font loading configuration from markdown tables and code blocks.",
+      "tags": ["typography", "markdown-parsing", "font-extraction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractVoice",
+      "type": "function",
+      "name": "extractVoice",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [98, 150],
+      "summary": "Extracts brand voice attributes including personality traits, tone-by-context mapping, prohibited terms, and forbidden phrases from markdown.",
+      "tags": ["voice-extraction", "brand-guidelines", "content-analysis"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractCoreAttributes",
+      "type": "function",
+      "name": "extractCoreAttributes",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [155, 179],
+      "summary": "Parses core brand attributes from markdown tables mapping attribute names to descriptions.",
+      "tags": ["attribute-extraction", "markdown-parsing", "brand-tools"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractImageStyle",
+      "type": "function",
+      "name": "extractImageStyle",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [184, 263],
+      "summary": "Extracts comprehensive AI image generation guidelines including base prompt, style keywords, mood descriptors, visual don'ts, and example prompts.",
+      "tags": ["image-generation", "ai-prompting", "brand-guidelines", "markdown-parsing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:generatePromptAddition",
+      "type": "function",
+      "name": "generatePromptAddition",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [268, 305],
+      "summary": "Generates a formatted brand context string for AI prompt injection, combining colors, typography, voice, attributes, and image style guidelines.",
+      "tags": ["prompt-engineering", "ai-context", "brand-injection"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:main",
+      "type": "function",
+      "name": "main",
+      "filePath": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "lineRange": [310, 347],
+      "summary": "CLI entry point that reads brand guidelines, extracts all brand context sections, and outputs JSON or prompt addition for AI consumption.",
+      "tags": ["entry-point", "cli", "command-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "type": "file",
+      "name": "sync-brand-to-tokens.cjs",
+      "filePath": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "summary": "Synchronizes brand guidelines colors to design tokens JSON, generating full color scales (50-950) from base/dark/light variants and updating primitive color tokens.",
+      "tags": ["design-tokens", "brand-sync", "color-scales", "cli", "token-management"],
+      "complexity": "moderate",
+      "languageNotes": "Generates 10-step color scales using brightness adjustment; integrates with Style Dictionary via npm build script."
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:extractColorsFromMarkdown",
+      "type": "function",
+      "name": "extractColorsFromMarkdown",
+      "filePath": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "lineRange": [25, 77],
+      "summary": "Extracts color definitions from brand guidelines markdown across Primary, Secondary, Neutral, and Semantic sections using section-aware regex parsing.",
+      "tags": ["color-extraction", "markdown-parsing", "design-tokens"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:generateColorScale",
+      "type": "function",
+      "name": "generateColorScale",
+      "filePath": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "lineRange": [82, 96],
+      "summary": "Generates a 10-step color scale (50-950) from base, dark, and light hex values using brightness adjustment.",
+      "tags": ["color-scale", "design-tokens", "color-generation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:updateDesignTokens",
+      "type": "function",
+      "name": "updateDesignTokens",
+      "filePath": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "lineRange": [113, 185],
+      "summary": "Updates design tokens JSON with generated color scales, mapping brand color names to primitive color token paths with camelCase formatting.",
+      "tags": ["token-update", "design-tokens", "color-mapping"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:main",
+      "type": "function",
+      "name": "main",
+      "filePath": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "lineRange": [190, 246],
+      "summary": "CLI entry point with --check-only and --build flags; reads guidelines, extracts colors, updates tokens, optionally builds Style Dictionary output.",
+      "tags": ["entry-point", "cli", "command-handler", "build-integration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py",
+      "type": "file",
+      "name": "test_sync_brand_to_tokens.py",
+      "filePath": ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py",
+      "summary": "Pytest test verifying the sync-brand-to-tokens script correctly parses the bundled starter template and generates design-tokens.json with expected color primitives.",
+      "tags": ["test", "pytest", "design-tokens", "integration-test"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py:test_sync_parses_bundled_starter_template",
+      "type": "function",
+      "name": "test_sync_parses_bundled_starter_template",
+      "filePath": ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py",
+      "lineRange": [27, 52],
+      "summary": "Integration test that copies starter template files, runs sync-brand-to-tokens.cjs via subprocess, and validates generated design tokens contain expected primary/neutral color primitives.",
+      "tags": ["integration-test", "subprocess-test", "design-tokens-validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "type": "file",
+      "name": "validate-asset.cjs",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "summary": "Validates brand assets against naming conventions, file size limits, format restrictions, and manifest registration; provides formatted output with issues, warnings, and filename suggestions.",
+      "tags": ["asset-validation", "brand-tools", "cli", "file-validation", "naming-conventions"],
+      "complexity": "moderate",
+      "languageNotes": "Defines validation rules as constants (RULES) for naming patterns, size limits per format, and allowed formats per category."
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:parseFilename",
+      "type": "function",
+      "name": "parseFilename",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [53, 68],
+      "summary": "Parses a filename into components: date prefix, type, name parts, and extension following the YYYYMMDD-type-name.ext convention.",
+      "tags": ["filename-parsing", "validation", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateFilename",
+      "type": "function",
+      "name": "validateFilename",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [73, 117],
+      "summary": "Validates filename against naming convention regex, date format, slug format, and allowed asset types; returns issues and suggestions.",
+      "tags": ["filename-validation", "naming-conventions", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateFileSize",
+      "type": "function",
+      "name": "validateFileSize",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [122, 153],
+      "summary": "Checks file size against format-specific limits (images: 5MB, vectors: 2MB, videos: 100MB, documents: 10MB); reports issues and warnings.",
+      "tags": ["file-size-validation", "format-limits", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateFormat",
+      "type": "function",
+      "name": "validateFormat",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [158, 182],
+      "summary": "Validates file extension against allowed formats across image, vector, video, and document categories.",
+      "tags": ["format-validation", "file-type-check", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:checkManifest",
+      "type": "function",
+      "name": "checkManifest",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [187, 209],
+      "summary": "Verifies asset is registered in brand-assets-manifest.json at project root; warns if manifest missing or asset unregistered.",
+      "tags": ["manifest-validation", "asset-registry", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateAsset",
+      "type": "function",
+      "name": "validateAsset",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [240, 306],
+      "summary": "Orchestrates full asset validation pipeline: filename, format, size, manifest check, and filename suggestion generation.",
+      "tags": ["validation-orchestration", "asset-pipeline", "brand-tools"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:formatOutput",
+      "type": "function",
+      "name": "formatOutput",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [311, 346],
+      "summary": "Formats validation results into structured console output with sections for issues, warnings, suggestions, and file size summary.",
+      "tags": ["output-formatting", "cli-output", "validation-reporting"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:.agents/skills/brand/scripts/validate-asset.cjs:main",
+      "type": "function",
+      "name": "main",
+      "filePath": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "lineRange": [351, 385],
+      "summary": "CLI entry point accepting asset path or --all flag; runs validation and outputs JSON or formatted report with appropriate exit codes.",
+      "tags": ["entry-point", "cli", "command-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/templates/brand-guidelines-starter.md",
+      "type": "document",
+      "name": "brand-guidelines-starter.md",
+      "filePath": ".agents/skills/brand/templates/brand-guidelines-starter.md",
+      "summary": "Comprehensive brand guidelines starter template covering color palette, typography, logo usage, voice & tone, imagery guidelines, design components, and AI image generation prompts across 37 sections.",
+      "tags": ["documentation", "brand-guidelines", "template", "design-system", "starter-kit"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:parseBrandColors",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:rgbToHex",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:colorDistance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:findNearestBrandColor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:calculateCompliance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:parseImageMagickOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:displayPalette",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/extract-colors.cjs",
+      "target": "function:.agents/skills/brand/scripts/extract-colors.cjs:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractColorsFromTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractTypography",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractVoice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractCoreAttributes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:extractImageStyle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:generatePromptAddition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/inject-brand-context.cjs",
+      "target": "function:.agents/skills/brand/scripts/inject-brand-context.cjs:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "target": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:extractColorsFromMarkdown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "target": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:generateColorScale",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "target": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:updateDesignTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "target": "function:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py",
+      "target": "function:.agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py:test_sync_parses_bundled_starter_template",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:parseFilename",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateFilename",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateFileSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateFormat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:checkManifest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:validateAsset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:formatOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/validate-asset.cjs",
+      "target": "function:.agents/skills/brand/scripts/validate-asset.cjs:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:.agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py",
+      "target": "file:.agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

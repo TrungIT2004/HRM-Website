@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/sql/add_tsv_column.sql",
+      "type": "document",
+      "name": "add_tsv_column.sql",
+      "filePath": "ai-service/sql/add_tsv_column.sql",
+      "summary": "SQL migration with 12 lines adding a tsvector column for full-text search on document content with GIN index for the AI service document retrieval system.",
+      "tags": ["sql", "migration", "ai-service", "full-text-search", "tsvector", "gin-index", "postgresql"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/sql/create_semantic_cache.sql",
+      "type": "document",
+      "name": "create_semantic_cache.sql",
+      "filePath": "ai-service/sql/create_semantic_cache.sql",
+      "summary": "SQL migration with 28 lines creating semantic cache tables for LLM response caching including embeddings, query hashes, and similarity thresholds.",
+      "tags": ["sql", "migration", "ai-service", "semantic-cache", "embeddings", "llm-cache", "postgresql"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/sql/init_db.sql",
+      "type": "document",
+      "name": "init_db.sql",
+      "filePath": "ai-service/sql/init_db.sql",
+      "summary": "Database initialization SQL with 135 lines creating core tables for employees, departments, attendance, leave, payroll, documents, and chat history with indexes and constraints.",
+      "tags": ["sql", "init", "ai-service", "schema", "employees", "departments", "attendance", "payroll", "postgresql"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/sql/migration_bank_accounts.sql",
+      "type": "document",
+      "name": "migration_bank_accounts.sql",
+      "filePath": "ai-service/sql/migration_bank_accounts.sql",
+      "summary": "Bank accounts migration SQL with 113 lines creating bank_accounts table, foreign keys to employees, and indexes for payroll processing.",
+      "tags": ["sql", "migration", "ai-service", "bank-accounts", "payroll", "foreign-keys", "postgresql"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/sql/readonly_role.sql",
+      "type": "document",
+      "name": "readonly_role.sql",
+      "filePath": "ai-service/sql/readonly_role.sql",
+      "summary": "Read-only role SQL with 92 lines creating a PostgreSQL read-only role with grants on all tables for reporting and analytics access.",
+      "tags": ["sql", "security", "ai-service", "readonly-role", "grants", "postgresql", "rbac"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/sql/init_db.sql",
+      "target": "document:ai-service/sql/migration_bank_accounts.sql",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/sql/init_db.sql",
+      "target": "document:ai-service/sql/add_tsv_column.sql",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/sql/init_db.sql",
+      "target": "document:ai-service/sql/create_semantic_cache.sql",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/sql/init_db.sql",
+      "target": "document:ai-service/sql/readonly_role.sql",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

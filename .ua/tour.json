@@ -1,0 +1,74 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Start with the root README.md to understand the HRM platform's purpose, architecture, and tech stack. This document provides a 286-line overview covering the three-service architecture (React frontend, Spring Boot backend, Python AI service), deployment guides, and service descriptions — giving you the mental map for the entire tour.",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "Architecture Diagrams",
+    "description": "Visualize the system through architecture diagrams: the main HRM architecture diagram shows service boundaries and data flow, while the database ERD reveals the core entities (employees, departments, attendance, leave, payroll, assets, IT tickets, performance reviews, resignations, documents) and their relationships. These diagrams make the three-layer architecture concrete before diving into code.",
+    "nodeIds": ["document:diagrams/architecture-hrm.html", "document:diagrams/database-hrm-erd.html"]
+  },
+  {
+    "order": 3,
+    "title": "Frontend — Next.js Application Structure",
+    "description": "Explore the Next.js 15 frontend with App Router. The middleware.ts handles authentication and route protection. Key page.tsx files map to HRM domains: dashboard, employees, attendance (overview, leave, overtime, schedule), chat (AI integration), assets, IT tickets, performance reviews, payroll, resignation, documents, and settings. The services/ folder contains API clients for each domain, and components/ holds reusable UI (shadcn/ui based) and feature-specific components.",
+    "nodeIds": ["document:HRM Website/src/middleware.ts", "document:HRM Website/src/app/dashboard/page.tsx", "document:HRM Website/src/app/chat/page.tsx", "document:HRM Website/src/services/apiClient.ts", "document:HRM Website/src/components/ui/Button.tsx"]
+  },
+  {
+    "order": 4,
+    "title": "Backend API — Spring Boot Core & Auth",
+    "description": "The Spring Boot 3 backend entry point is HrmApplication.java. SecurityConfig.java and JwtAuthFilter.java implement JWT-based authentication with role-based access control. GlobalExceptionHandler.java provides centralized error handling (referenced by 9 other files — highest fan-in). The common/ folder holds shared context (RequestContext) and specifications. This foundation supports all domain modules.",
+    "nodeIds": ["document:backend/src/main/java/com/minhtrung/hrm/HrmApplication.java", "document:backend/src/main/java/com/minhtrung/hrm/configs/SecurityConfig.java", "document:backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java", "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java", "document:backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java"]
+  },
+  {
+    "order": 5,
+    "title": "Backend API — Domain Modules",
+    "description": "Each HR domain is a self-contained module with controllers, services, repositories, entities, DTOs, and enums. Key modules: employees (UserProfile, Department, Job, Salary), attendance (Attendance, MonthlyTimesheet, WorkShift), leave, overtime, payroll, assets (Asset, AssetAssignment, AssetRequest), IT tickets, performance reviews, resignation (multi-stage approval workflow), documents, and admin. The AI chat integration lives in ai/ with AiController and AiServiceClient calling the Python AI service.",
+    "nodeIds": ["document:backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java", "document:backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java", "document:backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java", "document:backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java", "document:backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java"]
+  },
+  {
+    "order": 6,
+    "title": "AI Service — Text2SQL & RAG Pipeline",
+    "description": "The Python AI service (ai-service/src/) implements three core capabilities: Text2SQL generation (text2sql.py, executor.py, schema_registry.py), RAG document retrieval (parsers/pdf_parser.py, metadata_enricher.py), and LLM routing (router.py). The executor.py orchestrates SQL generation with 6-key Gemini API round-robin rotation via gemini_key_manager.py — critical for quota management on Free Tier (15 RPM shared across keys). The init_db.sql creates the core schema used by Text2SQL.",
+    "nodeIds": ["document:ai-service/src/sql/text2sql.py", "document:ai-service/src/sql/executor.py", "document:ai-service/src/sql/router.py", "document:ai-service/src/utils/gemini_key_manager.py", "document:ai-service/sql/init_db.sql"]
+  },
+  {
+    "order": 7,
+    "title": "AI Service — Quota Management & Key Rotation",
+    "description": "Deep dive into the 6-key Gemini rotation strategy defined in .env.example and implemented in gemini_key_manager.py. The system uses round-robin across 6 independent Google Cloud projects, each with 15 RPM (Flash-Lite) and 500 daily requests. On 429 errors: project-level 60s cooldown, then rotate. Daily quota exhaustion (500/day) triggers wait up to 4.5h then resets all keys. Max 3 full rotations (18 attempts) before giving up. Quota state is persisted to disk. Effective quotas: 90 RPM / 3,000 daily for Flash-Lite models (×6 keys).",
+    "nodeIds": ["document:ai-service/.env.example", "document:ai-service/src/utils/gemini_key_manager.py", "document:ai-service/src/sql/executor.py"]
+  },
+  {
+    "order": 8,
+    "title": "Infrastructure — Docker Compose Deployment",
+    "description": "The docker-compose.yml orchestrates 6 services: PostgreSQL (database), Redis (caching/sessions), backend (Spring Boot on port 8080), frontend (Next.js on port 3000), AI service (Python FastAPI on port 8000), and nginx (reverse proxy on port 80/443). Health checks ensure proper startup order. Volume mounts persist database data and AI service models. This is the single source of truth for local and production deployment.",
+    "nodeIds": ["document:docker-compose.yml"]
+  },
+  {
+    "order": 9,
+    "title": "Configuration — Environment & Workspace",
+    "description": "Root package.json defines the npm workspace with three packages: frontend, backend, and AI service. Root .env.example and ai-service/.env.example document all required environment variables: database URLs, JWT secrets, 6 Gemini API keys, model configs, RPM/daily quotas, Redis, and service ports. HRM Website/tsconfig.json shows the TypeScript 5 strict config with path aliases. These files are the contract for running the full stack.",
+    "nodeIds": ["document:package.json", "document:.env.example", "document:ai-service/.env.example", "document:HRM Website/tsconfig.json"]
+  },
+  {
+    "order": 10,
+    "title": "Key Specifications — Text2SQL Improvement & Chatbot Testing",
+    "description": "SPEC_TEXT2SQL_EX_IMPROVEMENT.md and V2 detail the execution accuracy improvement roadmap: timezone-aware quota reset, Gemma model restriction enforcement, few-shot column error fixes, incremental save/resume, model name discrepancies, and full evaluation runs. SPEC_CHATBOT_FULL_TEST_COVERAGE.md defines test scenarios across all chatbot routes (Text2SQL, document retrieval, routing, hybrid, generation). These specs drive the test_v2/ evaluation suite and track current best metrics (78% Text2SQL EX, 74% routing accuracy).",
+    "nodeIds": ["document:SPEC_TEXT2SQL_EX_IMPROVEMENT.md", "document:SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md", "document:SPEC_CHATBOT_FULL_TEST_COVERAGE.md"]
+  },
+  {
+    "order": 11,
+    "title": "Development Tools — Issue Tracking & Evaluation",
+    "description": "The .scratch/text2sql-ex-improvement/issues/ folder contains 6 tracked issues with specifications and status. The ai-service/test_v2/ directory holds the evaluation harness: test_llm_router_full.py (routing accuracy), test_router_accuracy.py, eval_hybrid.py (hybrid query evaluation), latency breakdown/load/TTFT tests, and stress/drill/stress3.py for load testing. These tools validate improvements and prevent regressions in the AI pipeline.",
+    "nodeIds": ["document:.scratch/text2sql-ex-improvement/issues/README.md", "document:ai-service/test_v2/routers/test_llm_router_full.py", "document:ai-service/test_v2/hybrid/eval_hybrid.py", "document:ai-service/test_v2/latency/breakdown.py"]
+  },
+  {
+    "order": 12,
+    "title": "Design System & Skills Reference",
+    "description": "The .agents/skills/ directory contains reusable AI skill definitions: architect (pre-implementation design workflow), audit (code review), brand/design-system/ui-styling (design tokens, Tailwind integration, shadcn/ui components), and more. The design-system references (token-architecture.md, semantic-tokens.md, component-tokens.md, tailwind-integration.md) define the 3-layer token architecture (Primitive → Semantic → Component) used in the frontend. These skills codify project conventions for AI-assisted development.",
+    "nodeIds": ["document:.agents/skills/architect/SKILL.md", "document:.agents/skills/design-system/references/token-architecture.md", "document:.agents/skills/design-system/references/tailwind-integration.md", "document:.agents/skills/ui-styling/references/shadcn-components.md"]
+  }
+]

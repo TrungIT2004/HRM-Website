@@ -1,0 +1,13 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/design/data/logo/colors.csv", "language": "csv", "sizeLines": 56, "fileCategory": "data"},
+    {"path": ".agents/skills/design/data/logo/industries.csv", "language": "csv", "sizeLines": 56, "fileCategory": "data"},
+    {"path": ".agents/skills/design/data/logo/styles.csv", "language": "csv", "sizeLines": 56, "fileCategory": "data"}
+  ],
+  "batchImportData": {
+    ".agents/skills/design/data/logo/colors.csv": [],
+    ".agents/skills/design/data/logo/industries.csv": [],
+    ".agents/skills/design/data/logo/styles.csv": []
+  }
+}

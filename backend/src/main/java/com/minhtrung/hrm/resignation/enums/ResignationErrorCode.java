@@ -1,0 +1,11 @@
+package com.minhtrung.hrm.resignation.enums;
+
+public enum ResignationErrorCode {
+    RESIGNATION_NOT_FOUND,
+    CONTRACT_NOT_FOUND,
+    ACTIVE_REQUEST_EXISTS,
+    INVALID_NOTICE_PERIOD,
+    SELF_APPROVAL_NOT_ALLOWED,
+    UNAUTHORIZED_ACTION,
+    INVALID_STATUS_TRANSITION
+}

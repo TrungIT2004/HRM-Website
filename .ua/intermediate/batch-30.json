@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/memory_test/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/DOC_ONLY/memory_test/RESULTS.md",
+      "summary": "DOC_ONLY memory test results with 77 lines summarizing multi-turn conversation consistency, context retention accuracy, and degradation metrics over 20x12 test scenarios.",
+      "tags": ["test", "results", "ai-service", "doc-only", "memory", "multi-turn", "consistency", "context-retention", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/memory_test/answers_memory.json",
+      "type": "document",
+      "name": "answers_memory.json",
+      "filePath": "ai-service/tests/DOC_ONLY/memory_test/answers_memory.json",
+      "summary": "Memory test answers JSON with 14,641 lines containing model responses for all 20x12 multi-turn conversation turns for consistency evaluation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "memory", "multi-turn", "answers", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/memory_test/judge_memory.json",
+      "type": "document",
+      "name": "judge_memory.json",
+      "filePath": "ai-service/tests/DOC_ONLY/memory_test/judge_memory.json",
+      "summary": "Memory test judge JSON with 4,405 lines containing LLM judge evaluations of consistency and coherence across multi-turn conversations.",
+      "tags": ["test", "results", "ai-service", "doc-only", "memory", "llm-judge", "consistency", "coherence", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/memory_test/latency_per_turn.csv",
+      "type": "document",
+      "name": "latency_per_turn.csv",
+      "filePath": "ai-service/tests/DOC_ONLY/memory_test/latency_per_turn.csv",
+      "summary": "Memory test latency CSV with 241 lines recording response times per conversation turn for multi-turn latency analysis.",
+      "tags": ["test", "metrics", "ai-service", "doc-only", "memory", "latency", "per-turn", "csv", "performance"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/memory_test/answers_memory.json",
+      "target": "document:ai-service/tests/DOC_ONLY/memory_test/judge_memory.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/memory_test/RESULTS.md",
+      "target": "document:ai-service/tests/DOC_ONLY/memory_test/answers_memory.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/memory_test/answers_memory.json",
+      "target": "document:ai-service/tests/DOC_ONLY/memory_test/latency_per_turn.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

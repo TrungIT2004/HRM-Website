@@ -1,0 +1,118 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp1.json",
+      "type": "document",
+      "name": "bp1.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp1.json",
+      "summary": "Blueprint 1 JSON with 36,477 characters defining 20 conversations (sids 1001-1020) × ~14 turns each for vehicle registration (214.HD-ACT-HC) topic. Each turn specifies document code, turn index, gold rewrite (rw), and optional question/answer pairs for multi-turn memory evaluation.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "vehicle-registration", "214", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp2.json",
+      "type": "document",
+      "name": "bp2.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp2.json",
+      "summary": "Blueprint 2 JSON with 32,584 characters defining conversations for salary/payroll topics (luong). Contains multi-turn dialogues with gold rewrites referencing specific salary documents and policies.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "salary", "payroll", "luong", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp3.json",
+      "type": "document",
+      "name": "bp3.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp3.json",
+      "summary": "Blueprint 3 JSON with 33,386 characters defining conversations for office supplies (VPP - vật tư phòng phẩm) topic. Multi-turn dialogues with gold rewrites referencing VPP management documents.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "office-supplies", "vpp", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp4.json",
+      "type": "document",
+      "name": "bp4.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp4.json",
+      "summary": "Blueprint 4 JSON with 14,489 characters defining conversations for EVN/MWG/Petrolimex corporate governance topics (QuyCheQuanTri). Contains dialogues about board meetings, shareholder rights, and corporate charters.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "corporate-governance", "evn", "mwg", "petrolimex", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp5.json",
+      "type": "document",
+      "name": "bp5.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp5.json",
+      "summary": "Blueprint 5 JSON with 48,554 characters defining 10 new conversations (sids 1031-1040) added in 2026-10-13 expansion. Covers VPP pricing, Petrolimex charter meetings, EVN salary tables, 214 vehicle registration cross-doc references. Used for 20 new conv evaluation.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "expansion", "20new", "vpp", "petrolimex", "evn", "214", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp6.json",
+      "type": "document",
+      "name": "bp6.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp6.json",
+      "summary": "Blueprint 6 JSON with 37,210 characters defining 10 new conversations (sids 1041-1050) for 2026-10-13 expansion. Covers MWG governance, BLLĐ labor regulations, PMSC charter, salary grade T13, price cross-doc queries. Completes 50 conv × 12 turns = 600 turns dataset.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "expansion", "20new", "mwg", "blld", "pmsc", "salary", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/memory/internal/blueprints/bp_fix.json",
+      "type": "document",
+      "name": "bp_fix.json",
+      "filePath": "ai-service/tests/memory/internal/blueprints/bp_fix.json",
+      "summary": "Blueprint fix JSON with 2,332 characters containing targeted corrections for specific turns: 1003t0 and 1005t8 removed THIEU THONG TIN (using real chunk 917), 1008t8 corrected 'ngày vào làm' to 'ngày xếp lương liền kề' (An Phát company name preserved). Applied in build_internal.py rebuild.",
+      "tags": ["test", "dataset", "ai-service", "memory", "internal", "blueprint", "fix", "corrections", "json"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp1.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp2.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp2.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp3.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp3.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp4.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp4.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp5.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp5.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp6.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp_fix.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp5.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/tests/memory/internal/blueprints/bp_fix.json",
+      "target": "document:ai-service/tests/memory/internal/blueprints/bp6.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

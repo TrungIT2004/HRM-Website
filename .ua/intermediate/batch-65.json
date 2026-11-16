@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/controllers/ItTicketController.java",
+      "type": "document",
+      "name": "ItTicketController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/controllers/ItTicketController.java",
+      "summary": "IT Ticket REST controller: endpoints for createTicket, getTickets (paginated, filtered by status/category/priority/assignee), getTicketDetail, addComment, updateStatus, assignTicket, escalateTicket, getSLAStatus, exportTickets. Role-based: staff creates/views own, IT staff views all, admin manages.",
+      "tags": ["backend", "itticket", "controller", "ticket", "comment", "sla", "escalation", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java",
+      "type": "document",
+      "name": "ItTicket.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java",
+      "summary": "ItTicket JPA entity: id, ticketNumber (auto-generated), title, description, category, priority (LOW, MEDIUM, HIGH, CRITICAL), status (OPEN, IN_PROGRESS, WAITING_USER, RESOLVED, CLOSED), requesterId, assigneeId, createdAt, updatedAt, resolvedAt, closedAt, slaDeadline, satisfactionRating. Core ticket record with SLA tracking.",
+      "tags": ["backend", "itticket", "entity", "jpa", "ticket-number", "sla", "priority", "satisfaction", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketCategory.java",
+      "type": "document",
+      "name": "ItTicketCategory.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketCategory.java",
+      "summary": "ItTicketCategory enum: HARDWARE, SOFTWARE, NETWORK, ACCESS, EMAIL, SECURITY, OTHER. Classification for routing and reporting.",
+      "tags": ["backend", "itticket", "enum", "category", "classification", "routing", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java",
+      "type": "document",
+      "name": "ItTicketErrorCode.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java",
+      "summary": "ItTicketErrorCode enum: TICKET_NOT_FOUND, INVALID_STATUS_TRANSITION, UNASSIGNED_TICKET, SLA_BREACH, COMMENT_NOT_ALLOWED, PERMISSION_DENIED, INVALID_PRIORITY, CATEGORY_NOT_FOUND. Used by ItTicketException.",
+      "tags": ["backend", "itticket", "enum", "error-code", "sla", "transition", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketPriority.java",
+      "type": "document",
+      "name": "ItTicketPriority.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketPriority.java",
+      "summary": "ItTicketPriority enum: LOW, MEDIUM, HIGH, CRITICAL. Determines SLA response/resolution times.",
+      "tags": ["backend", "itticket", "enum", "priority", "sla", "response-time", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java",
+      "type": "document",
+      "name": "ItTicketStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java",
+      "summary": "ItTicketStatus enum: OPEN, IN_PROGRESS, WAITING_USER, RESOLVED, CLOSED. Ticket workflow states with valid transitions.",
+      "tags": ["backend", "itticket", "enum", "status", "workflow", "transition", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java",
+      "type": "document",
+      "name": "ItTicketException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java",
+      "summary": "ItTicket exception: extends RuntimeException with ItTicketErrorCode. Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "itticket", "exception", "error-code", "runtime-exception", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/repositories/ItTicketRepository.java",
+      "type": "document",
+      "name": "ItTicketRepository.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/repositories/ItTicketRepository.java",
+      "summary": "ItTicket repository: JPA repository with findByRequesterId, findByAssigneeId, findByStatus, findByCategory, findByPriority, findSlaBreached, findByDateRange, searchByTitleOrDescription. Supports pagination and SLA monitoring.",
+      "tags": ["backend", "itticket", "repository", "jpa", "sla", "search", "pagination", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java",
+      "type": "document",
+      "name": "ItTicketService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java",
+      "summary": "IT Ticket service: business logic for ticket lifecycle (create, update, assign, escalate, resolve, close), comment management, SLA calculation and monitoring, auto-escalation on breach, satisfaction survey. Integrates with ItTicketRepository, UserProfileRepository for assignee lookup.",
+      "tags": ["backend", "itticket", "service", "lifecycle", "sla", "escalation", "comment", "satisfaction", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/controllers/PerformanceController.java",
+      "type": "document",
+      "name": "PerformanceController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/controllers/PerformanceController.java",
+      "summary": "Performance REST controller: endpoints for review cycles (getCycles, createCycle, updateCycle, closeCycle), self-reviews (submitSelfReview, getMyReviews), manager reviews (getTeamReviews, submitManagerReview), calibration (calibrateScores, getScoreDistribution), export. Role-based access.",
+      "tags": ["backend", "performance", "controller", "review", "cycle", "calibration", "360", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ManagerScoreRequest.java",
+      "type": "document",
+      "name": "ManagerScoreRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ManagerScoreRequest.java",
+      "summary": "Manager score request DTO: reviewId, revieweeId, scores (map of competencyId to score), comments, overallRating. Manager evaluation submission.",
+      "tags": ["backend", "performance", "dto", "manager", "score", "competency", "rating", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java",
+      "type": "document",
+      "name": "PerformanceFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java",
+      "summary": "Performance filter request DTO: cycleId, userId, departmentId, status, revieweeId, page, size, sortBy, sortDir. Paginated review queries.",
+      "tags": ["backend", "performance", "dto", "filter", "cycle", "pagination", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ScoreItemRequest.java",
+      "type": "document",
+      "name": "ScoreItemRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ScoreItemRequest.java",
+      "summary": "Score item request DTO: competencyId, score (1-5), comment. Individual competency scoring.",
+      "tags": ["backend", "performance", "dto", "score", "competency", "item", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/SelfSubmitRequest.java",
+      "type": "document",
+      "name": "SelfSubmitRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/SelfSubmitRequest.java",
+      "summary": "Self submit request DTO: reviewId, scores (map of competencyId to score), achievements, goals, developmentNeeds. Employee self-evaluation.",
+      "tags": ["backend", "performance", "dto", "self", "submit", "achievements", "goals", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceOverviewResponse.java",
+      "type": "document",
+      "name": "PerformanceOverviewResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceOverviewResponse.java",
+      "summary": "Performance overview response DTO: cycleId, cycleName, startDate, endDate, status, totalReviews, completedReviews, averageScore, scoreDistribution (buckets), departmentBreakdown. Cycle-level summary.",
+      "tags": ["backend", "performance", "dto", "response", "overview", "distribution", "department", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java",
+      "type": "document",
+      "name": "PerformanceReviewResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java",
+      "summary": "Performance review response DTO: reviewId, revieweeId, revieweeName, cycleId, status, selfScores, managerScores, calibratedScores, overallRating, submittedAt, calibratedAt. Individual review detail.",
+      "tags": ["backend", "performance", "dto", "response", "review", "calibrated", "rating", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java",
+      "type": "document",
+      "name": "PerformanceReview.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java",
+      "summary": "PerformanceReview JPA entity: id, cycleId, revieweeId, reviewerId (manager), status (DRAFT, SUBMITTED, MANAGER_REVIEWED, CALIBRATED, FINALIZED), selfScores (JSON), managerScores (JSON), calibratedScores (JSON), overallRating, submittedAt, managerReviewedAt, calibratedAt, finalizedAt. Multi-stage review with calibration.",
+      "tags": ["backend", "performance", "entity", "jpa", "review", "calibration", "json", "multi-stage", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceScore.java",
+      "type": "document",
+      "name": "PerformanceScore.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceScore.java",
+      "summary": "PerformanceScore JPA entity: id, reviewId, competencyId, score, comment, scoredBy (SELF, MANAGER, CALIBRATED), scoredAt. Granular score tracking per competency per review stage.",
+      "tags": ["backend", "performance", "entity", "score", "jpa", "competency", "stage", "tracking", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java",
+      "type": "document",
+      "name": "PerformanceErrorCode.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java",
+      "summary": "PerformanceErrorCode enum: REVIEW_NOT_FOUND, CYCLE_NOT_FOUND, INVALID_STATUS_TRANSITION, REVIEW_ALREADY_SUBMITTED, CYCLE_CLOSED, INVALID_SCORE_RANGE, CALIBRATION_FAILED, PERMISSION_DENIED. Used by PerformanceException.",
+      "tags": ["backend", "performance", "enum", "error-code", "cycle", "calibration", "score", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java",
+      "type": "document",
+      "name": "PeriodType.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java",
+      "summary": "PeriodType enum: MONTHLY, QUARTERLY, SEMI_ANNUAL, ANNUAL. Review cycle frequency.",
+      "tags": ["backend", "performance", "enum", "period", "cycle", "frequency", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java",
+      "type": "document",
+      "name": "ReviewStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java",
+      "summary": "ReviewStatus enum: DRAFT, SUBMITTED, MANAGER_REVIEWED, CALIBRATED, FINALIZED. Multi-stage review workflow.",
+      "tags": ["backend", "performance", "enum", "status", "workflow", "calibration", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java",
+      "type": "document",
+      "name": "PerformanceException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java",
+      "summary": "Performance exception: extends RuntimeException with PerformanceErrorCode. Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "performance", "exception", "error-code", "runtime-exception", "java"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/itticket/controllers/ItTicketController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/itticket/repositories/ItTicketRepository.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/performance/controllers/PerformanceController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

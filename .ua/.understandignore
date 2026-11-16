@@ -1,0 +1,196 @@
+# .understandignore — patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions — uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+
+# --- From .gitignore (uncomment to exclude) ---
+
+# **/application.properties
+# **/application-*.properties
+# !**/application.properties.example
+# .env
+# .env*.local
+# *.env
+# !*.env.example
+# *.pem
+# *.key
+# *.p12
+# *.pfx
+# *.crt
+# *.jks
+# .cloudflared/
+# init-db/*.sql
+# init-db/*.sql.gz
+# !init-db/README.md
+# backups/
+# bin/
+# *.dump
+# **/db_config.py
+# !**/db_config.py.example
+# **/faces/*
+# !**/faces/.gitkeep
+# **/embeddings/*
+# !**/embeddings/.gitkeep
+# !ai-service/src/embeddings/*.py
+# uploads/
+# **/uploads/**
+# logs/
+# **/logs/
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
+# pnpm-debug.log*
+# hs_err_pid*.log
+# replay_pid*.log
+# *.docx
+# *.xlsx
+# *.pptx
+# !ai-service/tests/*.docx
+# !ai-service/tests/*.xlsx
+# !ai-service/tests/*.pdf
+# *.rar
+# *.7z
+# *.tar.gz
+# **/node_modules/
+# **/.next/
+# *.tsbuildinfo
+# next-env.d.ts
+# **/.turbo/
+# .vercel/
+# .swc/
+# .eslintcache
+# .stylelintcache
+# .pnpm-store/
+# **/target/
+# *.class
+# *.jar
+# *.war
+# *.ear
+# *.nar
+# .mvn/wrapper/maven-wrapper.jar
+# release.properties
+# pom.xml.releaseBackup
+# pom.xml.tag
+# pom.xml.next
+# pom.xml.backup
+# jacoco.exec
+# *.exec
+# **/__pycache__/
+# *.py[cod]
+# *$py.class
+# **/venv/**
+# **/.venv/**
+# env/
+# **/env/**
+# ENV/
+# .pytest_cache/
+# **/.pytest_cache/
+# .coverage
+# .coverage.*
+# htmlcov/
+# .mypy_cache/
+# .ruff_cache/
+# .hypothesis/
+# .ipynb_checkpoints/
+# **/.cache/
+# checkpoints/
+# *.egg-info/
+# *.egg
+# *.iws
+# *.iml
+# *.ipr
+# .apt_generated
+# .classpath
+# .factorypath
+# .project
+# .settings/
+# .springBeans
+# .sts4-cache
+# nbproject/private/
+# nbdist/
+# .nb-gradle/
+# .vscode/*
+# !.vscode/launch.json
+# .DS_Store
+# Thumbs.db
+# ehthumbs.db
+# Desktop.ini
+# $RECYCLE.BIN/
+# *.swp
+# *.swo
+# *~
+# *.tmp
+# *.temp
+# Check Attendance/test/
+# .playwright-mcp/
+# playwright-report/
+# test-results/
+# scratch/
+# .codebase-memory/
+# *.bak
+# *.unused-bak
+# *.orig
+# *.rej
+# ai-service/tests/results/
+# ai-service/tests/_archive/
+# ai-service/tests/baselines-120b/
+# **/generated_testset.*
+
+# --- Detected directories (uncomment to exclude) ---
+
+# docs/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# JS / TS
+# *.test.*
+# *.spec.*
+# *.snap
+# C# / .NET
+# **/*Tests.cs
+# **/*Test.cs
+# **/*Fixture.cs
+# **/*.Tests.csproj
+# Java / Kotlin
+# **/src/test/**
+# **/*Test.java
+# **/*IT.java
+# **/*Spec.kt
+# Go
+# **/*_test.go
+# C++
+# **/*_test.cc
+# **/*_test.cpp
+# **/*_test.cxx
+# **/*Test.cc
+# **/*Test.cpp
+# **/*_unittest.cc
+# **/*_unittest.cpp
+# **/*_browsertest.cc
+# **/*_benchmark.cc
+# **/*Benchmark.cpp
+# Python
+# **/test_*.py
+# **/*_test.py
+# **/tests.py
+# **/conftest.py
+# Rust
+# **/tests.rs
+# **/test_*.rs
+# **/*_test.rs
+# **/bench_*.rs
+# **/*_bench.rs
+# Ruby
+# **/*_spec.rb
+# **/*_test.rb
+# **/test_*.rb
+# **/spec_helper.rb
+# **/test_helper.rb
+# **/rails_helper.rb
+# Swift
+# **/Tests/**/*.swift
+# **/Specs/**/*.swift

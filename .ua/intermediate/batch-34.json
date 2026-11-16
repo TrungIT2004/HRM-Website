@@ -1,0 +1,106 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/baselines-120b/db_answer_eval.json",
+      "type": "document",
+      "name": "db_answer_eval.json",
+      "filePath": "ai-service/tests/baselines-120b/db_answer_eval.json",
+      "summary": "Baseline DB answer evaluation JSON with 2,358 lines containing answer quality metrics for 120-question database-only baseline test run.",
+      "tags": ["test", "baseline", "ai-service", "db-answer", "evaluation", "120b", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/db_generation_eval.json",
+      "type": "document",
+      "name": "db_generation_eval.json",
+      "filePath": "ai-service/tests/baselines-120b/db_generation_eval.json",
+      "summary": "Baseline DB generation evaluation JSON with 2,355 lines containing SQL generation accuracy metrics for 120-question database-only baseline.",
+      "tags": ["test", "baseline", "ai-service", "db-generation", "evaluation", "sql", "120b", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/db_retrieval_eval.json",
+      "type": "document",
+      "name": "db_retrieval_eval.json",
+      "filePath": "ai-service/tests/baselines-120b/db_retrieval_eval.json",
+      "summary": "Baseline DB retrieval evaluation JSON with 2,645 lines containing retrieval metrics (Hit@K, MRR) for 120-question database-only baseline.",
+      "tags": ["test", "baseline", "ai-service", "db-retrieval", "evaluation", "hit-at-k", "mrr", "120b", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/llm_200q_report.json",
+      "type": "document",
+      "name": "llm_200q_report.json",
+      "filePath": "ai-service/tests/baselines-120b/llm_200q_report.json",
+      "summary": "LLM 200-question report JSON with 2,927 lines containing comprehensive routing and generation metrics for 200 test questions baseline.",
+      "tags": ["test", "baseline", "ai-service", "llm", "200q", "report", "routing", "generation", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/llm_router_test.json",
+      "type": "document",
+      "name": "llm_router_test.json",
+      "filePath": "ai-service/tests/baselines-120b/llm_router_test.json",
+      "summary": "Baseline LLM router test JSON with 3,269 lines containing routing accuracy per route for 120-question baseline evaluation.",
+      "tags": ["test", "baseline", "ai-service", "llm-router", "routing", "accuracy", "120b", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/memory_rewrite_results.json",
+      "type": "document",
+      "name": "memory_rewrite_results.json",
+      "filePath": "ai-service/tests/baselines-120b/memory_rewrite_results.json",
+      "summary": "Baseline memory rewrite results JSON with 4,501 lines containing query rewrite accuracy for multi-turn conversation baseline.",
+      "tags": ["test", "baseline", "ai-service", "memory", "rewrite", "multi-turn", "120b", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/ragas_eval_results.json",
+      "type": "document",
+      "name": "ragas_eval_results.json",
+      "filePath": "ai-service/tests/baselines-120b/ragas_eval_results.json",
+      "summary": "Baseline RAGAS evaluation JSON with 371 lines containing faithfulness, relevance, precision, recall scores for 120-question baseline.",
+      "tags": ["test", "baseline", "ai-service", "ragas", "faithfulness", "relevance", "120b", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/baselines-120b/threshold_calib_results.json",
+      "type": "document",
+      "name": "threshold_calib_results.json",
+      "filePath": "ai-service/tests/baselines-120b/threshold_calib_results.json",
+      "summary": "Baseline threshold calibration results JSON with 422 lines containing optimized similarity thresholds for retrieval filtering baseline.",
+      "tags": ["test", "baseline", "ai-service", "threshold", "calibration", "similarity", "120b", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/baselines-120b/db_answer_eval.json",
+      "target": "document:ai-service/tests/baselines-120b/db_generation_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/baselines-120b/db_retrieval_eval.json",
+      "target": "document:ai-service/tests/baselines-120b/db_generation_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/baselines-120b/llm_router_test.json",
+      "target": "document:ai-service/tests/baselines-120b/llm_200q_report.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/baselines-120b/memory_rewrite_results.json",
+      "target": "document:ai-service/tests/baselines-120b/llm_router_test.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

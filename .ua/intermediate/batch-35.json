@@ -1,0 +1,219 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/generation/doc_only/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/generation/doc_only/RESULTS.md",
+      "summary": "DOC_ONLY generation results with 86 lines summarizing RAGAS scores, Gemma judge evaluations, and batch comparison metrics for document-only generation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "generation", "ragas", "gemma", "batch-comparison", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/draft_golds_batch1.json",
+      "type": "document",
+      "name": "draft_golds_batch1.json",
+      "filePath": "ai-service/tests/generation/doc_only/draft_golds_batch1.json",
+      "summary": "Draft gold answers batch 1 JSON with 193 lines containing reference answers for first batch of document-only generation evaluation.",
+      "tags": ["test", "dataset", "ai-service", "doc-only", "gold", "answers", "batch1", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_100.json",
+      "type": "document",
+      "name": "ragas_eval_100.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_100.json",
+      "summary": "RAGAS evaluation 100 questions JSON with 1,205 lines containing faithfulness, relevance, precision, recall for 100 document-only test questions.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "100", "faithfulness", "relevance", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_batch1.json",
+      "type": "document",
+      "name": "ragas_eval_batch1.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_batch1.json",
+      "summary": "RAGAS evaluation batch 1 JSON with 605 lines containing RAGAS metrics for first batch of document-only generation test.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "batch1", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_batch2.json",
+      "type": "document",
+      "name": "ragas_eval_batch2.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_batch2.json",
+      "summary": "RAGAS evaluation batch 2 JSON with 605 lines containing RAGAS metrics for second batch of document-only generation test.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "batch2", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_batchA.json",
+      "type": "document",
+      "name": "ragas_eval_batchA.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_batchA.json",
+      "summary": "RAGAS evaluation batch A JSON with 83 lines containing RAGAS metrics for batch A subset of document-only test.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "batchA", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_batchB.json",
+      "type": "document",
+      "name": "ragas_eval_batchB.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_batchB.json",
+      "summary": "RAGAS evaluation batch B JSON with 96 lines containing RAGAS metrics for batch B subset of document-only test.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "batchB", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_batchC.json",
+      "type": "document",
+      "name": "ragas_eval_batchC.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_batchC.json",
+      "summary": "RAGAS evaluation batch C JSON with 44 lines containing RAGAS metrics for batch C subset of document-only test.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "batchC", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma.json",
+      "type": "document",
+      "name": "ragas_eval_gemma.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_gemma.json",
+      "summary": "RAGAS evaluation with Gemma JSON with 1,705 lines containing RAGAS metrics using Gemma as judge model for document-only generation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "gemma", "judge", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma_judged.json",
+      "type": "document",
+      "name": "ragas_eval_gemma_judged.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_gemma_judged.json",
+      "summary": "RAGAS evaluation Gemma judged JSON with 2,301 lines containing pairwise judgments from Gemma for document-only answer quality.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "gemma", "judged", "pairwise", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma_rejudge7.json",
+      "type": "document",
+      "name": "ragas_eval_gemma_rejudge7.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_gemma_rejudge7.json",
+      "summary": "RAGAS evaluation Gemma re-judge 7 JSON with 1,596 lines containing re-evaluation results from Gemma judge (iteration 7) for document-only generation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "gemma", "rejudge", "iteration7", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_rerun.json",
+      "type": "document",
+      "name": "ragas_eval_rerun.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_rerun.json",
+      "summary": "RAGAS evaluation rerun JSON with 44 lines containing re-run metrics for document-only generation after fixes.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "rerun", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_rerun_b1.json",
+      "type": "document",
+      "name": "ragas_eval_rerun_b1.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_rerun_b1.json",
+      "summary": "RAGAS evaluation rerun batch 1 JSON with 125 lines containing batch 1 re-run metrics after fixes.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "rerun", "batch1", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/ragas_eval_results.json",
+      "type": "document",
+      "name": "ragas_eval_results.json",
+      "filePath": "ai-service/tests/generation/doc_only/ragas_eval_results.json",
+      "summary": "RAGAS evaluation results JSON with 371 lines containing aggregated faithfulness, answer relevance, context precision, recall for document-only generation.",
+      "tags": ["test", "results", "ai-service", "doc-only", "ragas", "aggregated", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/review_100.json",
+      "type": "document",
+      "name": "review_100.json",
+      "filePath": "ai-service/tests/generation/doc_only/review_100.json",
+      "summary": "Review 100 questions JSON with 1,037 lines containing manual review annotations for 100 document-only generated answers.",
+      "tags": ["test", "review", "ai-service", "doc-only", "manual", "annotations", "100", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/review_100_gemma.json",
+      "type": "document",
+      "name": "review_100_gemma.json",
+      "filePath": "ai-service/tests/generation/doc_only/review_100_gemma.json",
+      "summary": "Review 100 Gemma JSON with 1,101 lines containing Gemma judge reviews for 100 document-only generated answers.",
+      "tags": ["test", "review", "ai-service", "doc-only", "gemma", "judge", "100", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/review_100_gemma_judged.json",
+      "type": "document",
+      "name": "review_100_gemma_judged.json",
+      "filePath": "ai-service/tests/generation/doc_only/review_100_gemma_judged.json",
+      "summary": "Review 100 Gemma judged JSON with 49 lines containing final judged results from Gemma for 100 document-only answers.",
+      "tags": ["test", "review", "ai-service", "doc-only", "gemma", "judged", "100", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/review_30_manual.json",
+      "type": "document",
+      "name": "review_30_manual.json",
+      "filePath": "ai-service/tests/generation/doc_only/review_30_manual.json",
+      "summary": "Review 30 manual JSON with 271 lines containing manual human review for 30 document-only generated answers.",
+      "tags": ["test", "review", "ai-service", "doc-only", "manual", "human", "30", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/generation/doc_only/review_70_extra.json",
+      "type": "document",
+      "name": "review_70_extra.json",
+      "filePath": "ai-service/tests/generation/doc_only/review_70_extra.json",
+      "summary": "Review 70 extra JSON with 767 lines containing additional review data for 70 document-only generated answers.",
+      "tags": ["test", "review", "ai-service", "doc-only", "extra", "70", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/generation/doc_only/ragas_eval_100.json",
+      "target": "document:ai-service/tests/generation/doc_only/ragas_eval_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/generation/doc_only/ragas_eval_batch1.json",
+      "target": "document:ai-service/tests/generation/doc_only/ragas_eval_batch2.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma.json",
+      "target": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma_judged.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma_judged.json",
+      "target": "document:ai-service/tests/generation/doc_only/ragas_eval_gemma_rejudge7.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/generation/doc_only/review_100.json",
+      "target": "document:ai-service/tests/generation/doc_only/review_100_gemma.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/generation/doc_only/RESULTS.md",
+      "target": "document:ai-service/tests/generation/doc_only/ragas_eval_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "document:.ua/tmp/ua-import-map-input-full.json",
+      "type": "document",
+      "name": "ua-import-map-input-full.json",
+      "filePath": ".ua/tmp/ua-import-map-input-full.json",
+      "summary": "Full import map input JSON (empty - 0 lines) for Understand-Anything analysis, used to track all project imports before filtering.",
+      "tags": ["generated", "understand-anything", "import-map", "input", "json", "tmp"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.ua/tmp/ua-import-map-input.json",
+      "type": "document",
+      "name": "ua-import-map-input.json",
+      "filePath": ".ua/tmp/ua-import-map-input.json",
+      "summary": "Import map input JSON with 233 lines containing filtered project imports for Understand-Anything analysis after applying .understandignore rules.",
+      "tags": ["generated", "understand-anything", "import-map", "input", "json", "tmp"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.ua/tmp/ua-import-map-output-full.json",
+      "type": "document",
+      "name": "ua-import-map-output-full.json",
+      "filePath": ".ua/tmp/ua-import-map-output-full.json",
+      "summary": "Full import map output JSON with 2,478 lines containing complete resolved import graph for all project files before filtering.",
+      "tags": ["generated", "understand-anything", "import-map", "output", "graph", "json", "tmp"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.ua/tmp/ua-import-map-output.json",
+      "type": "document",
+      "name": "ua-import-map-output.json",
+      "filePath": ".ua/tmp/ua-import-map-output.json",
+      "summary": "Import map output JSON with 295 lines containing filtered resolved import graph for Understand-Anything analysis.",
+      "tags": ["generated", "understand-anything", "import-map", "output", "graph", "json", "tmp"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.ua/tmp/ua-scan-files.json",
+      "type": "document",
+      "name": "ua-scan-files.json",
+      "filePath": ".ua/tmp/ua-scan-files.json",
+      "summary": "Project file scan results JSON with 5,365 lines containing complete inventory of 890 project files with languages, categories, sizes, and complexity estimates for Understand-Anything analysis.",
+      "tags": ["generated", "understand-anything", "scan", "inventory", "files", "json", "tmp"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.ua/tmp/ua-import-map-input.json",
+      "target": "document:.ua/tmp/ua-import-map-output.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.ua/tmp/ua-import-map-input-full.json",
+      "target": "document:.ua/tmp/ua-import-map-output-full.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.ua/tmp/ua-scan-files.json",
+      "target": "document:.ua/tmp/ua-import-map-input.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/stress/drill.py",
+      "type": "document",
+      "name": "drill.py",
+      "filePath": "ai-service/tests/stress/drill.py",
+      "summary": "Stress drill (tests/stress): legacy version of test_v2/stress/drill.py. Sustained load generator for AI pipeline with QPS control and quota monitoring. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "stress", "drill", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/stress/prov.py",
+      "type": "document",
+      "name": "prov.py",
+      "filePath": "ai-service/tests/stress/prov.py",
+      "summary": "Stress provenance test: validates provenance tracking under load. Checks that request IDs, key rotations, and quota states are correctly maintained across concurrent requests. Outputs provenance_validation.json.",
+      "tags": ["ai-service", "test", "stress", "provenance", "tracking", "quota", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/stress/stress.py",
+      "type": "document",
+      "name": "stress.py",
+      "filePath": "ai-service/tests/stress/stress.py",
+      "summary": "Stress test framework (tests/stress): legacy version of test_v2/stress/stress.py. Base class for stress tests with worker pool, result aggregation, metrics collection, and HTML report generation. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "stress", "framework", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/stress/stress3.py",
+      "type": "document",
+      "name": "stress3.py",
+      "filePath": "ai-service/tests/stress/stress3.py",
+      "summary": "Stress test v3 (tests/stress): legacy version of test_v2/stress/stress3.py. Multi-scenario stress test (burst, sustained, ramp-up, soak). Tests quota rotation under concurrent load. Superseded by test_v2 version.",
+      "tags": ["ai-service", "test", "stress", "v3", "legacy", "python"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/stress/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/stress/RESULTS.md",
+      "summary": "Stress test results: documents stress test runs with QPS targets, error rates, latency percentiles (p50, p95, p99), quota consumption per key, GPU memory usage, and pass/fail criteria. Records key rotation fairness under load.",
+      "tags": ["ai-service", "test", "stress", "results", "markdown", "qps", "latency", "quota", "gpu"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/tokens/RESULTS.md",
+      "type": "document",
+      "name": "RESULTS.md",
+      "filePath": "ai-service/tests/tokens/RESULTS.md",
+      "summary": "Token usage test results: tracks token consumption per query type (DB_ONLY, DOC_ONLY, HYBRID), per model (Gemma-4-31B, Flash-Lite), and per pipeline stage. Used to optimize prompts and estimate costs. Records input/output token ratios.",
+      "tags": ["ai-service", "test", "tokens", "results", "markdown", "token-usage", "cost", "gemma", "flash-lite"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/stress/drill.py",
+      "target": "document:ai-service/test_v2/stress/drill.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/stress/stress.py",
+      "target": "document:ai-service/test_v2/stress/stress.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/stress/stress3.py",
+      "target": "document:ai-service/test_v2/stress/stress3.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/stress/drill.py",
+      "target": "document:ai-service/tests/stress/prov.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:ai-service/tests/stress/stress.py",
+      "target": "document:ai-service/tests/stress/stress3.py",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 10,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Merge script mechanical fixes appear complete and correct - all IDs normalized (func: → function:), complexity values normalized (high → complex), no dangling edges",
+    "No nodes missing ID field, no unknown node types, no unknown complexity values in assembled graph",
+    "Added 10 cross-batch import edges from import map where both source and target nodes existed as document nodes in the graph",
+    "Import map contains 33 total edges across 24 files, but only 11 imports edges in graph (1 original + 10 added) because most source files in import map are test files not processed in batches",
+    "Graph has 598 nodes (565 documents, 5 files, 28 functions) and 364 edges (308 related, 17 documents, 28 contains, 11 imports)"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "nodes": [
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/01-timezone-aware-quota-reset.md",
+      "type": "document",
+      "name": "01-timezone-aware-quota-reset.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/01-timezone-aware-quota-reset.md",
+      "summary": "Issue 01 specification for timezone-aware quota reset with 12 lines describing the requirement to align daily quota reset with UTC midnight instead of local timezone for Google Gemini API keys.",
+      "tags": ["issue", "spec", "text2sql", "quota", "timezone", "utc", "gemini"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/02-enforce-gemma-restriction.md",
+      "type": "document",
+      "name": "02-enforce-gemma-restriction.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/02-enforce-gemma-restriction.md",
+      "summary": "Issue 02 specification for enforcing Gemma model restriction with 30 lines detailing the requirement to route routing/rewrite/summary tasks exclusively to Gemma 4 31B model instead of Flash-Lite.",
+      "tags": ["issue", "spec", "text2sql", "gemma", "model-restriction", "routing", "flash-lite"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/03-complete-fewshots-column-errors.md",
+      "type": "document",
+      "name": "03-complete-fewshots-column-errors.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/03-complete-fewshots-column-errors.md",
+      "summary": "Issue 03 specification for completing few-shot column error handling with 31 lines describing fixes for column name mismatches in few-shot examples used for SQL generation.",
+      "tags": ["issue", "spec", "text2sql", "few-shot", "column-errors", "sql-generation", "examples"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/04-verify-incremental-save-resume.md",
+      "type": "document",
+      "name": "04-verify-incremental-save-resume.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/04-verify-incremental-save-resume.md",
+      "summary": "Issue 04 specification for verifying incremental save and resume functionality with 14 lines describing the requirement to persist evaluation progress and resume from checkpoints.",
+      "tags": ["issue", "spec", "text2sql", "incremental", "save", "resume", "checkpoint", "evaluation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/05-fix-model-name-discrepancy.md",
+      "type": "document",
+      "name": "05-fix-model-name-discrepancy.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/05-fix-model-name-discrepancy.md",
+      "summary": "Issue 05 specification for fixing model name discrepancy with 14 lines detailing the mismatch between configured model names and actual API model identifiers for Gemini models.",
+      "tags": ["issue", "spec", "text2sql", "model-name", "discrepancy", "gemini", "api", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/06-full-evaluation-run.md",
+      "type": "document",
+      "name": "06-full-evaluation-run.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/06-full-evaluation-run.md",
+      "summary": "Issue 06 specification for full evaluation run with 18 lines describing the requirement to execute complete Text2SQL benchmark evaluation with all test cases and generate comprehensive metrics.",
+      "tags": ["issue", "spec", "text2sql", "evaluation", "benchmark", "full-run", "metrics", "accuracy"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": ".scratch/text2sql-ex-improvement/issues/README.md",
+      "summary": "Issues directory README with 67 lines providing overview of all Text2SQL EX improvement tickets (01-06), their status, dependencies, and implementation notes.",
+      "tags": ["documentation", "readme", "text2sql", "issues", "tickets", "overview", "status"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/01-timezone-aware-quota-reset.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/02-enforce-gemma-restriction.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/03-complete-fewshots-column-errors.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/04-verify-incremental-save-resume.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/05-fix-model-name-discrepancy.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/README.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/06-full-evaluation-run.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.scratch/text2sql-ex-improvement/issues/01-timezone-aware-quota-reset.md",
+      "target": "document:.scratch/text2sql-ex-improvement/issues/05-fix-model-name-discrepancy.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "users_09",
+  "check_type": "hybrid",
+  "question": "Quy định số ngày phép tối đa mỗi năm là bao nhiêu, và tôi còn lại mấy ngày?",
+  "expected_route": "HYBRID",
+  "variant": "ve ca nhan (DB) + ve quy dinh (tai lieu)",
+  "needs_columns": [
+    "annual_leave_days",
+    "used_leave_days"
+  ],
+  "note": "Mau HYBRID dien hinh"
+}

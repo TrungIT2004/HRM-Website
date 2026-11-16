@@ -1,0 +1,1597 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 18
+    }
+  },
+  "results": [
+    {
+      "path": ".agents/skills/design/references/banner-sizes-and-styles.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 118,
+      "nonEmptyLines": 102,
+      "sections": [
+        {
+          "heading": "Banner Sizes & Art Direction Styles Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Complete Banner Sizes",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Social Media",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "Web / Display Ads (Google Display Network)",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "Website",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "Print",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "22 Art Direction Styles",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Design Principles",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Visual Hierarchy (3-Zone Rule)",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Safe Zones",
+          "level": 3,
+          "line": 81
+        },
+        {
+          "heading": "CTA Rules",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Typography",
+          "level": 3,
+          "line": 94
+        },
+        {
+          "heading": "Text-to-Image Ratio",
+          "level": 3,
+          "line": 100
+        },
+        {
+          "heading": "Print Specs",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Pinterest Research Queries",
+          "level": 2,
+          "line": 111
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/cip-deliverable-guide.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 95,
+      "nonEmptyLines": 72,
+      "sections": [
+        {
+          "heading": "CIP Deliverable Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Core Identity",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Primary Logo",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "Logo Variations",
+          "level": 3,
+          "line": 10
+        },
+        {
+          "heading": "Stationery Set",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Business Card",
+          "level": 3,
+          "line": 17
+        },
+        {
+          "heading": "Letterhead",
+          "level": 3,
+          "line": 22
+        },
+        {
+          "heading": "Envelope",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "Office Environment",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Reception Signage",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Wayfinding System",
+          "level": 3,
+          "line": 39
+        },
+        {
+          "heading": "Wall Graphics",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "Apparel",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Polo Shirt",
+          "level": 3,
+          "line": 51
+        },
+        {
+          "heading": "Uniforms",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Vehicle Branding",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Car/Sedan",
+          "level": 3,
+          "line": 63
+        },
+        {
+          "heading": "Fleet Vehicles",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Digital Assets",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Social Media",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Email Signature",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Events & Promotional",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Trade Show Booth",
+          "level": 3,
+          "line": 87
+        },
+        {
+          "heading": "Promotional Items",
+          "level": 3,
+          "line": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 24
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/cip-design.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 121,
+      "nonEmptyLines": 87,
+      "sections": [
+        {
+          "heading": "CIP Design Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Scripts",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Commands",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "CIP Brief (Start Here)",
+          "level": 3,
+          "line": 16
+        },
+        {
+          "heading": "Search Domains",
+          "level": 3,
+          "line": 22
+        },
+        {
+          "heading": "Generate Mockups",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Render HTML Presentation",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Models",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Deliverable Categories",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "Design Styles",
+          "level": 2,
+          "line": 84
+        },
+        {
+          "heading": "HTML Presentation Features",
+          "level": 2,
+          "line": 94
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 102
+        },
+        {
+          "heading": "Detailed References",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "Setup",
+          "level": 2,
+          "line": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/cip-prompt-engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 84,
+      "nonEmptyLines": 63,
+      "sections": [
+        {
+          "heading": "CIP Mockup Prompt Engineering",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Base Prompt Structure",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Deliverable-Specific Modifiers",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Business Card",
+          "level": 3,
+          "line": 11
+        },
+        {
+          "heading": "Letterhead",
+          "level": 3,
+          "line": 16
+        },
+        {
+          "heading": "Office Signage",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "Vehicle Branding",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "Apparel (Polo/T-Shirt)",
+          "level": 3,
+          "line": 31
+        },
+        {
+          "heading": "Style Modifiers",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Corporate Minimal",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "Luxury Premium",
+          "level": 3,
+          "line": 43
+        },
+        {
+          "heading": "Modern Tech",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Warm Organic",
+          "level": 3,
+          "line": 53
+        },
+        {
+          "heading": "Lighting Modifiers",
+          "level": 2,
+          "line": 58
+        },
+        {
+          "heading": "Context Modifiers",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Quality Modifiers",
+          "level": 2,
+          "line": 73
+        },
+        {
+          "heading": "Negative Prompts (what to avoid)",
+          "level": 2,
+          "line": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/cip-style-guide.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 68,
+      "nonEmptyLines": 58,
+      "sections": [
+        {
+          "heading": "CIP Design Style Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Corporate Minimal",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Modern Tech",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Luxury Premium",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Classic Traditional",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Warm Organic",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Bold Dynamic",
+          "level": 2,
+          "line": 38
+        },
+        {
+          "heading": "Fresh Modern",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Soft Elegant",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Color Psychology",
+          "level": 2,
+          "line": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/design-routing.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 207,
+      "nonEmptyLines": 158,
+      "sections": [
+        {
+          "heading": "Design Routing Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Skill Overview",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Routing by Task Type",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Brand Identity Tasks",
+          "level": 3,
+          "line": 20
+        },
+        {
+          "heading": "Token System Tasks",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Implementation Tasks",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "Logo Design Tasks",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Corporate Identity Program Tasks",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "Presentation Tasks",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Banner Design Tasks",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Icon Design Tasks",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Routing by Question Type",
+          "level": 2,
+          "line": 91
+        },
+        {
+          "heading": "Multi-Skill Workflows",
+          "level": 2,
+          "line": 113
+        },
+        {
+          "heading": "New Project Setup",
+          "level": 3,
+          "line": 115
+        },
+        {
+          "heading": "Design System Migration",
+          "level": 3,
+          "line": 128
+        },
+        {
+          "heading": "Component Creation",
+          "level": 3,
+          "line": 141
+        },
+        {
+          "heading": "Skill Dependencies",
+          "level": 2,
+          "line": 151
+        },
+        {
+          "heading": "Quick Commands",
+          "level": 2,
+          "line": 163
+        },
+        {
+          "heading": "When to Use Multiple Skills",
+          "level": 2,
+          "line": 182
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 19
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/icon-design.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 122,
+      "nonEmptyLines": 96,
+      "sections": [
+        {
+          "heading": "Icon Design Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Scripts",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Commands",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "Generate Single Icon",
+          "level": 3,
+          "line": 13
+        },
+        {
+          "heading": "Generate Batch Variations",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "Generate Multiple Sizes",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "List Styles/Categories",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "CLI Options",
+          "level": 2,
+          "line": 41
+        },
+        {
+          "heading": "Available Styles",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Icon Categories",
+          "level": 2,
+          "line": 77
+        },
+        {
+          "heading": "SVG Best Practices",
+          "level": 2,
+          "line": 94
+        },
+        {
+          "heading": "Model",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "Setup",
+          "level": 2,
+          "line": 117
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/logo-color-psychology.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 101,
+      "nonEmptyLines": 77,
+      "sections": [
+        {
+          "heading": "Logo Color Psychology",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Primary Color Meanings",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Blue",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "Red",
+          "level": 3,
+          "line": 11
+        },
+        {
+          "heading": "Green",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "Yellow/Gold",
+          "level": 3,
+          "line": 24
+        },
+        {
+          "heading": "Purple",
+          "level": 3,
+          "line": 30
+        },
+        {
+          "heading": "Orange",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Black",
+          "level": 3,
+          "line": 42
+        },
+        {
+          "heading": "White",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Color Combinations by Industry",
+          "level": 2,
+          "line": 53
+        },
+        {
+          "heading": "Color Harmony Types",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Monochromatic",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Complementary",
+          "level": 3,
+          "line": 70
+        },
+        {
+          "heading": "Analogous",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Triadic",
+          "level": 3,
+          "line": 76
+        },
+        {
+          "heading": "Accessibility Considerations",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "Quick Reference Palettes",
+          "level": 2,
+          "line": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/logo-design.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 92,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Logo Design Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Scripts",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Commands",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Design Brief (Start Here)",
+          "level": 3,
+          "line": 15
+        },
+        {
+          "heading": "Search Domains",
+          "level": 3,
+          "line": 21
+        },
+        {
+          "heading": "Generate Logo",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Available Styles",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "Color Psychology",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Industry Defaults",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "Detailed References",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "Setup",
+          "level": 2,
+          "line": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/logo-prompt-engineering.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 158,
+      "nonEmptyLines": 129,
+      "sections": [
+        {
+          "heading": "Logo AI Prompt Engineering",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Core Prompt Structure",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Effective Keywords by Style",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Minimalist",
+          "level": 3,
+          "line": 15
+        },
+        {
+          "heading": "Vintage/Retro",
+          "level": 3,
+          "line": 22
+        },
+        {
+          "heading": "Luxury/Premium",
+          "level": 3,
+          "line": 29
+        },
+        {
+          "heading": "Modern/Tech",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Playful/Fun",
+          "level": 3,
+          "line": 43
+        },
+        {
+          "heading": "Organic/Natural",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Negative Prompts (What to Avoid)",
+          "level": 2,
+          "line": 57
+        },
+        {
+          "heading": "Industry-Specific Prompts",
+          "level": 2,
+          "line": 66
+        },
+        {
+          "heading": "Tech Startup",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Healthcare",
+          "level": 3,
+          "line": 75
+        },
+        {
+          "heading": "Restaurant/Food",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Fashion Brand",
+          "level": 3,
+          "line": 89
+        },
+        {
+          "heading": "Eco/Sustainable",
+          "level": 3,
+          "line": 96
+        },
+        {
+          "heading": "Technical Requirements to Include",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Scalability",
+          "level": 3,
+          "line": 105
+        },
+        {
+          "heading": "Versatility",
+          "level": 3,
+          "line": 111
+        },
+        {
+          "heading": "Quality",
+          "level": 3,
+          "line": 117
+        },
+        {
+          "heading": "Prompt Templates",
+          "level": 2,
+          "line": 123
+        },
+        {
+          "heading": "Quick Generation",
+          "level": 3,
+          "line": 125
+        },
+        {
+          "heading": "Detailed Brief",
+          "level": 3,
+          "line": 131
+        },
+        {
+          "heading": "Variation Request",
+          "level": 3,
+          "line": 144
+        },
+        {
+          "heading": "Common Pitfalls",
+          "level": 2,
+          "line": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 25
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/logo-style-guide.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 109,
+      "nonEmptyLines": 90,
+      "sections": [
+        {
+          "heading": "Logo Style Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Core Logo Types",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "1. Wordmark (Logotype)",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "2. Lettermark (Monogram)",
+          "level": 3,
+          "line": 12
+        },
+        {
+          "heading": "3. Pictorial Mark (Brand Mark)",
+          "level": 3,
+          "line": 19
+        },
+        {
+          "heading": "4. Abstract Mark",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "5. Mascot",
+          "level": 3,
+          "line": 33
+        },
+        {
+          "heading": "6. Emblem",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "7. Combination Mark",
+          "level": 3,
+          "line": 47
+        },
+        {
+          "heading": "Aesthetic Styles",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Minimalist",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "Vintage/Retro",
+          "level": 3,
+          "line": 62
+        },
+        {
+          "heading": "Luxury/Premium",
+          "level": 3,
+          "line": 68
+        },
+        {
+          "heading": "Geometric",
+          "level": 3,
+          "line": 74
+        },
+        {
+          "heading": "Organic/Natural",
+          "level": 3,
+          "line": 80
+        },
+        {
+          "heading": "Gradient/Modern",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "Style Selection Matrix",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "Scalability Checklist",
+          "level": 2,
+          "line": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/slides-copywriting-formulas.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 84,
+      "nonEmptyLines": 66,
+      "sections": [
+        {
+          "heading": "Copywriting Formulas",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Core Formulas",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "PAS (Problem-Agitate-Solution)",
+          "level": 3,
+          "line": 7
+        },
+        {
+          "heading": "AIDA (Attention-Interest-Desire-Action)",
+          "level": 3,
+          "line": 12
+        },
+        {
+          "heading": "FAB (Features-Advantages-Benefits)",
+          "level": 3,
+          "line": 17
+        },
+        {
+          "heading": "Cost of Inaction",
+          "level": 3,
+          "line": 22
+        },
+        {
+          "heading": "Before-After-Bridge",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "Formula-to-Slide Mapping",
+          "level": 2,
+          "line": 32
+        },
+        {
+          "heading": "Headline Patterns",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Power Words",
+          "level": 3,
+          "line": 48
+        },
+        {
+          "heading": "Contrast Patterns",
+          "level": 3,
+          "line": 55
+        },
+        {
+          "heading": "Social Proof Patterns",
+          "level": 3,
+          "line": 60
+        },
+        {
+          "heading": "Search Commands",
+          "level": 2,
+          "line": 65
+        },
+        {
+          "heading": "Quick Reference",
+          "level": 2,
+          "line": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 14
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/slides-create.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 4,
+      "nonEmptyLines": 3,
+      "sections": [
+        {
+          "heading": "Task",
+          "level": 2,
+          "line": 3
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/slides-html-template.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 295,
+      "nonEmptyLines": 258,
+      "sections": [
+        {
+          "heading": "HTML Slide Template",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Base Structure",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Chart.js Integration",
+          "level": 2,
+          "line": 204
+        },
+        {
+          "heading": "Animation Classes",
+          "level": 2,
+          "line": 239
+        },
+        {
+          "heading": "Background Images",
+          "level": 2,
+          "line": 275
+        },
+        {
+          "heading": "CSS Variables Reference",
+          "level": 2,
+          "line": 286
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/slides-layout-patterns.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 137,
+      "nonEmptyLines": 116,
+      "sections": [
+        {
+          "heading": "Layout Patterns",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Layout Selection by Use Case",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "CSS Structures",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Title Slide",
+          "level": 3,
+          "line": 26
+        },
+        {
+          "heading": "Two Column Split",
+          "level": 3,
+          "line": 37
+        },
+        {
+          "heading": "Feature Grid (3 columns)",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "Metrics Dashboard (4 columns)",
+          "level": 3,
+          "line": 65
+        },
+        {
+          "heading": "Component Variants",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Card Styles",
+          "level": 3,
+          "line": 82
+        },
+        {
+          "heading": "Metric Styles",
+          "level": 3,
+          "line": 91
+        },
+        {
+          "heading": "Visual Treatments",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Search Commands",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "Layout Decision Flow",
+          "level": 2,
+          "line": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/slides-strategies.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 94,
+      "nonEmptyLines": 75,
+      "sections": [
+        {
+          "heading": "Slide Strategies",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Strategy Selection",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Common Structures",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "YC Seed Deck (10 slides)",
+          "level": 3,
+          "line": 27
+        },
+        {
+          "heading": "Sales Pitch (9 slides)",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "Product Demo (6 slides)",
+          "level": 3,
+          "line": 54
+        },
+        {
+          "heading": "Duarte Sparkline Pattern",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Search Commands",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "Matching Strategy to Context",
+          "level": 2,
+          "line": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/slides.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 42,
+      "nonEmptyLines": 31,
+      "sections": [
+        {
+          "heading": "Slides Reference",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Usage",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Knowledge Base",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "When to Use",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "Key Features",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": ".agents/skills/design/references/social-photos-design.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 329,
+      "nonEmptyLines": 257,
+      "sections": [
+        {
+          "heading": "Social Photos Design Guide",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Platform Sizes",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Workflow",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Step 1: Activate Project Management",
+          "level": 3,
+          "line": 25
+        },
+        {
+          "heading": "Step 2: Analyze Requirements",
+          "level": 3,
+          "line": 36
+        },
+        {
+          "heading": "Step 3: Generate Ideas",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "Step 4: Design HTML Files",
+          "level": 3,
+          "line": 56
+        },
+        {
+          "heading": "HTML Design Rules",
+          "level": 4,
+          "line": 75
+        },
+        {
+          "heading": "HTML Template Structure",
+          "level": 4,
+          "line": 86
+        },
+        {
+          "heading": "Step 5: Screenshot Export",
+          "level": 3,
+          "line": 120
+        },
+        {
+          "heading": "Option A: Chrome Headless CLI (Recommended — zero dependencies)",
+          "level": 4,
+          "line": 126
+        },
+        {
+          "heading": "Option B: chrome-devtools skill",
+          "level": 4,
+          "line": 148
+        },
+        {
+          "heading": "Option C: Playwright script",
+          "level": 4,
+          "line": 157
+        },
+        {
+          "heading": "Option D: Puppeteer script",
+          "level": 4,
+          "line": 183
+        },
+        {
+          "heading": "Step 6: Verify & Fix Designs",
+          "level": 3,
+          "line": 211
+        },
+        {
+          "heading": "Step 7: Generate Summary Report",
+          "level": 3,
+          "line": 228
+        },
+        {
+          "heading": "Step 8: Organize Output",
+          "level": 3,
+          "line": 270
+        },
+        {
+          "heading": "Design Best Practices",
+          "level": 2,
+          "line": 278
+        },
+        {
+          "heading": "Platform-Specific Tips",
+          "level": 3,
+          "line": 280
+        },
+        {
+          "heading": "Art Direction Styles (Reuse from Banner)",
+          "level": 3,
+          "line": 290
+        },
+        {
+          "heading": "Color & Contrast",
+          "level": 3,
+          "line": 305
+        },
+        {
+          "heading": "Typography Hierarchy",
+          "level": 3,
+          "line": 312
+        },
+        {
+          "heading": "Security & Scope",
+          "level": 2,
+          "line": 322
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 23
+      }
+    }
+  ]
+}

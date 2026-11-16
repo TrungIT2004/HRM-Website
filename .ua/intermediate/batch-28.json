@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_120.csv",
+      "type": "document",
+      "name": "doc_only_120.csv",
+      "filePath": "ai-service/tests/DOC_ONLY/datasets/doc_only_120.csv",
+      "summary": "DOC_ONLY dataset CSV with 135 lines containing 120 document-only question-answer pairs for retrieval and generation evaluation.",
+      "tags": ["test", "dataset", "ai-service", "doc-only", "retrieval", "generation", "csv", "qa-pairs"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_120.json",
+      "type": "document",
+      "name": "doc_only_120.json",
+      "filePath": "ai-service/tests/DOC_ONLY/datasets/doc_only_120.json",
+      "summary": "DOC_ONLY dataset JSON with 3,001 lines containing 120 document-only questions with ground truth answers, document contexts, and metadata for RAG evaluation.",
+      "tags": ["test", "dataset", "ai-service", "doc-only", "rag", "ground-truth", "context", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.csv",
+      "type": "document",
+      "name": "doc_only_memory_20x12.csv",
+      "filePath": "ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.csv",
+      "summary": "DOC_ONLY memory test dataset CSV with 241 lines containing 20x12 multi-turn conversation scenarios for memory/consistency evaluation.",
+      "tags": ["test", "dataset", "ai-service", "doc-only", "memory", "multi-turn", "conversation", "csv"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.json",
+      "type": "document",
+      "name": "doc_only_memory_20x12.json",
+      "filePath": "ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.json",
+      "summary": "DOC_ONLY memory test dataset JSON with 17,557 lines containing 20x12 multi-turn conversations with full context, expected responses, and memory consistency checks.",
+      "tags": ["test", "dataset", "ai-service", "doc-only", "memory", "multi-turn", "conversation", "consistency", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_120.csv",
+      "target": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_120.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.csv",
+      "target": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_120.json",
+      "target": "document:ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

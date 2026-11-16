@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java",
+      "type": "document",
+      "name": "CompanyPayrollFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java",
+      "summary": "Company payroll filter request DTO: departmentId, month, year, status, page, size, sortBy, sortDir. HR/admin view for company payroll runs.",
+      "tags": ["backend", "payroll", "dto", "filter", "company", "hr", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/EditPayrollRequest.java",
+      "type": "document",
+      "name": "EditPayrollRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/EditPayrollRequest.java",
+      "summary": "Edit payroll request DTO: payrollId, baseSalary, allowances, bonuses, deductions, taxAmount, netSalary, note. HR correction for individual payroll records.",
+      "tags": ["backend", "payroll", "dto", "edit", "correction", "hr", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java",
+      "type": "document",
+      "name": "StaffPayrollFilterRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java",
+      "summary": "Staff payroll filter request DTO: month, year, status, page, size. Employee self-view for pay slip history.",
+      "tags": ["backend", "payroll", "dto", "filter", "staff", "self", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/CompanyPayrollResponse.java",
+      "type": "document",
+      "name": "CompanyPayrollResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/CompanyPayrollResponse.java",
+      "summary": "Company payroll response DTO: payrollId, userId, employeeCode, fullName, department, jobTitle, month, year, baseSalary, allowances, bonuses, overtimePay, deductions, taxAmount, netSalary, status, generatedAt. HR view.",
+      "tags": ["backend", "payroll", "dto", "response", "company", "hr", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/MonthlyPayrollSummaryResponse.java",
+      "type": "document",
+      "name": "MonthlyPayrollSummaryResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/MonthlyPayrollSummaryResponse.java",
+      "summary": "Monthly payroll summary response DTO: month, year, totalEmployees, totalGrossPay, totalNetPay, totalTax, totalOvertimePay, departmentBreakdown (list of dept, count, gross, net). Executive summary.",
+      "tags": ["backend", "payroll", "dto", "response", "summary", "monthly", "executive", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/StaffPayrollResponse.java",
+      "type": "document",
+      "name": "StaffPayrollResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/StaffPayrollResponse.java",
+      "summary": "Staff payroll response DTO: payrollId, month, year, baseSalary, allowances, bonuses, overtimePay, deductions, taxAmount, netSalary, status, generatedAt, paySlipUrl. Employee self-view with download link.",
+      "tags": ["backend", "payroll", "dto", "response", "staff", "self", "payslip", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java",
+      "type": "document",
+      "name": "MonthlyPayrollSummary.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java",
+      "summary": "MonthlyPayrollSummary JPA entity: id, month, year, totalEmployees, totalGrossPay, totalNetPay, totalTax, totalOvertimePay, status (DRAFT, FINALIZED, PAID), generatedAt, finalizedAt. Aggregate payroll run record.",
+      "tags": ["backend", "payroll", "entity", "summary", "jpa", "aggregate", "run", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "type": "document",
+      "name": "Payroll.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "summary": "Payroll JPA entity: id, userId, month, year, baseSalary, allowances, bonuses, overtimePay, deductions, taxAmount, netSalary, status (DRAFT, FINALIZED, PAID), paySlipPath, generatedAt, finalizedAt, paidAt. Individual payroll record linked to attendance/leave/overtime.",
+      "tags": ["backend", "payroll", "entity", "jpa", "individual", "payslip", "attendance", "leave", "overtime", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java",
+      "type": "document",
+      "name": "PayrollStatus.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java",
+      "summary": "PayrollStatus enum: DRAFT, FINALIZED, PAID. Workflow states for payroll processing.",
+      "tags": ["backend", "payroll", "enum", "status", "workflow", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java",
+      "type": "document",
+      "name": "PayrollException.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java",
+      "summary": "Payroll exception: extends RuntimeException with error codes (PAYROLL_LOCKED, INVALID_MONTH_YEAR, PAYROLL_NOT_FOUND, CALCULATION_ERROR, PAYSLIP_GENERATION_FAILED, ALREADY_PAID, INSUFFICIENT_DATA). Caught by GlobalExceptionHandler.",
+      "tags": ["backend", "payroll", "exception", "error-code", "locked", "calculation", "payslip", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/controllers/AdminController.java",
+      "type": "document",
+      "name": "AdminController.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/controllers/AdminController.java",
+      "summary": "Admin REST controller: endpoints for user management (getAllUsers, getUserDetail, createPendingUser, provisionAccount, rejectPendingUser, resetPassword, updateStatus, savePermissions), session management (getUserSessions, revokeSession), and system config. ADMIN role only.",
+      "tags": ["backend", "admin", "controller", "user-management", "session", "permissions", "java"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminResetPasswordRequest.java",
+      "type": "document",
+      "name": "AdminResetPasswordRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminResetPasswordRequest.java",
+      "summary": "Admin reset password request DTO: userId, newPassword, confirmPassword. Admin-initiated password reset with validation.",
+      "tags": ["backend", "admin", "dto", "reset-password", "validation", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminUpdateStatusRequest.java",
+      "type": "document",
+      "name": "AdminUpdateStatusRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminUpdateStatusRequest.java",
+      "summary": "Admin update status request DTO: userId, status (ACTIVE, INACTIVE, LOCKED), reason. Account status management by admin.",
+      "tags": ["backend", "admin", "dto", "update-status", "account", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/CreatePendingUserRequest.java",
+      "type": "document",
+      "name": "CreatePendingUserRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/CreatePendingUserRequest.java",
+      "summary": "Create pending user request DTO: email, fullName, departmentId, jobId, managerId. Pre-provisioning for new hires before they sign up.",
+      "tags": ["backend", "admin", "dto", "pending-user", "pre-provision", "hire", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/ProvisionAccountRequest.java",
+      "type": "document",
+      "name": "ProvisionAccountRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/ProvisionAccountRequest.java",
+      "summary": "Provision account request DTO: pendingUserId, username, temporaryPassword, sendEmail. Activates pending user account and sends credentials.",
+      "tags": ["backend", "admin", "dto", "provision", "activate", "email", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/RejectPendingUserRequest.java",
+      "type": "document",
+      "name": "RejectPendingUserRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/RejectPendingUserRequest.java",
+      "summary": "Reject pending user request DTO: pendingUserId, reason. Rejects pre-provisioned user (e.g., offer declined).",
+      "tags": ["backend", "admin", "dto", "reject", "pending-user", "java"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/SavePermissionsRequest.java",
+      "type": "document",
+      "name": "SavePermissionsRequest.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/SavePermissionsRequest.java",
+      "summary": "Save permissions request DTO: userId, permissions (map of PermissionKey to boolean). Granular permission management per user.",
+      "tags": ["backend", "admin", "dto", "permissions", "granular", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminAccountResponse.java",
+      "type": "document",
+      "name": "AdminAccountResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminAccountResponse.java",
+      "summary": "Admin account response DTO: userId, username, email, fullName, status, roles, permissions, department, jobTitle, lastLogin, createdAt. Full admin view.",
+      "tags": ["backend", "admin", "dto", "response", "account", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminSessionResponse.java",
+      "type": "document",
+      "name": "AdminSessionResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminSessionResponse.java",
+      "summary": "Admin session response DTO: sessionId, userId, ipAddress, userAgent, createdAt, lastAccessedAt, isCurrent. Session monitoring for security.",
+      "tags": ["backend", "admin", "dto", "response", "session", "security", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/PendingUserResponse.java",
+      "type": "document",
+      "name": "PendingUserResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/PendingUserResponse.java",
+      "summary": "Pending user response DTO: pendingUserId, email, fullName, department, jobTitle, manager, createdAt, expiresAt. Pre-hire tracking.",
+      "tags": ["backend", "admin", "dto", "response", "pending-user", "pre-hire", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/UserPermissionResponse.java",
+      "type": "document",
+      "name": "UserPermissionResponse.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/UserPermissionResponse.java",
+      "summary": "User permission response DTO: userId, permissions (PermissionKey -> granted). Current effective permissions for user.",
+      "tags": ["backend", "admin", "dto", "response", "permission", "effective", "java"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "type": "document",
+      "name": "AdminService.java",
+      "filePath": "backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "summary": "Admin service: implements user provisioning, password reset, status updates, permission management, session revocation, and pending user lifecycle. Integrates with UserProfileRepository, UserSessionRepository, PermissionService.",
+      "tags": ["backend", "admin", "service", "provisioning", "password", "permissions", "session", "java"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/admin/controllers/AdminController.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "target": "document:backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    }
+  ]
+}

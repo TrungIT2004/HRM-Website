@@ -1,0 +1,442 @@
+Vd14::
+ LỊCH LÀM VIỆC của tôi — work_shifts (global) + work_shift_schedules (global)
+qua users.shift_id, KHÔNG cần %(uid)s vì 2 bảng này không gắn user.
+```sql
+SELECT wss.day_of_week, wss.is_working, wss.start_time, wss.end_time, ws.name AS ten_ca
+FROM users u
+JOIN work_shifts ws ON ws.shift_id = u.shift_id
+JOIN work_shift_schedules wss ON wss.shift_id = ws.shift_id
+WHERE u.user_id = %(uid)s
+ORDER BY wss.day_of_week
+```
+
+
+---
+Vd15::
+ Ngày lễ toàn công ty — bảng global, không gắn user.
+```sql
+SELECT h.date, h.description FROM holidays h
+WHERE EXTRACT(YEAR FROM h.date) = %(year)s ORDER BY h.date
+```
+
+
+---
+Vd20::
+ LỊCH LÀM VIỆC CỦA TRƯỞNG PHÒNG/SẾP/QUẢN LÝ TRỰC TIẾP CỦA TÔI —
+giống Vd18 để tìm m, rồi JOIN lịch theo m.shift_id (KHÔNG dùng shift của me).
+Trả cả tuần, Composer tự đối chiếu "mai"/"hôm nay" theo day_of_week.
+```sql
+SELECT wss.day_of_week, wss.is_working, wss.start_time, wss.end_time,
+       ws.name AS ten_ca
+FROM users me
+JOIN users m ON m.department_id = me.department_id
+JOIN work_shifts ws ON ws.shift_id = m.shift_id
+JOIN work_shift_schedules wss ON wss.shift_id = ws.shift_id
+LEFT JOIN jobs
+---
+Vd21::
+ "Lương tháng này của tôi?" — phiếu chốt SAU kỳ nên tháng hiện tại
+thường chưa có: lấy kỳ MỚI NHẤT (ORDER BY DESC LIMIT 1), CẤM lọc tháng/năm
+hiện tại. Mẫu này áp dụng mọi bảng giao dịch theo kỳ (payrolls,
+performance_reviews...).
+```sql
+SELECT p.period_month, p.period_year, p.net_pay, p.status
+FROM payrolls p
+WHERE p.user_id = %(uid)s
+ORDER BY p.period_year DESC, p.period_month DESC LIMIT 1
+```
+
+
+---
+Vd25::
+ GỬI QUYỀN (permission) — dùng đúng tên trong DB: `LEAVE_APPROVE`, `LEAVE_APPROVE_DEPT`, `PAYROLL_VIEW_ALL`, `PAYROLL_MANAGE`, `TIMESHEET_LOCK`, `PERMISSION_GRANT`, `USER_MANAGE`, `ROLE_ASSIGN`, `OVERTIME_APPROVE`. KHÔNG tự bịa như `APPROVE_LEAVE`, `view_all_salaries`.
+```sql
+SELECT permission FROM user_permission_grants WHERE user_id = %(uid)s AND permission IN ('LEAVE_APPROVE','PAYROLL_VIEW_ALL')
+```
+
+
+---
+Vd28::
+ CA LÀM VIỆC — `work_shifts` + `work_shift_schedules` JOIN qua `users.shift_id`. Lấy `rest_start_time`/`rest_end_time` cho giờ nghỉ trưa. `day_of_week` ISO: 1=Thứ 2...7=Chủ nhật.
+```sql
+SELECT wss.day_of_week, wss.start_time, wss.end_time, wss.rest_start_time, wss.rest_end_time
+FROM users u JOIN work_shifts ws ON ws.shift_id = u.shift_id JOIN work_shift_schedules wss ON wss.shift_id = ws.shift_id WHERE u.user_id = %(uid)s
+```
+
+
+---
+Vd29::
+ BÁO CÁO HIỆU SUẤT — `performance_reviews` có `evaluator_name` (tên người đánh giá), `avg_self`, `avg_manager`. `performance_scores` JOIN qua `review_id` để lấy chi tiết tiêu chí.
+```sql
+SELECT pr.period_year, pr.period_month, pr.avg_self, pr.avg_manager, pr.evaluator_name
+FROM performance_reviews pr WHERE pr.user_id = %(uid)s ORDER BY pr.period_year DESC, pr.period_month DESC LIMIT 1
+```
+
+
+---
+Vd30::
+ TRẠNG THÁI HỢP LỆ — dùng đúng giá trị DB cho từng bảng:
+- `leave_requests.status`: 'pending'/'accepted'/'rejected' (CHỮ THƯỜNG)
+- `overtime_records.status`: 'pending'/'accepted'/'rejected' (CHỮ THƯỜNG)
+- `it_tickets.status`: 'OPEN'/'IN_PROGRESS'/'DONE'/'CANCELLED' (CHỮ HOA)
+- `resignation_requests.status`: 'PENDING'/'MANAGER_APPROVED'/'MANAGER_REJECTED'/'APPROVED'/'REJECTED'/'CANCELLED' (CHỮ HOA)
+- `user_contracts.contract_type`: 'Probation'/'Fixed-term'/'Indefinite' (viết hoa chữ cái đầu)
+
+
+---
+Vd31::
+ QUYỀN HẠN (permission) — CHỈ dùng giá trị có trong DB:
+`LEAVE_APPROVE`, `LEAVE_APPROVE_DEPT`, `PAYROLL_VIEW_ALL`, `PAYROLL_MANAGE`, `TIMESHEET_LOCK`, `PERMISSION_GRANT`, `USER_MANAGE`, `ROLE_ASSIGN`, `OVERTIME_APPROVE`.
+KHÔNG tự bịa: `APPROVE_LEAVE`, `view_all_salaries`, `GRANT_PERMISSION`, `can_approve_leave`.
+```sql
+SELECT permission FROM user_permission_grants WHERE user_id = %(uid)s AND permission IN ('LEAVE_APPROVE','PAYROLL_VIEW_ALL')
+```
+
+
+---
+Vd32::
+ CỘT THƯỜNG HALLUCINATE — KHÔNG tự tạo cột không có trong schema:
+- `users`: CÓ `is_active` (trạng thái tài khoản). KHÔNG có `session_id`/`last_active_at`/`revoked` (đó là `user_sessions`).
+- `monthly_timesheets`: CÓ `total_actual_ot_hours` VÀ `total_paid_ot_hours`. KHÔNG có `work_date`. KHÔNG dùng cho chi tiết đi muộn/về sớm từng ngày — dùng `attendances`.
+- `overtime_records`: Tính giờ OT dùng `clock_in_time`/`clock_out_time` (TIMESTAMP). CẤM dùng `approved_start_time`/`approved_end_time` để t
+---
+Vd40::
+ PERMISSIONS — DÙNG ĐÚNG TÊN DB: `LEAVE_APPROVE`, `LEAVE_APPROVE_DEPT`, `PAYROLL_VIEW_ALL`, `PAYROLL_MANAGE`, `TIMESHEET_LOCK`, `PERMISSION_GRANT`, `USER_MANAGE`, `ROLE_ASSIGN`, `OVERTIME_APPROVE`. KHÔNG tự bịa: `APPROVE_LEAVE`, `view_all_salaries`, `GRANT_PERMISSION`, `can_approve_leave`.
+```sql
+-- "Quyền duyệt OT?"
+SELECT permission FROM user_permission_grants
+WHERE user_id = %(uid)s AND permission IN ('OVERTIME_APPROVE')
+```
+
+
+---
+Vd41::
+ PERFORMANCE_REVIEWS — lấy kỳ mới nhất: ORDER BY period_year DESC, period_month DESC LIMIT 1. CÓ cột: `evaluator_name`, `leader_confirmed`, `overall_summary`. KHÔNG tự tạo cột.
+```sql
+SELECT pr.period_year, pr.period_month, pr.avg_self, pr.avg_manager,
+       pr.evaluator_name, pr.leader_confirmed, pr.overall_summary
+FROM performance_reviews pr
+WHERE pr.user_id = %(uid)s
+ORDER BY pr.period_year DESC, pr.period_month DESC LIMIT 1
+```
+
+
+---
+Vd42::
+ PERFORMANCE_SCORES — JOIN qua `review_id`. Chỉ lấy khi câu hỏi hỏi "chi tiết từng tiêu chí". Cột: `criterion_text`, `self_score`, `manager_score`, `note`, `sort_order`.
+```sql
+SELECT ps.criterion_text, ps.self_score, ps.manager_score, ps.note
+FROM performance_scores ps
+JOIN performance_reviews pr ON pr.review_id = ps.review_id
+WHERE pr.user_id = %(uid)s
+  AND pr.period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = %(uid)s)
+  AND pr.period_month = (SELECT MAX(period_mo
+---
+Vd52::
+ WORK_SHIFT_SCHEDULES — Hỏi lịch làm việc → SELECT `day_of_week`, `is_working`, `start_time`, `end_time`. Hỏi giờ nghỉ trưa → thêm `rest_start_time`, `rest_end_time`. KHÔNG SELECT `ten_ca` (không có cột này), KHÔNG SELECT `work_date` (bảng này không có work_date). JOIN qua users.shift_id.
+```sql
+-- "Lịch làm việc của tôi từ thứ 2 đến thứ 6?"
+SELECT wss.day_of_week, wss.is_working, wss.start_time, wss.end_time
+FROM users u JOIN work_shifts ws ON ws.shift_id = u.shift_id
+JOIN work_shift_schedules 
+---
+Vd61::
+ RESIGNATION_REQUESTS — CHỈ SELECT cột cần: `status`, `submitted_time`, `last_working_date`, `reason` (khi hỏi lý do), `manager_approved_at`, `hr_approved_at` (khi hỏi duyệt). KHÔNG thêm `resignation_id` trừ khi cần ID.
+```sql
+-- "Trạng thái đơn nghỉ việc"
+SELECT status, submitted_time, last_working_date FROM resignation_requests WHERE user_id = %(uid)s
+```
+
+
+---
+Vd62::
+ PERFORMANCE_REVIEWS — Hỏi kết quả: CHỈ `period_year`, `period_month`, `avg_self`, `avg_manager`, `status`. Hỏi người đánh giá: CHỈ `evaluator_name`, `evaluator_id`. Hỏi mục tiêu: CHỈ `period_year`, `period_month`, `next_goals`. KHÔNG thêm `period_type`, `evaluator_name`, `leader_confirmed`, `overall_summary` trừ khi hỏi.
+```sql
+-- "Kết quả đánh giá năm nay"
+SELECT period_year, period_month, avg_self, avg_manager, status
+FROM performance_reviews WHERE user_id = %(uid)s AND period_year = %(year)s
+---
+Vd63::
+ PERFORMANCE_SCORES — JOIN qua `review_id`. CHỈ SELECT `criterion_text`, `self_score`, `manager_score`, `note`, `sort_order`. Lọc review qua user_id + kỳ mới nhất.
+```sql
+-- "Chi tiết điểm từng tiêu chí"
+SELECT ps.criterion_text, ps.self_score, ps.manager_score, ps.note
+FROM performance_scores ps
+JOIN performance_reviews pr ON pr.review_id = ps.review_id
+WHERE pr.user_id = %(uid)s
+AND pr.period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = %(uid)s)
+AND pr.period_month 
+---
+Vd64::
+ ASSET_ASSIGNMENTS / ASSET_REQUESTS / ASSETS — JOIN asset_categories để lấy tên danh mục (`ac.name AS category`). CHỈ SELECT cột được hỏi. asset_requests dùng `request_id`, KHÔNG dùng alias `r`. assets dùng `asset_code`, `name`, `serial_number`, `specs`, `warranty_until`, `condition_note`.
+```sql
+-- "Thiết bị đang cấp cho tôi"
+SELECT a.asset_code, a.name, a.serial_number, a.specs
+FROM assets a JOIN asset_assignments aa ON aa.asset_id = a.asset_id
+WHERE aa.user_id = %(uid)s AND aa.status = 'activ
+---
+Vd66::
+ WORK_SHIFT_SCHEDULES — KHÔNG có cột `ten_ca`, `work_date`. CHỈ SELECT: `day_of_week`, `is_working`, `start_time`, `end_time`, `rest_start_time`, `rest_end_time`. JOIN qua users.shift_id.
+```sql
+-- "Lịch làm việc thứ 2 đến thứ 6"
+SELECT wss.day_of_week, wss.is_working, wss.start_time, wss.end_time
+FROM users u JOIN work_shifts ws ON ws.shift_id = u.shift_id
+JOIN work_shift_schedules wss ON wss.shift_id = ws.shift_id
+WHERE u.user_id = %(uid)s AND wss.day_of_week BETWEEN 1 AND 5 ORDER BY wss.day_o
+---
+Vd67::
+ PERFORMANCE_REVIEWS — CHỈ SELECT cột được hỏi:
+- Kết quả: `period_year`, `period_month`, `avg_self`, `avg_manager`, `status`
+- Người đánh giá: `evaluator_name`, `evaluator_id`
+- Mục tiêu: `period_year`, `period_month`, `next_goals`
+KHÔNG thêm `period_type`, `overall_summary`, `leader_confirmed`, `evaluator_name` (trừ khi hỏi người đánh giá).
+```sql
+-- "Kết quả đánh giá năm nay"
+SELECT period_year, period_month, avg_self, avg_manager, status
+FROM performance_reviews WHERE user_id = %(uid)s AND p
+---
+Vd68::
+ OVERTIME_RECORDS — Alias BẮT BUỘC: `total_ot_hours` (KHÔNG `total_hours`). Tháng: `month` (từ EXTRACT). Tính giờ: `clock_in_time`/`clock_out_time` (TIMESTAMP). KHÔNG dùng `approved_start_time`/`approved_end_time` để TÍNH. Lọc năm qua `approved_date`.
+```sql
+-- "Tổng giờ OT năm nay"
+SELECT ROUND(COALESCE(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600),0)::numeric,2) AS total_ot_hours
+FROM overtime_records WHERE requestor_id = %(uid)s AND status = 'accepted'
+AND EXTRACT(YEAR FROM a
+---
+Vd72::
+ RESIGNATION_REQUESTS — CHỈ SELECT cột được hỏi: `status`, `submitted_time`, `last_working_date`, `reason` (khi hỏi lý do), `manager_approved_at`, `hr_approved_at` (khi hỏi duyệt). KHÔNG thêm `resignation_id`, `reason` (trừ khi hỏi), `submitted_time` (trừ khi hỏi).
+```sql
+-- "Trạng thái đơn nghỉ việc"
+SELECT status, submitted_time, last_working_date FROM resignation_requests WHERE user_id = %(uid)s
+```
+```sql
+-- "Ngày làm việc cuối cùng"
+SELECT last_working_date, status FROM resignation_requests
+---
+Vd73::
+ WORK_SHIFTS vs WORK_SHIFT_SCHEDULES — PHÂN BIỆT RÕ:
+- "Tôi đang làm ca nào" / "Ca của tôi tên gì" → `work_shifts` (SELECT `shift_id`, `name`)
+- "Ca làm bắt đầu/kết thúc lúc mấy giờ" / "Giờ nghỉ trưa" → `work_shift_schedules` JOIN `work_shifts` (SELECT `name`, `day_of_week`, `start_time`, `end_time`, `rest_start_time`, `rest_end_time`)
+```sql
+-- "Tôi đang làm ca nào"
+SELECT s.shift_id, s.name FROM work_shifts s JOIN users u ON u.shift_id = s.shift_id WHERE u.user_id = %(uid)s
+```
+```sql
+-- "Ca l
+---
+Vd77::
+ ASSET_ASSIGNMENTS / ASSET_REQUESTS — PHÂN BIỆT RÕ:
+- "Tài sản đang cấp cho tôi" → `asset_assignments` JOIN `assets` (status='active'), SELECT `asset_id`, `asset_name` (a.name), `status`, `assigned_at`
+- "Hạn trả dự kiến" → `asset_assignments` JOIN `assets`, SELECT `asset_id`, `asset_name`, `expected_return_date`, `status`
+- "Người duyệt cấp tài sản" → `asset_assignments`, SELECT `asset_id`, `assigned_by`
+- "Yêu cầu cấp tài sản" → `asset_requests` JOIN `asset_categories`, SELECT cột được hỏi (`s
+---
+Vd80::
+ ASSETS — CHỈ SELECT cột được hỏi (JOIN asset_assignments WHERE user_id = %(uid)s AND status = 'active'):
+- Thông tin chi tiết laptop: `asset_code`, `name`, `serial_number`, `specs`
+- Bảo hành: `name`, `warranty_until`
+- Tình trạng: `name`, `condition_note`, `status`
+KHÔNG thêm `category`, `assigned_at`, `location`, `asset_code` (trừ khi hỏi).
+```sql
+-- "Thông tin chi tiết laptop"
+SELECT a.asset_code, a.name, a.serial_number, a.specs FROM assets a JOIN asset_assignments aa ON aa.asset_id = a.ass
+---
+Vd83::
+ USER_PERMISSION_GRANTS — CHỈ SELECT cột được hỏi:
+- Thống kê theo nhóm: `grp`, `cnt` (CASE WHEN permission LIKE ... GROUP BY grp)
+- Quyền phê duyệt: `permission`, `granted_at` (WHERE permission LIKE '%APPROVE%')
+- Có quyền cụ thể: `permission` (WHERE permission IN (...))
+```sql
+-- "Thống kê quyền theo nhóm"
+SELECT CASE WHEN permission LIKE '%APPROVE%' THEN 'approve' WHEN permission LIKE '%VIEW%' THEN 'view' WHEN permission LIKE '%MANAGE%' THEN 'manage' WHEN permission LIKE '%GRANT%' THEN 'grant
+---
+Vd89::
+ RESIGNATION_REQUESTS vs LEAVE_REQUESTS — PHÂN BIỆT RÕ:
+- "Nghỉ việc", "Đơn nghỉ việc", "Thôi việc" → `resignation_requests`
+- "Xin nghỉ phép", "Đơn xin nghỉ", "Nghỉ phép" → `leave_requests`
+```sql
+-- "Đơn nghỉ việc trạng thái"
+SELECT status, submitted_time, last_working_date FROM resignation_requests WHERE user_id = %(uid)s ORDER BY submitted_time DESC LIMIT 1
+```
+```sql
+-- "Ngày làm cuối cùng"
+SELECT last_working_date, status FROM resignation_requests WHERE user_id = %(uid)s ORDER BY submitted
+---
+Vd90::
+ WORK_SHIFTS vs WORK_SHIFT_SCHEDULES — PHÂN BIỆT RÕ (Tiếp):
+- "Tôi đang làm ca nào", "Ca của tôi tên gì" → `work_shifts` (SELECT `shift_id`, `name`) KHÔNG JOIN schedules
+- "Ca làm bắt đầu/kết thúc", "Giờ nghỉ trưa", "Lịch từ thứ 2-6", "Thứ 7 CN" → `work_shift_schedules` JOIN `work_shifts`
+```sql
+-- "Tôi đang làm ca nào"
+SELECT s.shift_id, s.name FROM work_shifts s JOIN users u ON u.shift_id = s.shift_id WHERE u.user_id = %(uid)s
+```
+```sql
+-- "Ca làm bắt đầu kết thúc mấy giờ"
+SELECT s.name, wss.
+---
+Vd94::
+ RESIGNATION_REQUESTS vs LEAVE_REQUESTS — PHÂN BIỆT TUYỆT ĐỐI:
+- "Nghỉ việc", "Đơn nghỉ việc", "Thôi việc", "nghỉ việc" → `resignation_requests` (cột: `status`, `submitted_time`, `last_working_date`, `reason`, `manager_approved_at`, `hr_approved_at`)
+- "Xin nghỉ phép", "Đơn xin nghỉ", "Nghỉ phép", "nghỉ phép" → `leave_requests` (cột: `from_date`, `to_date`, `reason`, `status`, `rejection_reason`, `approver_id`, `created_at`)
+KHÔNG dùng leave_requests cho câu hỏi về nghỉ việc, KHÔNG dùng resignat
+---
+Vd95::
+ WORK_SHIFTS ĐỘC LẬP — "Tôi đang làm ca nào", "Ca của tôi tên gì" → CHỈ `work_shifts` JOIN `users`, SELECT `shift_id`, `name`. KHÔNG JOIN `work_shift_schedules`, KHÔNG SELECT `start_time`/`end_time`/`rest_...` trừ khi hỏi giờ làm/nghỉ trưa.
+```sql
+-- "Tôi đang làm ca nào"
+SELECT s.shift_id, s.name FROM work_shifts s JOIN users u ON u.shift_id = s.shift_id WHERE u.user_id = %(uid)s
+```
+
+
+---
+Vd98::
+ HOLIDAYS — Cột ngày là `"date"` (CÓ DẤU NGỌC KÉP do từ khóa SQL). Hỏi "ngày lễ sắp tới": `SELECT "date", description FROM holidays WHERE "date" >= CURRENT_DATE ORDER BY "date" LIMIT 1`. Hỏi "so sánh 6 tháng": `SELECT COUNT(*) FILTER (WHERE EXTRACT(MONTH FROM "date") BETWEEN 1 AND 6) AS h1, COUNT(*) FILTER (WHERE EXTRACT(MONTH FROM "date") BETWEEN 7 AND 12) AS h2 FROM holidays WHERE EXTRACT(YEAR FROM "date") = EXTRACT(YEAR FROM CURRENT_DATE)`.
+```sql
+-- "Ngày lễ sắp tới"
+SELECT "date", descripti
+---
+Vd99::
+ ASSETS — "Thiết bị/laptop đang cấp cho tôi": JOIN `asset_assignments` (status='active') + `assets`, SELECT `asset_code`, `name`, `serial_number`, `specs`. KHÔNG SELECT `category`, `location`, `assigned_at` trừ khi hỏi.
+```sql
+-- "Thông tin chi tiết laptop"
+SELECT a.asset_code, a.name, a.serial_number, a.specs FROM assets a JOIN asset_assignments aa ON aa.asset_id = a.asset_id WHERE aa.user_id = %(uid)s AND aa.status = 'active'
+```
+
+
+---
+Vd103::
+ WORK_SHIFT_SCHEDULES KHÔNG CẦN JOIN WORK_SHIFTS — Khi hỏi lịch làm việc/giờ nghỉ trưa, CHỈ JOIN users → work_shift_schedules (qua users.shift_id = work_shift_schedules.shift_id). KHÔNG JOIN work_shifts trừ khi cần `ws.name` (tên ca).
+```sql
+-- "Mỗi ngày làm mấy tiếng sau khi trừ giờ nghỉ trưa"
+SELECT wss.day_of_week, wss.start_time, wss.end_time, wss.rest_start_time, wss.rest_end_time, ROUND((EXTRACT(EPOCH FROM (wss.end_time - wss.start_time)) - COALESCE(EXTRACT(EPOCH FROM (wss.rest_end_time - 
+---
+Vd105::
+ USER_PERMISSION_GRANTS — Thống kê quyền theo nhóm: CASE WHEN permission LIKE '%APPROVE%' THEN 'approve' ... GROUP BY grp. Alias: `grp`, `cnt`.
+```sql
+-- "Thống kê quyền của tôi theo nhóm"
+SELECT CASE WHEN permission LIKE '%APPROVE%' THEN 'approve' WHEN permission LIKE '%VIEW%' THEN 'view' WHEN permission LIKE '%MANAGE%' THEN 'manage' WHEN permission LIKE '%GRANT%' THEN 'grant' WHEN permission LIKE '%ASSIGN%' THEN 'assign' WHEN permission LIKE '%LOCK%' THEN 'lock' ELSE 'other' END AS grp, COUNT(
+---
+Vd106::
+ PERFORMANCE_REVIEWS OVERALL_SUMMARY — Hỏi "nhận xét tổng quan", "nhận xét của quản lý": CHỈ SELECT `overall_summary` từ kỳ mới nhất.
+```sql
+-- "Nhận xét tổng quan của quản lý về hiệu suất tôi"
+SELECT overall_summary FROM performance_reviews WHERE user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1
+```
+
+
+---
+Vd107::
+ RESIGNATION_REQUESTS vs LEAVE_REQUESTS — KHÔNG NHẦM LẪN:
+- "Đơn nghỉ việc", "Nghỉ việc", "Thôi việc" → `resignation_requests`
+- "Đơn xin nghỉ bị từ chối/hủy" → `leave_requests` (status='rejected')
+```sql
+-- "Đơn nghỉ việc bị từ chối/hủy"
+SELECT status, reason, submitted_time FROM resignation_requests WHERE user_id = %(uid)s AND status IN ('REJECTED','CANCELLED','MANAGER_REJECTED') ORDER BY submitted_time DESC
+```
+```sql
+-- "Đơn xin nghỉ bị từ chối"
+SELECT from_date, to_date, status, rejection_r
+---
+Vd108::
+ ASSET_ASSIGNMENTS — CỘT CHÍNH XÁC NHƯ GOLD:
+- "Tài sản đang cấp cho tôi" → SELECT `aa.asset_id`, `a.name AS asset_name`, `aa.status`, `aa.assigned_at`
+- "Hạn trả dự kiến" → SELECT `aa.asset_id`, `a.name AS asset_name`, `aa.expected_return_date`, `aa.status`
+- "Người duyệt cấp" → SELECT `aa.asset_id`, `aa.assigned_by`
+KHÔNG SELECT `asset_code`, `serial_number`, `specs` trừ khi hỏi chi tiết thiết bị.
+```sql
+-- "Tài sản đang cấp cho tôi"
+SELECT aa.asset_id, a.name AS asset_name, aa.status, aa.assi
+---
+Vd110::
+ KHÔNG THÊM CỘT THỪA — Chỉ SELECT cột được hỏi TRỰC TIẾP. Nếu hỏi "lương tháng này" → CHỈ `period_month`, `period_year`, `net_pay`, `status`. Nếu hỏi "tổng thu nhập năm" → CHỈ `SUM(net_pay) AS total_net`. KHÔNG thêm cột `status`, `period_month`, `period_year` khi chỉ hỏi 1 con số tổng.
+```sql
+-- "Tổng thu nhập năm nay"
+SELECT COALESCE(SUM(p.net_pay), 0) AS total_net FROM payrolls p WHERE p.user_id = %(uid)s AND p.period_year = %(year)s
+```
+```sql
+-- "Lương tháng này thực lĩnh"
+SELECT p.period_mo
+---
+Vd80::
+ ASSETS — CHỈ SELECT cột được hỏi (JOIN asset_assignments WHERE user_id = %(uid)s AND status = 'active'):
+- Thông tin chi tiết laptop: `asset_code`, `name`, `serial_number`, `specs`
+- Bảo hành: `name`, `warranty_until`
+- Tình trạng: `name`, `condition_note`, `status`
+KHÔNG thêm `category`, `assigned_at`, `location`, `asset_code` (trừ khi hỏi).
+```sql
+-- "Thông tin chi tiết laptop"
+SELECT a.asset_code, a.name, a.serial_number, a.specs FROM assets a JOIN asset_assignments aa ON aa.asset_id = a.ass
+---
+Vd83::
+ USER_PERMISSION_GRANTS — CHỈ SELECT cột được hỏi:
+- Thống kê theo nhóm: `grp`, `cnt` (CASE WHEN permission LIKE ... GROUP BY grp)
+- Quyền phê duyệt: `permission`, `granted_at` (WHERE permission LIKE '%APPROVE%')
+- Có quyền cụ thể: `permission` (WHERE permission IN (...))
+```sql
+-- "Thống kê quyền theo nhóm"
+SELECT CASE WHEN permission LIKE '%APPROVE%' THEN 'approve' WHEN permission LIKE '%VIEW%' THEN 'view' WHEN permission LIKE '%MANAGE%' THEN 'manage' WHEN permission LIKE '%GRANT%' THEN 'grant
+---
+Vd85::
+ HOLIDAYS — CHỈ SELECT cột được hỏi:
+- Ngày lễ sắp tới: `"date"`, `description` (WHERE "date" >= CURRENT_DATE ORDER BY "date" LIMIT 1)
+- So sánh 6 tháng: `h1`, `h2` (COUNT FILTER WHERE EXTRACT MONTH BETWEEN 1-6 / 7-12)
+```sql
+-- "Ngày lễ sắp tới"
+SELECT "date", description FROM holidays WHERE "date" >= CURRENT_DATE ORDER BY "date" LIMIT 1
+```
+
+
+---
+Vd86::
+ PERFORMANCE_SCORES — JOIN qua `review_id`, CHỈ SELECT `criterion_text`, `self_score`, `manager_score`, `note`, `sort_order`. Lọc review qua user_id + kỳ mới nhất.
+```sql
+-- "Chi tiết điểm từng tiêu chí"
+SELECT ps.criterion_text, ps.self_score, ps.manager_score, ps.note FROM performance_scores ps JOIN performance_reviews pr ON pr.review_id = ps.review_id WHERE pr.user_id = %(uid)s AND pr.period_year = (SELECT MAX(period_year) FROM performance_reviews WHERE user_id = %(uid)s) AND pr.period_month 
+---
+Vd111::
+ EXACT COLUMN MATCHING — PHẢI KHỚP HẾT CỘT VÀ THỨ TỰ CỦA GOLD SQL. KHÔNG thêm cột thừa, KHÔNG thiếu cột, KHÔNG đổi alias. Nếu gold có 3 cột → CHỈ SELECT 3 cột đó.
+```sql
+-- Gold: period_year, period_month, avg_manager → CHỈ 3 cột này
+SELECT period_year, period_month, avg_manager FROM performance_reviews WHERE user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1
+```
+```sql
+-- Gold: avg_self, avg_manager, (avg_self - avg_manager) AS diff → CHỈ 3 cột, alias PHẢI là diff
+SELECT avg
+---
+Vd114::
+ ASSET_ASSIGNMENTS — CỘT CHÍNH XÁC NHƯ GOLD (KHÔNG SELECT asset_code, serial_number, specs):
+- "Tài sản đang cấp": Gold có `aa.asset_id`, `a.name AS asset_name`, `aa.status`, `aa.assigned_at` — CHỈ 4 cột, LEFT JOIN assets
+- "Hạn trả": Gold có `aa.asset_id`, `a.name AS asset_name`, `aa.expected_return_date`, `aa.status` — CHỈ 4 cột
+- "Người duyệt cấp": Gold có `asset_id`, `assigned_by` — CHỈ 2 cột, KHÔNG LIMIT 1
+- "Ghi chú bàn giao": Gold có `asset_id`, `notes` — CHỈ 2 cột, từ asset_assignments, 
+---
+Vd116::
+ WORK_SHIFTS — KHI HỎI GIỜ LÀM/GIỜ NGHỈ, PHẢI CÓ s.name VÀ cột work_shift_schedules:
+- "Ca làm bắt đầu/kết thúc": Gold có `s.name`, `sc.day_of_week`, `sc.start_time`, `sc.end_time` — CHỈ 4 cột, có `sc.is_working = TRUE`
+- "Giờ nghỉ trưa": Gold có `s.name`, `sc.day_of_week`, `sc.rest_start_time`, `sc.rest_end_time` — CHỈ 4 cột, có `sc.rest_start_time IS NOT NULL`
+- "Ngày nghỉ trong tuần": Gold có `s.name`, `sc.day_of_week` — CHỈ 2 cột, có `sc.is_working = FALSE`
+```sql
+-- "Ca làm của tôi bắt đầu 
+---
+Vd117::
+ WORK_SHIFT_SCHEDULES — KHÔNG JOIN work_shifts TRỪ KHI CẦN s.name, CỘT CHÍNH XÁC NHƯ GOLD:
+- "Mỗi ngày làm mấy tiếng trừ nghỉ trưa": Gold KHÔNG JOIN work_shifts, CHỈ `day_of_week`, `start_time`, `end_time`, `rest_start_time`, `rest_end_time`, `net_hours` — CHỈ 6 cột
+- "Tổng giờ chuẩn tuần": Gold CHỈ `weekly_hours` (SUM) — KHÔNG SELECT day_of_week, net_hours
+- "Ngày nào vào sớm nhất/về muộn nhất": Gold dùng 2 subquery: `earliest_day` (day_of_week), `latest_end` (MAX end_time) — KHÔNG SELECT day_o
+---
+Vd118::
+ RESIGNATION_REQUESTS vs LEAVE_REQUESTS — TUYỆT ĐỐI KHÔNG NHẦM:
+- "Đơn nghỉ việc bị từ chối/hủy": `resignation_requests` — CHỈ `status`, `reason`, `submitted_time`
+- "Đơn xin nghỉ bị từ chối": `leave_requests` — CHỈ `from_date`, `to_date`, `status`, `rejection_reason`
+```sql
+-- "Đơn nghỉ việc bị từ chối hoặc hủy"
+SELECT status, reason, submitted_time FROM resignation_requests WHERE user_id = %(uid)s AND status IN ('REJECTED','CANCELLED','MANAGER_REJECTED') ORDER BY submitted_time DESC
+```
+```sql
+---
+Vd120::
+ USER_PERMISSION_GRANTS — THỐNG KÊ QUYỀN THEO NHÓM: alias CHÍNH XÁC `grp`, `cnt`.
+```sql
+-- "Thống kê quyền của tôi theo nhóm: duyệt, xem, quản lý"
+SELECT CASE WHEN permission LIKE '%APPROVE%' THEN 'approve' WHEN permission LIKE '%VIEW%' THEN 'view' WHEN permission LIKE '%MANAGE%' THEN 'manage' WHEN permission LIKE '%GRANT%' THEN 'grant' WHEN permission LIKE '%ASSIGN%' THEN 'assign' WHEN permission LIKE '%LOCK%' THEN 'lock' ELSE 'other' END AS grp, COUNT(*) AS cnt FROM user_permission_grants WHE
+---

@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/architect/SKILL.md",
+      "type": "document",
+      "name": "architect SKILL.md",
+      "filePath": ".agents/skills/architect/SKILL.md",
+      "summary": "Architect skill for designing system architecture and scoping new features before implementation. Workflow: stop → read AGENTS.md → interview user (3 questions: users, V1 scope, data source) → propose design (DB, logic) → confirm with user → only then code. Ensures alignment with existing system before writing code.",
+      "tags": ["skill", "architect", "design", "planning", "pre-implementation", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/audit/SKILL.md",
+      "type": "document",
+      "name": "audit SKILL.md",
+      "filePath": ".agents/skills/audit/SKILL.md",
+      "summary": "Audit skill for systematic code review and quality assessment. Provides structured approach to reviewing code for correctness, security, performance, and maintainability issues.",
+      "tags": ["skill", "audit", "code-review", "quality", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/banner-design/SKILL.md",
+      "type": "document",
+      "name": "banner-design SKILL.md",
+      "filePath": ".agents/skills/banner-design/SKILL.md",
+      "summary": "Banner design skill for creating effective visual banners and hero sections. Covers layout principles, typography, color psychology, CTA placement, and responsive considerations for marketing and product banners.",
+      "tags": ["skill", "banner", "design", "marketing", "hero", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/brand/SKILL.md",
+      "type": "document",
+      "name": "brand SKILL.md",
+      "filePath": ".agents/skills/brand/SKILL.md",
+      "summary": "Brand skill for defining and maintaining brand identity: logo usage, color palette, typography, voice/tone, iconography, and brand application guidelines across touchpoints.",
+      "tags": ["skill", "brand", "identity", "guidelines", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/debug/SKILL.md",
+      "type": "document",
+      "name": "debug SKILL.md",
+      "filePath": ".agents/skills/debug/SKILL.md",
+      "summary": "Debug skill for systematic troubleshooting: reproduce → isolate → hypothesize → test → fix → verify. Includes common patterns for frontend, backend, and integration debugging with logging and profiling strategies.",
+      "tags": ["skill", "debug", "troubleshooting", "systematic", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/SKILL.md",
+      "type": "document",
+      "name": "design SKILL.md",
+      "filePath": ".agents/skills/design/SKILL.md",
+      "summary": "Design skill for general UI/UX design decisions: layout systems, spacing scales, component architecture, design tokens, accessibility basics, and cross-platform consistency principles.",
+      "tags": ["skill", "design", "ui", "ux", "tokens", "accessibility", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design-system/SKILL.md",
+      "type": "document",
+      "name": "design-system SKILL.md",
+      "filePath": ".agents/skills/design-system/SKILL.md",
+      "summary": "Design system skill for building and maintaining component libraries: component anatomy, variant APIs, theming, documentation, versioning, and adoption metrics. Includes Figma-to-code workflow and token management.",
+      "tags": ["skill", "design-system", "components", "theming", "figma", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/karpathy-guidelines/SKILL.md",
+      "type": "document",
+      "name": "karpathy-guidelines SKILL.md",
+      "filePath": ".agents/skills/karpathy-guidelines/SKILL.md",
+      "summary": "Karpathy Guidelines skill encoding behavioral principles to reduce LLM coding mistakes: 1) Think Before Coding (surface assumptions, ask when unclear), 2) Simplicity First (minimum code, no speculative abstractions), 3) Surgical Changes (touch only what's needed, match existing style), 4) Goal-Driven Execution (define verifiable success criteria, loop until verified). Tradeoff: biases toward caution over speed.",
+      "tags": ["skill", "karpathy", "guidelines", "coding-principles", "simplicity", "markdown"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/slides/SKILL.md",
+      "type": "document",
+      "name": "slides SKILL.md",
+      "filePath": ".agents/skills/slides/SKILL.md",
+      "summary": "Slides skill for creating effective presentations: narrative structure, slide layouts, visual hierarchy, data visualization, speaker notes, and export formats. Covers storytelling frameworks and audience adaptation.",
+      "tags": ["skill", "slides", "presentation", "storytelling", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/SKILL.md",
+      "type": "document",
+      "name": "ui-styling SKILL.md",
+      "filePath": ".agents/skills/ui-styling/SKILL.md",
+      "summary": "UI Styling skill for CSS/styling decisions: methodology (BEM, utility-first, CSS-in-JS), responsive breakpoints, dark mode, animation principles, performance budgets, and framework-specific patterns (Tailwind, Styled Components, vanilla CSS).",
+      "tags": ["skill", "ui", "styling", "css", "tailwind", "responsive", "dark-mode", "markdown"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/ui-ux-pro-max/SKILL.md",
+      "type": "document",
+      "name": "ui-ux-pro-max SKILL.md",
+      "filePath": ".agents/skills/ui-ux-pro-max/SKILL.md",
+      "summary": "UI/UX Pro Max skill - comprehensive design intelligence with searchable local data: 79 styles (50 active), 192 product palettes, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, 22 stacks. Workflow: analyze requirements → design system (--design-system) or targeted domain search (--domain) or stack search (--stack). Covers accessibility, responsive, interaction, typography, color, charts, and stack-specific implementation. Python scripts for local search (no network).",
+      "tags": ["skill", "ui-ux", "design-intelligence", "design-system", "palettes", "fonts", "ux-guidelines", "icons", "gsap", "charts", "stacks", "python", "markdown"],
+      "complexity": "high"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/architect/SKILL.md",
+      "target": "document:.agents/skills/karpathy-guidelines/SKILL.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/SKILL.md",
+      "target": "document:.agents/skills/design-system/SKILL.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design-system/SKILL.md",
+      "target": "document:.agents/skills/ui-ux-pro-max/SKILL.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/SKILL.md",
+      "target": "document:.agents/skills/ui-ux-pro-max/SKILL.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/debug/SKILL.md",
+      "target": "document:.agents/skills/audit/SKILL.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

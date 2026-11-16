@@ -1,0 +1,5396 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "4a7674cc2869e474d690ad69993cceba21ab9b122dd1c1da4ce41f23b950a8c9",
+  "files": [
+    {
+      "path": ".agents/skills/architect/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/audit/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 66,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/banner-design/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 196,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/banner-design/references/banner-sizes-and-styles.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 97,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/approval-checklist.md",
+      "language": "markdown",
+      "sizeLines": 169,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/asset-organization.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/brand-guideline-template.md",
+      "language": "markdown",
+      "sizeLines": 140,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/color-palette-management.md",
+      "language": "markdown",
+      "sizeLines": 186,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/consistency-checklist.md",
+      "language": "markdown",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/logo-usage-rules.md",
+      "language": "markdown",
+      "sizeLines": 185,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/messaging-framework.md",
+      "language": "markdown",
+      "sizeLines": 85,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/typography-specifications.md",
+      "language": "markdown",
+      "sizeLines": 214,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/update.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/visual-identity.md",
+      "language": "markdown",
+      "sizeLines": 96,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/references/voice-framework.md",
+      "language": "markdown",
+      "sizeLines": 88,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/extract-colors.cjs",
+      "language": "javascript",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/inject-brand-context.cjs",
+      "language": "javascript",
+      "sizeLines": 349,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/sync-brand-to-tokens.cjs",
+      "language": "javascript",
+      "sizeLines": 248,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/tests/test_sync_brand_to_tokens.py",
+      "language": "python",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/scripts/validate-asset.cjs",
+      "language": "javascript",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/brand/templates/brand-guidelines-starter.md",
+      "language": "markdown",
+      "sizeLines": 275,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/debug/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 244,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-backgrounds.csv",
+      "language": "csv",
+      "sizeLines": 11,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-charts.csv",
+      "language": "csv",
+      "sizeLines": 26,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-color-logic.csv",
+      "language": "csv",
+      "sizeLines": 14,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-copy.csv",
+      "language": "csv",
+      "sizeLines": 26,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-layout-logic.csv",
+      "language": "csv",
+      "sizeLines": 16,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-layouts.csv",
+      "language": "csv",
+      "sizeLines": 26,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-strategies.csv",
+      "language": "csv",
+      "sizeLines": 16,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/data/slide-typography.csv",
+      "language": "csv",
+      "sizeLines": 15,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design-system/references/component-specs.md",
+      "language": "markdown",
+      "sizeLines": 236,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/component-tokens.md",
+      "language": "markdown",
+      "sizeLines": 214,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/primitive-tokens.md",
+      "language": "markdown",
+      "sizeLines": 203,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/semantic-tokens.md",
+      "language": "markdown",
+      "sizeLines": 215,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/states-and-variants.md",
+      "language": "markdown",
+      "sizeLines": 241,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/tailwind-integration.md",
+      "language": "markdown",
+      "sizeLines": 251,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/references/token-architecture.md",
+      "language": "markdown",
+      "sizeLines": 224,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/embed-tokens.cjs",
+      "language": "javascript",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/fetch-background.py",
+      "language": "python",
+      "sizeLines": 317,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/generate-slide.py",
+      "language": "python",
+      "sizeLines": 770,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/generate-tokens.cjs",
+      "language": "javascript",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/html-token-validator.py",
+      "language": "python",
+      "sizeLines": 327,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/search-slides.py",
+      "language": "python",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/slide-token-validator.py",
+      "language": "python",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/slide_search_core.py",
+      "language": "python",
+      "sizeLines": 453,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/tests/test_validate_tokens.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/scripts/validate-tokens.cjs",
+      "language": "javascript",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design-system/templates/design-tokens-starter.json",
+      "language": "json",
+      "sizeLines": 143,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/design/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 313,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/deliverables.csv",
+      "language": "csv",
+      "sizeLines": 50,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/industries.csv",
+      "language": "csv",
+      "sizeLines": 20,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/mockup-contexts.csv",
+      "language": "csv",
+      "sizeLines": 20,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/cip/styles.csv",
+      "language": "csv",
+      "sizeLines": 20,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/icon/styles.csv",
+      "language": "csv",
+      "sizeLines": 16,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/logo/colors.csv",
+      "language": "csv",
+      "sizeLines": 56,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/logo/industries.csv",
+      "language": "csv",
+      "sizeLines": 56,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/data/logo/styles.csv",
+      "language": "csv",
+      "sizeLines": 56,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/design/references/banner-sizes-and-styles.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-deliverable-guide.md",
+      "language": "markdown",
+      "sizeLines": 95,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-design.md",
+      "language": "markdown",
+      "sizeLines": 121,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-prompt-engineering.md",
+      "language": "markdown",
+      "sizeLines": 84,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/cip-style-guide.md",
+      "language": "markdown",
+      "sizeLines": 68,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/design-routing.md",
+      "language": "markdown",
+      "sizeLines": 207,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/icon-design.md",
+      "language": "markdown",
+      "sizeLines": 122,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-color-psychology.md",
+      "language": "markdown",
+      "sizeLines": 101,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-design.md",
+      "language": "markdown",
+      "sizeLines": 92,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-prompt-engineering.md",
+      "language": "markdown",
+      "sizeLines": 158,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/logo-style-guide.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-copywriting-formulas.md",
+      "language": "markdown",
+      "sizeLines": 84,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-create.md",
+      "language": "markdown",
+      "sizeLines": 4,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-html-template.md",
+      "language": "markdown",
+      "sizeLines": 295,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-layout-patterns.md",
+      "language": "markdown",
+      "sizeLines": 137,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides-strategies.md",
+      "language": "markdown",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/slides.md",
+      "language": "markdown",
+      "sizeLines": 42,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/references/social-photos-design.md",
+      "language": "markdown",
+      "sizeLines": 329,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/core.py",
+      "language": "python",
+      "sizeLines": 215,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/generate.py",
+      "language": "python",
+      "sizeLines": 484,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/render-html.py",
+      "language": "python",
+      "sizeLines": 424,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/cip/search.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/icon/generate.py",
+      "language": "python",
+      "sizeLines": 487,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/logo/core.py",
+      "language": "python",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/logo/generate.py",
+      "language": "python",
+      "sizeLines": 362,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/design/scripts/logo/search.py",
+      "language": "python",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/karpathy-guidelines/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 67,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 40,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/copywriting-formulas.md",
+      "language": "markdown",
+      "sizeLines": 84,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/create.md",
+      "language": "markdown",
+      "sizeLines": 4,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/html-template.md",
+      "language": "markdown",
+      "sizeLines": 295,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/layout-patterns.md",
+      "language": "markdown",
+      "sizeLines": 137,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/slides/references/slide-strategies.md",
+      "language": "markdown",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/LICENSE.txt",
+      "language": "txt",
+      "sizeLines": 201,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 324,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/canvas-design-system.md",
+      "language": "markdown",
+      "sizeLines": 320,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "language": "markdown",
+      "sizeLines": 471,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-components.md",
+      "language": "markdown",
+      "sizeLines": 424,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/shadcn-theming.md",
+      "language": "markdown",
+      "sizeLines": 373,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-customization.md",
+      "language": "markdown",
+      "sizeLines": 483,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-responsive.md",
+      "language": "markdown",
+      "sizeLines": 382,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/references/tailwind-utilities.md",
+      "language": "markdown",
+      "sizeLines": 455,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/requirements.txt",
+      "language": "txt",
+      "sizeLines": 17,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/shadcn_add.py",
+      "language": "python",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tailwind_config_gen.py",
+      "language": "python",
+      "sizeLines": 473,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/coverage-ui.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/requirements.txt",
+      "language": "txt",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/test_shadcn_add.py",
+      "language": "python",
+      "sizeLines": 266,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
+      "language": "python",
+      "sizeLines": 394,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 425,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/app-interface.csv",
+      "language": "csv",
+      "sizeLines": 33,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "language": "json",
+      "sizeLines": 78,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/charts.csv",
+      "language": "csv",
+      "sizeLines": 26,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/colors.csv",
+      "language": "csv",
+      "sizeLines": 193,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/data-provenance.json",
+      "language": "json",
+      "sizeLines": 1348,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "language": "json",
+      "sizeLines": 20185,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "language": "csv",
+      "sizeLines": 1935,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/icons.csv",
+      "language": "csv",
+      "sizeLines": 106,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/landing.csv",
+      "language": "csv",
+      "sizeLines": 35,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/motion.csv",
+      "language": "csv",
+      "sizeLines": 18,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "language": "json",
+      "sizeLines": 32582,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/products.csv",
+      "language": "csv",
+      "sizeLines": 193,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/react-performance.csv",
+      "language": "csv",
+      "sizeLines": 45,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/angular.csv",
+      "language": "csv",
+      "sizeLines": 51,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "language": "csv",
+      "sizeLines": 54,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+      "language": "csv",
+      "sizeLines": 57,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "language": "csv",
+      "sizeLines": 53,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "language": "csv",
+      "sizeLines": 60,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+      "language": "csv",
+      "sizeLines": 76,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "language": "csv",
+      "sizeLines": 53,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+      "language": "csv",
+      "sizeLines": 51,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "language": "csv",
+      "sizeLines": 62,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "language": "csv",
+      "sizeLines": 71,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "language": "csv",
+      "sizeLines": 68,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "language": "csv",
+      "sizeLines": 52,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "language": "csv",
+      "sizeLines": 62,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "language": "csv",
+      "sizeLines": 69,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "language": "csv",
+      "sizeLines": 56,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "language": "csv",
+      "sizeLines": 51,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+      "language": "csv",
+      "sizeLines": 54,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "language": "csv",
+      "sizeLines": 60,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+      "language": "csv",
+      "sizeLines": 56,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "language": "csv",
+      "sizeLines": 50,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/winui.csv",
+      "language": "csv",
+      "sizeLines": 60,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/stacks/wpf.csv",
+      "language": "csv",
+      "sizeLines": 57,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/styles.csv",
+      "language": "csv",
+      "sizeLines": 89,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/typography.csv",
+      "language": "csv",
+      "sizeLines": 75,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "language": "csv",
+      "sizeLines": 193,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "language": "csv",
+      "sizeLines": 120,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/core.py",
+      "language": "python",
+      "sizeLines": 993,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "language": "python",
+      "sizeLines": 1643,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      "language": "python",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/search.py",
+      "language": "python",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "language": "json",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "language": "json",
+      "sizeLines": 33,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv",
+      "language": "csv",
+      "sizeLines": 3,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json",
+      "language": "json",
+      "sizeLines": 7,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv",
+      "language": "csv",
+      "sizeLines": 4,
+      "fileCategory": "data"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "language": "json",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "language": "json",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json",
+      "language": "json",
+      "sizeLines": 4,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "language": "json",
+      "sizeLines": 5,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "language": "json",
+      "sizeLines": 3366,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "language": "json",
+      "sizeLines": 111,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "language": "json",
+      "sizeLines": 100,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py",
+      "language": "python",
+      "sizeLines": 354,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "language": "python",
+      "sizeLines": 343,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py",
+      "language": "python",
+      "sizeLines": 198,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "language": "python",
+      "sizeLines": 421,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
+      "language": "python",
+      "sizeLines": 189,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py",
+      "language": "python",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py",
+      "language": "python",
+      "sizeLines": 182,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py",
+      "language": "python",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py",
+      "language": "python",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py",
+      "language": "python",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "language": "python",
+      "sizeLines": 1091,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".claude/settings.json",
+      "language": "json",
+      "sizeLines": 22,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".env.example",
+      "language": "config",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 99,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/01-timezone-aware-quota-reset.md",
+      "language": "markdown",
+      "sizeLines": 12,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/02-enforce-gemma-restriction.md",
+      "language": "markdown",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/03-complete-fewshots-column-errors.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/04-verify-incremental-save-resume.md",
+      "language": "markdown",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/05-fix-model-name-discrepancy.md",
+      "language": "markdown",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/06-full-evaluation-run.md",
+      "language": "markdown",
+      "sizeLines": 18,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".scratch/text2sql-ex-improvement/issues/README.md",
+      "language": "markdown",
+      "sizeLines": 67,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".ua/tmp/ua-import-map-input-full.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".ua/tmp/ua-import-map-input.json",
+      "language": "json",
+      "sizeLines": 233,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".ua/tmp/ua-import-map-output-full.json",
+      "language": "json",
+      "sizeLines": 2478,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".ua/tmp/ua-import-map-output.json",
+      "language": "json",
+      "sizeLines": 295,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".ua/tmp/ua-scan-files.json",
+      "language": "json",
+      "sizeLines": 5365,
+      "fileCategory": "config"
+    },
+    {
+      "path": "AGENTS.md",
+      "language": "markdown",
+      "sizeLines": 370,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "sizeLines": 97,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Check Attendance/README.md",
+      "language": "markdown",
+      "sizeLines": 173,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Check Attendance/README_DEPLOY.md",
+      "language": "markdown",
+      "sizeLines": 30,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Check Attendance/embeddings/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/faces/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/index.html",
+      "language": "html",
+      "sizeLines": 970,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "Check Attendance/insert_employees.sql",
+      "language": "sql",
+      "sizeLines": 119,
+      "fileCategory": "data"
+    },
+    {
+      "path": "Check Attendance/requirements.txt",
+      "language": "txt",
+      "sizeLines": 69,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Check Attendance/src/attendance.py",
+      "language": "python",
+      "sizeLines": 399,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/src/attendance_standalone.py",
+      "language": "python",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/src/cascades/face_detection_yunet_2023mar.onnx",
+      "language": "onnx",
+      "sizeLines": 1989,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/src/cascades/haarcascade_eye.xml",
+      "language": "xml",
+      "sizeLines": 12213,
+      "fileCategory": "config"
+    },
+    {
+      "path": "Check Attendance/src/cascades/haarcascade_frontalface_default.xml",
+      "language": "xml",
+      "sizeLines": 33314,
+      "fileCategory": "config"
+    },
+    {
+      "path": "Check Attendance/src/cascades/haarcascade_profileface.xml",
+      "language": "xml",
+      "sizeLines": 29690,
+      "fileCategory": "config"
+    },
+    {
+      "path": "Check Attendance/src/db_config.py.example",
+      "language": "example",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/src/faces/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/src/register.py",
+      "language": "python",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "Check Attendance/src/register_standalone.py",
+      "language": "python",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/.dockerignore",
+      "language": "unknown",
+      "sizeLines": 6,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "HRM Website/AGENTS.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "HRM Website/CLAUDE.md",
+      "language": "markdown",
+      "sizeLines": 1,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "HRM Website/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 17,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "HRM Website/design-system/workpulse/MASTER.md",
+      "language": "markdown",
+      "sizeLines": 214,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "HRM Website/eslint.config.mjs",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/next.config.ts",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/package.json",
+      "language": "json",
+      "sizeLines": 33,
+      "fileCategory": "config"
+    },
+    {
+      "path": "HRM Website/postcss.config.mjs",
+      "language": "javascript",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/scripts/test-admin-browser.mjs",
+      "language": "javascript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/scripts/test-session-modal.mjs",
+      "language": "javascript",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/scripts/test-shift-and-search.mjs",
+      "language": "javascript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/scripts/test-timetable.mjs",
+      "language": "javascript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/admin/AdminWorkspace.tsx",
+      "language": "typescript",
+      "sizeLines": 1559,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/admin/accounts/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/admin/onboarding/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/admin/permissions/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/labels.ts",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/manageAssets.tsx",
+      "language": "typescript",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/assetDetail.tsx",
+      "language": "typescript",
+      "sizeLines": 248,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/categories/page.tsx",
+      "language": "typescript",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/forms/page.tsx",
+      "language": "typescript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/life-cycle/page.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/reminders/page.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/management/storage/page.tsx",
+      "language": "typescript",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/page.tsx",
+      "language": "typescript",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/requestAsset.tsx",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/requests/page.tsx",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/assets/useMyAssets.ts",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/attendance/AttendanceWorkspace.tsx",
+      "language": "typescript",
+      "sizeLines": 565,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/attendance/daily/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/attendance/leave/page.tsx",
+      "language": "typescript",
+      "sizeLines": 848,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/attendance/overtime/page.tsx",
+      "language": "typescript",
+      "sizeLines": 849,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/attendance/overview/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/attendance/schedule/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/chat/page.tsx",
+      "language": "typescript",
+      "sizeLines": 852,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/documents/page.tsx",
+      "language": "typescript",
+      "sizeLines": 1304,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/employees/[id]/page.tsx",
+      "language": "typescript",
+      "sizeLines": 1497,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/employees/page.tsx",
+      "language": "typescript",
+      "sizeLines": 599,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/globals.css",
+      "language": "css",
+      "sizeLines": 67,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "HRM Website/src/app/home/page.tsx",
+      "language": "typescript",
+      "sizeLines": 451,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/layout.tsx",
+      "language": "typescript",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/login/page.tsx",
+      "language": "typescript",
+      "sizeLines": 336,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/management/ManageWorkspace.tsx",
+      "language": "typescript",
+      "sizeLines": 1422,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/management/daily/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/management/overview/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/management/requests/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/management/summary/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/my-profile/page.tsx",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/organization/OrgWorkspace.tsx",
+      "language": "typescript",
+      "sizeLines": 988,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/organization/manage/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/organization/overview/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/organization/structure/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/page.tsx",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/payroll/page.tsx",
+      "language": "typescript",
+      "sizeLines": 844,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/ReviewDetail.tsx",
+      "language": "typescript",
+      "sizeLines": 209,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/ScopePill.tsx",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/history/page.tsx",
+      "language": "typescript",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/management/overview/page.tsx",
+      "language": "typescript",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/management/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/management/records/page.tsx",
+      "language": "typescript",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/performance-reviews/page.tsx",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/recruitment/page.tsx",
+      "language": "typescript",
+      "sizeLines": 244,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/recruitment/pending/page.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/resignations/page.tsx",
+      "language": "typescript",
+      "sizeLines": 566,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/security/SecurityWorkspace.tsx",
+      "language": "typescript",
+      "sizeLines": 321,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/security/password/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/security/sessions/page.tsx",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/TicketCard.tsx",
+      "language": "typescript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/TicketDetail.tsx",
+      "language": "typescript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/labels.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/manage/done/page.tsx",
+      "language": "typescript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/manage/overview/page.tsx",
+      "language": "typescript",
+      "sizeLines": 209,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/manage/page.tsx",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/manage/queues/page.tsx",
+      "language": "typescript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/new/page.tsx",
+      "language": "typescript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/page.tsx",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/app/tickets/useTicketDirectory.ts",
+      "language": "typescript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/ConfirmDialog.tsx",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/DocumentPreviewModal.tsx",
+      "language": "typescript",
+      "sizeLines": 328,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/MomLine.tsx",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/TodayStatusBadge.tsx",
+      "language": "typescript",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/attendance/AttendanceOverviewTab.tsx",
+      "language": "typescript",
+      "sizeLines": 974,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/attendance/LeaveOvertimeHubTab.tsx",
+      "language": "typescript",
+      "sizeLines": 626,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/attendance/MyOverviewTab.tsx",
+      "language": "typescript",
+      "sizeLines": 406,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/attendance/WorkShiftTab.tsx",
+      "language": "typescript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/layout/AppShell.tsx",
+      "language": "typescript",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/layout/Navbar.tsx",
+      "language": "typescript",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/components/layout/Sidebar.tsx",
+      "language": "typescript",
+      "sizeLines": 440,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/constants/departments.ts",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/context/AuthContext.tsx",
+      "language": "typescript",
+      "sizeLines": 264,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/context/HRMDataContext.tsx",
+      "language": "typescript",
+      "sizeLines": 345,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/adminService.ts",
+      "language": "typescript",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/aiService.ts",
+      "language": "typescript",
+      "sizeLines": 209,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/apiClient.ts",
+      "language": "typescript",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/assetService.ts",
+      "language": "typescript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/attendanceService.ts",
+      "language": "typescript",
+      "sizeLines": 172,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/authService.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/dashboardService.ts",
+      "language": "typescript",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/documentService.ts",
+      "language": "typescript",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/employeeService.ts",
+      "language": "typescript",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/leaveService.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/organizationService.ts",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/overtimeService.ts",
+      "language": "typescript",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/payrollService.ts",
+      "language": "typescript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/performanceService.ts",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/resignationService.ts",
+      "language": "typescript",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/ticketService.ts",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/services/workShiftService.ts",
+      "language": "typescript",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/types/index.ts",
+      "language": "typescript",
+      "sizeLines": 522,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/utils/dateRange.ts",
+      "language": "typescript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/utils/format.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/src/utils/useTabFromUrl.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HRM Website/tsconfig.json",
+      "language": "json",
+      "sizeLines": 34,
+      "fileCategory": "config"
+    },
+    {
+      "path": "HRM_AI_Postman_Collection.json",
+      "language": "json",
+      "sizeLines": 759,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 286,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SPEC_CHATBOT_FULL_TEST_COVERAGE.md",
+      "language": "markdown",
+      "sizeLines": 257,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SPEC_TEXT2SQL_EX_IMPROVEMENT.md",
+      "language": "markdown",
+      "sizeLines": 136,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SPEC_TEXT2SQL_EX_IMPROVEMENT_V2.md",
+      "language": "markdown",
+      "sizeLines": 165,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/.dockerignore",
+      "language": "unknown",
+      "sizeLines": 13,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "ai-service/.env.example",
+      "language": "config",
+      "sizeLines": 44,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/CUsersadDesktoprouter_test_output.txt",
+      "language": "txt",
+      "sizeLines": 4,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 22,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "ai-service/db_failures.txt",
+      "language": "txt",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/debug_cases.py",
+      "language": "python",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/debug_cases2.py",
+      "language": "python",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/debug_cases3.py",
+      "language": "python",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/debug_cases4.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/failures.txt",
+      "language": "txt",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/full_prompt.txt",
+      "language": "txt",
+      "sizeLines": 285,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/hybrid_sample.json",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/main.py",
+      "language": "python",
+      "sizeLines": 914,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/prompt.txt",
+      "language": "txt",
+      "sizeLines": 285,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/requirements.txt",
+      "language": "txt",
+      "sizeLines": 32,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/scripts/backfill_questions_vector.py",
+      "language": "python",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/scripts/generate_test_questions.py",
+      "language": "python",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/scripts/ingest_gemini_batch.py",
+      "language": "python",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/scripts/reembed_vectors.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/scripts/tmpbake2.py",
+      "language": "python",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/sql/add_tsv_column.sql",
+      "language": "sql",
+      "sizeLines": 12,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/sql/create_semantic_cache.sql",
+      "language": "sql",
+      "sizeLines": 28,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/sql/init_db.sql",
+      "language": "sql",
+      "sizeLines": 135,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/sql/migration_bank_accounts.sql",
+      "language": "sql",
+      "sizeLines": 113,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/sql/readonly_role.sql",
+      "language": "sql",
+      "sizeLines": 92,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/sql_output.txt",
+      "language": "txt",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/src/cache/semantic_cache.py",
+      "language": "python",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/chat/chat_service.py",
+      "language": "python",
+      "sizeLines": 1894,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/chunkers/__init__.py",
+      "language": "python",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/chunkers/legal_chunker.py",
+      "language": "python",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/chunkers/table_preserver.py",
+      "language": "python",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/db/session.py",
+      "language": "python",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/embeddings/local_embedder.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/metadata/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/metadata/metadata_enricher.py",
+      "language": "python",
+      "sizeLines": 203,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/models/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/models/schema.py",
+      "language": "python",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/parsers/__init__.py",
+      "language": "python",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/parsers/docx_parser.py",
+      "language": "python",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/parsers/excel_parser.py",
+      "language": "python",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/parsers/pdf_parser.py",
+      "language": "python",
+      "sizeLines": 274,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/pipeline.py",
+      "language": "python",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/rerankers/cross_encoder_reranker.py",
+      "language": "python",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/retrievers/hybrid_retriever.py",
+      "language": "python",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/executor.py",
+      "language": "python",
+      "sizeLines": 301,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/router.py",
+      "language": "python",
+      "sizeLines": 673,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/router_restored.py",
+      "language": "python",
+      "sizeLines": 413,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/router_v2.py",
+      "language": "python",
+      "sizeLines": 413,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/schema_registry.py",
+      "language": "python",
+      "sizeLines": 301,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/sql/text2sql.py",
+      "language": "python",
+      "sizeLines": 1479,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/utils/gemini_key_manager.py",
+      "language": "python",
+      "sizeLines": 536,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/src/utils/llm_completion.py",
+      "language": "python",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/common/__init__.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/db_only/retrieval/eval_db_answer.py",
+      "language": "python",
+      "sizeLines": 314,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/db_only/retrieval/eval_db_generation.py",
+      "language": "python",
+      "sizeLines": 272,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/db_only/retrieval/eval_db_retrieval.py",
+      "language": "python",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/db_only/retrieval/seed_db_eval.py",
+      "language": "python",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/hybrid/eval_hybrid.py",
+      "language": "python",
+      "sizeLines": 372,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/latency/breakdown.py",
+      "language": "python",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/latency/load_breakdown.py",
+      "language": "python",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/latency/ttft.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/memory/answers_memory.json",
+      "language": "json",
+      "sizeLines": 82,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/memory/eval_memory.py",
+      "language": "python",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/memory/internal/test_answers.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/memory/internal/test_memory_sessions.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/memory/test_conversational_memory.py",
+      "language": "python",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/memory/test_qrecc_memory_client.py",
+      "language": "python",
+      "sizeLines": 485,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/memory/test_rewrite_direct.py",
+      "language": "python",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/outputs/db_generation_eval.json",
+      "language": "json",
+      "sizeLines": 621,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/outputs/db_retrieval_eval.json",
+      "language": "json",
+      "sizeLines": 711,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/outputs/hybrid_eval.json",
+      "language": "json",
+      "sizeLines": 580,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/outputs/llm_router_test.json",
+      "language": "json",
+      "sizeLines": 2394,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/outputs/retrieval_eval.json",
+      "language": "json",
+      "sizeLines": 992,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/overall_test_results.md",
+      "language": "markdown",
+      "sizeLines": 227,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/test_v2/quota/test_key_rotation.py",
+      "language": "python",
+      "sizeLines": 396,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/quota/test_validator.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/quota/test_validator2.py",
+      "language": "python",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/eval_ragas_full.py",
+      "language": "python",
+      "sizeLines": 451,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/judge_gemma.py",
+      "language": "python",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/judge_pairwise.py",
+      "language": "python",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/judged_questions.json",
+      "language": "json",
+      "sizeLines": 73,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/llm_judge_evaluation.md",
+      "language": "markdown",
+      "sizeLines": 181,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/ragas_eval_results.json",
+      "language": "json",
+      "sizeLines": 522,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/rag/generation/rejudge7.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/retrieval/eval_retrieval.py",
+      "language": "python",
+      "sizeLines": 335,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/retrieval/ingest_evalret.py",
+      "language": "python",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/retrieval/ocr_easyocr_review.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/retrieval/test_lexical_idf.py",
+      "language": "python",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/rag/retrieval/test_threshold_calib.py",
+      "language": "python",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/routers/test_directory.py",
+      "language": "python",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/routers/test_llm_router_full.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/routers/test_router_accuracy.py",
+      "language": "python",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/stress/drill.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/stress/stress.py",
+      "language": "python",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/stress/stress3.py",
+      "language": "python",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/EVALUATION_STATUS.md",
+      "language": "markdown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/hrm_db_only-predictions.json",
+      "language": "json",
+      "sizeLines": 5238,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/hrm_db_only-schema.json",
+      "language": "json",
+      "sizeLines": 1813,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/hrm_db_only.jsonl",
+      "language": "jsonl",
+      "sizeLines": 187,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions.json",
+      "language": "json",
+      "sizeLines": 5236,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval.json",
+      "language": "json",
+      "sizeLines": 9449,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.csv",
+      "language": "csv",
+      "sizeLines": 2,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/benchmarks/results/hrm_db_only-predictions_eval_summary.json",
+      "language": "json",
+      "sizeLines": 92,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/hrm_eval_wrapper.py",
+      "language": "python",
+      "sizeLines": 448,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/quota_state.json",
+      "language": "json",
+      "sizeLines": 133,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/test_v2/text2sql/run_hrm_evaluation_fixed.py",
+      "language": "python",
+      "sizeLines": 276,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/test_v2/tokens/tokens.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/doc_only_120.csv",
+      "language": "csv",
+      "sizeLines": 135,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/doc_only_120.json",
+      "language": "json",
+      "sizeLines": 3001,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.csv",
+      "language": "csv",
+      "sizeLines": 241,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/doc_only_memory_20x12.json",
+      "language": "json",
+      "sizeLines": 17557,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/fill_missing.py",
+      "language": "python",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/generate_doc_only.py",
+      "language": "python",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/datasets/generate_memory_20x12.py",
+      "language": "python",
+      "sizeLines": 388,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.bak-20261015.json",
+      "language": "json",
+      "sizeLines": 7329,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/answers.json",
+      "language": "json",
+      "sizeLines": 6755,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.bak-20261014.csv",
+      "language": "csv",
+      "sizeLines": 516,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/audit_hallucination.csv",
+      "language": "csv",
+      "sizeLines": 512,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.bak-20261015.json",
+      "language": "json",
+      "sizeLines": 6137,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge.json",
+      "language": "json",
+      "sizeLines": 5934,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/judge_pairwise.py",
+      "language": "python",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/latency_per_question.csv",
+      "language": "csv",
+      "sizeLines": 131,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/latency_stats.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/make_audit.py",
+      "language": "python",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/negatives.json",
+      "language": "json",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/generation_metrics_tests/run_answers.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/memory_test/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/memory_test/answers_memory.json",
+      "language": "json",
+      "sizeLines": 14641,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/memory_test/eval_memory.py",
+      "language": "python",
+      "sizeLines": 241,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/memory_test/judge_memory.json",
+      "language": "json",
+      "sizeLines": 4405,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/memory_test/latency_per_turn.csv",
+      "language": "csv",
+      "sizeLines": 241,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/memory_test/latency_stats.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/performance_test/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 69,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/performance_test/perf_single.json",
+      "language": "json",
+      "sizeLines": 85,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/performance_test/perf_single.py",
+      "language": "python",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 176,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/eval_retrieval.py",
+      "language": "python",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_new.json",
+      "language": "json",
+      "sizeLines": 841,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/p1_old.json",
+      "language": "json",
+      "sizeLines": 841,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval.json",
+      "language": "json",
+      "sizeLines": 10223,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_topk10.json",
+      "language": "json",
+      "sizeLines": 10223,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/retrieval_eval_x12.json",
+      "language": "json",
+      "sizeLines": 5183,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/DOC_ONLY/retrieval_metrics_tests/x12_top5.json",
+      "language": "json",
+      "sizeLines": 841,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/EVAL_SUMMARY.md",
+      "language": "markdown",
+      "sizeLines": 130,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/_archive/EVAL_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 45,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/_archive/TEST_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 154,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/_archive/VIQUAD_EVAL_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 133,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/_archive/analyze_threshold.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/cleanup_eval.py",
+      "language": "python",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/diag_retrieve.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/ocr_tesseract_compare.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/output_chunks.json",
+      "language": "json",
+      "sizeLines": 270,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/_archive/qrecc-test.json",
+      "language": "json",
+      "sizeLines": 290588,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/_archive/split_results.py",
+      "language": "python",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_4_features.py",
+      "language": "python",
+      "sizeLines": 247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_chat_query.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_eval_metrics.py",
+      "language": "python",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_excel_slice.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_load_csv.py",
+      "language": "python",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_pipeline.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_production_ingestion.py",
+      "language": "python",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_standard_eval.py",
+      "language": "python",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_update_document.py",
+      "language": "python",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/test_upload.py",
+      "language": "python",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/_archive/viquad.json",
+      "language": "json",
+      "sizeLines": 343443,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/_archive/viquad_eval_results.json",
+      "language": "json",
+      "sizeLines": 2014,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/db_answer_eval.json",
+      "language": "json",
+      "sizeLines": 2358,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/db_generation_eval.json",
+      "language": "json",
+      "sizeLines": 2355,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/db_retrieval_eval.json",
+      "language": "json",
+      "sizeLines": 2645,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/llm_200q_report.json",
+      "language": "json",
+      "sizeLines": 2927,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/llm_router_test.json",
+      "language": "json",
+      "sizeLines": 3269,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/memory_rewrite_results.json",
+      "language": "json",
+      "sizeLines": 4501,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/ragas_eval_results.json",
+      "language": "json",
+      "sizeLines": 371,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/baselines-120b/threshold_calib_results.json",
+      "language": "json",
+      "sizeLines": 422,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/calib_neg_20new.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/data/memory_dataset.csv",
+      "language": "csv",
+      "sizeLines": 1298,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/db_only_hybrid_questions.json",
+      "language": "json",
+      "sizeLines": 3642,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/db_only_hybrid_questions_with_answers.json",
+      "language": "json",
+      "sizeLines": 7588,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/eval_neg_leak.py",
+      "language": "python",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/generation/db_only/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/generation/db_only/llm_200q_report.json",
+      "language": "json",
+      "sizeLines": 2927,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/db_only/test_text2sql.py",
+      "language": "python",
+      "sizeLines": 432,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 86,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/draft_golds_batch1.json",
+      "language": "json",
+      "sizeLines": 193,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/eval_ragas_full.py",
+      "language": "python",
+      "sizeLines": 444,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/judge_gemma.py",
+      "language": "python",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_100.json",
+      "language": "json",
+      "sizeLines": 1205,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_batch1.json",
+      "language": "json",
+      "sizeLines": 605,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_batch2.json",
+      "language": "json",
+      "sizeLines": 605,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_batchA.json",
+      "language": "json",
+      "sizeLines": 83,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_batchB.json",
+      "language": "json",
+      "sizeLines": 96,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_batchC.json",
+      "language": "json",
+      "sizeLines": 44,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_gemma.json",
+      "language": "json",
+      "sizeLines": 1705,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_gemma_judged.json",
+      "language": "json",
+      "sizeLines": 2301,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_gemma_rejudge7.json",
+      "language": "json",
+      "sizeLines": 1596,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_rerun.json",
+      "language": "json",
+      "sizeLines": 44,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_rerun_b1.json",
+      "language": "json",
+      "sizeLines": 125,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/ragas_eval_results.json",
+      "language": "json",
+      "sizeLines": 371,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/rejudge7.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/review_100.json",
+      "language": "json",
+      "sizeLines": 1037,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/review_100_gemma.json",
+      "language": "json",
+      "sizeLines": 1101,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/review_100_gemma_judged.json",
+      "language": "json",
+      "sizeLines": 49,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/review_30_manual.json",
+      "language": "json",
+      "sizeLines": 271,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/generation/doc_only/review_70_extra.json",
+      "language": "json",
+      "sizeLines": 767,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/latency/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/latency/breakdown.py",
+      "language": "python",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/latency/load_breakdown.py",
+      "language": "python",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/latency/ttft.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/memory/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/memory/build_internal.py",
+      "language": "python",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/memory/data/memory_dataset.csv",
+      "language": "csv",
+      "sizeLines": 1298,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 245,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp1.json",
+      "language": "json",
+      "sizeLines": 805,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp2.json",
+      "language": "json",
+      "sizeLines": 131,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp3.json",
+      "language": "json",
+      "sizeLines": 131,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp4.json",
+      "language": "json",
+      "sizeLines": 66,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp5.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp6.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/blueprints/bp_fix.json",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_20new.json",
+      "language": "json",
+      "sizeLines": 4283,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_20new_gemmaT066.json",
+      "language": "json",
+      "sizeLines": 4697,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_20new_lock.json",
+      "language": "json",
+      "sizeLines": 4291,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_20new_nolock.json",
+      "language": "json",
+      "sizeLines": 4917,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_20new_retry.json",
+      "language": "json",
+      "sizeLines": 1723,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_20new_softband.json",
+      "language": "json",
+      "sizeLines": 4913,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_answer_baseline30.json",
+      "language": "json",
+      "sizeLines": 5279,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_internal.csv",
+      "language": "csv",
+      "sizeLines": 601,
+      "fileCategory": "data"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/memory_internal_results.json",
+      "language": "json",
+      "sizeLines": 6451,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/test_answers.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/test_memory_sessions.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/verdicts_20new.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/verdicts_20new_gemmaT066.json",
+      "language": "json",
+      "sizeLines": 713,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/verdicts_20new_nolock.json",
+      "language": "json",
+      "sizeLines": 929,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/verdicts_20new_softband.json",
+      "language": "json",
+      "sizeLines": 933,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/internal/verdicts_32.json",
+      "language": "json",
+      "sizeLines": 32,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/memory_rewrite_results.json",
+      "language": "json",
+      "sizeLines": 4501,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/memory_session_results.json",
+      "language": "json",
+      "sizeLines": 2795,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/memory/test_conversational_memory.py",
+      "language": "python",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/memory/test_qrecc_memory_client.py",
+      "language": "python",
+      "sizeLines": 485,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/memory/test_rewrite_direct.py",
+      "language": "python",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/DB_RETRIEVAL_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 138,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/db_answer_eval.json",
+      "language": "json",
+      "sizeLines": 2932,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/db_generation_eval.json",
+      "language": "json",
+      "sizeLines": 2883,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/db_retrieval_eval.json",
+      "language": "json",
+      "sizeLines": 2645,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/eval_db_answer.py",
+      "language": "python",
+      "sizeLines": 326,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/eval_db_generation.py",
+      "language": "python",
+      "sizeLines": 282,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/eval_db_retrieval.py",
+      "language": "python",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_db_only/seed_db_eval.py",
+      "language": "python",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/GENERATION_DOC_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 204,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/eval_retrieval.py",
+      "language": "python",
+      "sizeLines": 342,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ingest_evalret.py",
+      "language": "python",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_easyocr_review.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_review/214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.txt",
+      "language": "txt",
+      "sizeLines": 444,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_review/917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.txt",
+      "language": "txt",
+      "sizeLines": 575,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_review/QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.txt",
+      "language": "txt",
+      "sizeLines": 5023,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-EVNFinance.txt",
+      "language": "txt",
+      "sizeLines": 2561,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-MWG.txt",
+      "language": "txt",
+      "sizeLines": 2676,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/ocr_review/QuyCheQuanTri-Petrolimex-PMSC.txt",
+      "language": "txt",
+      "sizeLines": 6537,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/retrieval_eval.json",
+      "language": "json",
+      "sizeLines": 2292,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/test_lexical_idf.py",
+      "language": "python",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/test_threshold_calib.py",
+      "language": "python",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/retrieval_doc_only/threshold_calib_results.json",
+      "language": "json",
+      "sizeLines": 422,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/routing/LLM_ROUTING_TEST_RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 194,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/routing/llm_router_test.json",
+      "language": "json",
+      "sizeLines": 3638,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/routing/test_directory.py",
+      "language": "python",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/routing/test_llm_router_full.py",
+      "language": "python",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/routing/test_router_accuracy.py",
+      "language": "python",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/rr_curve.json",
+      "language": "json",
+      "sizeLines": 0,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/stress/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 26,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/stress/drill.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/stress/prov.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/stress/stress.py",
+      "language": "python",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/stress/stress3.py",
+      "language": "python",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/threshold_calib_20new.json",
+      "language": "json",
+      "sizeLines": 423,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/tokens/RESULTS.md",
+      "language": "markdown",
+      "sizeLines": 13,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/tests/tokens/tokens.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ai-service/tests/weight_curve.json",
+      "language": "json",
+      "sizeLines": 178,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/tests/weight_grid.json",
+      "language": "json",
+      "sizeLines": 33,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ai-service/validator_fixed_output.txt",
+      "language": "txt",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/validator_test_output.txt",
+      "language": "txt",
+      "sizeLines": 10,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ai-service/validator_test_output2.txt",
+      "language": "txt",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend/.dockerignore",
+      "language": "unknown",
+      "sizeLines": 7,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "backend/.mvn/wrapper/maven-wrapper.properties",
+      "language": "properties",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 12,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "backend/mvnw",
+      "language": "unknown",
+      "sizeLines": 295,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/mvnw.cmd",
+      "language": "batch",
+      "sizeLines": 189,
+      "fileCategory": "script"
+    },
+    {
+      "path": "backend/pom.xml",
+      "language": "xml",
+      "sizeLines": 165,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/HrmApplication.java",
+      "language": "java",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/controllers/AdminController.java",
+      "language": "java",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminResetPasswordRequest.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/AdminUpdateStatusRequest.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/CreatePendingUserRequest.java",
+      "language": "java",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/ProvisionAccountRequest.java",
+      "language": "java",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/RejectPendingUserRequest.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/requests/SavePermissionsRequest.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminAccountResponse.java",
+      "language": "java",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/AdminSessionResponse.java",
+      "language": "java",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/PendingUserResponse.java",
+      "language": "java",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/dtos/responses/UserPermissionResponse.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/admin/services/AdminService.java",
+      "language": "java",
+      "sizeLines": 614,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/configs/AiClientConfig.java",
+      "language": "java",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/controllers/AiController.java",
+      "language": "java",
+      "sizeLines": 528,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/ChatQueryRequest.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/requests/UpdateConversationTitleRequest.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/ChatQueryResponse.java",
+      "language": "java",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/dtos/responses/CitationResponse.java",
+      "language": "java",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/ai/services/AiServiceClient.java",
+      "language": "java",
+      "sizeLines": 472,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/controllers/AssetController.java",
+      "language": "java",
+      "sizeLines": 206,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/Asset.java",
+      "language": "java",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetAssignment.java",
+      "language": "java",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetCategory.java",
+      "language": "java",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetImage.java",
+      "language": "java",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetInventoryLog.java",
+      "language": "java",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetMaintenance.java",
+      "language": "java",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/entities/AssetRequest.java",
+      "language": "java",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetErrorCode.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetRequestStatus.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssetStatus.java",
+      "language": "java",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/enums/AssignmentStatus.java",
+      "language": "java",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceStatus.java",
+      "language": "java",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/enums/MaintenanceType.java",
+      "language": "java",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/exceptions/AssetException.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetAssignmentRepository.java",
+      "language": "java",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetCategoryRepository.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetImageRepository.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetInventoryLogRepository.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetMaintenanceRepository.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRepository.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/repositories/AssetRequestRepository.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetCategorySeeder.java",
+      "language": "java",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/asset/services/AssetService.java",
+      "language": "java",
+      "sizeLines": 577,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/controllers/AttendanceController.java",
+      "language": "java",
+      "sizeLines": 262,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/controllers/WorkShiftController.java",
+      "language": "java",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/AttendanceFilterRequest.java",
+      "language": "java",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CompanyTimesheetFilterRequest.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/CreateWorkShiftRequest.java",
+      "language": "java",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/EditAttendanceRequest.java",
+      "language": "java",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/ManagerTimesheetFilterRequest.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/MonthlyTimesheetEditRequest.java",
+      "language": "java",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/requests/StaffTimesheetFilterRequest.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/AttendanceOverviewResponse.java",
+      "language": "java",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/CompanyMonthlyTimesheetResponse.java",
+      "language": "java",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/HrAttendanceResponse.java",
+      "language": "java",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/ManagerAttendanceResponse.java",
+      "language": "java",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffAttendanceResponse.java",
+      "language": "java",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/StaffMonthlyTimesheetResponse.java",
+      "language": "java",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/dtos/response/WorkShiftResponse.java",
+      "language": "java",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/entities/Attendance.java",
+      "language": "java",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/entities/MonthlyTimesheet.java",
+      "language": "java",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShift.java",
+      "language": "java",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/entities/WorkShiftSchedule.java",
+      "language": "java",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceErrorCode.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/enums/AttendanceStatus.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/enums/TimesheetStatus.java",
+      "language": "java",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/exceptions/AttendanceException.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/AttendanceRepository.java",
+      "language": "java",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/MonthlyTimesheetRepository.java",
+      "language": "java",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftRepository.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/repositories/WorkShiftScheduleRepository.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceOverviewService.java",
+      "language": "java",
+      "sizeLines": 413,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceScheduler.java",
+      "language": "java",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/services/AttendanceService.java",
+      "language": "java",
+      "sizeLines": 1410,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/services/WorkShiftService.java",
+      "language": "java",
+      "sizeLines": 384,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/specifications/AttendanceSpecification.java",
+      "language": "java",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/attendance/specifications/MonthlyTimesheetSpecification.java",
+      "language": "java",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/controllers/AuthController.java",
+      "language": "java",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/ClientMetaData.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/TokenPayload.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/internals/UserAuthInfo.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/ChangePasswordRequest.java",
+      "language": "java",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignInRequest.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/requests/SignUpRequest.java",
+      "language": "java",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/dtos/response/SignInResponse.java",
+      "language": "java",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/entities/PendingUser.java",
+      "language": "java",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/entities/UserSession.java",
+      "language": "java",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/enums/AuthErrorCode.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/exceptions/AuthenticationException.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/repositories/PendingUserRepository.java",
+      "language": "java",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/repositories/UserSessionRepository.java",
+      "language": "java",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/services/AuthService.java",
+      "language": "java",
+      "sizeLines": 360,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/services/ClientInfoService.java",
+      "language": "java",
+      "sizeLines": 196,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/services/EmailService.java",
+      "language": "java",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/services/JwtService.java",
+      "language": "java",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/services/SessionBlacklistService.java",
+      "language": "java",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContext.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/common/context/RequestContextHolder.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/common/specifications/SpecificationScopes.java",
+      "language": "java",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/configs/SecurityConfig.java",
+      "language": "java",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/configs/WebConfig.java",
+      "language": "java",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/dashboard/controllers/DashboardController.java",
+      "language": "java",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/dashboard/dtos/responses/DashboardSummaryResponse.java",
+      "language": "java",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/dashboard/services/DashboardService.java",
+      "language": "java",
+      "sizeLines": 257,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/controllers/DocumentController.java",
+      "language": "java",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/dtos/requests/UpsertDocumentRequest.java",
+      "language": "java",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/dtos/responses/DocumentResponse.java",
+      "language": "java",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/entities/Document.java",
+      "language": "java",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentCategory.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentErrorCode.java",
+      "language": "java",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/enums/DocumentFileType.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/exceptions/DocumentException.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/repositories/DocumentRepository.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/documents/services/DocumentService.java",
+      "language": "java",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/controllers/DepartmentController.java",
+      "language": "java",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/controllers/EmployeeController.java",
+      "language": "java",
+      "sizeLines": 345,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/controllers/JobController.java",
+      "language": "java",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserDetailedInfo.java",
+      "language": "java",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/internals/UserRole.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateContractRequest.java",
+      "language": "java",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateDepartmentRequest.java",
+      "language": "java",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateEmployeeRequest.java",
+      "language": "java",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/CreateJobRequest.java",
+      "language": "java",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/RenewContractRequest.java",
+      "language": "java",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateAssignmentRequest.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateBasicInfoRequest.java",
+      "language": "java",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateContractRequest.java",
+      "language": "java",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateEmployeeStatusRequest.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateLegalProfileRequest.java",
+      "language": "java",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdatePayrollRequest.java",
+      "language": "java",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/requests/UpdateProfileRequest.java",
+      "language": "java",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/AvatarUploadResponse.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/ContractResponse.java",
+      "language": "java",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/DepartmentResponse.java",
+      "language": "java",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDetailResponse.java",
+      "language": "java",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeeDirectoryItemResponse.java",
+      "language": "java",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/EmployeePublicProfile.java",
+      "language": "java",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/JobResponse.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/dtos/responses/OrganizationOverviewResponse.java",
+      "language": "java",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/Department.java",
+      "language": "java",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/Job.java",
+      "language": "java",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/Salary.java",
+      "language": "java",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/User.java",
+      "language": "java",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserBankAccount.java",
+      "language": "java",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserContract.java",
+      "language": "java",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/entities/UserProfile.java",
+      "language": "java",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/enums/DepartmentName.java",
+      "language": "java",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/enums/PayFrequency.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/DepartmentRepository.java",
+      "language": "java",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/JobRepository.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/SalaryRepository.java",
+      "language": "java",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserBankAccountRepository.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserContractRepository.java",
+      "language": "java",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserProfileRepository.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/repositories/UserRepository.java",
+      "language": "java",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/services/EmployeeService.java",
+      "language": "java",
+      "sizeLines": 950,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/employees/services/OrganizationService.java",
+      "language": "java",
+      "sizeLines": 336,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/exceptions/GlobalExceptionHandler.java",
+      "language": "java",
+      "sizeLines": 513,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/filters/JwtAuthFilter.java",
+      "language": "java",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/controllers/ItTicketController.java",
+      "language": "java",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/entities/ItTicket.java",
+      "language": "java",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketCategory.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketErrorCode.java",
+      "language": "java",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketPriority.java",
+      "language": "java",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/enums/ItTicketStatus.java",
+      "language": "java",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/exceptions/ItTicketException.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/repositories/ItTicketRepository.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/itticket/services/ItTicketService.java",
+      "language": "java",
+      "sizeLines": 253,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/controllers/LeaveController.java",
+      "language": "java",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/CreateLeaveReqRequest.java",
+      "language": "java",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/HandleLeaveReqApiRequest.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/requests/LeaveFilterRequest.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/HrLeaveResponse.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/LeavePreviewResponse.java",
+      "language": "java",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/ManagerLeaveResponse.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/dtos/responses/StaffLeaveResponse.java",
+      "language": "java",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/entities/LeaveRequest.java",
+      "language": "java",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveErrorCode.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/enums/LeaveRequestStatus.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/exceptions/LeaveException.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/repositories/LeaveRequestRepository.java",
+      "language": "java",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/services/LeaveService.java",
+      "language": "java",
+      "sizeLines": 581,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/leave/specifications/LeaveRequestSpecification.java",
+      "language": "java",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/controllers/OvertimeController.java",
+      "language": "java",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/HandleOvertimeReqApiRequest.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeFilterRequest.java",
+      "language": "java",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/requests/OvertimeWorkTimeRequest.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/HrOvertimeResponse.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/ManagerOvertimeResponse.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/OvertimePreviewResponse.java",
+      "language": "java",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/dtos/responses/StaffOvertimeResponse.java",
+      "language": "java",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/entities/Holiday.java",
+      "language": "java",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/entities/OvertimeRecord.java",
+      "language": "java",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeErrorCode.java",
+      "language": "java",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/enums/OvertimeRecordStatus.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/exceptions/OvertimeException.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/HolidayRepository.java",
+      "language": "java",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/repositories/OvertimeRecordRepository.java",
+      "language": "java",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/services/OvertimeService.java",
+      "language": "java",
+      "sizeLines": 730,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/overtime/specification/OvertimeSpecification.java",
+      "language": "java",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/controllers/PayrollController.java",
+      "language": "java",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/CompanyPayrollFilterRequest.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/EditPayrollRequest.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/requests/StaffPayrollFilterRequest.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/CompanyPayrollResponse.java",
+      "language": "java",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/MonthlyPayrollSummaryResponse.java",
+      "language": "java",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/dtos/responses/StaffPayrollResponse.java",
+      "language": "java",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/entities/MonthlyPayrollSummary.java",
+      "language": "java",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/entities/Payroll.java",
+      "language": "java",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollErrorCode.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/enums/PayrollStatus.java",
+      "language": "java",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/exceptions/PayrollException.java",
+      "language": "java",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/repositories/MonthlyPayrollSummaryRepository.java",
+      "language": "java",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/repositories/PayrollRepository.java",
+      "language": "java",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/services/PayrollService.java",
+      "language": "java",
+      "sizeLines": 831,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/payroll/specifications/PayrollSpecification.java",
+      "language": "java",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/controllers/PerformanceController.java",
+      "language": "java",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ManagerScoreRequest.java",
+      "language": "java",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/PerformanceFilterRequest.java",
+      "language": "java",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/ScoreItemRequest.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/requests/SelfSubmitRequest.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceOverviewResponse.java",
+      "language": "java",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/dtos/responses/PerformanceReviewResponse.java",
+      "language": "java",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceReview.java",
+      "language": "java",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/entities/PerformanceScore.java",
+      "language": "java",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/enums/PerformanceErrorCode.java",
+      "language": "java",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/enums/PeriodType.java",
+      "language": "java",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/enums/ReviewStatus.java",
+      "language": "java",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/exceptions/PerformanceException.java",
+      "language": "java",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceReviewRepository.java",
+      "language": "java",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/repositories/PerformanceScoreRepository.java",
+      "language": "java",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/services/PerformanceService.java",
+      "language": "java",
+      "sizeLines": 633,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/performance/specifications/PerformanceSpecification.java",
+      "language": "java",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/permissions/entities/PermissionGrant.java",
+      "language": "java",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/permissions/enums/PermissionKey.java",
+      "language": "java",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/permissions/repositories/PermissionGrantRepository.java",
+      "language": "java",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionBackfillRunner.java",
+      "language": "java",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/permissions/services/PermissionService.java",
+      "language": "java",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/controllers/ResignationController.java",
+      "language": "java",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/ApproveResignationRequest.java",
+      "language": "java",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/CreateResignationRequest.java",
+      "language": "java",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/requests/TransferRequest.java",
+      "language": "java",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/dtos/responses/ResignationResponse.java",
+      "language": "java",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/entities/ResignationRequest.java",
+      "language": "java",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationErrorCode.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/enums/ResignationStatus.java",
+      "language": "java",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/exceptions/ResignationException.java",
+      "language": "java",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/repositories/ResignationRequestRepository.java",
+      "language": "java",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationScheduler.java",
+      "language": "java",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/resignation/services/ResignationService.java",
+      "language": "java",
+      "sizeLines": 368,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/services/FileStorageService.java",
+      "language": "java",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/main/resources/application.properties.example",
+      "language": "example",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/test/java/com/minhtrung/hrm/HrmApplicationTests.java",
+      "language": "java",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/src/test/java/com/minhtrung/hrm/ai/AiServiceClientTest.java",
+      "language": "java",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "diagrams/architecture-hrm-exploded.html",
+      "language": "html",
+      "sizeLines": 673,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "diagrams/architecture-hrm.html",
+      "language": "html",
+      "sizeLines": 368,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "diagrams/auth-token-lifecycle.html",
+      "language": "html",
+      "sizeLines": 234,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "diagrams/database-hrm-erd.html",
+      "language": "html",
+      "sizeLines": 304,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "diagrams/resignation-flow.html",
+      "language": "html",
+      "sizeLines": 213,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docker-compose.yml",
+      "language": "yaml",
+      "sizeLines": 189,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "docs/agents/domain.md",
+      "language": "markdown",
+      "sizeLines": 83,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/api-reference.md",
+      "language": "markdown",
+      "sizeLines": 3124,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "init-db/README.md",
+      "language": "markdown",
+      "sizeLines": 12,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "opencode.json",
+      "language": "json",
+      "sizeLines": 54,
+      "fileCategory": "config"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "postman.json",
+      "language": "json",
+      "sizeLines": 7170,
+      "fileCategory": "config"
+    },
+    {
+      "path": "test_result.txt",
+      "language": "txt",
+      "sizeLines": 0,
+      "fileCategory": "docs"
+    }
+  ],
+  "totalFiles": 890,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "very-large",
+  "failures": [
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/auth/services/RateLimitService.java",
+      "stage": "file-lstat",
+      "message": "ENOENT: no such file or directory, lstat 'C:\\Users\\ad\\Desktop\\HRM\\backend\\src\\main\\java\\com\\minhtrung\\hrm\\auth\\services\\RateLimitService.java'"
+    },
+    {
+      "path": "backend/src/main/java/com/minhtrung/hrm/filters/RateLimitFilter.java",
+      "stage": "file-lstat",
+      "message": "ENOENT: no such file or directory, lstat 'C:\\Users\\ad\\Desktop\\HRM\\backend\\src\\main\\java\\com\\minhtrung\\hrm\\filters\\RateLimitFilter.java'"
+    }
+  ],
+  "stats": {
+    "filesScanned": 890,
+    "byCategory": {
+      "docs": 126,
+      "code": 546,
+      "data": 69,
+      "config": 133,
+      "infra": 8,
+      "markup": 7,
+      "script": 1
+    },
+    "byLanguage": {
+      "markdown": 105,
+      "javascript": 13,
+      "python": 170,
+      "csv": 63,
+      "json": 126,
+      "txt": 21,
+      "config": 2,
+      "yaml": 2,
+      "unknown": 7,
+      "html": 6,
+      "sql": 6,
+      "onnx": 1,
+      "xml": 4,
+      "example": 2,
+      "dockerfile": 3,
+      "typescript": 101,
+      "css": 1,
+      "jsonl": 1,
+      "properties": 1,
+      "batch": 1,
+      "java": 254
+    }
+  }
+}

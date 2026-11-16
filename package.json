@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  },
+  "dependencies": {
+    "date-fns": "^4.4.0",
+    "pg": "^8.23.1"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    {
+      "id": "document:Check Attendance/src/cascades/haarcascade_eye.xml",
+      "type": "document",
+      "name": "haarcascade_eye.xml",
+      "filePath": "Check Attendance/src/cascades/haarcascade_eye.xml",
+      "summary": "OpenCV Haar cascade classifier XML for eye detection with 12,213 lines containing trained feature parameters (stages, trees, thresholds) for real-time eye detection in the attendance system.",
+      "tags": ["model", "opencv", "haar-cascade", "eye-detection", "xml", "attendance", "computer-vision"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:Check Attendance/src/cascades/haarcascade_frontalface_default.xml",
+      "type": "document",
+      "name": "haarcascade_frontalface_default.xml",
+      "filePath": "Check Attendance/src/cascades/haarcascade_frontalface_default.xml",
+      "summary": "OpenCV Haar cascade classifier XML for frontal face detection with 33,314 lines containing trained feature parameters (stages, trees, thresholds) - primary face detector for the attendance system.",
+      "tags": ["model", "opencv", "haar-cascade", "face-detection", "frontal", "xml", "attendance", "computer-vision"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:Check Attendance/src/cascades/haarcascade_profileface.xml",
+      "type": "document",
+      "name": "haarcascade_profileface.xml",
+      "filePath": "Check Attendance/src/cascades/haarcascade_profileface.xml",
+      "summary": "OpenCV Haar cascade classifier XML for profile face detection with 29,690 lines containing trained feature parameters for side-view face detection as fallback in the attendance system.",
+      "tags": ["model", "opencv", "haar-cascade", "face-detection", "profile", "xml", "attendance", "computer-vision"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:Check Attendance/src/cascades/haarcascade_frontalface_default.xml",
+      "target": "document:Check Attendance/src/cascades/haarcascade_eye.xml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:Check Attendance/src/cascades/haarcascade_frontalface_default.xml",
+      "target": "document:Check Attendance/src/cascades/haarcascade_profileface.xml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:Check Attendance/src/cascades/haarcascade_eye.xml",
+      "target": "document:Check Attendance/src/cascades/haarcascade_profileface.xml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}

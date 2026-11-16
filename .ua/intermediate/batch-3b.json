@@ -1,0 +1,131 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/brand/references/logo-usage-rules.md",
+      "type": "document",
+      "name": "logo-usage-rules.md",
+      "filePath": ".agents/skills/brand/references/logo-usage-rules.md",
+      "summary": "Comprehensive logo usage guidelines covering 28 sections including logo variants (primary/color), clear space requirements, minimum sizes for digital and print, approved color usage and backgrounds, incorrect usage prohibitions, co-branding partner guidelines, file formats and organization, platform-specific rules for social media/website/documents, and a formal logo approval process.",
+      "tags": ["documentation", "brand-guidelines", "logo", "visual-identity", "design-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/messaging-framework.md",
+      "type": "document",
+      "name": "messaging-framework.md",
+      "filePath": ".agents/skills/brand/references/messaging-framework.md",
+      "summary": "Defines the brand messaging framework with 13 sections covering framework structure, core statements (mission, vision, value proposition, positioning), message architecture (primary message, 3-5 supporting messages, elevator pitches), audience-specific messaging, and message testing methodology.",
+      "tags": ["documentation", "brand-guidelines", "messaging", "brand-strategy", "communication"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/typography-specifications.md",
+      "type": "document",
+      "name": "typography-specifications.md",
+      "filePath": ".agents/skills/brand/references/typography-specifications.md",
+      "summary": "Complete typography specifications with 30 sections covering font stack structure (primary fonts and loading strategy), modular type scale with responsive adjustments, font weight scale and pairings, line height rules, letter spacing guidelines, paragraph spacing and margins, maximum line length, CSS implementation with full variable definitions and Tailwind config, common font pairings for different brand personalities, and accessibility requirements for minimum sizes and contrast.",
+      "tags": ["documentation", "brand-guidelines", "typography", "design-system", "css", "accessibility"],
+      "complexity": "complex",
+      "languageNotes": "Includes production-ready CSS custom properties and Tailwind configuration for direct implementation."
+    },
+    {
+      "id": "document:.agents/skills/brand/references/update.md",
+      "type": "document",
+      "name": "update.md",
+      "filePath": ".agents/skills/brand/references/update.md",
+      "summary": "Brand guidelines update workflow documentation with 12 sections describing a 5-step process: gather brand input, update brand guidelines, sync to design tokens, verify sync, and report. Also covers files modified during updates, skills/tools used, practical examples, color presets, and important reminders for maintaining consistency.",
+      "tags": ["documentation", "brand-guidelines", "workflow", "design-tokens", "maintenance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/visual-identity.md",
+      "type": "document",
+      "name": "visual-identity.md",
+      "filePath": ".agents/skills/brand/references/visual-identity.md",
+      "summary": "Visual identity foundation document with 10 sections covering core visual elements (logo, color palette, typography), a visual guidelines template structure, and quick-check checklists for logo usage, color compliance, and typography adherence to ensure brand consistency across touchpoints.",
+      "tags": ["documentation", "brand-guidelines", "visual-identity", "design-system", "checklist"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/brand/references/voice-framework.md",
+      "type": "document",
+      "name": "voice-framework.md",
+      "filePath": ".agents/skills/brand/references/voice-framework.md",
+      "summary": "Brand voice framework documentation with 13 sections defining voice vs. tone, four-dimensional voice spectra (tone, language, character, emotion), a 3-step voice development process (define personality traits, create voice chart, context adaptation), voice testing methodology, and a voice guide template for consistent brand communication across contexts.",
+      "tags": ["documentation", "brand-guidelines", "voice", "tone", "brand-strategy", "communication"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/brand/references/visual-identity.md",
+      "target": "document:.agents/skills/brand/references/logo-usage-rules.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/visual-identity.md",
+      "target": "document:.agents/skills/brand/references/typography-specifications.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/visual-identity.md",
+      "target": "document:.agents/skills/brand/references/voice-framework.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/visual-identity.md",
+      "target": "document:.agents/skills/brand/references/messaging-framework.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/messaging-framework.md",
+      "target": "document:.agents/skills/brand/references/voice-framework.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/update.md",
+      "target": "document:.agents/skills/brand/references/visual-identity.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/update.md",
+      "target": "document:.agents/skills/brand/references/typography-specifications.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/update.md",
+      "target": "document:.agents/skills/brand/references/logo-usage-rules.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/update.md",
+      "target": "document:.agents/skills/brand/references/messaging-framework.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:.agents/skills/brand/references/update.md",
+      "target": "document:.agents/skills/brand/references/voice-framework.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

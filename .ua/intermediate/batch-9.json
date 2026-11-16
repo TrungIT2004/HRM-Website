@@ -1,0 +1,294 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/design/references/banner-sizes-and-styles.md",
+      "type": "document",
+      "name": "banner-sizes-and-styles.md",
+      "filePath": ".agents/skills/design/references/banner-sizes-and-styles.md",
+      "summary": "Comprehensive reference for banner sizes across social media, web/display ads, website, and print formats. Documents 22 art direction styles with design principles including visual hierarchy (3-zone rule), safe zones, CTA rules, typography, text-to-image ratios, print specs, and Pinterest research queries.",
+      "tags": ["documentation", "reference", "design-system", "banner", "specifications"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/cip-deliverable-guide.md",
+      "type": "document",
+      "name": "cip-deliverable-guide.md",
+      "filePath": ".agents/skills/design/references/cip-deliverable-guide.md",
+      "summary": "Corporate Identity Program deliverable guide covering core identity (primary logo, variations), stationery set (business card, letterhead, envelope), office environment (signage, wayfinding, wall graphics), apparel, vehicle branding, digital assets, and events/promotional materials.",
+      "tags": ["documentation", "reference", "design-system", "cip", "brand-identity"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/cip-design.md",
+      "type": "document",
+      "name": "cip-design.md",
+      "filePath": ".agents/skills/design/references/cip-design.md",
+      "summary": "CIP Design reference documenting scripts, commands, and workflows for the Corporate Identity Program including CIP brief generation, mockup generation, HTML presentation rendering, deliverable categories, design styles, and setup instructions.",
+      "tags": ["documentation", "reference", "design-system", "cip", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/cip-prompt-engineering.md",
+      "type": "document",
+      "name": "cip-prompt-engineering.md",
+      "filePath": ".agents/skills/design/references/cip-prompt-engineering.md",
+      "summary": "Prompt engineering guide for CIP mockup generation with base prompt structure, deliverable-specific modifiers (business card, letterhead, signage, vehicle, apparel), style modifiers (Corporate Minimal, Luxury Premium, Modern Tech, Warm Organic), lighting/context/quality modifiers, and negative prompts.",
+      "tags": ["documentation", "reference", "design-system", "cip", "prompt-engineering", "ai-generation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/cip-style-guide.md",
+      "type": "document",
+      "name": "cip-style-guide.md",
+      "filePath": ".agents/skills/design/references/cip-style-guide.md",
+      "summary": "CIP design style guide defining 8 visual style archetypes: Corporate Minimal, Modern Tech, Luxury Premium, Classic Traditional, Warm Organic, Bold Dynamic, Fresh Modern, Soft Elegant, with color psychology and industry applicability guidance.",
+      "tags": ["documentation", "reference", "design-system", "cip", "visual-styles"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/design-routing.md",
+      "type": "document",
+      "name": "design-routing.md",
+      "filePath": ".agents/skills/design/references/design-routing.md",
+      "summary": "Design routing guide mapping task types to appropriate skills: brand identity, token system, implementation, logo design, CIP, presentation, banner, and icon design. Includes routing by question type, multi-skill workflows for new projects, migrations, and component creation.",
+      "tags": ["documentation", "reference", "design-system", "routing", "skills", "workflows"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/icon-design.md",
+      "type": "document",
+      "name": "icon-design.md",
+      "filePath": ".agents/skills/design/references/icon-design.md",
+      "summary": "Icon design reference with scripts and commands for single icon generation, batch variations, multiple sizes, style/category listing, available styles, icon categories, SVG best practices, model selection, workflow, and setup.",
+      "tags": ["documentation", "reference", "design-system", "icons", "svg", "generation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/logo-color-psychology.md",
+      "type": "document",
+      "name": "logo-color-psychology.md",
+      "filePath": ".agents/skills/design/references/logo-color-psychology.md",
+      "summary": "Logo color psychology reference covering primary color meanings (Blue, Red, Green, Yellow/Gold, Purple, Orange, Black, White), color combinations by industry, harmony types (monochromatic, complementary, analogous, triadic), accessibility considerations, and quick reference palettes.",
+      "tags": ["documentation", "reference", "design-system", "logo", "color-psychology", "accessibility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/logo-design.md",
+      "type": "document",
+      "name": "logo-design.md",
+      "filePath": ".agents/skills/design/references/logo-design.md",
+      "summary": "Logo design reference with scripts, commands, design brief creation, search domains, generation workflow, available styles, color psychology, industry defaults, detailed references, and setup instructions.",
+      "tags": ["documentation", "reference", "design-system", "logo", "generation", "workflow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/logo-prompt-engineering.md",
+      "type": "document",
+      "name": "logo-prompt-engineering.md",
+      "filePath": ".agents/skills/design/references/logo-prompt-engineering.md",
+      "summary": "Logo AI prompt engineering guide with core prompt structure, effective keywords by style (Minimalist, Vintage, Luxury, Modern, Playful, Organic), negative prompts, industry-specific prompts (Tech, Healthcare, Restaurant, Fashion, Eco), technical requirements, prompt templates, and common pitfalls.",
+      "tags": ["documentation", "reference", "design-system", "logo", "prompt-engineering", "ai-generation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/logo-style-guide.md",
+      "type": "document",
+      "name": "logo-style-guide.md",
+      "filePath": ".agents/skills/design/references/logo-style-guide.md",
+      "summary": "Logo style guide defining 7 core logo types (Wordmark, Lettermark, Pictorial, Abstract, Mascot, Emblem, Combination) and 7 aesthetic styles (Minimalist, Vintage, Luxury, Geometric, Organic, Gradient) with style selection matrix and scalability checklist.",
+      "tags": ["documentation", "reference", "design-system", "logo", "types", "styles"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/slides-copywriting-formulas.md",
+      "type": "document",
+      "name": "slides-copywriting-formulas.md",
+      "filePath": ".agents/skills/design/references/slides-copywriting-formulas.md",
+      "summary": "Copywriting formulas reference for slide creation covering PAS, AIDA, FAB, Cost of Inaction, Before-After-Bridge formulas with formula-to-slide mapping, headline patterns, power words, contrast patterns, social proof patterns, and search commands.",
+      "tags": ["documentation", "reference", "design-system", "slides", "copywriting", "formulas"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/slides-create.md",
+      "type": "document",
+      "name": "slides-create.md",
+      "filePath": ".agents/skills/design/references/slides-create.md",
+      "summary": "Minimal slides creation task reference with single task heading.",
+      "tags": ["documentation", "reference", "design-system", "slides"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/references/slides-html-template.md",
+      "type": "document",
+      "name": "slides-html-template.md",
+      "filePath": ".agents/skills/design/references/slides-html-template.md",
+      "summary": "HTML slide template with base structure, Chart.js integration, animation classes, background images, and CSS variables reference for building presentation slides.",
+      "tags": ["documentation", "reference", "design-system", "slides", "html", "template", "css", "chartjs"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/slides-layout-patterns.md",
+      "type": "document",
+      "name": "slides-layout-patterns.md",
+      "filePath": ".agents/skills/design/references/slides-layout-patterns.md",
+      "summary": "Slide layout patterns reference with layout selection by use case, CSS structures for title slides, two-column splits, feature grids, metrics dashboards, component variants (cards, metrics), visual treatments, search commands, and layout decision flow.",
+      "tags": ["documentation", "reference", "design-system", "slides", "layout", "css"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/slides-strategies.md",
+      "type": "document",
+      "name": "slides-strategies.md",
+      "filePath": ".agents/skills/design/references/slides-strategies.md",
+      "summary": "Slide strategies reference with strategy selection, common structures (YC Seed Deck 10 slides, Sales Pitch 9 slides, Product Demo 6 slides), Duarte Sparkline pattern, search commands, and matching strategy to context.",
+      "tags": ["documentation", "reference", "design-system", "slides", "strategies", "presentation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/design/references/slides.md",
+      "type": "document",
+      "name": "slides.md",
+      "filePath": ".agents/skills/design/references/slides.md",
+      "summary": "Slides reference overview with usage, knowledge base, when to use, key features, and workflow for the slides skill.",
+      "tags": ["documentation", "reference", "design-system", "slides", "overview"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.agents/skills/design/references/social-photos-design.md",
+      "type": "document",
+      "name": "social-photos-design.md",
+      "filePath": ".agents/skills/design/references/social-photos-design.md",
+      "summary": "Social photos design guide with platform sizes, 8-step workflow (project management, requirements, ideas, HTML design, screenshot export via 4 options, verification, summary report, organization), design best practices, platform-specific tips, art direction styles, color/contrast, typography hierarchy, and security scope.",
+      "tags": ["documentation", "reference", "design-system", "social-media", "photos", "workflow", "html", "screenshot"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/design/references/design-routing.md",
+      "target": "document:.agents/skills/design/references/banner-sizes-and-styles.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/references/design-routing.md",
+      "target": "document:.agents/skills/design/references/cip-deliverable-guide.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/references/design-routing.md",
+      "target": "document:.agents/skills/design/references/cip-design.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/references/design-routing.md",
+      "target": "document:.agents/skills/design/references/icon-design.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/references/design-routing.md",
+      "target": "document:.agents/skills/design/references/logo-design.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/references/design-routing.md",
+      "target": "document:.agents/skills/design/references/slides.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/design/references/cip-design.md",
+      "target": "document:.agents/skills/design/references/cip-deliverable-guide.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/cip-design.md",
+      "target": "document:.agents/skills/design/references/cip-prompt-engineering.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/cip-design.md",
+      "target": "document:.agents/skills/design/references/cip-style-guide.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/logo-design.md",
+      "target": "document:.agents/skills/design/references/logo-color-psychology.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/logo-design.md",
+      "target": "document:.agents/skills/design/references/logo-prompt-engineering.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/logo-design.md",
+      "target": "document:.agents/skills/design/references/logo-style-guide.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/slides.md",
+      "target": "document:.agents/skills/design/references/slides-copywriting-formulas.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/slides.md",
+      "target": "document:.agents/skills/design/references/slides-create.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/slides.md",
+      "target": "document:.agents/skills/design/references/slides-html-template.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/slides.md",
+      "target": "document:.agents/skills/design/references/slides-layout-patterns.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/slides.md",
+      "target": "document:.agents/skills/design/references/slides-strategies.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/design/references/banner-sizes-and-styles.md",
+      "target": "document:.agents/skills/design/references/social-photos-design.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

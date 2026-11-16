@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "type": "document",
+      "name": "RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "filePath": "ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "summary": "DOC_ONLY retrieval test results for 146 questions from generated_testset.csv against 7 enterprise PDF/DOCX files (OCR scan + docx). All 4 key metrics PASS: Hit@5=1.0000 (>0.60), MRR@5=0.9825 (>0.45), Top1 Mean=0.5789 (>0.20), Fallback Rate=0.0000 (<0.20). Hit@1=0.9726, Hit@3=0.9863. Diagnostic: Vector score 0.4454, Text Rank 0.8905 (lexical dominates), Rerank keeps Hit@5 but drops Top1 score -0.0604. Latency: retrieve 2104ms (rerank 942ms = 45%). Root cause fixes: 1) Gold matcher separator '|' bug (Hit@5 0.36→1.00), 2) Reranker gate overwrote hybrid score (Fallback 0.57→0.00), 3) OCR lost Vietnamese diacritics (Tesseract tuned: vie, psm 6, oem 1, dpi 400), 4) Gold matcher OCR mismatch (keyword fallback). Corpus: 353 EVALRET chunks + 246 Labor Law chunks. Embedding: bkai-foundation-models/vietnamese-bi-encoder (768d, CUDA). Reranker: AITeamVN/Vietnamese_Reranker. Threshold 0.15 calibrated from memory_session.",
+      "tags": ["test", "results", "ai-service", "retrieval", "doc-only", "ocr", "reranker", "hit-at-k", "mrr", "markdown"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/GENERATION_DOC_RESULTS.md",
+      "type": "document",
+      "name": "GENERATION_DOC_RESULTS.md",
+      "filePath": "ai-service/tests/retrieval_doc_only/GENERATION_DOC_RESULTS.md",
+      "summary": "DOC_ONLY generation test results for 30 questions (7 file corpus) using gpt-oss:120b judge via Ollama. RAGAS metrics below thresholds: faithfulness 0.52, answer_relevancy 0.40, context_precision 0.56, context_recall 0.53 (all < proposed thresholds 0.8/0.7). Manual audit of 6 faithfulness=0 cases: 0/6 true hallucinations (all safe refusals or correct answers with OCR/table context mismatch). Judge false-negatives systematic on OCR/table Vietnamese. Recommendation: don't gate production on RAGAS+gpt-oss; use retrieval metrics (100% Hit@5) + deterministic checks + periodic manual spot-check. Fixes tried: max_tokens=4096, 7-file stratified sample, successful-only filter, rewrite-aligned contexts, prompt rule 9 (no generic SharePoint), EVALRET dedup.",
+      "tags": ["test", "results", "ai-service", "generation", "doc-only", "ragas", "gpt-oss", "judge", "faithfulness", "markdown"],
+      "complexity": "high"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/retrieval_eval.json",
+      "type": "document",
+      "name": "retrieval_eval.json",
+      "filePath": "ai-service/tests/retrieval_doc_only/retrieval_eval.json",
+      "summary": "DOC_ONLY retrieval evaluation JSON at threshold 0.64 with 113 questions: Hit@1=0.9912, Hit@3=1.0, Hit@5=1.0, MRR@5=0.9956, Top1 Mean=0.6061, Fallback Rate=0.5841 (FAIL >0.20). Vector score 0.4975, Text Rank 0.8597. Latency: retrieve 1465ms, rerank 1057ms, embed 19ms. At T=0.15: Hit@5=1.0, Fallback=0.0. Two distributions overlap (legit min 0.362, negative max 0.627) — no clean threshold. T=0.64 chosen for safety (0 hallucination measured, cost is high refusal).",
+      "tags": ["test", "results", "ai-service", "retrieval", "doc-only", "threshold", "0.64", "json"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:ai-service/tests/retrieval_doc_only/threshold_calib_results.json",
+      "type": "document",
+      "name": "threshold_calib_results.json",
+      "filePath": "ai-service/tests/retrieval_doc_only/threshold_calib_results.json",
+      "summary": "Threshold calibration results JSON with negative test cases (out-of-scope questions) showing top1 scores and refusal behavior. 30 negative questions: most refused by directory guard (not retrieval threshold). Used to calibrate RELEVANCE_THRESHOLD — negative max top1 0.627 overlaps with legitimate min 0.362, no clean separation. Current T=0.64 chosen for safety over recall.",
+      "tags": ["test", "config", "ai-service", "retrieval", "doc-only", "threshold", "calibration", "negatives", "json"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "target": "document:ai-service/tests/retrieval_doc_only/retrieval_eval.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "target": "document:ai-service/tests/retrieval_doc_only/threshold_calib_results.json",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:ai-service/tests/retrieval_doc_only/GENERATION_DOC_RESULTS.md",
+      "target": "document:ai-service/tests/retrieval_doc_only/RETRIEVAL_DOC_ONLY_RESULTS.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    }
+  ]
+}

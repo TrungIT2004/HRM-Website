@@ -1,0 +1,11 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/banner-design/SKILL.md", "language": "markdown", "sizeLines": 196, "fileCategory": "docs"},
+    {"path": ".agents/skills/banner-design/references/banner-sizes-and-styles.md", "language": "markdown", "sizeLines": 118, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/banner-design/SKILL.md": [],
+    ".agents/skills/banner-design/references/banner-sizes-and-styles.md": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "projectRoot": "C:/Users/ad/Desktop/HRM",
+  "batchFiles": [
+    {"path": ".agents/skills/design-system/references/component-specs.md", "language": "markdown", "sizeLines": 236, "fileCategory": "docs"},
+    {"path": ".agents/skills/design-system/references/component-tokens.md", "language": "markdown", "sizeLines": 214, "fileCategory": "docs"},
+    {"path": ".agents/skills/design-system/references/primitive-tokens.md", "language": "markdown", "sizeLines": 203, "fileCategory": "docs"},
+    {"path": ".agents/skills/design-system/references/semantic-tokens.md", "language": "markdown", "sizeLines": 215, "fileCategory": "docs"},
+    {"path": ".agents/skills/design-system/references/states-and-variants.md", "language": "markdown", "sizeLines": 241, "fileCategory": "docs"},
+    {"path": ".agents/skills/design-system/references/tailwind-integration.md", "language": "markdown", "sizeLines": 251, "fileCategory": "docs"},
+    {"path": ".agents/skills/design-system/references/token-architecture.md", "language": "markdown", "sizeLines": 224, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    ".agents/skills/design-system/references/component-specs.md": [],
+    ".agents/skills/design-system/references/component-tokens.md": [],
+    ".agents/skills/design-system/references/primitive-tokens.md": [],
+    ".agents/skills/design-system/references/semantic-tokens.md": [],
+    ".agents/skills/design-system/references/states-and-variants.md": [],
+    ".agents/skills/design-system/references/tailwind-integration.md": [],
+    ".agents/skills/design-system/references/token-architecture.md": []
+  }
+}

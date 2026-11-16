@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/design/data/logo/colors.csv",
+      "type": "document",
+      "name": "colors.csv",
+      "filePath": ".agents/skills/design/data/logo/colors.csv",
+      "summary": "Reference dataset of 55 curated color palettes for logo design, organized by category (Professional, Technology, Nature, Premium, Energetic, Creative, Clean, Power, Corporate, Organic, Feminine, Nightlife, Warm, Calm, Minimal, Biophilic, Playful, Retro, Fresh, Inviting, Regal, Calm, Passionate, Strong, Soft, Warm, Cool, Professional, Grounded, Sophisticated, Gentle, Moody, Luxury, Feminine, Premium, Soft, Sophisticated, Warm, Vibrant, Calming, Warm). Each entry includes palette name, category, keywords, 5 hex colors (primary, secondary, accent, background, text), psychological associations, best-use industries, and industries to avoid.",
+      "tags": ["design-system", "color-palette", "reference-data", "branding", "logo-design"],
+      "complexity": "moderate",
+      "languageNotes": "CSV with 56 lines (1 header + 55 data rows). Each row defines a complete color system with psychological guidance for brand identity applications."
+    },
+    {
+      "id": "document:.agents/skills/design/data/logo/industries.csv",
+      "type": "document",
+      "name": "industries.csv",
+      "filePath": ".agents/skills/design/data/logo/industries.csv",
+      "summary": "Reference dataset of 55 industry profiles for logo design guidance, mapping each industry to recommended logo styles, primary color palettes, typography recommendations, common symbols/icons, brand mood, best practices, and design elements to avoid. Covers Technology, Healthcare, Finance, Legal, Real Estate, Food/Restaurant, Fashion, Beauty, Education, Sports, Entertainment, Automotive, Construction, Agriculture, Travel, Pet Care, Non-Profit, Gaming, Photography, Consulting, E-commerce, Crypto/Web3, Wedding, Coffee, Brewery, Insurance, Logistics, Dental, Cleaning, Security, Energy, Pharmacy, Childcare, Aerospace, Jewelry, Marine, Accounting, Music, Architecture, Hotel, Telecommunications, Biotechnology, Cybersecurity, Interior Design, Laundry, Printing, Florist, Bakery, Landscaping, Plumbing, Electrical, HVAC, Pest Control, Moving, and Spa Wellness industries.",
+      "tags": ["design-system", "industry-guidelines", "reference-data", "branding", "logo-design"],
+      "complexity": "moderate",
+      "languageNotes": "CSV with 56 lines (1 header + 55 data rows). Each row provides comprehensive logo design specifications tailored to industry conventions and audience expectations."
+    },
+    {
+      "id": "document:.agents/skills/design/data/logo/styles.csv",
+      "type": "document",
+      "name": "styles.csv",
+      "filePath": ".agents/skills/design/data/logo/styles.csv",
+      "summary": "Reference dataset of 54 logo style definitions categorizing design approaches by category (General, Typography, Symbol, Illustrated, Badge, Hybrid, Aesthetic, Modern, Clever, Minimal, Digital, Design, Artistic, Experimental, Shape, Motion, Values, Industry). Each style includes keywords, primary/secondary color guidance, typography recommendations, visual effects, best-use scenarios, industries to avoid, complexity rating (Low/Medium/High), and historical era context. Styles range from Minimalist, Wordmark, Lettermark, Pictorial/Abstract/Mascot/Emblem/Combination marks to aesthetic styles like Vintage, Art Deco, Hand-Drawn, Gradient, Flat, 3D, Negative Space, Line Art, Neon, Brutalist, Luxury, Playful, Corporate, Tech, Organic, Swiss, Bauhaus, Grunge, Watercolor, and industry-specific styles.",
+      "tags": ["design-system", "logo-styles", "reference-data", "branding", "design-patterns"],
+      "complexity": "moderate",
+      "languageNotes": "CSV with 57 lines (1 header + 54 data rows). Comprehensive taxonomy of logo design styles with practical application guidance, complexity ratings, and historical context for design system implementation."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/design/data/logo/colors.csv",
+      "target": "document:.agents/skills/design/data/logo/industries.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    },
+    {
+      "source": "document:.agents/skills/design/data/logo/colors.csv",
+      "target": "document:.agents/skills/design/data/logo/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    },
+    {
+      "source": "document:.agents/skills/design/data/logo/industries.csv",
+      "target": "document:.agents/skills/design/data/logo/styles.csv",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    }
+  ]
+}

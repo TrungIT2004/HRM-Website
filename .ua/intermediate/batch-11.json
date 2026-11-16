@@ -1,0 +1,118 @@
+{
+  "nodes": [
+    {
+      "id": "document:.agents/skills/ui-styling/references/canvas-design-system.md",
+      "type": "document",
+      "name": "canvas-design-system.md",
+      "filePath": ".agents/skills/ui-styling/references/canvas-design-system.md",
+      "summary": "Canvas Design System reference covering design philosophy approach (2 phases: philosophy creation, visual expression), 4 core principles (Visual Communication First, Minimal Text Integration, Expert Craftsmanship, Systematic Patterns), 5 design movement examples (Concrete Poetry, Chromatic Language, Analog Meditation, Organic Systems, Geometric Silence), implementation guidelines, multi-page design systems, execution checklist, quality standards, refinement process (3 passes), output format, and use cases.",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "canvas", "philosophy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "type": "document",
+      "name": "shadcn-accessibility.md",
+      "filePath": ".agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "summary": "shadcn/ui Accessibility Patterns reference covering foundation on Radix UI primitives, keyboard navigation (focus management, dialog/modal, dropdown/menu, command palette), screen reader support (semantic HTML, ARIA labels, SR-only text, live regions), form accessibility (labels, errors, required fields, fieldset/legend), component-specific patterns (Accordion, Tabs, Select, Checkbox/Radio, Alert), color contrast, focus indicators, motion/animation, testing checklist, and tools.",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "shadcn", "accessibility", "a11y", "radix-ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/references/shadcn-components.md",
+      "type": "document",
+      "name": "shadcn-components.md",
+      "filePath": ".agents/skills/ui-styling/references/shadcn-components.md",
+      "summary": "shadcn/ui Component Reference with installation guide and comprehensive component catalog: Form & Input (Button, Input, Form with React Hook Form + Zod, Select, Checkbox, Radio Group, Textarea, Switch, Date Picker), Layout & Navigation (Card, Tabs, Accordion, Navigation Menu), Overlays & Dialogs (Dialog, Drawer, Popover, Toast, Command, Alert Dialog), Feedback & Status (Alert, Progress, Skeleton), Display Components (Table, Avatar, Badge).",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "shadcn", "components", "react", "radix-ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/references/shadcn-theming.md",
+      "type": "document",
+      "name": "shadcn-theming.md",
+      "filePath": ".agents/skills/ui-styling/references/shadcn-theming.md",
+      "summary": "shadcn/ui Theming & Customization reference covering dark mode setup (Next.js App Router, Vite), CSS variable system, color format (HSL), Tailwind configuration, 3 color customization methods (CSS variables, theme generator, multiple themes), component customization (variants, styles, className overrides), base color presets, style variants, radius customization, and best practices.",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "shadcn", "theming", "tailwind", "dark-mode", "css-variables"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/references/tailwind-customization.md",
+      "type": "document",
+      "name": "tailwind-customization.md",
+      "filePath": ".agents/skills/ui-styling/references/tailwind-customization.md",
+      "summary": "Tailwind CSS Customization reference covering @theme directive, color customization (custom palette, semantic colors), typography customization (custom fonts, font sizes), spacing customization, custom utilities, custom variants, layer organization, @apply directive, plugins (official and custom), configuration examples (complete config, dark mode, content configuration, safelist), and best practices.",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "tailwind", "customization", "css", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/references/tailwind-responsive.md",
+      "type": "document",
+      "name": "tailwind-responsive.md",
+      "filePath": ".agents/skills/ui-styling/references/tailwind-responsive.md",
+      "summary": "Tailwind CSS Responsive Design reference covering mobile-first approach, breakpoint system, responsive patterns (layout, visibility, typography, spacing, width), common responsive layouts (sidebar, card grid, hero, navigation), max-width queries, range queries, container queries, custom breakpoints, responsive state variants, best practices (6 principles), common responsive utilities (display, position, order, overflow), and testing checklist.",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "tailwind", "responsive", "mobile-first", "breakpoints"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.agents/skills/ui-styling/references/tailwind-utilities.md",
+      "type": "document",
+      "name": "tailwind-utilities.md",
+      "filePath": ".agents/skills/ui-styling/references/tailwind-utilities.md",
+      "summary": "Tailwind CSS Utility Reference with comprehensive coverage of layout utilities (display, flexbox, grid, positioning, z-index), spacing utilities (padding, margin, space-between, spacing scale), typography (font size, weight, alignment, line height, combined, transform, decoration, overflow), colors (text, background, scale, opacity, gradients), borders (width, color, radius, style), shadows (regular, colored), width/height, arbitrary values, aspect ratio, overflow, opacity, cursor, and user select.",
+      "tags": ["documentation", "reference", "design-system", "ui-styling", "tailwind", "utilities", "css", "reference"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:.agents/skills/ui-styling/references/shadcn-theming.md",
+      "target": "document:.agents/skills/ui-styling/references/tailwind-customization.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/references/shadcn-theming.md",
+      "target": "document:.agents/skills/ui-styling/references/tailwind-responsive.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.7
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/references/tailwind-customization.md",
+      "target": "document:.agents/skills/ui-styling/references/tailwind-responsive.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/references/tailwind-customization.md",
+      "target": "document:.agents/skills/ui-styling/references/tailwind-utilities.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/references/shadcn-components.md",
+      "target": "document:.agents/skills/ui-styling/references/shadcn-accessibility.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.9
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/references/shadcn-components.md",
+      "target": "document:.agents/skills/ui-styling/references/shadcn-theming.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.8
+    },
+    {
+      "source": "document:.agents/skills/ui-styling/references/canvas-design-system.md",
+      "target": "document:.agents/skills/ui-styling/references/tailwind-customization.md",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.6
+    }
+  ]
+}
