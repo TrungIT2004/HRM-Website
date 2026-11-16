@@ -20,6 +20,11 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Long getNextEmployeeNumber();
     
     boolean existsByEmail(String email);
+    boolean existsByEmployeeCode(String employeeCode);
+    int countByDepartment_DepartmentId(UUID departmentId);
+    // chặn xoá chức danh / ca làm việc khi còn nhân viên đang dùng
+    int countByJob_JobId(UUID jobId);
+    int countByShift_ShiftId(UUID shiftId);
 
     @Query("SELECT u FROM User u WHERE u.email = :email")
     User findByEmail(String email);
@@ -48,7 +53,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     
 
     @Query("""
-        SELECT new com.minhtrung.hrm.auth.dtos.internals.UserAuthInfo(u.userId, u.email, u.password, CONCAT(u.firstName, ' ', u.lastName), u.profilePicUrl, d.name, j.title)
+        SELECT new com.minhtrung.hrm.auth.dtos.internals.UserAuthInfo(u.userId, u.email, u.password, CONCAT(u.firstName, ' ', u.lastName), u.profilePicUrl, d.name, j.title, u.isActive)
         FROM User u
         JOIN u.department d
         JOIN u.job j
@@ -60,15 +65,17 @@ public interface UserRepository extends JpaRepository<User, UUID> {
        "u.userId, u.email, u.firstName, u.lastName, u.gender, u.birthDate, u.joinedDate, u.profilePicUrl, u.annualLeaveDays, u.usedLeaveDays, " +
        "d.name, j.title, s.baseSalary," +
        "p.phoneNumber, p.personalEmail, p.placeOfBirth, p.maritalStatus, p.nationality, p.citizenIdNumber, p.socialInsuranceNumber, p.taxIdentificationNumber, p.socialInsuranceStartDate, p.emergencyContactName, p.emergencyContactPhone, " +
-       "b.bankName, b.bankAccountNumber, " +
-       "c.contractType, c.contractStartDate, c.contractEndDate, c.probationEndDate) " +
+       "b.bankName, b.accountNumber, " +
+       "c.contractType, c.contractStartDate, c.contractEndDate) " +
        "FROM User u " +
        "LEFT JOIN u.department d " +
        "LEFT JOIN u.job j " +
-       "LEFT JOIN u.salaries s " +
+       "LEFT JOIN u.salaries s WITH s.isActive = true " +
        "LEFT JOIN u.profile p " +
-       "LEFT JOIN u.bankAccount b " +
-       "LEFT JOIN u.contract c " + 
+       // Tài khoản nhận lương = is_default true. ON điều kiện (không phải WITH) vì
+       // bản ghi không có is_default=true thì vẫn phải ra 1 dòng null thay vì mất hẳn nhân viên.
+       "LEFT JOIN u.bankAccounts b WITH b.isDefault = true " +
+       "LEFT JOIN u.contracts c WITH c.isActive = true " +
        "WHERE u.userId = :userId")
     UserDetailedInfo getUsersDetailedInfo(@Param("userId") UUID userId);
 
@@ -76,15 +83,15 @@ public interface UserRepository extends JpaRepository<User, UUID> {
        "u.userId, u.email, u.firstName, u.lastName, u.gender, u.birthDate, u.joinedDate, u.profilePicUrl, u.annualLeaveDays, u.usedLeaveDays, " +
        "d.name, j.title, s.baseSalary," +
        "p.phoneNumber, p.personalEmail, p.placeOfBirth, p.maritalStatus, p.nationality, p.citizenIdNumber, p.socialInsuranceNumber, p.taxIdentificationNumber, p.socialInsuranceStartDate, p.emergencyContactName, p.emergencyContactPhone, " +
-       "b.bankName, b.bankAccountNumber, " +
-       "c.contractType, c.contractStartDate, c.contractEndDate, c.probationEndDate) " +
+       "b.bankName, b.accountNumber, " +
+       "c.contractType, c.contractStartDate, c.contractEndDate) " +
        "FROM User u " +
        "LEFT JOIN u.department d " +
        "LEFT JOIN u.job j " +
-       "LEFT JOIN u.salaries s " +
+       "LEFT JOIN u.salaries s WITH s.isActive = true " +
        "LEFT JOIN u.profile p " +
-       "LEFT JOIN u.bankAccount b " +
-       "LEFT JOIN u.contract c")
+       "LEFT JOIN u.bankAccounts b WITH b.isDefault = true " +
+       "LEFT JOIN u.contracts c WITH c.isActive = true")
     List<UserDetailedInfo> getAllUsersDetailedInfo();
 
     @Query("""

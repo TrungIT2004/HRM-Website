@@ -1,0 +1,192 @@
+services:
+  # 1. Database: PostgreSQL 17 kèm pgvector
+  hrm-database:
+    image: pgvector/pgvector:pg17
+    container_name: hrm-database
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hrm}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-@Minhtrung1408}
+    ports:
+      - "5432:5432"
+    command: >
+      postgres
+      -c wal_level=replica
+      -c archive_mode=on
+      -c archive_command='cp %p /backups/wal/%f'
+      -c archive_timeout=300
+      -c restore_command='cp /backups/wal/%f "%p"'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d:ro
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-hrm}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 2. Cache: Redis 7
+  hrm-cache:
+    image: redis:7-alpine
+    container_name: hrm-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 3. AI Microservice: FastAPI RAG Service (Port 8000)
+  hrm-ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: hrm-ai-service
+    ports:
+      - "${AI_SERVICE_PORT:-8001}:8000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/hrm_ai # ponytail: password part hardcodes URL-encoded default (@Minhtrung1408); re-encode manually if POSTGRES_PASSWORD changes
+      HRM_DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:%40Minhtrung1408@hrm-database:5432/${POSTGRES_DB:-hrm} # same encoding caveat as above (Text-to-SQL business DB)
+      INTERNAL_API_SECRET: ${AI_SERVICE_SECRET:-hrm-internal-key-secure-2024}
+      LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-1.5-flash}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-https://ollama.com/v1}
+      OLLAMA_API_KEY: ${OLLAMA_API_KEY:-}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-gpt-oss:120b}
+    volumes:
+      - ./ai-service/uploads:/app/uploads
+    depends_on:
+      hrm-database:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 4. Core Backend: Spring Boot API Server
+  hrm-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hrm-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://hrm-database:5432/${POSTGRES_DB:-hrm}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-@Minhtrung1408}
+      SPRING_DATA_REDIS_HOST: hrm-cache
+      SPRING_DATA_REDIS_PORT: ${REDIS_PORT:-6379}
+      AI_SERVICE_URL: http://hrm-ai-service:8000
+      AI_SERVICE_SECRET: ${AI_SERVICE_SECRET:-hrm-internal-key-secure-2024}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/logs:/app/logs
+    depends_on:
+      hrm-database:
+        condition: service_healthy
+      hrm-cache:
+        condition: service_healthy
+      hrm-ai-service:
+        condition: service_started
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 5. Frontend Web: Next.js Standalone
+  hrm-frontend:
+    build:
+      context: ./HRM Website
+      dockerfile: Dockerfile
+    container_name: hrm-frontend
+    environment:
+      INTERNAL_BACKEND_URL: http://hrm-backend:8080
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - hrm-backend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 6. Cloudflare Quick Tunnels (TryCloudflare, URL random) — 1 tunnel/service
+  # Xem URL public trong logs: docker logs hrm-cloudflared-web|api|ai
+  cloudflared-web:
+    image: cloudflare/cloudflared:latest
+    container_name: hrm-cloudflared-web
+    command: tunnel --no-autoupdate --protocol http2 --url http://hrm-frontend:3000
+    depends_on:
+      - hrm-frontend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  cloudflared-api:
+    image: cloudflare/cloudflared:latest
+    container_name: hrm-cloudflared-api
+    command: tunnel --no-autoupdate --protocol http2 --url http://hrm-backend:8080
+    depends_on:
+      - hrm-backend
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  cloudflared-ai:
+    image: cloudflare/cloudflared:latest
+    container_name: hrm-cloudflared-ai
+    command: tunnel --no-autoupdate --protocol http2 --url http://hrm-ai-service:8000
+    depends_on:
+      - hrm-ai-service
+    restart: unless-stopped
+    networks:
+      - hrm-network
+
+  # 7. Automation & Backup: n8n Workflow
+  hrm-n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: hrm-n8n
+    user: root
+    restart: unless-stopped
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=Asia/Ho_Chi_Minh
+      - TZ=Asia/Ho_Chi_Minh
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - NODES_EXCLUDE=[]
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./backups:/backups
+      - ./bin/docker:/usr/bin/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      hrm-database:
+        condition: service_healthy
+    networks:
+      - hrm-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  n8n_data: # ponytail: plain volume, not external — fresh clones fail otherwise; split per-env only when multiple stacks share one host
+
+networks:
+  hrm-network:
+    driver: bridge

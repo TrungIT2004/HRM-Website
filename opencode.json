@@ -1,0 +1,54 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@dietrichgebert/ponytail"],
+  "mcp": {
+    "postgres_hrm": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://postgres:%40Minhtrung1408@localhost:5432/hrm"
+      ],
+      "enabled": true
+    },
+    "postgres_hrm_ai": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://postgres:%40Minhtrung1408@localhost:5432/hrm_ai"
+      ],
+      "enabled": true
+    },
+    "redis": {
+      "type": "local",
+      "command": ["uvx", "redis-mcp-server", "--url", "redis://localhost:6379/0"],
+      "enabled": true
+    },
+    "docker": {
+      "type": "local",
+      "command": ["uvx", "mcp-server-docker"],
+      "enabled": true
+    },
+    "brave-search": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-brave-search"],
+      "enabled": true,
+      "environment": {
+        "BRAVE_API_KEY": "{env:BRAVE_API_KEY}"
+      }
+    },
+    "fetch": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-fetch"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    }
+  }
+}

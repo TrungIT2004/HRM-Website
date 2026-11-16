@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.minhtrung.hrm.attendance.dtos.requests.AttendanceFilterRequest;
 import com.minhtrung.hrm.attendance.entities.Attendance;
+import com.minhtrung.hrm.common.specifications.SpecificationScopes;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
 import com.minhtrung.hrm.employees.entities.Department;
 import com.minhtrung.hrm.employees.entities.Job;
@@ -84,6 +85,12 @@ public class AttendanceSpecification {
     // 2. SPECIFICATION: Chấm công quản lý (Trưởng phòng / Ban Giám Đốc)
     // =========================================================================
     public static Specification<Attendance> forManagement(UserRole userRole, AttendanceFilterRequest filter) {
+        return forManagement(userRole, filter, false);
+    }
+
+    // hasDeptGrant (ATTENDANCE_VIEW_DEPT): người không phải trưởng phòng nhưng được cấp quyền
+    // thì thấy đúng phòng ban mình, cùng luật loại trừ như trưởng phòng.
+    public static Specification<Attendance> forManagement(UserRole userRole, AttendanceFilterRequest filter, boolean hasDeptGrant) {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
             Join<Attendance, User> userJoin = setupJoins(root, query);
@@ -97,40 +104,9 @@ public class AttendanceSpecification {
             // Loại trừ chấm công của chính quản lý
             predicates.add(cb.notEqual(userJoin.get("userId"), currentUserId));
 
-            boolean isExecutive = myDepartment.equals("Executive Leadership");
-            boolean isDepartmentHead = myJob.startsWith("Department Head");
-
-            if (isExecutive && myJob.contains("Chairman")) {
-                // Chủ tịch xem Giám Đốc & Phó Giám Đốc
-                Predicate isExecDept = cb.equal(deptJoin.get("name"), "Executive Leadership");
-                Predicate isDirectors = cb.or(
-                    cb.like(jobJoin.get("title"), "%Director%"),
-                    cb.like(jobJoin.get("title"), "%Deputy%")
-                );
-                predicates.add(cb.and(isExecDept, isDirectors));
-            } 
-            else if (isExecutive && myJob.contains("Director") && !myJob.contains("Deputy") && !myJob.contains("Vice")) {
-                // Giám đốc xem Phó Giám Đốc và các Trưởng phòng
-                Predicate isViceDirector = cb.and(
-                    cb.equal(deptJoin.get("name"), "Executive Leadership"),
-                    cb.or(cb.like(jobJoin.get("title"), "%Deputy%"), cb.like(jobJoin.get("title"), "%Vice%"))
-                );
-                Predicate isDepartmentHeads = cb.like(jobJoin.get("title"), "Department Head%");
-                predicates.add(cb.or(isViceDirector, isDepartmentHeads));
-            } 
-            else if (isExecutive && (myJob.contains("Deputy") || myJob.contains("Vice"))) {
-                // Phó Giám đốc xem các Trưởng phòng
-                predicates.add(cb.like(jobJoin.get("title"), "Department Head%"));
-            } 
-            else if (isDepartmentHead) {
-                // Trưởng phòng CHỈ XEM nhân viên thuộc phòng ban mình
-                Predicate sameDept = cb.equal(deptJoin.get("name"), myDepartment);
-                Predicate notAnotherHead = cb.notLike(jobJoin.get("title"), "Department Head%");
-                predicates.add(cb.and(sameDept, notAnotherHead));
-            } 
-            else {
-                predicates.add(cb.disjunction()); // Nhân viên thường không có quyền quản lý
-            }
+            // Chung 1 luật phân cấp với leave/overtime (SpecificationScopes) — lệch là rò dữ liệu
+            SpecificationScopes.applyManagementHierarchy(
+                    predicates, deptJoin, jobJoin, cb, myDepartment, myJob, hasDeptGrant, false);
 
             applyDateAndStatusFilters(predicates, root, cb, filter);
             applyKeywordSearch(predicates, userJoin, cb, filter);

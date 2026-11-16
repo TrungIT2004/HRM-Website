@@ -1,0 +1,512 @@
+﻿id,final,question,ground_truth,generated_answer,quote_run1,quote_run2,evidence_run1,evidence_run2,reference_context,cited_docs,verdict,ghi_chu (dien TRUE/FALSE/UNSURE vao verdict)
+D012,TIE,Quy định của công ty được căn cứ trên những văn bản pháp luật và điều lệ nào?,"Quy định căn cứ vào: Bộ luật Lao động 2019, nghị định 145/2020/NĐ-CP, luật doanh nghiệp 2020, điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước, và chức năng, quyền hạn của Hội đồng quản trị công ty.","Dựa trên các tài liệu được cung cấp, quy định của công ty được căn cứ trên các văn bản pháp luật và điều lệ sau:
+
+**1. Văn bản pháp luật:**
+*   Luật doanh nghiệp số 59/2020/QH14 (hoặc Luật doanh nghiệp 2020).
+*   Bộ luật Lao động 2019.
+*   Nghị định 145/2020/NĐ-CP.
+*   Pháp luật về dân sự (áp dụng cho việc lập văn bản ủy quyền).
+
+**2. Điều lệ và Quy chế nội bộ:**
+*   Điều lệ Công ty (bao gồm Điều lệ công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC và Điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước).
+*   Quy chế nội bộ về quản trị công ty.
+
+Tóm tắt các điều khoản/chương đã dùng:
+- [TÀI LIỆU 1]: QuyCheQuanTri-Petrolimex-PMSC.pdf > Điều 8.
+- [TÀI LIỆU 2]: MauQuyCheLuong-sanKeToan-A.docx > Điều 2.
+- [TÀI LIỆU 3]: QuyCheQuanTri-Petrolimex-PMSC.pdf > Điều 67, 68, 69.",Điều lệ công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC,,"[{""point"": ""Bộ luật Lao động 2019"", ""status"": ""có"", ""quote"": ""Bộ luật Lao động 2019""}, {""point"": ""Nghị định 145/2020/NĐ-CP"", ""status"": ""có"", ""quote"": ""nghị định 145/2020/NĐ-CP""}, {""point"": ""Luật Doanh nghiệp 2020"", ""status"": ""có"", ""quote"": ""Luật doanh nghiệp số 59/2020/QH14""}, {""point"": ""Điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước"", ""status"": ""có"", ""quote"": ""Điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước""}, {""point"": ""Chức năng, quyền hạn của Hội đồng quản trị công ty"", ""status"": ""có"", ""quote"": ""chức năng, quyền hạn của Hội đồng quản trị công ty""}]","[{""point"": ""Luật doanh nghiệp 2020"", ""status"": ""có"", ""quote"": ""Luật doanh nghiệp số 59/2020/QH14""}, {""point"": ""Bộ luật Lao động 2019"", ""status"": ""có"", ""quote"": ""Bộ luật Lao động 2019""}, {""point"": ""Nghị định 145/2020/NĐ-CP"", ""status"": ""có"", ""quote"": ""nghị định 145/2020/NĐ-CP""}, {""point"": ""Pháp luật dân sự"", ""status"": ""có"", ""quote"": ""quy định của pháp luật về dân sự""}, {""point"": ""Điều lệ Công ty"", ""status"": ""có"", ""quote"": ""Điều lệ công ty""}, {""point"": ""Quy chế nội bộ"", ""status"": ""có"", ""quote"": ""Quy chế nội bộ về quản trị Công ty""}]","- Căn cứ Bộ luật Lao động 2019
+
+- Căn cứ vào nghị định 145/2020/NĐ-CP
+
+- Căn cứ luật doanh nghiệp 2020.
+
+- Căn cứ vào điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước
+
+- Căn cứ vào chức năng, quyền hạn của Hội đồng quản trị công ty.","QuyCheQuanTri-Petrolimex-PMSC.pdf, MauQuyCheLuong-sanKeToan-A.docx, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D013,GEN,Việc chi trả lương và thưởng của công ty được căn cứ vào những yếu tố nào?,"Việc trả lương, thưởng căn cứ vào kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp của người lao động theo nguyên tắc làm nhiều hưởng nhiều, làm ít hưởng ít, làm công việc gì, chức vụ gì hưởng lương theo công việc và chức vụ đó.","[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]
+
+Việc chi trả lương và thưởng của công ty được căn cứ vào các yếu tố sau tùy theo đối tượng và quy định:
+
+*   **Đối với người lao động nói chung:**
+    *   Căn cứ vào kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp của người lao động theo nguyên tắc: làm nhiều hưởng nhiều, làm ít hưởng ít; hưởng lương theo công việc và chức vụ đảm nhiệm (khi thay đổi công việc/chức vụ sẽ hưởng lương theo công việc/chức vụ mới).
+    *   Gắn liền với năng suất chất lượng, hiệu quả sản xuất kinh doanh của Công ty và cá nhân người lao động theo quy định của Nhà nước.
+    *   Khi kết quả sản xuất kinh doanh tăng, tiền lương tăng theo hiệu quả thực tế phù hợp với Quỹ tiền lương thực hiện được Giám đốc phê duyệt.
+    *   Ngoài ra, căn cứ theo Bộ luật lao động 2019, việc trả lương còn dựa vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.
+
+*   **Đối với Giám đốc:**
+    *   Tiền lương và thưởng của Giám đốc do Hội đồng quản trị quyết định.
+
+Căn cứ:
+- MauQuyCheLuong-sanKeToan-A.docx (Điều 3)
+- QuyCheQuanTri-Petrolimex-PMSC.pdf (Điều 86)
+- bo-luat-lao-dong-2019.docx (Điều 95)","căn cứ theo Bộ luật lao động 2019, việc trả lương còn dựa vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc",,"[{""point"": ""Kết quả sản xuất kinh doanh chung và mức độ đóng góp"", ""status"": ""có"", ""quote"": ""kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp""}, {""point"": ""Nguyên tắc làm nhiều hưởng nhiều, làm ít hưởng ít"", ""status"": ""có"", ""quote"": ""làm nhiều hưởng nhiều, làm ít hưởng ít""}, {""point"": ""Hưởng lương theo công việc và chức vụ"", ""status"": ""có"", ""quote"": ""làm công việc gì, chức vụ gì hưởng lương theo công việc và chức vụ đó""}]","[{""y"": ""Kết quả SXKD chung và mức độ đóng góp (làm nhiều hưởng nhiều, làm ít hưởng ít)"", ""status"": ""co"", ""quote"": ""kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp""}, {""y"": ""Hưởng lương theo công việc và chức vụ đảm nhiệm"", ""status"": ""co"", ""quote"": ""hưởng lương theo công việc và chức vụ đảm nhiệm""}, {""y"": ""Gắn với năng suất, chất lượng, hiệu quả SXKD và quy định Nhà nước"", ""status"": ""co"", ""quote"": ""gắn liền với năng suất chất lượng, hiệu quả sản xuất kinh doanh""}, {""y"": ""Lương tăng theo hiệu quả thực tế phù hợp Quỹ lương Giám đốc phê duyệt"", ""status"": ""co"", ""quote"": ""tiền lương tăng theo hiệu quả thực tế phù hợp với Quỹ tiền lương""}, {""y"": ""Tiền lương và thưởng của Giám đốc do HĐQT quyết định"", ""status"": ""co"", ""quote"": ""Tiền lương và thưởng của Giám đốc do Hội đồng quản trị quyết định""}]","Việc phân phối tiền lương, thưởng gắn liền với năng suất chất lượng, hiệu quả sản xuất kinh doanh của Công ty và các cá nhân người lao động theo đúng quy định của Nhà nước.
+
+Việc trả lương, thưởng cho người lao động căn cứ vào kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp của người lao động theo nguyên tắc làm nhiều hưởng nhiều, làm ít hưởng ít, làm công việc gì, chức vụ gì hưởng lương theo công việc đó, chức vụ đó. Khi thay đổi công việc, thay đổi chức vụ thì hưởng lương theo công việc mới, chức vụ mới.
+
+Khi kết quả sản xuất kinh doanh tăng lên thì tiền lương của người lao động tăng theo hiệu quả thực tế phù hợp với Quỹ tiền lương thực hiện được giám đốc phê duyệt.","MauQuyCheLuong-sanKeToan-A.docx, MauQuyCheLuong-sanKeToan-B.docx, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, bo-luat-lao-dong-2019.docx",,
+D015,GT,Cách tính lương cơ bản của nhân viên được quy định như thế nào?,Lương cơ bản được tính bằng Mức lương tối thiểu vùng (phụ thuộc vào mức lương nhà nước ban hành vào từng thời điểm) nhân với Hệ số lương (Bậc lương và hệ số căn cứ vào chức danh công việc).,"Cách tính lương cơ bản của nhân viên được quy định như sau:
+
+Lương cơ bản = Mức lương tối thiểu vùng (Mức lương này phụ thuộc vào mức lương nhà nước ban hành vào từng thời điểm) x Hệ số lương (Bậc lương và hệ số căn cứ vào chức danh công việc).
+
+Ngoài ra, lương cơ bản còn được xác định qua quá trình xem xét vai trò, trách nhiệm của các vị trí công việc thông qua hệ thống bản mô tả công việc do Công ty quy định và căn cứ trên hệ thống thang bảng lương Công ty.
+
+Căn cứ:
+- MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG (Bảng biểu)
+- MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG (Mục 4.1)","Ngoài ra, lương cơ bản còn được xác định qua quá trình xem xét vai trò, trách nhiệm của các vị trí công việc thông qua hệ thống bản mô tả công việc do Công ty quy định và căn cứ trên hệ thống thang bảng lương Công ty.","xác định qua quá trình xem xét vai trò, trách nhiệm của các vị trí công việc thông qua hệ thống bản mô tả công việc do Công ty quy định và căn cứ trên hệ thống thang bảng lương Công ty","[{""point"": ""Công thức tính lương cơ bản = Mức lương tối thiểu vùng x Hệ số lương"", ""status"": ""có"", ""quote"": ""Lương cơ bản = Mức lương tối thiểu vùng... x Hệ số lương""}, {""point"": ""Mức lương tối thiểu vùng phụ thuộc nhà nước ban hành"", ""status"": ""có"", ""quote"": ""phụ thuộc vào mức lương nhà nước ban hành""}, {""point"": ""Hệ số lương căn cứ vào chức danh công việc"", ""status"": ""có"", ""quote"": ""căn cứ vào chức danh công việc""}, {""point"": ""Xác định qua vai trò, trách nhiệm, bản mô tả công việc và thang bảng lương công ty"", ""status"": ""thiếu"", ""quote"": ""không có trong NGU CAN CU""}]","[{""point"": ""Công thức Lương cơ bản = Mức lương tối thiểu vùng x Hệ số lương"", ""status"": ""có"", ""quote"": ""Lương cơ bản = Mức lương tối thiểu vùng... x Hệ số lương""}, {""point"": ""Xác định qua vai trò, trách nhiệm, bản mô tả công việc và thang bảng lương"", ""status"": ""thiếu"", ""quote"": ""không thấy trong NGU CAN CU""}]","**Bảng biểu quy định**
+
+| Lương cơ bản | = | Mức lương tối thiểu vùng (Mức lương này phụ thuộc vào mức lương nhà nước ban hành vào từng thời điểm) | x | Hệ số lương (Bậc lương và hệ số căn cứ vào chức danh công việc) |
+| --- | --- | --- | --- | --- |","MauQuyCheLuong-sanKeToan-B.docx, bo-luat-lao-dong-2019.docx, MauQuyCheLuong-sanKeToan-A.docx, bo-luat-lao-dong-2019.docx, MauQuyCheLuong-sanKeToan-A.docx",,
+D017,GT,Cách tính phụ cấp HQCV được quy định như thế nào?,Phụ cấp HQCV = Mức phụ cấp HQCV của từng vị trí x Tỷ lệ % hoàn thành công việc x Số ngày làm việc thực tế hưởng lương / Số ngày làm việc trong tháng.,"[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]
+
+Cách tính phụ cấp Hiệu quả công việc (HQCV) được quy định như sau:
+
+- **Công thức tính:**
+Phụ cấp HQCV = Mức phụ cấp HQCV của từng vị trí x Tỷ lệ % hoàn thành công việc x Số ngày làm việc thực tế hưởng lương.
+
+- **Quy trình đánh giá:**
+    - Nhân viên tự đánh giá hiệu quả công việc hàng tháng căn cứ vào khối lượng công việc đã thực hiện theo tỷ lệ % hoàn thành.
+    - Gửi cho cán bộ quản lý trực tiếp xác nhận, sau đó gửi cho bộ phận hành chính nhân sự trước 01 ngày làm việc cuối cùng trong tháng.
+    - Kết quả công việc được đánh giá theo 2 tiêu chí: Khối lượng và chất lượng công việc hoàn thành.
+
+Căn cứ: MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG và CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG (Bảng biểu).",Nhân viên tự đánh giá hiệu quả công việc hàng tháng... gửi cho bộ phận hành chính nhân sự trước 01 ngày làm việc cuối cùng trong tháng... đánh giá theo 2 tiêu chí: Khối lượng và chất lượng,Quy trình đánh giá: Nhân viên tự đánh giá hiệu quả công việc hàng tháng... Kết quả công việc được đánh giá theo 2 tiêu chí: Khối lượng và chất lượng công việc hoàn thành.,"[{""point"": ""Công thức tính phụ cấp HQCV"", ""status"": ""sai"", ""detail"": ""Hệ thống thiếu chia cho 'Số ngày làm việc trong tháng' so với đáp án mẫu và căn cứ bảng biểu""}]","[{""y"": ""Công thức tính phụ cấp HQCV"", ""status"": ""co"", ""detail"": ""Mức phụ cấp x Tỷ lệ % x Số ngày làm việc thực tế""}, {""y"": ""Quy trình đánh giá (tự đánh giá, gửi quản lý, tiêu chí khối lượng/chất lượng)"", ""status"": ""sai"", ""detail"": ""Không có trong NGU CAN CU""}]","**Bảng biểu quy định**
+
+| Phụ cấp HQCV | = | Mức phụ cấp HQCV của từng vị trí | x | Tỷ lệ % hoàn thành công việc | x | Số ngày làm việc thực tế hưởng lương |
+| --- | --- | --- | --- | --- | --- | --- |
+| Phụ cấp HQCV | = | Số ngày làm việc trong tháng | Số ngày làm việc trong tháng | Số ngày làm việc trong tháng | Số ngày làm việc trong tháng | Số ngày làm việc trong tháng |","MauQuyCheLuong-sanKeToan-A.docx, MauQuyCheLuong-sanKeToan-A.docx, MauQuyCheLuong-sanKeToan-A.docx, MauQuyCheLuong-sanKeToan-B.docx, MauQuyCheLuong-sanKeToan-A.docx",,
+D044,GT,Giá của một xấp bao thư trắng F100 (12x22) là bao nhiêu?,Giá của một xấp bao thư trắng F100 (12x22) (100 cái/xấp) là 33.000 đồng (chưa VAT).,"[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]
+
+Rất tiếc, quy chế hiện tại của công ty không có thông tin về giá của bao thư trắng F100 kích thước (12x22). Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.
+
+Căn cứ: [TÀI LIỆU 2] (QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf - Trang 26) chỉ cung cấp thông tin cho bao thư F100 trắng A4 (25x35).",quy chế hiện tại của công ty không có thông tin về giá của bao thư trắng F100 kích thước (12x22),,"[{""point"": ""Giá bao thư trắng F100 (12x22)"", ""status"": ""có"", ""quote"": ""Bao thư trắng F100 (12x22) (100 cái/xấp) ... 33.000""}]","[{""point"": ""Giá bao thư trắng F100 (12x22)"", ""status"": ""he thong co"", ""quote"": ""33.000 đồng""}]","BM01 - QT.ACT.HC-05
+
+| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |
+| :---: | :--- | :---: | :---: | :---: |
+| 328 | Băng keo vải 48mm(10 mét) xanh dương (6 cuộn/cây) | Cuộn | 20.000 | |
+| 329 | Băng keo dán tiền Scotch $810\ 1/2\text{x}36\text{Y}$ | Cuộn | 50.000 | |
+| 330 | Băng keo bắn giá màu trắng | Cuộn | 2.700 | |
+| 331 | Màng co quấn máy PE cao 50cm 1,8kg(0,3) 9/ thùng | Cuộn | 93.000 | |
+| 332 | Cắt keo để bàn trung Sunny 2003 | Cái | 15.500 | |
+| 333 | Cắt keo để bàn lớn Sunny 2004 | Cái | 45.000 | |
+| 334 | Cắt keo cầm tay 5 phân sắt | Cái | 20.000 | |
+| 335 | Cắt keo cầm tay 6 phân | Cái | 23.000 | |
+| 336 | Cắt keo cầm tay 7 phân | Cái | 27.000 | |
+| | **KỆ VIẾT - KỆ HỒ SƠ** | | | |
+| 337 | Khay cắm bút inox dạng ly | Cái | 28.500 | |
+| 338 | Khay cắm bút xoay Oval 176 | Cái | 40.000 | |
+| 339 | Khay cắm bút xoay lớn 3007 | Cái | 46.000 | |
+| 340 | Khay cắm bút vuông nhỏ 3008 | Cái | 27.000 | |
+| 341 | Khay cắm bút tròn xoay nhỏ 3009 | Cái | 34.000 | |
+| 342 | Khay cắm bút chữ nhật lớn 3011 | Cái | 34.000 | |
+| 343 | Khay 2 tầng nhựa trong dáng trượt | Cái | 90.000 | |
+| 344 | Khay 2 tầng nhựa đục dáng trượt | Cái | 36.000 | |
+| 345 | Khay 2 tầng mica dáng trượt | Cái | 220.000 | |
+| 346 | Khay 2 tầng nhựa đục dáng trụ thẳng | Cái | 36.000 | |
+| 347 | Khay 3 tầng nhựa trong dáng trượt | Cái | 130.000 | |
+| 348 | Khay 3 tầng nhựa đục dáng trụ thẳng | Cái | 55.800 | |
+| 349 | Khay 3 tầng mica dáng trượt | Cái | 340.000 | |
+| 350 | Khay 3 tầng inox màu đen Comix dáng trụ thẳng | Cái | 243.000 | |
+| 351 | Khay nhựa 2 ngăn KingStar | Cái | 50.000 | |
+| 352 | Khay gỗ ráp 3 ngăn MG 929, kèm kệ bút | Cái | 260.000 | |
+| 353 | Khay nhựa 3 ngăn TPT | Cái | 29.000 | |
+| 354 | Khay nhựa 3 ngăn KingStar | Cái | 66.000 | |
+| 355 | Khay nhựa 1 ngăn | Cái | 12.000 | |
+| | **BAO THƯ** | | | |
+| 356 | Bao thư trắng F80 (12x18) (100 cái/xấp) | Xấp | 22.500 | |
+| 357 | Bao thư trắng F80 (12x22) (100 cái/xấp) | Xấp | 25.000 | |
+| 358 | Bao thư trắng F100 (1",,,
+D051,GT,Hội đồng quản trị Công ty Tài chính Cổ phần Điện lực trình Đại hội đồng Cổ đông xem xét nội dung gì?,"Hội đồng quản trị kính trình Đại hội đồng Cổ đông xem xét, thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực.","[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]
+
+Hội đồng quản trị Công ty Tài chính Cổ phần Điện lực kính trình Đại hội đồng Cổ đông xem xét, thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực.
+
+Căn cứ theo nội dung dự thảo, Quy chế này bao gồm 36 Điều, 10 chương, quy định các nội dung sau:
+* Nguyên tắc quản trị Công ty.
+* Quy định về cổ đông và Đại hội đồng cổ đông.
+* Quy định về Hội đồng Quản trị.
+* Quy định về Ban Kiểm soát.
+* Quy định về Tổng Giám đốc.
+* Quy định về phối hợp hoạt động giữa Hội đồng Quản trị, Ban Kiểm soát và Tổng Giám đốc.
+* Quy định về ngăn ngừa xung đột lợi ích và giao dịch với các bên có quyền lợi liên quan.
+* Quy định về đánh giá hoạt động thi đua khen thưởng, kỷ luật đối với thành viên Hội đồng Quản trị, thành viên Ban kiểm soát, Tổng Giám đốc và các cán bộ quản lý khác.
+* Quy định về Người quản trị công ty.
+
+Trích dẫn: [TÀI LIỆU 2] và [TÀI LIỆU 3] (QuyCheQuanTri-EVNFinance.pdf).","Quy chế này bao gồm 36 Điều, 10 chương, quy định các nội dung sau: ... (toàn bộ danh sách các quy định chi tiết)","Căn cứ theo nội dung dự thảo, Quy chế này bao gồm 36 Điều, 10 chương, quy định các nội dung sau: ... [toàn bộ danh sách các quy định]","[{""point"": ""Trình ĐHĐCĐ xem xét, thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực"", ""status"": ""có"", ""quote"": ""Về việc ban hành Quy chế Quản trị nội bộ Công ty Tài chính Cổ phần Điện lực""}]","[{""point"": ""Trình ĐHĐCĐ xem xét thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực"", ""status"": ""có"", ""quote"": ""ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực""}, {""point"": ""Chi tiết nội dung Quy chế (36 Điều, 10 chương, các quy định cụ thể)"", ""status"": ""thiếu"", ""quote"": ""không có trong NGU CAN CU""}]","CÔNG TY TÀI CHÍNH
+CỔ PHẦN ĐIỆN LỰC
+
+Số: 19/TTr-HĐQT-TCĐL
+
+CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập - Tự do - Hạnh phúc
+
+Hà Nội, ngày 12 tháng 4 năm 2018
+
+TỜ TRÌNH
+Về việc ban hành Quy chế Quản trị nội bộ Công ty Tài chính Cổ phần Điện lực
+
+Kính gửi: Đại hội đồng Cổ đông Công ty Tài chính Cổ phần Điện lực
+
+- Căn cứ Luật Doanh nghiệp số 68/2014/QH13 được Quốc hội nước Cộng Hòa Xã hội Chủ nghĩa Việt Nam thông qua ngày 26/11/2014 và các văn bản sửa đổi, bổ sung, hướng dẫn thi hành
+- Căn cứ Luật chứng khoán số 70/2006/QH11 được Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam thông qua ngày 29/06/2006; Luật sửa đổi, bổ sung một số điều của Luật Chứng khoán số 62/2010/QH12 ngày 24/11/2010 và các văn bản hướng dẫn thi hành
+- Căn cứ Luật các Tổ chức Tín dụng số 47/2010/QH12 được Quốc hội nước Cộng Hòa Xã hội Chủ nghĩa Việt Nam thông qua ngày 16/06/2010; Luật sửa đổi, bổ sung Luật các tổ chức tín dụng số 17/2017/QH14 ngày 20/11/2017 và các văn bản hướng dẫn thi hành
+- Căn cứ Nghị định 71/2017/NĐ-CP ngày 06/06/2017 của Chính Phủ hướng dẫn về quản trị Công ty áp dụng đối với Công ty Đại chúng;
+- Căn cứ Thông tư 95/2017/NĐ-BTC ngày 22/9/2017 của Bộ Tài chính hướng dẫn một số điều của Nghị định 71/2017/NĐ-CP ngày 06/06/2017 của Chính Phủ hướng dẫn về quản trị Công ty áp dụng đối với Công ty Đại chúng;
+- Căn cứ Thông tư 155/2015/TT-BTC ngày 06/10/2015 của Bộ Tài chính hướng dẫn công bố thông tin trên thị trường chứng khoán;
+- Căn cứ Điều lệ Công ty Tài chính Cổ phần Điện lực
+
+Hội đồng quản trị Công ty Tài chính Cổ phần Điện lực kính trình Đại Hội Cổ Đông xem xét, thông qua việc ban hành Quy chế quản trị nội bộ Công ty Tài chính Cổ phần Điện lực với nội dung như sau:","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf",,
+D053,GEN,"Theo quy chế này, Người Điều hành bao gồm những chức danh nào?","Người Điều hành gồm Tổng Giám đốc; Phó Tổng Giám đốc, Kế toán trưởng và Giám đốc Chi nhánh.","Theo quy chế, Người điều hành bao gồm các chức danh sau:
+* Tổng Giám đốc;
+* Phó Tổng Giám đốc;
+* Kế toán trưởng;
+* Và các vị trí quản lý khác trong Công ty được Hội đồng quản trị bổ nhiệm.
+
+Căn cứ: Điều 2.10, Chương I - QuyCheQuanTri-MWG.pdf.",,Giám đốc Chi nhánh,"[{""point"": ""Tổng Giám đốc"", ""status"": ""có"", ""quote"": ""Tổng Giám đốc""}, {""point"": ""Phó Tổng Giám đốc"", ""status"": ""có"", ""quote"": ""Phó Tổng Giám đốc""}, {""point"": ""Kế toán trưởng"", ""status"": ""có"", ""quote"": ""Kế toán trưởng""}, {""point"": ""Giám đốc Chi nhánh"", ""status"": ""sai"", ""quote"": ""không có trong Điều 2.10""}, {""point"": ""Các vị trí quản lý khác được HĐQT bổ nhiệm"", ""status"": ""thiếu"", ""quote"": ""các vị trí quản lý khác trong Công ty được Hội đồng quản trị bổ nhiệm""}]","[""Tổng Giám đốc: Hệ thống có (Tổng Giám đốc)"", ""Phó Tổng Giám đốc: Hệ thống có (Phó Tổng Giám đốc)"", ""Kế toán trưởng: Hệ thống có (Kế toán trưởng)"", ""Các vị trí quản lý khác được HĐQT bổ nhiệm: Hệ thống thiếu (thay bằng Giám đốc Chi nhánh)""]","phần Điện lực (“Công ty”) và (ii) đảm bảo Công ty hoạt động phù hợp với quy định của pháp luật, Điều lệ Công ty và các chuẩn mực, thông lệ trong hoạt động kinh doanh Công ty nhằm đạt hiệu quả kinh doanh cao nhất.
+
+**Điều 3. Phạm vi điều chỉnh.**
+
+Quy chế này áp dụng đối với bộ máy tổ chức của Công ty được quy định tại Điều lệ Công ty, bao gồm: Đại hội đồng cổ đông, Hội đồng quản trị, Ban Kiểm soát, Tổng Giám đốc và các bộ phận liên quan khác của Công ty.
+
+**Điều 4. Các nguyên tắc quản trị cơ bản.**
+
+Quy chế này được xây dựng trên cơ sở những nguyên tắc quản trị cơ bản sau:
+
+1. Tuân thủ các quy định có liên quan của pháp luật và Điều lệ của Công ty.
+
+2. Đảm bảo cơ chế quản trị, điều hành Công ty công khai, minh bạch, hiệu quả, tuân thủ quy định của Ngân hàng nhà nước Việt Nam từng thời kỳ và hướng tới thông lệ, chuẩn mực quốc tế.
+
+3. Đảm bảo cơ cấu quản trị hợp lý.
+
+4. Đảm bảo hiệu quả hoạt động của Hội đồng Quản trị, Ban Kiểm soát.
+
+5. Đảm bảo quyền lợi của cổ đông và những người có liên quan.
+
+6. Đảm bảo đối xử công bằng giữa các cổ đông.
+
+7. Công khai minh bạch mọi hoạt động của Công ty.
+
+**Điều 5. Giải thích từ ngữ**
+
+1. Trong Quy chế này, trừ trường hợp ngữ cảnh cụ thể có quy định khác, các từ ngữ dưới đây được hiểu như sau:
+
+a) *Công ty/EVN Finance*: Là Công ty Tài chính cổ phần Điện lực.
+
+b) *Điều lệ*: Là Điều lệ của Công ty được ban hành tại từng thời điểm.
+
+c) *Người Điều hành*: Gồm Tổng Giám đốc; Phó Tổng Giám đốc, Kế toán trưởng và Giám đốc Chi nhánh.
+
+d) *Người điều hành khác*: Theo quy định của Công ty theo từng thời kỳ.
+
+đ) *Ban Tổng Giám đốc*: Gồm Tổng Giám đốc và các Phó Tổng Giám đốc.
+
+e) *Thành viên Hội đồng quản trị không điều hành*: (sau đây gọi là thành viên không điều hành) là thành viên Hội đồng quản trị không phải là Giám đốc (Tổng giám đốc), Phó giám đốc (Phó Tổng giám đốc), Kế toán trưởng và những người điều hành khác theo quy định của Điều lệ công ty.
+
+2","QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D055,DISPUTED,Thông báo mời họp Đại hội đồng cổ đông phải được gửi đến các cổ đông chậm nhất là khi nào?,Thông báo mời họp ĐHĐCĐ phải được gửi đến tất cả cổ đông có quyền dự họp chậm nhất hai mươi ngày trước ngày khai mạc.,"Vì bạn không nêu rõ đang hỏi cho công ty nào, tôi xin cung cấp thông tin theo quy định của cả hai công ty có trong tài liệu như sau:
+
+*   **Đối với Công ty Cổ phần Cơ khí Xăng dầu - PMSC:** Thông báo mời họp phải được gửi đến tất cả cổ đông trong danh sách cổ đông có quyền dự họp chậm nhất là **21 ngày** trước ngày khai mạc cuộc họp (nếu Điều lệ công ty không quy định thời hạn dài hơn). Thời hạn này được tính từ ngày mà thông báo được gửi hoặc chuyển đi một cách hợp lệ.
+*   **Đối với MWG:** Thông báo mời họp phải được gửi chậm nhất là **hai mươi mốt (21) ngày** trước ngày khai mạc Đại hội đồng cổ đông.
+
+**Trích dẫn:**
+- QuyCheQuanTri-Petrolimex-PMSC.pdf: Điều 6 khoản 1 và Điều 7 khoản 3.
+- QuyCheQuanTri-MWG.pdf: Điều 5 khoản 5.1.",,Đối với MWG: Thông báo mời họp phải được gửi chậm nhất là hai mươi mốt (21) ngày trước ngày khai mạc Đại hội đồng cổ đông.,"[{""point"": ""Thời hạn gửi thông báo mời họp ĐHĐCĐ"", ""status"": ""sai"", ""detail"": ""Đáp án mẫu ghi '20 ngày', nhưng NGU CĂN CỨ (Luật Doanh nghiệp, Quy chế PMSC, Quy chế MWG) đều ghi '21 ngày' hoặc có nơi ghi '20 ngày' tùy văn bản, tuy nhiên hệ thống B liệt kê chi tiết 21 ngày cho cả 2 công ty là khớp với phần lớn tài liệu.""}]","[{""point"": ""Thời hạn gửi thông báo mời họp theo Luật Doanh nghiệp/PMSC"", ""status"": ""có"", ""detail"": ""chậm nhất 21 ngày (hệ thống nêu đúng)""}, {""point"": ""Thời hạn gửi thông báo mời họp theo MWG"", ""status"": ""sai"", ""detail"": ""MWG quy định chậm nhất 20 ngày (hệ thống nêu 21 ngày)""}]","thiểu 20 ngày trước ngày đăng ký cuối cùng. Người triệu tập họp ĐHĐCĐ phải lập
+danh sách cổ đông có quyền dự họp ĐHĐCĐ .
+
+Danh sách cổ đông có quyền dự họp ĐHĐCĐ được lập dựa trên danh sách cổ đông
+của Công ty. Danh sách cổ đông có quyền dự họp ĐHĐCĐ được lập theo quy định tại
+Điều lệ Công ty.
+
+2. Thông báo triệu tập ĐHĐCĐ được thực hiện theo Quy chế này và các quy định có
+liên quan của Điều lệ và pháp luật. Ngoài ra, một số quy định chính về thông báo triệu
+tập ĐHĐCĐ, như sau:
+
+a) Người triệu tập họp ĐHĐCĐ phải gửi thông báo mời họp đến tất cả cổ đông có
+quyền dự họp chậm nhất hai mươi ngày trước ngày khai mạc.
+
+b) Kèm theo thông báo mời họp phải có mẫu chỉ định đại diện theo uỷ quyền dự họp,
+chương trình họp, phiếu biểu quyết, các tài liệu sử dụng trong cuộc họp và dự nghị
+quyết đối với từng vấn đề trong chương trình họp.
+
+c) Thông báo mời họp và các tài liệu gửi kèm theo sẽ được công bố trên trang thông
+tin điện tử của Công ty đồng thời với việc gửi thông báo cho các cổ đông.
+
+3. Cách thức đăng ký tham dự ĐHĐCĐ.
+
+a) Vào ngày khai mạc cuộc họp, các cổ đông và người được uỷ quyền dự họp phải có
+mặt tại địa điểm họp đúng thời gian đã được thông báo để làm thủ tục đăng ký dự họp.
+Khoảng thời gian dành cho việc đăng ký thực hiện theo thông báo mời họp;
+
+b) Người đăng ký dự họp sẽ được cấp phiếu biểu quyết tương ứng với số vấn đề cần
+biểu quyết trong chương trình họp.
+
+c) Hết thời gian dành cho việc đăng ký, nếu đã đủ tỷ lệ tối thiểu để tiến hành cuộc họp,
+Chủ tọa có thể cho bắt đầu cuộc họp để bảo đảm tiến độ, không cần phải chờ đến khi
+có đầy đủ các cổ đông có quyền dự họp;
+
+d) Cổ đông hoặc người được uỷ quyền dự họp đến sau khi cuộc họp đã khai mạc được
+đăng ký và có quyền tham gia biểu quyết các vấn đề ngay sau khi đăng ký. Trong
+trường hợp này, hiệu lực của những nội dung đã được biểu quyết trước đó không thay
+đổi.
+
+4. Cách thức bỏ phiếu, cách thức kiểm phiếu, thông báo kết quả kiểm phiếu, cách thức
+phản đối quyết định của ĐHĐCĐ, lập Biên bản họp ĐHĐCĐ, Công bố Ng","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D061,TIE,Ban Kiểm soát có quyền biểu quyết đối với các nghị quyết của Hội đồng Quản trị không?,"Ban Kiểm soát tham dự các cuộc họp của HĐQT, phát biểu ý kiến và có những kiến nghị, nhưng không tham gia biểu quyết đối với các nghị quyết của HĐQT.","[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]
+
+Ban Kiểm soát không có quyền biểu quyết đối với các nghị quyết của Hội đồng Quản trị. Cụ thể:
+
+*   Theo tài liệu của Petrolimex-PMSC: Thành viên Ban Kiểm soát/Kiểm soát viên có quyền dự các cuộc họp Hội đồng quản trị và có quyền thảo luận nhưng không được biểu quyết (Điều 59 và Điều 64).
+*   Theo tài liệu của EVNFinance: Ban Kiểm soát tham dự các cuộc họp của HĐQT, phát biểu ý kiến và có những kiến nghị, nhưng không tham gia biểu quyết đối với các nghị quyết của HĐQT.
+
+Căn cứ:
+- QuyCheQuanTri-Petrolimex-PMSC.pdf: Điều 59 và Điều 64.
+- QuyCheQuanTri-EVNFinance.pdf.","Theo tài liệu của EVNFinance: Ban Kiểm soát tham dự các cuộc họp của HĐQT, phát biểu ý kiến và có những kiến nghị, nhưng không tham gia biểu quyết đối với các nghị quyết của HĐQT.","Theo tài liệu của EVNFinance: Ban Kiểm soát tham dự các cuộc họp của HĐQT, phát biểu ý kiến và có những kiến nghị, nhưng không tham gia biểu quyết đối với các nghị quyết của HĐQT.","[{""point"": ""Ban Kiểm soát không có quyền biểu quyết đối với nghị quyết HĐQT"", ""status"": ""có"", ""quote"": ""không được biểu quyết""}, {""point"": ""Ban Kiểm soát có quyền dự họp, phát biểu/thảo luận, kiến nghị"", ""status"": ""có"", ""quote"": ""có quyền dự các cuộc họp Hội đồng quản trị; có quyền thảo luận""}]","[{""point"": ""Ban Kiểm soát không có quyền biểu quyết đối với nghị quyết HĐQT"", ""status"": ""có"", ""quote"": ""không được biểu quyết""}, {""point"": ""Có quyền dự họp và thảo luận/phát biểu ý kiến"", ""status"": ""có"", ""quote"": ""có quyền dự các cuộc họp Hội đồng quản trị; có quyền thảo luận""}]","b) Ban Kiểm soát tham dự các cuộc họp của HĐQT, phát biểu ý kiến và có những
+kiến nghị, nhưng không tham gia biểu quyết đối với các nghị quyết của HĐQT.
+Ban kiểm soát thông báo kịp thời với HĐQT về kết quả hoạt động của Ban
+Kiểm soát, tham khảo ý kiến của HĐQT trước khi trình các báo cáo, kết luận và
+kiến nghị lên ĐHĐCĐ và trực tiếp báo cáo trước ĐHĐCĐ.
+c) Nghị quyết, quyết định của Hội đồng Quản trị phải được gửi 01 bản cho Trưởng
+Ban Kiểm soát để giám sát và 01 bản cho Tổng Giám đốc để biết, thực hiện sau
+khi ban hành.
+
+3. Phối hợp giữa TGĐ và HĐQT trong việc thực hiện các nhiệm vụ được giao
+a) Tổng Giám đốc chịu trách nhiệm trước Hội đồng Quản trị về việc chỉ đạo thực
+hiện nghiêm túc các nội dung có liên quan đã nêu tại nghị quyết, quyết định của
+Hội đồng Quản trị. Tổng Giám đốc phải nhanh chóng báo cáo Chủ tịch Hội
+đồng Quản trị trong trường hợp nhận thấy việc thực hiện nghị quyết, quyết định
+của Hội đồng Quản trị trên thực tế tại thời điểm hiện tại hoặc tương lai có thể
+ảnh hưởng bất lợi đến hoạt động kinh doanh của Công ty để Hội đồng Quản trị
+xem xét. Trường hợp Hội đồng Quản trị không ban hành nghị quyết hoặc quyết
+định thay thế, Tổng Giám đốc có nghĩa vụ tiếp tục thực hiện nghị quyết, quyết
+định của Hội đồng Quản trị đã ban hành.
+b) Tổng Giám đốc có trách nhiệm Báo cáo với Hội đồng Quản trị, Ban Kiểm soát,
+Đại hội đồng cổ đông về hoạt động, hiệu quả và kết quả kinh doanh và các vấn
+đề khác liên quan đến hoạt động của Công ty theo quy định của pháp luật và
+Điều lệ Công ty. Tổng Giám đốc hoặc Phó Tổng Giám đốc được ủy quyền có
+trách nhiệm thường xuyên trao đổi và gửi báo cáo về tình hình hoạt động của
+Công ty cho Chủ tịch Hội đồng Quản trị.
+c) Các văn bản của Tổng Giám đốc gửi đến các cơ quan quản lý Nhà nước các
+cấp, các cơ quan thông tin đại chúng theo yêu cầu hợp pháp của các cơ quan đó
+đều phải đồng thời gửi cho Chủ tịch Hội đồng Quản trị.
+d) Các thành viên Hội đồng Quản trị có quyền yêu cầu Tổng Giám đốc, Phó Tổng
+Giám đốc hoặc những Người điều hành khác","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D062,GEN,Khi Ban Kiểm soát phát hiện thành viên Hội đồng Quản trị hoặc Tổng Giám đốc vi phạm pháp luật hoặc Điều lệ Công ty thì phải làm gì?,Ban Kiểm soát phải thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty.,"Vì bạn không cung cấp thông tin cụ thể về việc bạn thuộc công ty nào, tôi xin cung cấp quy định của hai công ty có trong tài liệu như sau:
+
+**1. Đối với Công ty Cổ phần Cơ khí Xăng dầu - PMSC:**
+Khi phát hiện hành vi vi phạm pháp luật hoặc vi phạm Điều lệ công ty của thành viên Hội đồng quản trị, Giám đốc và người điều hành khác của doanh nghiệp, Ban kiểm soát phải:
+* Thông báo bằng văn bản cho Hội đồng quản trị trong thời hạn 48 giờ.
+* Yêu cầu người có hành vi vi phạm chấm dứt vi phạm và có giải pháp khắc phục hậu quả.
+
+**2. Đối với EVNFinance:**
+Trường hợp Ban Kiểm soát phát hiện những hành vi vi phạm pháp luật hoặc vi phạm Điều lệ Công ty của các thành viên Hội đồng Quản trị, Tổng Giám đốc và các cán bộ quản lý khác, Ban Kiểm soát phải:
+* Thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty.
+
+**Căn cứ:**
+* QuyCheQuanTri-Petrolimex-PMSC.pdf: Điều 73 (Mục 3.e) và Điều 94 (Mục 1.d).
+* QuyCheQuanTri-EVNFinance.pdf: Mục 4.a.",Thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty. (đối với EVNFinance),Đối với EVNFinance: ... Thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty.,"[{""point"": ""Thông báo bằng văn bản cho HĐQT"", ""status"": ""có"", ""detail"": ""Hệ thống nêu cả 2 trường hợp (48 giờ hoặc sớm nhất/theo quy định)""}]","[{""point"": ""Thông báo bằng văn bản cho HĐQT trong 48 giờ"", ""status"": ""có"", ""quote"": ""thông báo bằng văn bản cho Hội đồng quản trị trong thời hạn 48 giờ""}, {""point"": ""Yêu cầu chấm dứt vi phạm và khắc phục hậu quả"", ""status"": ""có"", ""quote"": ""yêu cầu người có hành vi vi phạm chấm dứt vi phạm và có giải pháp khắc phục hậu quả""}]","4. Phối hợp hoạt động kiểm soát, giám sát giữa các thành viên Hội đồng Quản trị, các thành viên Ban Kiểm soát và Tổng Giám đốc
+a) Quan hệ giữa BKS và HĐQT
+- Ban Kiểm soát có trách nhiệm thường xuyên thông báo với HĐQT về kết quả hoạt động; Ban Kiểm soát có thể tham khảo ý kiến của HĐQT trước khi trình các báo cáo và kiến nghị lên ĐHĐCĐ.
+- Hội đồng Quản trị, thành viên HĐQT, TGĐ phải cung cấp đầy đủ, chính xác và kịp thời thông tin, tài liệu về công tác quản lý, điều hành và hoạt động kinh doanh của Công ty theo yêu cầu của Ban Kiểm soát.
+- Ban Kiểm soát phải phối hợp chặt chẽ với HĐQT trong quá trình hoạt động. Các thành viên Ban Kiểm soát được HĐQT cung cấp tài liệu và thông tin cần thiết phục vụ công tác của BKS. BKS hoạt động với tư cách khách quan, độc lập trong quá trình kiểm tra, kiểm soát các hoạt động kinh doanh - quản lý - điều hành Công ty, đồng thời BKS có trách nhiệm phối hợp cùng với HĐQT theo dõi chỉ đạo quá trình chấn chỉnh và xử lý các sai phạm theo kiến nghị của BKS sau mỗi lần kiểm tra.
+- Trường hợp Ban Kiểm soát phát hiện những hành vi vi phạm pháp luật hoặc vi phạm Điều lệ Công ty của các thành viên Hội đồng Quản trị, Tổng Giám đốc và các cán bộ quản lý khác, Ban Kiểm soát phải thông báo bằng văn bản với Hội đồng Quản trị trong thời gian sớm nhất hoặc theo quy định của Công ty.
+b) Quan hệ giữa BKS đối với Tổng Giám đốc:
+- BKS có quyền kiểm tra, giám sát đối với việc thực hiện nhiệm vụ điều hành Tổng Giám đốc. BKS có quyền yêu cầu cung cấp thông tin (định kỳ hoặc đột xuất) tất cả các báo cáo, tài liệu và thông tin cần thiết cho Ban Kiểm soát. TGĐ có trách nhiệm theo dõi chỉ đạo bộ máy chuyên môn nghiệp vụ chấn chỉnh và xử lý các sai phạm theo kiến nghị của Ban Kiểm soát sau mỗi lần kiểm tra.
+- Ban Kiểm soát được sử dụng hệ thống kiểm tra, kiểm soát nội bộ của Công ty để thực thi nhiệm vụ, yêu cầu các bộ phận nghiệp vụ và nhân viên trực tiếp làm nghiệp vụ giải trình các công việc đã làm để phục vụ việc kiểm tra hoặc kiểm toán.
+
+16","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D064,GT,Thời hạn gửi thông báo mời họp Hội đồng Quản trị là bao lâu?,Thông báo mời họp HĐQT phải được gửi ít nhất 05 (năm) ngày làm việc trước ngày họp.,"Vì bạn không cung cấp tên công ty cụ thể, tôi xin thông tin thời hạn gửi thông báo mời họp Hội đồng Quản trị (HĐQT) theo quy định của từng công ty như sau:
+
+*   **Đối với EVNFinance:** Thông báo mời họp phải được gửi ít nhất 05 (năm) ngày làm việc trước ngày họp.
+*   **Đối với Petrolimex-PMSC:** Thông báo mời họp phải được gửi chậm nhất là [03 ngày] làm việc trước ngày họp.
+*   **Đối với MWG:** Thông báo họp phải được gửi trước cho các thành viên HĐQT ít nhất năm (05) ngày trước khi tổ chức họp.
+
+**Trích dẫn:**
+- [TÀI LIỆU 1]: QuyCheQuanTri-EVNFinance.pdf (Trang 12)
+- [TÀI LIỆU 2] & [TÀI LIỆU 5]: QuyCheQuanTri-Petrolimex-PMSC.pdf (Điều 59)
+- [TÀI LIỆU 3]: QuyCheQuanTri-MWG.pdf (Điều 20)",Đối với MWG: Thông báo họp phải được gửi trước cho các thành viên HĐQT ít nhất năm (05) ngày trước khi tổ chức họp.,Đối với EVNFinance: Thông báo mời họp phải được gửi ít nhất 05 (năm) ngày làm việc trước ngày họp. Đối với MWG: Thông báo họp phải được gửi trước cho các thành viên HĐQT ít nhất năm (05) ngày trước khi tổ chức họp.,"[{""point"": ""Thời hạn gửi thông báo mời họp HĐQT"", ""status"": ""có"", ""detail"": ""Hệ thống liệt kê nhiều mốc: 05 ngày làm việc (EVNFinance), 03 ngày làm việc (Petrolimex-PMSC), 05 ngày (MWG)""}]","[{""point"": ""Thời hạn thông báo mời họp HĐQT"", ""status"": ""sai"", ""detail"": ""Hệ thống liệt kê 3 công ty (EVNFinance, Petrolimex-PMSC, MWG) nhưng NGU CAN CU chỉ cung cấp thông tin cho 2 thực thể: một quy định 'ít nhất 05 ngày làm việc' và một quy định 'chậm nhất là [03 ngày] làm việc' (PMSC). Thông tin về MWG không có trong NGU CAN CU.""}]","Công ty, Quy chế tổ chức và hoạt của Hội Quản trị và quy định của pháp luật. Một số quy định về trình tự; thủ tục tổ chức họp HĐQT như sau:
+
+1.
+
+báo HĐQT: Khi triệu tập triệu tập phải gửi báo mời ít nhất 05 (năm) ngày làm việc trước ngày họp. Thông báo Thông báo về cuộc họp Hội Quản trị được làm văn bản Việt; trong đó nêu rõ về: chương trình thời gian; địa điểm và phải được kèm theo những tài liệu cần thiết về những vấn đề sẽ được bàn bạc và biểu quyết tại cuộc họp Hội Quản trị và cả các bầu cho những thành viên Hội Quản trị thể dự Những thành viên Hội Quản trị này sẽ gửi phiếu bầu cho Hội Quản trị trước khi
+
+2. Điều kiện tổ chức HĐQT: Cuộc HĐQT được tiến hành khi có từ 3/4 (ba tu) số thành viên trở lên dự hoặc qua người thế là một trong các thành viên Hội Quản trị được ủy Trường triệu tập họp HĐQT định kỳ lần đầu nhưng không đủ số thành viên tham dự theo quy định, Chủ tịch HĐQT phải triệu tập tiếp cuộc HĐQT lần hai trong thời gian 15 (mười lăm) ngày tiếp theo. Sau hai lần triệu tập Hội trị đủ số thành viên tham dự, Chủ tịch HĐQT phải triệu tập ĐHĐCĐ bất thường trong thời hạn không 30 (ba mươi) ngày tiếp theo để cổ xem xét tư cách của các thành viên HĐQT.","QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D072,DISPUTED,Thông báo họp Hội đồng quản trị cần được gửi trước bao lâu và yêu cầu về nội dung như thế nào?,"Thông báo họp HĐQT phải gửi trước ít nhất năm (05) ngày, làm bằng văn bản tiếng Việt, thông báo đầy đủ chương trình, thời gian, địa điểm họp, kèm tài liệu cần thiết về các vấn đề bàn bạc, biểu quyết và phiếu bầu cho thành viên không thể dự họp.","Thông báo mời họp Hội đồng quản trị được quy định như sau:
+
+*   **Thời hạn gửi:** Chậm nhất là [03 ngày] làm việc trước ngày họp.
+*   **Yêu cầu về nội dung:**
+    *   Phải xác định cụ thể: thời gian, địa điểm họp, chương trình, các vấn đề thảo luận và quyết định.
+    *   Phải kèm theo: tài liệu sử dụng tại cuộc họp và phiếu biểu quyết của thành viên.
+
+Căn cứ: QuyCheQuanTri-Petrolimex-PMSC.pdf (Điều 59).",Chậm nhất là [03 ngày] làm việc trước ngày họp,,"[{""point"": ""Thời hạn gửi thông báo"", ""status"": ""sai"", ""detail"": ""Hệ thống ghi '03 ngày làm việc' (Điều 59), nhưng NGU CĂN CỨ (Điều 20) ghi 'ít nhất năm (05) ngày'.""}, {""point"": ""Hình thức và ngôn ngữ"", ""status"": ""thiếu"", ""detail"": ""Hệ thống không nhắc đến 'văn bản tiếng Việt'.""}, {""point"": ""Nội dung thông báo (thời gian, địa điểm, chương trình, vấn đề thảo luận/quyết định)"", ""status"": ""có"", ""detail"": ""Hệ thống liệt kê đầy đủ.""}, {""point"": ""Tài liệu kèm theo và phiếu biểu quyết"", ""status"": ""có"", ""detail"": ""Hệ thống liệt kê đầy đủ.""}]","[{""point"": ""Thời hạn gửi thông báo"", ""status"": ""correct"", ""detail"": ""Hệ thống trả lời '03 ngày làm việc' khớp với Điều 59 trang 34.""}, {""point"": ""Nội dung thông báo (thời gian, địa điểm, chương trình, vấn đề thảo luận/quyết định)"", ""status"": ""correct"", ""detail"": ""Hệ thống liệt kê đầy đủ theo Điều 59.""}, {""point"": ""Tài liệu kèm theo và phiếu biểu quyết"", ""status"": ""correct"", ""detail"": ""Hệ thống liệt kê đầy đủ theo Điều 59.""}]","19.2 Cổ đông hoặc nhóm Cổ đông sở hữu số lượng cổ phần phổ thông theo quy định tại Điều lệ có quyền đề cử ứng viên Hội đồng quản trị theo quy định của Luật Doanh nghiệp và Điều lệ công ty.
+
+CHƯƠNG V:
+
+TRÌNH TỰ, THỦ TỤC TỔ CHỨC HỌP HỘI ĐỒNG QUẢN TRỊ
+
+Điều 20. Thông báo họp HĐQT:
+
+Thông báo họp Hội đồng quản trị phải được gửi trước cho các thành viên Hội đồng quản trị ít nhất năm (05) ngày trước khi tổ chức họp, các thành viên Hội đồng quản trị có thể từ chối thông báo mời họp bằng văn bản. Thông báo họp Hội đồng quản trị phải được làm bằng văn bản tiếng Việt và phải thông báo đầy đủ chương trình, thời gian, địa điểm họp, kèm theo những tài liệu cần thiết về những vấn đề để được bàn bạc và biểu quyết tại cuộc họp Hội đồng quản trị và các phiếu bầu cho những thành viên Hội đồng quản trị không thể dự họp.
+
+Thông báo mời họp được gửi bằng bưu điện, fax, thư điện tử hoặc phương tiện khác, nhưng phải bảo đảm đến được địa chỉ của từng thành viên Hội đồng quản trị được đăng ký tại Công ty.
+
+Điều 21. Điều kiện tổ chức họp HĐQT
+
+21.1 Các cuộc họp của Hội đồng quản trị lần thứ nhất chỉ được tiến hành khi có ít nhất ba phần tư (3/4) số thành viên Hội đồng quản trị có mặt trực tiếp. Việc tham gia bằng hình thức điện tử qua Phương tiện trực tuyến hoặc gửi phiếu biểu quyết đến cuộc họp thông qua gửi thư bảo đảm hoặc thư điện tử có giá trị như tham gia trực tiếp tại cuộc họp.
+
+21.2 Trường hợp không đủ số thành viên dự họp theo quy định, cuộc họp phải được triệu tập lại trong thời hạn bảy (07) ngày kể từ ngày dự định họp lần thứ nhất. Cuộc họp triệu tập lại được tiến hành nếu có hơn một nửa (1/2) số thành viên Hội đồng quản trị dự họp.
+
+Điều 22. Cách thức biểu quyết
+
+22.1 Mỗi thành viên Hội đồng quản trị có mặt với tư cách cá nhân tại cuộc họp Hội đồng quản trị có một (01) phiếu biểu quyết.
+
+22.2 Đối với từng vấn đề cần biểu quyết, từng thành viên Hội đồng quản trị chỉ được chọn một (01) trong ba (03) lựa chọn Tán thành (đồng ý thông qua), Không tán thành (không đồng ý thông qua), Kh","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D073,DISPUTED,Tiêu chuẩn đối với thành viên của các tiểu ban thuộc Hội đồng quản trị là gì?,"Thành viên tiểu ban phải có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp. Ít nhất phải có một thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban mà thành viên đó phụ trách.","Vì bạn không nêu rõ đang hỏi về quy chế của công ty nào, tôi xin cung cấp thông tin tiêu chuẩn thành viên tiểu ban thuộc HĐQT của cả hai đơn vị có trong tài liệu như sau:
+
+**1. Đối với MWG (Theo QuyCheQuanTri-MWG.pdf):**
+*   **Yêu cầu chung:** Thành viên của tiểu ban phải có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp.
+*   **Yêu cầu chuyên môn:** Trong các thành viên của tiểu ban, ít nhất phải có một (01) thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban mà thành viên đó phụ trách.
+*   **Cơ cấu:** Thành viên độc lập HĐQT/ thành viên HĐQT không điều hành chiếm đa số trong tiểu ban.
+
+**2. Đối với Petrolimex-PMSC (Theo QuyCheQuanTri-Petrolimex-PMSC.pdf):**
+*   **Cơ cấu:** Các thành viên độc lập Hội đồng quản trị/thành viên Hội đồng quản trị không điều hành nên chiếm đa số trong tiểu ban.
+
+Trích dẫn:
+- QuyCheQuanTri-MWG.pdf: Điều 27, Điều 28.
+- QuyCheQuanTri-Petrolimex-PMSC.pdf: Điều 67.",Đối với MWG (Theo QuyCheQuanTri-MWG.pdf)... Đối với Petrolimex-PMSC (Theo QuyCheQuanTri-Petrolimex-PMSC.pdf): Cơ cấu: Các thành viên độc lập Hội đồng quản trị/ thành viên Hội đồng quản trị không điều hành nên chiếm đa số trong tiểu ban.,Đối với MWG (Theo QuyCheQuanTri-MWG.pdf),"[{""point"": ""Hiểu biết lĩnh vực phụ trách hoặc kinh nghiệm quản lý, điều hành"", ""status"": ""có"", ""quote"": ""có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp""}, {""point"": ""Ít nhất một thành viên có kiến thức chuyên môn, kinh nghiệm lĩnh vực phụ trách"", ""status"": ""có"", ""quote"": ""ít nhất phải có một (01) thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban""}]","[{""point"": ""Hiểu biết lĩnh vực phụ trách hoặc kinh nghiệm quản lý, điều hành"", ""status"": ""có"", ""quote"": ""có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp""}, {""point"": ""Ít nhất một thành viên có kiến thức chuyên môn, kinh nghiệm lĩnh vực phụ trách"", ""status"": ""có"", ""quote"": ""ít nhất phải có một (01) thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban""}, {""point"": ""Thành viên độc lập/không điều hành chiếm đa số"", ""status"": ""thiếu"", ""quote"": ""Thành viên độc lập HĐQT/ thành viên HĐQT không điều hành chiếm đa số""}]","Doanh nghiệp thì biên bản này có hiệu lực.
+Điều 25. Thông báo nghị quyết HĐQT
+Công ty có trách nhiệm công bố thông tin trong nội bộ công ty hoặc trên các phương tiện thông tin đại chúng, trên trang website của công ty theo trình tự và quy định của pháp luật doanh nghiệp và pháp luật về chứng khoán và thị trường chứng khoán.
+
+CHƯƠNG VI:
+THÀNH LẬP VÀ HOẠT ĐỘNG CỦA CÁC TIỂU BAN THUỘC HỘI ĐỒNG QUẢN TRỊ
+
+Điều 26. Các tiểu ban thuộc HĐQT
+Hội đồng quản trị có quyền thành lập các tiểu ban trực thuộc để thực hiện các công việc do Hội đồng quản trị giao. Thành viên của tiểu ban có thể gồm một hoặc nhiều thành viên của Hội đồng quản trị và một hoặc nhiều thành viên bên ngoài theo quyết định của Hội đồng quản trị. Tiểu ban chỉ có chức năng giúp việc cho Hội đồng quản trị, không có quyền quyết định.
+Điều 27. Cơ cấu của các tiểu ban
+Số lượng thành viên của tiểu ban do HĐQT quyết định. Thành viên độc lập HĐQT/ thành viên HĐQT không điều hành chiếm đa số trong tiểu ban và một (01) trong các thành viên này được bổ nhiệm làm Trưởng tiểu ban theo quyết định của HĐQT.
+Điều 28. Tiêu chuẩn thành viên của tiểu ban, trưởng tiểu ban
+Các thành viên của tiểu ban phải có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp. Trong các thành viên của tiểu ban, ít nhất phải có một (01) thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban mà thành viên đó phụ trách.
+Điều 29. Việc thành lập tiểu ban
+HĐQT quy định chi tiết về việc thành lập các tiểu ban thông qua nghị quyết/quyết định HĐQT.
+Điều 30. Trách nhiệm của các tiểu ban và từng thành viên
+HĐQT quy định chi tiết về trách nhiệm của các tiểu ban và trách nhiệm của từng thành viên thông qua nghị quyết/ quyết định HĐQT.
+
+CHƯƠNG VII:
+THÀNH LẬP VÀ HOẠT ĐỘNG CỦA ỦY BAN KIỂM TOÁN NỘI BỘ
+
+Điều 31. Tiêu chuẩn của Thành viên Ủy ban kiểm toán nội bộ
+Ngoài các tiêu chuẩn, điều kiện theo quy định của pháp luật, Kiểm toán viên nội bộ thuộc Ủy ban kiểm toán nội bộ phải đáp ứng các tiêu chuẩn, ","QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-MWG.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D077,GT,Nhiệm kỳ của Người phụ trách quản trị công ty là bao lâu và có được bổ nhiệm lại không?,"Nhiệm kỳ của Người phụ trách quản trị công ty do HĐQT quyết định, tối đa là (05) năm và có thể được bổ nhiệm lại.","Rất tiếc, quy chế hiện tại của công ty không có thông tin về nhiệm kỳ và việc bổ nhiệm lại của Người phụ trách quản trị công ty. Bạn vui lòng liên hệ trực tiếp với Phòng Nhân sự (HR) để được giải đáp cụ thể.
+
+Căn cứ tra cứu: QuyCheQuanTri-Petrolimex-PMSC.pdf (Điều 69, Điều 70).",quy chế hiện tại của công ty không có thông tin về nhiệm kỳ và việc bổ nhiệm lại của Người phụ trách quản trị công ty,,"[{""point"": ""Nhiệm kỳ do HĐQT quyết định"", ""status"": ""missing"", ""quote"": ""HĐQT quyết định""}, {""point"": ""Tối đa 05 năm"", ""status"": ""missing"", ""quote"": ""tối đa là (05) năm""}, {""point"": ""Có thể được bổ nhiệm lại"", ""status"": ""missing"", ""quote"": ""có thể được bổ nhiệm lại""}]","[{""point"": ""Nhiệm kỳ do HĐQT quyết định, tối đa 05 năm"", ""status"": ""có"", ""quote"": ""Nhiệm kỳ của Người phụ trách quản trị công ty do HĐQT quyết định, tối đa là (05) năm""}, {""point"": ""Có thể được bổ nhiệm lại"", ""status"": ""có"", ""quote"": ""có thể được bổ nhiệm lại""}]","theo yêu cầu của thành viên HĐQT, Ủy ban kiểm toán nội bộ tại cuộc họp.
+42.6 HĐQT có thể đình chỉ hoặc hủy bỏ việc thị thi hành các quyết định của Tổng Giám đốc nếu xét thấy không đúng quy định của pháp luật, vi phạm Điều lệ Công ty, nghị quyết và các quyết định HĐQT.
+Điều 43. Các trường hợp Tổng Giám đốc đề nghị triệu tập họp HĐQT
+Tổng Giám đốc có quyền đề nghị triệu tập cuộc họp HĐQT trong những trường hợp theo quy định tại Điều lệ Công ty.
+Điều 44. Chế độ báo cáo của Tổng Giám đốc với HĐQT
+44.1 Tổng Giám đốc có trách nhiệm kịp thời báo cáo, xin ý kiến HĐQT về những nội dung phát sinh thuộc thẩm quyền quyết định của HĐQT.
+44.2 Hàng năm, Tổng Giám đốc trình HĐQT phê duyệt kế hoạch kinh doanh chi tiết cho năm tài chính tiếp theo.
+Điều 45. Đánh giá việc thực hiện nghị quyết và các vấn đề ủy quyền khác của HĐQT đối với Tổng Giám đốc
+Hàng năm, HĐQT đánh giá việc thực hiện nghị quyết và các vấn đề ủy quyền khác của HĐQT đối với Tổng Giám đốc và được ghi trong báo cáo hoạt động của HĐQT.
+Điều 46. Quy định về việc đánh giá khen thưởng, kỷ luật đối với thành viên HĐQT, Người điều hành
+HĐQT trình báo cáo khen thưởng, kỷ luật đối với các thành viên HĐQT và Tổng Giám đốc, Người điều hành tại ĐHĐCĐ để xem xét, quyết định.
+
+CHƯƠNG X:
+NGƯỜI PHỤ TRÁCH QUẢN TRỊ CÔNG TY
+Điều 47. Tiêu chuẩn của người phụ trách Quản trị Công ty
+Người phụ trách quản trị công ty phải đáp ứng các tiêu chuẩn theo quy định của pháp luật và Điều lệ Công ty.
+Điều 48. Quyền và nghĩa vụ của người phụ trách Quản trị công ty
+Người phụ trách quản trị công ty có các quyền và nghĩa vụ sau:
+a. Tư vấn Hội đồng quản trị trong việc tổ chức họp Đại hội đồng cổ đông theo quy định và các công việc liên quan giữa Công ty và Cổ đông;
+b. Chuẩn bị các cuộc họp Hội đồng quản trị và Đại hội đồng cổ đông theo yêu cầu của Hội đồng quản trị;
+c. Tư vấn về thủ tục của các cuộc họp;
+d. Tham dự các cuộc họp;
+e. Tư vấn thủ tục lập các nghị quyết của Hội đồng quản trị phù hợp với quy định của pháp luật;
+f. Giám sát và báo cáo Hội đồng ",,,
+D082,GEN,Tôi muốn đăng ký tham dự Đại hội đồng cổ đông thì thực hiện bằng cách nào?,"Cổ đông đăng ký theo quy định tại Thông báo họp Đại hội đồng cổ đông, bao gồm việc liên hệ Công ty hoặc gửi Giấy đăng ký tham dự Đại hội (được đính kèm trong Thông báo họp) về Công ty.","Cách thức đăng ký tham dự Đại hội đồng cổ đông được thực hiện như sau:
+
+**1. Cách thức đăng ký chung (trước ngày khai mạc):**
+*   **Hình thức đăng ký:** Được quy định rõ tại Thông báo họp Đại hội đồng cổ đông, bao gồm:
+    *   Liên hệ trực tiếp với Công ty.
+    *   Gửi Giấy đăng ký tham dự Đại hội (được đính kèm trong Thông báo họp) về Công ty.
+*   **Các hình thức tham dự và biểu quyết/bầu cử mà cổ đông có thể chọn:**
+    *   Tham dự và biểu quyết/bầu cử trực tiếp tại cuộc họp.
+    *   Ủy quyền cho một đại diện khác tham dự và biểu quyết/bầu cử (phải tuân thủ quy định về ủy quyền; nếu cử nhiều hơn một đại diện thì phải xác định cụ thể số cổ phần và số phiếu bầu cử/biểu quyết cho mỗi người).
+    *   Tham dự và biểu quyết/bầu cử thông qua hội nghị trực tuyến, bỏ phiếu điện tử hoặc hình thức điện tử khác.
+    *   Gửi phiếu biểu quyết/phiếu bầu cử đến cuộc họp thông qua thư, fax, thư điện tử.
+    *   Các hình thức khác phù hợp với quy định của Pháp luật.
+
+**2. Trường hợp đăng ký tham dự trực tuyến:**
+*   **Điều kiện tham gia:**
+    *   Có tên trong danh sách cổ đông (DSCĐ) có quyền dự họp được lập theo thông báo thực hiện quyền của Công ty.
+    *   Đại diện ủy quyền phải đủ điều kiện tham dự theo quy định của pháp luật và điều lệ công ty.
+*   **Yêu cầu kỹ thuật:** Đại biểu cần có thiết bị điện tử kết nối internet (ví dụ: máy tính, máy tính bảng, điện thoại di động...).
+
+**3. Quy định về ủy quyền (nếu chọn hình thức ủy quyền):**
+*   Việc ủy quyền phải lập thành văn bản theo quy định pháp luật dân sự, nêu rõ: tên cổ đông ủy quyền, tên cá nhân/tổ chức được ủy quyền, số lượng cổ phần, nội dung, phạm vi, thời hạn ủy quyền, chữ ký của hai bên.
+*   Người được ủy quyền phải nộp văn bản ủy quyền khi đăng ký dự họp. Nếu ủy quyền lại, phải xuất trình thêm văn bản ủy quyền ban đầu của cổ đông/người đại diện tổ chức (nếu chưa đăng ký với Công ty).
+
+Căn cứ: Điều 8, Điều 25, Điều 37 Quy chế nội bộ về quản trị Công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC.","Điều 8, Điều 25, Điều 37 Quy chế nội bộ về quản trị Công ty của Công ty Cổ phần Cơ khí Xăng dầu - PMSC",,"[{""point"": ""Cách thức đăng ký chung: theo Thông báo họp, liên hệ Công ty hoặc gửi Giấy đăng ký"", ""status"": ""có"", ""quote"": ""liên hệ Công ty hoặc gửi Giấy đăng ký tham dự Đại hội""}, {""point"": ""Các hình thức tham dự/biểu quyết: trực tiếp, ủy quyền, trực tuyến, gửi phiếu qua thư/fax/email"", ""status"": ""có"", ""quote"": ""Tham dự và biểu quyết/bầu cử trực tiếp... Ủy quyền... trực tuyến... gửi phiếu biểu quyết/phiếu bầu cử""}]","[{""point"": ""Cách thức đăng ký chung (liên hệ Công ty/gửi Giấy đăng ký)"", ""status"": ""có"", ""quote"": ""liên hệ Công ty hoặc gửi Giấy đăng ký tham dự Đại hội""}, {""point"": ""Các hình thức tham dự/biểu quyết (trực tiếp, ủy quyền, trực tuyến, thư/fax/email)"", ""status"": ""có"", ""quote"": ""Tham dự và biểu quyết/bầu cử trực tiếp... Ủy quyền... trực tuyến... gửi thư, fax, thư điện tử""}, {""point"": ""Quy định về ủy quyền (văn bản, nội dung, nộp khi đăng ký)"", ""status"": ""có"", ""quote"": ""Ủy quyền cho một đại diện khác... tuân thủ quy định tại Khoản 2 Điều này""}, {""point"": ""Điều kiện/kỹ thuật tham dự trực tuyến"", ""status"": ""có"", ""quote"": ""truy cập vào hệ thống bằng các thông tin truy cập đã được cung cấp""}]","(Căn cứ quy định tại Điều 144 Luật doanh nghiệp số 59/2020/QH14; Điều 16 Điều lệ công ty; 
+Khoản 1, 2, 5 Điều 20 Điều lệ công ty)
+
+1. Cách thức đăng ký tham dự Đại hội đồng cổ đông trước ngày khai mạc cuộc họp Đại hội 
+đồng cổ đông:
+
+a. 
+Cách thức đăng ký tham dự cuộc họp Đại hội đồng cổ đông được qui định rõ tại Thông báo 
+họp Đại hội đồng cổ đông, bao gồm liên hệ Công ty hoặc gửi Giấy đăng ký tham dự Đại hội 
+(được đính kèm Thông báo họp Đại hội đồng cổ đông gửi cho cổ đông) về Công ty.
+
+b. Cổ đông chọn hình thức đăng ký tham dự họp Đại hội đồng cổ đông theo cách thức đã ghi
+
+trong thông báo, bao gồm:
+
+- 
+Tham dự và biểu quyết/bầu cử trực tiếp tại cuộc họp;
+
+- 
+Ủy quyền cho một đại diện khác tham dự và biểu quyết/bầu cử tại cuộc họp và tuân thủ quy 
+định tại Khoản 2 Điều này; (Trường hợp có nhiều hơn một đại diện được cử thì phải xác định 
+cụ thể số cổ phần và số phiếu bầu cử/biểu quyết được uỷ quyền cho mỗi đại diện).
+
+- 
+Tham dự và biểu quyết/bầu cử thông qua hội nghị trực tuyến, bỏ phiếu điện tử hoặc hình thức 
+điện tử khác;
+
+- 
+Gửi phiếu biểu quyết/phiếu bầu cử đến cuộc họp thông qua gửi thư, fax, thư điện tử;
+
+- 
+Các hình thức đăng ký tham dự họp Đại hội đồng cổ đông khác phù hợp với qui định của 
+Pháp luật.","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf",,
+D113,GEN,"Việc đánh giá hiệu quả làm việc của thành viên Hội đồng quản trị, Ban Kiểm soát và Tổng Giám đốc được thực hiện bằng những hình thức nào?",Việc đánh giá được thực hiện qua các hình thức: tự nhận xét đánh giá; đánh giá hoạt động hằng năm vào dịp cuối năm; đánh giá đột xuất; hoặc cách thức khác do Hội đồng quản trị lựa chọn vào từng thời điểm.,"Vì bạn không nêu rõ đang hỏi cho đơn vị nào, tôi xin cung cấp thông tin từ cả hai quy chế có trong tài liệu:
+
+**1. Đối với EVNFinance (Theo Điều 30):**
+Việc đánh giá hiệu quả làm việc của thành viên Hội đồng quản trị, thành viên Ban Kiểm soát, Tổng Giám đốc và các Cán bộ quản lý khác được thực hiện bằng các hình thức sau:
+* Tự nhận xét đánh giá;
+* Đánh giá hoạt động hằng năm được tiến hành vào dịp cuối năm;
+* Đánh giá đột xuất;
+* Cách thức khác do Hội đồng quản trị lựa chọn vào từng thời điểm.
+
+**2. Đối với Petrolimex-PMSC (Theo Điều 95):**
+* **Thành viên HĐQT:** HĐQT tổ chức thực hiện đánh giá hàng năm căn cứ vào chức năng, nhiệm vụ được phân công và các tiêu chuẩn đánh giá đã được thiết lập/các kết quả đạt được.
+* **Kiểm soát viên:** Thực hiện theo phương thức được đề cập tại cơ cấu tổ chức và hoạt động của BKS.
+* **Giám đốc và người điều hành khác:** HĐQT xây dựng các tiêu chuẩn đánh giá hoạt động (hài hòa giữa lợi ích người điều hành với lợi ích lâu dài của Công ty và cổ đông, bao gồm các chỉ số tài chính và phi tài chính).
+
+Căn cứ:
+- QuyCheQuanTri-EVNFinance.pdf (Điều 30)
+- QuyCheQuanTri-Petrolimex-PMSC.pdf (Điều 95)","Việc đánh giá hiệu quả làm việc của thành viên Hội đồng quản trị, thành viên Ban Kiểm soát, Tổng Giám đốc và các Cán bộ quản lý khác được thực hiện bằng các hình thức sau: Tự nhận xét đánh giá; Đánh giá hoạt động hằng năm được tiến hành vào dịp cuối năm; Đánh giá đột xuất; Cách thức khác do Hội đồng quản trị lựa chọn vào từng thời điểm.",,"[""Tự nhận xét đánh giá: Hệ thống có (EVNFinance)"", ""Đánh giá hằng năm cuối năm: Hệ thống có (EVNFinance)"", ""Đánh giá đột xuất: Hệ thống có (EVNFinance)"", ""Cách thức khác do HĐQT lựa chọn: Hệ thống có (EVNFinance)""]","[""Đánh giá EVNFinance: Tự nhận xét, đánh giá hằng năm, đánh giá đột xuất, cách thức khác do HĐQT lựa chọn (Hệ thống B: Có)"", ""Đánh giá Petrolimex-PMSC: HĐQT đánh giá thành viên HĐQT hàng năm dựa trên tiêu chuẩn/kết quả; Kiểm soát viên theo phương thức tại cơ cấu BKS; Giám đốc/người điều hành theo tiêu chuẩn HĐQT xây dựng (Hệ thống B: Thiếu)""]","Điều 28. Giao dịch với Người có liên quan
+1.Công ty có trách nhiệm tuân thủ các quy định của pháp luật trong giao dịch với Người có liên quan.
+2. Khi tiến hành giao dịch với những Người có liên quan, Hội đồng Quản trị/Ban điều hành/Người điều hành khác phải đảm bảo việc ký kết hợp đồng bằng văn bản theo nguyên tắc bình đẳng, tự nguyện.
+3. Nội dung Hợp đồng với Người có liên quan phải rõ ràng, cụ thể và công bố thông tin cho cổ đông khi có yêu cầu
+Điều 29. Đảm bảo quyền hợp pháp của các bên có quyền lợi liên quan đến Công ty
+1. Công ty phải thực hiện trách nhiệm với cộng đồng và người có quyền lợi liên quan đến Ngân hàng theo quy định của pháp luật hiện hành và Điều lệ Ngân hàng.
+2. Công ty phải tuân thủ các quy định về luật lao động, môi trường và xã hội.
+
+Chương VIII
+ĐÁNH GIÁ HOẠT ĐỘNG, KHEN THƯỞNG VÀ KỶ LUẬT ĐỐI VỚI THÀNH VIÊN HỘI ĐỒNG QUẢN TRỊ, THÀNH VIÊN BAN KIỂM SOÁT, TỔNG GIÁM ĐỐC VÀ CÁC CÁN BỘ QUẢN LÝ KHÁC
+
+Điều 30. Đánh giá hiệu quả làm việc của thành viên Hội đồng Quản trị, thành viên Ban Kiểm soát, Tổng Giám đốc và các Cán bộ quản lý khác
+1.Đánh giá hiệu quả làm việc của các thành viên Hội đồng quản trị, thành viên Ban Kiểm soát, Tổng Giám đốc và các Cán bộ quản lý khác bằng các hình thức sau đây:
+a. Tự nhận xét đánh giá;
+b. Đánh giá hoạt động hằng năm được tiến hành vào dịp cuối năm;
+c. Đánh giá đột xuất;
+d. Cách thức khác do Hội đồng quản trị lựa chọn vào từng thời điểm.
+2. Hội đồng quản trị sẽ tiến hành đánh giá hoạt động của các thành viên Hội đồng quản trị và các chức danh do Hội đồng quản trị bổ nhiệm.
+
+18","QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-Petrolimex-PMSC.pdf, QuyCheQuanTri-EVNFinance.pdf",,

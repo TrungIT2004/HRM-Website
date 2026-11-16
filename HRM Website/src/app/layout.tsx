@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { HRMDataProvider } from '@/context/HRMDataContext';
-import RoleSwitcher from '@/components/layout/RoleSwitcher';
 
 export const metadata: Metadata = {
   title: 'ACT HRM - Nền tảng Quản trị Nhân sự & Chấm công AI',
@@ -25,7 +24,6 @@ export default function RootLayout({
         <AuthProvider>
           <HRMDataProvider>
             {children}
-            <RoleSwitcher />
           </HRMDataProvider>
         </AuthProvider>
       </body>
