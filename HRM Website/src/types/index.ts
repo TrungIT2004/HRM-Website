@@ -520,3 +520,29 @@ export interface PerformanceOverview {
   excellent: PerformanceReview[];
   belowTarget: PerformanceReview[];
 }
+
+// ─── Notifications ───
+export type NotificationType = 'LEAVE' | 'OVERTIME' | 'RESIGNATION' | 'ASSET' | 'IT_TICKET';
+export type NotificationPriority = 'HIGH' | 'NORMAL';
+export type NotificationReferenceType = 'LEAVE_REQUEST' | 'OVERTIME_RECORD' | 'RESIGNATION_REQUEST' | 'ASSET_REQUEST' | 'IT_TICKET';
+
+export interface Notification {
+  notificationId: string;
+  type: NotificationType;
+  title: string;
+  body: string;
+  referenceId: string;
+  referenceType: NotificationReferenceType;
+  priority: NotificationPriority;
+  metadata: Record<string, any>;
+  readAt: string | null;
+  createdAt: string;
+}
+
+export interface NotificationPage {
+  content: Notification[];
+  totalElements: number;
+  totalPages: number;
+  size: number;
+  number: number;
+}
