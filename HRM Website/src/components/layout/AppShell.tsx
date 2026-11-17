@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import { useAuth } from '@/context/AuthContext';
+import { useNotifications } from '@/components/providers/NotificationProvider';
+import { useDocumentTitleBadge } from '@/hooks/useDocumentTitleBadge';
 import {
   LayoutDashboard,
   LayoutGrid,
@@ -22,6 +24,10 @@ export default function AppShell({ children, noSidebar = false, fullWidth = fals
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const pathname = usePathname();
   const { currentUser, isLoading } = useAuth();
+  const { unreadCount } = useNotifications();
+
+  // Document title badge for background tab notifications
+  useDocumentTitleBadge(unreadCount);
 
   // ponytail: redirect only when token is missing (old check on !currentUser bounced to /login during profile fetch, causing redirect loops)
   useEffect(() => {
@@ -78,19 +84,12 @@ export default function AppShell({ children, noSidebar = false, fullWidth = fals
   ];
 
   return (
-    // ponytail: fullWidth (chat) cần h-screen + overflow-hidden để chuỗi
-    // flex -> overflow-y-auto trong page có chiều cao giới hạn và tự scroll,
-    // nhờ đó Navbar sticky thật sự đứng yên. Trang thường vẫn min-h-screen
-    // (scroll cả trang, footer đuôi dài). Nếu sau này chat muốn footer dài
-    // hơn viewport thì bỏ h-screen, quay lại min-h-screen.
     <div className={`${fullWidth ? 'h-screen overflow-hidden' : 'min-h-screen'} bg-slate-50 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900`}>
       <Navbar onToggleMobileMenu={() => setIsMobileNavOpen(!isMobileNavOpen)} showMenuButton={!noSidebar} />
-      
+
       <div className={`flex ${fullWidth ? 'flex-1 min-h-0' : 'flex-1'}`}>
         {!noSidebar && <Sidebar isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />}
-        
-        {/* Main Content Area - padded at bottom on mobile to accommodate sticky bottom bar.
-            fullWidth (vd trang chat kiểu ChatGPT): tràn full màn hình, page tự chia padding */}
+
         <main className={fullWidth
           ? 'flex-1 w-full flex flex-col overflow-x-hidden pb-24 md:pb-0 min-h-0'
           : 'flex-1 p-3.5 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full overflow-x-hidden pb-24 md:pb-8'}>
@@ -98,10 +97,8 @@ export default function AppShell({ children, noSidebar = false, fullWidth = fals
         </main>
       </div>
 
-
-
       {/* Mobile Sticky Bottom Navigation Bar (Phone users native app feel) */}
-      <nav 
+      <nav
         className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-2 py-1 flex items-center justify-around shadow-lg safe-bottom"
         aria-label="Điều hướng di động nhanh"
       >
@@ -114,8 +111,8 @@ export default function AppShell({ children, noSidebar = false, fullWidth = fals
               key={item.href}
               href={item.href}
               className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-150 min-w-[56px] ${
-                isActive 
-                  ? 'text-blue-600 font-semibold' 
+                isActive
+                  ? 'text-blue-600 font-semibold'
                   : 'text-slate-500 hover:text-slate-900'
               }`}
             >

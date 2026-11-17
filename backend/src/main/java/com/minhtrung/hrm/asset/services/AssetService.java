@@ -41,9 +41,15 @@ import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.DepartmentRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
+import com.minhtrung.hrm.notifications.entities.NotificationPriority;
+import com.minhtrung.hrm.notifications.entities.NotificationType;
+import com.minhtrung.hrm.notifications.events.NotificationEvent;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
 import com.minhtrung.hrm.services.FileStorageService;
+
+import org.springframework.context.ApplicationEventPublisher;
+import java.util.Map;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -64,6 +70,7 @@ public class AssetService {
     private final DepartmentRepository departmentRepository;
     private final PermissionService permissionService;
     private final FileStorageService fileStorageService;
+    private final ApplicationEventPublisher eventPublisher;
 
     // ─── PHÂN QUYỀN (không hardcode dept/job — chỉ đọc bảng grants, SUPER_ADMIN bypass) ───
 
@@ -267,7 +274,29 @@ public class AssetService {
         request.setRequestor(userRepository.getReferenceById(me.getUserId()));
         request.setCategory(category);
         request.setStatus(AssetRequestStatus.pending);
-        return requestRepository.save(request);
+        AssetRequest saved = requestRepository.save(request);
+
+        // Send notification to asset approvers (IT department heads or users with ASSET_APPROVE permission)
+        var approvers = userRepository.findByDepartmentName("Information Technology");
+        for (User approver : approvers) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    approver.getUserId(),
+                    NotificationType.ASSET,
+                    "Đơn xin tài sản mới từ " + me.getFullName(),
+                    "Loại: " + category.getName() + " - Lý do: " + request.getReason(),
+                    saved.getRequestId(),
+                    "ASSET_REQUEST",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "requestorName", me.getFullName(),
+                            "category", category.getName(),
+                            "reason", request.getReason(),
+                            "neededByDate", request.getNeededByDate() != null ? request.getNeededByDate().toString() : ""
+                    )
+            ));
+        }
+
+        return saved;
     }
 
     @Transactional(readOnly = true)
@@ -300,7 +329,25 @@ public class AssetService {
             request.setStatus(AssetRequestStatus.rejected);
             request.setRejectionReason(rejectionReason);
         }
-        return requestRepository.save(request);
+        AssetRequest saved = requestRepository.save(request);
+
+        // Send notification to requestor
+        eventPublisher.publishEvent(new NotificationEvent(
+                request.getRequestorId(),
+                NotificationType.ASSET,
+                approve ? "Đơn xin tài sản đã được duyệt" : "Đơn xin tài sản bị từ chối",
+                "Đơn xin " + request.getCategory().getName() + " đã " + (approve ? "được phê duyệt" : "bị từ chối") + (rejectionReason != null ? ": " + rejectionReason : ""),
+                saved.getRequestId(),
+                "ASSET_REQUEST",
+                NotificationPriority.NORMAL,
+                Map.of(
+                        "status", saved.getStatus().toString(),
+                        "approverName", me.getFullName(),
+                        "rejectionReason", rejectionReason
+                )
+        ));
+
+        return saved;
     }
 
     @Transactional

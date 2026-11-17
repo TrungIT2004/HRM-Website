@@ -16,10 +16,16 @@ import com.minhtrung.hrm.auth.repositories.UserSessionRepository;
 import com.minhtrung.hrm.auth.services.SessionBlacklistService;
 import com.minhtrung.hrm.asset.services.AssetService;
 import com.minhtrung.hrm.employees.dtos.internals.UserRole;
+import com.minhtrung.hrm.notifications.entities.NotificationPriority;
+import com.minhtrung.hrm.notifications.entities.NotificationType;
+import com.minhtrung.hrm.notifications.events.NotificationEvent;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
 import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.entities.UserContract;
+
+import org.springframework.context.ApplicationEventPublisher;
+import java.util.Map;
 import com.minhtrung.hrm.employees.repositories.UserContractRepository;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
 import com.minhtrung.hrm.resignation.dtos.requests.ApproveResignationRequest;
@@ -47,6 +53,7 @@ public class ResignationService {
     private final SessionBlacklistService sessionBlacklistService;
     private final PermissionService permissionService;
     private final AssetService assetService;
+    private final ApplicationEventPublisher eventPublisher;
 
     /**
      * 1. Nhân viên tạo đơn xin thôi việc
@@ -99,6 +106,75 @@ public class ResignationService {
                 .build();
 
         ResignationRequest saved = resignationRequestRepository.save(resignationRequest);
+
+        // Send notification to manager and HR/Executive
+        UUID managerId = null;
+        if (user.getDepartment() != null) {
+            // Find department head
+            var managers = userRepository.findByDepartmentNameAndJobTitleStartsWith(
+                    user.getDepartment().getName(), "Department Head");
+            if (!managers.isEmpty()) {
+                managerId = managers.get(0).getUserId();
+            }
+        }
+
+        if (managerId != null) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    managerId,
+                    NotificationType.RESIGNATION,
+                    "Đơn xin thôi việc mới từ " + user.getFirstName() + " " + user.getLastName(),
+                    "Ngày làm việc cuối: " + lastWorkingDate + " - Lý do: " + request.getReason(),
+                    saved.getResignationId(),
+                    "RESIGNATION_REQUEST",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "employeeName", user.getFirstName() + " " + user.getLastName(),
+                            "department", user.getDepartment() != null ? user.getDepartment().getName() : "",
+                            "lastWorkingDate", lastWorkingDate.toString(),
+                            "reason", request.getReason()
+                    )
+            ));
+        }
+
+        // Also notify HR/Executive
+        var hrUsers = userRepository.findByDepartmentName("Human Resources");
+        for (User hr : hrUsers) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    hr.getUserId(),
+                    NotificationType.RESIGNATION,
+                    "Đơn xin thôi việc mới từ " + user.getFirstName() + " " + user.getLastName(),
+                    "Ngày làm việc cuối: " + lastWorkingDate + " - Lý do: " + request.getReason(),
+                    saved.getResignationId(),
+                    "RESIGNATION_REQUEST",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "employeeName", user.getFirstName() + " " + user.getLastName(),
+                            "department", user.getDepartment() != null ? user.getDepartment().getName() : "",
+                            "lastWorkingDate", lastWorkingDate.toString(),
+                            "reason", request.getReason()
+                    )
+            ));
+        }
+
+        var execUsers = userRepository.findByDepartmentName("Executive Leadership");
+        for (User exec : execUsers) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    exec.getUserId(),
+                    NotificationType.RESIGNATION,
+                    "Đơn xin thôi việc mới từ " + user.getFirstName() + " " + user.getLastName(),
+                    "Ngày làm việc cuối: " + lastWorkingDate + " - Lý do: " + request.getReason(),
+                    saved.getResignationId(),
+                    "RESIGNATION_REQUEST",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "employeeName", user.getFirstName() + " " + user.getLastName(),
+                            "department", user.getDepartment() != null ? user.getDepartment().getName() : "",
+                            "lastWorkingDate", lastWorkingDate.toString(),
+                            "reason", request.getReason()
+                    )
+            ));
+        }
+
         log.info("Nhân viên {} đã nộp đơn xin thôi việc. Ngày làm việc cuối: {}", userId, lastWorkingDate);
 
         return mapToResponse(saved);
@@ -154,7 +230,24 @@ public class ResignationService {
         resignationRequest.setManagerComment(request.getManagerComment());
         resignationRequest.setManagerApprovedAt(LocalDateTime.now());
 
-        resignationRequestRepository.save(resignationRequest);
+        ResignationRequest saved = resignationRequestRepository.save(resignationRequest);
+
+        // Send notification to requestor
+        eventPublisher.publishEvent(new NotificationEvent(
+                requestorId,
+                NotificationType.RESIGNATION,
+                newStatus == ResignationStatus.MANAGER_APPROVED ? "Đơn xin thôi việc đã được duyệt bàn giao" : "Đơn xin thôi việc bị từ chối bàn giao",
+                "Đơn xin thôi việc của bạn đã " + (newStatus == ResignationStatus.MANAGER_APPROVED ? "được duyệt bàn giao" : "bị từ chối") + (request.getManagerComment() != null ? ": " + request.getManagerComment() : ""),
+                saved.getResignationId(),
+                "RESIGNATION_REQUEST",
+                NotificationPriority.NORMAL,
+                Map.of(
+                        "status", newStatus.toString(),
+                        "approverName", approverProxy.getFirstName() + " " + approverProxy.getLastName(),
+                        "managerComment", request.getManagerComment()
+                )
+        ));
+
         log.info("Trưởng phòng {} đã duyệt đơn thôi việc {} sang trạng thái {}", approverId, request.getResignationId(), newStatus);
     }
 
@@ -235,8 +328,25 @@ public class ResignationService {
             log.info("Đã khóa tài khoản và thu hồi toàn bộ session nhân viên {} ngay sau khi duyệt do ngày làm việc cuối đã qua", requestorId);
         }
 
-        resignationRequestRepository.save(resignationRequest);
-        log.info("Cấp cao {} đã phê duyệt đơn thôi việc {} sang trạng thái {}", approverId, request.getResignationId(), resignationRequest.getStatus());
+        ResignationRequest saved = resignationRequestRepository.save(resignationRequest);
+
+        // Send notification to requestor
+        eventPublisher.publishEvent(new NotificationEvent(
+                requestorId,
+                NotificationType.RESIGNATION,
+                newStatus == ResignationStatus.APPROVED ? "Đơn xin thôi việc đã được duyệt" : "Đơn xin thôi việc bị từ chối",
+                "Đơn xin thôi việc của bạn đã " + (newStatus == ResignationStatus.APPROVED ? "được phê duyệt chính thức" : "bị từ chối") + (request.getExecutiveComment() != null ? ": " + request.getExecutiveComment() : ""),
+                saved.getResignationId(),
+                "RESIGNATION_REQUEST",
+                NotificationPriority.NORMAL,
+                Map.of(
+                        "status", newStatus.toString(),
+                        "approverName", executiveProxy.getFirstName() + " " + executiveProxy.getLastName(),
+                        "executiveComment", request.getExecutiveComment()
+                )
+        ));
+
+        log.info("Cấp cao {} đã phê duyệt đơn thôi việc {} sang trạng thái {}", approverId, request.getResignationId(), saved.getStatus());
     }
 
     /**

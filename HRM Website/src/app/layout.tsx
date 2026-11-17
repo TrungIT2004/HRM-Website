@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { HRMDataProvider } from '@/context/HRMDataContext';
+import { RootProviders } from '@/components/providers/RootProviders';
 
 export const metadata: Metadata = {
   title: 'ACT HRM - Nền tảng Quản trị Nhân sự & Chấm công AI',
@@ -23,7 +24,9 @@ export default function RootLayout({
       <body className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased">
         <AuthProvider>
           <HRMDataProvider>
-            {children}
+            <RootProviders>
+              {children}
+            </RootProviders>
           </HRMDataProvider>
         </AuthProvider>
       </body>

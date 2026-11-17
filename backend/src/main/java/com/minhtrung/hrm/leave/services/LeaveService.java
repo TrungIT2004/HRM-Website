@@ -47,10 +47,14 @@ import com.minhtrung.hrm.leave.enums.LeaveRequestStatus;
 import com.minhtrung.hrm.leave.exceptions.LeaveException;
 import com.minhtrung.hrm.leave.repositories.LeaveRequestRepository;
 import com.minhtrung.hrm.leave.specifications.LeaveRequestSpecification;
+import com.minhtrung.hrm.notifications.entities.NotificationPriority;
+import com.minhtrung.hrm.notifications.entities.NotificationType;
+import com.minhtrung.hrm.notifications.events.NotificationEvent;
 import com.minhtrung.hrm.overtime.repositories.HolidayRepository;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -65,6 +69,7 @@ public class LeaveService {
     private final WorkShiftRepository workShiftRepository;
     private final HolidayRepository holidayRepository;
     private final PermissionService permissionService;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Transactional(readOnly = true)
     public LeavePreviewResponse previewLeaveRequest(UUID userId, LocalDate fromDate, LocalDate toDate) {
@@ -182,15 +187,35 @@ public class LeaveService {
             newLeaveRequest.setStatus(LeaveRequestStatus.accepted);
         }
 
-        leaveRequestRepository.save(newLeaveRequest);
+        LeaveRequest saved = leaveRequestRepository.save(newLeaveRequest);
 
         if (isChairman) {
-            applyAcceptedLeave(newLeaveRequest, userId);
+            applyAcceptedLeave(saved, userId);
+        }
+
+        // Send notification to approver (if not auto-approved)
+        if (!isChairman && saved.getApprover() != null) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    saved.getApprover().getUserId(),
+                    NotificationType.LEAVE,
+                    "Đơn nghỉ phép mới từ " + userRepository.findById(userId).map(u -> u.getFirstName() + " " + u.getLastName()).orElse("Nhân viên"),
+                    "Nghỉ phép: " + fromDate + " đến " + toDate + " (" + preview.getWorkDays() + " ngày làm việc)",
+                    saved.getRequestId(),
+                    "LEAVE_REQUEST",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "requestorName", userRepository.findById(userId).map(u -> u.getFirstName() + " " + u.getLastName()).orElse(""),
+                            "department", userRepository.findUsersDepartment(userId),
+                            "fromDate", fromDate.toString(),
+                            "toDate", toDate.toString(),
+                            "totalDays", preview.getWorkDays()
+                    )
+            ));
         }
 
         log.info("Đơn nghỉ phép mới được tạo. RequestorId: {}, Từ ngày: {}, Đến ngày: {}, Số ngày làm việc: {}, Số ngày có lương: {}, Lý do: {}, Tự duyệt: {}",
                 userId, fromDate, toDate, preview.getWorkDays(), paidLeaveDays, reason, isChairman);
-        return newLeaveRequest;
+        return saved;
     }
 
     @Transactional
@@ -266,10 +291,23 @@ public class LeaveService {
                 applyAcceptedLeave(leaveRequest, requestorId);
             }
 
-            leaveRequest.setStatus(status);
-            if (status.equals(LeaveRequestStatus.rejected) && request.getRejectionReason() != null) {
-                leaveRequest.setRejectionReason(request.getRejectionReason());
-            }
+            LeaveRequest saved = leaveRequestRepository.save(leaveRequest);
+
+            // Send notification to requestor
+            eventPublisher.publishEvent(new NotificationEvent(
+                    requestorId,
+                    NotificationType.LEAVE,
+                    status.equals(LeaveRequestStatus.accepted) ? "Đơn nghỉ phép đã được duyệt" : "Đơn nghỉ phép bị từ chối",
+                    "Đơn từ " + leaveRequest.getFromDate() + " đến " + leaveRequest.getToDate() + " đã " + (status.equals(LeaveRequestStatus.accepted) ? "được phê duyệt" : "bị từ chối") + (request.getRejectionReason() != null ? ": " + request.getRejectionReason() : ""),
+                    saved.getRequestId(),
+                    "LEAVE_REQUEST",
+                    NotificationPriority.NORMAL,
+                    Map.of(
+                            "status", status.toString(),
+                            "approverName", approverProxy.getFirstName() + " " + approverProxy.getLastName(),
+                            "rejectionReason", request.getRejectionReason()
+                    )
+            ));
 
             if (status.equals(LeaveRequestStatus.accepted)) {
                 log.info("Đơn nghỉ phép được PHÊ DUYỆT. RequestId: {}, ApproverId: {}, RequestorId: {}, Từ ngày: {}, Đến ngày: {}, Số ngày có lương: {}",
@@ -279,7 +317,7 @@ public class LeaveService {
                         requestId, approverId, requestorId, leaveRequest.getFromDate(), leaveRequest.getToDate(), leaveRequest.getRejectionReason());
             }
 
-            return leaveRequest;
+            return saved;
         } else {
             throw new LeaveException(LeaveErrorCode.INSUFFICIENT_PERMISSION,
                     "Bạn không có thẩm quyền phê duyệt yêu cầu nghỉ phép này");
