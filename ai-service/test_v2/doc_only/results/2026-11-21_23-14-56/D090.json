@@ -1,0 +1,29 @@
+{
+  "id": "D090",
+  "question": "Số lượng thành viên tối thiểu của các tiểu ban trực thuộc Hội đồng quản trị là bao nhiêu?",
+  "golden_answer": "Số lượng thành viên của tiểu ban do Hội đồng quản trị quyết định có tối thiểu là 02 người, bao gồm thành viên của Hội đồng quản trị và thành viên bên ngoài.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+  "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 3 – HỘI ĐỒNG QUẢN TRỊ > Điều 67. Các tiểu ban trực thuộc HĐQT",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 44,
+  "output_tokens": 37,
+  "total_tokens": 81,
+  "ttft_ms": 283.9,
+  "generation_time_ms": 283.9,
+  "total_latency_ms": 283.9,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Số lượng thành viên tối thiểu của các tiểu ban trực thuộc Hội đồng quản trị là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

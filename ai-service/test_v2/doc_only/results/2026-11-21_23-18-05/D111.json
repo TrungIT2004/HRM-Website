@@ -1,0 +1,29 @@
+{
+  "id": "D111",
+  "question": "Mức hỗ trợ công tác phí một ngày khi đi công tác tại TP Hồ Chí Minh là bao nhiêu?",
+  "golden_answer": "Mức hỗ trợ công tác phí khi đi TP Hồ Chí Minh, các tỉnh miền Trung, nam là 2.000.000 đồng/ngày.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 40,
+  "output_tokens": 37,
+  "total_tokens": 77,
+  "ttft_ms": 932.6,
+  "generation_time_ms": 932.6,
+  "total_latency_ms": 932.6,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Mức hỗ trợ công tác phí một ngày khi đi công tác tại TP Hồ Chí Minh là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

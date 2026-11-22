@@ -1,0 +1,29 @@
+{
+  "id": "D039",
+  "question": "Đơn giá của một ream giấy photocopy Double AA A4 loại 80gsm là bao nhiêu?",
+  "golden_answer": "Đơn giá của giấy photocopy Double AA A4 (80gsm) là 81.000 đồng/ream (chưa bao gồm VAT).",
+  "category": "van_phong_pham",
+  "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 36,
+  "output_tokens": 37,
+  "total_tokens": 73,
+  "ttft_ms": 363.7,
+  "generation_time_ms": 363.7,
+  "total_latency_ms": 363.7,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Đơn giá của một ream giấy photocopy Double AA A4 loại 80gsm là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

@@ -1,0 +1,29 @@
+{
+  "id": "D066",
+  "question": "Thông báo mời họp Đại hội đồng cổ đông phải được gửi cho cổ đông chậm nhất là bao lâu trước ngày khai mạc?",
+  "golden_answer": "Thông báo mời họp Đại hội đồng cổ đông phải được gửi chậm nhất là hai mươi mốt (21) ngày trước ngày khai mạc Đại hội đồng cổ đông.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 53,
+  "output_tokens": 37,
+  "total_tokens": 90,
+  "ttft_ms": 342.0,
+  "generation_time_ms": 342.0,
+  "total_latency_ms": 342.0,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Thông báo mời họp Đại hội đồng cổ đông phải được gửi cho cổ đông chậm nhất là bao lâu trước ngày khai mạc?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

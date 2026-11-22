@@ -1,0 +1,86 @@
+{
+  "id": "D119",
+  "question": "Thời gian nghỉ thai sản của lao động nữ là bao lâu và được nghỉ trước khi sinh tối đa bao nhiêu tháng?",
+  "golden_answer": "Lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng; trong đó thời gian nghỉ trước khi sinh không quá 02 tháng.",
+  "category": "bao_hiem_phuc_loi",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương X > Điều 139. Nghỉ thai sản",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 630,
+  "output_tokens": 46,
+  "total_tokens": 676,
+  "ttft_ms": 1960.2,
+  "generation_time_ms": 1960.2,
+  "total_latency_ms": 1960.2,
+  "generated_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nHệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Thời gian nghỉ thai sản của lao động nữ là bao lâu và được nghỉ trước khi sinh tối đa bao nhiêu tháng?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 4,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6183
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 3\nTÍNH VÀ TRẢ LƯƠNG > Điều 14. Ngày nghỉ được hưởng nguyên lương",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6525
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6524
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6214
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Mẫu quy chế tiền lương tiền thưởng, phụ cấp cho người lao động",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6203
+    },
+    {
+      "document_name": "EVAL_RAG|214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/3578174b-d8b8-4f51-8512-829f9a01ba10/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6048
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 1\nNHỮNG QUY ĐỊNH CHUNG > Điều 2. Lương đóng bảo hiểm xã hội",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6004
+    }
+  ],
+  "error": null
+}

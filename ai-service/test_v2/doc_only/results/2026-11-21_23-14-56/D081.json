@@ -1,0 +1,86 @@
+{
+  "id": "D081",
+  "question": "Thư ký đại hội đồng cổ đông có những nhiệm vụ cụ thể nào?",
+  "golden_answer": "Nhiệm vụ của Thư ký đại hội bao gồm: Ghi chép đầy đủ, trung thực nội dung Đại hội; tiếp nhận phiếu đăng ký phát biểu của cổ đông/Đại biểu; lập Biên bản họp và soạn thảo Nghị quyết Đại hội đồng cổ đông; hỗ trợ Chủ tọa công bố thông tin liên quan đến cuộc họp và thông báo đến các Cổ đông; thực hiện các nhiệm vụ khác theo yêu cầu của Chủ Tọa.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+  "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 2. Thư ký đại hội:",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 655,
+  "output_tokens": 152,
+  "total_tokens": 807,
+  "ttft_ms": 370.1,
+  "generation_time_ms": 370.1,
+  "total_latency_ms": 370.1,
+  "generated_answer": "Theo quy định của công ty, Thư ký đại hội có các nhiệm vụ cụ thể sau đây:\n\n* Ghi chép đầy đủ, trung thực nội dung Đại hội;\n* Tiếp nhận phiếu đăng ký phát biểu của cổ đông/Đại biểu;\n* Lập Biên bản họp và soạn thảo Nghị quyết Đại hội đồng cổ đông;\n* Hỗ trợ Chủ tọa công bố thông tin liên quan đến cuộc họp Đại hội đồng cổ đông và thông báo đến các Cổ đông theo đúng quy định pháp luật và Điều lệ công ty;\n* Thực hiện các nhiệm vụ khác theo yêu cầu của Chủ Tọa.\n\n---\n**Căn cứ:** QuyCheQuanTri-Petrolimex-PMSC.pdf > Chương 2 – Đại hội đồng cổ đông > Điều 4. Nhân sự Đại hội đồng cổ đông > Khoản 2 (Thư ký đại hội).",
+  "rewritten_query": "Thư ký đại hội đồng cổ đông có những nhiệm vụ cụ thể nào?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 2. Thư ký đại hội:",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/c8c7cf17-513c-4cca-b210-a395b77480b1/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7998
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 2. Thư ký đại hội:",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/1503ff41-8546-4b7c-ade8-3d641125d1be/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7998
+    },
+    {
+      "document_name": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 4. Ban kiểm tra tư cách cổ đông/đại biểu:",
+      "page_number": null,
+      "file_url": "/api/ai/documents/c8c7cf17-513c-4cca-b210-a395b77480b1/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7343
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 4. Ban kiểm tra tư cách cổ đông/đại biểu:",
+      "page_number": null,
+      "file_url": "/api/ai/documents/1503ff41-8546-4b7c-ade8-3d641125d1be/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7343
+    },
+    {
+      "document_name": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 3. Ban kiểm phiếu:",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/c8c7cf17-513c-4cca-b210-a395b77480b1/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7218
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 3. Ban kiểm phiếu:",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/1503ff41-8546-4b7c-ade8-3d641125d1be/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7218
+    },
+    {
+      "document_name": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 4. Nhân sự Đại hội đồng cổ đông > 1. Chủ tọa và Đoàn Chủ tọa:",
+      "page_number": 9,
+      "file_url": "/api/ai/documents/c8c7cf17-513c-4cca-b210-a395b77480b1/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6977
+    }
+  ],
+  "error": null
+}

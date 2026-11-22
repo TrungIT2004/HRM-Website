@@ -1,0 +1,29 @@
+{
+  "id": "D115",
+  "question": "Kể từ ngày 01/01/2021, có những loại hợp đồng lao động nào?",
+  "golden_answer": "Hợp đồng lao động sẽ được giao kết theo một trong hai loại: Hợp đồng lao động không xác định thời hạn và Hợp đồng lao động xác định thời hạn (thời gian không quá 36 tháng kể từ thời điểm có hiệu lực).",
+  "category": "hop_dong",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 29,
+  "output_tokens": 37,
+  "total_tokens": 66,
+  "ttft_ms": 300.7,
+  "generation_time_ms": 300.7,
+  "total_latency_ms": 300.7,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Kể từ ngày 01/01/2021, có những loại hợp đồng lao động nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

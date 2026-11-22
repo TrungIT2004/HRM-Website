@@ -1,0 +1,29 @@
+{
+  "id": "D102",
+  "question": "Tuổi nghỉ hưu của lao động nam và nữ trong điều kiện bình thường được quy định như thế nào?",
+  "golden_answer": "Tuổi nghỉ hưu được điều chỉnh theo lộ trình đến khi đủ 62 tuổi với nam vào năm 2028 và 60 tuổi với nữ vào năm 2035. Từ năm 2021, tuổi nghỉ hưu là 60 tuổi 03 tháng với nam và 55 tuổi 04 tháng với nữ, sau đó mỗi năm tăng thêm 03 tháng với nam và 04 tháng với nữ.",
+  "category": "bao_hiem_phuc_loi",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XII > Điều 169. Tuổi nghỉ hưu",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 45,
+  "output_tokens": 37,
+  "total_tokens": 82,
+  "ttft_ms": 966.5,
+  "generation_time_ms": 966.5,
+  "total_latency_ms": 966.5,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Tuổi nghỉ hưu của lao động nam và nữ trong điều kiện bình thường được quy định như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

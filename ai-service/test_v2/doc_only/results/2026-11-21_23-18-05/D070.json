@@ -1,0 +1,29 @@
+{
+  "id": "D070",
+  "question": "Tiêu chuẩn về số lượng và nhiệm kỳ của thành viên Hội đồng quản trị được quy định như thế nào?",
+  "golden_answer": "Số lượng thành viên HĐQT từ 5 đến 11 người. Nhiệm kỳ của HĐQT không quá 4 năm và thành viên có thể được bầu lại với số nhiệm kỳ không hạn chế, trừ trường hợp pháp luật có quy định khác.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 47,
+  "output_tokens": 37,
+  "total_tokens": 84,
+  "ttft_ms": 358.3,
+  "generation_time_ms": 358.3,
+  "total_latency_ms": 358.3,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Tiêu chuẩn về số lượng và nhiệm kỳ của thành viên Hội đồng quản trị được quy định như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

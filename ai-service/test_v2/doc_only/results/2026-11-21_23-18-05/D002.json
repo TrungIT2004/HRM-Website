@@ -1,0 +1,86 @@
+{
+  "id": "D002",
+  "question": "Tôi muốn đăng ký xe đi công tác thì cần gửi yêu cầu cho phòng ban nào?",
+  "golden_answer": "Để đăng ký xe đi công tác, nhân viên cần gửi Phiếu đăng ký xe cho Phòng Hành chính.",
+  "category": "xe_cong_tac",
+  "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+  "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 590,
+  "output_tokens": 56,
+  "total_tokens": 646,
+  "ttft_ms": 1761.3,
+  "generation_time_ms": 1761.3,
+  "total_latency_ms": 1761.3,
+  "generated_answer": "Bạn cần gửi yêu cầu đăng ký xe đi công tác đến **Phòng Hành chính (P.HC)** và phối hợp với nhân viên phụ trách xe của phòng này.\n\nTrích dẫn: [Tài liệu 2] Số: 21A/HD-ACT-HC (mục Hướng dẫn và Bước 1); [Tài liệu 3] Điều 5 Khoản 1.",
+  "rewritten_query": "Tôi muốn đăng ký xe đi công tác thì cần gửi yêu cầu cho phòng ban nào?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": 3,
+      "file_url": "/api/ai/documents/d1c7477a-6fde-465c-8544-1df4c1ccb720/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8513
+    },
+    {
+      "document_name": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/d1c7477a-6fde-465c-8544-1df4c1ccb720/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8006
+    },
+    {
+      "document_name": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/0f987378-0108-4959-913a-52e5131f436f/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7623
+    },
+    {
+      "document_name": "EVAL_RAG|214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": 3,
+      "file_url": "/api/ai/documents/8d40d643-6ef7-41bf-a2af-a4d0ed5dcd9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7463
+    },
+    {
+      "document_name": "EVAL_RAG|214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/8d40d643-6ef7-41bf-a2af-a4d0ed5dcd9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7303
+    },
+    {
+      "document_name": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/d1c7477a-6fde-465c-8544-1df4c1ccb720/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6879
+    },
+    {
+      "document_name": "EVAL_RAG|214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/8d40d643-6ef7-41bf-a2af-a4d0ed5dcd9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6877
+    }
+  ],
+  "error": null
+}

@@ -1,0 +1,29 @@
+{
+  "id": "D022",
+  "question": "Quyết định số 15/2023/QĐ được ban hành vào ngày nào?",
+  "golden_answer": "Quyết định số 15/2023/QĐ được ban hành ngày 10 tháng 01 năm 2023 tại TP. Hồ Chí Minh.",
+  "category": "khac",
+  "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Mẫu quy chế tiền lương tiền thưởng, phụ cấp cho người lao động (Bảng biểu)",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 26,
+  "output_tokens": 37,
+  "total_tokens": 63,
+  "ttft_ms": 856.9,
+  "generation_time_ms": 856.9,
+  "total_latency_ms": 856.9,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Quyết định số 15/2023/QĐ được ban hành vào ngày nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}
