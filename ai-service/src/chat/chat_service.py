@@ -201,22 +201,25 @@ class ChatService:
         self.executor = ThreadPoolExecutor(max_workers=4)
 
     def _load_api_keys(self) -> List[str]:
-        """Load Gemini API keys from environment (GEMINI_API_KEY_0 through GEMINI_API_KEY_5)."""
+        """Load Gemini API keys from environment (GEMINI_API_KEY_0 through GEMINI_API_KEY_6 = 7 keys)."""
         keys = []
-        for i in range(6):
+        for i in range(7):  # 0-6 = 7 keys
             key = os.getenv(f"GEMINI_API_KEY_{i}")
             if key and key != f"your_gemini_api_key_{i}_here":
                 keys.append(key)
 
-        if len(keys) == 6:
-            print(f"[ChatService] Loaded 6 API keys for quota rotation")
+        if len(keys) == 7:
+            print(f"[ChatService] Loaded 7 API keys for quota rotation")
+            return keys
+        elif len(keys) > 0:
+            print(f"[ChatService] Loaded {len(keys)} API keys for quota rotation")
             return keys
 
         # Fallback: try single GEMINI_API_KEY
         single_key = os.getenv("GEMINI_API_KEY")
         if single_key and single_key != "your_gemini_api_key_here":
             print(f"[ChatService] Using single GEMINI_API_KEY for all requests")
-            return [single_key] * 6
+            return [single_key] * 7
 
         print("[ChatService] Warning: No Gemini API keys found, LLM features disabled")
         return []
