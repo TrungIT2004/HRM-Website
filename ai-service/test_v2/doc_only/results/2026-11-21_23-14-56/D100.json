@@ -1,0 +1,29 @@
+{
+  "id": "D100",
+  "question": "Trong những trường hợp nào tôi không được từ chối yêu cầu làm thêm giờ của người sử dụng lao động?",
+  "golden_answer": "Người lao động không được từ chối làm thêm giờ trong các trường hợp: 1. Thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh; 2. Thực hiện công việc bảo vệ tính mạng con người, tài sản trong phòng ngừa, khắc phục hậu quả thiên tai, hỏa hoạn, dịch bệnh nguy hiểm và thảm họa (trừ trường hợp có nguy cơ ảnh hưởng đến tính mạng, sức khỏe người lao động).",
+  "category": "thoi_gian_lam_viec",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương VII > Điều 108. Làm thêm giờ trong trường hợp đặc biệt",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 49,
+  "output_tokens": 37,
+  "total_tokens": 86,
+  "ttft_ms": 937.2,
+  "generation_time_ms": 937.2,
+  "total_latency_ms": 937.2,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Trong những trường hợp nào tôi không được từ chối yêu cầu làm thêm giờ của người sử dụng lao động?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

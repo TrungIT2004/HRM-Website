@@ -1,0 +1,29 @@
+{
+  "id": "D007",
+  "question": "Tôi cần đăng ký xe công tác cho kế hoạch đã được phê duyệt trước thì phải gửi yêu cầu trước mấy giờ?",
+  "golden_answer": "Mọi yêu cầu vận chuyển cần được lập đề xuất cụ thể và gửi về đơn vị điều phối trước 15h00 ngày hôm trước.",
+  "category": "xe_cong_tac",
+  "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+  "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 50,
+  "output_tokens": 37,
+  "total_tokens": 87,
+  "ttft_ms": 344.4,
+  "generation_time_ms": 344.4,
+  "total_latency_ms": 344.4,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Tôi cần đăng ký xe công tác cho kế hoạch đã được phê duyệt trước thì phải gửi yêu cầu trước mấy giờ?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

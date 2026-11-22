@@ -1,0 +1,29 @@
+{
+  "id": "D011",
+  "question": "Mục đích của việc trả lương và thưởng cho cá nhân, bộ phận trong công ty là gì?",
+  "golden_answer": "Việc trả lương, thưởng nhằm khuyến khích người lao động làm việc, hoàn thành tốt công việc theo chức danh, đóng góp vào kế hoạch sản xuất kinh doanh của công ty, đồng thời tạo động lực nâng cao kiến thức, tích lũy kinh nghiệm và thực hiện đúng quy định pháp luật lao động.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 1: Mục đích",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 39,
+  "output_tokens": 37,
+  "total_tokens": 76,
+  "ttft_ms": 929.9,
+  "generation_time_ms": 929.9,
+  "total_latency_ms": 929.9,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Mục đích của việc trả lương và thưởng cho cá nhân, bộ phận trong công ty là gì?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

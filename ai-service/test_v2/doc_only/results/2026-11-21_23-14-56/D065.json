@@ -1,0 +1,86 @@
+{
+  "id": "D065",
+  "question": "Đối tượng nào được áp dụng Quy chế quản trị nội bộ của Công ty Cổ phần Đầu tư Thế Giới Di Động?",
+  "golden_answer": "Đối tượng áp dụng bao gồm: Đại hội đồng cổ đông; Thành viên Hội đồng quản trị, thành viên Ủy ban kiểm toán nội bộ, Người quản lý, Người điều hành và tổ chức, cá nhân và người có liên quan của các đối tượng này; Tổ chức và cá nhân có quyền lợi liên quan đến Công ty.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 498,
+  "output_tokens": 46,
+  "total_tokens": 544,
+  "ttft_ms": 1822.5,
+  "generation_time_ms": 1822.5,
+  "total_latency_ms": 1822.5,
+  "generated_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nHệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Đối tượng nào được áp dụng Quy chế quản trị nội bộ của Công ty Cổ phần Đầu tư Thế Giới Di Động?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 4: Đối tượng áp dụng",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6989
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6913
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6698
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6577
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 18,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6201
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 8,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6018
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 19,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5884
+    }
+  ],
+  "error": null
+}

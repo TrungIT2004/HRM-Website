@@ -1,0 +1,86 @@
+{
+  "id": "D074",
+  "question": "Thành phần và số lượng thành viên tối thiểu của Ủy ban kiểm toán nội bộ được quy định như thế nào?",
+  "golden_answer": "Ủy ban kiểm toán nội bộ có tối thiểu hai (02) thành viên, bao gồm thành viên của Hội đồng quản trị và thành viên bên ngoài. Trong đó, các Thành viên độc lập HĐQT hoặc thành viên HĐQT không điều hành phải chiếm đa số.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 488,
+  "output_tokens": 46,
+  "total_tokens": 534,
+  "ttft_ms": 1854.3,
+  "generation_time_ms": 1854.3,
+  "total_latency_ms": 1854.3,
+  "generated_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nHệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Thành phần và số lượng thành viên tối thiểu của Ủy ban kiểm toán nội bộ được quy định như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 14,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6941
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 20,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6633
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.659
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 16,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6564
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 15,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6553
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 12,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6357
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6273
+    }
+  ],
+  "error": null
+}

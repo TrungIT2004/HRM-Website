@@ -1,0 +1,29 @@
+{
+  "id": "D001",
+  "question": "Tôi muốn đăng ký xe đi công tác đột xuất thì cần thực hiện trước thời hạn nào?",
+  "golden_answer": "Đối với đăng ký xe đột xuất, Đơn vị cần phối hợp với nhân viên phụ trách xe (P.HC) qua điện thoại hoặc zalo trước 16h00 ngày N-1.",
+  "category": "xe_cong_tac",
+  "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+  "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 39,
+  "output_tokens": 37,
+  "total_tokens": 76,
+  "ttft_ms": 2187.4,
+  "generation_time_ms": 2187.4,
+  "total_latency_ms": 2187.4,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Tôi muốn đăng ký xe đi công tác đột xuất thì cần thực hiện trước thời hạn nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

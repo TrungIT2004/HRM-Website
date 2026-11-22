@@ -1,0 +1,29 @@
+{
+  "id": "D013",
+  "question": "Việc chi trả lương và thưởng của công ty được căn cứ vào những yếu tố nào?",
+  "golden_answer": "Việc trả lương, thưởng căn cứ vào kết quả sản xuất kinh doanh chung của đơn vị và mức độ đóng góp của người lao động theo nguyên tắc làm nhiều hưởng nhiều, làm ít hưởng ít, làm công việc gì, chức vụ gì hưởng lương theo công việc và chức vụ đó.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 3: Những nguyên tắc trả lương",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 37,
+  "output_tokens": 37,
+  "total_tokens": 74,
+  "ttft_ms": 1049.0,
+  "generation_time_ms": 1049.0,
+  "total_latency_ms": 1049.0,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Việc chi trả lương và thưởng của công ty được căn cứ vào những yếu tố nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

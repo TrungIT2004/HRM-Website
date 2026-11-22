@@ -1,0 +1,29 @@
+{
+  "id": "D029",
+  "question": "Tôi là nhân viên chính thức ký hợp đồng từ 6 tháng trở lên thì có được hỗ trợ tiền thuê nhà không và mức hưởng là bao nhiêu?",
+  "golden_answer": "Nhân viên chính thức ký hợp đồng lao động từ 06 tháng trở lên được hưởng khoản tiền hỗ trợ thuê nhà từ 1.000.000 đến 2.000.000 đồng mỗi tháng.",
+  "category": "bao_hiem_phuc_loi",
+  "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 2\nCÁC KHOẢN TRỢ CẤP VÀ PHỤ CẤP > Điều 8. Trợ cấp",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 62,
+  "output_tokens": 37,
+  "total_tokens": 99,
+  "ttft_ms": 289.4,
+  "generation_time_ms": 289.4,
+  "total_latency_ms": 289.4,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Tôi là nhân viên chính thức ký hợp đồng từ 6 tháng trở lên thì có được hỗ trợ tiền thuê nhà không và mức hưởng là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

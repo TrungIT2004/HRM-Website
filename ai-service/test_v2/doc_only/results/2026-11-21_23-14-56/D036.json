@@ -1,0 +1,86 @@
+{
+  "id": "D036",
+  "question": "Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in của Công ty Cổ phần Viễn thông ACT có mã hiệu là gì?",
+  "golden_answer": "Mã hiệu của quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in là QT.ACT.HC-05.",
+  "category": "van_phong_pham",
+  "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 641,
+  "output_tokens": 50,
+  "total_tokens": 691,
+  "ttft_ms": 347.8,
+  "generation_time_ms": 347.8,
+  "total_latency_ms": 347.8,
+  "generated_answer": "Mã hiệu của Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in là: **QT.ACT.HC-05**.\n\nTrích dẫn: [TÀI LIỆU 1], [TÀI LIỆU 6] - QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.",
+  "rewritten_query": "Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in của Công ty Cổ phần Viễn thông ACT có mã hiệu là gì?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/52b84b1e-249b-4dbd-a1b1-4b6305cf8553/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8013
+    },
+    {
+      "document_name": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 7,
+      "file_url": "/api/ai/documents/3760029a-ae53-4e3d-9b55-49e84712682c/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.775
+    },
+    {
+      "document_name": "EVAL_RAG|QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 7,
+      "file_url": "/api/ai/documents/52b84b1e-249b-4dbd-a1b1-4b6305cf8553/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.775
+    },
+    {
+      "document_name": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 6,
+      "file_url": "/api/ai/documents/3760029a-ae53-4e3d-9b55-49e84712682c/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.775
+    },
+    {
+      "document_name": "EVAL_RAG|QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 6,
+      "file_url": "/api/ai/documents/52b84b1e-249b-4dbd-a1b1-4b6305cf8553/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.775
+    },
+    {
+      "document_name": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/3760029a-ae53-4e3d-9b55-49e84712682c/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7744
+    },
+    {
+      "document_name": "EVAL_RAG|QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/52b84b1e-249b-4dbd-a1b1-4b6305cf8553/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7744
+    }
+  ],
+  "error": null
+}

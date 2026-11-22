@@ -1,0 +1,29 @@
+{
+  "id": "D010",
+  "question": "Quy chế lương thưởng và chế độ cho người lao động của Công ty Cổ phần Cấp nước An Phát được ban hành căn cứ vào những văn bản nào?",
+  "golden_answer": "Quy chế được ban hành căn cứ vào: Bộ luật lao động năm 2019, Nghị định 145/2020/N Đ-CP ngày 14/12/2020, Luật doanh nghiệp số 59/2020/QH14, điều lệ tổ chức và hoạt động của Công ty, cùng chức năng và quyền hạn của Ban Giám đốc Công ty.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > Mẫu quy chế lương thưởng cho người lao động",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 65,
+  "output_tokens": 37,
+  "total_tokens": 102,
+  "ttft_ms": 351.3,
+  "generation_time_ms": 351.3,
+  "total_latency_ms": 351.3,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Quy chế lương thưởng và chế độ cho người lao động của Công ty Cổ phần Cấp nước An Phát được ban hành căn cứ vào những văn bản nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}
