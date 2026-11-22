@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_100",
+  "original_query": "Nếu biên bản kiểm phiếu không trung thực sẽ có hậu quả gì?",
+  "rewritten_query": "Nếu biên bản kiểm phiếu không trung thực sẽ có hậu quả gì?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 254.34,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:15:32.824985",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

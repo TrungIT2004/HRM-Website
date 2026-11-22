@@ -1,0 +1,23 @@
+{
+  "question_id": "resignation_requests_07",
+  "original_query": "Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?",
+  "rewritten_query": "Đơn xin nghỉ gần nhất của tôi gửi khi nào và lý do là gì?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1138.41,
+  "input_token_usage": 2548,
+  "output_token_usage": 35,
+  "total_token_usage": 2583,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:17:16.627519",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

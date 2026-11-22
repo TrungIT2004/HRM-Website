@@ -1,0 +1,23 @@
+{
+  "question_id": "leave_requests_01",
+  "original_query": "Năm nay tôi đã nghỉ phép tổng cộng bao nhiêu ngày?",
+  "rewritten_query": "Năm nay tôi đã nghỉ phép tổng cộng bao nhiêu ngày?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1009.08,
+  "input_token_usage": 2544,
+  "output_token_usage": 31,
+  "total_token_usage": 2575,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:15:09.448990",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

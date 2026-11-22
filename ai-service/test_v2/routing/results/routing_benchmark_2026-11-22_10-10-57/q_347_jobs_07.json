@@ -1,0 +1,23 @@
+{
+  "question_id": "jobs_07",
+  "original_query": "Mức lương cơ bản cho chức danh hiện tại của tôi là bao nhiêu?",
+  "rewritten_query": "Mức lương cơ bản cho chức danh hiện tại của tôi là bao nhiêu?",
+  "routing_result": "OUT_OF_SCOPE",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 1426.32,
+  "input_token_usage": 2547,
+  "output_token_usage": 36,
+  "total_token_usage": 2583,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:18:08.516823",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

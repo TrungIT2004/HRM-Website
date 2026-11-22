@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_129",
+  "original_query": "Ai chịu trách nhiệm cung cấp danh sách cổ đông có quyền tham dự đại hội?",
+  "rewritten_query": "Ai chịu trách nhiệm cung cấp danh sách cổ đông có quyền tham dự đại hội?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1150.73,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:13:32.204175",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

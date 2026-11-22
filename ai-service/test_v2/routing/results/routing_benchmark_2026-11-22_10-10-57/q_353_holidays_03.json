@@ -1,0 +1,23 @@
+{
+  "question_id": "holidays_03",
+  "original_query": "Liệt kê các ngày lễ trong năm nay theo thứ tự thời gian?",
+  "rewritten_query": "Liệt kê các ngày lễ trong năm nay theo thứ tự thời gian?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 1372.9,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:18:16.681747",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

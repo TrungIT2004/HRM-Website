@@ -1,0 +1,23 @@
+{
+  "question_id": "user_sessions_10",
+  "original_query": "Có ai đang đăng nhập tài khoản của tôi ở nơi khác không, kiểm tra giúp tôi?",
+  "rewritten_query": "Có ai đang đăng nhập tài khoản của tôi ở nơi khác không, hãy kiểm tra giúp tôi?",
+  "routing_result": "OUT_OF_SCOPE",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 1145.79,
+  "input_token_usage": 2550,
+  "output_token_usage": 40,
+  "total_token_usage": 2590,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:17:07.024124",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

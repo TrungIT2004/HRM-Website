@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_114",
+  "original_query": "Tổng Giám đốc phải cung cấp thông tin gì cho Ban Kiểm soát và tần suất ra sao?",
+  "rewritten_query": "Tổng Giám đốc phải cung cấp thông tin gì cho Ban Kiểm soát và tần suất ra sao?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1071.1,
+  "input_token_usage": 2551,
+  "output_token_usage": 38,
+  "total_token_usage": 2589,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:13:13.159430",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

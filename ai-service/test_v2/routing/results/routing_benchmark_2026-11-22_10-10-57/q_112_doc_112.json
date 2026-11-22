@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_112",
+  "original_query": "Ban Kiểm soát yêu cầu cung cấp báo cáo và tài liệu gì từ Hội đồng Quản trị?",
+  "rewritten_query": "Ban Kiểm soát yêu cầu cung cấp báo cáo và tài liệu gì từ Hội đồng Quản trị?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1436.67,
+  "input_token_usage": 2551,
+  "output_token_usage": 33,
+  "total_token_usage": 2584,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:13:10.619630",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

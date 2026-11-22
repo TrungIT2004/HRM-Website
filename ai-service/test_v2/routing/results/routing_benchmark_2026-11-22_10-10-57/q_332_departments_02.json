@@ -1,0 +1,23 @@
+{
+  "question_id": "departments_02",
+  "original_query": "Chức danh và phòng ban hiện tại của tôi là gì?",
+  "rewritten_query": "Chức danh và phòng ban hiện tại của tôi là gì?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 926.12,
+  "input_token_usage": 2544,
+  "output_token_usage": 38,
+  "total_token_usage": 2582,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:17:52.286831",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

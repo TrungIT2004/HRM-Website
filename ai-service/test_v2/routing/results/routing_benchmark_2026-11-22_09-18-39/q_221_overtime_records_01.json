@@ -1,0 +1,23 @@
+{
+  "question_id": "overtime_records_01",
+  "original_query": "Năm nay tôi làm thêm (OT) tổng cộng bao nhiêu giờ?",
+  "rewritten_query": "Năm nay tôi làm thêm (OT) tổng cộng bao nhiêu giờ?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 262.98,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:40.568432",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "user_profiles_04",
+  "original_query": "Ngày bắt đầu tham gia bảo hiểm xã hội của tôi là từ khi nào?",
+  "rewritten_query": "Ngày bắt đầu tham gia bảo hiểm xã hội của tôi là từ khi nào?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1339.8,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:16:20.831631",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

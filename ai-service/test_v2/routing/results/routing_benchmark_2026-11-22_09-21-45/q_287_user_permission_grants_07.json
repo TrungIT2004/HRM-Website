@@ -1,0 +1,23 @@
+{
+  "question_id": "user_permission_grants_07",
+  "original_query": "Những quyền nào của tôi được cấp trong năm nay?",
+  "rewritten_query": "Những quyền nào của tôi được cấp trong năm nay?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 251.28,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:23:01.424947",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

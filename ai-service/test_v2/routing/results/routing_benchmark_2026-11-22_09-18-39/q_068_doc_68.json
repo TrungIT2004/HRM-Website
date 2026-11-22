@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_68",
+  "original_query": "Giá của bút bi TL027 (0.5mm) là bao nhiêu?",
+  "rewritten_query": "Giá của bút bi TL027 (0.5mm) là bao nhiêu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 252.93,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:00.637517",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

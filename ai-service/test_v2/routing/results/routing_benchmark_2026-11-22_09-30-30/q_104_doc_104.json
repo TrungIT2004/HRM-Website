@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_104",
+  "original_query": "Quorum để cuộc họp HĐQT được coi là hợp lệ là bao nhiêu thành viên?",
+  "rewritten_query": "Quorum để cuộc họp HĐQT được coi là hợp lệ là bao nhiêu thành viên?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 237.25,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:30:58.642518",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

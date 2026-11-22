@@ -1,0 +1,23 @@
+{
+  "question_id": "departments_10",
+  "original_query": "Cơ cấu tổ chức các phòng ban theo quy định ra sao, tôi thuộc phòng nào?",
+  "rewritten_query": "Cơ cấu tổ chức các phòng ban theo quy định ra sao và tôi thuộc phòng nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 1088.27,
+  "input_token_usage": 2550,
+  "output_token_usage": 37,
+  "total_token_usage": 2587,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:18:01.036757",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

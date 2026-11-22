@@ -1,0 +1,23 @@
+{
+  "question_id": "monthly_timesheets_10",
+  "original_query": "Bảng công 3 tháng gần nhất của tôi như thế nào, tháng nào đi muộn nhiều nhất?",
+  "rewritten_query": "Bảng công 3 tháng gần nhất của tôi như thế nào, tháng nào đi muộn nhiều nhất?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 261.46,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:37.724177",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}
