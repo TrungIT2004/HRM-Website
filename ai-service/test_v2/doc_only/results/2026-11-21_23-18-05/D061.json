@@ -1,0 +1,86 @@
+{
+  "id": "D061",
+  "question": "Ban Kiểm soát có quyền biểu quyết đối với các nghị quyết của Hội đồng Quản trị không?",
+  "golden_answer": "Ban Kiểm soát tham dự các cuộc họp của HĐQT, phát biểu ý kiến và có những kiến nghị, nhưng không tham gia biểu quyết đối với các nghị quyết của HĐQT.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+  "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 528,
+  "output_tokens": 21,
+  "total_tokens": 549,
+  "ttft_ms": 471.4,
+  "generation_time_ms": 471.4,
+  "total_latency_ms": 471.4,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Ban Kiểm soát có quyền biểu quyết đối với các nghị quyết của Hội đồng Quản trị không?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 18,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7617
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 14,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7416
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 20,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7355
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7245
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7034
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > Điều 2: Quyết định có hiệu lực kể từ ngày ký. Các nhân viên và các bộ phận liên quan chịu trách nhiệm thực hiện. (Bảng biểu)",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TABLE",
+      "relevance_score": 0.5526
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 3: ĐIỀU KHOẢN THI HÀNH (Bảng biểu)",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TABLE",
+      "relevance_score": 0.526
+    }
+  ],
+  "error": null
+}

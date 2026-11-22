@@ -1,0 +1,86 @@
+{
+  "id": "D008",
+  "question": "Quy định về phân quyền và nguyên tắc sử dụng phương tiện vận chuyển được cập nhật định kỳ bao lâu một lần?",
+  "golden_answer": "Quy định sẽ được xem xét, cập nhật định kỳ 6 tháng/lần hoặc theo chỉ đạo của Tổng Giám đốc.",
+  "category": "xe_cong_tac",
+  "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+  "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 768,
+  "output_tokens": 21,
+  "total_tokens": 789,
+  "ttft_ms": 2275.5,
+  "generation_time_ms": 2275.5,
+  "total_latency_ms": 2275.5,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Quy định về phân quyền và nguyên tắc sử dụng phương tiện vận chuyển được cập nhật định kỳ bao lâu một lần?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7669
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 3,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6961
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 4,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6825
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6703
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6618
+    },
+    {
+      "document_name": "EVAL_RAG|214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/3578174b-d8b8-4f51-8512-829f9a01ba10/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6424
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 3: Những nguyên tắc trả lương",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6285
+    }
+  ],
+  "error": null
+}

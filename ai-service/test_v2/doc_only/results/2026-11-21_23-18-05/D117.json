@@ -1,0 +1,29 @@
+{
+  "id": "D117",
+  "question": "Công ty có được phép ép buộc tôi dùng lương để mua hàng hóa hoặc dịch vụ của công ty không?",
+  "golden_answer": "Người sử dụng lao động không được ép buộc người lao động chi tiêu lương vào việc mua hàng hóa, sử dụng dịch vụ của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định.",
+  "category": "luong_thuong",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương VI > Điều 94. Nguyên tắc trả lương",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 45,
+  "output_tokens": 37,
+  "total_tokens": 82,
+  "ttft_ms": 284.6,
+  "generation_time_ms": 284.6,
+  "total_latency_ms": 284.6,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Công ty có được phép ép buộc tôi dùng lương để mua hàng hóa hoặc dịch vụ của công ty không?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

@@ -1,0 +1,29 @@
+{
+  "id": "D096",
+  "question": "Phụ lục hợp đồng lao động có được dùng để sửa đổi thời hạn của hợp đồng lao động không?",
+  "golden_answer": "Phụ lục hợp đồng lao động quy định chi tiết, sửa đổi, bổ sung một số điều, khoản của hợp đồng lao động nhưng không được sửa đổi thời hạn của hợp đồng lao động.",
+  "category": "hop_dong",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 22. Phụ lục hợp đồng lao động",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 43,
+  "output_tokens": 37,
+  "total_tokens": 80,
+  "ttft_ms": 279.5,
+  "generation_time_ms": 279.5,
+  "total_latency_ms": 279.5,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Phụ lục hợp đồng lao động có được dùng để sửa đổi thời hạn của hợp đồng lao động không?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

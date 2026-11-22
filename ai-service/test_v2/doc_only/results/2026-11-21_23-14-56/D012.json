@@ -1,0 +1,86 @@
+{
+  "id": "D012",
+  "question": "Quy định của công ty được căn cứ trên những văn bản pháp luật và điều lệ nào?",
+  "golden_answer": "Quy định căn cứ vào: Bộ luật Lao động 2019, nghị định 145/2020/NĐ-CP, luật doanh nghiệp 2020, điều lệ tổ chức và hoạt động của Công ty Cổ Phần Cấp Nước, và chức năng, quyền hạn của Hội đồng quản trị công ty.",
+  "category": "khac",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 2: Những căn cứ",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 583,
+  "output_tokens": 136,
+  "total_tokens": 719,
+  "ttft_ms": 338.4,
+  "generation_time_ms": 338.4,
+  "total_latency_ms": 338.4,
+  "generated_answer": "Căn cứ vào tài liệu quy chế của công ty, các quy định được xây dựng dựa trên những văn bản pháp luật và điều lệ sau:\n\n- Bộ luật Lao động 2019\n- Nghị định 145/2020/NĐ-CP\n- Luật Doanh nghiệp 2020 (bao gồm Điều 144 Luật Doanh nghiệp số 59/2020/QH14)\n- Điều lệ tổ chức và hoạt động của Công ty (bao gồm Điều lệ công ty, Điều 16, Điều 20, Điều 31, Điều 32 Điều lệ Công ty)\n- Chức năng, quyền hạn của Hội đồng quản trị công ty.\n\n*(Trích dẫn: QuyCheQuanTri-Petrolimex-PMSC.pdf > Chương 2 & Chương 3; MauQuyCheLuong-sanKeToan-A.docx > Chương I > Điều 2)*",
+  "rewritten_query": "Quy định của công ty được căn cứ trên những văn bản pháp luật và điều lệ nào?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 16 Điều lệ Công ty;",
+      "page_number": null,
+      "file_url": "/api/ai/documents/c8c7cf17-513c-4cca-b210-a395b77480b1/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7901
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 16 Điều lệ Công ty;",
+      "page_number": null,
+      "file_url": "/api/ai/documents/1503ff41-8546-4b7c-ade8-3d641125d1be/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7901
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 2: Những căn cứ",
+      "page_number": null,
+      "file_url": "/api/ai/documents/e1281264-194e-4b9f-a4f0-5c01ddcbf5bb/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.702
+    },
+    {
+      "document_name": "MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG I > Điều 2: Những căn cứ",
+      "page_number": null,
+      "file_url": "/api/ai/documents/b8885842-604b-4124-8d20-03a340dc17b4/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.702
+    },
+    {
+      "document_name": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 3 – HỘI ĐỒNG QUẢN TRỊ > Điều 72. Quyền và Nghĩa vụ của Người phụ trách quản trị Công ty",
+      "page_number": null,
+      "file_url": "/api/ai/documents/c8c7cf17-513c-4cca-b210-a395b77480b1/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6759
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-Petrolimex-PMSC.pdf",
+      "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 3 – HỘI ĐỒNG QUẢN TRỊ > Điều 72. Quyền và Nghĩa vụ của Người phụ trách quản trị Công ty",
+      "page_number": null,
+      "file_url": "/api/ai/documents/1503ff41-8546-4b7c-ade8-3d641125d1be/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6759
+    },
+    {
+      "document_name": "QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf (OCR bu sung)",
+      "page_number": 12,
+      "file_url": "/api/ai/documents/18138939-3979-4deb-80f0-d23a907a9a2e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.65
+    }
+  ],
+  "error": null
+}

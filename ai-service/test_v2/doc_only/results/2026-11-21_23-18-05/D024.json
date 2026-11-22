@@ -1,0 +1,29 @@
+{
+  "id": "D024",
+  "question": "Mức lương cho người lao động làm hành chính trong điều kiện bình thường được xác định như thế nào?",
+  "golden_answer": "Mức lương này được xác định theo quy định tại Nghị định 153/2016/NĐ-CP về mức lương tối thiểu vùng.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 1\nNHỮNG QUY ĐỊNH CHUNG > Điều 1. Lương chính",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 49,
+  "output_tokens": 37,
+  "total_tokens": 86,
+  "ttft_ms": 353.2,
+  "generation_time_ms": 353.2,
+  "total_latency_ms": 353.2,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Mức lương cho người lao động làm hành chính trong điều kiện bình thường được xác định như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

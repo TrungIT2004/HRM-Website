@@ -1,0 +1,29 @@
+{
+  "id": "D049",
+  "question": "Tổng số tiền thanh toán cho đơn cấp phát văn phòng phẩm này là bao nhiêu?",
+  "golden_answer": "Tổng tiền thanh toán là 587.740 đồng (Năm trăm tám mươi bảy nghìn bảy trăm bốn mươi đồng chẵn).",
+  "category": "van_phong_pham",
+  "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 36,
+  "output_tokens": 37,
+  "total_tokens": 73,
+  "ttft_ms": 1007.3,
+  "generation_time_ms": 1007.3,
+  "total_latency_ms": 1007.3,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Tổng số tiền thanh toán cho đơn cấp phát văn phòng phẩm này là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

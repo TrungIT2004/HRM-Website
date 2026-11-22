@@ -1,0 +1,29 @@
+{
+  "id": "D014",
+  "question": "Mức lương thử việc đối với nhân viên được tính như thế nào?",
+  "golden_answer": "Mức lương thử việc được hưởng 100% mức lương cơ bản của công việc đó.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 29,
+  "output_tokens": 37,
+  "total_tokens": 66,
+  "ttft_ms": 938.0,
+  "generation_time_ms": 938.0,
+  "total_latency_ms": 938.0,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Mức lương thử việc đối với nhân viên được tính như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

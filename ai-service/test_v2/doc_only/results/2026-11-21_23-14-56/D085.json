@@ -1,0 +1,86 @@
+{
+  "id": "D085",
+  "question": "Cổ đông có thể gửi phiếu lấy ý kiến về Công ty bằng những hình thức nào và yêu cầu cụ thể ra sao?",
+  "golden_answer": "Cổ đông có thể gửi phiếu qua thư, fax hoặc thư điện tử. Gửi thư cần có chữ ký (của cá nhân, người đại diện ủy quyền/pháp luật), đựng trong phong bì dán kín. Gửi fax hoặc thư điện tử phải được giữ bí mật đến khi kiểm phiếu. Phiếu gửi sau thời hạn, bị mở trước (thư) hoặc bị tiết lộ (fax, email) là không hợp lệ.",
+  "category": "khac",
+  "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+  "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 23. Trình tự, thủ tục họp Đại hội đồng cổ đông thông qua Nghị quyết bằng hình thức lấy ý > 3. Quy định về Phiếu lấy ý kiến",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 487,
+  "output_tokens": 21,
+  "total_tokens": 508,
+  "ttft_ms": 1966.2,
+  "generation_time_ms": 1966.2,
+  "total_latency_ms": 1966.2,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Cổ đông có thể gửi phiếu lấy ý kiến về Công ty bằng những hình thức nào và yêu cầu cụ thể ra sao?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7854
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 9,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7294
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 7,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7269
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 8,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7108
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 12,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6856
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 18,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6691
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 13,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6682
+    }
+  ],
+  "error": null
+}

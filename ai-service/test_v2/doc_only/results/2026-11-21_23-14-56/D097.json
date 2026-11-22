@@ -1,0 +1,29 @@
+{
+  "id": "D097",
+  "question": "Trường hợp hợp đồng lao động bị tuyên bố vô hiệu toàn bộ thì quyền lợi và nghĩa vụ của người lao động được giải quyết như thế nào?",
+  "golden_answer": "Khi hợp đồng lao động bị tuyên bố vô hiệu toàn bộ, quyền, nghĩa vụ và lợi ích của người lao động được giải quyết theo quy định của pháp luật; nếu do ký sai thẩm quyền thì hai bên sẽ ký lại.",
+  "category": "hop_dong",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương III > Điều 51. Xử lý hợp đồng lao động vô hiệu",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 65,
+  "output_tokens": 37,
+  "total_tokens": 102,
+  "ttft_ms": 287.8,
+  "generation_time_ms": 287.8,
+  "total_latency_ms": 287.8,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Trường hợp hợp đồng lao động bị tuyên bố vô hiệu toàn bộ thì quyền lợi và nghĩa vụ của người lao động được giải quyết như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}
