@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_161",
+  "original_query": "Quy chế nội bộ về quản trị công ty PMSC nằm ở trang nào?",
+  "rewritten_query": "Quy chế nội bộ về quản trị công ty PMSC nằm ở trang nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1356.24,
+  "input_token_usage": 2548,
+  "output_token_usage": 30,
+  "total_token_usage": 2578,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:14:07.778675",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

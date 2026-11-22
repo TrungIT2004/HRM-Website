@@ -1,0 +1,23 @@
+{
+  "question_id": "user_sessions_01",
+  "original_query": "Tôi đang có bao nhiêu phiên đăng nhập còn hoạt động?",
+  "rewritten_query": "Tôi đang có bao nhiêu phiên đăng nhập còn hoạt động?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1246.35,
+  "input_token_usage": 2543,
+  "output_token_usage": 25,
+  "total_token_usage": 2568,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:16:57.107583",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

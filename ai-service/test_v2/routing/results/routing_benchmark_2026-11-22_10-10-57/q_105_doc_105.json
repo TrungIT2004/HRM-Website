@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_105",
+  "original_query": "Nếu không đủ quorum lần đầu, công ty phải triệu tập lại trong bao lâu?",
+  "rewritten_query": "Nếu không đủ quorum lần đầu, công ty phải triệu tập lại trong bao lâu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 981.77,
+  "input_token_usage": 2548,
+  "output_token_usage": 35,
+  "total_token_usage": 2583,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:13:03.123634",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

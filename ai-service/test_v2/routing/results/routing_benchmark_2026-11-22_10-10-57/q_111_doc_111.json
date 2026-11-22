@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_111",
+  "original_query": "Ai có thẩm quyền quyết định miễn nhiệm hoặc bãi nhiệm Tổng Giám đốc?",
+  "rewritten_query": "Ai có thẩm quyền quyết định miễn nhiệm hoặc bãi nhiệm Tổng Giám đốc?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1071.67,
+  "input_token_usage": 2548,
+  "output_token_usage": 35,
+  "total_token_usage": 2583,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:13:09.183417",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

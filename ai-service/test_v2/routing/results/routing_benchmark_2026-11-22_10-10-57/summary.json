@@ -1,0 +1,25 @@
+{
+  "test_name": "routing_benchmark",
+  "model": "gemini-3.5-flash-lite",
+  "dataset": "C:\\Users\\ad\\Desktop\\HRM\\.claude\\worktrees\\routing-benchmark\\ai-service\\test_v2\\dataset\\routing_test.json",
+  "total_questions": 361,
+  "correct": 336,
+  "accuracy": 0.9307,
+  "avg_execution_time_ms": 1242.14,
+  "total_input_tokens": 443309,
+  "total_output_tokens": 5704,
+  "total_tokens": 449013,
+  "timestamp": "2026-11-22T10:18:26.407550",
+  "per_route": {
+    "DOC_ONLY": {
+      "total": 181,
+      "correct": 171,
+      "accuracy": 0.9448
+    },
+    "DB_ONLY": {
+      "total": 180,
+      "correct": 165,
+      "accuracy": 0.9167
+    }
+  }
+}

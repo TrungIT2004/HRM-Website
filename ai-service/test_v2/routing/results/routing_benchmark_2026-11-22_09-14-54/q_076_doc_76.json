@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_76",
+  "original_query": "Có những loại mực in nào được liệt kê trong quy trình này?",
+  "rewritten_query": "Có những loại mực in nào được liệt kê trong quy trình này?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 250.11,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:15:25.626988",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

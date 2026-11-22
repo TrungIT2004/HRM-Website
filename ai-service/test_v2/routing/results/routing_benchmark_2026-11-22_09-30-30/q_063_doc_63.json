@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_63",
+  "original_query": "Khi hộp mực hoặc bình mực bị hỏng, tôi hoặc phòng ban phải chịu trách nhiệm như thế nào?",
+  "rewritten_query": "Khi hộp mực hoặc bình mực bị hỏng, tôi hoặc phòng ban phải chịu trách nhiệm như thế nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 283.0,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:30:48.217963",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

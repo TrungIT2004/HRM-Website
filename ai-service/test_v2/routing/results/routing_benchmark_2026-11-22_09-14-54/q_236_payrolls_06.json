@@ -1,0 +1,23 @@
+{
+  "question_id": "payrolls_06",
+  "original_query": "So với tháng trước, lương tháng này của tôi tăng hay giảm bao nhiêu?",
+  "rewritten_query": "So với tháng trước, lương tháng này của tôi tăng hay giảm bao nhiêu?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 238.25,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:16:06.782496",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

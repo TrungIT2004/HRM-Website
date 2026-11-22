@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_81",
+  "original_query": "Đơn giá của pin carbon 3A Maxell là bao nhiêu?",
+  "rewritten_query": "Đơn giá của pin carbon 3A Maxell là bao nhiêu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 241.0,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:26:17.980369",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

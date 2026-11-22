@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_79",
+  "original_query": "Mua thun khoanh vòng lớn (500gr/bịch) phải trả bao nhiêu?",
+  "rewritten_query": "Mua thun khoanh vòng lớn (500gr/bịch) phải trả bao nhiêu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 239.48,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:30:52.248760",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

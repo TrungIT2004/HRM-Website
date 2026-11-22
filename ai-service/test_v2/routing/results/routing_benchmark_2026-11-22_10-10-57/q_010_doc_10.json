@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_10",
+  "original_query": "Ai là người liên hệ nếu muốn đăng ký xe công tác?",
+  "rewritten_query": "Ai là người liên hệ nếu muốn đăng ký xe công tác?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1284.21,
+  "input_token_usage": 2544,
+  "output_token_usage": 26,
+  "total_token_usage": 2570,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:11:10.305474",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

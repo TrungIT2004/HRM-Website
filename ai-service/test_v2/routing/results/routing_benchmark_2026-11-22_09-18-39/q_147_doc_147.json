@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_147",
+  "original_query": "Ai có thể được bổ nhiệm làm thành viên hoặc trưởng tiểu ban?",
+  "rewritten_query": "Ai có thể được bổ nhiệm làm thành viên hoặc trưởng tiểu ban?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 250.94,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:21.313016",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

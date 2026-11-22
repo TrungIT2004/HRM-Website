@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_118",
+  "original_query": "Bao nhiêu lần trong năm Chủ tịch HĐQT phải thực hiện đánh giá hiệu quả làm việc?",
+  "rewritten_query": "Bao nhiêu lần trong năm Chủ tịch HĐQT phải thực hiện đánh giá hiệu quả làm việc?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": false,
+  "execution_time_ms": 240.71,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:26:27.962670",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}
