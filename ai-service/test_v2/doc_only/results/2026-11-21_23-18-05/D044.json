@@ -1,0 +1,29 @@
+{
+  "id": "D044",
+  "question": "Giá của một xấp bao thư trắng F100 (12x22) là bao nhiêu?",
+  "golden_answer": "Giá của một xấp bao thư trắng F100 (12x22) (100 cái/xấp) là 33.000 đồng (chưa VAT).",
+  "category": "van_phong_pham",
+  "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 28,
+  "output_tokens": 37,
+  "total_tokens": 65,
+  "ttft_ms": 341.3,
+  "generation_time_ms": 341.3,
+  "total_latency_ms": 341.3,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Giá của một xấp bao thư trắng F100 (12x22) là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

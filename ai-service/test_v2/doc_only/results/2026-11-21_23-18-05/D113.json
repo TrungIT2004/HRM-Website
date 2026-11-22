@@ -1,0 +1,29 @@
+{
+  "id": "D113",
+  "question": "Việc đánh giá hiệu quả làm việc của thành viên Hội đồng quản trị, Ban Kiểm soát và Tổng Giám đốc được thực hiện bằng những hình thức nào?",
+  "golden_answer": "Việc đánh giá được thực hiện qua các hình thức: tự nhận xét đánh giá; đánh giá hoạt động hằng năm vào dịp cuối năm; đánh giá đột xuất; hoặc cách thức khác do Hội đồng quản trị lựa chọn vào từng thời điểm.",
+  "category": "noi_quy_ky_luat",
+  "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+  "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 68,
+  "output_tokens": 37,
+  "total_tokens": 105,
+  "ttft_ms": 273.0,
+  "generation_time_ms": 273.0,
+  "total_latency_ms": 273.0,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Việc đánh giá hiệu quả làm việc của thành viên Hội đồng quản trị, Ban Kiểm soát và Tổng Giám đốc được thực hiện bằng những hình thức nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

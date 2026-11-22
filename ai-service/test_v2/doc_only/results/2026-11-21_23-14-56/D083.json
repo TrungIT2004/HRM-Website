@@ -1,0 +1,29 @@
+{
+  "id": "D083",
+  "question": "Thế nào là một phiếu biểu quyết hợp lệ?",
+  "golden_answer": "Phiếu biểu quyết hợp lệ là phiếu theo mẫu in sẵn do BTC phát ra, không tẩy xoá, cạo sửa, rách, nát, không viết thêm nội dung ngoài quy định; phải có chữ ký và họ tên viết tay của đại biểu, gửi về Ban kiểm phiếu trước khi mở niêm phong thùng phiếu. Đồng thời, đại biểu phải đánh dấu chọn một trong ba ô vuông biểu quyết.",
+  "category": "khac",
+  "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+  "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 2 – ĐẠI HỘI ĐỒNG CỔ ĐÔNG > Điều 12. Biểu quyết thông qua các vấn đề tại đại hội > 2. Quy định về tính hợp lệ của phiếu biểu quyết và phiếu bầu cử",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 19,
+  "output_tokens": 37,
+  "total_tokens": 56,
+  "ttft_ms": 286.6,
+  "generation_time_ms": 286.6,
+  "total_latency_ms": 286.6,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Thế nào là một phiếu biểu quyết hợp lệ?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

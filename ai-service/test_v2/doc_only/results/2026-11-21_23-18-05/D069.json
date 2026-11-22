@@ -1,0 +1,86 @@
+{
+  "id": "D069",
+  "question": "Cổ đông có quyền yêu cầu Công ty mua lại cổ phần trong trường hợp nào và thời hạn gửi yêu cầu là bao lâu?",
+  "golden_answer": "Cổ đông biểu quyết phản đối nghị quyết về việc tổ chức lại Công ty hoặc thay đổi quyền, nghĩa vụ của Cổ đông quy định tại Điều lệ Công ty có quyền yêu cầu Công ty mua lại cổ phần. Yêu cầu phải được gửi đến Công ty trong thời hạn 10 ngày kể từ ngày ĐHĐCĐ thông qua nghị quyết.",
+  "category": "khac",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 540,
+  "output_tokens": 46,
+  "total_tokens": 586,
+  "ttft_ms": 2268.7,
+  "generation_time_ms": 2268.7,
+  "total_latency_ms": 2268.7,
+  "generated_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nHệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Cổ đông có quyền yêu cầu Công ty mua lại cổ phần trong trường hợp nào và thời hạn gửi yêu cầu là bao lâu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6412
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 10,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7326
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 7,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6936
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 8,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6586
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 14,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6539
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6533
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 9,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6526
+    }
+  ],
+  "error": null
+}

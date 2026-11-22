@@ -1,0 +1,86 @@
+{
+  "id": "D089",
+  "question": "Thành viên Hội đồng quản trị được tính vào tỷ lệ thành viên tối thiểu có mặt để tổ chức cuộc họp khi nào?",
+  "golden_answer": "Thành viên Hội đồng quản trị không được tính vào tỷ lệ thành viên tối thiểu có mặt để tổ chức cuộc họp đối với những quyết định mà thành viên đó không có quyền biểu quyết do có lợi ích mâu thuẫn hoặc có thể mâu thuẫn với lợi ích của Công ty.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+  "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 3 – HỘI ĐỒNG QUẢN TRỊ > Điều 61. Cách thức biểu quyết",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 491,
+  "output_tokens": 21,
+  "total_tokens": 512,
+  "ttft_ms": 499.9,
+  "generation_time_ms": 499.9,
+  "total_latency_ms": 499.9,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Thành viên Hội đồng quản trị được tính vào tỷ lệ thành viên tối thiểu có mặt để tổ chức cuộc họp khi nào?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 12,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7694
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7171
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 13,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6968
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 8,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6799
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 18,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6301
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 6,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6027
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5694
+    }
+  ],
+  "error": null
+}

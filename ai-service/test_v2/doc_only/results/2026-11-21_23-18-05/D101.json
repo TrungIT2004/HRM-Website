@@ -1,0 +1,29 @@
+{
+  "id": "D101",
+  "question": "Người lao động nước ngoài làm việc tại Việt Nam mà không có giấy phép lao động thì sẽ bị xử lý như thế nào?",
+  "golden_answer": "Người lao động nước ngoài không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.",
+  "category": "hop_dong",
+  "source_file": "bo-luat-lao-dong-2019.docx",
+  "breadcrumb": "bo-luat-lao-dong-2019.docx > Chương XI > Điều 153. Trách nhiệm của người sử dụng lao động và người lao động nước ngoài",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 53,
+  "output_tokens": 37,
+  "total_tokens": 90,
+  "ttft_ms": 856.3,
+  "generation_time_ms": 856.3,
+  "total_latency_ms": 856.3,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Người lao động nước ngoài làm việc tại Việt Nam mà không có giấy phép lao động thì sẽ bị xử lý như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

@@ -1,0 +1,29 @@
+{
+  "id": "D075",
+  "question": "Tiêu chuẩn về trình độ học vấn và kinh nghiệm làm việc đối với vị trí Tổng Giám đốc là gì?",
+  "golden_answer": "Tổng Giám đốc phải có trình độ đại học trở lên, có trình độ chuyên môn và kinh nghiệm thực tế về quản trị kinh doanh trong ngành nghề kinh doanh chủ yếu của Công ty, đồng thời có ít nhất 3 năm liên tục làm việc tại Công ty hoặc các công ty con của Công ty.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 45,
+  "output_tokens": 20,
+  "total_tokens": 65,
+  "ttft_ms": 285.4,
+  "generation_time_ms": 285.4,
+  "total_latency_ms": 285.4,
+  "generated_answer": "Tổng giám đốc: hiện chưa có dữ liệu. Bạn liên hệ Phòng Nhân sự (HR) để xác nhận.",
+  "rewritten_query": "Tiêu chuẩn về trình độ học vấn và kinh nghiệm làm việc đối với vị trí Tổng Giám đốc là gì?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}
