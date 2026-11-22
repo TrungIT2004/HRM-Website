@@ -1,0 +1,23 @@
+{
+  "question_id": "monthly_timesheets_02",
+  "original_query": "Tháng này tôi đi muộn mấy lần, tổng cộng bao nhiêu phút?",
+  "rewritten_query": "Tháng này tôi đi muộn mấy lần và tổng cộng bao nhiêu phút?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1116.27,
+  "input_token_usage": 2547,
+  "output_token_usage": 29,
+  "total_token_usage": 2576,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:15:00.184232",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

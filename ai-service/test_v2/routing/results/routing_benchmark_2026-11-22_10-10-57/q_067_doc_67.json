@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_67",
+  "original_query": "Các mã hàng và đơn vị đo lường của từng loại văn phòng phẩm là gì?",
+  "rewritten_query": "Các mã hàng và đơn vị đo lường của từng loại văn phòng phẩm là gì?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1633.33,
+  "input_token_usage": 2549,
+  "output_token_usage": 31,
+  "total_token_usage": 2580,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:12:16.658964",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_51",
+  "original_query": "Mức hỗ trợ cụ thể được ghi ở đâu trong tài liệu công ty?",
+  "rewritten_query": "Mức hỗ trợ cụ thể được ghi ở đâu trong tài liệu công ty?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1042.97,
+  "input_token_usage": 2547,
+  "output_token_usage": 29,
+  "total_token_usage": 2576,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:11:57.725974",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

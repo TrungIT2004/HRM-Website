@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_19",
+  "original_query": "Các tiêu chí nào quyết định việc lựa chọn xe công ty cho vận chuyển hàng hoá?",
+  "rewritten_query": "Các tiêu chí nào quyết định việc lựa chọn xe công ty cho vận chuyển hàng hoá?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 252.09,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:18:46.600230",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

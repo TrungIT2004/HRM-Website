@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_1",
+  "original_query": "Thời gian đăng ký xe theo kế hoạch tuần và đăng ký khẩn cấp là bao giờ?",
+  "rewritten_query": "Thời gian đăng ký xe theo kế hoạch tuần và đăng ký khẩn cấp là bao giờ?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1268.83,
+  "input_token_usage": 2550,
+  "output_token_usage": 37,
+  "total_token_usage": 2587,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:11:00.486661",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

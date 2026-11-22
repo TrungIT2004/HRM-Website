@@ -1,0 +1,23 @@
+{
+  "question_id": "user_bank_accounts_06",
+  "original_query": "Mã ngân hàng (bank_code) của tài khoản nhận lương của tôi là gì?",
+  "rewritten_query": "Mã ngân hàng (bank_code) của tài khoản nhận lương của tôi là gì?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 257.99,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:31:41.791566",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_14",
+  "original_query": "Các phòng ban nào phải thi hành quyết định này?",
+  "rewritten_query": "Các phòng ban nào phải thi hành quyết định này?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 822.49,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:25:57.445144",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

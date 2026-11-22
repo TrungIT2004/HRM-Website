@@ -1,0 +1,23 @@
+{
+  "question_id": "user_sessions_09",
+  "original_query": "Quy định bảo mật tài khoản thế nào, tôi có phiên đăng nhập lạ nào không?",
+  "rewritten_query": "Quy định bảo mật tài khoản thế nào và tôi có phiên đăng nhập lạ nào không?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 1016.41,
+  "input_token_usage": 2550,
+  "output_token_usage": 37,
+  "total_token_usage": 2587,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:17:05.878215",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

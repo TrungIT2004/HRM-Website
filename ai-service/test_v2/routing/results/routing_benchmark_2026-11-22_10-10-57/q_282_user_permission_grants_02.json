@@ -1,0 +1,23 @@
+{
+  "question_id": "user_permission_grants_02",
+  "original_query": "Tôi có quyền duyệt đơn nghỉ phép không?",
+  "rewritten_query": "Tôi có quyền duyệt đơn nghỉ phép không?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1343.6,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:16:45.289908",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

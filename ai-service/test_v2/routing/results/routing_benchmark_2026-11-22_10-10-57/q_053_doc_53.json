@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_53",
+  "original_query": "Nhân viên nào đủ điều kiện để được xét tăng lương?",
+  "rewritten_query": "Nhân viên nào đủ điều kiện để được xét tăng lương?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1173.01,
+  "input_token_usage": 2544,
+  "output_token_usage": 26,
+  "total_token_usage": 2570,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:11:59.708314",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

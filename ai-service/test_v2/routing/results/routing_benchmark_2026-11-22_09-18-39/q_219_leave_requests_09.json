@@ -1,0 +1,23 @@
+{
+  "question_id": "leave_requests_09",
+  "original_query": "Quy định nghỉ phép năm thế nào, năm nay tôi đã dùng hết phép chưa?",
+  "rewritten_query": "",
+  "routing_result": "ERROR",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 0,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:40.048317",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

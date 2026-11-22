@@ -1,0 +1,23 @@
+{
+  "question_id": "resignation_requests_03",
+  "original_query": "Ngày làm việc cuối cùng của tôi là ngày nào?",
+  "rewritten_query": "Ngày làm việc cuối cùng của tôi là ngày nào?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 255.9,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:16:23.612237",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

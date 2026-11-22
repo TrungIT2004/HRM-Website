@@ -1,0 +1,23 @@
+{
+  "question_id": "leave_requests_02",
+  "original_query": "Đơn xin nghỉ phép gần nhất của tôi đang ở trạng thái nào?",
+  "rewritten_query": "Đơn xin nghỉ phép gần nhất của tôi đang ở trạng thái nào?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 259.12,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:38.236884",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

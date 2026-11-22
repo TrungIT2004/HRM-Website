@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_169",
+  "original_query": "Có thể công bố nghị quyết Đại hội đồng cổ đông bằng hình thức họp trực tiếp kết hợp với trực tuyến không?",
+  "rewritten_query": "Có thể công bố nghị quyết Đại hội đồng cổ đông bằng hình thức họp trực tiếp kết hợp với trực tuyến không?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1186.97,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:14:18.166002",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "departments_05",
+  "original_query": "Công ty có những phòng ban nào, phòng hiện tại của tôi là phòng nào?",
+  "rewritten_query": "Công ty có những phòng ban nào, và phòng hiện tại của tôi là phòng nào?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 880.59,
+  "input_token_usage": 2548,
+  "output_token_usage": 36,
+  "total_token_usage": 2584,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:17:55.629229",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}
