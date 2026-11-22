@@ -1,0 +1,86 @@
+{
+  "id": "D004",
+  "question": "Quyết định số 917./QĐ-ACT về việc đăng ký và sử dụng xe công tác có hiệu lực từ khi nào?",
+  "golden_answer": "Quyết định này có hiệu lực kể từ ngày ký (ngày 08 tháng 9 năm 2025).",
+  "category": "xe_cong_tac",
+  "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+  "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 823,
+  "output_tokens": 60,
+  "total_tokens": 883,
+  "ttft_ms": 861.1,
+  "generation_time_ms": 861.1,
+  "total_latency_ms": 861.1,
+  "generated_answer": "Quyết định số 917./QĐ-ACT có hiệu lực kể từ ngày ký (ngày 08 tháng 9 năm 2025).\n\nCăn cứ: \n- Quyết định số 917./QĐ-ACT (Điều 2).\n- Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT (Điều 6, Khoản 1).",
+  "rewritten_query": "Quyết định số 917./QĐ-ACT về việc đăng ký và sử dụng xe công tác có hiệu lực từ khi nào?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/0f987378-0108-4959-913a-52e5131f436f/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8188
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/482307f0-50fb-4013-964a-a88d8a64c52d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8188
+    },
+    {
+      "document_name": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 3,
+      "file_url": "/api/ai/documents/0f987378-0108-4959-913a-52e5131f436f/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.802
+    },
+    {
+      "document_name": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/0f987378-0108-4959-913a-52e5131f436f/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7685
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/482307f0-50fb-4013-964a-a88d8a64c52d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7685
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/482307f0-50fb-4013-964a-a88d8a64c52d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.703
+    },
+    {
+      "document_name": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/0f987378-0108-4959-913a-52e5131f436f/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.703
+    }
+  ],
+  "error": null
+}

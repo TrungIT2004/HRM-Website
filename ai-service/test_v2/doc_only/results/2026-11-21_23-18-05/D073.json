@@ -1,0 +1,86 @@
+{
+  "id": "D073",
+  "question": "Tiêu chuẩn đối với thành viên của các tiểu ban thuộc Hội đồng quản trị là gì?",
+  "golden_answer": "Thành viên tiểu ban phải có hiểu biết về lĩnh vực tiểu ban phụ trách hoặc có kinh nghiệm trong quản lý, điều hành doanh nghiệp. Ít nhất phải có một thành viên có kiến thức chuyên môn, kinh nghiệm về lĩnh vực của tiểu ban mà thành viên đó phụ trách.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-MWG.pdf",
+  "breadcrumb": "QuyCheQuanTri-MWG.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 477,
+  "output_tokens": 21,
+  "total_tokens": 498,
+  "ttft_ms": 492.8,
+  "generation_time_ms": 492.8,
+  "total_latency_ms": 492.8,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Tiêu chuẩn đối với thành viên của các tiểu ban thuộc Hội đồng quản trị là gì?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 14,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7878
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 16,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7848
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.774
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": null,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6751
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 22,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6703
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 6,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.661
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6237
+    }
+  ],
+  "error": null
+}

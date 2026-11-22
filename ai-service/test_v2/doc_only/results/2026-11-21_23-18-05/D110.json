@@ -1,0 +1,86 @@
+{
+  "id": "D110",
+  "question": "Khi bản thân kết hôn, tôi được nghỉ bao nhiêu ngày mà vẫn hưởng nguyên lương?",
+  "golden_answer": "Khi bản thân kết hôn, người lao động được nghỉ 03 ngày hưởng nguyên lương.",
+  "category": "nghi_phep",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 592,
+  "output_tokens": 21,
+  "total_tokens": 613,
+  "ttft_ms": 1007.4,
+  "generation_time_ms": 1007.4,
+  "total_latency_ms": 1007.4,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Khi bản thân kết hôn, tôi được nghỉ bao nhiêu ngày mà vẫn hưởng nguyên lương?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": true,
+  "cache_similarity": 1.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 3\nTÍNH VÀ TRẢ LƯƠNG > Điều 14. Ngày nghỉ được hưởng nguyên lương",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8063
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7089
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 1\nNHỮNG QUY ĐỊNH CHUNG > Điều 1. Lương chính",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5888
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 3\nTÍNH VÀ TRẢ LƯƠNG > Điều 10. Cơ sở tính lương",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5685
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 3\nTÍNH VÀ TRẢ LƯƠNG > Điều 12. Tiền lương làm thêm giờ",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5496
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG (Bảng biểu)",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TABLE",
+      "relevance_score": 0.5294
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-B.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 2\nCÁC KHOẢN TRỢ CẤP VÀ PHỤ CẤP > Điều 9. Các khoản phúc lợi khác",
+      "page_number": null,
+      "file_url": "/api/ai/documents/73725bc6-fd5a-4b62-a148-bd5214e5f35d/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.4853
+    }
+  ],
+  "error": null
+}

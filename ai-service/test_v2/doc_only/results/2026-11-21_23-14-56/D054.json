@@ -1,0 +1,86 @@
+{
+  "id": "D054",
+  "question": "Cơ cấu quản trị của Công ty bao gồm những thành phần nào?",
+  "golden_answer": "Cơ cấu quản trị của Công ty bao gồm: 1. Đại hội đồng cổ đông, 2. Hội đồng Quản trị, 3. Ban Kiểm soát, 4. Tổng Giám đốc.",
+  "category": "bo_nhiem_quan_tri",
+  "source_file": "QuyCheQuanTri-EVNFinance.pdf",
+  "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 476,
+  "output_tokens": 21,
+  "total_tokens": 497,
+  "ttft_ms": 1718.9,
+  "generation_time_ms": 1718.9,
+  "total_latency_ms": 1718.9,
+  "generated_answer": "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Cơ cấu quản trị của Công ty bao gồm những thành phần nào?",
+  "route": "DOC_ONLY",
+  "confidence": "HIGH",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 11,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.8348
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 14,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.7182
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 6,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6845
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 5,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6767
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 18,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6492
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 17,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5895
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.539
+    }
+  ],
+  "error": null
+}

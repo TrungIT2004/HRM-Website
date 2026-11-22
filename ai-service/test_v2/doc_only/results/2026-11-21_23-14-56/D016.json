@@ -1,0 +1,29 @@
+{
+  "id": "D016",
+  "question": "Mức lương cơ bản được sử dụng cho những mục đích gì?",
+  "golden_answer": "Mức lương cơ bản dùng để trả lương, làm cơ sở đóng các loại BHXH bắt buộc và giải quyết chế độ, chính sách đối với người lao động theo quy định của Nhà nước.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 26,
+  "output_tokens": 37,
+  "total_tokens": 63,
+  "ttft_ms": 288.8,
+  "generation_time_ms": 288.8,
+  "total_latency_ms": 288.8,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Mức lương cơ bản được sử dụng cho những mục đích gì?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

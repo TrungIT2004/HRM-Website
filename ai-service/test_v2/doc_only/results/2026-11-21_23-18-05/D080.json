@@ -1,0 +1,29 @@
+{
+  "id": "D080",
+  "question": "Quy chế nội bộ về quản trị Công ty của PMSC quy định về khen thưởng và kỷ luật tại điều nào?",
+  "golden_answer": "Khen thưởng được quy định tại Điều 96 và Kỷ luật được quy định tại Điều 97.",
+  "category": "noi_quy_ky_luat",
+  "source_file": "QuyCheQuanTri-Petrolimex-PMSC.pdf",
+  "breadcrumb": "QuyCheQuanTri-Petrolimex-PMSC.pdf > CHƯƠNG 8 - NGÀY HIỆU LỰC ---------------------------------------------------------------------------------- 52 > Điều 3. Hoạt động của tiểu ban kiểm toán nội bộ --------------------------- Error! Bookmark not defined.",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 46,
+  "output_tokens": 37,
+  "total_tokens": 83,
+  "ttft_ms": 349.4,
+  "generation_time_ms": 349.4,
+  "total_latency_ms": 349.4,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Quy chế nội bộ về quản trị Công ty của PMSC quy định về khen thưởng và kỷ luật tại điều nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}

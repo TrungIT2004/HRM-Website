@@ -1,0 +1,86 @@
+{
+  "id": "D009",
+  "question": "Số quyết định của văn bản này là bao nhiêu?",
+  "golden_answer": "Số quyết định là 15/2023/QĐ.",
+  "category": "khac",
+  "source_file": "MauQuyCheLuong-sanKeToan-A.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > Mẫu quy chế lương thưởng cho người lao động (Bảng biểu)",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 589,
+  "output_tokens": 46,
+  "total_tokens": 635,
+  "ttft_ms": 2274.5,
+  "generation_time_ms": 2274.5,
+  "total_latency_ms": 2274.5,
+  "generated_answer": "[Độ tin cậy thấp: chỉ tìm thấy căn cứ liên quan một phần, bạn nên kiểm chứng thêm với Phòng Nhân sự.]\n\nHệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát.",
+  "rewritten_query": "Số quyết định của văn bản này là bao nhiêu?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 7,
+  "retrieved_docs": [
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 1,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6487
+    },
+    {
+      "document_name": "EVAL_RAG|917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+      "page_number": 3,
+      "file_url": "/api/ai/documents/51cabf70-3f0d-443b-9309-a6a6a5db7b9e/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.619
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 9,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6613
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6159
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.6038
+    },
+    {
+      "document_name": "EVAL_RAG|QuyCheQuanTri-EVNFinance.pdf",
+      "breadcrumb": "QuyCheQuanTri-EVNFinance.pdf",
+      "page_number": 18,
+      "file_url": "/api/ai/documents/407919cd-6157-41c7-bcc6-492610688461/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5689
+    },
+    {
+      "document_name": "EVAL_RAG|MauQuyCheLuong-sanKeToan-A.docx",
+      "breadcrumb": "MauQuyCheLuong-sanKeToan-A.docx > CHƯƠNG 2: QUY ĐỊNH TRẢ LƯƠNG",
+      "page_number": null,
+      "file_url": "/api/ai/documents/354ad447-8bbb-413c-acbf-3f470da2dbc3/download",
+      "chunk_type": "TEXT",
+      "relevance_score": 0.5557
+    }
+  ],
+  "error": null
+}

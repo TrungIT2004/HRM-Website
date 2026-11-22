@@ -1,0 +1,29 @@
+{
+  "id": "D031",
+  "question": "Cách tính tiền lương khi làm thêm giờ vào ngày thường, ngày Chủ nhật và ngày Lễ, Tết như thế nào?",
+  "golden_answer": "Tiền lương làm thêm giờ được tính như sau: Ngày thường = Lương giờ x 150% x Giờ làm thêm; Ngày Chủ nhật = Lương giờ x 200% x Giờ làm thêm; Ngày Lễ, Tết = Lương giờ x 300% x Giờ làm thêm.",
+  "category": "luong_thuong",
+  "source_file": "MauQuyCheLuong-sanKeToan-B.docx",
+  "breadcrumb": "MauQuyCheLuong-sanKeToan-B.docx > Chương 3\nTÍNH VÀ TRẢ LƯƠNG > Điều 12. Tiền lương làm thêm giờ",
+  "allowed_jobs": [
+    "ALL"
+  ],
+  "allowed_departments": [
+    "ALL"
+  ],
+  "input_tokens": 48,
+  "output_tokens": 37,
+  "total_tokens": 85,
+  "ttft_ms": 285.4,
+  "generation_time_ms": 285.4,
+  "total_latency_ms": 285.4,
+  "generated_answer": "Rất tiếc, tôi chỉ được phép tra cứu dữ liệu của chính bạn. Câu hỏi về đồng nghiệp hoặc phòng ban khác vui lòng liên hệ trực tiếp Phòng Nhân sự (HR).",
+  "rewritten_query": "Cách tính tiền lương khi làm thêm giờ vào ngày thường, ngày Chủ nhật và ngày Lễ, Tết như thế nào?",
+  "route": "DOC_ONLY",
+  "confidence": "LOW",
+  "cache_hit": false,
+  "cache_similarity": 0.0,
+  "retrieved_chunks_count": 0,
+  "retrieved_docs": [],
+  "error": null
+}
