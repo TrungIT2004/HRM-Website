@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_32",
+  "original_query": "Quyết định số bao nhiêu quy định về lương thưởng?",
+  "rewritten_query": "Quyết định số bao nhiêu quy định về lương thưởng?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1146.59,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:11:35.945746",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

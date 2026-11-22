@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_99",
+  "original_query": "Ai chịu trách nhiệm chuẩn bị và kiểm tra biên bản kiểm phiếu?",
+  "rewritten_query": "Ai chịu trách nhiệm chuẩn bị và kiểm tra biên bản kiểm phiếu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 261.24,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:22:12.424600",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "jobs_09",
+  "original_query": "Lộ trình thăng tiến từ chức danh của tôi theo quy định thế nào?",
+  "rewritten_query": "Lộ trình thăng tiến từ chức danh của tôi theo quy định thế nào?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 233.7,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:31:59.880732",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

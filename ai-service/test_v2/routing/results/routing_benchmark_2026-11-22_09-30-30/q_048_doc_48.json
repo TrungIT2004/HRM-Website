@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_48",
+  "original_query": "Mức trợ cấp thuê nhà được tính bao nhiêu mỗi tháng?",
+  "rewritten_query": "Mức trợ cấp thuê nhà được tính bao nhiêu mỗi tháng?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 259.57,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:30:44.291456",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_34",
+  "original_query": "Mẫu quy chế lương dựa trên căn cứ pháp lý nào?",
+  "rewritten_query": "Mẫu quy chế lương dựa trên căn cứ pháp lý nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1210.4,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:11:38.323329",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

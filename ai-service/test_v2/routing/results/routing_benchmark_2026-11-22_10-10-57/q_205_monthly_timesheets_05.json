@@ -1,0 +1,23 @@
+{
+  "question_id": "monthly_timesheets_05",
+  "original_query": "Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?",
+  "rewritten_query": "Tháng nào trong năm nay tôi nghỉ không lương nhiều nhất?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 883.3,
+  "input_token_usage": 2544,
+  "output_token_usage": 26,
+  "total_token_usage": 2570,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:15:03.038549",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

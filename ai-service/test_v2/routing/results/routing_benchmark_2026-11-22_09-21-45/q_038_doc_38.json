@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_38",
+  "original_query": "Ai có thẩm quyền quyết định tăng bậc lương cho nhân viên?",
+  "rewritten_query": "Ai có thẩm quyền quyết định tăng bậc lương cho nhân viên?",
+  "routing_result": "OUT_OF_SCOPE",
+  "expected_route": "DOC_ONLY",
+  "correct": false,
+  "execution_time_ms": 262.74,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:21:55.863594",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

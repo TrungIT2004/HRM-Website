@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_164",
+  "original_query": "HĐQT có thể lấy ý kiến cổ đông bằng văn bản trong những trường hợp nào?",
+  "rewritten_query": "Hội đồng quản trị có thể lấy ý kiến cổ đông bằng văn bản trong những trường hợp nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1679.11,
+  "input_token_usage": 2550,
+  "output_token_usage": 39,
+  "total_token_usage": 2589,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:14:12.238639",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

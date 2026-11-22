@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_150",
+  "original_query": "Quyết định nào quyết định việc thành lập và hoạt động của các tiểu ban?",
+  "rewritten_query": "Quyết định nào quyết định việc thành lập và hoạt động của các tiểu ban?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 973.52,
+  "input_token_usage": 2548,
+  "output_token_usage": 30,
+  "total_token_usage": 2578,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:13:56.676144",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

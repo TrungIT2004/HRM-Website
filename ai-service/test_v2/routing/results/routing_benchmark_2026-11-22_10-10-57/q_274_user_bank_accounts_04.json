@@ -1,0 +1,23 @@
+{
+  "question_id": "user_bank_accounts_04",
+  "original_query": "Tên chủ tài khoản nhận lương của tôi có khớp với tên tôi không?",
+  "rewritten_query": "Tên chủ tài khoản nhận lương của tôi có khớp với tên tôi không?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1155.19,
+  "input_token_usage": 2547,
+  "output_token_usage": 29,
+  "total_token_usage": 2576,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:16:34.459377",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

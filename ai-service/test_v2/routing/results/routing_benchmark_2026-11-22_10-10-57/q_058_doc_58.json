@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_58",
+  "original_query": "Quy trình này áp dụng cho những bộ phận hoặc phòng ban nào?",
+  "rewritten_query": "Quy trình này áp dụng cho những bộ phận hoặc phòng ban nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1064.59,
+  "input_token_usage": 2546,
+  "output_token_usage": 28,
+  "total_token_usage": 2574,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:12:04.982246",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}
