@@ -1,0 +1,23 @@
+{
+  "question_id": "attendances_07",
+  "original_query": "Tháng nào trong năm nay tôi đi muộn nhiều nhất?",
+  "rewritten_query": "Tháng nào trong năm nay tôi đi muộn nhiều nhất?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1557.58,
+  "input_token_usage": 2544,
+  "output_token_usage": 26,
+  "total_token_usage": 2570,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:14:54.260570",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

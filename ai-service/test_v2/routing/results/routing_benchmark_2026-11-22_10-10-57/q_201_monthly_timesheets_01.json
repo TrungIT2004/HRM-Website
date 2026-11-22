@@ -1,0 +1,23 @@
+{
+  "question_id": "monthly_timesheets_01",
+  "original_query": "Năm nay tôi làm tổng cộng bao nhiêu giờ, bao nhiêu ngày công?",
+  "rewritten_query": "Năm nay tôi làm tổng cộng bao nhiêu giờ, bao nhiêu ngày công?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1094.89,
+  "input_token_usage": 2547,
+  "output_token_usage": 34,
+  "total_token_usage": 2581,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:14:59.067977",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

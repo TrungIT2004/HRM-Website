@@ -1,14 +1,14 @@
 """Router gộp: viết lại câu hỏi + phân loại trong 1 LLM call.
 
 Nhãn: DOC_ONLY (hỏi quy chế chung), DB_ONLY (số liệu của mình),
-HYBRID (cả hai), DIRECTORY (danh bạ công khai của người khác),
+DIRECTORY (danh bạ công khai của người khác),
 OUT_OF_SCOPE (lương/phép/thưởng của người khác / ngoài HR).
 """
 import json
 import re
 from typing import Callable, Dict, List, Optional, Tuple
 
-ROUTE_LABELS = ("DOC_ONLY", "DB_ONLY", "HYBRID", "DIRECTORY", "OUT_OF_SCOPE")
+ROUTE_LABELS = ("DOC_ONLY", "DB_ONLY", "DIRECTORY", "OUT_OF_SCOPE")
 
 REWRITE_ROUTE_PROMPT = """Bạn phân loại câu hỏi của nhân viên cho hệ thống HR.
 Dựa vào [LỊCH SỬ], [TÓM TẮT] và [CÂU HỎI MỚI], làm 2 việc:
@@ -55,14 +55,12 @@ Dựa vào [LỊCH SỬ], [TÓM TẮT] và [CÂU HỎI MỚI], làm 2 việc:
    TRƯỞNG PHÒNG CỦA CHÍNH MÌNH cũng là DB_ONLY (tra DB: người cùng phòng ban
    có chức danh bắt đầu bằng "Department Head"):
    Vd: "trưởng phòng tui là ai?", "SĐT trưởng phòng của tôi là gì?",
-   "mai có phải ngày làm việc của trưởng phòng tui không?"
-- HYBRID: 2 vế — 1 vế số liệu cá nhân + 1 vế đối chiếu quy định/luật.
-  Vd: "tôi còn bao nhiêu ngày phép? có đúng luật lao động không?"
+       "mai có phải ngày làm việc của trưởng phòng tui không?"
 - DIRECTORY: hỏi THÔNG TIN DANH BẠ công khai của NGƯỜI KHÁC có tên riêng
   (SĐT, email, phòng ban, chức vụ, ca làm, lịch làm việc, hôm nay/hôm qua
   có đi làm không).
    Vd: "SĐT anh Hùng là gì?", "chị Lan làm phòng nào, hôm nay có đi làm không?",
-   "mai có phải lịch làm việc của Hùng không?"
+       "mai có phải lịch làm việc của Hùng không?"
     Chỉ dùng khi hỏi danh bạ. Hỏi lương/thưởng của người khác vẫn là OUT_OF_SCOPE.
     Riêng PHÉP gắn mốc thời gian cụ thể (ai nghỉ ngày nào tháng X) là DOC_ONLY —
     tra bảng phân công/tổng hợp tài liệu; phép không mốc thời gian giữ luật cũ.
@@ -106,29 +104,63 @@ THỨ TỰ QUYẾT ĐỊNH (luật trên thắng luật dưới, thay cho việc
    Không thành DB_ONLY chỉ vì câu có "tôi/cho tôi biết"; không dùng DIRECTORY
    để lấy dữ liệu bị cấm.
 3. Còn lại: dữ liệu của mình -> DB_ONLY; quy chế/bảng biểu chung (kể cả roster
-   gắn mốc thời gian) -> DOC_ONLY; cần cả hai -> HYBRID; danh tính/danh bạ hiện
+   gắn mốc thời gian) -> DOC_ONLY; danh tính/danh bạ hiện
    tại của người khác -> DIRECTORY.
 Chỉ trả về JSON duy nhất, không giải thích: {"rewritten": "...", "route": "..."}
 """
 
-# Fallback khi LLM lỗi: rule từ khóa rẻ tiền, thiên về an toàn (HYBRID thừa còn hơn thiếu).
-_DB_KEYWORDS = ("phép", "lương", "overtime", "tăng ca", "chấm công", "đi muộn",
-                "về sớm", "thưởng", "phụ cấp", "bảo hiểm", "hợp đồng",
-                "tài khoản", "ngân hàng", "phiên đăng nhập", "đơn nghỉ",
-                "bao nhiêu giờ", "bao nhiêu ngày", "của tôi", "của mình", "mình còn",
-                "quyền hạn", "quyền của tôi", "tôi có quyền",
-                "tôi đang", "tôi check", "tôi xin", "ca của tôi", "phòng ban của tôi",
-                "chức danh của tôi", "lương của tôi", "phép của tôi", "tăng ca của tôi",
-                "ot", "duyệt", "ngày", "giờ", "hôm nay", "hiện tại", "ngày nào",
-                "giờ nào", "tháng này", "năm nay", "duyệt đơn", "duyệt xe", "duyệt phê",
-                "số lần", "bao nhiêu lần", "check-in", "check-out", "xuất", "vận chuyển",
-                "tài sản", "laptop", "máy tính", "thiết bị", "cấp phát", "bàn giao thiết bị",
-                "ticket", "sự cố", "máy in", "mạng", "phần mềm", "email công ty",
-                "đánh giá", "hiệu suất", "kpi", "điểm số", "xếp loại", "tự đánh giá",
-                "tiêu chí", "chấm")
-_DOC_KEYWORDS = ("quy định", "nội quy", "luật", "tiêu chuẩn", "theo quy chế",
-                 "đúng luật", "chính sách", "được nghỉ", "bị phạt",
-                 "thủ tục", "quy trình", "hướng dẫn")
+# Fallback khi LLM lỗi: rule từ khóa rẻ tiền, thiên về an toàn (DOC_ONLY an toàn hơn OUT_OF_SCOPE).
+_DB_KEYWORDS = ("phep", "luong", "overtime", "tang ca", "cham cong", "di muon",
+                "ve som", "thuong", "phu cap", "bao hiem", "hop dong",
+                "tai khoan", "ngan hang", "phiên dang nhap", "don nghi",
+                "bao nhieu gio", "bao nhieu ngay", "cua toi", "cua minh", "minh con",
+                "quyen han", "quyen cua toi", "toi co quyen",
+                "toi dang", "toi check", "toi xin", "ca cua toi", "phong ban cua toi",
+                "chuc danh cua toi", "luong cua toi", "phep cua toi", "tang ca cua toi",
+                "ot", "duyet", "ngay", "gio", "hom nay", "hien tai", "ngay nao",
+                "gio nao", "thang nay", "nam nay", "duyet don", "duyet xe", "duyet phe",
+                "so lan", "bao nhieu lan", "check-in", "check-out", "xuat", "van chuyen",
+                "tai san", "laptop", "may tinh", "thiet bi", "cap phat", "ban giao thiet bi",
+                "ticket", "su co", "may in", "mang", "phan mem", "email cong ty",
+                "danh gia", "hieu suat", "kpi", "diem so", "xep loai", "tu danh gia",
+                "tieu chi", "cham")
+_DOC_KEYWORDS = ("quy dinh", "noi quy", "luat", "tieu chuan", "theo quy che",
+                 "dung luat", "chinh sach", "duoc nghi", "bi phat",
+                 "thu tuc", "quy trinh", "huong dan",
+                 "dang ky", "xe cong ty", "xe cong tac", "chuyen cong tac", "khan cap", "ke hoach",
+                 "thue xe ngoai", "nop du toan", "chi phi", "bao cao tong hop",
+                 "su dung xe", "nguoi lien he", "phe duyet", "phieu", "mau",
+                 "muc thong tin", "quy dinh nay", "quyet dinh", "hieu luc",
+                 "thi hanh", "van chuyen", "hang hoa", "tieu chi", "lua chon",
+                 "xe 6 tan", "muc dich", "quan tri noi bo", "co dong", "hoi dong",
+                 "tong giam doc", "giam doc", "bai nhiem", "bo nhiem", "kiem soat",
+                 "bieu quyet", "dai hoi", "nghi quyet", "bien ban", "thong bao",
+                 "quorum", "tieu ban", "kiem toan", "nguoi dieu hanh", "phu trach",
+                 "quy che luong", "nghi dinh", "luat doanh nghiep", "tham quyen",
+                 "tang bac", "phu cap an trua", "khoan chi", "xang xe", "trang phuc",
+                 "dien thoai", "bao ve", "tro cap", "thue nha", "hop dong lao dong",
+                 "ho tro", "xet tang luong", "tham nien", "vi pham", "nang bac",
+                 "van phong pham", "ve sinh pham", "muc in", "cap phat", "bao duong",
+                 "photocopy", "giay to", "bia", "giay note", "but bi", "gel", "may tinh",
+                 "may bam kim", "may dong", "danh muc", "don vi tinh", "pin", "thuoc",
+                 "bang mica", "thung rac", "muc epson", "panasonic", "maxell", "junxo",
+                 "casio", "uni signo", "tl027",
+                 "chiu trach nhiem", "trach nhiem", "duyet va cap", "cap xe", "don vi",
+                 "hoi dong quan tri", "ban kiem soat", "chu tich hdqt", "thu lao bo sung",
+                 "nghi quyet", "quyet dinh", "nghiep vu", "bang tong hop", "so luong",
+                 "thanh vien", "thoi diem", "trieu tap", "thuc hien", "danh gia",
+                 "cung cap", "bao cao", "tai lieu", "phuong thuc", "thong bao",
+                 "de nghi", "quyen", "chuc vu", "dieu hanh", "thu lao", "hinh thuc",
+                 "gui", "giong nhu", "truong hop", "duoc phep", "gioi han",
+                 "khoang cach", "khoi luong", "san sang", "santafe", "cho",
+                 "can lam gi", "can cap phat", "dot xuat", "mau bieu", "nop",
+                 "cac loai", "bia", "giay note", "gia", "bao nhieu loai",
+                 "but", "liet ke", "danh sach", "mua thun", "khoanh vong",
+                 "tra bao nhieu", "cuoc hop", "thuong nien", "yeu cau",
+                 "cung cap", "bao cao", "tai lieu", "thong tin", "phai cung cap",
+                 "bao nhieu lan", "danh gia", "lien lac", "chinh xac", "chiu trach nhiem",
+                 "to thieu", "to da", "du hop", "hoan lai", "de nghi", "trieu tap",
+                 "thuc hien", "danh gia", "nghi quyet", "quyet dinh", "phuong thuc")
 def build_router_prompt(question: str, history: List[Dict[str, str]],
                         context_summary: Optional[str] = None) -> str:
     hist = "\n".join(
@@ -330,6 +362,39 @@ def keyword_fallback(question: str) -> str:
     # ponytail: self-anchor ("cho tôi biết"...) cũng thoát OUT_OF_SCOPE —
     # chấp nhận trả lời phần của mình thay vì từ chối (không rò rỉ gì thêm).
     self_anchored = any(s in q for s in _SELF_ANCHORS)
+    # Strong self words: "tôi", "mình", "của tôi", "của mình" - implies personal data query
+    self_strong = any(s in q for s in ("tui", "toi", "minh", "cua toi", "cua tui", "cua minh", "cua em"))
+
+    # Pre-calculate keyword matches for use throughout
+    is_db = any(_fold(k) in q for k in _DB_KEYWORDS)
+    is_doc = any(_fold(k) in q for k in _DOC_KEYWORDS)
+    # DOC_ONLY intent: questions asking about policy/regulation/procedure
+    # Even if they contain "tôi", if the intent is to ask about general policy
+    # Keywords: "quy định", "theo quy chế", "chính sách", "luật", "thủ tục", "quy trình"
+    is_policy_intent = any(k in q for k in ("quy dinh", "theo quy che", "chinh sach", "luat",
+                                             "thu tuc", "quy trinh", "huong dan", "noi quy",
+                                             "tieu chuan", "dung luat", "duoc nghi", "bi phat",
+                                             "mau", "so hieu", "dieu ", "bm", "quy che",
+                                             "bang tong hop", "so luong", "thanh vien", "thoi diem",
+                                             "trieu tap", "thuc hien", "danh gia", "cung cap",
+                                             "bao cao", "tai lieu", "phuong thuc", "thong bao",
+                                             "de nghi", "quyen", "chuc vu", "dieu hanh", "thu lao",
+                                             "hinh thuc", "gui", "giong nhu", "truong hop",
+                                             "duoc phep", "gioi han", "khoang cach", "khoi luong",
+                                             "san sang", "santafe", "cho", "can lam gi",
+                                             "can cap phat", "dot xuat", "mau bieu", "nop",
+                                             "cac loai", "bia", "giay note", "gia",
+                                             "bao nhieu loai", "but", "liet ke", "danh sach",
+                                             "mua thun", "khoanh vong", "tra bao nhieu",
+                                             "cuoc hop", "thuong nien", "yeu cau",
+                                             "to thieu", "to da", "du hop", "hoan lai",
+                                             "trieu tap", "nghi quyet", "quyet dinh",
+                                             "phuong thuc", "lien lac", "chinh xac",
+                                             "chiu trach nhiem", "xet tang luong"))
+    # HYBRID-style: policy question + personal data (e.g., "quy định X, và tôi còn bao nhiêu")
+    # These should go to DB_ONLY because they need personal data to answer
+    is_hybrid_style = is_policy_intent and self_strong and is_db
+
     # ponytail: "truong phong CUA MINH" (tui/toi/mình, có/không "của") -> DB_ONLY,
     # tra người cùng phòng có chức danh Department Head. Đặt trước nhánh tên
     # riêng vì "Trưởng" viết hoa hay lọt regex tên trần.
@@ -348,7 +413,8 @@ def keyword_fallback(question: str) -> str:
     # (co "tui/toi/minh", ke ca khong co "cua"): de logic DB phia duoi xu ly.
     _self_any = self_anchored or any(s in q for s in ("tui", "toi", "minh"))
     if not _self_any:
-        if any(_fold(k) in q for k in ("luong", "thuong")):
+        # Only block "lương/thưởng" for non-policy questions about OTHER people
+        if any(_fold(k) in q for k in ("luong", "thuong")) and not is_policy_intent:
             return "OUT_OF_SCOPE"
         if (re.search(r"\bthang\s*\d{1,2}\b|\bnam\s*\d{4}\b|/\d{4}\b|\bngay\s*\d{1,2}\b", q)
                 and any(t in q for t in ("dieu phoi", "phan cong", "truc",
@@ -359,10 +425,13 @@ def keyword_fallback(question: str) -> str:
     # Lương/phép/thưởng gắn vai trò vẫn cấm (vd "lương của giám đốc").
     # ponytail: chặn nhạy cảm trước vì matcher đòi intent danh bạ ("là ai", SĐT...)
     # nên câu lương-phép-thưởng không khớp matcher mà rớt nhầm DB_ONLY.
+    # BUT: if policy intent, don't block - let it go to DOC_ONLY
     if any(t in q for t in ("chu tich", "giam doc", "ceo", "truong phong")) \
-            and any(_fold(k) in q for k in _SENSITIVE_OTHER):
+            and any(_fold(k) in q for k in _SENSITIVE_OTHER) and not is_policy_intent:
         return "OUT_OF_SCOPE"
-    if match_role_directory(question) is not None:
+    # Role directory matching - but only if NOT asking about policy
+    role_match = match_role_directory(question)
+    if role_match is not None and not is_policy_intent:
         return "DIRECTORY"
     # ponytail: cau trich ma BM/dieu/quy-che/quy-dinh so hieu thi chac chan
     # hoi tai lieu, khong phai DB nguoi hay danh ba. Dat sau cac nhanh self
@@ -377,19 +446,32 @@ def keyword_fallback(question: str) -> str:
     # thì vô hại), không đủ để từ chối.
     person_strong = person_named or person_generic
     if (person_strong or person_bare) and not self_anchored:
-        if person_strong and any(_fold(k) in q for k in _SENSITIVE_OTHER):
+        if person_strong and any(_fold(k) in q for k in _SENSITIVE_OTHER) and not is_policy_intent:
             return "OUT_OF_SCOPE"
         if any(_fold(k) in q for k in _DIRECTORY_KEYWORDS):
             return "DIRECTORY"
-        if person_strong and any(_fold(k) in q for k in ("thông tin",)):
+        if person_strong and any(_fold(k) in q for k in ("thông tin",)) and not is_policy_intent:
             return "OUT_OF_SCOPE"
-    is_db = any(_fold(k) in q for k in _DB_KEYWORDS)
-    is_doc = any(_fold(k) in q for k in _DOC_KEYWORDS)
-    if is_db and is_doc:
-        return "HYBRID"
-    if is_db:
+
+    # Removed HYBRID - only DOC_ONLY and DB_ONLY
+    # Priority logic:
+    # 1. HYBRID-style (policy + personal) -> DB_ONLY (needs personal data)
+    # 2. Policy intent -> DOC_ONLY (even with self words, if asking about policy)
+    # 3. Strong self-anchor + DB keywords -> DB_ONLY (personal data query)
+    # 4. DB keywords only -> DB_ONLY
+    # 5. DOC keywords only -> DOC_ONLY
+    # 6. Default -> DB_ONLY
+    if is_hybrid_style:
         return "DB_ONLY"
-    return "DOC_ONLY"
+    if is_policy_intent:
+        return "DOC_ONLY"
+    if self_strong and is_db:
+        return "DB_ONLY"
+    if is_db and not is_doc:
+        return "DB_ONLY"
+    if is_doc:
+        return "DOC_ONLY"
+    return "DB_ONLY"  # Default to DB_ONLY if unclear but has db keywords
 
 
 def rewrite_and_route(question: str, history: List[Dict[str, str]],

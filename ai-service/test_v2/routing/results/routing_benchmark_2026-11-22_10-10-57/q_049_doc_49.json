@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_49",
+  "original_query": "Những ai không được hưởng khoản trợ cấp này?",
+  "rewritten_query": "Những ai không được hưởng khoản trợ cấp này?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1052.19,
+  "input_token_usage": 2541,
+  "output_token_usage": 28,
+  "total_token_usage": 2569,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:11:55.715976",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

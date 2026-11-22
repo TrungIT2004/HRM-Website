@@ -1,0 +1,23 @@
+{
+  "question_id": "salaries_02",
+  "original_query": "Liệt kê lịch sử các mức lương của tôi từ trước tới nay?",
+  "rewritten_query": "Liệt kê lịch sử các mức lương của tôi từ trước tới nay?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 2146.31,
+  "input_token_usage": 2546,
+  "output_token_usage": 33,
+  "total_token_usage": 2579,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:15:54.413777",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

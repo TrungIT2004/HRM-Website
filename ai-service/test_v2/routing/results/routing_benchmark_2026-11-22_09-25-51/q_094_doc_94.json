@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_94",
+  "original_query": "Cuộc họp Hội đồng Quản trị thường niên được triệu tập vào thời điểm nào trong năm?",
+  "rewritten_query": "Cuộc họp Hội đồng Quản trị thường niên được triệu tập vào thời điểm nào trong năm?",
+  "routing_result": "OUT_OF_SCOPE",
+  "expected_route": "DOC_ONLY",
+  "correct": false,
+  "execution_time_ms": 243.0,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:26:21.848686",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

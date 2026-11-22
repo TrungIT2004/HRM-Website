@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_36",
+  "original_query": "Luật doanh nghiệp 2020 ảnh hưởng như thế nào tới chính sách lương của công ty?",
+  "rewritten_query": "Luật doanh nghiệp 2020 ảnh hưởng như thế nào tới chính sách lương của công ty?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 901.66,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:15:12.357014",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

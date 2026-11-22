@@ -1,0 +1,23 @@
+{
+  "question_id": "work_shifts_04",
+  "original_query": "Lịch chi tiết cả tuần của ca tôi như thế nào?",
+  "rewritten_query": "Lịch chi tiết cả tuần của ca tôi như thế nào?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 237.76,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:16:26.325267",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

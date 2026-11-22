@@ -1,0 +1,23 @@
+{
+  "question_id": "user_permission_grants_09",
+  "original_query": "Quy định phân quyền hệ thống thế nào, hiện tại tôi đang có những quyền gì?",
+  "rewritten_query": "Quy định phân quyền hệ thống thế nào, hiện tại tôi đang có những quyền gì?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1099.44,
+  "input_token_usage": 2550,
+  "output_token_usage": 32,
+  "total_token_usage": 2582,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:16:54.746313",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

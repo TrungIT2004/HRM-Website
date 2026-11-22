@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_101",
+  "original_query": "Biên bản kiểm phiếu và phiếu lấy ý kiến phải được lưu trữ ở đâu?",
+  "rewritten_query": "Biên bản kiểm phiếu và phiếu lấy ý kiến phải được lưu trữ ở đâu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 239.56,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:30:57.912768",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

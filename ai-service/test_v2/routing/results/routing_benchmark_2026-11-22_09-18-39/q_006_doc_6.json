@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_6",
+  "original_query": "Đơn vị nào phải phối hợp và phê duyệt phiếu đăng ký xe?",
+  "rewritten_query": "Đơn vị nào phải phối hợp và phê duyệt phiếu đăng ký xe?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 259.79,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:18:42.593669",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}
