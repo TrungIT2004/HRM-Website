@@ -1,57 +1,86 @@
 import cv2
-import face_recognition
 import numpy as np
 import datetime
 import time
-import psycopg2
 import os
 import json
 import pygame
 import argparse
 import sys
 import requests
-from db_config import DB_CONFIG
+from pathlib import Path
+from deepface import DeepFace
 
-# === CẤU HÌNH API SPRING BOOT ===
-BACKEND_BASE_URL = os.getenv("BACKEND_BASE_URL", "http://localhost:8080")
-ATTENDANCE_API_URL = f"{BACKEND_BASE_URL}/api/attendances"
-OVERTIME_API_URL = f"{BACKEND_BASE_URL}/api/overtime"
+# === PATHS ===
+BASE_DIR = Path(__file__).parent
+AUDIO_DIR = BASE_DIR / "audios"
+CASCADES_DIR = BASE_DIR / "cascades"
 
-# === CẤU HÌNH AUDIO & THƯ MỤC ===
+# === MODEL PATHS ===
+YUNET_MODEL_PATH = CASCADES_DIR / "face_detection_yunet_2023mar.onnx"
+ANTI_SPOOF_MODEL_PATH = CASCADES_DIR / "anti_spoof.onnx"  # FP32 model
+
+# === AUDIO CONFIG ===
 pygame.mixer.init()
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-AUDIO_DIR = os.path.join(BASE_DIR, "audios")
-
 AUDIO_FILES = {
-    # Audio Ca thường & Hệ thống
-    "clock_in":             os.path.join(AUDIO_DIR, "clock_in.mp3"),
-    "clock_out":            os.path.join(AUDIO_DIR, "clock_out.mp3"),
-    "face_not_found":       os.path.join(AUDIO_DIR, "face_not_found.mp3"),
-    "face_not_registered":  os.path.join(AUDIO_DIR, "face_not_registered.mp3"),
-    "network_error":       os.path.join(AUDIO_DIR, "network_error.mp3"),
-    "system_error":        os.path.join(AUDIO_DIR, "system_error.mp3"),
-    "too_soon":            os.path.join(AUDIO_DIR, "too_soon.mp3"),
-    "not_working_day":     os.path.join(AUDIO_DIR, "not_working_day.mp3"),
-
-    # Audio Tăng ca (OT) mới
-    "ot_clock_in":          os.path.join(AUDIO_DIR, "ot_clock_in.mp3"),
-    "ot_clock_out":         os.path.join(AUDIO_DIR, "ot_clock_out.mp3"),
-    "no_ot_record":         os.path.join(AUDIO_DIR, "no_ot_record.mp3"),
-    "insufficient_ot_time": os.path.join(AUDIO_DIR, "insufficient_ot_time.mp3"),
+    "clock_in":             AUDIO_DIR / "clock_in.mp3",
+    "clock_out":            AUDIO_DIR / "clock_out.mp3",
+    "face_not_found":       AUDIO_DIR / "face_not_found.mp3",
+    "face_not_registered":  AUDIO_DIR / "face_not_registered.mp3",
+    "network_error":        AUDIO_DIR / "network_error.mp3",
+    "system_error":         AUDIO_DIR / "system_error.mp3",
+    "too_soon":             AUDIO_DIR / "too_soon.mp3",
+    "not_working_day":      AUDIO_DIR / "not_working_day.mp3",
+    "ot_clock_in":          AUDIO_DIR / "ot_clock_in.mp3",
+    "ot_clock_out":         AUDIO_DIR / "ot_clock_out.mp3",
+    "no_ot_record":         AUDIO_DIR / "no_ot_record.mp3",
+    "insufficient_ot_time": AUDIO_DIR / "insufficient_ot_time.mp3",
+    "spoof_detected":       AUDIO_DIR / "spoof_detected.mp3",
 }
 
 AUDIO_PADDING_SECONDS = 0.5
 _audio_busy_until = 0.0
 _audio_windows = {}
 
+# === DEEPFACE CONFIG ===
+DEEPFACE_MODEL = "ArcFace"
+DEEPFACE_DETECTOR = "yunet"
+RECOGNITION_THRESHOLD = 0.27  # Cosine distance threshold for 512-dim ArcFace
+ANTI_SPOOFING_ENABLED = True
+ANTI_SPOOF_THRESHOLD = 0.55
+
+# === AGGREGATION CONFIG ===
+NUM_FRAMES_AGGREGATE = 5
+MIN_VALID_FRAMES = 3
+
+# === API CONFIG ===
+BACKEND_BASE_URL = os.getenv("BACKEND_BASE_URL", "http://localhost:8080")
+ATTENDANCE_API_URL = f"{BACKEND_BASE_URL}/api/attendances"
+OVERTIME_API_URL = f"{BACKEND_BASE_URL}/api/overtime"
+
+# === DB CONFIG ===
+DB_CONFIG = {
+    "host": os.getenv("DB_HOST", "localhost"),
+    "database": os.getenv("DB_NAME", "hrm"),
+    "user": os.getenv("DB_USER", "postgres"),
+    "password": os.getenv("DB_PASSWORD", ""),
+}
+
+# === CACHE ===
+_deepface_models = {}
+_yunet_detector = None
+_anti_spoof_session = None
+_anti_spoof_input_name = None
+
+# === UTILS ===
 def runtime_clock():
     return cv2.getTickCount() / cv2.getTickFrequency()
 
 def get_audio_window(file_path):
     if file_path not in _audio_windows:
         try:
-            _audio_windows[file_path] = pygame.mixer.Sound(file_path).get_length()
+            _audio_windows[file_path] = pygame.mixer.Sound(str(file_path)).get_length()
         except pygame.error as e:
             print(f"⚠️ Không đọc được thời lượng audio {file_path}: {e}")
             _audio_windows[file_path] = 4.0
@@ -60,7 +89,7 @@ def get_audio_window(file_path):
 def play_sound(sound_type):
     global _audio_busy_until
     file_path = AUDIO_FILES.get(sound_type)
-    if not file_path or not os.path.exists(file_path):
+    if not file_path or not file_path.exists():
         print(f"⚠️ File âm thanh không tồn tại: {sound_type} ({file_path})")
         return False
 
@@ -70,9 +99,8 @@ def play_sound(sound_type):
             return False
 
         audio_window = get_audio_window(file_path)
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load(file_path)
-        pygame.mixer.music.play()
+        sound = pygame.mixer.Sound(str(file_path))
+        sound.play()
         _audio_busy_until = now + audio_window
         print(f"🔊 Đã phát âm thanh: {sound_type}")
         return True
@@ -83,7 +111,226 @@ def play_sound(sound_type):
 def get_db_connection():
     return psycopg2.connect(**DB_CONFIG)
 
+# === DEEPFACE MODEL LOADING ===
+def _patch_deepface_logger():
+    try:
+        import deepface.commons.logger as logger_module
+        original_dump = logger_module.Logger.dump_log
+        def patched_dump(self, message):
+            try:
+                original_dump(self, message)
+            except UnicodeEncodeError:
+                clean_msg = message.encode('ascii', 'ignore').decode('ascii')
+                print(clean_msg)
+        logger_module.Logger.dump_log = patched_dump
+    except Exception:
+        pass
+
+def get_deepface_models():
+    global _deepface_models
+    if "recognition" not in _deepface_models:
+        print(f"[INFO] Loading DeepFace recognition model: {DEEPFACE_MODEL}")
+        _deepface_models["recognition"] = DeepFace.build_model(DEEPFACE_MODEL)
+        print(f"[OK] Loaded {DEEPFACE_MODEL}")
+    return _deepface_models
+
+# === YUNET DETECTOR ===
+def get_yunet_detector():
+    global _yunet_detector
+    if _yunet_detector is None:
+        print(f"[INFO] Loading YuNet face detector...")
+        if not YUNET_MODEL_PATH.exists():
+            raise FileNotFoundError(f"YuNet model not found at {YUNET_MODEL_PATH}")
+        _yunet_detector = cv2.FaceDetectorYN_create(
+            model=str(YUNET_MODEL_PATH),
+            config="",
+            input_size=(640, 480),
+            score_threshold=0.6,
+            nms_threshold=0.3,
+            top_k=5000,
+            backend_id=cv2.dnn.DNN_BACKEND_OPENCV,
+            target_id=cv2.dnn.DNN_TARGET_CPU,
+        )
+        print("[OK] YuNet detector loaded")
+    return _yunet_detector
+
+# === ANTI-SPOOFING (FP32 ONNX) ===
+def _load_anti_spoof_model():
+    global _anti_spoof_session, _anti_spoof_input_name
+    if _anti_spoof_session is None:
+        if not ANTI_SPOOF_MODEL_PATH.exists():
+            raise FileNotFoundError(f"Anti-spoof model not found at {ANTI_SPOOF_MODEL_PATH}")
+        import onnxruntime as ort
+        sess_options = ort.SessionOptions()
+        sess_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+        _anti_spoof_session = ort.InferenceSession(
+            str(ANTI_SPOOF_MODEL_PATH),
+            sess_options=sess_options,
+            providers=["CPUExecutionProvider"]
+        )
+        _anti_spoof_input_name = _anti_spoof_session.get_inputs()[0].name
+        print(f"[OK] Anti-spoof FP32 model loaded: {_anti_spoof_input_name}")
+
+def preprocess_face_for_anti_spoof(face_crop_bgr: np.ndarray) -> np.ndarray:
+    """
+    Preprocess face crop for FP32 anti-spoof model.
+    Matches training pipeline: Letterbox resize + reflect padding + normalize [0,1], CHW format.
+    """
+    face_rgb = cv2.cvtColor(face_crop_bgr, cv2.COLOR_BGR2RGB)
+    h, w = face_rgb.shape[:2]
+    INPUT_SIZE = 128
+
+    # Letterbox resize (preserve aspect ratio)
+    ratio = float(INPUT_SIZE) / max(h, w)
+    scaled_h, scaled_w = int(h * ratio), int(w * ratio)
+    interpolation = cv2.INTER_LANCZOS4 if ratio > 1.0 else cv2.INTER_AREA
+    face_resized = cv2.resize(face_rgb, (scaled_w, scaled_h), interpolation=interpolation)
+
+    # Reflect padding to square
+    delta_h = INPUT_SIZE - scaled_h
+    delta_w = INPUT_SIZE - scaled_w
+    top, bottom = delta_h // 2, delta_h - (delta_h // 2)
+    left, right = delta_w // 2, delta_w - (delta_w // 2)
+
+    face_padded = cv2.copyMakeBorder(
+        face_resized, top, bottom, left, right, cv2.BORDER_REFLECT_101
+    )
+
+    # Normalize to [0, 1] and convert to CHW
+    face_norm = face_padded.transpose(2, 0, 1).astype(np.float32) / 255.0
+    blob = np.expand_dims(face_norm, axis=0)
+    return blob
+
+def check_anti_spoof(face_crop_bgr: np.ndarray) -> dict:
+    """
+    Run anti-spoofing inference on a face crop using FP32 ONNX model.
+    Returns dict with is_real, antispoof_score, real_prob, spoof_prob.
+    """
+    _load_anti_spoof_model()
+
+    blob = preprocess_face_for_anti_spoof(face_crop_bgr)
+    output = _anti_spoof_session.run([], {_anti_spoof_input_name: blob})[0]  # (1, 2)
+
+    logits = output[0]
+    # Numerically stable softmax
+    max_logit = np.max(logits)
+    exp_logits = np.exp(logits - max_logit)
+    probs = exp_logits / np.sum(exp_logits)
+
+    # Model outputs [real, spoof] - index 0=real, 1=spoof
+    real_prob = float(probs[0])
+    spoof_prob = float(probs[1])
+    is_real = real_prob > 0.5
+    antispoof_score = real_prob
+
+    return {
+        "is_real": is_real,
+        "antispoof_score": antispoof_score,
+        "real_prob": real_prob,
+        "spoof_prob": spoof_prob,
+    }
+
+# === FACE RECOGNITION (ArcFace 512-dim) ===
+def detect_faces_yunet(frame: np.ndarray):
+    """Detect faces using YuNet. Returns list of (top, right, bottom, left)."""
+    yunet = get_yunet_detector()
+    yunet.setInputSize((frame.shape[1], frame.shape[0]))
+    _, faces = yunet.detect(frame)
+
+    if faces is None or len(faces) == 0:
+        return []
+
+    face_locations = []
+    for face in faces:
+        x, y, w, h = face[:4].astype(int)
+        left, top = x, y
+        right, bottom = x + w, y + h
+
+        # Ensure coordinates within frame
+        left = max(0, left)
+        top = max(0, top)
+        right = min(frame.shape[1], right)
+        bottom = min(frame.shape[0], bottom)
+
+        if right > left and bottom > top:
+            face_locations.append((top, right, bottom, left))
+
+    return face_locations
+
+def extract_face_embedding(face_crop_bgr: np.ndarray) -> np.ndarray:
+    """
+    Extract ArcFace 512-dim embedding from face crop using DeepFace.
+    Returns L2-normalized embedding or None on failure.
+    """
+    try:
+        face_rgb = cv2.cvtColor(face_crop_bgr, cv2.COLOR_BGR2RGB)
+        get_deepface_models()
+
+        embedding_objs = DeepFace.represent(
+            img_path=face_rgb,
+            model_name=DEEPFACE_MODEL,
+            detector_backend="skip",
+            enforce_detection=False,
+            align=True,
+        )
+
+        if not embedding_objs:
+            return None
+
+        embedding = np.array(embedding_objs[0]["embedding"], dtype=np.float64)
+
+        # L2 normalize
+        norm = np.linalg.norm(embedding)
+        if norm > 0:
+            embedding = embedding / norm
+
+        return embedding
+
+    except Exception as e:
+        print(f"[WARN] Lỗi trích xuất embedding: {e}")
+        return None
+
+def aggregate_embeddings(embeddings_list):
+    """Aggregate multiple embeddings by averaging, then L2 normalize."""
+    if not embeddings_list:
+        return None
+    stacked = np.stack(embeddings_list, axis=0)
+    mean_emb = np.mean(stacked, axis=0)
+    norm = np.linalg.norm(mean_emb)
+    if norm > 0:
+        mean_emb = mean_emb / norm
+    return mean_emb
+
+def recognize_face_aggregated(face_embeddings_buffer, employee_embeddings, employee_ids, employee_names):
+    """Recognize face using aggregated embedding. Returns (user_id, fullname, error)."""
+    if not face_embeddings_buffer:
+        return None, None, "face_not_found"
+
+    agg_embedding = aggregate_embeddings(face_embeddings_buffer)
+    if agg_embedding is None:
+        return None, None, "face_not_found"
+
+    best_idx = -1
+    best_similarity = -1.0
+
+    for idx, emp_emb in enumerate(employee_embeddings):
+        similarity = np.dot(agg_embedding, emp_emb)
+        if similarity > best_similarity:
+            best_similarity = similarity
+            best_idx = idx
+
+    distance = 1.0 - best_similarity  # cosine distance
+
+    print(f"[INFO] Best match: {employee_names[best_idx] if best_idx >= 0 else 'None'} "
+          f"(similarity={best_similarity:.4f}, distance={distance:.4f}, threshold={RECOGNITION_THRESHOLD})")
+
+    if best_idx >= 0 and distance <= RECOGNITION_THRESHOLD:
+        return employee_ids[best_idx], employee_names[best_idx], None
+
+    return None, None, "face_not_registered"
+
 def load_employees(cur):
+    """Load employees with face embeddings from database."""
     cur.execute("""
         SELECT user_id, first_name, last_name, face_embedding
         FROM users
@@ -93,7 +340,7 @@ def load_employees(cur):
 
     employee_ids = []
     employee_names = []
-    employee_encodings = []
+    employee_embeddings = []
 
     for user_id, first_name, last_name, embedding in rows:
         try:
@@ -103,32 +350,22 @@ def load_employees(cur):
                 emb_list = embedding.tolist()
             else:
                 emb_list = list(embedding)
+
             emb_array = np.array(emb_list, dtype=np.float64)
+            norm = np.linalg.norm(emb_array)
+            if norm > 0:
+                emb_array = emb_array / norm
+
             employee_ids.append(user_id)
             employee_names.append(f"{first_name} {last_name}")
-            employee_encodings.append(emb_array)
+            employee_embeddings.append(emb_array)
         except Exception as e:
-            print(f"❌ Lỗi chuyển đổi embedding của user {user_id}: {e}")
+            print(f"[ERROR] Lỗi chuyển đổi embedding user {user_id}: {e}")
             continue
-    return employee_ids, employee_names, employee_encodings
+    return employee_ids, employee_names, employee_embeddings
 
-def recognize_face(rgb_frame, face_location, employee_encodings, employee_ids, employee_names):
-    try:
-        encodings = face_recognition.face_encodings(rgb_frame, [face_location])
-        if not encodings:
-            return None, None, "face_not_found"
-        current_emb = encodings[0]
-        matches = face_recognition.compare_faces(employee_encodings, current_emb, tolerance=0.6)
-        if True in matches:
-            idx = matches.index(True)
-            return employee_ids[idx], employee_names[idx], None
-        return None, None, "face_not_registered"
-    except Exception as e:
-        print(f"⚠️ Lỗi nhận diện: {e}")
-        return None, None, "face_not_found"
-
+# === API FUNCTIONS ===
 def mark_regular_attendance(user_id, fullname, now):
-    """Gọi API Ca thường"""
     api_url = f"{ATTENDANCE_API_URL}/{user_id}"
     try:
         response = requests.put(api_url, timeout=5)
@@ -137,10 +374,10 @@ def mark_regular_attendance(user_id, fullname, now):
             action = data.get("action")
             time_str = now.strftime('%H:%M:%S')
             if action == "CHECK_IN":
-                print(f"✅ {fullname} chấm công VÀO CA thường lúc {time_str}")
+                print(f"[OK] {fullname} chấm công VÀO CA thường lúc {time_str}")
                 return "in", None
             elif action == "CHECK_OUT":
-                print(f"✅ {fullname} chấm công TÂN CA thường lúc {time_str}")
+                print(f"[OK] {fullname} chấm công TÂN CA thường lúc {time_str}")
                 return "out", None
             else:
                 return "system_error", None
@@ -151,11 +388,10 @@ def mark_regular_attendance(user_id, fullname, now):
             except Exception:
                 return None, "SYSTEM_ERROR"
     except requests.exceptions.RequestException as e:
-        print(f"⚠️ Lỗi kết nối API Ca thường: {e}")
+        print(f"[WARN] Lỗi kết nối API Ca thường: {e}")
         return "network_error", None
 
 def mark_overtime_attendance(user_id, fullname, now):
-    """Gọi API Tăng ca (OT)"""
     api_url = f"{OVERTIME_API_URL}/{user_id}"
     try:
         response = requests.put(api_url, timeout=5)
@@ -164,10 +400,10 @@ def mark_overtime_attendance(user_id, fullname, now):
             action = data.get("action")
             time_str = now.strftime('%H:%M:%S')
             if action == "CLOCK_IN":
-                print(f"✅ {fullname} chấm công OT VÀO CA lúc {time_str}")
+                print(f"[OK] {fullname} chấm công OT VÀO CA lúc {time_str}")
                 return "ot_in"
             elif action == "CLOCK_OUT":
-                print(f"✅ {fullname} chấm công OT TÂN CA lúc {time_str}")
+                print(f"[OK] {fullname} chấm công OT TÂN CA lúc {time_str}")
                 return "ot_out"
             else:
                 return "system_error"
@@ -176,42 +412,33 @@ def mark_overtime_attendance(user_id, fullname, now):
                 error_data = response.json()
                 error_code = error_data.get("errorCode")
                 if error_code == "RECORD_NOT_FOUND":
-                    print(f"❌ {fullname}: Không có lịch OT nào được phê duyệt hôm nay.")
+                    print(f"[ERROR] {fullname}: Không có lịch OT nào được phê duyệt hôm nay.")
                     return "no_ot_record"
                 elif error_code == "INSUFFICIENT_OT_TIME":
-                    print(f"❌ {fullname}: Chưa đủ thời gian OT (tối thiểu 1 tiếng).")
+                    print(f"[ERROR] {fullname}: Chưa đủ thời gian OT (tối thiểu 1 tiếng).")
                     return "insufficient_ot_time"
                 else:
-                    print(f"❌ {fullname}: Lỗi OT ({error_code}).")
+                    print(f"[ERROR] {fullname}: Lỗi OT ({error_code}).")
                     return "system_error"
             except Exception:
                 return "system_error"
     except requests.exceptions.RequestException as e:
-        print(f"⚠️ Lỗi kết nối API OT: {e}")
+        print(f"[WARN] Lỗi kết nối API OT: {e}")
         return "network_error"
 
 def mark_attendance(user_id, fullname, now, mode="AUTO"):
-    """
-    Xử lý chấm công thông minh:
-    - Mode AUTO: Gọi ca thường ngầm -> Nếu không thuộc ca thường -> Gọi API OT ngầm.
-    - Mode REGULAR: Chỉ gọi ca thường.
-    - Mode OVERTIME: Chỉ gọi OT.
-    """
     if mode == "OVERTIME":
         return mark_overtime_attendance(user_id, fullname, now)
 
-    # 1. Thử gọi API Ca thường
     status, error_code = mark_regular_attendance(user_id, fullname, now)
-
     if status is not None:
         return status
 
-    # 2. Xử lý khi API Ca thường trả về lỗi (Kiểm tra OT ngầm)
     if mode == "AUTO" and error_code in ["NOT_WORK_DAY", "ATTENDANCE_NOT_FOUND"]:
-        print(f"ℹ️ {fullname}: Không thuộc ca thường ({error_code}). Đang kiểm tra lịch Tăng ca (OT)...")
+        print(f"[INFO] {fullname}: Không thuộc ca thường ({error_code}). Kiểm tra lịch OT...")
         ot_status = mark_overtime_attendance(user_id, fullname, now)
         if ot_status == "no_ot_record":
-            return "not_working_day" # Cả 2 đều không có lịch -> Phát sound not_working_day
+            return "not_working_day"
         return ot_status
 
     if error_code == "NOT_WORK_DAY":
@@ -221,49 +448,68 @@ def mark_attendance(user_id, fullname, now, mode="AUTO"):
     else:
         return "system_error"
 
+# === MAIN LOOP ===
 def run_attendance():
+    _patch_deepface_logger()
+
+    print("[INFO] Khởi tạo DeepFace models...")
+    get_deepface_models()
+    print("[OK] DeepFace models sẵn sàng")
+
+    # Initialize YuNet
+    get_yunet_detector()
+
     conn = get_db_connection()
     cur = conn.cursor()
+    employee_ids, employee_names, employee_embeddings = load_employees(cur)
 
-    employee_ids, employee_names, employee_encodings = load_employees(cur)
-
-    if not employee_encodings:
-        print("⚠️ Không có user nào đăng ký khuôn mặt hợp lệ.")
+    if not employee_embeddings:
+        print("[WARN] Không có user nào đăng ký khuôn mặt hợp lệ.")
         cur.close()
         conn.close()
         return
 
-    print(f"✅ Đã tải {len(employee_encodings)} user đã đăng ký.")
+    print(f"[OK] Đã tải {len(employee_embeddings)} user đã đăng ký.")
+    print(f"[INFO] Model nhận diện: {DEEPFACE_MODEL} (512-dim)")
+    print(f"[INFO] Detector: YuNet")
+    print(f"[INFO] Anti-spoof: FP32 ONNX ({'ENABLED' if ANTI_SPOOFING_ENABLED else 'DISABLED'})")
+    print(f"[INFO] Anti-spoof threshold: {ANTI_SPOOF_THRESHOLD}")
+    print(f"[INFO] Frames để tổng hợp: {NUM_FRAMES_AGGREGATE} (tối thiểu {MIN_VALID_FRAMES})")
+    print(f"[INFO] Ngưỡng nhận diện (cosine distance): {RECOGNITION_THRESHOLD}")
 
     cap = cv2.VideoCapture(0)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
     MODES = ["AUTO", "REGULAR", "OVERTIME"]
     current_mode_idx = 0
 
-    print("🟢 Hệ thống chấm công đang chạy...")
-    print("👉 Nhấn 'm' để chuyển đổi chế độ chấm công (AUTO / REGULAR / OVERTIME)")
-    print("👉 Nhấn 'q' để thoát.")
+    print("[OK] Hệ thống chấm công đang chạy...")
+    print("[INFO] Nhấn 'm' để chuyển đổi chế độ (AUTO / REGULAR / OVERTIME)")
+    print("[INFO] Nhấn 'q' để thoát.")
 
-    PROCESS_INTERVAL = 3
+    PROCESS_INTERVAL = 1.0  # Process every 1 second
     STATUS_HOLD_SECONDS = 5.0
     COOLDOWN_SECONDS = 3
+    SPOOF_COOLDOWN_SECONDS = 5
+    GLOBAL_COOLDOWN_SECONDS = 4
 
     next_process_time = 0.0
-
-    bg_subtractor = cv2.createBackgroundSubtractorMOG2(history=500, varThreshold=16, detectShadows=True)
-    PRESENCE_FOREGROUND_RATIO = 0.03
-    BG_WARMUP_SECONDS = 2.0
     start_time = runtime_clock()
 
     last_response_at = {}
     last_response_ui = {}
     last_unrecognized_response_at = 0.0
+    last_spoof_response_at = 0.0
+    last_global_cooldown = 0.0
 
     status_text = None
     status_color = (255, 255, 255)
     status_until = 0.0
+
+    face_embeddings_buffer = []
+    current_face_bbox = None
+    frames_since_detection = 0
 
     def show_status(text, color):
         nonlocal status_text, status_color, status_until
@@ -271,7 +517,6 @@ def run_attendance():
         status_color = color
         status_until = runtime_clock() + STATUS_HOLD_SECONDS
 
-    # Cập nhật Bảng màu và Âm thanh UI tương ứng với tệp audio thực tế
     STATUS_UI = {
         "in":                   ("clock_in", "VAO CA THUONG", (0, 255, 0)),
         "out":                  ("clock_out", "TAN CA THUONG", (0, 255, 255)),
@@ -290,46 +535,90 @@ def run_attendance():
         if not ret:
             break
 
-        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        fg_mask = bg_subtractor.apply(gray)
         now_ts = runtime_clock()
         due = now_ts >= next_process_time
 
+        # Check global cooldown
+        any_cooldown = (
+            now_ts - last_global_cooldown < GLOBAL_COOLDOWN_SECONDS or
+            now_ts - last_spoof_response_at < SPOOF_COOLDOWN_SECONDS or
+            now_ts - last_unrecognized_response_at < COOLDOWN_SECONDS or
+            any(now_ts - t < COOLDOWN_SECONDS for t in last_response_at.values())
+        )
+
         if due:
             next_process_time = now_ts + PROCESS_INTERVAL
-            face_locations = face_recognition.face_locations(rgb, model='hog', number_of_times_to_upsample=1)
+
+            if not any_cooldown:
+                # Detect faces using YuNet
+                face_locations = detect_faces_yunet(frame)
+            else:
+                face_locations = []
         else:
             face_locations = []
 
+        # Draw face rectangles
         for (top, right, bottom, left) in face_locations:
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
 
-        if due:
-            if len(face_locations) > 0:
-                top, right, bottom, left = face_locations[0]
-                user_id, fullname, recognition_error = recognize_face(
-                    rgb, (top, right, bottom, left),
-                    employee_encodings, employee_ids, employee_names,
+        if due and not any_cooldown and len(face_locations) > 0:
+            # Use first (largest) face
+            top, right, bottom, left = face_locations[0]
+            current_face_bbox = (top, right, bottom, left)
+            frames_since_detection = 0
+
+            # Anti-spoofing check
+            if ANTI_SPOOFING_ENABLED:
+                face_crop = frame[top:bottom, left:right]
+                if face_crop.size > 0:
+                    spoof_result = check_anti_spoof(face_crop)
+                    is_real = spoof_result.get("is_real", True)
+                    antispoof_score = spoof_result.get("antispoof_score", 1.0)
+
+                    if not is_real or antispoof_score < ANTI_SPOOF_THRESHOLD:
+                        attack_type = "spoof" if not is_real else "low_confidence"
+                        print(f"[WARN] Anti-spoofing REJECTED: is_real={is_real}, score={antispoof_score:.3f}")
+
+                        if now_ts - last_spoof_response_at >= SPOOF_COOLDOWN_SECONDS:
+                            play_sound("spoof_detected")
+                            last_spoof_response_at = now_ts
+                            last_global_cooldown = now_ts
+
+                        show_status(f"GIA MAO: {attack_type} (score={antispoof_score:.2f})", (0, 0, 255))
+                        face_embeddings_buffer.clear()
+                        continue
+
+            # Extract embedding
+            embedding = extract_face_embedding(frame, current_face_bbox)
+
+            if embedding is not None:
+                face_embeddings_buffer.append(embedding)
+                if len(face_embeddings_buffer) > NUM_FRAMES_AGGREGATE:
+                    face_embeddings_buffer.pop(0)
+                print(f"[INFO] Frame {len(face_embeddings_buffer)}/{NUM_FRAMES_AGGREGATE} captured")
+
+            # Process when enough frames
+            if len(face_embeddings_buffer) >= MIN_VALID_FRAMES:
+                user_id, fullname, recognition_error = recognize_face_aggregated(
+                    face_embeddings_buffer, employee_embeddings, employee_ids, employee_names
                 )
 
                 if user_id is not None:
                     last_response = last_response_at.get(user_id, 0.0)
-                    
                     if now_ts - last_response >= COOLDOWN_SECONDS:
                         now = datetime.datetime.now()
                         current_mode = MODES[current_mode_idx]
-                        
-                        # Gọi xử lý chấm công
                         status = mark_attendance(user_id, fullname, now, mode=current_mode)
-                        
+
                         sound_key, label, color = STATUS_UI.get(status, (None, "LOI", (0, 0, 255)))
                         if sound_key:
                             play_sound(sound_key)
-                            
+                            last_global_cooldown = now_ts
+
                         show_status(f"{fullname} - {label}", color)
                         last_response_at[user_id] = now_ts
                         last_response_ui[user_id] = (label, color)
+                        face_embeddings_buffer.clear()
                     else:
                         label, color = last_response_ui.get(user_id, ("DANG XU LY", (255, 255, 255)))
                         show_status(f"{fullname} - {label}", color)
@@ -338,33 +627,38 @@ def run_attendance():
                     if now_ts - last_unrecognized_response_at >= COOLDOWN_SECONDS:
                         if play_sound(sound_for_error):
                             last_unrecognized_response_at = now_ts
+                            last_global_cooldown = now_ts
 
                     if recognition_error == "face_not_found":
                         show_status("Khong nhan dien ro khuon mat", (0, 0, 255))
                     else:
                         show_status("Khong nhan dien (chua dang ky)", (0, 0, 255))
-            else:
-                warmed_up = (now_ts - start_time) > BG_WARMUP_SECONDS
-                foreground_ratio = np.count_nonzero(fg_mask == 255) / fg_mask.size
-                person_present = warmed_up and (foreground_ratio > PRESENCE_FOREGROUND_RATIO)
+                    face_embeddings_buffer.clear()
+        else:
+            frames_since_detection += 1
+            if frames_since_detection > 3:
+                face_embeddings_buffer.clear()
 
-                if person_present:
-                    if now_ts - last_unrecognized_response_at >= COOLDOWN_SECONDS:
-                        if play_sound("face_not_found"):
-                            last_unrecognized_response_at = now_ts
-                    show_status("Khong nhan dien ro khuon mat", (0, 0, 255))
-                else:
-                    show_status("Khong tim thay khuon mat", (0, 0, 255))
-
-        # Hiển thị trạng thái chấm công
+        # Display status
         if status_text and runtime_clock() < status_until:
             cv2.putText(frame, status_text, (20, 40),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.55, status_color, 2)
 
-        # Hiển thị Chế độ (MODE) ở góc dưới
+        # Buffer progress
+        if face_embeddings_buffer:
+            progress_text = f"Frames: {len(face_embeddings_buffer)}/{NUM_FRAMES_AGGREGATE}"
+            cv2.putText(frame, progress_text, (20, 70),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.55, (255, 255, 0), 2)
+
+        # Mode display
         mode_str = f"MODE: {MODES[current_mode_idx]} ('m' to change)"
-        cv2.putText(frame, mode_str, (10, 220),
+        cv2.putText(frame, mode_str, (10, 460),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 0), 1)
+
+        # Model info
+        model_str = f"Model: {DEEPFACE_MODEL} | Detector: YuNet | Anti-spoof: FP32 ONNX"
+        cv2.putText(frame, model_str, (10, 440),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.4, (200, 200, 200), 1)
 
         cv2.imshow("Cham cong", frame)
         key = cv2.waitKey(1) & 0xFF
@@ -372,13 +666,13 @@ def run_attendance():
             break
         elif key == ord('m'):
             current_mode_idx = (current_mode_idx + 1) % len(MODES)
-            print(f"🔄 Đã chuyển chế độ sang: {MODES[current_mode_idx]}")
+            print(f"[INFO] Đã chuyển chế độ sang: {MODES[current_mode_idx]}")
 
     cap.release()
     cv2.destroyAllWindows()
     cur.close()
     conn.close()
-    print("🔚 Đóng chương trình.")
+    print("[INFO] Đóng chương trình.")
 
 def main(test_time=None):
     if test_time:
@@ -387,7 +681,7 @@ def main(test_time=None):
             with freeze_time(test_time):
                 run_attendance()
         except ImportError:
-            print("⚠️ freezegun chưa được cài đặt. Chạy: pip install freezegun")
+            print("[WARN] freezegun chưa được cài đặt. Chạy: pip install freezegun")
             sys.exit(1)
     else:
         run_attendance()
