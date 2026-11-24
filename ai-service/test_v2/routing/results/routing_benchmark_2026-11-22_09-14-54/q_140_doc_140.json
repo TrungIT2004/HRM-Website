@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_140",
+  "original_query": "Thời gian nhiệm kỳ của Hội đồng quản trị là bao lâu?",
+  "rewritten_query": "Thời gian nhiệm kỳ của Hội đồng quản trị là bao lâu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 235.25,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:15:42.794315",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

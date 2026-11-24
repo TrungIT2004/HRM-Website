@@ -15,6 +15,9 @@ if sys.platform == "win32":
 
 load_dotenv()
 
+from google import genai
+from google.genai import types
+
 from src.retrievers.hybrid_retriever import HybridRetriever
 from src.cache.semantic_cache import SemanticCache
 from src.db.session import get_db_connection, get_hrm_connection
@@ -185,28 +188,99 @@ class ChatService:
     def __init__(self):
         self.retriever = HybridRetriever()
         self.cache = SemanticCache()
-        self.provider = os.getenv("LLM_PROVIDER", "ollama").lower()
 
-        self.ollama_client = None
+        # Initialize Gemini key pool (supports multiple keys for quota rotation)
+        self._api_keys = self._load_api_keys()
+        self._client_index = 0
+        self._last_generated_sql = None  # for eval logging
 
-        # Init Ollama Client
-        ollama_url = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
-        ollama_key = os.getenv("OLLAMA_API_KEY", "ollama")
-        try:
-            from openai import OpenAI
-            self.ollama_client = OpenAI(base_url=ollama_url, api_key=ollama_key,
-                                        timeout=60.0)  # cheo mà không refused thì cắt ở 60s
-            self.ollama_model = os.getenv("OLLAMA_MODEL", "gemma4:31b")
-            # ponytail: model nhe cho viec vat (rewrite+route). Mac dinh = model chinh
-            # (khong doi hanh vi neu chua set env); dat OLLAMA_FAST_MODEL=gemma4:31b de giam TTFT.
-            self.ollama_fast_model = os.getenv("OLLAMA_FAST_MODEL", self.ollama_model)
-        except Exception as e:
-            print(f"[ChatService] Warning: Could not init Ollama client: {e}")
-
-        # Gemini chi dung cho OCR (pdf_parser + GEMINI_OCR_MODEL), khong fallback chat.
+        # Initialize Gemini clients with new google.genai library
+        self._gemini_clients = []
+        self._init_gemini_clients()
 
         # ThreadPoolExecutor để chạy song song tác vụ sinh tiêu đề
         self.executor = ThreadPoolExecutor(max_workers=4)
+
+    def _load_api_keys(self) -> List[str]:
+        """Load Gemini API keys from environment (GEMINI_API_KEY_0 through GEMINI_API_KEY_6 = 7 keys)."""
+        keys = []
+        for i in range(7):  # 0-6 = 7 keys
+            key = os.getenv(f"GEMINI_API_KEY_{i}")
+            if key and key != f"your_gemini_api_key_{i}_here":
+                keys.append(key)
+
+        if len(keys) == 7:
+            print(f"[ChatService] Loaded 7 API keys for quota rotation")
+            return keys
+        elif len(keys) > 0:
+            print(f"[ChatService] Loaded {len(keys)} API keys for quota rotation")
+            return keys
+
+        # Fallback: try single GEMINI_API_KEY
+        single_key = os.getenv("GEMINI_API_KEY")
+        if single_key and single_key != "your_gemini_api_key_here":
+            print(f"[ChatService] Using single GEMINI_API_KEY for all requests")
+            return [single_key] * 7
+
+        print("[ChatService] Warning: No Gemini API keys found, LLM features disabled")
+        return []
+
+    def _get_next_key(self) -> Optional[str]:
+        """Get next API key in rotation."""
+        if not self._api_keys:
+            return None
+        key = self._api_keys[self._key_index]
+        self._key_index = (self._key_index + 1) % len(self._api_keys)
+        return key
+
+    def _init_gemini_clients(self):
+        """Initialize Gemini clients with key rotation (new google.genai library)."""
+        if not self._api_keys:
+            print("[ChatService] Warning: No Gemini API keys found, LLM features disabled")
+            return
+
+        try:
+            # Create a client for each API key
+            self._gemini_clients = [genai.Client(api_key=key) for key in self._api_keys]
+            self._client_index = 0
+
+            # Model names from env (default to gemini-3.5-flash-lite)
+            self._route_model = os.getenv("GEMINI_MODEL_ROUTE", "gemini-3.5-flash-lite")
+            self._sql_model = os.getenv("GEMINI_MODEL_SQL", "gemini-3.5-flash-lite")
+            self._ans_model = os.getenv("GEMINI_MODEL_ANS", "gemini-3.5-flash-lite")
+
+            # Generation configs for different use cases
+            self._ans_config = types.GenerateContentConfig(
+                temperature=0.2,
+                max_output_tokens=8192,
+            )
+            self._fast_config = types.GenerateContentConfig(
+                temperature=0.0,
+                max_output_tokens=2048,
+            )
+            self._sql_config = types.GenerateContentConfig(
+                temperature=0.0,
+                max_output_tokens=4096,
+            )
+
+            print(f"[ChatService] Gemini clients initialized ({len(self._gemini_clients)} keys, "
+                  f"route={self._route_model}, sql={self._sql_model}, ans={self._ans_model})")
+        except Exception as e:
+            print(f"[ChatService] Warning: Could not init Gemini clients: {e}")
+            self._gemini_clients = []
+
+    def _rotate_key(self):
+        """Rotate to next API key by switching client."""
+        if len(self._gemini_clients) <= 1:
+            return
+        self._client_index = (self._client_index + 1) % len(self._gemini_clients)
+        print(f"[ChatService] Rotated to API key index {self._client_index}")
+
+    def _get_current_client(self) -> Optional[genai.Client]:
+        """Get current Gemini client."""
+        if not self._gemini_clients:
+            return None
+        return self._gemini_clients[self._client_index]
 
     # =========================================================================
     # TÍNH NĂNG 3: PROMPT INJECTION DEFENSE (Lớp 1 & Lớp 2)
@@ -251,13 +325,9 @@ Examples:
 Title:"""
         try:
             smart_title = None
-            if self.ollama_client:
-                res = self.ollama_client.chat.completions.create(
-                    model=self.ollama_model,
-                    messages=[{"role": "user", "content": prompt}],
-                    temperature=0.0
-                )
-                smart_title = res.choices[0].message.content.strip().strip('"').strip("'")
+            if self._gemini_clients:
+                smart_title = self._llm_complete("", prompt, tag="smart_title")
+                smart_title = smart_title.strip().strip('"').strip("'") if smart_title else None
 
             if smart_title and len(smart_title) > 3:
                 # Cắt gọn nếu LLM trả lời dài hơn 50 ký tự
@@ -332,13 +402,9 @@ Nhiệm vụ: Hãy cập nhật và tổng hợp thành MỘT BẢN TÓM TẮT N
 Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thích nào."""
 
             new_summary = None
-            if self.ollama_client:
-                res = self.ollama_client.chat.completions.create(
-                    model=self.ollama_model,
-                    messages=[{"role": "user", "content": prompt}],
-                    temperature=0.0
-                )
-                new_summary = res.choices[0].message.content.strip()
+            if self.gemini_model:
+                new_summary = self._llm_complete(SUMMARY_PROMPT, prompt, tag="context_summary")
+                new_summary = new_summary.strip() if new_summary else None
 
             if new_summary and len(new_summary) > 10:
                 cur.execute(
@@ -358,26 +424,67 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
     # =========================================================================
     def _llm_complete(self, system_content: str, user_content: str, tag: str,
                       model: Optional[str] = None) -> str:
-        """1 LLM call đồng bộ, Ollama trước Gemini sau. Trả chuỗi rỗng nếu cả hai lỗi."""
-        if self.ollama_client:
+        """1 LLM call đồng bộ sử dụng Gemini với key rotation. Trả chuỗi rỗng nếu lỗi."""
+        # Determine which model and config to use
+        if model and "fast" in str(model).lower():
+            model_name = self._route_model
+            config = self._fast_config
+        elif model and "sql" in str(model).lower():
+            model_name = self._sql_model
+            config = self._sql_config
+        elif model:
+            model_name = model
+            config = self._ans_config
+        else:
+            model_name = self._ans_model
+            config = self._ans_config
+
+        if not self._gemini_clients:
+            print(f"[ChatService] No Gemini clients available for {tag}")
+            return ""
+
+        # Try with current key, rotate on quota error
+        max_retries = len(self._gemini_clients)
+        for attempt in range(max_retries):
+            client = self._gemini_clients[self._client_index]
             try:
-                res = self.ollama_client.chat.completions.create(
-                    model=model or self.ollama_model,
-                    messages=[
-                        {"role": "system", "content": system_content},
-                        {"role": "user", "content": user_content}
-                    ],
-                    temperature=0.0
+                # Combine system + user content for Gemini (it doesn't have separate system role)
+                combined_prompt = f"{system_content}\n\n{user_content}"
+
+                res = client.models.generate_content(
+                    model=model_name,
+                    contents=combined_prompt,
+                    config=config,
                 )
-                text = res.choices[0].message.content.strip()
-                u = getattr(res, "usage", None)
-                if u is not None:
-                    print(f"[LLM usage] ollama {tag} in={u.prompt_tokens} out={u.completion_tokens}")
-                _bump_usage(res)
+
+                # Extract text from response
+                text = (res.text or "").strip()
+
+                # Track usage
+                usage = getattr(res, "usage_metadata", None)
+                if usage:
+                    prompt_tokens = getattr(usage, "prompt_token_count", 0) or 0
+                    completion_tokens = getattr(usage, "candidates_token_count", 0) or 0
+                    print(f"[LLM usage] gemini {tag} in={prompt_tokens} out={completion_tokens}")
+                    USAGE_ACC["in"] += prompt_tokens
+                    USAGE_ACC["out"] += completion_tokens
+                    USAGE_ACC["calls"] += 1
+
                 if text:
                     return text
+
             except Exception as e:
-                print(f"[ChatService] Ollama {tag} failed: {e}")
+                err_str = str(e)
+                print(f"[ChatService] Gemini {tag} attempt {attempt+1}/{max_retries} failed: {e}")
+                # Rotate key on quota errors (429), auth errors (401), or other retryable errors
+                if ("429" in err_str or "401" in err_str or
+                    "quota" in err_str.lower() or "rate limit" in err_str.lower() or
+                    "unauthenticated" in err_str.lower()):
+                    if len(self._gemini_clients) > 1:
+                        self._rotate_key()
+                        continue
+                # For non-quota errors, break and return empty
+                break
 
         return ""
 
@@ -448,23 +555,45 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
         """Generator: yield từng chunk từ LLM. Rơi về text nguyên khối nếu không stream được."""
         system = system_prompt or SYSTEM_PROMPT
         parts: List[str] = []
-        if self.ollama_client:
-            try:
-                stream = self.ollama_client.chat.completions.create(
-                    model=self.ollama_model,
-                    messages=[
-                        {"role": "system", "content": system},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.2, stream=True
-                )
-                for chunk in stream:
-                    token = chunk.choices[0].delta.content or ""
-                    if token:
-                        parts.append(token)
-                        yield token
-            except Exception as e:
-                print(f"[ChatService] Ollama stream failed: {e}")
+
+        if self.gemini_model:
+            # Try streaming with key rotation on quota errors
+            max_retries = len(self._api_keys) if self._api_keys else 1
+            for attempt in range(max_retries):
+                try:
+                    combined_prompt = f"{system}\n\n{prompt}"
+                    stream = self.gemini_model.generate_content(
+                        combined_prompt,
+                        generation_config=genai.GenerationConfig(
+                            temperature=0.2,
+                            max_output_tokens=8192,
+                        ),
+                        stream=True
+                    )
+                    for chunk in stream:
+                        if chunk.candidates and chunk.candidates[0].content.parts:
+                            token = "".join(part.text for part in chunk.candidates[0].content.parts if part.text)
+                            if token:
+                                parts.append(token)
+                                yield token
+                    break  # Success, exit retry loop
+                except Exception as e:
+                    err_str = str(e)
+                    print(f"[ChatService] Gemini stream attempt {attempt+1}/{max_retries} failed: {e}")
+                    if "429" in err_str or "quota" in err_str.lower() or "rate limit" in err_str.lower():
+                        if len(self._api_keys) > 1:
+                            self._rotate_key()
+                            genai.configure(api_key=self._api_keys[self._key_index])
+                            # Recreate model with new key
+                            self.gemini_model = genai.GenerativeModel(
+                                os.getenv("GEMINI_MODEL_ANS", "gemini-3.5-flash-lite"),
+                                generation_config=genai.GenerationConfig(
+                                    temperature=0.2,
+                                    max_output_tokens=8192,
+                                )
+                            )
+                            continue
+                    break
 
         if not parts:
             yield self._generate_llm_answer(prompt, system_prompt)
@@ -472,23 +601,44 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
     def _generate_llm_answer(self, prompt: str, system_prompt: Optional[str] = None) -> str:
         """Gọi LLM đồng bộ."""
         system = system_prompt or SYSTEM_PROMPT
-        if self.ollama_client:
+        if not self._gemini_clients:
+            return "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát."
+
+        max_retries = len(self._gemini_clients)
+        for attempt in range(max_retries):
+            client = self._gemini_clients[self._client_index]
             try:
-                res = self.ollama_client.chat.completions.create(
-                    model=self.ollama_model,
-                    messages=[
-                        {"role": "system", "content": system},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.2
+                combined_prompt = f"{system}\n\n{prompt}"
+                res = client.models.generate_content(
+                    model=self._ans_model,
+                    contents=combined_prompt,
+                    config=self._ans_config,
                 )
-                u = getattr(res, "usage", None)
-                if u is not None:
-                    print(f"[LLM usage] ollama answer in={u.prompt_tokens} out={u.completion_tokens}")
-                _bump_usage(res)
-                return res.choices[0].message.content.strip()
+
+                # Track usage
+                usage = getattr(res, "usage_metadata", None)
+                if usage:
+                    prompt_tokens = getattr(usage, "prompt_token_count", 0) or 0
+                    completion_tokens = getattr(usage, "candidates_token_count", 0) or 0
+                    print(f"[LLM usage] gemini answer in={prompt_tokens} out={completion_tokens}")
+                    USAGE_ACC["in"] += prompt_tokens
+                    USAGE_ACC["out"] += completion_tokens
+                    USAGE_ACC["calls"] += 1
+
+                text = (res.text or "").strip()
+                if text:
+                    return text
+
             except Exception as e:
-                print(f"[ChatService] Ollama answer generation failed: {e}")
+                err_str = str(e)
+                print(f"[ChatService] Gemini answer generation attempt {attempt+1}/{max_retries} failed: {e}")
+                if ("429" in err_str or "401" in err_str or
+                    "quota" in err_str.lower() or "rate limit" in err_str.lower() or
+                    "unauthenticated" in err_str.lower()):
+                    if len(self._gemini_clients) > 1:
+                        self._rotate_key()
+                        continue
+                break
 
         return "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát."
 
@@ -1008,7 +1158,7 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
         """Viết lại câu hỏi + phân loại trong 1 LLM call (model nhe cho nhanh)."""
         return rewrite_and_route(
             question, history, context_summary, self._llm_complete,
-            model=self.ollama_fast_model)
+            model="gemini-fast")
 
     def _retry_soft_rewrite(self, question, history, context_summary, conv_id,
                             user_jobs, departments, top_k, tag,
@@ -1018,7 +1168,7 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
         try:
             rw2, _ = rewrite_and_route(
                 question, history, context_summary, self._llm_complete,
-                model=self.ollama_fast_model,
+                model="gemini-fast",
                 note="Lần viết lại trước cho điểm phù hợp thấp. Hãy viết lại chi tiết "
                      "và cụ thể hơn, giữ nguyên tên tài liệu/số hiệu/chủ đề từ lịch sử.")
         except Exception:
@@ -1040,7 +1190,9 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
 
     def _run_text2sql(self, question: str, user_id: str) -> Tuple[str, List[Dict[str, Any]]]:
         """Sinh SQL -> guard -> execute (rỗng thì retry 1 lần). Trả (db_summary, citations)."""
+        self._last_generated_sql = None  # reset for this call
         rows, sql = generate_personal_rows(self._llm_complete, question, user_id)
+        self._last_generated_sql = sql  # for eval logging
         tables = scoped_tables_in(sql)
         summary = summarize_result({"rows": rows, "row_count": len(rows)}, tables)
         # Ten nguoi lien quan (duyet/cap/xu ly): resolve app-side qua

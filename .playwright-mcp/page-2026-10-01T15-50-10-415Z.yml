@@ -1,0 +1,59 @@
+- generic [active] [ref=f17e1]:
+  - generic [ref=f17e2]:
+    - banner [ref=f17e19]:
+      - generic [ref=f17e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f17e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f17e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f17e28]: ACT
+          - generic [ref=f17e29]: ACT HRM
+      - generic [ref=f17e31]:
+        - generic [ref=f17e32]:
+          - generic [ref=f17e36]: "Hôm nay:"
+          - generic [ref=f17e37]: Ngày nghỉ
+        - button "T Phạm Thị Cúc Department Head of Human Resources" [ref=f17e39] [cursor=pointer]:
+          - generic [ref=f17e40]: T
+          - generic [ref=f17e41]:
+            - generic [ref=f17e42]: Phạm Thị Cúc
+            - generic [ref=f17e43]: Department Head of Human Resources
+    - generic [ref=f17e44]:
+      - complementary [ref=f17e45]:
+        - generic [ref=f17e46]:
+          - generic [ref=f17e47]:
+            - generic [ref=f17e48]: Đơn Thôi việc
+            - link "Đơn Thôi việc" [ref=f17e51] [cursor=pointer]:
+              - /url: /resignations
+          - generic [ref=f17e57]: ACT HRM Enterprise v2.4
+      - main [ref=f17e58]:
+        - generic [ref=f17e59]:
+          - generic [ref=f17e60]:
+            - generic [ref=f17e61]:
+              - generic [ref=f17e62]: Quy trình thôi việc & Bàn giao nhân sự
+              - heading "Quản Lý Thôi Việc" [level=1] [ref=f17e67]
+              - paragraph [ref=f17e68]: "Theo dõi chu trình thôi việc chuẩn 3 bước: Nhân viên nộp đơn → Trưởng phòng duyệt bàn giao → BGĐ/HR phê duyệt chính thức."
+            - generic [ref=f17e69]:
+              - button "Nộp đơn thôi việc" [ref=f17e70] [cursor=pointer]
+              - button "Tải lại" [ref=f17e73]
+          - generic [ref=f17e79]:
+            - button "Đơn của tôi (1)" [ref=f17e143] [cursor=pointer]
+            - button "Chờ xét duyệt" [ref=f17e81] [cursor=pointer]
+            - button "Toàn công ty (4)" [ref=f17e144] [cursor=pointer]
+          - generic [ref=f17e145]:
+            - generic [ref=f17e146]:
+              - generic [ref=f17e147]:
+                - generic [ref=f17e148]: EMP006
+                - generic [ref=f17e150]: Chờ Trưởng phòng duyệt
+              - generic [ref=f17e154]:
+                - generic [ref=f17e155]: Human Resources
+                - generic [ref=f17e160]: Department Head of Human Resources
+                - generic [ref=f17e164]:
+                  - text: "Ngày làm cuối:"
+                  - strong [ref=f17e167]: 30/11/2026
+              - generic [ref=f17e168]: Lý do:Test popup xác nhận hủy đơn (dữ liệu kiểm thử)
+            - button "Hủy đơn" [ref=f17e170]
+  - button "Open Next.js Dev Tools" [ref=f17e15] [cursor=pointer]
+  - alert [ref=f17e91]
+  - 'button "Đổi vai trò: Phạm Thị Cúc" [ref=f17e93] [cursor=pointer]':
+    - generic [ref=f17e97]: "Đổi vai trò:"
+    - generic [ref=f17e98]: Phạm Thị Cúc

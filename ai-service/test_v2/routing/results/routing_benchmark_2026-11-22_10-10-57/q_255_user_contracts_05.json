@@ -1,0 +1,23 @@
+{
+  "question_id": "user_contracts_05",
+  "original_query": "Hợp đồng thử việc của tôi kéo dài bao lâu?",
+  "rewritten_query": "Hợp đồng thử việc của tôi kéo dài bao lâu?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 1025.36,
+  "input_token_usage": 2543,
+  "output_token_usage": 30,
+  "total_token_usage": 2573,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:16:08.163219",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

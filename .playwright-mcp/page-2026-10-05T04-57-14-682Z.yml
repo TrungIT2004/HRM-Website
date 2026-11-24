@@ -1,0 +1,85 @@
+- generic [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - banner [ref=f2e20]:
+      - generic [ref=f2e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f2e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f2e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f2e29]: ACT
+          - generic [ref=f2e30]: ACT HRM
+      - generic [ref=f2e32]:
+        - generic [ref=f2e33]:
+          - generic [ref=f2e37]: "Hôm nay:"
+          - generic [ref=f2e38]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f2e40] [cursor=pointer]:
+          - generic [ref=f2e41]: A
+          - generic [ref=f2e42]:
+            - generic [ref=f2e43]: Super Admin
+            - generic [ref=f2e44]: SUPER_ADMIN
+    - generic [ref=f2e45]:
+      - complementary [ref=f2e46]:
+        - generic [ref=f2e47]:
+          - generic [ref=f2e48]: Không gian làm việc
+          - generic [ref=f2e52]: ACT HRM Enterprise v2.4
+      - main [ref=f2e53]:
+        - generic [ref=f2e54]:
+          - heading "Tổng quan đánh giá" [level=1] [ref=f2e55]
+          - generic [ref=f2e58]:
+            - generic [ref=f2e59]:
+              - button "Phòng ban" [ref=f2e60] [cursor=pointer]
+              - button "Cả công ty" [ref=f2e61] [cursor=pointer]
+            - generic [ref=f2e62]:
+              - text: Tháng
+              - combobox [ref=f2e63]:
+                - option "Tháng 1"
+                - option "Tháng 2"
+                - option "Tháng 3"
+                - option "Tháng 4"
+                - option "Tháng 5"
+                - option "Tháng 6"
+                - option "Tháng 7" [selected]
+                - option "Tháng 8"
+                - option "Tháng 9"
+                - option "Tháng 10"
+                - option "Tháng 11"
+                - option "Tháng 12"
+            - generic [ref=f2e64]:
+              - text: Năm
+              - combobox [ref=f2e65]:
+                - option "2024"
+                - option "2025"
+                - option "2026" [selected]
+            - button "Xem" [active] [ref=f2e66] [cursor=pointer]
+          - generic [ref=f2e105]:
+            - generic [ref=f2e106]:
+              - generic [ref=f2e107]:
+                - generic [ref=f2e108]: Tổng bài
+                - generic [ref=f2e109]: "100"
+              - generic [ref=f2e110]:
+                - generic [ref=f2e111]: Điểm TB
+                - generic [ref=f2e112]: —
+              - generic [ref=f2e113]:
+                - generic [ref=f2e114]: Xuất sắc ≥4.5
+                - generic [ref=f2e115]: "0"
+              - generic [ref=f2e116]:
+                - generic [ref=f2e117]: Chưa đạt <3.0
+                - generic [ref=f2e118]: "0"
+            - generic [ref=f2e119]:
+              - generic [ref=f2e120]:
+                - heading "Điểm trung bình theo phòng" [level=3] [ref=f2e121]
+                - paragraph [ref=f2e122]: Chưa có điểm.
+              - generic [ref=f2e123]:
+                - heading "Phân bố trạng thái" [level=3] [ref=f2e124]
+                - generic [ref=f2e128]:
+                  - generic [ref=f2e130]: SELF_SUBMITTED
+                  - generic [ref=f2e131]: "100"
+            - generic [ref=f2e132]:
+              - generic [ref=f2e133]:
+                - heading "Tuyên dương xuất sắc" [level=3] [ref=f2e134]
+                - paragraph [ref=f2e141]: Chưa có.
+              - generic [ref=f2e142]:
+                - heading "Chưa đạt chỉ tiêu" [level=3] [ref=f2e143]
+                - paragraph [ref=f2e146]: Chưa có.
+  - button "Open Next.js Dev Tools" [ref=f2e15] [cursor=pointer]
+  - alert [ref=f2e19]

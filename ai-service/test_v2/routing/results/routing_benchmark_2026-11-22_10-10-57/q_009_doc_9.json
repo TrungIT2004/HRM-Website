@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_9",
+  "original_query": "Có xe Santafe 7 chỗ sẵn sàng cho công tác từ 08h‑17h30 không?",
+  "rewritten_query": "Có xe Santafe 7 chỗ sẵn sàng cho công tác từ 08h-17h30 không?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1142.97,
+  "input_token_usage": 2556,
+  "output_token_usage": 43,
+  "total_token_usage": 2599,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:11:09.021041",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

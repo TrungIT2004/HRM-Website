@@ -14,15 +14,22 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
+import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
 import com.minhtrung.hrm.itticket.entities.ItTicket;
 import com.minhtrung.hrm.itticket.enums.ItTicketErrorCode;
 import com.minhtrung.hrm.itticket.enums.ItTicketStatus;
 import com.minhtrung.hrm.itticket.exceptions.ItTicketException;
 import com.minhtrung.hrm.itticket.repositories.ItTicketRepository;
+import com.minhtrung.hrm.notifications.entities.NotificationPriority;
+import com.minhtrung.hrm.notifications.entities.NotificationType;
+import com.minhtrung.hrm.notifications.events.NotificationEvent;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
 import com.minhtrung.hrm.services.FileStorageService;
+
+import org.springframework.context.ApplicationEventPublisher;
+import java.util.Map;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +43,7 @@ public class ItTicketService {
     private final UserRepository userRepository;
     private final PermissionService permissionService;
     private final FileStorageService fileStorageService;
+    private final ApplicationEventPublisher eventPublisher;
 
     // ponytail: copy định nghĩa sysadmin của AssetService — gom về 1 helper chung khi cần chỗ thứ 3
     private boolean isSysAdmin(TokenPayload me) {
@@ -89,7 +97,29 @@ public class ItTicketService {
                 throw new ItTicketException(ItTicketErrorCode.VALIDATION_ERROR, "Không thể lưu ảnh: " + e.getMessage());
             }
         }
-        return ticketRepository.save(ticket);
+        ItTicket saved = ticketRepository.save(ticket);
+
+        // Send notification to IT handlers
+        var handlers = userRepository.findByDepartmentName("Information Technology");
+        for (User handler : handlers) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    handler.getUserId(),
+                    NotificationType.IT_TICKET,
+                    "Ticket IT mới từ " + me.getFullName(),
+                    ticket.getDeviceInfo() + " - " + ticket.getDescription(),
+                    saved.getTicketId(),
+                    "IT_TICKET",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "reporterName", me.getFullName(),
+                            "deviceInfo", ticket.getDeviceInfo(),
+                            "category", ticket.getCategory().toString(),
+                            "description", ticket.getDescription()
+                    )
+            ));
+        }
+
+        return saved;
     }
 
     @Transactional
@@ -133,8 +163,26 @@ public class ItTicketService {
         }
         ticket.setAssignee(userRepository.getReferenceById(me.getUserId()));
         ticket.setStatus(ItTicketStatus.IN_PROGRESS);
+        ItTicket saved = ticketRepository.save(ticket);
+
+        // Send notification to assignee (the person who claimed it)
+        eventPublisher.publishEvent(new NotificationEvent(
+                me.getUserId(),
+                NotificationType.IT_TICKET,
+                "Bạn đã nhận ticket IT",
+                "Ticket: " + ticket.getDeviceInfo() + " - " + ticket.getDescription(),
+                saved.getTicketId(),
+                "IT_TICKET",
+                NotificationPriority.HIGH,
+                Map.of(
+                        "reporterName", ticket.getReporter() != null ? ticket.getReporter().getFirstName() + " " + ticket.getReporter().getLastName() : "",
+                        "deviceInfo", ticket.getDeviceInfo(),
+                        "category", ticket.getCategory().toString()
+                )
+        ));
+
         log.info("IT ticket {} được nhận bởi {}", ticketId, me.getUserId());
-        return ticketRepository.save(ticket);
+        return saved;
     }
 
     @Transactional
@@ -151,7 +199,27 @@ public class ItTicketService {
         ticket.setStatus(ItTicketStatus.DONE);
         ticket.setResolveNote(resolveNote);
         ticket.setResolvedAt(LocalDateTime.now());
-        return ticketRepository.save(ticket);
+        ItTicket saved = ticketRepository.save(ticket);
+
+        // Send notification to reporter
+        if (ticket.getReporterId() != null) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    ticket.getReporterId(),
+                    NotificationType.IT_TICKET,
+                    "Ticket IT của bạn đã được giải quyết",
+                    "Ticket: " + ticket.getDeviceInfo() + " - " + (resolveNote != null ? resolveNote : "Đã xử lý xong"),
+                    saved.getTicketId(),
+                    "IT_TICKET",
+                    NotificationPriority.NORMAL,
+                    Map.of(
+                            "status", "DONE",
+                            "resolvedBy", me.getFullName(),
+                            "resolveNote", resolveNote
+                    )
+            ));
+        }
+
+        return saved;
     }
 
     @Transactional

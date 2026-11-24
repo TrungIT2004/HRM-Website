@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_158",
+  "original_query": "HĐQT đánh giá việc thực hiện nghị quyết của Tổng Giám đốc như thế nào?",
+  "rewritten_query": "HĐQT đánh giá việc thực hiện nghị quyết của Tổng Giám đốc như thế nào?",
+  "routing_result": "DIRECTORY",
+  "expected_route": "DOC_ONLY",
+  "correct": false,
+  "execution_time_ms": 262.49,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:19:24.186938",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

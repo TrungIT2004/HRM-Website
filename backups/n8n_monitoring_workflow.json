@@ -1,0 +1,131 @@
+{
+  "name": "HRM - Container Monitoring & Alert",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger (Mỗi 1 phút)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 200]
+    },
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger (Test ngay)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 380]
+    },
+    {
+      "parameters": {
+        "command": "sh /backups/check_containers.sh"
+      },
+      "id": "check-containers",
+      "name": "Kiểm tra Containers",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stdout }}",
+              "operation": "contains",
+              "value2": "STATUS:DOWN"
+            }
+          ]
+        }
+      },
+      "id": "check-is-down",
+      "name": "Có Container Sập?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [740, 300]
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "8578855126",
+        "text": "=🚨 *CẢNH BÁO: HỆ THỐNG HRM CÓ CONTAINER SẬP!*\n\n📅 Thời gian: {{ $now.setZone('Asia/Ho_Chi_Minh').toFormat('dd/MM/yyyy HH:mm:ss') }}\n\n⚠️ *Chi tiết sự cố:*\n{{ $('Kiểm tra Containers').item.json.stdout.replace('STATUS:DOWN\\n', '').replace('STATUS:DOWN', '') }}\n👉 _Vui lòng kiểm tra Docker ngay lập tức!_",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-alert-down",
+      "name": "Telegram - Cảnh Báo Sập Service",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [980, 200],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-hrm-bot",
+          "name": "HRM Telegram Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Mỗi 1 phút)": {
+      "main": [
+        [
+          {
+            "node": "Kiểm tra Containers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger (Test ngay)": {
+      "main": [
+        [
+          {
+            "node": "Kiểm tra Containers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kiểm tra Containers": {
+      "main": [
+        [
+          {
+            "node": "Có Container Sập?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Có Container Sập?": {
+      "main": [
+        [
+          {
+            "node": "Telegram - Cảnh Báo Sập Service",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_83",
+  "original_query": "Thùng rác trung nap dap No.740 có kích thước và giá bán ra sao?",
+  "rewritten_query": "Thùng rác trung nap dap No.740 có kích thước và giá bán ra sao?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1178.23,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:12:35.445763",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

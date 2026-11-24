@@ -1,0 +1,44 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e20]:
+      - generic [ref=f1e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f1e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f1e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f1e29]: ACT
+          - generic [ref=f1e30]: ACT HRM
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]:
+          - generic [ref=f1e37]: "Hôm nay:"
+          - generic [ref=f1e38]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f1e40] [cursor=pointer]:
+          - generic [ref=f1e41]: A
+          - generic [ref=f1e42]:
+            - generic [ref=f1e43]: Super Admin
+            - generic [ref=f1e44]: SUPER_ADMIN
+    - main [ref=f1e46]:
+      - generic [ref=f1e47]:
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]:
+            - heading "Mẫu đơn & Biểu mẫu" [level=1] [ref=f1e704]
+            - paragraph [ref=f1e51]: Tải biểu mẫu đơn xin nghỉ, nghỉ việc, hợp đồng và biên bản dùng chung toàn công ty.
+          - button "Đăng mẫu đơn mới" [ref=f1e705] [cursor=pointer]
+        - generic [ref=f1e55]:
+          - button "Tài liệu & Quy chế" [ref=f1e56] [cursor=pointer]
+          - button "Mẫu đơn & Biểu mẫu (3)" [active] [pressed] [ref=f1e1533] [cursor=pointer]
+        - generic [ref=f1e59]:
+          - textbox "Tìm kiếm theo tiêu đề, nội dung tóm tắt, người đăng..." [ref=f1e707]
+          - generic [ref=f1e65]:
+            - generic [ref=f1e708]: "Nhóm đơn:"
+            - combobox [ref=f1e709] [cursor=pointer]:
+              - option "Tất cả nhóm đơn" [selected]
+              - option "Bàn giao công việc"
+              - option "Biên bản cuộc họp"
+              - option "Bổ sung nhân sự"
+              - option "Đơn xin nghỉ"
+              - option "Đơn xin nghỉ việc"
+              - option "Hợp đồng lao động"
+            - button "Làm mới danh sách" [ref=f1e710] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f1e15] [cursor=pointer]
+  - alert [ref=f1e19]

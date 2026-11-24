@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 
 import { attendanceService } from '@/services/attendanceService';
+import { NotificationBell } from '@/components/layout/NotificationBell';
 
 interface NavbarProps {
   onToggleMobileMenu?: () => void;
@@ -125,6 +126,9 @@ export default function Navbar({ onToggleMobileMenu, showMenuButton = true }: Na
           <span>{todayRecord?.clockInTime ? 'Ghi Giờ Ra' : 'Vào Ca'}</span>
         </button>
         )}
+
+        {/* Notification Bell */}
+        {currentUser && <NotificationBell />}
 
         {/* User Dropdown */}
         {currentUser && (

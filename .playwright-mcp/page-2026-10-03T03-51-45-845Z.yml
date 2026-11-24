@@ -1,0 +1,815 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e20]:
+      - generic [ref=f1e21]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f1e22] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f1e28] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f1e29]: ACT
+          - generic [ref=f1e30]: ACT HRM
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]:
+          - generic [ref=f1e37]: "Hôm nay:"
+          - generic [ref=f1e38]: Ngày nghỉ
+        - button "A Super Admin SUPER_ADMIN" [ref=f1e40] [cursor=pointer]:
+          - generic [ref=f1e41]: A
+          - generic [ref=f1e42]:
+            - generic [ref=f1e43]: Super Admin
+            - generic [ref=f1e44]: SUPER_ADMIN
+    - generic [ref=f1e45]:
+      - complementary [ref=f1e46]:
+        - generic [ref=f1e47]:
+          - generic [ref=f1e48]:
+            - generic [ref=f1e49]: Danh bạ Nhân sự
+            - link "Danh bạ Nhân sự" [ref=f1e52] [cursor=pointer]:
+              - /url: /employees
+          - generic [ref=f1e60]: ACT HRM Enterprise v2.4
+      - main [ref=f1e61]:
+        - generic [ref=f1e62]:
+          - generic [ref=f1e63]:
+            - generic [ref=f1e64]:
+              - generic [ref=f1e65]: Cơ sở dữ liệu nhân sự ACT
+              - heading "Danh Bạ Nhân Sự Công Ty" [level=1] [ref=f1e72]
+              - paragraph [ref=f1e73]: Tra cứu hồ sơ công khai, trạng thái chấm công và cơ cấu tổ chức doanh nghiệp.
+            - generic [ref=f1e74]:
+              - link "Cơ cấu & Ca làm việc" [ref=f1e75] [cursor=pointer]:
+                - /url: /organization/manage
+              - button "Chế độ Lưới" [ref=f1e81] [cursor=pointer]
+              - button "Chế độ Bảng" [ref=f1e87] [cursor=pointer]
+          - generic [ref=f1e90]:
+            - generic [ref=f1e91]:
+              - textbox "Tìm kiếm theo Tên, Mã nhân viên (EMP...), Email hoặc Vị trí..." [ref=f1e93]
+              - combobox [ref=f1e95]:
+                - option "Tất cả phòng ban" [selected]
+                - option "Sales (17)"
+                - option "Marketing & Communication (14)"
+                - option "Human Resources (10)"
+                - option "Finance & Accounting (11)"
+                - option "Customer Support (27)"
+                - option "Executive Leadership (3)"
+                - option "IT (19)"
+              - combobox [ref=f1e97]:
+                - option "Tất cả trạng thái hôm nay" [selected]
+                - option "Đang làm việc"
+                - option "Nghỉ phép"
+                - option "Vắng mặt"
+                - option "Chưa chấm công"
+            - button "Tìm kiếm & Lọc" [ref=f1e99] [cursor=pointer]
+          - generic [ref=f1e105]:
+            - text: Tìm thấy
+            - strong [ref=f1e106]: "50"
+            - text: nhân sự phù hợp
+          - generic [ref=f1e107]:
+            - generic [ref=f1e108]:
+              - generic [ref=f1e109]:
+                - generic [ref=f1e110]:
+                  - generic [ref=f1e111]:
+                    - img "Hoàng Lê Minh Trung" [ref=f1e112]
+                    - generic [ref=f1e113]:
+                      - generic [ref=f1e114]: Hoàng Lê Minh Trung
+                      - text: EMP001
+                  - generic [ref=f1e116]: Ngày nghỉ
+                - generic [ref=f1e119]:
+                  - generic [ref=f1e120]: Executive Leadership
+                  - generic [ref=f1e126]: Chairman
+                  - generic [ref=f1e131]: nguyenminhduc@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e136] [cursor=pointer]:
+                - /url: /employees/1108cc0f-8b18-4ada-962c-f9e1f3ebe4ff
+            - generic [ref=f1e141]:
+              - generic [ref=f1e142]:
+                - generic [ref=f1e143]:
+                  - generic [ref=f1e144]:
+                    - generic [ref=f1e145]: L
+                    - generic [ref=f1e146]:
+                      - generic [ref=f1e147]: Lê Thị Thanh Hương
+                      - text: EMP002
+                  - generic [ref=f1e149]: Ngày nghỉ
+                - generic [ref=f1e152]:
+                  - generic [ref=f1e153]: Executive Leadership
+                  - generic [ref=f1e159]: Director
+                  - generic [ref=f1e164]: lethanhhuong@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e169] [cursor=pointer]:
+                - /url: /employees/5934b552-2406-4a70-b69b-f0abec6bdd28
+            - generic [ref=f1e174]:
+              - generic [ref=f1e175]:
+                - generic [ref=f1e176]:
+                  - generic [ref=f1e177]:
+                    - generic [ref=f1e178]: P
+                    - generic [ref=f1e179]:
+                      - generic [ref=f1e180]: Phạm Hoàng Nam
+                      - text: EMP003
+                  - generic [ref=f1e182]: Ngày nghỉ
+                - generic [ref=f1e185]:
+                  - generic [ref=f1e186]: Executive Leadership
+                  - generic [ref=f1e192]: Deputy Director
+                  - generic [ref=f1e197]: phamhoangnam@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e202] [cursor=pointer]:
+                - /url: /employees/6b39462f-1134-4e9a-9a06-f2b3687940b7
+            - generic [ref=f1e207]:
+              - generic [ref=f1e208]:
+                - generic [ref=f1e209]:
+                  - generic [ref=f1e210]:
+                    - generic [ref=f1e211]: T
+                    - generic [ref=f1e212]:
+                      - generic [ref=f1e213]: Trần Văn An
+                      - text: EMP004
+                  - generic [ref=f1e215]: Ngày nghỉ
+                - generic [ref=f1e218]:
+                  - generic [ref=f1e219]: Sales
+                  - generic [ref=f1e225]: Department Head of Sales
+                  - generic [ref=f1e230]: tranvanan@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e235] [cursor=pointer]:
+                - /url: /employees/ffc3e6f3-20d2-46d9-9c6c-a853aef2e7aa
+            - generic [ref=f1e240]:
+              - generic [ref=f1e241]:
+                - generic [ref=f1e242]:
+                  - generic [ref=f1e243]:
+                    - generic [ref=f1e244]: L
+                    - generic [ref=f1e245]:
+                      - generic [ref=f1e246]: Lê Thị Bình
+                      - text: EMP005
+                  - generic [ref=f1e248]: Ngày nghỉ
+                - generic [ref=f1e251]:
+                  - generic [ref=f1e252]: Marketing & Communication
+                  - generic [ref=f1e258]: Department Head of Marketing & Communication
+                  - generic [ref=f1e263]: lethibinh@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e268] [cursor=pointer]:
+                - /url: /employees/c6322771-714d-4d31-a732-47f86ac8465e
+            - generic [ref=f1e273]:
+              - generic [ref=f1e274]:
+                - generic [ref=f1e275]:
+                  - generic [ref=f1e276]:
+                    - generic [ref=f1e277]: P
+                    - generic [ref=f1e278]:
+                      - generic [ref=f1e279]: Phạm Thị Cúc
+                      - text: EMP006
+                  - generic [ref=f1e281]: Ngày nghỉ
+                - generic [ref=f1e284]:
+                  - generic [ref=f1e285]: Human Resources
+                  - generic [ref=f1e291]: Department Head of Human Resources
+                  - generic [ref=f1e296]: phamthicuc@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e301] [cursor=pointer]:
+                - /url: /employees/fca9aa46-b141-415f-ab4c-9f336bdfd46e
+            - generic [ref=f1e306]:
+              - generic [ref=f1e307]:
+                - generic [ref=f1e308]:
+                  - generic [ref=f1e309]:
+                    - generic [ref=f1e310]: "N"
+                    - generic [ref=f1e311]:
+                      - generic [ref=f1e312]: Nguyễn Văn Dũng
+                      - text: EMP007
+                  - generic [ref=f1e314]: Ngày nghỉ
+                - generic [ref=f1e317]:
+                  - generic [ref=f1e318]: Finance & Accounting
+                  - generic [ref=f1e324]: Department Head of Finance & Accounting
+                  - generic [ref=f1e329]: nguyenvandung@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e334] [cursor=pointer]:
+                - /url: /employees/a3214f8e-94d1-4f9e-80c7-bd66dd570a78
+            - generic [ref=f1e339]:
+              - generic [ref=f1e340]:
+                - generic [ref=f1e341]:
+                  - generic [ref=f1e342]:
+                    - generic [ref=f1e343]: H
+                    - generic [ref=f1e344]:
+                      - generic [ref=f1e345]: Hoàng Thị Hà
+                      - text: EMP008
+                  - generic [ref=f1e347]: Ngày nghỉ
+                - generic [ref=f1e350]:
+                  - generic [ref=f1e351]: Customer Support
+                  - generic [ref=f1e357]: Department Head of Customer Support
+                  - generic [ref=f1e362]: hoangthiha@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e367] [cursor=pointer]:
+                - /url: /employees/1bc8ec1d-c6c4-42c8-a905-81bdb3d20bb1
+            - generic [ref=f1e372]:
+              - generic [ref=f1e373]:
+                - generic [ref=f1e374]:
+                  - generic [ref=f1e375]:
+                    - generic [ref=f1e376]: Đ
+                    - generic [ref=f1e377]:
+                      - generic [ref=f1e378]: Đỗ Văn Hùng
+                      - text: EMP009
+                  - generic [ref=f1e380]: Ngày nghỉ
+                - generic [ref=f1e383]:
+                  - generic [ref=f1e384]: IT
+                  - generic [ref=f1e390]: Department Head of IT
+                  - generic [ref=f1e395]: dovanhung@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e400] [cursor=pointer]:
+                - /url: /employees/cb0bf52b-924d-4a02-bcde-af3cb2a371ff
+            - generic [ref=f1e405]:
+              - generic [ref=f1e406]:
+                - generic [ref=f1e407]:
+                  - generic [ref=f1e408]:
+                    - generic [ref=f1e409]: "N"
+                    - generic [ref=f1e410]:
+                      - generic [ref=f1e411]: Nguyễn Văn A
+                      - text: EMP021
+                  - generic [ref=f1e413]: Ngày nghỉ
+                - generic [ref=f1e416]:
+                  - generic [ref=f1e417]: Sales
+                  - generic [ref=f1e423]: Sales Executive
+                  - generic [ref=f1e428]: sales.employee@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e433] [cursor=pointer]:
+                - /url: /employees/d1f7cf77-4784-4b35-8d12-f2833e3bb066
+            - generic [ref=f1e438]:
+              - generic [ref=f1e439]:
+                - generic [ref=f1e440]:
+                  - generic [ref=f1e441]:
+                    - generic [ref=f1e442]: T
+                    - generic [ref=f1e443]:
+                      - generic [ref=f1e444]: Trần Thị B
+                      - text: EMP022
+                  - generic [ref=f1e446]: Ngày nghỉ
+                - generic [ref=f1e449]:
+                  - generic [ref=f1e450]: Marketing & Communication
+                  - generic [ref=f1e456]: Marketing Specialist
+                  - generic [ref=f1e461]: marketing.employee@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e466] [cursor=pointer]:
+                - /url: /employees/951f937f-2724-4cf5-9b4f-7528f736d782
+            - generic [ref=f1e471]:
+              - generic [ref=f1e472]:
+                - generic [ref=f1e473]:
+                  - generic [ref=f1e474]:
+                    - generic [ref=f1e475]: L
+                    - generic [ref=f1e476]:
+                      - generic [ref=f1e477]: Lê Văn C
+                      - text: EMP023
+                  - generic [ref=f1e479]: Ngày nghỉ
+                - generic [ref=f1e482]:
+                  - generic [ref=f1e483]: Human Resources
+                  - generic [ref=f1e489]: HR Generalist
+                  - generic [ref=f1e494]: hr.employee@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e499] [cursor=pointer]:
+                - /url: /employees/35337165-e0d0-4dd1-9c67-cc48180363af
+            - generic [ref=f1e504]:
+              - generic [ref=f1e505]:
+                - generic [ref=f1e506]:
+                  - generic [ref=f1e507]:
+                    - generic [ref=f1e508]: P
+                    - generic [ref=f1e509]:
+                      - generic [ref=f1e510]: Phạm Thị D
+                      - text: EMP024
+                  - generic [ref=f1e512]: Ngày nghỉ
+                - generic [ref=f1e515]:
+                  - generic [ref=f1e516]: Finance & Accounting
+                  - generic [ref=f1e522]: Accountant
+                  - generic [ref=f1e527]: finance.employee@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e532] [cursor=pointer]:
+                - /url: /employees/1eb771f5-9d51-40fb-85ef-81b0ba2c2bcd
+            - generic [ref=f1e537]:
+              - generic [ref=f1e538]:
+                - generic [ref=f1e539]:
+                  - generic [ref=f1e540]:
+                    - generic [ref=f1e541]: H
+                    - generic [ref=f1e542]:
+                      - generic [ref=f1e543]: Hoàng Văn E
+                      - text: EMP025
+                  - generic [ref=f1e545]: Ngày nghỉ
+                - generic [ref=f1e548]:
+                  - generic [ref=f1e549]: Customer Support
+                  - generic [ref=f1e555]: Customer Support Representative
+                  - generic [ref=f1e560]: support.employee@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e565] [cursor=pointer]:
+                - /url: /employees/9fbc67a0-b671-479c-9b46-3076df068741
+            - generic [ref=f1e570]:
+              - generic [ref=f1e571]:
+                - generic [ref=f1e572]:
+                  - generic [ref=f1e573]:
+                    - generic [ref=f1e574]: Đ
+                    - generic [ref=f1e575]:
+                      - generic [ref=f1e576]: Đỗ Thị F
+                      - text: EMP026
+                  - generic [ref=f1e578]: Ngày nghỉ
+                - generic [ref=f1e581]:
+                  - generic [ref=f1e582]: IT
+                  - generic [ref=f1e588]: Software Engineer
+                  - generic [ref=f1e593]: it.employee@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e598] [cursor=pointer]:
+                - /url: /employees/cf26d867-49f1-4c12-b35b-c79bfb2884fc
+            - generic [ref=f1e603]:
+              - generic [ref=f1e604]:
+                - generic [ref=f1e605]:
+                  - generic [ref=f1e606]:
+                    - img "Nguyễn Văn Admin" [ref=f1e607]
+                    - generic [ref=f1e608]:
+                      - generic [ref=f1e609]: Nguyễn Văn Admin
+                      - text: EMP027
+                  - generic [ref=f1e611]: Ngày nghỉ
+                - generic [ref=f1e614]:
+                  - generic [ref=f1e615]: IT
+                  - generic [ref=f1e621]: System Administrator
+                  - generic [ref=f1e626]: sysadmin@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e631] [cursor=pointer]:
+                - /url: /employees/a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d
+            - generic [ref=f1e636]:
+              - generic [ref=f1e637]:
+                - generic [ref=f1e638]:
+                  - generic [ref=f1e639]:
+                    - img "Super Admin" [ref=f1e640]
+                    - generic [ref=f1e641]:
+                      - generic [ref=f1e642]: Super Admin
+                      - text: EMP028
+                  - generic [ref=f1e644]: Ngày nghỉ
+                - generic [ref=f1e647]:
+                  - generic [ref=f1e648]: IT
+                  - generic [ref=f1e654]: SUPER_ADMIN
+                  - generic [ref=f1e659]: superadmin@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e664] [cursor=pointer]:
+                - /url: /employees/a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c99
+            - generic [ref=f1e669]:
+              - generic [ref=f1e670]:
+                - generic [ref=f1e671]:
+                  - generic [ref=f1e672]:
+                    - img "Phạm Bá Hương" [ref=f1e673]
+                    - generic [ref=f1e674]:
+                      - generic [ref=f1e675]: Phạm Bá Hương
+                      - text: EMP029
+                  - generic [ref=f1e677]: Ngày nghỉ
+                - generic [ref=f1e680]:
+                  - generic [ref=f1e681]: Customer Support
+                  - generic [ref=f1e687]: Technical Support Engineer
+                  - generic [ref=f1e692]: huongbapham29@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e697] [cursor=pointer]:
+                - /url: /employees/66c5fb87-947c-474e-a44d-4c888c46ed4d
+            - generic [ref=f1e702]:
+              - generic [ref=f1e703]:
+                - generic [ref=f1e704]:
+                  - generic [ref=f1e705]:
+                    - img "Vũ Minh Dung" [ref=f1e706]
+                    - generic [ref=f1e707]:
+                      - generic [ref=f1e708]: Vũ Minh Dung
+                      - text: EMP030
+                  - generic [ref=f1e710]: Ngày nghỉ
+                - generic [ref=f1e713]:
+                  - generic [ref=f1e714]: Human Resources
+                  - generic [ref=f1e720]: HR Manager
+                  - generic [ref=f1e725]: dungminhvu30@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e730] [cursor=pointer]:
+                - /url: /employees/991e256c-ad84-4316-94be-5e621647ea67
+            - generic [ref=f1e735]:
+              - generic [ref=f1e736]:
+                - generic [ref=f1e737]:
+                  - generic [ref=f1e738]:
+                    - img "Hồ Thanh Vinh" [ref=f1e739]
+                    - generic [ref=f1e740]:
+                      - generic [ref=f1e741]: Hồ Thanh Vinh
+                      - text: EMP031
+                  - generic [ref=f1e743]: Ngày nghỉ
+                - generic [ref=f1e746]:
+                  - generic [ref=f1e747]: Finance & Accounting
+                  - generic [ref=f1e753]: Finance Manager
+                  - generic [ref=f1e758]: vinhthanhho31@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e763] [cursor=pointer]:
+                - /url: /employees/05bb10ab-788c-4d3b-ba0e-1bf8e1d78e5e
+            - generic [ref=f1e768]:
+              - generic [ref=f1e769]:
+                - generic [ref=f1e770]:
+                  - generic [ref=f1e771]:
+                    - img "Đặng Thanh Khải" [ref=f1e772]
+                    - generic [ref=f1e773]:
+                      - generic [ref=f1e774]: Đặng Thanh Khải
+                      - text: EMP032
+                  - generic [ref=f1e776]: Ngày nghỉ
+                - generic [ref=f1e779]:
+                  - generic [ref=f1e780]: IT
+                  - generic [ref=f1e786]: IT Support Specialist
+                  - generic [ref=f1e791]: khaithanhang32@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e796] [cursor=pointer]:
+                - /url: /employees/d47d452a-3459-4e3f-84f5-e9df27f9125b
+            - generic [ref=f1e801]:
+              - generic [ref=f1e802]:
+                - generic [ref=f1e803]:
+                  - generic [ref=f1e804]:
+                    - img "Phạm Khắc Tài" [ref=f1e805]
+                    - generic [ref=f1e806]:
+                      - generic [ref=f1e807]: Phạm Khắc Tài
+                      - text: EMP033
+                  - generic [ref=f1e809]: Ngày nghỉ
+                - generic [ref=f1e812]:
+                  - generic [ref=f1e813]: Finance & Accounting
+                  - generic [ref=f1e819]: Accountant
+                  - generic [ref=f1e824]: taikhacpham33@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e829] [cursor=pointer]:
+                - /url: /employees/dfaf3369-b71f-42bf-b3b9-84914d13b2ad
+            - generic [ref=f1e834]:
+              - generic [ref=f1e835]:
+                - generic [ref=f1e836]:
+                  - generic [ref=f1e837]:
+                    - img "Hoàng Hữu Yến" [ref=f1e838]
+                    - generic [ref=f1e839]:
+                      - generic [ref=f1e840]: Hoàng Hữu Yến
+                      - text: EMP034
+                  - generic [ref=f1e842]: Ngày nghỉ
+                - generic [ref=f1e845]:
+                  - generic [ref=f1e846]: Customer Support
+                  - generic [ref=f1e852]: Senior Support Specialist
+                  - generic [ref=f1e857]: yenhuuhoang34@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e862] [cursor=pointer]:
+                - /url: /employees/bb0b9ec9-c67e-4bc7-b3b5-672a9cbf95a4
+            - generic [ref=f1e867]:
+              - generic [ref=f1e868]:
+                - generic [ref=f1e869]:
+                  - generic [ref=f1e870]:
+                    - img "Huỳnh Thanh Hiếu" [ref=f1e871]
+                    - generic [ref=f1e872]:
+                      - generic [ref=f1e873]: Huỳnh Thanh Hiếu
+                      - text: EMP035
+                  - generic [ref=f1e875]: Ngày nghỉ
+                - generic [ref=f1e878]:
+                  - generic [ref=f1e879]: Customer Support
+                  - generic [ref=f1e885]: Senior Support Specialist
+                  - generic [ref=f1e890]: hieuthanhhuynh35@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e895] [cursor=pointer]:
+                - /url: /employees/f5466dc1-4fbf-4479-9f29-fad518350d2c
+            - generic [ref=f1e900]:
+              - generic [ref=f1e901]:
+                - generic [ref=f1e902]:
+                  - generic [ref=f1e903]:
+                    - img "Ngô Văn Nhi" [ref=f1e904]
+                    - generic [ref=f1e905]:
+                      - generic [ref=f1e906]: Ngô Văn Nhi
+                      - text: EMP036
+                  - generic [ref=f1e908]: Ngày nghỉ
+                - generic [ref=f1e911]:
+                  - generic [ref=f1e912]: Marketing & Communication
+                  - generic [ref=f1e918]: Content Creator
+                  - generic [ref=f1e923]: nhivanngo36@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e928] [cursor=pointer]:
+                - /url: /employees/485276c7-9753-4bc7-8600-b9d5a090f722
+            - generic [ref=f1e933]:
+              - generic [ref=f1e934]:
+                - generic [ref=f1e935]:
+                  - generic [ref=f1e936]:
+                    - img "Hoàng Bá Việt" [ref=f1e937]
+                    - generic [ref=f1e938]:
+                      - generic [ref=f1e939]: Hoàng Bá Việt
+                      - text: EMP037
+                  - generic [ref=f1e941]: Ngày nghỉ
+                - generic [ref=f1e944]:
+                  - generic [ref=f1e945]: IT
+                  - generic [ref=f1e951]: Software Engineer
+                  - generic [ref=f1e956]: vietbahoang37@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e961] [cursor=pointer]:
+                - /url: /employees/862a13ab-64b6-4c72-ad7e-8c8e2aa14727
+            - generic [ref=f1e966]:
+              - generic [ref=f1e967]:
+                - generic [ref=f1e968]:
+                  - generic [ref=f1e969]:
+                    - img "Vũ Gia An" [ref=f1e970]
+                    - generic [ref=f1e971]:
+                      - generic [ref=f1e972]: Vũ Gia An
+                      - text: EMP038
+                  - generic [ref=f1e974]: Ngày nghỉ
+                - generic [ref=f1e977]:
+                  - generic [ref=f1e978]: Finance & Accounting
+                  - generic [ref=f1e984]: Payroll Specialist
+                  - generic [ref=f1e989]: angiavu38@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e994] [cursor=pointer]:
+                - /url: /employees/b6198d72-3126-4572-b80a-e2d22487e016
+            - generic [ref=f1e999]:
+              - generic [ref=f1e1000]:
+                - generic [ref=f1e1001]:
+                  - generic [ref=f1e1002]:
+                    - img "Lê Ngọc Thảo" [ref=f1e1003]
+                    - generic [ref=f1e1004]:
+                      - generic [ref=f1e1005]: Lê Ngọc Thảo
+                      - text: EMP039
+                  - generic [ref=f1e1007]: Ngày nghỉ
+                - generic [ref=f1e1010]:
+                  - generic [ref=f1e1011]: Customer Support
+                  - generic [ref=f1e1017]: Senior Support Specialist
+                  - generic [ref=f1e1022]: thaongocle39@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1027] [cursor=pointer]:
+                - /url: /employees/044dc7b0-c558-4a12-b356-3d2e787defc2
+            - generic [ref=f1e1032]:
+              - generic [ref=f1e1033]:
+                - generic [ref=f1e1034]:
+                  - generic [ref=f1e1035]:
+                    - img "Võ Văn Thu" [ref=f1e1036]
+                    - generic [ref=f1e1037]:
+                      - generic [ref=f1e1038]: Võ Văn Thu
+                      - text: EMP040
+                  - generic [ref=f1e1040]: Ngày nghỉ
+                - generic [ref=f1e1043]:
+                  - generic [ref=f1e1044]: Finance & Accounting
+                  - generic [ref=f1e1050]: Accountant
+                  - generic [ref=f1e1055]: thuvanvo40@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1060] [cursor=pointer]:
+                - /url: /employees/e41fe5c6-0925-4835-a9c7-51909f675ed3
+            - generic [ref=f1e1065]:
+              - generic [ref=f1e1066]:
+                - generic [ref=f1e1067]:
+                  - generic [ref=f1e1068]:
+                    - img "Bùi Thanh Minh" [ref=f1e1069]
+                    - generic [ref=f1e1070]:
+                      - generic [ref=f1e1071]: Bùi Thanh Minh
+                      - text: EMP041
+                  - generic [ref=f1e1073]: Ngày nghỉ
+                - generic [ref=f1e1076]:
+                  - generic [ref=f1e1077]: Sales
+                  - generic [ref=f1e1083]: Account Manager
+                  - generic [ref=f1e1088]: minhthanhbui41@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1093] [cursor=pointer]:
+                - /url: /employees/1c889b46-f0fa-4648-bbe0-c1ae3941afbc
+            - generic [ref=f1e1098]:
+              - generic [ref=f1e1099]:
+                - generic [ref=f1e1100]:
+                  - generic [ref=f1e1101]:
+                    - img "Hoàng Văn Thu" [ref=f1e1102]
+                    - generic [ref=f1e1103]:
+                      - generic [ref=f1e1104]: Hoàng Văn Thu
+                      - text: EMP042
+                  - generic [ref=f1e1106]: Ngày nghỉ
+                - generic [ref=f1e1109]:
+                  - generic [ref=f1e1110]: Finance & Accounting
+                  - generic [ref=f1e1116]: Financial Analyst
+                  - generic [ref=f1e1121]: thuvanhoang42@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1126] [cursor=pointer]:
+                - /url: /employees/4193c03d-d27b-44e4-96ad-663fff2da8f9
+            - generic [ref=f1e1131]:
+              - generic [ref=f1e1132]:
+                - generic [ref=f1e1133]:
+                  - generic [ref=f1e1134]:
+                    - img "Phan Thị Hiếu" [ref=f1e1135]
+                    - generic [ref=f1e1136]:
+                      - generic [ref=f1e1137]: Phan Thị Hiếu
+                      - text: EMP043
+                  - generic [ref=f1e1139]: Ngày nghỉ
+                - generic [ref=f1e1142]:
+                  - generic [ref=f1e1143]: Customer Support
+                  - generic [ref=f1e1149]: Customer Support Lead
+                  - generic [ref=f1e1154]: hieuthiphan43@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1159] [cursor=pointer]:
+                - /url: /employees/3fec6488-e827-4533-938e-5d70f61cbeb0
+            - generic [ref=f1e1164]:
+              - generic [ref=f1e1165]:
+                - generic [ref=f1e1166]:
+                  - generic [ref=f1e1167]:
+                    - img "Vũ Khắc Khoa" [ref=f1e1168]
+                    - generic [ref=f1e1169]:
+                      - generic [ref=f1e1170]: Vũ Khắc Khoa
+                      - text: EMP044
+                  - generic [ref=f1e1172]: Ngày nghỉ
+                - generic [ref=f1e1175]:
+                  - generic [ref=f1e1176]: Marketing & Communication
+                  - generic [ref=f1e1182]: Content Creator
+                  - generic [ref=f1e1187]: khoakhacvu44@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1192] [cursor=pointer]:
+                - /url: /employees/a44a9a3c-98d0-417c-977a-719b07539f23
+            - generic [ref=f1e1197]:
+              - generic [ref=f1e1198]:
+                - generic [ref=f1e1199]:
+                  - generic [ref=f1e1200]:
+                    - img "Bùi Thanh Hà" [ref=f1e1201]
+                    - generic [ref=f1e1202]:
+                      - generic [ref=f1e1203]: Bùi Thanh Hà
+                      - text: EMP045
+                  - generic [ref=f1e1205]: Ngày nghỉ
+                - generic [ref=f1e1208]:
+                  - generic [ref=f1e1209]: Customer Support
+                  - generic [ref=f1e1215]: Customer Support Representative
+                  - generic [ref=f1e1220]: hathanhbui45@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1225] [cursor=pointer]:
+                - /url: /employees/66317538-d36f-45b6-905a-2ea623af86b6
+            - generic [ref=f1e1230]:
+              - generic [ref=f1e1231]:
+                - generic [ref=f1e1232]:
+                  - generic [ref=f1e1233]:
+                    - img "Hoàng Hữu Cường" [ref=f1e1234]
+                    - generic [ref=f1e1235]:
+                      - generic [ref=f1e1236]: Hoàng Hữu Cường
+                      - text: EMP046
+                  - generic [ref=f1e1238]: Ngày nghỉ
+                - generic [ref=f1e1241]:
+                  - generic [ref=f1e1242]: IT
+                  - generic [ref=f1e1248]: Tech Lead
+                  - generic [ref=f1e1253]: cuonghuuhoang46@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1258] [cursor=pointer]:
+                - /url: /employees/a2e3fd3a-72df-4fcb-9582-c097a0de5fde
+            - generic [ref=f1e1263]:
+              - generic [ref=f1e1264]:
+                - generic [ref=f1e1265]:
+                  - generic [ref=f1e1266]:
+                    - img "Hoàng Minh Long" [ref=f1e1267]
+                    - generic [ref=f1e1268]:
+                      - generic [ref=f1e1269]: Hoàng Minh Long
+                      - text: EMP047
+                  - generic [ref=f1e1271]: Ngày nghỉ
+                - generic [ref=f1e1274]:
+                  - generic [ref=f1e1275]: Marketing & Communication
+                  - generic [ref=f1e1281]: Marketing Specialist
+                  - generic [ref=f1e1286]: longminhhoang47@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1291] [cursor=pointer]:
+                - /url: /employees/afb238fe-d5d7-4f89-ae0c-699ddc197634
+            - generic [ref=f1e1296]:
+              - generic [ref=f1e1297]:
+                - generic [ref=f1e1298]:
+                  - generic [ref=f1e1299]:
+                    - img "Hoàng Thanh Tuấn" [ref=f1e1300]
+                    - generic [ref=f1e1301]:
+                      - generic [ref=f1e1302]: Hoàng Thanh Tuấn
+                      - text: EMP048
+                  - generic [ref=f1e1304]: Ngày nghỉ
+                - generic [ref=f1e1307]:
+                  - generic [ref=f1e1308]: IT
+                  - generic [ref=f1e1314]: Tech Lead
+                  - generic [ref=f1e1319]: tuanthanhhoang48@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1324] [cursor=pointer]:
+                - /url: /employees/8a3277e1-b0f7-41be-aab2-e20622a8a655
+            - generic [ref=f1e1329]:
+              - generic [ref=f1e1330]:
+                - generic [ref=f1e1331]:
+                  - generic [ref=f1e1332]:
+                    - img "Huỳnh Thị Khánh" [ref=f1e1333]
+                    - generic [ref=f1e1334]:
+                      - generic [ref=f1e1335]: Huỳnh Thị Khánh
+                      - text: EMP049
+                  - generic [ref=f1e1337]: Ngày nghỉ
+                - generic [ref=f1e1340]:
+                  - generic [ref=f1e1341]: Customer Support
+                  - generic [ref=f1e1347]: Customer Support Lead
+                  - generic [ref=f1e1352]: khanhthihuynh49@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1357] [cursor=pointer]:
+                - /url: /employees/fb72591c-ae8e-45dd-9669-aeb29a2ea3f1
+            - generic [ref=f1e1362]:
+              - generic [ref=f1e1363]:
+                - generic [ref=f1e1364]:
+                  - generic [ref=f1e1365]:
+                    - img "Đỗ Thanh Phương" [ref=f1e1366]
+                    - generic [ref=f1e1367]:
+                      - generic [ref=f1e1368]: Đỗ Thanh Phương
+                      - text: EMP050
+                  - generic [ref=f1e1370]: Ngày nghỉ
+                - generic [ref=f1e1373]:
+                  - generic [ref=f1e1374]: Customer Support
+                  - generic [ref=f1e1380]: Customer Support Representative
+                  - generic [ref=f1e1385]: phuongthanho50@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1390] [cursor=pointer]:
+                - /url: /employees/3d3d882e-86a7-41c4-b8b3-54c68a492751
+            - generic [ref=f1e1395]:
+              - generic [ref=f1e1396]:
+                - generic [ref=f1e1397]:
+                  - generic [ref=f1e1398]:
+                    - img "Đặng Khắc Hằng" [ref=f1e1399]
+                    - generic [ref=f1e1400]:
+                      - generic [ref=f1e1401]: Đặng Khắc Hằng
+                      - text: EMP051
+                  - generic [ref=f1e1403]: Ngày nghỉ
+                - generic [ref=f1e1406]:
+                  - generic [ref=f1e1407]: Sales
+                  - generic [ref=f1e1413]: Sales Executive
+                  - generic [ref=f1e1418]: hangkhacang51@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1423] [cursor=pointer]:
+                - /url: /employees/8446e234-fbbc-4538-a941-b9458aea7d53
+            - generic [ref=f1e1428]:
+              - generic [ref=f1e1429]:
+                - generic [ref=f1e1430]:
+                  - generic [ref=f1e1431]:
+                    - img "Vũ Đức Bình" [ref=f1e1432]
+                    - generic [ref=f1e1433]:
+                      - generic [ref=f1e1434]: Vũ Đức Bình
+                      - text: EMP052
+                  - generic [ref=f1e1436]: Ngày nghỉ
+                - generic [ref=f1e1439]:
+                  - generic [ref=f1e1440]: Customer Support
+                  - generic [ref=f1e1446]: Customer Support Lead
+                  - generic [ref=f1e1451]: binhucvu52@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1456] [cursor=pointer]:
+                - /url: /employees/1436d256-2620-45e4-beea-e6c3de5e41d7
+            - generic [ref=f1e1461]:
+              - generic [ref=f1e1462]:
+                - generic [ref=f1e1463]:
+                  - generic [ref=f1e1464]:
+                    - img "Nguyễn Thị Hùng" [ref=f1e1465]
+                    - generic [ref=f1e1466]:
+                      - generic [ref=f1e1467]: Nguyễn Thị Hùng
+                      - text: EMP053
+                  - generic [ref=f1e1469]: Ngày nghỉ
+                - generic [ref=f1e1472]:
+                  - generic [ref=f1e1473]: Sales
+                  - generic [ref=f1e1479]: Business Development Specialist
+                  - generic [ref=f1e1484]: hungthinguyen53@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1489] [cursor=pointer]:
+                - /url: /employees/b82ffb40-e63d-4f17-9fa9-b41ff672fb3e
+            - generic [ref=f1e1494]:
+              - generic [ref=f1e1495]:
+                - generic [ref=f1e1496]:
+                  - generic [ref=f1e1497]:
+                    - img "Đặng Hữu An" [ref=f1e1498]
+                    - generic [ref=f1e1499]:
+                      - generic [ref=f1e1500]: Đặng Hữu An
+                      - text: EMP054
+                  - generic [ref=f1e1502]: Ngày nghỉ
+                - generic [ref=f1e1505]:
+                  - generic [ref=f1e1506]: IT
+                  - generic [ref=f1e1512]: Tech Lead
+                  - generic [ref=f1e1517]: anhuuang54@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1522] [cursor=pointer]:
+                - /url: /employees/fe65597e-e879-4925-aabc-78c29e49206c
+            - generic [ref=f1e1527]:
+              - generic [ref=f1e1528]:
+                - generic [ref=f1e1529]:
+                  - generic [ref=f1e1530]:
+                    - img "Ngô Đức Hằng" [ref=f1e1531]
+                    - generic [ref=f1e1532]:
+                      - generic [ref=f1e1533]: Ngô Đức Hằng
+                      - text: EMP055
+                  - generic [ref=f1e1535]: Ngày nghỉ
+                - generic [ref=f1e1538]:
+                  - generic [ref=f1e1539]: Marketing & Communication
+                  - generic [ref=f1e1545]: SEO/SEM Specialist
+                  - generic [ref=f1e1550]: hangucngo55@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1555] [cursor=pointer]:
+                - /url: /employees/d02c2e04-26fe-49d6-89e2-7f5e72fc2cd3
+            - generic [ref=f1e1560]:
+              - generic [ref=f1e1561]:
+                - generic [ref=f1e1562]:
+                  - generic [ref=f1e1563]:
+                    - img "Lê Văn Việt" [ref=f1e1564]
+                    - generic [ref=f1e1565]:
+                      - generic [ref=f1e1566]: Lê Văn Việt
+                      - text: EMP056
+                  - generic [ref=f1e1568]: Ngày nghỉ
+                - generic [ref=f1e1571]:
+                  - generic [ref=f1e1572]: Customer Support
+                  - generic [ref=f1e1578]: Senior Support Specialist
+                  - generic [ref=f1e1583]: vietvanle56@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1588] [cursor=pointer]:
+                - /url: /employees/9f1d677b-a057-40cb-be92-cc042ebd85f9
+            - generic [ref=f1e1593]:
+              - generic [ref=f1e1594]:
+                - generic [ref=f1e1595]:
+                  - generic [ref=f1e1596]:
+                    - img "Phạm Văn Uyên" [ref=f1e1597]
+                    - generic [ref=f1e1598]:
+                      - generic [ref=f1e1599]: Phạm Văn Uyên
+                      - text: EMP057
+                  - generic [ref=f1e1601]: Ngày nghỉ
+                - generic [ref=f1e1604]:
+                  - generic [ref=f1e1605]: Finance & Accounting
+                  - generic [ref=f1e1611]: Financial Analyst
+                  - generic [ref=f1e1616]: uyenvanpham57@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1621] [cursor=pointer]:
+                - /url: /employees/6c10e96c-f090-42d1-a50e-e47e89088e3f
+            - generic [ref=f1e1626]:
+              - generic [ref=f1e1627]:
+                - generic [ref=f1e1628]:
+                  - generic [ref=f1e1629]:
+                    - img "Phan Hữu Thảo" [ref=f1e1630]
+                    - generic [ref=f1e1631]:
+                      - generic [ref=f1e1632]: Phan Hữu Thảo
+                      - text: EMP058
+                  - generic [ref=f1e1634]: Ngày nghỉ
+                - generic [ref=f1e1637]:
+                  - generic [ref=f1e1638]: IT
+                  - generic [ref=f1e1644]: Senior Developer
+                  - generic [ref=f1e1649]: thaohuuphan58@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1654] [cursor=pointer]:
+                - /url: /employees/a423d8c7-080f-43c0-b931-11810b951c16
+            - generic [ref=f1e1659]:
+              - generic [ref=f1e1660]:
+                - generic [ref=f1e1661]:
+                  - generic [ref=f1e1662]:
+                    - img "Hoàng Hữu Thảo" [ref=f1e1663]
+                    - generic [ref=f1e1664]:
+                      - generic [ref=f1e1665]: Hoàng Hữu Thảo
+                      - text: EMP059
+                  - generic [ref=f1e1667]: Ngày nghỉ
+                - generic [ref=f1e1670]:
+                  - generic [ref=f1e1671]: Human Resources
+                  - generic [ref=f1e1677]: Talent Acquisition Specialist
+                  - generic [ref=f1e1682]: thaohuuhoang59@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1687] [cursor=pointer]:
+                - /url: /employees/210770f0-7984-4d45-8138-23950ed75e09
+            - generic [ref=f1e1692]:
+              - generic [ref=f1e1693]:
+                - generic [ref=f1e1694]:
+                  - generic [ref=f1e1695]:
+                    - img "Phan Minh Thắng" [ref=f1e1696]
+                    - generic [ref=f1e1697]:
+                      - generic [ref=f1e1698]: Phan Minh Thắng
+                      - text: EMP060
+                  - generic [ref=f1e1700]: Ngày nghỉ
+                - generic [ref=f1e1703]:
+                  - generic [ref=f1e1704]: Sales
+                  - generic [ref=f1e1710]: Account Manager
+                  - generic [ref=f1e1715]: thangminhphan60@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1720] [cursor=pointer]:
+                - /url: /employees/1dcfff09-3e26-44c9-96b4-9e038e0b94aa
+            - generic [ref=f1e1725]:
+              - generic [ref=f1e1726]:
+                - generic [ref=f1e1727]:
+                  - generic [ref=f1e1728]:
+                    - img "Nguyễn Khắc Trâm" [ref=f1e1729]
+                    - generic [ref=f1e1730]:
+                      - generic [ref=f1e1731]: Nguyễn Khắc Trâm
+                      - text: EMP061
+                  - generic [ref=f1e1733]: Ngày nghỉ
+                - generic [ref=f1e1736]:
+                  - generic [ref=f1e1737]: Customer Support
+                  - generic [ref=f1e1743]: Customer Support Representative
+                  - generic [ref=f1e1748]: tramkhacnguyen61@company.com
+              - link "Xem hồ sơ chi tiết" [ref=f1e1753] [cursor=pointer]:
+                - /url: /employees/e5a65ec5-936b-43ff-be30-96c26232f473
+  - button "Open Next.js Dev Tools" [ref=f1e15] [cursor=pointer]
+  - alert [ref=f1e19]

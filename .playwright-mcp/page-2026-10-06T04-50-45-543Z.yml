@@ -1,0 +1,5 @@
+- generic [active] [ref=f21e1]:
+  - generic [ref=f21e7]:
+    - paragraph [ref=f21e8]: ACT HRM
+    - paragraph [ref=f21e9]: Đang kiểm tra quyền truy cập hệ thống...
+  - button "Open Next.js Dev Tools" [ref=f21e15] [cursor=pointer]

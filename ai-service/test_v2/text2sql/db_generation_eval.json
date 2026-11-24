@@ -1,0 +1,88 @@
+{
+  "test_uid": "d47d452a-3459-4e3f-84f5-e9df27f9125b",
+  "summary": {
+    "n": 5,
+    "n_gold_bad": 0,
+    "sql_ok": 0.0,
+    "rows_match": 0.0,
+    "latency_mean_ms": 0.0,
+    "prompt_tokens_mean": 0.0,
+    "completion_tokens_mean": 0.0,
+    "pass_fail": {
+      "sql_ok": "FAIL",
+      "rows_match": "FAIL"
+    }
+  },
+  "rows": [
+    {
+      "id": "users_01",
+      "question": "Tôi còn bao nhiêu ngày phép năm nay?",
+      "check_type": "single_number",
+      "sql_ok": false,
+      "rows_match": false,
+      "gold_bad": false,
+      "n_expected": 1,
+      "n_actual": -1,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_02",
+      "question": "Tôi đã dùng bao nhiêu ngày phép trên tổng số ngày được cấp?",
+      "check_type": "single_number",
+      "sql_ok": false,
+      "rows_match": false,
+      "gold_bad": false,
+      "n_expected": 1,
+      "n_actual": -1,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_03",
+      "question": "Mã nhân viên và ngày vào làm của tôi là gì?",
+      "check_type": "non_empty",
+      "sql_ok": false,
+      "rows_match": false,
+      "gold_bad": false,
+      "n_expected": 1,
+      "n_actual": -1,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_04",
+      "question": "Tôi vào công ty được bao lâu rồi, thâm niên của tôi là mấy năm mấy tháng?",
+      "check_type": "single_number",
+      "sql_ok": false,
+      "rows_match": false,
+      "gold_bad": false,
+      "n_expected": 1,
+      "n_actual": -1,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_05",
+      "question": "Email công ty, họ tên và mã nhân viên của tôi là gì?",
+      "check_type": "non_empty",
+      "sql_ok": false,
+      "rows_match": false,
+      "gold_bad": false,
+      "n_expected": 1,
+      "n_actual": -1,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    }
+  ]
+}

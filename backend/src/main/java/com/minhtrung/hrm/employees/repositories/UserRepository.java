@@ -111,9 +111,9 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query("""
         SELECT u FROM User u
         WHERE (:department IS NULL OR :department = '' OR u.department.name = :department)
-          AND (:keyword IS NULL OR :keyword = '' OR 
-               LOWER(u.employeeCode) LIKE LOWER(CONCAT('%', :keyword, '%')) OR 
-               LOWER(CONCAT(u.firstName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR 
+          AND (:keyword IS NULL OR :keyword = '' OR
+               LOWER(u.employeeCode) LIKE LOWER(CONCAT('%', :keyword, '%')) OR
+               LOWER(CONCAT(u.firstName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR
                LOWER(u.email) LIKE LOWER(CONCAT('%', :keyword, '%')))
         ORDER BY u.department.name ASC, u.employeeCode ASC
     """)
@@ -121,4 +121,20 @@ public interface UserRepository extends JpaRepository<User, UUID> {
         @Param("department") String department,
         @Param("keyword") String keyword
     );
+
+    @Query("""
+        SELECT u FROM User u
+        WHERE u.department.name = :department
+          AND u.job.title LIKE :jobTitlePrefix
+    """)
+    List<User> findByDepartmentNameAndJobTitleStartsWith(
+        @Param("department") String department,
+        @Param("jobTitlePrefix") String jobTitlePrefix
+    );
+
+    @Query("""
+        SELECT u FROM User u
+        WHERE u.department.name = :department
+    """)
+    List<User> findByDepartmentName(@Param("department") String department);
 }

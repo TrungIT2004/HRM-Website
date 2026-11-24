@@ -1,0 +1,23 @@
+{
+  "question_id": "work_shift_schedules_08",
+  "original_query": "Những ngày nào trong tuần tôi được nghỉ?",
+  "rewritten_query": "Những ngày nào trong tuần tôi được nghỉ?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": false,
+  "execution_time_ms": 274.44,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:16:29.779116",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

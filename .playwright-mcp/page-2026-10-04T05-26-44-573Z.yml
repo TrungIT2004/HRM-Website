@@ -1,0 +1,102 @@
+- generic [ref=f12e1]:
+  - generic [ref=f12e2]:
+    - generic [ref=f12e3]:
+      - link "ACT ACT HRM Enterprise Platform" [ref=f12e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f12e6]: ACT
+        - generic [ref=f12e7]:
+          - generic [ref=f12e8]: ACT HRM
+          - text: Enterprise Platform
+      - generic [ref=f12e9]:
+        - generic [ref=f12e10]: Thế hệ quản trị nhân sự số 4.0
+        - heading "Quản trị nhân lực, chấm công sinh trắc học và trợ lý AI thông minh" [level=1] [ref=f12e15]
+        - paragraph [ref=f12e16]: Hệ thống tích hợp toàn diện từ chấm công nhận diện khuôn mặt Edge AI, quản lý hợp đồng, tự động hóa tính lương đến tra cứu quy chế nội bộ qua trợ lý ảo RAG.
+        - generic [ref=f12e17]:
+          - generic [ref=f12e18]: Chấm công khuôn mặt AI với OpenCV & YuNet
+          - generic [ref=f12e27]: Trợ lý RAG AI giải đáp chính sách theo phòng ban & chức danh
+          - generic [ref=f12e33]: Bảo mật phân quyền đa cấp RBAC theo tiêu chuẩn Doanh nghiệp
+      - generic [ref=f12e39]:
+        - generic [ref=f12e40]: © 2026 ACT Corporation
+        - generic [ref=f12e41]: v2.4-enterprise
+    - generic [ref=f12e42]:
+      - generic [ref=f12e43]:
+        - generic [ref=f12e44]:
+          - heading "Đăng nhập hệ thống" [level=2] [ref=f12e45]
+          - paragraph [ref=f12e46]: Vui lòng nhập tài khoản công ty để truy cập bảng điều khiển và dịch vụ nhân sự.
+        - generic [ref=f12e47]:
+          - generic [ref=f12e48]:
+            - generic [ref=f12e49]: Email doanh nghiệp
+            - textbox "ten.nhanvien@company.com" [ref=f12e51]: it.employee@company.com
+          - generic [ref=f12e52]:
+            - generic [ref=f12e53]:
+              - generic [ref=f12e54]: Mật khẩu
+              - generic [ref=f12e55]:
+                - text: "Mặc định:"
+                - strong [ref=f12e56]: test@123
+            - generic [ref=f12e57]:
+              - textbox "••••••••" [ref=f12e58]: test@123
+              - button [ref=f12e59] [cursor=pointer]
+          - button "Đăng nhập vào hệ thống" [ref=f12e63] [cursor=pointer]
+        - generic [ref=f12e67]:
+          - generic [ref=f12e68]:
+            - generic [ref=f12e69]: "Tài khoản kiểm thử nhanh theo phân quyền:"
+            - generic [ref=f12e74]: Click để chọn
+          - generic [ref=f12e75]:
+            - button "Super Admin ⚡ SUPER ADMIN Quản trị viên Tối cao (IT) superadmin@company.com" [ref=f12e76] [cursor=pointer]:
+              - generic [ref=f12e77]:
+                - generic [ref=f12e78]: Super Admin
+                - generic [ref=f12e79]: ⚡ SUPER ADMIN
+              - generic [ref=f12e80]: Quản trị viên Tối cao (IT)
+              - generic [ref=f12e81]: superadmin@company.com
+            - button "Nguyễn Minh Đức 🔴 EXECUTIVE Chủ tịch (Ban Giám Đốc) nguyenminhduc@company.com" [ref=f12e82] [cursor=pointer]:
+              - generic [ref=f12e83]:
+                - generic [ref=f12e84]: Nguyễn Minh Đức
+                - generic [ref=f12e85]: 🔴 EXECUTIVE
+              - generic [ref=f12e86]: Chủ tịch (Ban Giám Đốc)
+              - generic [ref=f12e87]: nguyenminhduc@company.com
+            - button "Phạm Thị Cúc 🟠 HR HEAD Trưởng phòng Nhân sự phamthicuc@company.com" [ref=f12e88] [cursor=pointer]:
+              - generic [ref=f12e89]:
+                - generic [ref=f12e90]: Phạm Thị Cúc
+                - generic [ref=f12e91]: 🟠 HR HEAD
+              - generic [ref=f12e92]: Trưởng phòng Nhân sự
+              - generic [ref=f12e93]: phamthicuc@company.com
+            - button "Nguyễn Văn Admin 🛡️ ADMIN Quản trị viên Hệ thống (IT) sysadmin@company.com" [ref=f12e94] [cursor=pointer]:
+              - generic [ref=f12e95]:
+                - generic [ref=f12e96]: Nguyễn Văn Admin
+                - generic [ref=f12e97]: 🛡️ ADMIN
+              - generic [ref=f12e98]: Quản trị viên Hệ thống (IT)
+              - generic [ref=f12e99]: sysadmin@company.com
+            - button "Đỗ Văn Hùng 🔵 MANAGER Trưởng phòng IT dovanhung@company.com" [ref=f12e100] [cursor=pointer]:
+              - generic [ref=f12e101]:
+                - generic [ref=f12e102]: Đỗ Văn Hùng
+                - generic [ref=f12e103]: 🔵 MANAGER
+              - generic [ref=f12e104]: Trưởng phòng IT
+              - generic [ref=f12e105]: dovanhung@company.com
+            - button "Nguyễn Hoàng 🟢 STAFF Kỹ sư phần mềm it.employee@company.com" [active] [ref=f12e106] [cursor=pointer]:
+              - generic [ref=f12e107]:
+                - generic [ref=f12e108]: Nguyễn Hoàng
+                - generic [ref=f12e109]: 🟢 STAFF
+              - generic [ref=f12e110]: Kỹ sư phần mềm
+              - generic [ref=f12e111]: it.employee@company.com
+            - button "Lê Văn C 🟢 HR STAFF Chuyên viên Nhân sự hr.employee@company.com" [ref=f12e112] [cursor=pointer]:
+              - generic [ref=f12e113]:
+                - generic [ref=f12e114]: Lê Văn C
+                - generic [ref=f12e115]: 🟢 HR STAFF
+              - generic [ref=f12e116]: Chuyên viên Nhân sự
+              - generic [ref=f12e117]: hr.employee@company.com
+            - button "Phạm Thị D 🟢 ACCOUNTANT Kế toán viên finance.employee@company.com" [ref=f12e118] [cursor=pointer]:
+              - generic [ref=f12e119]:
+                - generic [ref=f12e120]: Phạm Thị D
+                - generic [ref=f12e121]: 🟢 ACCOUNTANT
+              - generic [ref=f12e122]: Kế toán viên
+              - generic [ref=f12e123]: finance.employee@company.com
+            - button "Nguyễn Văn Dũng 🔵 FINANCE HEAD Trưởng phòng Kế toán nguyenvandung@company.com" [ref=f12e124] [cursor=pointer]:
+              - generic [ref=f12e125]:
+                - generic [ref=f12e126]: Nguyễn Văn Dũng
+                - generic [ref=f12e127]: 🔵 FINANCE HEAD
+              - generic [ref=f12e128]: Trưởng phòng Kế toán
+              - generic [ref=f12e129]: nguyenvandung@company.com
+      - link "← Quay lại Cổng thông tin giới thiệu ACT HRM" [ref=f12e131] [cursor=pointer]:
+        - /url: /
+  - button "Open Next.js Dev Tools" [ref=f12e138] [cursor=pointer]
+  - alert [ref=f12e142]

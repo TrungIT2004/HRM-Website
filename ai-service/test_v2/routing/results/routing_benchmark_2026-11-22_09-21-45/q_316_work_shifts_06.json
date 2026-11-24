@@ -1,0 +1,23 @@
+{
+  "question_id": "work_shifts_06",
+  "original_query": "So sánh giờ bắt đầu ca của tôi với các ca làm khác trong công ty?",
+  "rewritten_query": "So sánh giờ bắt đầu ca của tôi với các ca làm khác trong công ty?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 263.87,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:23:09.005512",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

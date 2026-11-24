@@ -1,0 +1,23 @@
+{
+  "question_id": "monthly_timesheets_06",
+  "original_query": "Quý 1 năm nay tôi nghỉ phép mấy ngày, vắng mặt mấy ngày?",
+  "rewritten_query": "Quý 1 năm nay tôi nghỉ phép mấy ngày, vắng mặt mấy ngày?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 1112.35,
+  "input_token_usage": 2549,
+  "output_token_usage": 36,
+  "total_token_usage": 2585,
+  "llm_calls": 1,
+  "timestamp": "2026-11-22T10:15:04.150701",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

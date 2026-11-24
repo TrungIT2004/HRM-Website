@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_93",
+  "original_query": "Cổ đông lớn có thể đề nghị thay đổi quyết định của Hội đồng Quản trị như thế nào?",
+  "rewritten_query": "Cổ đông lớn có thể đề nghị thay đổi quyết định của Hội đồng Quản trị như thế nào?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 1208.45,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T10:12:48.098000",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

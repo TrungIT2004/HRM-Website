@@ -64,10 +64,10 @@
 			<version>0.11.5</version>
     		<scope>runtime</scope>
 		</dependency>
-	
+
 		<dependency>
     		<groupId>io.jsonwebtoken</groupId>
-    		<artifactId>jjwt-jackson</artifactId>    
+    		<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
     		<scope>runtime</scope>
 		</dependency>
@@ -97,7 +97,27 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<!-- Spring Boot Test (includes WebMvcTest, MockBean, etc.) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Mockito for unit tests -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
 		<!-- Thumbnailator -->
 		<dependency>
     		<groupId>net.coobird</groupId>
@@ -124,12 +144,21 @@
 		</dependency>
 
 		<dependency>
-   			<groupId>org.springdoc</groupId>
-   			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-   			<version>2.8.5</version>
+	   			<groupId>org.springdoc</groupId>
+	   			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+	   			<version>2.8.5</version>
 		</dependency>
 
-		
+		<!-- WebSocket + STOMP for realtime notifications -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+		</dependency>
+
 
 	</dependencies>
 

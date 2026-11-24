@@ -1,0 +1,53 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]:
+    - banner [ref=f5e19]:
+      - generic [ref=f5e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f5e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f5e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f5e28]: ACT
+          - generic [ref=f5e29]: ACT HRM
+      - generic [ref=f5e31]:
+        - generic [ref=f5e32]:
+          - generic [ref=f5e36]: "Hôm nay:"
+          - generic [ref=f5e37]: Ngày nghỉ
+        - button "T Đỗ Thị F Software Engineer" [ref=f5e39] [cursor=pointer]:
+          - generic [ref=f5e40]: T
+          - generic [ref=f5e41]:
+            - generic [ref=f5e42]: Đỗ Thị F
+            - generic [ref=f5e43]: Software Engineer
+    - generic [ref=f5e44]:
+      - complementary [ref=f5e45]:
+        - generic [ref=f5e46]:
+          - generic [ref=f5e47]:
+            - generic [ref=f5e48]: Xử lý IT
+            - link "Hàng chờ xử lý" [ref=f5e51] [cursor=pointer]:
+              - /url: /tickets/manage/queues
+            - link "Tổng quan" [ref=f5e57] [cursor=pointer]:
+              - /url: /tickets/manage/overview
+          - generic [ref=f5e63]: ACT HRM Enterprise v2.4
+      - main [ref=f5e64]:
+        - generic [ref=f5e65]:
+          - heading "Tổng quan tháng 9/2026" [level=1] [ref=f5e88]
+          - generic [ref=f5e70]:
+            - combobox "Tháng" [ref=f5e71]:
+              - option "Tháng 1"
+              - option "Tháng 2"
+              - option "Tháng 3"
+              - option "Tháng 4"
+              - option "Tháng 5"
+              - option "Tháng 6"
+              - option "Tháng 7"
+              - option "Tháng 8"
+              - option "Tháng 9" [selected]
+              - option "Tháng 10"
+              - option "Tháng 11"
+              - option "Tháng 12"
+            - combobox "Năm" [ref=f5e72]:
+              - option "2025"
+              - option "2026" [selected]
+              - option "2027"
+          - paragraph [ref=f5e89]: Đang tải…
+  - button "Open Next.js Dev Tools" [ref=f5e15] [cursor=pointer]
+  - alert [ref=f5e87]

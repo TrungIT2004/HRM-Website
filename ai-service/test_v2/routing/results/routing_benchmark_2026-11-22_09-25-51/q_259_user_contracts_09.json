@@ -1,0 +1,23 @@
+{
+  "question_id": "user_contracts_09",
+  "original_query": "Quy định về số lần gia hạn hợp đồng xác định thời hạn thế nào, hợp đồng của tôi sắp hết hạn chưa?",
+  "rewritten_query": "Quy định về số lần gia hạn hợp đồng xác định thời hạn thế nào, hợp đồng của tôi sắp hết hạn chưa?",
+  "routing_result": "DB_ONLY",
+  "expected_route": "DB_ONLY",
+  "correct": true,
+  "execution_time_ms": 241.69,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:27:03.743376",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.UUID;
 
 import java.io.ByteArrayOutputStream;
@@ -42,8 +43,13 @@ import com.minhtrung.hrm.attendance.services.AttendanceService;
 import com.minhtrung.hrm.overtime.dtos.responses.OvertimePreviewResponse;
 import com.minhtrung.hrm.overtime.repositories.OvertimeRecordRepository;
 import com.minhtrung.hrm.overtime.specification.OvertimeSpecification;
+import com.minhtrung.hrm.notifications.entities.NotificationPriority;
+import com.minhtrung.hrm.notifications.entities.NotificationType;
+import com.minhtrung.hrm.notifications.events.NotificationEvent;
 import com.minhtrung.hrm.permissions.enums.PermissionKey;
 import com.minhtrung.hrm.permissions.services.PermissionService;
+
+import org.springframework.context.ApplicationEventPublisher;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,6 +64,7 @@ public class OvertimeService {
     private final HolidayRepository holidayRepository;
     private final WorkShiftScheduleRepository workShiftScheduleRepository;
     private final PermissionService permissionService;
+    private final ApplicationEventPublisher eventPublisher;
 
     /**
      * Xem trước thời gian + hệ số OT. Tái dùng đúng luật đang áp dụng khi lưu đơn:
@@ -320,6 +327,27 @@ public class OvertimeService {
         }
 
         OvertimeRecord saved = overtimeRecordRepository.save(record);
+
+        // Send notification to approver (if not auto-approved)
+        if (!isChairman && saved.getApprover() != null) {
+            eventPublisher.publishEvent(new NotificationEvent(
+                    saved.getApprover().getUserId(),
+                    NotificationType.OVERTIME,
+                    "Đơn tăng ca mới từ " + userRepository.findById(requestorId).map(u -> u.getFirstName() + " " + u.getLastName()).orElse("Nhân viên"),
+                    "Tăng ca: " + start.toLocalDate() + " " + start.toLocalTime() + " - " + end.toLocalTime() + " (" + String.format("%.1f", requestedHours) + " giờ)",
+                    saved.getOvertimeRecordId(),
+                    "OVERTIME_RECORD",
+                    NotificationPriority.HIGH,
+                    Map.of(
+                            "requestorName", userRepository.findById(requestorId).map(u -> u.getFirstName() + " " + u.getLastName()).orElse(""),
+                            "department", userRepository.findUsersDepartment(requestorId),
+                            "date", start.toLocalDate().toString(),
+                            "hours", String.format("%.1f", requestedHours),
+                            "type", isHoliday ? "holiday" : "normal"
+                    )
+            ));
+        }
+
         log.info("Đơn tăng ca mới được tạo. RequestorId: {}, Thời gian bắt đầu: {}, Thời gian kết thúc: {}, Ngày lễ: {}, Số giờ đăng ký: {}, Tự duyệt: {}",
                 requestorId, start, end, isHoliday, String.format("%.1f", requestedHours), isChairman);
         return saved;
@@ -443,6 +471,24 @@ public class OvertimeService {
                 overtimeRecord.setRejectionReason(request.getRejectionReason());
             }
 
+            OvertimeRecord saved = overtimeRecordRepository.save(overtimeRecord);
+
+            // Send notification to requestor
+            eventPublisher.publishEvent(new NotificationEvent(
+                    requestorId,
+                    NotificationType.OVERTIME,
+                    targetStatus.equals(OvertimeRecordStatus.accepted) ? "Đơn tăng ca đã được duyệt" : "Đơn tăng ca bị từ chối",
+                    "Tăng ca ngày " + overtimeRecord.getApprovedDate() + " đã " + (targetStatus.equals(OvertimeRecordStatus.accepted) ? "được phê duyệt" : "bị từ chối") + (request.getRejectionReason() != null ? ": " + request.getRejectionReason() : ""),
+                    saved.getOvertimeRecordId(),
+                    "OVERTIME_RECORD",
+                    NotificationPriority.NORMAL,
+                    Map.of(
+                            "status", targetStatus.toString(),
+                            "approverName", approverProxy.getFirstName() + " " + approverProxy.getLastName(),
+                            "rejectionReason", request.getRejectionReason()
+                    )
+            ));
+
             if (OvertimeRecordStatus.accepted.equals(targetStatus)) {
                 log.info("Đơn tăng ca được PHÊ DUYỆT. RecordId: {}, ApproverId: {}, RequestorId: {}",
                         overtimeRecordId, approverId, requestorId);
@@ -450,7 +496,7 @@ public class OvertimeService {
                 log.info("Đơn tăng ca bị TỪ CHỐI. RecordId: {}, ApproverId: {}, RequestorId: {}, Lý do: {}",
                         overtimeRecordId, approverId, requestorId, overtimeRecord.getRejectionReason());
             }
-            return overtimeRecord;
+            return saved;
         } else {
             throw new OvertimeException(OvertimeErrorCode.INSUFFICIENT_PERMISSION,
                     "Bạn không có thẩm quyền phê duyệt yêu cầu làm thêm giờ");

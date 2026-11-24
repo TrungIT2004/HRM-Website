@@ -211,6 +211,10 @@ scratch/
 
 # Local codebase graph cache (binary, auto-regenerated)
 .codebase-memory/
+.codegraph/
+
+# Claude Code local settings
+.claude/
 
 # Backup / merge leftovers
 *.bak
@@ -222,4 +226,6 @@ scratch/
 ai-service/tests/results/
 ai-service/tests/_archive/
 ai-service/tests/baselines-120b/
+ai-service/tests/retrieval_db_only/results/
+ai-service/test_v2/**/results/
 **/generated_testset.*

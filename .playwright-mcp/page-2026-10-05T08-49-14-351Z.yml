@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "ACT ACT HRM" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: ACT
+      - generic [ref=e7]: ACT HRM
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - heading "Đăng nhập hệ thống" [level=2] [ref=e10]
+        - paragraph [ref=e11]: Vui lòng nhập tài khoản công ty để truy cập bảng điều khiển và dịch vụ nhân sự.
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: Email doanh nghiệp
+          - textbox "ten.nhanvien@company.com" [ref=e16]: superadmin@company.com
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - generic [ref=e19]: Mật khẩu
+            - generic [ref=e20]:
+              - text: "Mặc định:"
+              - strong [ref=e21]: test@123
+          - generic [ref=e22]:
+            - textbox "••••••••" [ref=e23]: test@123
+            - button [ref=e24] [cursor=pointer]
+        - button "Đăng nhập vào hệ thống" [ref=e28] [cursor=pointer]
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: "Tài khoản kiểm thử nhanh theo phân quyền:"
+          - generic [ref=e39]: Click để chọn
+        - generic [ref=e40]:
+          - button "Super Admin ⚡ SUPER ADMIN Quản trị viên Tối cao (IT) superadmin@company.com" [ref=e41] [cursor=pointer]:
+            - generic [ref=e42]:
+              - generic [ref=e43]: Super Admin
+              - generic [ref=e44]: ⚡ SUPER ADMIN
+            - generic [ref=e45]: Quản trị viên Tối cao (IT)
+            - generic [ref=e46]: superadmin@company.com
+          - button "Nguyễn Minh Đức 🔴 EXECUTIVE Chủ tịch (Ban Giám Đốc) nguyenminhduc@company.com" [ref=e47] [cursor=pointer]:
+            - generic [ref=e48]:
+              - generic [ref=e49]: Nguyễn Minh Đức
+              - generic [ref=e50]: 🔴 EXECUTIVE
+            - generic [ref=e51]: Chủ tịch (Ban Giám Đốc)
+            - generic [ref=e52]: nguyenminhduc@company.com
+          - button "Phạm Thị Cúc 🟠 HR HEAD Trưởng phòng Nhân sự phamthicuc@company.com" [ref=e53] [cursor=pointer]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: Phạm Thị Cúc
+              - generic [ref=e56]: 🟠 HR HEAD
+            - generic [ref=e57]: Trưởng phòng Nhân sự
+            - generic [ref=e58]: phamthicuc@company.com
+          - button "Nguyễn Văn Admin 🛡️ ADMIN Quản trị viên Hệ thống (IT) sysadmin@company.com" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60]:
+              - generic [ref=e61]: Nguyễn Văn Admin
+              - generic [ref=e62]: 🛡️ ADMIN
+            - generic [ref=e63]: Quản trị viên Hệ thống (IT)
+            - generic [ref=e64]: sysadmin@company.com
+          - button "Đỗ Văn Hùng 🔵 MANAGER Trưởng phòng IT dovanhung@company.com" [ref=e65] [cursor=pointer]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: Đỗ Văn Hùng
+              - generic [ref=e68]: 🔵 MANAGER
+            - generic [ref=e69]: Trưởng phòng IT
+            - generic [ref=e70]: dovanhung@company.com
+          - button "Nguyễn Hoàng 🟢 STAFF Kỹ sư phần mềm it.employee@company.com" [ref=e71] [cursor=pointer]:
+            - generic [ref=e72]:
+              - generic [ref=e73]: Nguyễn Hoàng
+              - generic [ref=e74]: 🟢 STAFF
+            - generic [ref=e75]: Kỹ sư phần mềm
+            - generic [ref=e76]: it.employee@company.com
+          - button "Lê Văn C 🟢 HR STAFF Chuyên viên Nhân sự hr.employee@company.com" [ref=e77] [cursor=pointer]:
+            - generic [ref=e78]:
+              - generic [ref=e79]: Lê Văn C
+              - generic [ref=e80]: 🟢 HR STAFF
+            - generic [ref=e81]: Chuyên viên Nhân sự
+            - generic [ref=e82]: hr.employee@company.com
+          - button "Phạm Thị D 🟢 ACCOUNTANT Kế toán viên finance.employee@company.com" [ref=e83] [cursor=pointer]:
+            - generic [ref=e84]:
+              - generic [ref=e85]: Phạm Thị D
+              - generic [ref=e86]: 🟢 ACCOUNTANT
+            - generic [ref=e87]: Kế toán viên
+            - generic [ref=e88]: finance.employee@company.com
+          - button "Nguyễn Văn Dũng 🔵 FINANCE HEAD Trưởng phòng Kế toán nguyenvandung@company.com" [ref=e89] [cursor=pointer]:
+            - generic [ref=e90]:
+              - generic [ref=e91]: Nguyễn Văn Dũng
+              - generic [ref=e92]: 🔵 FINANCE HEAD
+            - generic [ref=e93]: Trưởng phòng Kế toán
+            - generic [ref=e94]: nguyenvandung@company.com
+    - link "← Quay lại Cổng thông tin giới thiệu ACT HRM" [ref=e96] [cursor=pointer]:
+      - /url: /
+  - button "Open Next.js Dev Tools" [ref=e103] [cursor=pointer]

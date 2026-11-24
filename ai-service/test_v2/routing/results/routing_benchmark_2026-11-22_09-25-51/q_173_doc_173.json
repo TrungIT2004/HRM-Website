@@ -1,0 +1,23 @@
+{
+  "question_id": "doc_173",
+  "original_query": "Công ty có mua bảo hiểm trách nhiệm cho thành viên HĐQT không và bảo hiểm này bao gồm những gì?",
+  "rewritten_query": "Công ty có mua bảo hiểm trách nhiệm cho thành viên HĐQT không và bảo hiểm này bao gồm những gì?",
+  "routing_result": "DOC_ONLY",
+  "expected_route": "DOC_ONLY",
+  "correct": true,
+  "execution_time_ms": 242.99,
+  "input_token_usage": 0,
+  "output_token_usage": 0,
+  "total_token_usage": 0,
+  "llm_calls": 0,
+  "timestamp": "2026-11-22T09:26:41.887830",
+  "metadata": {
+    "table": null,
+    "category": null,
+    "check_type": null,
+    "variant": null,
+    "source_file": null,
+    "history": [],
+    "context_summary": null
+  }
+}

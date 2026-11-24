@@ -1,0 +1,56 @@
+- generic [active] [ref=f11e1]:
+  - generic [ref=f11e2]:
+    - banner [ref=f11e19]:
+      - generic [ref=f11e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f11e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f11e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f11e28]: ACT
+          - generic [ref=f11e29]: ACT HRM
+      - generic [ref=f11e31]:
+        - generic [ref=f11e32]:
+          - generic [ref=f11e36]: "Hôm nay:"
+          - generic [ref=f11e37]: Ngày nghỉ
+        - button "T Đỗ Thị F Software Engineer" [ref=f11e39] [cursor=pointer]:
+          - generic [ref=f11e40]: T
+          - generic [ref=f11e41]:
+            - generic [ref=f11e42]: Đỗ Thị F
+            - generic [ref=f11e43]: Software Engineer
+    - generic [ref=f11e44]:
+      - complementary [ref=f11e45]:
+        - generic [ref=f11e46]:
+          - generic [ref=f11e47]:
+            - generic [ref=f11e48]: Xử lý IT
+            - link "Hàng chờ xử lý" [ref=f11e51] [cursor=pointer]:
+              - /url: /tickets/manage/queues
+            - link "Đã xử lý" [ref=f11e57] [cursor=pointer]:
+              - /url: /tickets/manage/done
+            - link "Tổng quan" [ref=f11e64] [cursor=pointer]:
+              - /url: /tickets/manage/overview
+          - generic [ref=f11e70]: ACT HRM Enterprise v2.4
+      - main [ref=f11e71]:
+        - generic [ref=f11e72]:
+          - generic [ref=f11e73]:
+            - heading "Tổng quan tháng 9/2026" [level=1] [ref=f11e125]
+            - generic [ref=f11e78]:
+              - combobox "Tháng" [ref=f11e79]:
+                - option "Tháng 1"
+                - option "Tháng 2"
+                - option "Tháng 3"
+                - option "Tháng 4"
+                - option "Tháng 5"
+                - option "Tháng 6"
+                - option "Tháng 7"
+                - option "Tháng 8"
+                - option "Tháng 9" [selected]
+                - option "Tháng 10"
+                - option "Tháng 11"
+                - option "Tháng 12"
+              - combobox "Năm" [ref=f11e80]:
+                - option "2025"
+                - option "2026" [selected]
+                - option "2027"
+          - paragraph [ref=f11e126]: Đang tải…
+  - button "Open Next.js Dev Tools" [ref=f11e15] [cursor=pointer]
+  - alert [ref=f11e124]

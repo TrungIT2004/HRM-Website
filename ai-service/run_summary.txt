@@ -1,0 +1,22 @@
+Success: 8
+Errors: 179
+  users_01: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_02: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_03: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_04: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_05: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_06: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_07: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_08: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  users_10: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+  attendances_01: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+  attendances_02: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+  attendances_03: SQL bị từ chối: Bảng ngoài allowlist: ['work_date']
+  attendances_04: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+  attendances_05: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+  attendances_06: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+  attendances_07: SQL bị từ chối: Bảng ngoài allowlist: ['work_date']
+  attendances_08: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+  monthly_timesheets_01: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)
+  monthly_timesheets_02: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)
+  monthly_timesheets_03: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)

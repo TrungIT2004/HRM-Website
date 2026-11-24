@@ -1,0 +1,133 @@
+{
+  "name": "HRM - Restore Physical (pg_basebackup)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-base",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 200]
+    },
+    {
+      "parameters": {
+        "command": "BASE_DIR=`ls -td /backups/base/hrm_base_* 2>/dev/null | head -1` && if [ -z \"$BASE_DIR\" ]; then echo \"BASE_RESTORE_FAILED:Khong_tim_thay_thu_muc_backup\"; exit 1; fi && echo \"Restoring Physical from: $BASE_DIR\" && docker stop hrm-database && docker run --rm --volumes-from hrm-database alpine sh -c \"rm -rf /var/lib/postgresql/data/* && tar -xzf ${BASE_DIR}/base.tar.gz -C /var/lib/postgresql/data/ && if [ -f ${BASE_DIR}/pg_wal.tar.gz ]; then mkdir -p /var/lib/postgresql/data/pg_wal && tar -xzf ${BASE_DIR}/pg_wal.tar.gz -C /var/lib/postgresql/data/pg_wal/; fi && touch /var/lib/postgresql/data/recovery.signal && chown -R 999:999 /var/lib/postgresql/data && chmod 700 /var/lib/postgresql/data\" && docker start hrm-database && sleep 5 && docker exec hrm-database pg_isready -U postgres && echo \"BASE_RESTORE_SUCCESS:$BASE_DIR\" || echo \"BASE_RESTORE_FAILED\""
+      },
+      "id": "restore-base",
+      "name": "Restore từ pg_basebackup (Physical)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [500, 200]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stdout }}",
+              "operation": "contains",
+              "value2": "SUCCESS"
+            }
+          ]
+        }
+      },
+      "id": "check-base-ok",
+      "name": "Physical Restore OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [740, 200]
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "8578855126",
+        "text": "=✅ *HRM Physical Restore Thành Công!*\n\n📅 Thời gian: {{ $now.setZone('Asia/Ho_Chi_Minh').toFormat('dd/MM/yyyy HH:mm:ss') }}\n📂 Thư mục: `{{ $('Restore từ pg_basebackup (Physical)').item.json.stdout.split(':')[1] }}`\n🔧 Phương thức: pg_basebackup Physical (Đã áp dụng recovery WAL)\n\n_Database hrm đã được phục hồi thành công!_",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-base-success",
+      "name": "Telegram - Physical Restore OK",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [980, 120],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-hrm-bot",
+          "name": "HRM Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "8578855126",
+        "text": "=❌ *HRM Physical Restore THẤT BẠI!*\n\n📅 Thời gian: {{ $now.setZone('Asia/Ho_Chi_Minh').toFormat('dd/MM/yyyy HH:mm:ss') }}\n⚠️ Lỗi: {{ $('Restore từ pg_basebackup (Physical)').item.json.stderr || $('Restore từ pg_basebackup (Physical)').item.json.stdout }}\n\n_Kiểm tra lại thư mục backup và quyền Docker!_",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "telegram-base-fail",
+      "name": "Telegram - Physical Restore FAIL",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [980, 280],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-hrm-bot",
+          "name": "HRM Telegram Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Restore từ pg_basebackup (Physical)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restore từ pg_basebackup (Physical)": {
+      "main": [
+        [
+          {
+            "node": "Physical Restore OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Physical Restore OK?": {
+      "main": [
+        [
+          {
+            "node": "Telegram - Physical Restore OK",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram - Physical Restore FAIL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

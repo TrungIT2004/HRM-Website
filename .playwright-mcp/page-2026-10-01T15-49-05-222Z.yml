@@ -1,0 +1,76 @@
+- generic [ref=f17e1]:
+  - generic [ref=f17e2]:
+    - banner [ref=f17e19]:
+      - generic [ref=f17e20]:
+        - link "Quay về Cổng Ứng Dụng (/home)" [ref=f17e21] [cursor=pointer]:
+          - /url: /home
+        - link "ACT ACT HRM" [ref=f17e27] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f17e28]: ACT
+          - generic [ref=f17e29]: ACT HRM
+      - generic [ref=f17e31]:
+        - generic [ref=f17e32]:
+          - generic [ref=f17e36]: "Hôm nay:"
+          - generic [ref=f17e37]: Ngày nghỉ
+        - button "T Phạm Thị Cúc Department Head of Human Resources" [ref=f17e39] [cursor=pointer]:
+          - generic [ref=f17e40]: T
+          - generic [ref=f17e41]:
+            - generic [ref=f17e42]: Phạm Thị Cúc
+            - generic [ref=f17e43]: Department Head of Human Resources
+    - generic [ref=f17e44]:
+      - complementary [ref=f17e45]:
+        - generic [ref=f17e46]:
+          - generic [ref=f17e47]:
+            - generic [ref=f17e48]: Đơn Thôi việc
+            - link "Đơn Thôi việc" [ref=f17e51] [cursor=pointer]:
+              - /url: /resignations
+          - generic [ref=f17e57]: ACT HRM Enterprise v2.4
+      - main [ref=f17e58]:
+        - generic [ref=f17e59]:
+          - generic [ref=f17e60]:
+            - generic [ref=f17e61]:
+              - generic [ref=f17e62]: Quy trình thôi việc & Bàn giao nhân sự
+              - heading "Quản Lý Thôi Việc" [level=1] [ref=f17e67]
+              - paragraph [ref=f17e68]: "Theo dõi chu trình thôi việc chuẩn 3 bước: Nhân viên nộp đơn → Trưởng phòng duyệt bàn giao → BGĐ/HR phê duyệt chính thức."
+            - generic [ref=f17e69]:
+              - button "Nộp đơn thôi việc" [active] [ref=f17e70] [cursor=pointer]
+              - button "Tải lại" [ref=f17e73]
+          - generic [ref=f17e79]:
+            - button "Đơn của tôi (0)" [ref=f17e80] [cursor=pointer]
+            - button "Chờ xét duyệt" [ref=f17e81] [cursor=pointer]
+            - button "Toàn công ty (3)" [ref=f17e83] [cursor=pointer]
+          - generic [ref=f17e84]:
+            - paragraph [ref=f17e89]: Không có đơn xin thôi việc nào trong danh sách
+            - paragraph [ref=f17e90]: Mọi yêu cầu đã được xử lý hoặc bạn chưa nộp đơn nào.
+          - generic [ref=f17e102]:
+            - generic [ref=f17e103]:
+              - heading "Nộp Đơn Xin Thôi Việc" [level=3] [ref=f17e109]
+              - button [ref=f17e110]
+            - generic [ref=f17e117]:
+              - strong [ref=f17e118]: "Quy định thời hạn báo trước (Bộ luật Lao động):"
+              - list [ref=f17e119]:
+                - listitem [ref=f17e120]:
+                  - text: "Hợp đồng không xác định thời hạn: Báo trước tối thiểu"
+                  - strong [ref=f17e121]: 45 ngày
+                - listitem [ref=f17e122]:
+                  - text: "Hợp đồng xác định thời hạn: Báo trước tối thiểu"
+                  - strong [ref=f17e123]: 30 ngày
+                - listitem [ref=f17e124]:
+                  - text: "Hợp đồng thử việc: Báo trước tối thiểu"
+                  - strong [ref=f17e125]: 3 ngày làm việc
+            - generic [ref=f17e126]:
+              - generic [ref=f17e127]:
+                - generic [ref=f17e128]: Ngày làm việc cuối cùng dự kiến *
+                - textbox [ref=f17e129]
+              - generic [ref=f17e130]:
+                - generic [ref=f17e131]: Lý do xin thôi việc *
+                - textbox "Vui lòng nêu rõ lý do thôi việc và kế hoạch bàn giao công việc..." [ref=f17e132]
+                - generic [ref=f17e133]: 0/500 ký tự
+              - generic [ref=f17e134]:
+                - button "Hủy bỏ" [ref=f17e135]
+                - button "Xác nhận nộp đơn" [ref=f17e136]
+  - button "Open Next.js Dev Tools" [ref=f17e15] [cursor=pointer]
+  - alert [ref=f17e91]
+  - 'button "Đổi vai trò: Phạm Thị Cúc" [ref=f17e93] [cursor=pointer]':
+    - generic [ref=f17e97]: "Đổi vai trò:"
+    - generic [ref=f17e98]: Phạm Thị Cúc
