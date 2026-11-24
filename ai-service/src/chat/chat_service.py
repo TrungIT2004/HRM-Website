@@ -15,7 +15,8 @@ if sys.platform == "win32":
 
 load_dotenv()
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 from src.retrievers.hybrid_retriever import HybridRetriever
 from src.cache.semantic_cache import SemanticCache
@@ -190,12 +191,12 @@ class ChatService:
 
         # Initialize Gemini key pool (supports multiple keys for quota rotation)
         self._api_keys = self._load_api_keys()
-        self._key_index = 0
+        self._client_index = 0
+        self._last_generated_sql = None  # for eval logging
 
-        # Initialize models with first valid key
-        self.gemini_model = None
-        self.gemini_fast_model = None
-        self._init_gemini_models()
+        # Initialize Gemini clients with new google.genai library
+        self._gemini_clients = []
+        self._init_gemini_clients()
 
         # ThreadPoolExecutor để chạy song song tác vụ sinh tiêu đề
         self.executor = ThreadPoolExecutor(max_workers=4)
@@ -232,57 +233,54 @@ class ChatService:
         self._key_index = (self._key_index + 1) % len(self._api_keys)
         return key
 
-    def _init_gemini_models(self):
-        """Initialize Gemini models with key rotation."""
+    def _init_gemini_clients(self):
+        """Initialize Gemini clients with key rotation (new google.genai library)."""
         if not self._api_keys:
             print("[ChatService] Warning: No Gemini API keys found, LLM features disabled")
             return
 
         try:
-            # Configure with first key initially
-            genai.configure(api_key=self._api_keys[0])
+            # Create a client for each API key
+            self._gemini_clients = [genai.Client(api_key=key) for key in self._api_keys]
+            self._client_index = 0
 
             # Model names from env (default to gemini-3.5-flash-lite)
-            route_model = os.getenv("GEMINI_MODEL_ROUTE", "gemini-3.5-flash-lite")
-            sql_model = os.getenv("GEMINI_MODEL_SQL", "gemini-3.5-flash-lite")
-            ans_model = os.getenv("GEMINI_MODEL_ANS", "gemini-3.5-flash-lite")
+            self._route_model = os.getenv("GEMINI_MODEL_ROUTE", "gemini-3.5-flash-lite")
+            self._sql_model = os.getenv("GEMINI_MODEL_SQL", "gemini-3.5-flash-lite")
+            self._ans_model = os.getenv("GEMINI_MODEL_ANS", "gemini-3.5-flash-lite")
 
-            # Main model for chat completion (answer generation)
-            self.gemini_model = genai.GenerativeModel(
-                ans_model,
-                generation_config=genai.GenerationConfig(
-                    temperature=0.2,
-                    max_output_tokens=8192,
-                )
+            # Generation configs for different use cases
+            self._ans_config = types.GenerateContentConfig(
+                temperature=0.2,
+                max_output_tokens=8192,
             )
-            # Fast model for rewrite+route (lower temp, smaller output)
-            self.gemini_fast_model = genai.GenerativeModel(
-                route_model,
-                generation_config=genai.GenerationConfig(
-                    temperature=0.0,
-                    max_output_tokens=2048,
-                )
+            self._fast_config = types.GenerateContentConfig(
+                temperature=0.0,
+                max_output_tokens=2048,
             )
-            # Model for text2sql (if needed)
-            self.gemini_sql_model = genai.GenerativeModel(
-                sql_model,
-                generation_config=genai.GenerationConfig(
-                    temperature=0.0,
-                    max_output_tokens=4096,
-                )
+            self._sql_config = types.GenerateContentConfig(
+                temperature=0.0,
+                max_output_tokens=4096,
             )
-            print(f"[ChatService] Gemini models initialized (route={route_model}, sql={sql_model}, ans={ans_model})")
+
+            print(f"[ChatService] Gemini clients initialized ({len(self._gemini_clients)} keys, "
+                  f"route={self._route_model}, sql={self._sql_model}, ans={self._ans_model})")
         except Exception as e:
-            print(f"[ChatService] Warning: Could not init Gemini models: {e}")
+            print(f"[ChatService] Warning: Could not init Gemini clients: {e}")
+            self._gemini_clients = []
 
     def _rotate_key(self):
-        """Rotate to next API key and reconfigure genai."""
-        if len(self._api_keys) <= 1:
+        """Rotate to next API key by switching client."""
+        if len(self._gemini_clients) <= 1:
             return
-        key = self._get_next_key()
-        if key:
-            genai.configure(api_key=key)
-            print(f"[ChatService] Rotated to API key index {self._key_index}")
+        self._client_index = (self._client_index + 1) % len(self._gemini_clients)
+        print(f"[ChatService] Rotated to API key index {self._client_index}")
+
+    def _get_current_client(self) -> Optional[genai.Client]:
+        """Get current Gemini client."""
+        if not self._gemini_clients:
+            return None
+        return self._gemini_clients[self._client_index]
 
     # =========================================================================
     # TÍNH NĂNG 3: PROMPT INJECTION DEFENSE (Lớp 1 & Lớp 2)
@@ -327,7 +325,7 @@ Examples:
 Title:"""
         try:
             smart_title = None
-            if self.gemini_model:
+            if self._gemini_clients:
                 smart_title = self._llm_complete("", prompt, tag="smart_title")
                 smart_title = smart_title.strip().strip('"').strip("'") if smart_title else None
 
@@ -427,45 +425,40 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
     def _llm_complete(self, system_content: str, user_content: str, tag: str,
                       model: Optional[str] = None) -> str:
         """1 LLM call đồng bộ sử dụng Gemini với key rotation. Trả chuỗi rỗng nếu lỗi."""
-        # Determine which model to use
+        # Determine which model and config to use
         if model and "fast" in str(model).lower():
-            gemini_model = self.gemini_fast_model
+            model_name = self._route_model
+            config = self._fast_config
         elif model and "sql" in str(model).lower():
-            gemini_model = getattr(self, 'gemini_sql_model', self.gemini_model)
+            model_name = self._sql_model
+            config = self._sql_config
         elif model:
-            # Custom model name passed - create new model instance
-            try:
-                gemini_model = genai.GenerativeModel(
-                    model,
-                    generation_config=genai.GenerationConfig(
-                        temperature=0.0,
-                        max_output_tokens=8192,
-                    )
-                )
-            except Exception:
-                gemini_model = self.gemini_model
+            model_name = model
+            config = self._ans_config
         else:
-            gemini_model = self.gemini_model
+            model_name = self._ans_model
+            config = self._ans_config
 
-        if not gemini_model:
-            print(f"[ChatService] No Gemini model available for {tag}")
+        if not self._gemini_clients:
+            print(f"[ChatService] No Gemini clients available for {tag}")
             return ""
 
         # Try with current key, rotate on quota error
-        max_retries = len(self._api_keys) if self._api_keys else 1
+        max_retries = len(self._gemini_clients)
         for attempt in range(max_retries):
+            client = self._gemini_clients[self._client_index]
             try:
                 # Combine system + user content for Gemini (it doesn't have separate system role)
                 combined_prompt = f"{system_content}\n\n{user_content}"
 
-                res = gemini_model.generate_content(combined_prompt)
+                res = client.models.generate_content(
+                    model=model_name,
+                    contents=combined_prompt,
+                    config=config,
+                )
 
                 # Extract text from response
-                text = ""
-                if res.candidates and res.candidates[0].content.parts:
-                    text = "".join(part.text for part in res.candidates[0].content.parts if part.text)
-
-                text = text.strip() if text else ""
+                text = (res.text or "").strip()
 
                 # Track usage
                 usage = getattr(res, "usage_metadata", None)
@@ -483,12 +476,12 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
             except Exception as e:
                 err_str = str(e)
                 print(f"[ChatService] Gemini {tag} attempt {attempt+1}/{max_retries} failed: {e}")
-                # Rotate key on quota errors (429) or other retryable errors
-                if "429" in err_str or "quota" in err_str.lower() or "rate limit" in err_str.lower():
-                    if len(self._api_keys) > 1:
+                # Rotate key on quota errors (429), auth errors (401), or other retryable errors
+                if ("429" in err_str or "401" in err_str or
+                    "quota" in err_str.lower() or "rate limit" in err_str.lower() or
+                    "unauthenticated" in err_str.lower()):
+                    if len(self._gemini_clients) > 1:
                         self._rotate_key()
-                        # Reconfigure the model with new key
-                        genai.configure(api_key=self._api_keys[self._key_index])
                         continue
                 # For non-quota errors, break and return empty
                 break
@@ -608,19 +601,18 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
     def _generate_llm_answer(self, prompt: str, system_prompt: Optional[str] = None) -> str:
         """Gọi LLM đồng bộ."""
         system = system_prompt or SYSTEM_PROMPT
-        if not self.gemini_model:
+        if not self._gemini_clients:
             return "Hệ thống AI hiện đang bận hoặc gặp sự cố kết nối. Bạn vui lòng thử lại sau giây lát."
 
-        max_retries = len(self._api_keys) if self._api_keys else 1
+        max_retries = len(self._gemini_clients)
         for attempt in range(max_retries):
+            client = self._gemini_clients[self._client_index]
             try:
                 combined_prompt = f"{system}\n\n{prompt}"
-                res = self.gemini_model.generate_content(
-                    combined_prompt,
-                    generation_config=genai.GenerationConfig(
-                        temperature=0.2,
-                        max_output_tokens=8192,
-                    )
+                res = client.models.generate_content(
+                    model=self._ans_model,
+                    contents=combined_prompt,
+                    config=self._ans_config,
                 )
 
                 # Track usage
@@ -633,25 +625,18 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
                     USAGE_ACC["out"] += completion_tokens
                     USAGE_ACC["calls"] += 1
 
-                if res.candidates and res.candidates[0].content.parts:
-                    text = "".join(part.text for part in res.candidates[0].content.parts if part.text)
-                    return text.strip()
+                text = (res.text or "").strip()
+                if text:
+                    return text
 
             except Exception as e:
                 err_str = str(e)
                 print(f"[ChatService] Gemini answer generation attempt {attempt+1}/{max_retries} failed: {e}")
-                if "429" in err_str or "quota" in err_str.lower() or "rate limit" in err_str.lower():
-                    if len(self._api_keys) > 1:
+                if ("429" in err_str or "401" in err_str or
+                    "quota" in err_str.lower() or "rate limit" in err_str.lower() or
+                    "unauthenticated" in err_str.lower()):
+                    if len(self._gemini_clients) > 1:
                         self._rotate_key()
-                        genai.configure(api_key=self._api_keys[self._key_index])
-                        # Recreate model with new key
-                        self.gemini_model = genai.GenerativeModel(
-                            os.getenv("GEMINI_MODEL_ANS", "gemini-3.5-flash-lite"),
-                            generation_config=genai.GenerationConfig(
-                                temperature=0.2,
-                                max_output_tokens=8192,
-                            )
-                        )
                         continue
                 break
 
@@ -1205,7 +1190,9 @@ Chỉ trả về nội dung tóm tắt, không thêm lời chào hay giải thí
 
     def _run_text2sql(self, question: str, user_id: str) -> Tuple[str, List[Dict[str, Any]]]:
         """Sinh SQL -> guard -> execute (rỗng thì retry 1 lần). Trả (db_summary, citations)."""
+        self._last_generated_sql = None  # reset for this call
         rows, sql = generate_personal_rows(self._llm_complete, question, user_id)
+        self._last_generated_sql = sql  # for eval logging
         tables = scoped_tables_in(sql)
         summary = summarize_result({"rows": rows, "row_count": len(rows)}, tables)
         # Ten nguoi lien quan (duyet/cap/xu ly): resolve app-side qua

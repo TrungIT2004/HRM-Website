@@ -2,8 +2,12 @@
 """
 CelebA-Spoof Benchmark - Check Attendance Pipeline.
 Tests FP32 ONNX anti-spoof model with exact same preprocessing as attendance.py.
+
+Dataset: test_balanced_v2 (pre-cropped with 1.5x bbox expansion + reflect padding from prepare_data.py)
+Preprocessing: direct square resize to 128x128 (no letterbox) - matches training pipeline.
 """
 import os
+import json
 import cv2
 import numpy as np
 import onnxruntime as ort
@@ -12,87 +16,15 @@ from sklearn.metrics import accuracy_score, roc_auc_score, average_precision_sco
 
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
-# Paths
-CELEBA_SPOOF_ROOT = Path('test/CelebA_Spoof/Data/test')
-MODEL_PATH = Path('src/cascades/anti_spoof.onnx')  # FP32 model
-DETECTOR_PATH = Path('src/cascades/face_detection_yunet_2023mar.onnx')
+# Paths - Use BALANCED pre-cropped dataset (matches reference project benchmark)
+CELEBA_SPOOF_ROOT = Path(r"C:/Users/ad/Desktop/CelebA-Spoof Full dataset/Data_cropped/test_balanced_v2")
+LABEL_JSON = Path(r"C:/Users/ad/Desktop/CelebA-Spoof Full dataset/metas/protocol1/test_label_balanced_v2.json")
+MODEL_PATH = Path(__file__).parent.parent / 'src' / 'cascades' / 'anti_spoof.onnx'
 
-MODEL_IMG_SIZE = 128
-BBOX_EXPANSION_FACTOR = 1.5
-DETECTION_CONF_THRESHOLD = 0.6
-DETECTION_NMS_THRESHOLD = 0.3
-MIN_FACE_SIZE = 60
-
-def load_yunet_detector():
-    if not DETECTOR_PATH.exists():
-        raise FileNotFoundError(f"Detector not found at {DETECTOR_PATH}")
-    detector = cv2.FaceDetectorYN_create(
-        str(DETECTOR_PATH), "", (320, 320),
-        DETECTION_CONF_THRESHOLD, DETECTION_NMS_THRESHOLD, 5000,
-        cv2.dnn.DNN_BACKEND_OPENCV, cv2.dnn.DNN_TARGET_CPU,
-    )
-    return detector
-
-def detect_faces(image, detector):
-    if detector is None or image is None:
-        return []
-    img_h, img_w = image.shape[:2]
-    detector.setInputSize((img_w, img_h))
-    _, faces = detector.detect(image)
-    if faces is None or len(faces) == 0:
-        return []
-    detections = []
-    for face in faces:
-        x, y, w, h = face[:4].astype(int)
-        conf = float(face[14])
-        if x < 0 or y < 0 or x + w > img_w or y + h > img_h:
-            continue
-        if w >= MIN_FACE_SIZE and h >= MIN_FACE_SIZE:
-            detections.append({"x": x, "y": y, "w": w, "h": h, "confidence": conf})
-    return detections
-
-def crop_face(image, bbox, expansion_factor):
-    x, y, w, h = bbox
-    w = w - x
-    h = h - y
-    if w <= 0 or h <= 0:
-        raise ValueError("Invalid bbox")
-    max_dim = max(w, h)
-    center_x = x + w / 2
-    center_y = y + h / 2
-    x = int(center_x - max_dim * expansion_factor / 2)
-    y = int(center_y - max_dim * expansion_factor / 2)
-    crop_size = int(max_dim * expansion_factor)
-    crop_x1 = max(0, x)
-    crop_y1 = max(0, y)
-    crop_x2 = min(image.shape[1], x + crop_size)
-    crop_y2 = min(image.shape[0], y + crop_size)
-    top_pad = max(0, -y)
-    left_pad = max(0, -x)
-    bottom_pad = max(0, (y + crop_size) - image.shape[0])
-    right_pad = max(0, (x + crop_size) - image.shape[1])
-    if crop_x2 > crop_x1 and crop_y2 > crop_y1:
-        img = image[crop_y1:crop_y2, crop_x1:crop_x2, :]
-    else:
-        img = np.zeros((0, 0, 3), dtype=image.dtype)
-    result = cv2.copyMakeBorder(img, top_pad, bottom_pad, left_pad, right_pad, cv2.BORDER_REFLECT_101)
-    if result.shape[0] != crop_size or result.shape[1] != crop_size:
-        raise ValueError(f"Crop size mismatch")
-    return result
-
-def preprocess_for_model(img, model_img_size):
-    """SquarePad (constant) + resize + normalize [0,1], CHW."""
-    h, w = img.shape[:2]
-    max_wh = max(h, w)
-    square = np.zeros((max_wh, max_wh, 3), dtype=img.dtype)
-    top = (max_wh - h) // 2
-    left = (max_wh - w) // 2
-    square[top:top+h, left:left+w] = img
-    new_size = model_img_size
-    interpolation = cv2.INTER_LANCZOS4 if max_wh < new_size else cv2.INTER_AREA
-    img = cv2.resize(square, (new_size, new_size), interpolation=interpolation)
-    img = img.transpose(2, 0, 1).astype(np.float32) / 255.0
-    return img
+# Import production function to ensure exact match
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+from attendance import preprocess_face_for_anti_spoof
 
 def load_ort_model(model_path):
     if not model_path.exists():
@@ -103,31 +35,72 @@ def load_ort_model(model_path):
     input_name = ort_session.get_inputs()[0].name
     return ort_session, input_name
 
-def run_inference(face_crops, ort_session, input_name, model_img_size):
-    if not face_crops or ort_session is None:
+def run_inference_preprocessed(face_tensors, ort_session, input_name, batch_size=64):
+    """Run inference on PREPROCESSED face tensors in batches to avoid OOM."""
+    if not face_tensors or ort_session is None:
         return []
     try:
-        batch = np.zeros((len(face_crops), 3, model_img_size, model_img_size), dtype=np.float32)
-        for i, face_crop in enumerate(face_crops):
-            batch[i] = preprocess_for_model(face_crop, model_img_size)
-        logits = ort_session.run([], {input_name: batch})[0]
-        if logits.shape != (len(face_crops), 2):
-            raise ValueError(f"Model output shape mismatch: {logits.shape}")
-        return [logits[i] for i in range(len(face_crops))]
+        all_logits = []
+        for i in range(0, len(face_tensors), batch_size):
+            batch_tensors = face_tensors[i:i+batch_size]
+            batch = np.stack(batch_tensors, axis=0).astype(np.float32)
+            logits = ort_session.run([], {input_name: batch})[0]
+            if logits.shape[1] != 2:
+                raise ValueError(f"Model output shape mismatch: {logits.shape}")
+            all_logits.extend([logits[j] for j in range(len(batch_tensors))])
+        return all_logits
     except Exception as e:
         print(f"Inference error: {e}")
         return []
 
 def process_logits(raw_logits):
+    """
+    Process logits matching attendance.py exactly:
+    Model outputs [real, spoof] - index 0=real, 1=spoof
+    """
     logits = raw_logits.copy()
     max_logit = np.max(logits)
     exp_logits = np.exp(logits - max_logit)
     probs = exp_logits / np.sum(exp_logits)
-    spoof_prob = float(probs[0])
-    real_prob = float(probs[1])
-    return {"is_real": real_prob > 0.5, "real_prob": real_prob, "spoof_prob": spoof_prob}
+    # attendance.py: index 0=real, index 1=spoof
+    real_prob = float(probs[0])
+    spoof_prob = float(probs[1])
+    is_real = real_prob > 0.5
+    return {"is_real": is_real, "real_prob": real_prob, "spoof_prob": spoof_prob}
 
-def collect_dataset_samples(root):
+def load_balanced_labels(label_json):
+    """Load balanced test labels with spoof type info. Strip 'Data/test/' prefix to match pre-cropped paths."""
+    with open(label_json) as f:
+        data = json.load(f)
+
+    labels = {}
+    for rel_path, attrs in data.items():
+        # Strip "Data/test/" prefix to match pre-cropped directory structure
+        if rel_path.startswith("Data/test/"):
+            rel_path = rel_path[len("Data/test/"):]
+        elif rel_path.startswith("test/"):
+            rel_path = rel_path[len("test/"):]
+
+        # Ensure .png extension
+        rel_path = Path(rel_path).with_suffix('.png').as_posix()
+
+        if isinstance(attrs, dict):
+            spoof_type = attrs.get("40", attrs.get(40, 0))
+        elif isinstance(attrs, list):
+            spoof_type = attrs[40] if len(attrs) > 40 else 0
+        else:
+            spoof_type = 0
+
+        is_real = 1 if spoof_type == 0 else 0
+        labels[rel_path] = {
+            'spoof_type': spoof_type,
+            'is_real': is_real,
+            'binary_label': 0 if spoof_type == 0 else 1
+        }
+    return labels
+
+def collect_dataset_samples(root, labels):
+    """Collect samples from pre-cropped balanced dataset using labels JSON."""
     samples = []
     for subject_dir in sorted(root.iterdir()):
         if not subject_dir.is_dir():
@@ -135,71 +108,118 @@ def collect_dataset_samples(root):
         live_dir = subject_dir / "live"
         if live_dir.exists():
             for img_file in live_dir.glob("*.png"):
-                bb_file = live_dir / f"{img_file.stem}_BB.txt"
-                if bb_file.exists():
-                    samples.append((img_file.relative_to(root), 1, bb_file))
+                rel_path = f"{subject_dir.name}/live/{img_file.name}"
+                if rel_path in labels:
+                    samples.append((rel_path, labels[rel_path], img_file))
         spoof_dir = subject_dir / "spoof"
         if spoof_dir.exists():
             for img_file in spoof_dir.glob("*.png"):
-                bb_file = spoof_dir / f"{img_file.stem}_BB.txt"
-                if bb_file.exists():
-                    samples.append((img_file.relative_to(root), 0, bb_file))
+                rel_path = f"{subject_dir.name}/spoof/{img_file.name}"
+                if rel_path in labels:
+                    samples.append((rel_path, labels[rel_path], img_file))
     return samples
 
-def read_bbox(bb_path):
-    try:
-        with open(bb_path, 'r') as f:
-            line = f.readline().strip()
-        parts = line.split()
-        if len(parts) >= 4:
-            x, y, w, h = map(int, parts[:4])
-            return (x, y, x + w, y + h)
-    except Exception as e:
-        print(f"Error reading {bb_path}: {e}")
-    return None
+def evaluate_model(dataset_root, ort_session, input_name, max_samples=None, verbose=False):
+    print(f"Loading balanced labels from {LABEL_JSON}...")
+    labels = load_balanced_labels(LABEL_JSON)
+    print(f"Total labels: {len(labels)}")
 
-def evaluate_model(dataset_root, ort_session, input_name, detector, max_samples=None, verbose=False):
     print(f"Collecting samples from {dataset_root}...")
-    samples = collect_dataset_samples(dataset_root)
-    print(f"Found {len(samples)} samples with bounding boxes")
+    samples = collect_dataset_samples(dataset_root, labels)
+    print(f"Found {len(samples)} samples (matched with labels)")
     if max_samples:
         samples = samples[:max_samples]
         print(f"Limiting to {max_samples} samples")
 
+    # Process in chunks to avoid OOM
+    chunk_size = 2000
     y_true = []
     y_pred = []
     y_scores = []
+    type_counts = {}
+    type_correct = {}
+    type_total = {}
     failed = 0
+    processed = 0
 
-    for i, (rel_path, label, bb_path) in enumerate(samples):
-        img_path = dataset_root / rel_path
-        image = cv2.imread(str(img_path))
-        if image is None:
-            failed += 1
-            continue
-        image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        bbox = read_bbox(bb_path)
-        if bbox is None:
-            failed += 1
-            continue
-        try:
-            face_crop = crop_face(image_rgb, bbox, BBOX_EXPANSION_FACTOR)
-        except Exception as e:
-            failed += 1
-            continue
-        logits_list = run_inference([face_crop], ort_session, input_name, MODEL_IMG_SIZE)
-        if not logits_list:
-            failed += 1
-            continue
-        result = process_logits(logits_list[0])
-        y_true.append(label)
-        y_pred.append(1 if result["is_real"] else 0)
-        y_scores.append(result["real_prob"])
-        if verbose and (i + 1) % 1000 == 0:
-            print(f"  Processed {i + 1}/{len(samples)} samples...")
+    for chunk_start in range(0, len(samples), chunk_size):
+        chunk = samples[chunk_start:chunk_start + chunk_size]
+        print(f"  Processing chunk {chunk_start//chunk_size + 1}: samples {chunk_start}-{min(chunk_start+chunk_size, len(samples))}")
+
+        face_tensors = []
+        chunk_labels = []  # Store (binary_label, spoof_type) for each valid sample
+        chunk_failed = 0
+
+        for rel_path, label_info, img_file in chunk:
+            image = cv2.imread(str(img_file))
+            if image is None:
+                chunk_failed += 1
+                continue
+
+            # Dataset is pre-cropped with 1.5x expansion + reflect padding (matches prepare_data.py).
+            # Skip YuNet detection and expand_and_crop_face - apply preprocessing directly.
+            try:
+                # Direct square resize to 128 (matches training pipeline)
+                face_tensor = preprocess_face_for_anti_spoof(image)
+                face_tensors.append(face_tensor[0])  # Remove batch dim for stacking
+                binary_label = 1 - label_info['binary_label']  # 1=real, 0=spoof for metrics
+                spoof_type = label_info['spoof_type']
+                chunk_labels.append((binary_label, spoof_type))
+                type_counts[spoof_type] = type_counts.get(spoof_type, 0) + 1
+            except Exception as e:
+                chunk_failed += 1
+                continue
+
+        # Batch inference on this chunk
+        if face_tensors:
+            logits_list = run_inference_preprocessed(face_tensors, ort_session, input_name, batch_size=64)
+            if not logits_list:
+                print("Inference failed for this chunk")
+                failed += len(face_tensors)
+                continue
+
+            if len(logits_list) != len(face_tensors):
+                print(f"Warning: logits count ({len(logits_list)}) != face_tensors count ({len(face_tensors)})")
+                continue
+
+            for i, logits in enumerate(logits_list):
+                result = process_logits(logits)
+                binary_label, spoof_type = chunk_labels[i]
+
+                y_true.append(binary_label)
+                y_pred.append(1 if result["is_real"] else 0)
+                y_scores.append(result["real_prob"])
+
+                # Track per-type accuracy
+                correct = 1 if (binary_label == (1 if result["is_real"] else 0)) else 0
+                type_correct[spoof_type] = type_correct.get(spoof_type, 0) + correct
+                type_total[spoof_type] = type_total.get(spoof_type, 0) + 1
+
+                if verbose and (processed % 1000 == 0):
+                    print(f"  Processed {processed + i + 1}/{len(samples)} samples...")
+
+            processed += len(face_tensors)
+        else:
+            chunk_failed = len(chunk)
+
+        failed += chunk_failed
 
     print(f"Successfully processed: {len(y_true)} samples")
     print(f"Failed: {failed} samples")
+    print(f"Type distribution: {dict(sorted(type_counts.items()))}")
+
+    # Compute per-type accuracy
+    type_accuracy = {}
+    for t in sorted(type_counts.keys()):
+        total = type_total.get(t, 0)
+        correct = type_correct.get(t, 0)
+        type_accuracy[t] = {
+            "total": total,
+            "correct": correct,
+            "accuracy": round(correct / total * 100, 2) if total > 0 else 0.0
+        }
+        type_name = {0: "Live", 1: "Print", 2: "Replay", 3: "Mask", 4: "Cutout", 5: "Unknown", 7: "PC_Replay", 8: "Pad_Replay", 9: "Phone_Replay"}.get(t, f"Type_{t}")
+        print(f"  Type {t} ({type_name}): {type_accuracy[t]['accuracy']:.2f}% ({correct}/{total})")
 
     if len(y_true) == 0:
         return {"error": "No samples processed"}
@@ -233,26 +253,25 @@ def evaluate_model(dataset_root, ort_session, input_name, detector, max_samples=
         "num_samples": len(y_true),
         "num_real": int(real_mask.sum()),
         "num_spoof": int(spoof_mask.sum()),
+        "type_counts": type_counts,
+        "type_accuracy": type_accuracy,
     }
 
 def main():
     print("=" * 60)
     print("CelebA-Spoof Benchmark - Check Attendance Pipeline (FP32)")
     print("=" * 60)
-    print("Using exact same preprocessing as attendance.py:")
-    print("  Letterbox resize + Reflect padding + Normalize [0,1]")
+    print("Using BALANCED pre-cropped dataset (test_balanced_v2)")
+    print("Dataset already has 1.5x bbox expansion + reflect padding (from prepare_data.py).")
+    print("Preprocessing: direct square resize to 128x128 (matches training pipeline)")
     print()
 
     print(f"Loading model from {MODEL_PATH}...")
     ort_session, input_name = load_ort_model(MODEL_PATH)
     print(f"Model loaded. Input: {input_name}")
 
-    print(f"Loading YuNet detector from {DETECTOR_PATH}...")
-    detector = load_yunet_detector()
-    print("Detector loaded")
-
-    print(f"\nEvaluating on CelebA-Spoof test set...")
-    results = evaluate_model(CELEBA_SPOOF_ROOT, ort_session, input_name, detector, max_samples=None, verbose=True)
+    print(f"\nEvaluating on CelebA-Spoof BALANCED test set...")
+    results = evaluate_model(CELEBA_SPOOF_ROOT, ort_session, input_name, max_samples=None, verbose=True)
 
     print("\n" + "=" * 60)
     print("BENCHMARK RESULTS (Check Attendance Pipeline - FP32)")

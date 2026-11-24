@@ -1,0 +1,876 @@
+{
+  "results": {
+    "holidays_01": {
+      "columns": [],
+      "rows": [],
+      "row_count": 0
+    },
+    "holidays_02": {
+      "columns": [
+        "cnt"
+      ],
+      "rows": [
+        {
+          "cnt": 12
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_03": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2026-01-01",
+          "description": "New Year's Day (T?t Duong l?ch)"
+        },
+        {
+          "date": "2026-02-16",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 1"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 2"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 3"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 4"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 5"
+        },
+        {
+          "date": "2026-04-26",
+          "description": "Giỗ Tổ Hùng Vương"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Hung Kings' Commemoration (Gi? T? H—ng Vuong)"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "Reunification Day (Ng…y Gi?i ph¢ng mi?n Nam)"
+        },
+        {
+          "date": "2026-05-01",
+          "description": "Labour Day (Ng…y Qu?c t? Lao d?ng)"
+        },
+        {
+          "date": "2026-09-02",
+          "description": "National Day (Qu?c kh nh)"
+        },
+        {
+          "date": "2026-09-03",
+          "description": "Nghỉ liền kề Quốc khánh (3/9)"
+        }
+      ],
+      "row_count": 12
+    },
+    "holidays_04": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2027-01-01",
+          "description": "New Year's Day (T?t Duong l?ch)"
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_05": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2026-04-26",
+          "description": "Giỗ Tổ Hùng Vương"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Hung Kings' Commemoration (Gi? T? H—ng Vuong)"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "Reunification Day (Ng…y Gi?i ph¢ng mi?n Nam)"
+        },
+        {
+          "date": "2026-05-01",
+          "description": "Labour Day (Ng…y Qu?c t? Lao d?ng)"
+        }
+      ],
+      "row_count": 4
+    },
+    "holidays_06": {
+      "columns": [
+        "h1",
+        "h2"
+      ],
+      "rows": [
+        {
+          "h1": 10,
+          "h2": 2
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_07": {
+      "columns": [
+        "month",
+        "cnt"
+      ],
+      "rows": [
+        {
+          "month": 2,
+          "cnt": 5
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_08": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2026-04-30",
+          "description": "Reunification Day (Ng…y Gi?i ph¢ng mi?n Nam)"
+        },
+        {
+          "date": "2026-05-01",
+          "description": "Labour Day (Ng…y Qu?c t? Lao d?ng)"
+        }
+      ],
+      "row_count": 2
+    }
+  },
+  "errors": [
+    [
+      "users_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "users_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "attendances_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)"
+    ],
+    [
+      "attendances_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)"
+    ],
+    [
+      "attendances_03",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['work_date']"
+    ],
+    [
+      "attendances_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)"
+    ],
+    [
+      "attendances_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)"
+    ],
+    [
+      "attendances_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)"
+    ],
+    [
+      "attendances_07",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['work_date']"
+    ],
+    [
+      "attendances_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "monthly_timesheets_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)"
+    ],
+    [
+      "leave_requests_01",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['from_date']"
+    ],
+    [
+      "leave_requests_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "leave_requests_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "leave_requests_04",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['from_date']"
+    ],
+    [
+      "leave_requests_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "leave_requests_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "leave_requests_07",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['from_date']"
+    ],
+    [
+      "leave_requests_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "leave_requests_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "overtime_records_01",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "overtime_records_02",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "overtime_records_03",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "overtime_records_04",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "overtime_records_05",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "overtime_records_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (overtime_records.requestor_id = %(uid)s)"
+    ],
+    [
+      "overtime_records_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (overtime_records.requestor_id = %(uid)s)"
+    ],
+    [
+      "overtime_records_08",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "overtime_records_10",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['approved_date']"
+    ],
+    [
+      "payrolls_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "payrolls_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (payrolls.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "salaries_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_contracts_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_contracts.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "user_profiles_09",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_profiles.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_bank_accounts.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_bank_accounts.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_bank_accounts.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_bank_accounts.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_bank_accounts.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (salaries.user_id = %(uid)s)"
+    ],
+    [
+      "user_bank_accounts_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_bank_accounts.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_07",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['granted_at']"
+    ],
+    [
+      "user_permission_grants_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_permission_grants_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_permission_grants.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_05",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['created_at']"
+    ],
+    [
+      "user_sessions_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "user_sessions_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (user_sessions.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (leave_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "resignation_requests_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (resignation_requests.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shifts_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "work_shift_schedules_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "departments_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_08",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_reviews_10",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_scores_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_scores_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_scores_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "performance_scores_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (performance_reviews.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_assignments_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "asset_requests_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "asset_requests_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "asset_requests_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "asset_requests_04",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['created_at']"
+    ],
+    [
+      "asset_requests_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_requests.requestor_id = %(uid)s)"
+    ],
+    [
+      "assets_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "assets_02",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "assets_03",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (asset_assignments.user_id = %(uid)s)"
+    ],
+    [
+      "it_tickets_01",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (it_tickets.reporter_id = %(uid)s)"
+    ],
+    [
+      "it_tickets_02",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['created_at']"
+    ],
+    [
+      "it_tickets_03",
+      "SQL bị từ chối: Bảng ngoài allowlist: ['created_at']"
+    ],
+    [
+      "it_tickets_04",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (it_tickets.reporter_id = %(uid)s)"
+    ],
+    [
+      "it_tickets_05",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (it_tickets.reporter_id = %(uid)s)"
+    ],
+    [
+      "it_tickets_06",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (it_tickets.reporter_id = %(uid)s)"
+    ],
+    [
+      "it_tickets_07",
+      "SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (it_tickets.reporter_id = %(uid)s)"
+    ]
+  ]
+}

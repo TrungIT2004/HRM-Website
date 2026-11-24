@@ -1,0 +1,42 @@
+Success: 8
+Errors: 179
+  users_01: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT annual_leave_days, used_leave_days, (annual_leave_days - used_leave_days) AS remaining_days FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'
+  users_02: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT annual_leave_days, used_leave_days, ROUND(used_leave_days::numeric / NULLIF(annual_leave_days,0) * 100, 1) AS used_pct FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'
+  users_03: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT employee_code, joined_date FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'
+  users_04: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT joined_date, EXTRACT(YEAR FROM AGE(CURRENT_DATE, joined_date))::int AS years, EXTRACT(MONTH FROM AGE(CURRENT_DATE, joined_date))::int AS months FROM users WHERE user_id = '35337165-e0d0-4dd1-9c
+  users_05: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT email, first_name, last_name, employee_code FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'
+  users_06: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT u.employee_code, d.name AS department, j.title AS job FROM users u LEFT JOIN departments d ON d.department_id = u.department_id LEFT JOIN jobs j ON j.job_id = u.job_id WHERE u.user_id = '353371
+  users_07: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT is_active FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'
+  users_08: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT birth_date, gender FROM users WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af'
+  users_10: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (users.user_id = %(uid)s)
+    SQL: SELECT u.employee_code, d.name AS department, j.title AS job, s.name AS shift FROM users u LEFT JOIN departments d ON d.department_id = u.department_id LEFT JOIN jobs j ON j.job_id = u.job_id LEFT JOI
+  attendances_01: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+    SQL: SELECT work_date, clock_in_time, clock_out_time, status FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND work_date = CURRENT_DATE AND is_deleted = FALSE
+  attendances_02: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+    SQL: SELECT COUNT(*) AS late_count FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status IN ('LATE','LATE_AND_EARLY') AND is_deleted = FALSE AND work_date >= date_trunc('month'
+  attendances_03: SQL bị từ chối: Bảng ngoài allowlist: ['work_date']
+    SQL: SELECT EXTRACT(MONTH FROM work_date)::int AS month, COUNT(*) FILTER (WHERE status IN ('LATE','LATE_AND_EARLY')) AS late_count, COUNT(*) FILTER (WHERE status = 'EARLY') AS early_count FROM attendances 
+  attendances_04: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+    SQL: WITH m AS (SELECT date_trunc('month', CURRENT_DATE)::date AS cur, (date_trunc('month', CURRENT_DATE) - INTERVAL '1 month')::date AS prev) SELECT (SELECT COUNT(*) FROM attendances, m WHERE user_id = '3
+  attendances_05: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+    SQL: SELECT ROUND(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric, 2) AS total_hours FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND is_deleted = FALSE A
+  attendances_06: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+    SQL: SELECT work_date, status FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status = 'UNEXCUSED_ABSENCE' AND is_deleted = FALSE AND work_date >= date_trunc('month', CURRENT_DA
+  attendances_07: SQL bị từ chối: Bảng ngoài allowlist: ['work_date']
+    SQL: SELECT EXTRACT(MONTH FROM work_date)::int AS month, COUNT(*) AS late_count FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND status IN ('LATE','LATE_AND_EARLY') AND is_delete
+  attendances_08: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (attendances.user_id = %(uid)s)
+    SQL: SELECT work_date, clock_in_time, clock_out_time, status FROM attendances WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND is_deleted = FALSE ORDER BY work_date DESC LIMIT 10
+  monthly_timesheets_01: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)
+    SQL: SELECT COALESCE(SUM(actual_work_hours),0) AS total_hours, COALESCE(SUM(actual_worked_days),0) AS total_days FROM monthly_timesheets WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_ye
+  monthly_timesheets_02: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)
+    SQL: SELECT period_month, late_count, total_late_minutes FROM monthly_timesheets WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int AND period_mon
+  monthly_timesheets_03: SQL bị từ chối: Thiếu điều kiện lọc theo user hiện tại (monthly_timesheets.user_id = %(uid)s)
+    SQL: SELECT period_month, actual_work_hours, actual_worked_days FROM monthly_timesheets WHERE user_id = '35337165-e0d0-4dd1-9c67-cc48180363af' AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int ORDER B

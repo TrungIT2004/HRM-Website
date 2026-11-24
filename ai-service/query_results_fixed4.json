@@ -1,0 +1,1718 @@
+{
+  "results": {
+    "users_06": {
+      "columns": [
+        "employee_code",
+        "department",
+        "job"
+      ],
+      "rows": [
+        {
+          "employee_code": "EMP023",
+          "department": "Human Resources",
+          "job": "HR Generalist"
+        }
+      ],
+      "row_count": 1
+    },
+    "users_10": {
+      "columns": [
+        "employee_code",
+        "department",
+        "job",
+        "shift"
+      ],
+      "rows": [
+        {
+          "employee_code": "EMP023",
+          "department": "Human Resources",
+          "job": "HR Generalist",
+          "shift": "Giờ hành chính (T2-T6)"
+        }
+      ],
+      "row_count": 1
+    },
+    "attendances_04": {
+      "columns": [
+        "this_month",
+        "last_month"
+      ],
+      "rows": [
+        {
+          "this_month": 0,
+          "last_month": 0
+        }
+      ],
+      "row_count": 1
+    },
+    "monthly_timesheets_04": {
+      "columns": [
+        "this_year",
+        "last_year"
+      ],
+      "rows": [
+        {
+          "this_year": 1542.76,
+          "last_year": 0.0
+        }
+      ],
+      "row_count": 1
+    },
+    "leave_requests_07": {
+      "columns": [
+        "this_quarter",
+        "last_quarter"
+      ],
+      "rows": [
+        {
+          "this_quarter": 0,
+          "last_quarter": 1
+        }
+      ],
+      "row_count": 1
+    },
+    "overtime_records_04": {
+      "columns": [
+        "this_quarter",
+        "last_quarter"
+      ],
+      "rows": [
+        {
+          "this_quarter": 0.0,
+          "last_quarter": 20.266666666666666
+        }
+      ],
+      "row_count": 1
+    },
+    "salaries_08": {
+      "columns": [
+        "base_salary",
+        "pay_frequency",
+        "bank_name",
+        "account_number"
+      ],
+      "rows": [
+        {
+          "base_salary": 15000000.0,
+          "pay_frequency": "MONTHLY",
+          "bank_name": "Vietcombank",
+          "account_number": "97043668232985"
+        }
+      ],
+      "row_count": 1
+    },
+    "user_profiles_07": {
+      "columns": [
+        "first_name",
+        "last_name",
+        "birth_date",
+        "phone_number",
+        "personal_email"
+      ],
+      "rows": [
+        {
+          "first_name": "Lê",
+          "last_name": "Văn C",
+          "birth_date": "1988-07-10",
+          "phone_number": "0912345678",
+          "personal_email": "hr.employee@personal.com"
+        }
+      ],
+      "row_count": 1
+    },
+    "user_bank_accounts_04": {
+      "columns": [
+        "account_holder_name",
+        "first_name",
+        "last_name"
+      ],
+      "rows": [
+        {
+          "account_holder_name": "LÊ VĂN C",
+          "first_name": "Lê",
+          "last_name": "Văn C"
+        }
+      ],
+      "row_count": 1
+    },
+    "user_bank_accounts_07": {
+      "columns": [
+        "base_salary",
+        "bank_name",
+        "account_number"
+      ],
+      "rows": [
+        {
+          "base_salary": 15000000.0,
+          "bank_name": "Vietcombank",
+          "account_number": "97043668232985"
+        }
+      ],
+      "row_count": 1
+    },
+    "user_sessions_07": {
+      "columns": [
+        "this_month",
+        "last_month"
+      ],
+      "rows": [
+        {
+          "this_month": 0,
+          "last_month": 4
+        }
+      ],
+      "row_count": 1
+    },
+    "work_shifts_01": {
+      "columns": [
+        "shift_id",
+        "name"
+      ],
+      "rows": [
+        {
+          "shift_id": "52a5e36a-8fc5-4142-8d20-0a2436ab59a3",
+          "name": "Giờ hành chính (T2-T6)"
+        }
+      ],
+      "row_count": 1
+    },
+    "work_shifts_02": {
+      "columns": [
+        "name",
+        "day_of_week",
+        "start_time",
+        "end_time"
+      ],
+      "rows": [
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 1,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 2,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 3,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 4,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 5,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00"
+        }
+      ],
+      "row_count": 5
+    },
+    "work_shifts_03": {
+      "columns": [
+        "name",
+        "day_of_week",
+        "rest_start_time",
+        "rest_end_time"
+      ],
+      "rows": [
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 1,
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 2,
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 3,
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 4,
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 5,
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00"
+        }
+      ],
+      "row_count": 5
+    },
+    "work_shifts_04": {
+      "columns": [
+        "name",
+        "day_of_week",
+        "start_time",
+        "end_time",
+        "rest_start_time",
+        "rest_end_time",
+        "is_working"
+      ],
+      "rows": [
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 1,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "is_working": true
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 2,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "is_working": true
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 3,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "is_working": true
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 4,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "is_working": true
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 5,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "is_working": true
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 6,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00",
+          "rest_start_time": null,
+          "rest_end_time": null,
+          "is_working": false
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 7,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00",
+          "rest_start_time": null,
+          "rest_end_time": null,
+          "is_working": false
+        }
+      ],
+      "row_count": 7
+    },
+    "work_shifts_05": {
+      "columns": [
+        "name",
+        "day_of_week"
+      ],
+      "rows": [
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 6
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 7
+        }
+      ],
+      "row_count": 2
+    },
+    "work_shifts_08": {
+      "columns": [
+        "name",
+        "day_of_week",
+        "is_working",
+        "start_time",
+        "end_time"
+      ],
+      "rows": [
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 6,
+          "is_working": false,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00"
+        },
+        {
+          "name": "Giờ hành chính (T2-T6)",
+          "day_of_week": 7,
+          "is_working": false,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00"
+        }
+      ],
+      "row_count": 2
+    },
+    "work_shift_schedules_01": {
+      "columns": [
+        "day_of_week",
+        "start_time",
+        "end_time",
+        "is_working"
+      ],
+      "rows": [
+        {
+          "day_of_week": 1,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "is_working": true
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "is_working": true
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "is_working": true
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "is_working": true
+        },
+        {
+          "day_of_week": 5,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "is_working": true
+        }
+      ],
+      "row_count": 5
+    },
+    "work_shift_schedules_02": {
+      "columns": [
+        "day_of_week",
+        "is_working",
+        "start_time",
+        "end_time"
+      ],
+      "rows": [
+        {
+          "day_of_week": 6,
+          "is_working": false,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00"
+        },
+        {
+          "day_of_week": 7,
+          "is_working": false,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00"
+        }
+      ],
+      "row_count": 2
+    },
+    "work_shift_schedules_03": {
+      "columns": [
+        "day_of_week",
+        "start_time",
+        "end_time",
+        "rest_start_time",
+        "rest_end_time",
+        "net_hours"
+      ],
+      "rows": [
+        {
+          "day_of_week": 1,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "net_hours": 8.0
+        },
+        {
+          "day_of_week": 2,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "net_hours": 8.0
+        },
+        {
+          "day_of_week": 3,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "net_hours": 8.0
+        },
+        {
+          "day_of_week": 4,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "net_hours": 8.0
+        },
+        {
+          "day_of_week": 5,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "net_hours": 8.0
+        }
+      ],
+      "row_count": 5
+    },
+    "work_shift_schedules_04": {
+      "columns": [
+        "weekly_hours"
+      ],
+      "rows": [
+        {
+          "weekly_hours": 47.5
+        }
+      ],
+      "row_count": 1
+    },
+    "work_shift_schedules_05": {
+      "columns": [
+        "earliest_day",
+        "latest_end"
+      ],
+      "rows": [
+        {
+          "earliest_day": 1,
+          "latest_end": "17:30:00"
+        }
+      ],
+      "row_count": 1
+    },
+    "work_shift_schedules_06": {
+      "columns": [
+        "rest_start_time",
+        "rest_end_time",
+        "days"
+      ],
+      "rows": [
+        {
+          "rest_start_time": "12:00:00",
+          "rest_end_time": "13:30:00",
+          "days": 5
+        }
+      ],
+      "row_count": 1
+    },
+    "work_shift_schedules_07": {
+      "columns": [
+        "day_of_week",
+        "start_time",
+        "end_time",
+        "is_working"
+      ],
+      "rows": [
+        {
+          "day_of_week": 1,
+          "start_time": "08:00:00",
+          "end_time": "17:30:00",
+          "is_working": true
+        },
+        {
+          "day_of_week": 6,
+          "start_time": "00:00:00",
+          "end_time": "00:00:00",
+          "is_working": false
+        }
+      ],
+      "row_count": 2
+    },
+    "work_shift_schedules_08": {
+      "columns": [
+        "day_of_week"
+      ],
+      "rows": [
+        {
+          "day_of_week": 6
+        },
+        {
+          "day_of_week": 7
+        }
+      ],
+      "row_count": 2
+    },
+    "departments_01": {
+      "columns": [
+        "department_id",
+        "name"
+      ],
+      "rows": [
+        {
+          "department_id": "0190abcd-4567-7def-89ab-cdef0123456a",
+          "name": "Human Resources"
+        }
+      ],
+      "row_count": 1
+    },
+    "departments_02": {
+      "columns": [
+        "department",
+        "job"
+      ],
+      "rows": [
+        {
+          "department": "Human Resources",
+          "job": "HR Generalist"
+        }
+      ],
+      "row_count": 1
+    },
+    "departments_03": {
+      "columns": [
+        "employee_code",
+        "department",
+        "shift"
+      ],
+      "rows": [
+        {
+          "employee_code": "EMP023",
+          "department": "Human Resources",
+          "shift": "Giờ hành chính (T2-T6)"
+        }
+      ],
+      "row_count": 1
+    },
+    "departments_04": {
+      "columns": [
+        "joined_date",
+        "department"
+      ],
+      "rows": [
+        {
+          "joined_date": "2024-07-01",
+          "department": "Human Resources"
+        }
+      ],
+      "row_count": 1
+    },
+    "departments_08": {
+      "columns": [
+        "job",
+        "department"
+      ],
+      "rows": [
+        {
+          "job": "HR Generalist",
+          "department": "Human Resources"
+        }
+      ],
+      "row_count": 1
+    },
+    "jobs_01": {
+      "columns": [
+        "job_id",
+        "title"
+      ],
+      "rows": [
+        {
+          "job_id": "0190abcd-a000-7def-89ab-cdef0123457f",
+          "title": "HR Generalist"
+        }
+      ],
+      "row_count": 1
+    },
+    "jobs_04": {
+      "columns": [
+        "title",
+        "employee_code"
+      ],
+      "rows": [
+        {
+          "title": "HR Generalist",
+          "employee_code": "EMP023"
+        }
+      ],
+      "row_count": 1
+    },
+    "jobs_07": {
+      "columns": [
+        "title",
+        "base_salary"
+      ],
+      "rows": [
+        {
+          "title": "HR Generalist",
+          "base_salary": 15000000.0
+        }
+      ],
+      "row_count": 1
+    },
+    "jobs_08": {
+      "columns": [
+        "title",
+        "permission",
+        "granted_at"
+      ],
+      "rows": [
+        {
+          "title": "HR Generalist",
+          "permission": "ATTENDANCE_VIEW_ALL",
+          "granted_at": "2026-10-01T23:32:56.648640"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "DOCUMENT_UPLOAD",
+          "granted_at": "2026-10-01T23:32:56.677640"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "EMPLOYEE_EDIT",
+          "granted_at": "2026-10-01T23:32:56.675639"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "EMPLOYEE_VIEW_ALL",
+          "granted_at": "2026-10-01T23:32:56.674638"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "EVALUATION_APPROVE",
+          "granted_at": "2026-10-05T11:29:56.926808"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "EVALUATION_VIEW_ALL",
+          "granted_at": "2026-10-05T11:29:56.926221"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "LEAVE_APPROVE",
+          "granted_at": "2026-10-01T23:32:56.667640"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "LEAVE_VIEW_ALL",
+          "granted_at": "2026-10-01T23:32:56.663640"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "MANAGE_ASSETS",
+          "granted_at": "2026-10-04T12:15:33.847034"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "ORG_MANAGE",
+          "granted_at": "2026-10-01T23:32:56.673640"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "OVERTIME_APPROVE",
+          "granted_at": "2026-10-01T23:32:56.668639"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "OVERTIME_VIEW_ALL",
+          "granted_at": "2026-10-01T23:32:56.664639"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "RESIGN_APPROVE",
+          "granted_at": "2026-10-01T23:32:56.670639"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "RESIGN_VIEW_ALL",
+          "granted_at": "2026-10-01T23:32:56.665639"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "TIMESHEET_LOCK",
+          "granted_at": "2026-10-01T23:32:56.671639"
+        },
+        {
+          "title": "HR Generalist",
+          "permission": "VIEW_ASSETS",
+          "granted_at": "2026-10-04T12:15:33.836019"
+        }
+      ],
+      "row_count": 16
+    },
+    "holidays_01": {
+      "columns": [],
+      "rows": [],
+      "row_count": 0
+    },
+    "holidays_02": {
+      "columns": [
+        "cnt"
+      ],
+      "rows": [
+        {
+          "cnt": 12
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_03": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2026-01-01",
+          "description": "New Year's Day (T?t Duong l?ch)"
+        },
+        {
+          "date": "2026-02-16",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 1"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 2"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 3"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 4"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "T?t Nguyˆn d n (Lunar New Year) - Day 5"
+        },
+        {
+          "date": "2026-04-26",
+          "description": "Giỗ Tổ Hùng Vương"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Hung Kings' Commemoration (Gi? T? H—ng Vuong)"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "Reunification Day (Ng…y Gi?i ph¢ng mi?n Nam)"
+        },
+        {
+          "date": "2026-05-01",
+          "description": "Labour Day (Ng…y Qu?c t? Lao d?ng)"
+        },
+        {
+          "date": "2026-09-02",
+          "description": "National Day (Qu?c kh nh)"
+        },
+        {
+          "date": "2026-09-03",
+          "description": "Nghỉ liền kề Quốc khánh (3/9)"
+        }
+      ],
+      "row_count": 12
+    },
+    "holidays_04": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2027-01-01",
+          "description": "New Year's Day (T?t Duong l?ch)"
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_05": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2026-04-26",
+          "description": "Giỗ Tổ Hùng Vương"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Hung Kings' Commemoration (Gi? T? H—ng Vuong)"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "Reunification Day (Ng…y Gi?i ph¢ng mi?n Nam)"
+        },
+        {
+          "date": "2026-05-01",
+          "description": "Labour Day (Ng…y Qu?c t? Lao d?ng)"
+        }
+      ],
+      "row_count": 4
+    },
+    "holidays_06": {
+      "columns": [
+        "h1",
+        "h2"
+      ],
+      "rows": [
+        {
+          "h1": 10,
+          "h2": 2
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_07": {
+      "columns": [
+        "month",
+        "cnt"
+      ],
+      "rows": [
+        {
+          "month": 2,
+          "cnt": 5
+        }
+      ],
+      "row_count": 1
+    },
+    "holidays_08": {
+      "columns": [
+        "date",
+        "description"
+      ],
+      "rows": [
+        {
+          "date": "2026-04-30",
+          "description": "Reunification Day (Ng…y Gi?i ph¢ng mi?n Nam)"
+        },
+        {
+          "date": "2026-05-01",
+          "description": "Labour Day (Ng…y Qu?c t? Lao d?ng)"
+        }
+      ],
+      "row_count": 2
+    },
+    "asset_assignments_01": {
+      "columns": [
+        "asset_id",
+        "asset_name",
+        "status",
+        "assigned_at"
+      ],
+      "rows": [
+        {
+          "asset_id": "a4ef1254-70c2-481f-b616-237d464b7de5",
+          "asset_name": "Dell UltraSharp U2723QE 27 inch 4K",
+          "status": "active",
+          "assigned_at": "2026-10-01T17:14:09.983656"
+        }
+      ],
+      "row_count": 1
+    },
+    "asset_assignments_03": {
+      "columns": [],
+      "rows": [],
+      "row_count": 0
+    },
+    "asset_assignments_04": {
+      "columns": [],
+      "rows": [],
+      "row_count": 0
+    },
+    "asset_assignments_05": {
+      "columns": [
+        "asset_id",
+        "asset_name",
+        "expected_return_date",
+        "status"
+      ],
+      "rows": [
+        {
+          "asset_id": "a4ef1254-70c2-481f-b616-237d464b7de5",
+          "asset_name": "Dell UltraSharp U2723QE 27 inch 4K",
+          "expected_return_date": "2026-10-08",
+          "status": "active"
+        }
+      ],
+      "row_count": 1
+    },
+    "asset_requests_02": {
+      "columns": [
+        "reason",
+        "status",
+        "created_at",
+        "category"
+      ],
+      "rows": [
+        {
+          "reason": "Can man 4K de thiet ke poster tuyen dung dot thang 10",
+          "status": "issued",
+          "created_at": "2026-10-01T17:14:09.982452",
+          "category": "Màn hình"
+        }
+      ],
+      "row_count": 1
+    },
+    "assets_01": {
+      "columns": [
+        "asset_code",
+        "name",
+        "serial_number",
+        "specs"
+      ],
+      "rows": [
+        {
+          "asset_code": "MN-0001",
+          "name": "Dell UltraSharp U2723QE 27 inch 4K",
+          "serial_number": "DELLU2723-CN0T41T",
+          "specs": "IPS 27 inch 4K UHD, USB-C 90W, HDMI, DP, loa"
+        }
+      ],
+      "row_count": 1
+    },
+    "assets_02": {
+      "columns": [
+        "name",
+        "warranty_until"
+      ],
+      "rows": [
+        {
+          "name": "Dell UltraSharp U2723QE 27 inch 4K",
+          "warranty_until": "2028-06-20"
+        }
+      ],
+      "row_count": 1
+    },
+    "assets_03": {
+      "columns": [
+        "name",
+        "condition_note",
+        "status"
+      ],
+      "rows": [
+        {
+          "name": "Dell UltraSharp U2723QE 27 inch 4K",
+          "condition_note": "Moi 100%",
+          "status": "assigned"
+        }
+      ],
+      "row_count": 1
+    }
+  },
+  "errors": [
+    [
+      "users_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ed_leave_days) AS remaining_days FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT annual_leave_days, used_leave_days, (annual_leave_days - used_leave_days) AS remaining_days FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "users_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ve_days,0) * 100, 1) AS used_pct FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT annual_leave_days, used_leave_days, ROUND(used_leave_days::numeric / NULLIF(annual_leave_days,0) * 100, 1) AS used_pct FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "users_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ELECT employee_code, joined_date FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT employee_code, joined_date FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "users_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...TE, joined_date))::int AS months FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT joined_date, EXTRACT(YEAR FROM AGE(CURRENT_DATE, joined_date))::int AS years, EXTRACT(MONTH FROM AGE(CURRENT_DATE, joined_date))::int AS months FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "users_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...t_name, last_name, employee_code FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT email, first_name, last_name, employee_code FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "users_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT is_active FROM users WHERE WHERE.user_id = '35337165-...\n                                          ^\n",
+      "SELECT is_active FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "users_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT birth_date, gender FROM users WHERE WHERE.user_id = '...\n                                                   ^\n",
+      "SELECT birth_date, gender FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "attendances_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...me, clock_out_time, status FROM attendances WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT work_date, clock_in_time, clock_out_time, status FROM attendances WHERE WHERE.user_id = %(uid)s AND work_date = CURRENT_DATE AND is_deleted = FALSE"
+    ],
+    [
+      "attendances_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ECT COUNT(*) AS late_count FROM attendances WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS late_count FROM attendances WHERE WHERE.user_id = %(uid)s AND status IN ('LATE','LATE_AND_EARLY') AND is_deleted = FALSE AND work_date >= date_trunc('month', CURRENT_DATE)::date AND work_date < (date_trunc('month', CURRENT_DATE) + INTERVAL '1 month')::date"
+    ],
+    [
+      "attendances_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... = 'EARLY') AS early_count FROM attendances WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT EXTRACT(MONTH FROM work_date)::int AS month, COUNT(*) FILTER (WHERE status IN ('LATE','LATE_AND_EARLY')) AS late_count, COUNT(*) FILTER (WHERE status = 'EARLY') AS early_count FROM attendances WHERE WHERE.user_id = %(uid)s AND is_deleted = FALSE AND EXTRACT(YEAR FROM work_date) = EXTRACT(YEAR"
+    ],
+    [
+      "attendances_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...numeric, 2) AS total_hours FROM attendances WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT ROUND(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric, 2) AS total_hours FROM attendances WHERE WHERE.user_id = %(uid)s AND is_deleted = FALSE AND clock_in_time IS NOT NULL AND clock_out_time IS NOT NULL AND work_date >= date_trunc('week', CURRENT_DATE)::date"
+    ],
+    [
+      "attendances_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT work_date, status FROM attendances WHERE WHERE.user_i...\n                                                        ^\n",
+      "SELECT work_date, status FROM attendances WHERE WHERE.user_id = %(uid)s AND status = 'UNEXCUSED_ABSENCE' AND is_deleted = FALSE AND work_date >= date_trunc('month', CURRENT_DATE)::date ORDER BY work_date LIMIT 20"
+    ],
+    [
+      "attendances_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...th, COUNT(*) AS late_count FROM attendances WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT EXTRACT(MONTH FROM work_date)::int AS month, COUNT(*) AS late_count FROM attendances WHERE WHERE.user_id = %(uid)s AND status IN ('LATE','LATE_AND_EARLY') AND is_deleted = FALSE AND EXTRACT(YEAR FROM work_date) = EXTRACT(YEAR FROM CURRENT_DATE) GROUP BY 1 ORDER BY late_count DESC LIMIT 1"
+    ],
+    [
+      "attendances_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...me, clock_out_time, status FROM attendances WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT work_date, clock_in_time, clock_out_time, status FROM attendances WHERE WHERE.user_id = %(uid)s AND is_deleted = FALSE ORDER BY work_date DESC LIMIT 10"
+    ],
+    [
+      "monthly_timesheets_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...s),0) AS total_days FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COALESCE(SUM(actual_work_hours),0) AS total_hours, COALESCE(SUM(actual_worked_days),0) AS total_days FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int"
+    ],
+    [
+      "monthly_timesheets_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... total_late_minutes FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, late_count, total_late_minutes FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int AND period_month = EXTRACT(MONTH FROM CURRENT_DATE)::int"
+    ],
+    [
+      "monthly_timesheets_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... actual_worked_days FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, actual_work_hours, actual_worked_days FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int ORDER BY period_month"
+    ],
+    [
+      "monthly_timesheets_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..., unpaid_leave_days FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, unpaid_leave_days FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int ORDER BY unpaid_leave_days DESC LIMIT 1"
+    ],
+    [
+      "monthly_timesheets_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...),0) AS absent_days FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COALESCE(SUM(paid_leave_days),0) AS paid_leave_days, COALESCE(SUM(absent_days),0) AS absent_days FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int AND period_month BETWEEN 1 AND 3"
+    ],
+    [
+      "monthly_timesheets_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ours) AS diff_hours FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, total_actual_ot_hours, total_paid_ot_hours, (total_actual_ot_hours - total_paid_ot_hours) AS diff_hours FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int AND period_month = EXTRACT(MONTH FROM CURRENT_DATE)::int"
+    ],
+    [
+      "monthly_timesheets_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...d_month, late_count FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, late_count FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int AND late_count > 3 ORDER BY period_month"
+    ],
+    [
+      "monthly_timesheets_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... total_late_minutes FROM monthly_timesheets WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_year, period_month, actual_work_hours, late_count, total_late_minutes FROM monthly_timesheets WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 3"
+    ],
+    [
+      "leave_requests_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...,0) AS total_paid_leave FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT COALESCE(SUM(paid_leave_days),0) AS total_paid_leave FROM leave_requests WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM from_date) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    ],
+    [
+      "leave_requests_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...to_date, status, reason FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT from_date, to_date, status, reason FROM leave_requests WHERE WHERE.requestor_id = %(uid)s ORDER BY created_at DESC LIMIT 1"
+    ],
+    [
+      "leave_requests_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...status, COUNT(*) AS cnt FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT status, COUNT(*) AS cnt FROM leave_requests WHERE WHERE.requestor_id = %(uid)s GROUP BY status ORDER BY status"
+    ],
+    [
+      "leave_requests_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ave_days) AS total_days FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT EXTRACT(MONTH FROM from_date)::int AS month, SUM(paid_leave_days) AS total_days FROM leave_requests WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM from_date) = EXTRACT(YEAR FROM CURRENT_DATE) GROUP BY 1 ORDER BY total_days DESC LIMIT 1"
+    ],
+    [
+      "leave_requests_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...to_date, reason, status FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT from_date, to_date, reason, status FROM leave_requests WHERE WHERE.requestor_id = %(uid)s ORDER BY from_date DESC LIMIT 10"
+    ],
+    [
+      "leave_requests_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...tatus, rejection_reason FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT from_date, to_date, status, rejection_reason FROM leave_requests WHERE WHERE.requestor_id = %(uid)s AND status = 'rejected' ORDER BY from_date DESC"
+    ],
+    [
+      "leave_requests_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...to_date, status, reason FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT from_date, to_date, status, reason FROM leave_requests WHERE WHERE.requestor_id = %(uid)s AND status = 'pending' ORDER BY from_date"
+    ],
+    [
+      "leave_requests_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...r_id, from_date, status FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT approver_id, from_date, status FROM leave_requests WHERE WHERE.requestor_id = %(uid)s ORDER BY created_at DESC LIMIT 1"
+    ],
+    [
+      "overtime_records_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... 2) AS total_ot_hours FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT ROUND(COALESCE(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600),0)::numeric, 2) AS total_ot_hours FROM overtime_records WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM approved_date) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    ],
+    [
+      "overtime_records_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ours, COUNT(*) AS cnt FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT EXTRACT(MONTH FROM approved_date)::int AS month, ROUND(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric,2) AS total_hours, COUNT(*) AS cnt FROM overtime_records WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM approved_date) = EXTRACT(YEA"
+    ],
+    [
+      "overtime_records_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ric,2) AS total_hours FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT EXTRACT(MONTH FROM approved_date)::int AS month, ROUND(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric,2) AS total_hours FROM overtime_records WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM approved_date) = EXTRACT(YEAR FROM CURRENT_DA"
+    ],
+    [
+      "overtime_records_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...c,2) AS holiday_hours FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT ROUND(COALESCE(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600) FILTER (WHERE is_night_time = TRUE),0)::numeric,2) AS night_hours, ROUND(COALESCE(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600) FILTER (WHERE is_weekend = TRUE),0)::numeric,2) AS weekend_hours, ROUN"
+    ],
+    [
+      "overtime_records_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...son, rejection_reason FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT approved_date, status, reason, rejection_reason FROM overtime_records WHERE WHERE.requestor_id = %(uid)s AND status IN ('pending','rejected') ORDER BY approved_date DESC"
+    ],
+    [
+      "overtime_records_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...c,2) AS hours, reason FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT approved_date, clock_in_time, clock_out_time, ROUND((EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric,2) AS hours, reason FROM overtime_records WHERE WHERE.requestor_id = %(uid)s ORDER BY approved_date DESC LIMIT 10"
+    ],
+    [
+      "overtime_records_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...meric,2) AS avg_hours FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt, ROUND(AVG(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric,2) AS avg_hours FROM overtime_records WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM approved_date) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    ],
+    [
+      "overtime_records_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ric,2) AS total_hours FROM overtime_records WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT date_trunc('week', approved_date)::date AS week, ROUND(SUM(EXTRACT(EPOCH FROM (clock_out_time - clock_in_time))/3600)::numeric,2) AS total_hours FROM overtime_records WHERE WHERE.requestor_id = %(uid)s AND status = 'accepted' AND EXTRACT(YEAR FROM approved_date) = EXTRACT(YEAR FROM CURRENT_DA"
+    ],
+    [
+      "payrolls_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... period_year, net_pay, status FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, period_year, net_pay, status FROM payrolls WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "payrolls_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...(SUM(net_pay),0) AS total_net FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COALESCE(SUM(net_pay),0) AS total_net FROM payrolls WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int"
+    ],
+    [
+      "payrolls_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... base_salary, net_pay, status FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, period_year, base_salary, net_pay, status FROM payrolls WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int ORDER BY period_month"
+    ],
+    [
+      "payrolls_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ion, total_deduction, net_pay FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT base_salary, gross_pay, insurance_deduction, tax_deduction, other_deduction, total_deduction, net_pay FROM payrolls WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "payrolls_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...pay, bonus_pay, allowance_pay FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_month, net_pay, bonus_pay, allowance_pay FROM payrolls WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int ORDER BY net_pay DESC LIMIT 1"
+    ],
+    [
+      "payrolls_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ESC, period_month DESC) AS rn FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "WITH r AS (SELECT period_year, period_month, net_pay, ROW_NUMBER() OVER (ORDER BY period_year DESC, period_month DESC) AS rn FROM payrolls WHERE WHERE.user_id = %(uid)s) SELECT (SELECT net_pay FROM r WHERE rn = 1) AS this_month, (SELECT net_pay FROM r WHERE rn = 2) AS last_month, (SELECT net_pay FRO"
+    ],
+    [
+      "payrolls_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ce_pay),0) AS total_allowance FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COALESCE(SUM(bonus_pay),0) AS total_bonus, COALESCE(SUM(allowance_pay),0) AS total_allowance FROM payrolls WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int"
+    ],
+    [
+      "payrolls_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...uction),0) AS total_insurance FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COALESCE(SUM(tax_deduction),0) AS total_tax, COALESCE(SUM(insurance_deduction),0) AS total_insurance FROM payrolls WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int"
+    ],
+    [
+      "payrolls_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...t_pay)::numeric,0) AS avg_net FROM payrolls WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS paid_count, ROUND(AVG(net_pay)::numeric,0) AS avg_net FROM payrolls WHERE WHERE.user_id = %(uid)s AND status = 'PAID' AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int"
+    ],
+    [
+      "salaries_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT base_salary FROM salaries WHERE WHERE.user_id = '3533...\n                                               ^\n",
+      "SELECT base_salary FROM salaries WHERE WHERE.user_id = %(uid)s AND is_active = TRUE"
+    ],
+    [
+      "salaries_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...art_date, end_date, is_active FROM salaries WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT base_salary, start_date, end_date, is_active FROM salaries WHERE WHERE.user_id = %(uid)s ORDER BY start_date"
+    ],
+    [
+      "salaries_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ER BY start_date) AS prev_pay FROM salaries WHERE WHERE.user...\n                                                             ^\n",
+      "WITH r AS (SELECT base_salary, start_date, LAG(base_salary) OVER (ORDER BY start_date) AS prev_pay FROM salaries WHERE WHERE.user_id = %(uid)s) SELECT base_salary, prev_pay, (base_salary - prev_pay) AS diff_amount, ROUND(((base_salary - prev_pay) / NULLIF(prev_pay,0) * 100)::numeric, 1) AS diff_pct "
+    ],
+    [
+      "salaries_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT pay_frequency FROM salaries WHERE WHERE.user_id = '35...\n                                                 ^\n",
+      "SELECT pay_frequency FROM salaries WHERE WHERE.user_id = %(uid)s AND is_active = TRUE"
+    ],
+    [
+      "salaries_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT work_days FROM salaries WHERE WHERE.user_id = '353371...\n                                             ^\n",
+      "SELECT work_days FROM salaries WHERE WHERE.user_id = %(uid)s AND is_active = TRUE"
+    ],
+    [
+      "salaries_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ELECT base_salary, start_date FROM salaries WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT base_salary, start_date FROM salaries WHERE WHERE.user_id = %(uid)s ORDER BY base_salary DESC LIMIT 1"
+    ],
+    [
+      "salaries_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT start_date, end_date FROM salaries WHERE WHERE.user_i...\n                                                        ^\n",
+      "SELECT start_date, end_date FROM salaries WHERE WHERE.user_id = %(uid)s AND is_active = TRUE"
+    ],
+    [
+      "salaries_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ry)::numeric,0) AS avg_salary FROM salaries WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT ROUND(AVG(base_salary)::numeric,0) AS avg_salary FROM salaries WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_contracts_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...date, contract_end_date FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_start_date, contract_end_date FROM user_contracts WHERE WHERE.user_id = %(uid)s AND is_active = TRUE"
+    ],
+    [
+      "user_contracts_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...act_end_date, is_active FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_start_date, contract_end_date, is_active FROM user_contracts WHERE WHERE.user_id = %(uid)s ORDER BY contract_start_date"
+    ],
+    [
+      "user_contracts_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...RENT_DATE) AS days_left FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_end_date, (contract_end_date - CURRENT_DATE) AS days_left FROM user_contracts WHERE WHERE.user_id = %(uid)s AND is_active = TRUE"
+    ],
+    [
+      "user_contracts_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...t_type, COUNT(*) AS cnt FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, COUNT(*) AS cnt FROM user_contracts WHERE WHERE.user_id = %(uid)s GROUP BY contract_type ORDER BY contract_type"
+    ],
+    [
+      "user_contracts_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..._date) AS duration_days FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_start_date, contract_end_date, (contract_end_date - contract_start_date) AS duration_days FROM user_contracts WHERE WHERE.user_id = %(uid)s AND contract_type = 'Probation'"
+    ],
+    [
+      "user_contracts_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...act_end_date, is_active FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_start_date, contract_end_date, is_active FROM user_contracts WHERE WHERE.user_id = %(uid)s AND is_active = FALSE"
+    ],
+    [
+      "user_contracts_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...date, contract_end_date FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_start_date, contract_end_date FROM user_contracts WHERE WHERE.user_id = %(uid)s ORDER BY contract_start_date DESC LIMIT 2"
+    ],
+    [
+      "user_contracts_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...pe, contract_start_date FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_start_date FROM user_contracts WHERE WHERE.user_id = %(uid)s AND contract_type = 'Indefinite'"
+    ],
+    [
+      "user_contracts_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...type, contract_end_date FROM user_contracts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT contract_type, contract_end_date FROM user_contracts WHERE WHERE.user_id = %(uid)s AND contract_end_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '60 days'"
+    ],
+    [
+      "user_profiles_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...e_number, personal_email FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT phone_number, personal_email FROM user_profiles WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_profiles_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... emergency_contact_phone FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT emergency_contact_name, emergency_contact_phone FROM user_profiles WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_profiles_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ionality, marital_status FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT place_of_birth, nationality, marital_status FROM user_profiles WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_profiles_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ial_insurance_start_date FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT social_insurance_start_date FROM user_profiles WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_profiles_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...art_date))::int AS years FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT social_insurance_start_date, EXTRACT(YEAR FROM AGE(CURRENT_DATE, social_insurance_start_date))::int AS years FROM user_profiles WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_profiles_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... missing_emergency_phone FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT CASE WHEN phone_number IS NULL THEN 'missing_phone' END AS missing_phone, CASE WHEN personal_email IS NULL THEN 'missing_email' END AS missing_email, CASE WHEN emergency_contact_name IS NULL THEN 'missing_emergency_name' END AS missing_emergency_name, CASE WHEN emergency_contact_phone IS NULL"
+    ],
+    [
+      "user_profiles_09",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ial_insurance_start_date FROM user_profiles WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT phone_number, personal_email, place_of_birth, nationality, marital_status, emergency_contact_name, emergency_contact_phone, social_insurance_start_date FROM user_profiles WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_bank_accounts_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...account_holder_name FROM user_bank_accounts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT bank_name, account_number, account_holder_name FROM user_bank_accounts WHERE WHERE.user_id = %(uid)s AND is_default = TRUE"
+    ],
+    [
+      "user_bank_accounts_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ECT COUNT(*) AS cnt FROM user_bank_accounts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt FROM user_bank_accounts WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_bank_accounts_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...er_name, is_default FROM user_bank_accounts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT bank_name, account_number, account_holder_name, is_default FROM user_bank_accounts WHERE WHERE.user_id = %(uid)s ORDER BY is_default DESC"
+    ],
+    [
+      "user_bank_accounts_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..._number, is_default FROM user_bank_accounts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT bank_name, account_number, is_default FROM user_bank_accounts WHERE WHERE.user_id = %(uid)s AND is_default = FALSE"
+    ],
+    [
+      "user_bank_accounts_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ank_code, bank_name FROM user_bank_accounts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT bank_code, bank_name FROM user_bank_accounts WHERE WHERE.user_id = %(uid)s AND is_default = TRUE"
+    ],
+    [
+      "user_bank_accounts_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...er_name, is_default FROM user_bank_accounts WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT bank_name, account_number, account_holder_name, is_default FROM user_bank_accounts WHERE WHERE.user_id = %(uid)s AND is_default = TRUE"
+    ],
+    [
+      "user_permission_grants_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ion, granted_at FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission, granted_at FROM user_permission_grants WHERE WHERE.user_id = %(uid)s ORDER BY granted_at"
+    ],
+    [
+      "user_permission_grants_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...LECT permission FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission FROM user_permission_grants WHERE WHERE.user_id = %(uid)s AND permission IN ('LEAVE_APPROVE','LEAVE_APPROVE_DEPT')"
+    ],
+    [
+      "user_permission_grants_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...COUNT(*) AS cnt FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt FROM user_permission_grants WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_permission_grants_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ion, granted_at FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission, granted_at FROM user_permission_grants WHERE WHERE.user_id = %(uid)s ORDER BY granted_at DESC LIMIT 1"
+    ],
+    [
+      "user_permission_grants_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...COUNT(*) AS cnt FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT CASE WHEN permission LIKE '%APPROVE%' THEN 'approve' WHEN permission LIKE '%VIEW%' THEN 'view' WHEN permission LIKE '%MANAGE%' THEN 'manage' ELSE 'other' END AS grp, COUNT(*) AS cnt FROM user_permission_grants WHERE WHERE.user_id = %(uid)s GROUP BY 1 ORDER BY 1"
+    ],
+    [
+      "user_permission_grants_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...LECT permission FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission FROM user_permission_grants WHERE WHERE.user_id = %(uid)s AND permission IN ('PAYROLL_VIEW_ALL','PAYROLL_MANAGE')"
+    ],
+    [
+      "user_permission_grants_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ion, granted_at FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission, granted_at FROM user_permission_grants WHERE WHERE.user_id = %(uid)s AND EXTRACT(YEAR FROM granted_at) = EXTRACT(YEAR FROM CURRENT_DATE) ORDER BY granted_at"
+    ],
+    [
+      "user_permission_grants_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ion, granted_at FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission, granted_at FROM user_permission_grants WHERE WHERE.user_id = %(uid)s AND permission LIKE '%APPROVE%' ORDER BY permission"
+    ],
+    [
+      "user_permission_grants_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...LECT permission FROM user_permission_grants WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT permission FROM user_permission_grants WHERE WHERE.user_id = %(uid)s AND permission IN ('TIMESHEET_LOCK','PERMISSION_GRANT','USER_MANAGE','ROLE_ASSIGN')"
+    ],
+    [
+      "user_sessions_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...T COUNT(*) AS active_cnt FROM user_sessions WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS active_cnt FROM user_sessions WHERE WHERE.user_id = %(uid)s AND revoked = FALSE"
+    ],
+    [
+      "user_sessions_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ctive_at) AS last_active FROM user_sessions WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT MAX(last_active_at) AS last_active FROM user_sessions WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "user_sessions_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...st_active_at, created_at FROM user_sessions WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT session_id, revoked, last_active_at, created_at FROM user_sessions WHERE WHERE.user_id = %(uid)s ORDER BY created_at DESC LIMIT 10"
+    ],
+    [
+      "user_sessions_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... revoked, last_active_at FROM user_sessions WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT session_id, revoked, last_active_at FROM user_sessions WHERE WHERE.user_id = %(uid)s AND revoked = TRUE ORDER BY last_active_at DESC"
+    ],
+    [
+      "user_sessions_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...S month, COUNT(*) AS cnt FROM user_sessions WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT EXTRACT(MONTH FROM created_at)::int AS month, COUNT(*) AS cnt FROM user_sessions WHERE WHERE.user_id = %(uid)s AND EXTRACT(YEAR FROM created_at) = EXTRACT(YEAR FROM CURRENT_DATE) GROUP BY 1 ORDER BY 1"
+    ],
+    [
+      "user_sessions_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT COUNT(*) AS cnt FROM user_sessions WHERE WHERE.user_i...\n                                                        ^\n",
+      "SELECT COUNT(*) AS cnt FROM user_sessions WHERE WHERE.user_id = %(uid)s AND created_at >= date_trunc('month', CURRENT_DATE)"
+    ],
+    [
+      "user_sessions_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ted_at) AS oldest_active FROM user_sessions WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT MIN(created_at) AS oldest_active FROM user_sessions WHERE WHERE.user_id = %(uid)s AND revoked = FALSE"
+    ],
+    [
+      "resignation_requests_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...last_working_date FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT status, submitted_time, last_working_date FROM resignation_requests WHERE WHERE.user_id = %(uid)s ORDER BY submitted_time DESC LIMIT 1"
+    ],
+    [
+      "resignation_requests_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...T COUNT(*) AS cnt FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt FROM resignation_requests WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "resignation_requests_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...king_date, status FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT last_working_date, status FROM resignation_requests WHERE WHERE.user_id = %(uid)s ORDER BY submitted_time DESC LIMIT 1"
+    ],
+    [
+      "resignation_requests_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...t, hr_approved_at FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT status, manager_approved_at, hr_approved_at FROM resignation_requests WHERE WHERE.user_id = %(uid)s ORDER BY submitted_time DESC LIMIT 1"
+    ],
+    [
+      "resignation_requests_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...n, submitted_time FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT status, reason, submitted_time FROM resignation_requests WHERE WHERE.user_id = %(uid)s AND status IN ('REJECTED','CANCELLED','MANAGER_REJECTED') ORDER BY submitted_time DESC"
+    ],
+    [
+      "resignation_requests_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...e) AS notice_days FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT submitted_time, last_working_date, (last_working_date - submitted_time::date) AS notice_days FROM resignation_requests WHERE WHERE.user_id = %(uid)s ORDER BY submitted_time DESC LIMIT 1"
+    ],
+    [
+      "resignation_requests_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...LECT created_at, reason FROM leave_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT created_at, reason FROM leave_requests WHERE WHERE.requestor_id = %(uid)s ORDER BY created_at DESC LIMIT 1"
+    ],
+    [
+      "resignation_requests_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...last_working_date FROM resignation_requests WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT submitted_time, reason, status, last_working_date FROM resignation_requests WHERE WHERE.user_id = %(uid)s ORDER BY submitted_time DESC"
+    ],
+    [
+      "work_shifts_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: WITH mine AS (SELECT shift_id FROM users WHERE WHERE.user_id...\n                                                       ^\n",
+      "WITH mine AS (SELECT shift_id FROM users WHERE WHERE.user_id = %(uid)s) SELECT s.name, MIN(sc.start_time) AS earliest_start, (SELECT name FROM work_shifts WHERE shift_id = (SELECT shift_id FROM mine)) AS my_shift FROM work_shifts s JOIN work_shift_schedules sc ON sc.shift_id = s.shift_id WHERE sc.is"
+    ],
+    [
+      "work_shifts_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ts s CROSS JOIN (SELECT shift_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT s.name, CASE WHEN s.shift_id = u.shift_id THEN TRUE ELSE FALSE END AS is_mine FROM work_shifts s CROSS JOIN (SELECT shift_id FROM users WHERE WHERE.user_id = %(uid)s) u ORDER BY s.name"
+    ],
+    [
+      "departments_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...CROSS JOIN (SELECT department_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT d.name, CASE WHEN d.department_id = u.department_id THEN TRUE ELSE FALSE END AS is_mine FROM departments d CROSS JOIN (SELECT department_id FROM users WHERE WHERE.user_id = %(uid)s) u ORDER BY d.name"
+    ],
+    [
+      "departments_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...tment_id = (SELECT department_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT j.title FROM jobs j WHERE j.department_id = (SELECT department_id FROM users WHERE WHERE.user_id = %(uid)s) ORDER BY j.title"
+    ],
+    [
+      "departments_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT department_id FROM users WHERE WHERE.user_id = '35337...\n                                              ^\n",
+      "SELECT department_id FROM users WHERE WHERE.user_id = %(uid)s"
+    ],
+    [
+      "jobs_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... WHERE j.job_id = (SELECT job_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT j.title, d.name AS department FROM jobs j LEFT JOIN departments d ON d.department_id = j.department_id WHERE j.job_id = (SELECT job_id FROM users WHERE WHERE.user_id = %(uid)s)"
+    ],
+    [
+      "jobs_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...tment_id = (SELECT department_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT j.title FROM jobs j WHERE j.department_id = (SELECT department_id FROM users WHERE WHERE.user_id = %(uid)s) ORDER BY j.title"
+    ],
+    [
+      "jobs_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...jobs j CROSS JOIN (SELECT job_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT j.title, CASE WHEN j.job_id = u.job_id THEN TRUE ELSE FALSE END AS is_mine FROM jobs j CROSS JOIN (SELECT job_id FROM users WHERE WHERE.user_id = %(uid)s) u ORDER BY j.title"
+    ],
+    [
+      "jobs_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...E WHEN j.job_id = (SELECT job_id FROM users WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT j.title, CASE WHEN j.job_id = (SELECT job_id FROM users WHERE WHERE.user_id = %(uid)s) THEN 'my_position' ELSE 'peer' END AS relation FROM jobs j WHERE j.department_id = (SELECT department_id FROM users WHERE WHERE.user_id = %(uid)s) ORDER BY j.title"
+    ],
+    [
+      "performance_reviews_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...vg_manager, status FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_year, period_month, avg_self, avg_manager, status FROM performance_reviews WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int ORDER BY period_month"
+    ],
+    [
+      "performance_reviews_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...month, avg_manager FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_year, period_month, avg_manager FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "performance_reviews_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...g_manager) AS diff FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT avg_self, avg_manager, (avg_self - avg_manager) AS diff FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "performance_reviews_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...name, evaluator_id FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT evaluator_name, evaluator_id FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "performance_reviews_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..._month, next_goals FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT period_year, period_month, next_goals FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "performance_reviews_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..._confirmed, status FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT leader_confirmed, status FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "performance_reviews_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..._month DESC) AS rn FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "WITH r AS (SELECT period_year, period_month, avg_manager, ROW_NUMBER() OVER (ORDER BY period_year DESC, period_month DESC) AS rn FROM performance_reviews WHERE WHERE.user_id = %(uid)s) SELECT (SELECT avg_manager FROM r WHERE rn = 1) AS latest, (SELECT avg_manager FROM r WHERE rn = 2) AS previous"
+    ],
+    [
+      "performance_reviews_08",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...CT overall_summary FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT overall_summary FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1"
+    ],
+    [
+      "performance_reviews_10",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...CT COUNT(*) AS cnt FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt FROM performance_reviews WHERE WHERE.user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM CURRENT_DATE)::int"
+    ],
+    [
+      "performance_scores_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... (SELECT review_id FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT criterion_text, self_score, manager_score FROM performance_scores WHERE review_id = (SELECT review_id FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1) ORDER BY sort_order"
+    ],
+    [
+      "performance_scores_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... (SELECT review_id FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT criterion_text, manager_score FROM performance_scores WHERE review_id = (SELECT review_id FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1) ORDER BY manager_score ASC NULLS LAST LIMIT 1"
+    ],
+    [
+      "performance_scores_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... (SELECT review_id FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT criterion_text, self_score, manager_score, (self_score - manager_score) AS diff FROM performance_scores WHERE review_id = (SELECT review_id FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1) ORDER BY (self_score - manager_score) DESC N"
+    ],
+    [
+      "performance_scores_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ... (SELECT review_id FROM performance_reviews WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt FROM performance_scores WHERE review_id = (SELECT review_id FROM performance_reviews WHERE WHERE.user_id = %(uid)s ORDER BY period_year DESC, period_month DESC LIMIT 1)"
+    ],
+    [
+      "asset_assignments_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...LECT COUNT(*) AS cnt FROM asset_assignments WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT COUNT(*) AS cnt FROM asset_assignments WHERE WHERE.user_id = %(uid)s AND status = 'active'"
+    ],
+    [
+      "asset_assignments_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...sset_id, assigned_by FROM asset_assignments WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT asset_id, assigned_by FROM asset_assignments WHERE WHERE.user_id = %(uid)s ORDER BY assigned_at DESC LIMIT 5"
+    ],
+    [
+      "asset_assignments_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...LECT asset_id, notes FROM asset_assignments WHERE WHERE.user...\n                                                             ^\n",
+      "SELECT asset_id, notes FROM asset_assignments WHERE WHERE.user_id = %(uid)s AND notes IS NOT NULL ORDER BY assigned_at DESC LIMIT 5"
+    ],
+    [
+      "asset_requests_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...tus, reason, created_at FROM asset_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT status, reason, created_at FROM asset_requests WHERE WHERE.requestor_id = %(uid)s ORDER BY created_at DESC LIMIT 1"
+    ],
+    [
+      "asset_requests_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ejection_reason, reason FROM asset_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT status, rejection_reason, reason FROM asset_requests WHERE WHERE.requestor_id = %(uid)s AND status = 'rejected' ORDER BY created_at DESC"
+    ],
+    [
+      "asset_requests_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT COUNT(*) AS cnt FROM asset_requests WHERE WHERE.reque...\n                                                         ^\n",
+      "SELECT COUNT(*) AS cnt FROM asset_requests WHERE WHERE.requestor_id = %(uid)s AND EXTRACT(YEAR FROM created_at) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    ],
+    [
+      "asset_requests_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ECT approver_id, status FROM asset_requests WHERE WHERE.requ...\n                                                             ^\n",
+      "SELECT approver_id, status FROM asset_requests WHERE WHERE.requestor_id = %(uid)s ORDER BY created_at DESC LIMIT 3"
+    ],
+    [
+      "it_tickets_01",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...us, description, created_at FROM it_tickets WHERE WHERE.repo...\n                                                             ^\n",
+      "SELECT status, description, created_at FROM it_tickets WHERE WHERE.reporter_id = %(uid)s ORDER BY created_at DESC LIMIT 1"
+    ],
+    [
+      "it_tickets_02",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...ategory, status, created_at FROM it_tickets WHERE WHERE.repo...\n                                                             ^\n",
+      "SELECT description, category, status, created_at FROM it_tickets WHERE WHERE.reporter_id = %(uid)s AND EXTRACT(YEAR FROM created_at) = EXTRACT(YEAR FROM CURRENT_DATE) ORDER BY created_at DESC"
+    ],
+    [
+      "it_tickets_03",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: SELECT COUNT(*) AS cnt FROM it_tickets WHERE WHERE.reporter_...\n                                                     ^\n",
+      "SELECT COUNT(*) AS cnt FROM it_tickets WHERE WHERE.reporter_id = %(uid)s AND EXTRACT(YEAR FROM created_at) = EXTRACT(YEAR FROM CURRENT_DATE)"
+    ],
+    [
+      "it_tickets_04",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ..., resolve_note, resolved_at FROM it_tickets WHERE WHERE.repo...\n                                                             ^\n",
+      "SELECT status, resolve_note, resolved_at FROM it_tickets WHERE WHERE.reporter_id = %(uid)s AND category = 'PRINTER' ORDER BY created_at DESC LIMIT 3"
+    ],
+    [
+      "it_tickets_05",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...nee_id, status, description FROM it_tickets WHERE WHERE.repo...\n                                                             ^\n",
+      "SELECT assignee_id, status, description FROM it_tickets WHERE WHERE.reporter_id = %(uid)s AND category = 'NETWORK' ORDER BY created_at DESC LIMIT 1"
+    ],
+    [
+      "it_tickets_06",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...scription, status, priority FROM it_tickets WHERE WHERE.repo...\n                                                             ^\n",
+      "SELECT description, status, priority FROM it_tickets WHERE WHERE.reporter_id = %(uid)s AND status IN ('OPEN','IN_PROGRESS') ORDER BY created_at DESC"
+    ],
+    [
+      "it_tickets_07",
+      "Lỗi truy vấn dữ liệu cá nhân: syntax error at or near \"WHERE\"\nLINE 1: ...scription, priority, status FROM it_tickets WHERE WHERE.repo...\n                                                             ^\n",
+      "SELECT description, priority, status FROM it_tickets WHERE WHERE.reporter_id = %(uid)s AND priority = 'HIGH' ORDER BY created_at DESC"
+    ]
+  ]
+}

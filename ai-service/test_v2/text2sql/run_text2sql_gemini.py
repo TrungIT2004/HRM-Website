@@ -43,7 +43,7 @@ OUT = Path(__file__).resolve().parent / "db_retrieval_eval_gemini.json"
 THRESHOLDS = {"route_acc": (">", 0.85), "sql_ok": (">", 0.80), "non_empty": (">", 0.70)}
 
 # Model to use
-GEMINI_MODEL = "gemini-2.5-flash-lite"  # or "gemini-2.5-flash" if 3.1 not available
+GEMINI_MODEL = "gemini-3.5-flash-lite"  # Updated from deprecated gemini-2.5-flash-lite
 
 # =========================================================================
 # GEMINI CLIENT POOL WITH KEY ROTATION
@@ -59,20 +59,19 @@ class GeminiKeyPool:
         self.usage = {i: {"requests": 0, "errors": 0} for i in range(len(self.clients))}
         print(f"[GeminiPool] Initialized with {len(self.clients)} API keys for model: {model}")
 
-    def get_client(self) -> genai.Client:
-        """Get next client in rotation."""
-        client = self.clients[self.current_idx]
+    def _get_next_client(self) -> tuple[genai.Client, int]:
+        """Get next client in rotation and return (client, index)."""
+        idx = self.current_idx
+        client = self.clients[idx]
         self.current_idx = (self.current_idx + 1) % len(self.clients)
-        self.usage[self.current_idx]["requests"] += 1
-        return client
+        return client, idx
 
     def generate_sql(self, system_prompt: str, user_prompt: str) -> str:
         """Generate SQL using Gemini with automatic key rotation on failure."""
         last_error = None
 
         for attempt in range(len(self.clients) * 2):  # Try each key up to 2 times
-            idx = self.current_idx
-            client = self.clients[idx]
+            client, idx = self._get_next_client()
 
             try:
                 response = client.models.generate_content(
@@ -99,8 +98,7 @@ class GeminiKeyPool:
                 self.usage[idx]["errors"] += 1
                 last_error = str(e)
                 print(f"[GeminiPool] Key {idx} failed: {e}")
-                # Rotate to next key
-                self.current_idx = (self.current_idx + 1) % len(self.clients)
+                # Already rotated via _get_next_client, continue to next
                 continue
 
         raise RuntimeError(f"All Gemini keys exhausted. Last error: {last_error}")
@@ -114,23 +112,23 @@ class GeminiKeyPool:
 # =========================================================================
 
 def load_api_keys() -> List[str]:
-    """Load 6 Gemini API keys from environment or quota_state.json."""
-    # First try environment variables GEMINI_API_KEY_0 through GEMINI_API_KEY_5
+    """Load 7 Gemini API keys from environment or quota_state.json."""
+    # First try environment variables GEMINI_API_KEY_0 through GEMINI_API_KEY_6
     keys = []
-    for i in range(6):
+    for i in range(7):
         key = os.getenv(f"GEMINI_API_KEY_{i}")
         if key and key != f"your_gemini_api_key_{i}_here":
             keys.append(key)
 
-    if len(keys) == 6:
-        print(f"[Config] Loaded 6 API keys from environment variables")
+    if len(keys) == 7:
+        print(f"[Config] Loaded 7 API keys from environment variables")
         return keys
 
     # Fallback: try single GEMINI_API_KEY (will use same key for all)
     single_key = os.getenv("GEMINI_API_KEY")
     if single_key and single_key != "your_gemini_api_key_here":
-        print(f"[Config] Using single GEMINI_API_KEY for all 6 slots")
-        return [single_key] * 6
+        print(f"[Config] Using single GEMINI_API_KEY for all 7 slots")
+        return [single_key] * 7
 
     # Last resort: extract from quota_state.json (keys are masked there though)
     quota_file = Path(__file__).resolve().parent / "quota_state.json"
@@ -141,7 +139,7 @@ def load_api_keys() -> List[str]:
         print(f"[Config] WARNING: quota_state.json has masked keys, cannot extract real keys")
 
     raise RuntimeError(
-        "No Gemini API keys found. Set GEMINI_API_KEY_0 through GEMINI_API_KEY_5 "
+        "No Gemini API keys found. Set GEMINI_API_KEY_0 through GEMINI_API_KEY_6 "
         "or GEMINI_API_KEY in .env file"
     )
 

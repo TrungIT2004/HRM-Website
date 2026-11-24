@@ -1,0 +1,57 @@
+{
+  "test_uid": "d47d452a-3459-4e3f-84f5-e9df27f9125b",
+  "summary": {
+    "n": 3,
+    "n_error": 3,
+    "sql_ok": 0.0,
+    "fact_recall": 0.0,
+    "answer_ok": 0.0,
+    "prompt_tokens_mean": 0.0,
+    "completion_tokens_mean": 0.0,
+    "pass_fail": {
+      "fact_recall": "FAIL",
+      "answer_ok": "FAIL"
+    }
+  },
+  "rows": [
+    {
+      "id": "users_01",
+      "question": "Tôi còn bao nhiêu ngày phép năm nay?",
+      "sql_ok": false,
+      "fact_recall": 0.0,
+      "answer_ok": false,
+      "n_facts": 2,
+      "n_hit": 0,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_02",
+      "question": "Tôi đã dùng bao nhiêu ngày phép trên tổng số ngày được cấp?",
+      "sql_ok": false,
+      "fact_recall": 0.0,
+      "answer_ok": false,
+      "n_facts": 2,
+      "n_hit": 0,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_03",
+      "question": "Mã nhân viên và ngày vào làm của tôi là gì?",
+      "sql_ok": false,
+      "fact_recall": 0.0,
+      "answer_ok": false,
+      "n_facts": 1,
+      "n_hit": 0,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    }
+  ]
+}

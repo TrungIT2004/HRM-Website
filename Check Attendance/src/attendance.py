@@ -171,35 +171,65 @@ def _load_anti_spoof_model():
         _anti_spoof_input_name = _anti_spoof_session.get_inputs()[0].name
         print(f"[OK] Anti-spoof FP32 model loaded: {_anti_spoof_input_name}")
 
+# BBOX_EXPANSION_FACTOR matches prepare_data.py for anti-spoof training data prep
+BBOX_EXPANSION_FACTOR = 1.5
+
 def preprocess_face_for_anti_spoof(face_crop_bgr: np.ndarray) -> np.ndarray:
     """
     Preprocess face crop for FP32 anti-spoof model.
-    Matches training pipeline: Letterbox resize + reflect padding + normalize [0,1], CHW format.
+    Matches prepare_data.py training pipeline: direct square resize + reflect padding + normalize [0,1], CHW format.
+    NO letterbox - direct square resize like training data preparation.
     """
     face_rgb = cv2.cvtColor(face_crop_bgr, cv2.COLOR_BGR2RGB)
-    h, w = face_rgb.shape[:2]
     INPUT_SIZE = 128
 
-    # Letterbox resize (preserve aspect ratio)
-    ratio = float(INPUT_SIZE) / max(h, w)
-    scaled_h, scaled_w = int(h * ratio), int(w * ratio)
-    interpolation = cv2.INTER_LANCZOS4 if ratio > 1.0 else cv2.INTER_AREA
-    face_resized = cv2.resize(face_rgb, (scaled_w, scaled_h), interpolation=interpolation)
-
-    # Reflect padding to square
-    delta_h = INPUT_SIZE - scaled_h
-    delta_w = INPUT_SIZE - scaled_w
-    top, bottom = delta_h // 2, delta_h - (delta_h // 2)
-    left, right = delta_w // 2, delta_w - (delta_w // 2)
-
-    face_padded = cv2.copyMakeBorder(
-        face_resized, top, bottom, left, right, cv2.BORDER_REFLECT_101
-    )
+    # Direct square resize (matches prepare_data.py - no letterbox)
+    # If enlarging: INTER_LANCZOS4, if shrinking: INTER_AREA
+    h, w = face_rgb.shape[:2]
+    interpolation = cv2.INTER_LANCZOS4 if max(h, w) < INPUT_SIZE else cv2.INTER_AREA
+    face_resized = cv2.resize(face_rgb, (INPUT_SIZE, INPUT_SIZE), interpolation=interpolation)
 
     # Normalize to [0, 1] and convert to CHW
-    face_norm = face_padded.transpose(2, 0, 1).astype(np.float32) / 255.0
+    face_norm = face_resized.transpose(2, 0, 1).astype(np.float32) / 255.0
     blob = np.expand_dims(face_norm, axis=0)
     return blob
+
+
+def expand_and_crop_face(frame: np.ndarray, x: int, y: int, w: int, h: int) -> np.ndarray:
+    """
+    Expand YuNet bbox by BBOX_EXPANSION_FACTOR and crop with reflect padding.
+    Matches prepare_data.py logic: expand around center, pad with BORDER_REFLECT_101 if needed.
+    """
+    center_x = x + w // 2
+    center_y = y + h // 2
+    side_len = int(max(w, h) * BBOX_EXPANSION_FACTOR)
+
+    x1 = center_x - side_len // 2
+    y1 = center_y - side_len // 2
+    x2 = x1 + side_len
+    y2 = y1 + side_len
+
+    # Pad with reflect if crop goes beyond image boundaries
+    pad_top = max(0, -y1)
+    pad_bottom = max(0, y2 - frame.shape[0])
+    pad_left = max(0, -x1)
+    pad_right = max(0, x2 - frame.shape[1])
+
+    crop_y1 = max(0, y1)
+    crop_y2 = min(frame.shape[0], y2)
+    crop_x1 = max(0, x1)
+    crop_x2 = min(frame.shape[1], x2)
+
+    face_crop = frame[crop_y1:crop_y2, crop_x1:crop_x2]
+
+    if pad_top or pad_bottom or pad_left or pad_right:
+        face_crop = cv2.copyMakeBorder(
+            face_crop,
+            pad_top, pad_bottom, pad_left, pad_right,
+            cv2.BORDER_REFLECT_101
+        )
+
+    return face_crop
 
 def check_anti_spoof(face_crop_bgr: np.ndarray) -> dict:
     """
@@ -567,9 +597,12 @@ def run_attendance():
             current_face_bbox = (top, right, bottom, left)
             frames_since_detection = 0
 
-            # Anti-spoofing check
+            # Convert to x, y, w, h for expand_and_crop_face
+            x, y, w, h = left, top, right - left, bottom - top
+
+            # Anti-spoofing check with expanded crop (matches prepare_data.py)
             if ANTI_SPOOFING_ENABLED:
-                face_crop = frame[top:bottom, left:right]
+                face_crop = expand_and_crop_face(frame, x, y, w, h)
                 if face_crop.size > 0:
                     spoof_result = check_anti_spoof(face_crop)
                     is_real = spoof_result.get("is_real", True)
@@ -588,8 +621,8 @@ def run_attendance():
                         face_embeddings_buffer.clear()
                         continue
 
-            # Extract embedding
-            embedding = extract_face_embedding(frame, current_face_bbox)
+            # Extract embedding using expanded crop (consistent with anti-spoof)
+            embedding = extract_face_embedding(face_crop)
 
             if embedding is not None:
                 face_embeddings_buffer.append(embedding)
