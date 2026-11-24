@@ -1,0 +1,109 @@
+{
+  "test_uid": "d47d452a-3459-4e3f-84f5-e9df27f9125b",
+  "summary": {
+    "n": 5,
+    "route_acc": 1.0,
+    "sql_ok": 0.4,
+    "non_empty": 0.4,
+    "error_rate": 0.6,
+    "latency_mean_ms": 866.6,
+    "prompt_tokens_mean": 4075.0,
+    "completion_tokens_mean": 15.4,
+    "by_check_type": {
+      "single_number": {
+        "pass": 1,
+        "total": 3
+      },
+      "non_empty": {
+        "pass": 1,
+        "total": 2
+      }
+    },
+    "pass_fail": {
+      "route_acc": "PASS",
+      "sql_ok": "FAIL",
+      "non_empty": "FAIL"
+    }
+  },
+  "rows": [
+    {
+      "id": "users_01",
+      "question": "Tôi còn bao nhiêu ngày phép năm nay?",
+      "check_type": "single_number",
+      "route": "DB_ONLY",
+      "route_ok": true,
+      "sql_ok": true,
+      "row_count": 1,
+      "non_empty": true,
+      "latency_ms": 2917.4,
+      "error": null,
+      "summary_head": "[DỮ LIỆU CÁ NHÂN] bảng: users; số dòng: 1\n{\"annual_leave_days\": 12, \"used_leave_days\": 0, \"remaining_days\": 12}",
+      "summary_tail": "[DỮ LIỆU CÁ NHÂN] bảng: users; số dòng: 1\n{\"annual_leave_days\": 12, \"used_leave_days\": 0, \"remaining_days\": 12}",
+      "prompt_tokens": 10186,
+      "completion_tokens": 51,
+      "llm_calls": 1
+    },
+    {
+      "id": "users_02",
+      "question": "Tôi đã dùng bao nhiêu ngày phép trên tổng số ngày được cấp?",
+      "check_type": "single_number",
+      "route": "DB_ONLY",
+      "route_ok": true,
+      "sql_ok": false,
+      "row_count": 0,
+      "non_empty": false,
+      "latency_ms": 0.0,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_03",
+      "question": "Mã nhân viên và ngày vào làm của tôi là gì?",
+      "check_type": "non_empty",
+      "route": "DB_ONLY",
+      "route_ok": true,
+      "sql_ok": true,
+      "row_count": 1,
+      "non_empty": true,
+      "latency_ms": 1415.5,
+      "error": null,
+      "summary_head": "[DỮ LIỆU CÁ NHÂN] bảng: users; số dòng: 1\n{\"employee_code\": \"EMP032\", \"joined_date\": \"2026-01-03\"}",
+      "summary_tail": "[DỮ LIỆU CÁ NHÂN] bảng: users; số dòng: 1\n{\"employee_code\": \"EMP032\", \"joined_date\": \"2026-01-03\"}",
+      "prompt_tokens": 10189,
+      "completion_tokens": 26,
+      "llm_calls": 1
+    },
+    {
+      "id": "users_04",
+      "question": "Tôi vào công ty được bao lâu rồi, thâm niên của tôi là mấy năm mấy tháng?",
+      "check_type": "single_number",
+      "route": "DB_ONLY",
+      "route_ok": true,
+      "sql_ok": false,
+      "row_count": 0,
+      "non_empty": false,
+      "latency_ms": 0.0,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    },
+    {
+      "id": "users_05",
+      "question": "Email công ty, họ tên và mã nhân viên của tôi là gì?",
+      "check_type": "non_empty",
+      "route": "DB_ONLY",
+      "route_ok": true,
+      "sql_ok": false,
+      "row_count": 0,
+      "non_empty": false,
+      "latency_ms": 0.0,
+      "error": "RuntimeError: SQL bị từ chối: SQL rỗng",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "llm_calls": 0
+    }
+  ]
+}

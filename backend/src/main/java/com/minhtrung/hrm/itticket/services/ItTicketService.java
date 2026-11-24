@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
+import com.minhtrung.hrm.employees.entities.User;
 import com.minhtrung.hrm.employees.repositories.UserRepository;
 import com.minhtrung.hrm.itticket.entities.ItTicket;
 import com.minhtrung.hrm.itticket.enums.ItTicketErrorCode;

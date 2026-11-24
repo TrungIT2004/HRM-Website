@@ -37,6 +37,9 @@ def _patch_deepface_logger():
 
 _patch_deepface_logger()
 
+# Import production functions to ensure exact match
+from attendance import expand_and_crop_face
+
 # Config
 LFW_DIR = Path('test/LFW/lfw-deepfunneled/lfw-deepfunneled')
 PAIRS_FILE = Path('test/LFW/pairs.csv')
@@ -100,14 +103,9 @@ def detect_and_crop_face(img):
 
     best_face = max(faces, key=lambda f: f[2] * f[3])
     x, y, w, h = best_face[:4].astype(int)
-    x = max(0, x)
-    y = max(0, y)
-    x2 = min(img.shape[1], x + w)
-    y2 = min(img.shape[0], y + h)
 
-    if x2 <= x or y2 <= y:
-        return None
-    return img[y:y2, x:x2]
+    # Use production expand_and_crop_face (1.5x expansion + reflect padding)
+    return expand_and_crop_face(img, x, y, w, h)
 
 def get_embedding(face_crop_bgr):
     try:
