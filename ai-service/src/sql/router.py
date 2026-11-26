@@ -8,7 +8,7 @@ import json
 import re
 from typing import Callable, Dict, List, Optional, Tuple
 
-ROUTE_LABELS = ("DOC_ONLY", "DB_ONLY", "DIRECTORY", "OUT_OF_SCOPE")
+ROUTE_LABELS = ("DOC_ONLY", "DB_ONLY", "DIRECTORY", "OUT_OF_SCOPE", "GREETING", "CAPABILITY")
 
 REWRITE_ROUTE_PROMPT = r"""<role>
 You are an HR query router for a Vietnamese HR chatbot. Do exactly two things in one pass:
@@ -91,7 +91,7 @@ If rules conflict, decide in this order:
 <output_format>
 Return ONLY valid JSON. No markdown fences. No explanation.
 {"rewritten": "...", "route": "..."}
-"route" MUST be one of: DOC_ONLY | DB_ONLY | DIRECTORY | OUT_OF_SCOPE.
+"route" MUST be one of: DOC_ONLY | DB_ONLY | DIRECTORY | OUT_OF_SCOPE | GREETING | CAPABILITY.
 </output_format>
 
 <few_shot>
@@ -235,6 +235,43 @@ _SENSITIVE_OTHER = ("lương", "phép", "thưởng")
 # VN (không dấu) -> EN trong DB (seed 01_hrm_core.sql). Từ ngắn dùng regex
 # \b ở matcher để khỏi khớp nhầm ("it" trong "thit", "gom" trong "gom"... à
 # "gom" chỉ đi với "bao gom"/"gom nhung ai" nên vẫn cần \b).
+# =========================================================================
+# GREETING & CAPABILITY QUESTIONS HANDLING
+# =========================================================================
+
+_GREETING_PATTERNS = [
+    r"^chào\b", r"^chao\b", r"^xin chào\b", r"^xin chao\b",
+    r"^hello\b", r"^hi\b", r"^hey\b", r"^chào bạn\b", r"^chao ban\b",
+    r"^chào anh\b", r"^chao anh\b", r"^chào chị\b", r"^chao chi\b",
+    r"^chào em\b", r"^chao em\b", r"^chào mọi người\b", r"^chao moi nguoi\b",
+]
+
+_CAPABILITY_PATTERNS = [
+    r"bạn có thể làm gì\b", r"ban co the lam gi\b",
+    r"bạn làm được gì\b", r"ban lam duoc gi\b",
+    r"bạn biết gì\b", r"ban biet gi\b",
+    r"bạn giúp được gì\b", r"ban giup duoc gi\b",
+    r"chức năng của bạn\b", r"chuc nang cua ban\b",
+    r"tính năng của bạn\b", r"tinh nang cua ban\b",
+    r"bạn là ai\b", r"ban la ai\b",
+    r"bạn là gì\b", r"ban la gi\b",
+    r"giới thiệu về bạn\b", r"gioi thieu ve ban\b",
+    r"công ty.*viễn thông.*ACT\b", r"cong ty.*vien thong.*ACT\b",
+]
+
+
+def is_greeting(question: str) -> bool:
+    """Check if question is a greeting."""
+    q = _fold(question)
+    return any(re.search(p, q) for p in _GREETING_PATTERNS)
+
+
+def is_capability_question(question: str) -> bool:
+    """Check if question asks what the bot can do."""
+    q = _fold(question)
+    return any(re.search(p, q) for p in _CAPABILITY_PATTERNS)
+
+
 _ROLE_TITLES = (
     ("pho giam doc", "Deputy Director"),
     ("tong giam doc", "CEO"),
@@ -341,6 +378,15 @@ def keyword_fallback(question: str) -> str:
     """Phân loại không cần LLM khi router lỗi."""
     import re
     q = _fold(question)
+
+    # Check for greetings first
+    if is_greeting(question):
+        return "GREETING"
+
+    # Check for capability questions
+    if is_capability_question(question):
+        return "CAPABILITY"
+
     # ponytail: "anh/chi/ban + TEN RIENG viet hoa" moi la hoi nguoi khac.
     # Substring don thuan khop nham "chi tiet/chi phi", "danh sach" (chua "anh ").
     # ponytail: gom cả chữ hoa đầu câu ("Chị Lan") lẫn chữ thường ("chị Mai").
@@ -379,7 +425,7 @@ def keyword_fallback(question: str) -> str:
     # DOC_ONLY intent: questions asking about policy/regulation/procedure
     # Even if they contain "tôi", if the intent is to ask about general policy
     # Keywords: "quy định", "theo quy chế", "chính sách", "luật", "thủ tục", "quy trình"
-    is_policy_intent = any(k in q for k in ("quy dinh", "theo quy che", "chinh sach", "luat",
+    is_policy_intent = any(_fold(k) in q for k in ("quy dinh", "theo quy che", "chinh sach", "luat",
                                              "thu tuc", "quy trinh", "huong dan", "noi quy",
                                              "tieu chuan", "dung luat", "duoc nghi", "bi phat",
                                              "mau", "so hieu", "dieu ", "bm", "quy che",
@@ -399,9 +445,9 @@ def keyword_fallback(question: str) -> str:
                                              "trieu tap", "nghi quyet", "quyet dinh",
                                              "phuong thuc", "lien lac", "chinh xac",
                                              "chiu trach nhiem", "xet tang luong"))
-    # HYBRID-style: policy question + personal data (e.g., "quy định X, và tôi còn bao nhiêu")
+    # Policy question + personal data (e.g., "quy định X, và tôi còn bao nhiêu")
     # These should go to DB_ONLY because they need personal data to answer
-    is_hybrid_style = is_policy_intent and self_strong and is_db
+    is_hybrid_style = is_policy_intent and self_strong and is_db and not is_doc
 
     # ponytail: "truong phong CUA MINH" (tui/toi/mình, có/không "của") -> DB_ONLY,
     # tra người cùng phòng có chức danh Department Head. Đặt trước nhánh tên
@@ -461,9 +507,8 @@ def keyword_fallback(question: str) -> str:
         if person_strong and any(_fold(k) in q for k in ("thông tin",)) and not is_policy_intent:
             return "OUT_OF_SCOPE"
 
-    # Removed HYBRID - only DOC_ONLY and DB_ONLY
     # Priority logic:
-    # 1. HYBRID-style (policy + personal) -> DB_ONLY (needs personal data)
+    # 1. Policy + personal data -> DB_ONLY (needs personal data)
     # 2. Policy intent -> DOC_ONLY (even with self words, if asking about policy)
     # 3. Strong self-anchor + DB keywords -> DB_ONLY (personal data query)
     # 4. DB keywords only -> DB_ONLY
@@ -479,7 +524,8 @@ def keyword_fallback(question: str) -> str:
         return "DB_ONLY"
     if is_doc:
         return "DOC_ONLY"
-    return "DB_ONLY"  # Default to DB_ONLY if unclear but has db keywords
+    # Default: DOC_ONLY khi không rõ ràng và không có từ khóa DB (an toàn, không rò rỉ dữ liệu cá nhân).
+    return "DB_ONLY" if is_db else "DOC_ONLY"
 
 
 def rewrite_and_route(question: str, history: List[Dict[str, str]],

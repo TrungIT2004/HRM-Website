@@ -52,7 +52,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         "/api/documents",
         "/api/assets",
         "/api/it-tickets",
-        "/api/performance-reviews"
+        "/api/performance-reviews",
+        "/api/notifications"
     );
 
     JwtAuthFilter(JwtService jwtService, ClientInfoService clientInfoService,

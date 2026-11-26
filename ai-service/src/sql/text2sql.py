@@ -107,6 +107,27 @@ WHERE me.user_id = %(uid)s AND m.user_id <> me.user_id
   AND m.is_active = TRUE AND j.title LIKE 'Department Head%' LIMIT 1
 ```
 
+Vd12: "So sánh 2 mức lương liên tiếp" -- LAG + ROUND casting đúng
+```sql
+WITH r AS (
+    SELECT base_salary, start_date,
+           LAG(base_salary) OVER (ORDER BY start_date) AS prev_pay
+    FROM salaries WHERE user_id = %(uid)s
+)
+SELECT base_salary, prev_pay,
+       (base_salary - prev_pay) AS diff_amount,
+       ROUND(((base_salary - prev_pay) / NULLIF(prev_pay,0) * 100)::numeric, 1) AS diff_pct
+FROM r ORDER BY start_date DESC LIMIT 1
+```
+
+Vd13: "Người duyệt đơn nghỉ gần nhất" -- leave_requests, requestor_id
+```sql
+SELECT lr.approver_id, lr.from_date, lr.status
+FROM leave_requests lr
+WHERE lr.requestor_id = %(uid)s
+ORDER BY lr.created_at DESC LIMIT 1
+```
+
 Vd12: "Ngày lễ toàn công ty" -- bảng global, không gắn user
 ```sql
 SELECT h.date, h.description FROM holidays h
@@ -128,27 +149,21 @@ SELECT annual_leave_days, used_leave_days,
 FROM users WHERE user_id = %(uid)s
 ```
 
-Vd15: "So sánh tháng này vs tháng trước" -- scalar subquery + CTE tham số (mẫu gold SQL)
+Vd15: "So sánh tháng này vs tháng trước" -- scalar subquery + CTE tham số, dùng monthly_timesheets
 ```sql
 WITH m AS (
     SELECT date_trunc('month', CURRENT_DATE)::date AS cur,
            (date_trunc('month', CURRENT_DATE) - INTERVAL '1 month')::date AS prev
 )
-SELECT (SELECT COUNT(*) FROM attendances, m WHERE user_id = %(uid)s AND is_deleted = FALSE
-        AND status IN ('LATE','LATE_AND_EARLY') AND work_date >= m.cur AND work_date < m.cur + INTERVAL '1 month') AS this_month,
-       (SELECT COUNT(*) FROM attendances, m WHERE user_id = %(uid)s AND is_deleted = FALSE
-        AND status IN ('LATE','LATE_AND_EARLY') AND work_date >= m.prev AND work_date < m.cur) AS last_month
+SELECT (SELECT COALESCE(mt.late_count,0) FROM monthly_timesheets mt, m WHERE mt.user_id = %(uid)s AND mt.period_year = EXTRACT(YEAR FROM m.cur)::int AND mt.period_month = EXTRACT(MONTH FROM m.cur)::int) AS this_month,
+       (SELECT COALESCE(mt.late_count,0) FROM monthly_timesheets mt, m WHERE mt.user_id = %(uid)s AND mt.period_year = EXTRACT(YEAR FROM m.prev)::int AND mt.period_month = EXTRACT(MONTH FROM m.prev)::int) AS last_month
 ```
 
-Vd16: "So sánh quý này vs quý trước" -- EXTRACT(QUARTER), scalar subquery
+Vd16: "So sánh quý này vs quý trước" -- EXTRACT(QUARTER), scalar subquery (leave_requests)
 ```sql
 WITH q AS (SELECT EXTRACT(QUARTER FROM CURRENT_DATE)::int AS cur)
-SELECT (SELECT COALESCE(SUM(paid_leave_days),0) FROM leave_requests, q
-        WHERE requestor_id = %(uid)s AND status = 'accepted'
-          AND EXTRACT(QUARTER FROM from_date) = q.cur AND EXTRACT(YEAR FROM from_date) = EXTRACT(YEAR FROM CURRENT_DATE)) AS this_quarter,
-       (SELECT COALESCE(SUM(paid_leave_days),0) FROM leave_requests, q
-        WHERE requestor_id = %(uid)s AND status = 'accepted'
-          AND EXTRACT(QUARTER FROM from_date) = q.cur - 1 AND EXTRACT(YEAR FROM from_date) = EXTRACT(YEAR FROM CURRENT_DATE)) AS last_quarter
+SELECT (SELECT COALESCE(SUM(lr.paid_leave_days), 0) FROM leave_requests lr, q WHERE lr.requestor_id = %(uid)s AND lr.status = 'accepted' AND EXTRACT(QUARTER FROM lr.from_date) = q.cur AND EXTRACT(YEAR FROM lr.from_date) = EXTRACT(YEAR FROM CURRENT_DATE)) AS this_quarter,
+       (SELECT COALESCE(SUM(lr.paid_leave_days), 0) FROM leave_requests lr, q WHERE lr.requestor_id = %(uid)s AND lr.status = 'accepted' AND EXTRACT(QUARTER FROM lr.from_date) = q.cur - 1 AND EXTRACT(YEAR FROM lr.from_date) = EXTRACT(YEAR FROM CURRENT_DATE)) AS last_quarter
 ```
 
 Vd17: "So sánh năm nay vs năm ngoái" -- EXTRACT(YEAR), scalar subquery
@@ -168,7 +183,7 @@ SELECT (SELECT COALESCE(SUM(actual_work_hours),0) FROM monthly_timesheets, m WHE
        (SELECT COALESCE(SUM(actual_work_hours),0) FROM monthly_timesheets, m WHERE user_id = %(uid)s AND period_year = EXTRACT(YEAR FROM m.prev)::int AND period_month = EXTRACT(MONTH FROM m.prev)::int) AS last_month
 ```
 
-Vd19: "Phân nhóm theo tháng + FILTER" -- COUNT FILTER cho late/early
+Vd19: "Phân nhóm theo tháng + FILTER" -- COUNT FILTER cho late/early (attendances)
 ```sql
 SELECT EXTRACT(MONTH FROM work_date)::int AS month,
        COUNT(*) FILTER (WHERE status IN ('LATE','LATE_AND_EARLY')) AS late_count,
@@ -176,6 +191,14 @@ SELECT EXTRACT(MONTH FROM work_date)::int AS month,
 FROM attendances
 WHERE user_id = %(uid)s AND is_deleted = FALSE AND EXTRACT(YEAR FROM work_date) = EXTRACT(YEAR FROM CURRENT_DATE)
 GROUP BY 1 ORDER BY 1
+```
+
+Vd20: "Tháng nào đi muộn nhiều nhất" -- GROUP BY + ORDER BY COUNT DESC LIMIT 1 (monthly_timesheets)
+```sql
+SELECT mt.period_month AS month, mt.late_count
+FROM monthly_timesheets mt
+WHERE mt.user_id = %(uid)s AND mt.period_year = %(year)s
+ORDER BY mt.late_count DESC, mt.period_month LIMIT 1
 ```
 
 Vd20: "Tháng nào đi muộn nhất" -- GROUP BY + ORDER BY COUNT DESC LIMIT 1

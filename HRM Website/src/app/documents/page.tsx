@@ -13,6 +13,7 @@ import {
   TemplateCategory,
   TEMPLATE_CATEGORY_LABELS
 } from '@/services/documentService';
+import { API_BASE_URL, apiClient } from '@/services/apiClient';
 import { formatDateVN } from '@/utils/format';
 import { DEPARTMENTS } from '@/constants/departments';
 import {
@@ -38,7 +39,8 @@ import {
   File,
   MessageSquare,
   ShieldCheck,
-  Plus
+  Plus,
+  Eye
 } from 'lucide-react';
 
 const formatFileSize = (bytes: number) => {
@@ -170,6 +172,16 @@ export default function DocumentsPage() {
   const [updateFile, setUpdateFile] = useState<File | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
   const updateFileInputRef = useRef<HTMLInputElement>(null);
+
+  // Preview Modal State
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+  const [previewDoc, setPreviewDoc] = useState<KnowledgeDocument | TemplateDocument | null>(null);
+  const [previewSrc, setPreviewSrc] = useState<string>('');
+  const [previewObjectUrl, setPreviewObjectUrl] = useState<string | null>(null);
+  const [docxHtml, setDocxHtml] = useState<string>('');
+  const [xlsxTable, setXlsxTable] = useState<React.ReactNode>(null);
+  const [pdfBlobUrl, setPdfBlobUrl] = useState<string>('');
+  const pdfCanvasRef = useRef<HTMLCanvasElement>(null);
 
   // Template modals (mẫu đơn): metadata nhập tay vì title/summary do người đăng đặt
   const [isTplUploadOpen, setIsTplUploadOpen] = useState(false);
@@ -328,6 +340,144 @@ export default function DocumentsPage() {
       showToast(err.message || 'Lỗi khi tải xuống file', 'error');
     }
   };
+
+  // Handle Preview - mở xem nhanh trong modal
+  const handlePreview = async (doc: KnowledgeDocument | TemplateDocument) => {
+    // Thu hồi object URL cũ nếu có (tránh rò rỉ bộ nhớ khi bấm nhiều lần xem trước PDF)
+    if (previewObjectUrl) {
+      URL.revokeObjectURL(previewObjectUrl);
+      setPreviewObjectUrl(null);
+    }
+    setDocxHtml('');
+    setXlsxTable(null);
+    setPdfBlobUrl('');
+
+    setPreviewDoc(doc);
+    // Xác định URL file
+    const fileUrl = 'file_url' in doc ? doc.file_url : doc.fileUrl;
+    const fileType = 'file_type' in doc ? doc.file_type : doc.fileType;
+    const type = fileType?.toLowerCase() || '';
+    const isAiDoc = 'file_url' in doc;
+
+    let previewUrl = '';
+    if (type.includes('pdf') && isAiDoc) {
+      // PDF tài liệu AI: fetch blob (có auth) → object URL → render bằng pdf.js
+      try {
+        const blob = await apiClient.fetchBlob(`/api/ai/documents/${doc.id}/download`);
+        const objectUrl = URL.createObjectURL(blob);
+        setPreviewObjectUrl(objectUrl);
+        setPdfBlobUrl(objectUrl);
+        previewUrl = objectUrl;
+      } catch (err: any) {
+        showToast(err.message || 'Không thể tải tài liệu để xem trước', 'error');
+        return;
+      }
+    } else if ((type.includes('doc') || type.includes('word')) && isAiDoc) {
+      // DOCX tài liệu AI: trích xuất HTML bằng mammoth (import động, tránh SSR)
+      try {
+        const blob = await apiClient.fetchBlob(`/api/ai/documents/${doc.id}/download`);
+        const arrayBuffer = await blob.arrayBuffer();
+        const mammoth = await import('mammoth');
+        const { value: html } = await mammoth.convertToHtml({ arrayBuffer });
+        setDocxHtml(html);
+        previewUrl = '';
+      } catch (err: any) {
+        showToast(err.message || 'Không thể xem trước file Word', 'error');
+        return;
+      }
+    } else if ((type.includes('xls') || type.includes('sheet') || type.includes('csv')) && isAiDoc) {
+      // XLSX/CSV tài liệu AI: parse bằng SheetJS, render bảng đầu tiên
+      try {
+        const blob = await apiClient.fetchBlob(`/api/ai/documents/${doc.id}/download`);
+        const arrayBuffer = await blob.arrayBuffer();
+        const XLSX = await import('xlsx');
+        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
+        setXlsxTable(
+          <table className="w-full text-sm border-collapse border border-slate-200">
+            <thead>
+              <tr className="bg-slate-100">
+                {json[0]?.map((h: any) => (
+                  <th key={h} className="border border-slate-200 px-2 py-1 text-left">
+                    {String(h)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {json.slice(1).map((row: any, i: number) => (
+                <tr key={i} className="bg-white">
+                  {row.map((cell: any, j: number) => (
+                    <td key={j} className="border border-slate-200 px-2 py-1">
+                      {String(cell ?? '')}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+        previewUrl = '';
+      } catch (err: any) {
+        showToast(err.message || 'Không thể xem trước file Excel', 'error');
+        return;
+      }
+    } else if (type.includes('pdf')) {
+      // PDF mẫu đơn (tệp tĩnh): dùng iframe trực tiếp
+      previewUrl = `${API_BASE_URL}${fileUrl}`;
+    } else if (isAiDoc) {
+      // AI Service docs khác (PPT, v.v.): không có thư viện hỗ trợ, tải xuống để xem
+      previewUrl = '';
+    } else {
+      // Templates (Word/Excel/PPT): file tĩnh tại /uploads/
+      previewUrl = `${API_BASE_URL}${fileUrl}`;
+    }
+    setPreviewSrc(previewUrl);
+    setIsPreviewModalOpen(true);
+  };
+
+  const closePreviewModal = () => {
+    if (previewObjectUrl) {
+      URL.revokeObjectURL(previewObjectUrl);
+      setPreviewObjectUrl(null);
+    }
+    setDocxHtml('');
+    setXlsxTable(null);
+    setPdfBlobUrl('');
+    setIsPreviewModalOpen(false);
+    setPreviewDoc(null);
+    setPreviewSrc('');
+  };
+
+  // Render PDF bằng pdf.js lên canvas khi pdfBlobUrl thay đổi (import động, tránh SSR)
+  useEffect(() => {
+    if (!pdfBlobUrl || !pdfCanvasRef.current) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const pdfjsLib = await import('pdfjs-dist');
+        pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+        const pdf = await pdfjsLib.getDocument({ url: pdfBlobUrl }).promise;
+        if (cancelled) return;
+        const page = await pdf.getPage(1);
+        if (cancelled) return;
+        const canvas = pdfCanvasRef.current!;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        const viewport = page.getViewport({ scale: 1.5 });
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        await page.render({ canvas, canvasContext: ctx, viewport }).promise;
+      } catch {
+        // pdf.js lỗi → để modal hiển thị trống, người dùng vẫn có nút tải xuống
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [pdfBlobUrl]);
 
   // Handle Delete (2 bước: bấm thùng rác mở modal xác nhận → bấm "Xóa vĩnh viễn" mới xóa thật)
   const handleDelete = (doc: KnowledgeDocument) => {
@@ -690,6 +840,13 @@ export default function DocumentsPage() {
                   <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                     <div className="flex items-center gap-1.5">
                       <button
+                        onClick={() => handlePreview(doc)}
+                        title="Xem nhanh tài liệu"
+                        className="p-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors cursor-pointer border border-slate-200/80"
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                      <button
                         onClick={() => handleDownload(doc)}
                         title="Tải xuống tài liệu gốc"
                         className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer border border-slate-200/80"
@@ -812,13 +969,22 @@ export default function DocumentsPage() {
                 </div>
 
                 <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
-                  <button
-                    onClick={() => handleTplDownload(doc)}
-                    title={`Tải xuống ${doc.documentName}`}
-                    className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer border border-slate-200/80"
-                  >
-                    <Download className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => handlePreview(doc)}
+                      title="Xem nhanh mẫu đơn"
+                      className="p-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors cursor-pointer border border-slate-200/80"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleTplDownload(doc)}
+                      title={`Tải xuống ${doc.documentName}`}
+                      className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer border border-slate-200/80"
+                    >
+                      <Download className="w-4 h-4" />
+                    </button>
+                  </div>
 
                   {canManage && (
                     <div className="flex items-center gap-1.5">
@@ -1246,6 +1412,137 @@ export default function DocumentsPage() {
                     </>
                   )}
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal: Xem nhanh tài liệu */}
+        {isPreviewModalOpen && previewDoc && (
+          <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4" onClick={closePreviewModal}>
+            <div className="bg-white rounded-3xl max-w-5xl w-full h-[85vh] max-h-[85vh] shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200 flex flex-col" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 px-4 pt-3 shrink-0">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600 shrink-0">
+                    <Eye className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-extrabold text-slate-900 truncate">
+                      {'file_name' in previewDoc ? previewDoc.file_name : previewDoc.documentTitle}
+                    </h3>
+                    <p className="text-xs text-slate-500 truncate">
+                      {'file_name' in previewDoc
+                        ? `Người tải: ${previewDoc.uploaded_by || 'Hệ thống'} • ${formatFileSize(previewDoc.file_size)}`
+                        : `Người đăng: ${previewDoc.uploaderName || 'Hệ thống'} • ${formatFileSize(previewDoc.fileSize)}`}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={() => {
+                      const fileUrl = 'file_url' in previewDoc ? previewDoc.file_url : previewDoc.fileUrl;
+                      const filename = 'file_name' in previewDoc ? previewDoc.file_name : previewDoc.documentName;
+                      window.open(`${API_BASE_URL}${fileUrl}`, '_blank');
+                    }}
+                    title="Mở trong tab mới"
+                    className="p-2 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors cursor-pointer border border-slate-200/80"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={closePreviewModal}
+                    className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 min-h-0 p-2 overflow-hidden">
+                {(() => {
+                  const fileType = 'file_type' in previewDoc ? previewDoc.file_type : previewDoc.fileType;
+                  const type = fileType?.toLowerCase() || '';
+                  const isPdf = type.includes('pdf');
+                  const isAiDoc = 'file_url' in previewDoc;
+
+                  // PDF tài liệu AI: render bằng pdf.js lên canvas
+                  if (isPdf && isAiDoc) {
+                    return (
+                      <div className="w-full h-full flex items-center justify-center bg-slate-50 rounded-xl border border-slate-200">
+                        <canvas
+                          ref={pdfCanvasRef}
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      </div>
+                    );
+                  }
+
+                  // PDF mẫu đơn (tệp tĩnh): iframe trực tiếp
+                  if (isPdf && !isAiDoc) {
+                    return (
+                      <iframe
+                        src={previewSrc}
+                        title="Document Preview"
+                        className="w-full h-full rounded-xl border border-slate-200"
+                        sandbox="allow-scripts allow-same-origin allow-forms"
+                      />
+                    );
+                  }
+
+                  // DOCX tài liệu AI: HTML từ mammoth
+                  if ((type.includes('doc') || type.includes('word')) && isAiDoc && docxHtml) {
+                    return (
+                      <div className="w-full h-full overflow-auto p-4 bg-slate-50 rounded-xl border border-slate-200" dangerouslySetInnerHTML={{ __html: docxHtml }} />
+                    );
+                  }
+
+                  // XLSX/CSV tài liệu AI: bảng từ SheetJS
+                  if ((type.includes('xls') || type.includes('sheet') || type.includes('csv')) && isAiDoc && xlsxTable) {
+                    return (
+                      <div className="w-full h-full overflow-auto p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        {xlsxTable}
+                      </div>
+                    );
+                  }
+
+                  // Không hỗ trợ preview trực tiếp → hiển thị nút tải xuống
+                  return (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-4 p-8 text-center bg-slate-50 rounded-xl border border-slate-200">
+                      <div className="p-4 rounded-full bg-blue-100 text-blue-600">
+                        {type.includes('doc') || type.includes('word') ? (
+                          <FileCheck className="w-12 h-12" />
+                        ) : type.includes('xls') || type.includes('sheet') || type.includes('csv') ? (
+                          <FileSpreadsheet className="w-12 h-12" />
+                        ) : (
+                          <File className="w-12 h-12" />
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="text-lg font-bold text-slate-900">Xem nhanh không khả dụng</h4>
+                        <p className="text-sm text-slate-500 max-w-md">
+                          Tệp {type.toUpperCase()} cần tải xuống để xem nội dung.
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-center gap-3 pt-2">
+                        <button
+                          onClick={() => {
+                            const fileUrl = 'file_url' in previewDoc ? previewDoc.file_url : previewDoc.fileUrl;
+                            window.open(`${API_BASE_URL}${fileUrl}`, '_blank');
+                          }}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md transition-all cursor-pointer"
+                        >
+                          <Download className="w-4 h-4" />
+                          <span>Tải xuống để xem</span>
+                        </button>
+                        <button
+                          onClick={closePreviewModal}
+                          className="px-5 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
+                        >
+                          Đóng
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           </div>

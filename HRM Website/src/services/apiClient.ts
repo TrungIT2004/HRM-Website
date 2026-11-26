@@ -195,6 +195,19 @@ export const apiClient = {
       body: formData
     }),
 
+  fetchBlob: async (endpoint: string): Promise<Blob> => {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('act_hrm_access_token') : null;
+    const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${endpoint}`;
+    const headers = new Headers();
+    if (token) headers.set('Authorization', `Bearer ${token}`);
+
+    const res = await fetch(url, { headers, credentials: 'include' });
+    if (!res.ok) {
+      throw new Error(`Tải file thất bại (Mã lỗi ${res.status})`);
+    }
+    return res.blob();
+  },
+
   downloadBlob: async (endpoint: string, defaultFilename = 'download.xlsx') => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('act_hrm_access_token') : null;
     const url = endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}${endpoint}`;

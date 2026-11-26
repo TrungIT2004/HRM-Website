@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
@@ -212,7 +213,7 @@ public class AiServiceClient {
     /**
      * Tải tài liệu lên FastAPI để xử lý nạp ngầm (Background Task).
      */
-    public Object uploadDocument(
+    public ResponseEntity<Object> uploadDocument(
             MultipartFile file,
             String allowedDepartments,
             TokenPayload currentUser
@@ -239,7 +240,12 @@ public class AiServiceClient {
                 file.getOriginalFilename(), file.getSize(), allowedDepartments);
 
         HttpEntity<MultiValueMap<String, Object>> entity = new HttpEntity<>(body, headers);
-        return aiRestTemplate.postForObject(url, entity, Object.class);
+        try {
+            ResponseEntity<Object> response = aiRestTemplate.postForEntity(url, entity, Object.class);
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+        } catch (HttpStatusCodeException ex) {
+            return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsByteArray());
+        }
     }
 
     /**

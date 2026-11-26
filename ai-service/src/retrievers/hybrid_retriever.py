@@ -60,9 +60,9 @@ class HybridRetriever:
     2. Stage 2 (Fine): Cross-Encoder Reranking (BAAI/bge-reranker-base on CUDA)
     """
 
-    def __init__(self, use_reranker: bool = True):
+    def __init__(self, use_reranker: bool = False, reranker_model: Optional[str] = None):
         self.embedder = LocalEmbedder()
-        self.reranker = CrossEncoderReranker() if use_reranker else None
+        self.reranker = CrossEncoderReranker(model_name=reranker_model) if use_reranker else None
 
     def retrieve(
         self,
@@ -70,8 +70,8 @@ class HybridRetriever:
         jobs: Optional[List[str]] = None,
         departments: Optional[List[str]] = None,
         roles: Optional[List[str]] = None,
-        top_k: int = 4,
-        use_reranker: bool = True,
+        top_k: int = 5,
+        use_reranker: bool = False,
         alt_queries: Optional[List[str]] = None,
         vw: Optional[float] = None,
         lw: Optional[float] = None
@@ -144,7 +144,9 @@ class HybridRetriever:
         # ponytail: ao sau = 30/bien the (top_k*6), xuong tu 120 (top_k*12).
         # 120-240 cap/vong dot het ~2s GPU ma hit@5 khong hon dang ke (xem
         # DOC_ONLY/retrieval_metrics_tests). Ceiling: hit@5 rot <0.85 thi nang lai.
-        per_query_limit = max(30, top_k * 6) if (self.reranker and use_reranker) else top_k
+        # Tested: 30 -> 50. 50 dung cho corpus hien tai (353 chunks).
+        # Corpuses >10k chunks can nang len 100-200.
+        per_query_limit = max(50, top_k * 10) if (self.reranker and use_reranker) else top_k
         candidate_limit = per_query_limit * len(queries)
 
         sql = LEXICAL_WEIGHTS_SQL + """

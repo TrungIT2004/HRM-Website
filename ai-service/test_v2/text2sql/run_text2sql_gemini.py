@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Text-to-SQL test runner using Gemini 3.1 Flash Lite with 6 API key rotation.
+Text-to-SQL test runner using Gemini 3.5 Flash Lite with token bucket + sticky key assignment.
 Runs the 187 DB_ONLY questions from db_only_hybrid_questions.json
 """
 import os
@@ -8,6 +8,7 @@ import sys
 import json
 import time
 import re
+import threading
 from pathlib import Path
 from collections import defaultdict
 from typing import List, Dict, Any, Optional, Tuple
@@ -45,33 +46,145 @@ THRESHOLDS = {"route_acc": (">", 0.85), "sql_ok": (">", 0.80), "non_empty": (">"
 # Model to use
 GEMINI_MODEL = "gemini-3.5-flash-lite"  # Updated from deprecated gemini-2.5-flash-lite
 
+# RPM limits from env (free tier defaults)
+GEMINI_RPM = int(os.getenv("GEMINI_RPM_SQL", "15"))
+
 # =========================================================================
-# GEMINI CLIENT POOL WITH KEY ROTATION
+# TOKEN BUCKET FOR RATE LIMITING
+# =========================================================================
+
+class TokenBucket:
+    """Token bucket rate limiter for API key quota management.
+
+    Each key has a bucket with capacity = RPM (requests per minute).
+    Each LLM call consumes ~6 requests (based on typical multi-call pipeline).
+    Thread-safe for concurrent access.
+    """
+
+    def __init__(self, rpm: int, cost_per_call: int = 6):
+        self.rpm = rpm
+        self.capacity = rpm
+        self.cost_per_call = cost_per_call
+        self._tokens = float(rpm)
+        self._last_refill = time.time()
+        self._lock = threading.Lock()
+
+    def _refill(self) -> None:
+        now = time.time()
+        elapsed = now - self._last_refill
+        refill_amount = elapsed * (self.rpm / 60.0)
+        self._tokens = min(self.capacity, self._tokens + refill_amount)
+        self._last_refill = now
+
+    def available(self) -> float:
+        with self._lock:
+            self._refill()
+            return self._tokens
+
+    def try_take(self, cost: Optional[int] = None) -> bool:
+        """Try to consume tokens. Returns True if successful."""
+        cost = cost or self.cost_per_call
+        with self._lock:
+            self._refill()
+            if self._tokens >= cost:
+                self._tokens -= cost
+                return True
+            return False
+
+    def take(self, cost: Optional[int] = None) -> float:
+        """Consume tokens, blocking until available. Returns wait time."""
+        cost = cost or self.cost_per_call
+        with self._lock:
+            self._refill()
+            if self._tokens >= cost:
+                self._tokens -= cost
+                return 0.0
+            deficit = cost - self._tokens
+            wait_time = deficit / (self.rpm / 60.0)
+        if wait_time > 0:
+            time.sleep(wait_time)
+        with self._lock:
+            self._refill()
+            self._tokens -= cost
+        return wait_time
+
+    def time_until_ready(self, cost: Optional[int] = None) -> float:
+        """Seconds until bucket has enough tokens for cost."""
+        cost = cost or self.cost_per_call
+        with self._lock:
+            self._refill()
+            if self._tokens >= cost:
+                return 0.0
+            deficit = cost - self._tokens
+            return deficit / (self.rpm / 60.0)
+
+
+# =========================================================================
+# GEMINI CLIENT POOL WITH TOKEN BUCKET + STICKY ASSIGNMENT
 # =========================================================================
 
 class GeminiKeyPool:
-    """Manages a pool of Gemini API keys with rotation and quota tracking."""
+    """Manages a pool of Gemini API keys with token bucket rate limiting and sticky assignment."""
 
-    def __init__(self, api_keys: List[str], model: str):
+    def __init__(self, api_keys: List[str], model: str, rpm: int = GEMINI_RPM):
         self.model = model
         self.clients = [genai.Client(api_key=key) for key in api_keys]
-        self.current_idx = 0
+        self.buckets = [TokenBucket(rpm=rpm, cost_per_call=6) for _ in api_keys]
         self.usage = {i: {"requests": 0, "errors": 0} for i in range(len(self.clients))}
-        print(f"[GeminiPool] Initialized with {len(self.clients)} API keys for model: {model}")
+        self._affinity: Dict[str, int] = {}  # question_id -> key_index
+        self._affinity_lock = threading.Lock()
+        print(f"[GeminiPool] Initialized with {len(self.clients)} API keys for model: {model} (RPM={rpm})")
 
-    def _get_next_client(self) -> tuple[genai.Client, int]:
-        """Get next client in rotation and return (client, index)."""
-        idx = self.current_idx
-        client = self.clients[idx]
-        self.current_idx = (self.current_idx + 1) % len(self.clients)
-        return client, idx
+    def _pick_key(self, question_id: Optional[str] = None) -> int:
+        """Pick the best key using token bucket + sticky affinity."""
+        if not self.clients:
+            return 0
 
-    def generate_sql(self, system_prompt: str, user_prompt: str) -> str:
-        """Generate SQL using Gemini with automatic key rotation on failure."""
+        # Try sticky key first
+        if question_id:
+            with self._affinity_lock:
+                sticky_idx = self._affinity.get(question_id)
+            if sticky_idx is not None and sticky_idx < len(self.buckets):
+                if self.buckets[sticky_idx].try_take():
+                    return sticky_idx
+
+        # Find key with most headroom
+        best_idx = -1
+        best_available = -1.0
+        for idx, bucket in enumerate(self.buckets):
+            available = bucket.available()
+            if available > best_available:
+                best_available = available
+                best_idx = idx
+
+        # Try best key
+        if best_idx >= 0 and self.buckets[best_idx].try_take():
+            if question_id:
+                with self._affinity_lock:
+                    self._affinity[question_id] = best_idx
+            return best_idx
+
+        # All buckets low - wait for the one that will be ready soonest
+        wait_idx = min(
+            range(len(self.buckets)),
+            key=lambda i: self.buckets[i].time_until_ready()
+        )
+        wait_time = self.buckets[wait_idx].take()
+        if wait_time > 0:
+            print(f"[GeminiPool] Rate limit: waited {wait_time:.1f}s for key {wait_idx}")
+        if question_id:
+            with self._affinity_lock:
+                self._affinity[question_id] = wait_idx
+        return wait_idx
+
+    def generate_sql(self, system_prompt: str, user_prompt: str, question_id: Optional[str] = None) -> str:
+        """Generate SQL using Gemini with token bucket + sticky key assignment."""
         last_error = None
 
-        for attempt in range(len(self.clients) * 2):  # Try each key up to 2 times
-            client, idx = self._get_next_client()
+        # Try each key at most once (token bucket prevents 429)
+        for attempt in range(len(self.clients)):
+            key_idx = self._pick_key(question_id)
+            client = self.clients[key_idx]
 
             try:
                 response = client.models.generate_content(
@@ -87,7 +200,7 @@ class GeminiKeyPool:
                 )
 
                 text = response.text or ""
-                self.usage[idx]["requests"] += 1
+                self.usage[key_idx]["requests"] += 1
 
                 if text.strip():
                     return text.strip()
@@ -95,10 +208,17 @@ class GeminiKeyPool:
                     last_error = "Empty response"
 
             except Exception as e:
-                self.usage[idx]["errors"] += 1
+                self.usage[key_idx]["errors"] += 1
                 last_error = str(e)
-                print(f"[GeminiPool] Key {idx} failed: {e}")
-                # Already rotated via _get_next_client, continue to next
+                err_str = str(e)
+                print(f"[GeminiPool] Key {key_idx} failed: {e}")
+                # On quota/auth errors, drain the bucket so it won't be picked next time
+                if ("429" in err_str or "401" in err_str or
+                    "quota" in err_str.lower() or "rate limit" in err_str.lower() or
+                    "unauthenticated" in err_str.lower()):
+                    with self.buckets[key_idx]._lock:
+                        self.buckets[key_idx]._tokens = 0
+                        self.buckets[key_idx]._last_refill = time.time()
                 continue
 
         raise RuntimeError(f"All Gemini keys exhausted. Last error: {last_error}")
@@ -148,32 +268,32 @@ def load_api_keys() -> List[str]:
 # TEXT2SQL GENERATION USING GEMINI
 # =========================================================================
 
-def generate_sql_with_gemini(pool: GeminiKeyPool, question: str) -> str:
+def generate_sql_with_gemini(pool: GeminiKeyPool, question: str, question_id: Optional[str] = None) -> str:
     """Generate SQL using Gemini via the key pool."""
     system_prompt = "Trả về duy nhất 1 khối ```sql ... ```."
     user_prompt = build_text2sql_prompt(question)
 
-    raw_response = pool.generate_sql(system_prompt, user_prompt)
+    raw_response = pool.generate_sql(system_prompt, user_prompt, question_id=question_id)
     sql = extract_sql(raw_response)
     return sql
 
 
-def run_text2sql_gemini(pool: GeminiKeyPool, question: str, user_id: str) -> Tuple[List[Dict], str]:
+def run_text2sql_gemini(pool: GeminiKeyPool, question: str, user_id: str, question_id: Optional[str] = None) -> Tuple[List[Dict], str]:
     """Run text2sql with Gemini: generate -> validate -> execute (with retry)."""
     last_err = ""
     pending_hint = ""
 
     for attempt in range(2):
-        sql = generate_sql_with_gemini(pool, question)
+        sql = generate_sql_with_gemini(pool, question, question_id=question_id)
 
         if last_err:
             # Re-build prompt with error hint
             user_prompt = build_text2sql_prompt(question) + f"\nLần trước SQL lỗi: {last_err}. Sửa lại cho đúng luật."
-            raw_response = pool.generate_sql("Trả về duy nhất 1 khối ```sql ... ```.", user_prompt)
+            raw_response = pool.generate_sql("Trả về duy nhất 1 khối ```sql ... ```.", user_prompt, question_id=question_id)
             sql = extract_sql(raw_response)
         elif pending_hint:
             user_prompt = build_text2sql_prompt(question) + pending_hint
-            raw_response = pool.generate_sql("Trả về duy nhất 1 khối ```sql ... ```.", user_prompt)
+            raw_response = pool.generate_sql("Trả về duy nhất 1 khối ```sql ... ```.", user_prompt, question_id=question_id)
             sql = extract_sql(raw_response)
 
         try:

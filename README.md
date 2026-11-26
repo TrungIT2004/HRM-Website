@@ -14,7 +14,7 @@ Next.js (HRM Website) ──REST/SSE──> Spring Boot API ──> PostgreSQL 1
                                             │
 Check Attendance (OpenCV) ──REST──> Spring Boot
         │
-        └── đọc face_embedding (128d) trực tiếp từ PostgreSQL
+        └── đọc face_embedding (512d) trực tiếp từ PostgreSQL
 
 Spring Boot ──REST/SSE (X-Internal-Secret)──> FastAPI AI Service
                                                     │

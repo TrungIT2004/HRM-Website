@@ -124,30 +124,60 @@ def process_document_background(
     6. Inserts new Chunks + Vectors into PostgreSQL
     7. Updates Document status to COMPLETED / FAILED
     """
+    import time
     effective_jobs = jobs or roles or ["ALL"]
     effective_depts = depts or ["ALL"]
 
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
-        print(f"[Worker] Starting background processing for: {filename} (ID: {document_id})...")
+        start_time = time.time()
+        print(f"\n{'='*60}")
+        print(f"[Worker] Starting background processing for: {filename} (ID: {document_id})")
+        print(f"[Worker] File: {file_path}")
+        print(f"[Worker] Jobs: {effective_jobs}, Depts: {effective_depts}")
+        print(f"{'='*60}")
 
-        # Step 1 & 2: Parse, Chunk, and Enrich with Ollama FIRST (Tránh mất chunk cũ nếu file mới lỗi)
+        # Step 1 & 2: Parse, Chunk, and Enrich
+        print(f"[Worker] Step 1/4: Parsing document with PDFParser...")
+        parse_start = time.time()
         chunks = pipeline.process_file(
             file_path=file_path,
             allowed_jobs=effective_jobs,
             allowed_departments=effective_depts
         )
-        print(f"[Worker] Extracted & enriched {len(chunks)} chunks for {filename}.")
+        parse_time = time.time() - parse_start
+        print(f"[Worker] Step 1/4: Parsed & chunked in {parse_time:.2f}s - {len(chunks)} chunks created")
+
+        # Log chunk details
+        for i, chunk in enumerate(chunks):
+            print(f"  [Chunk {i+1}] Type: {chunk.chunk_type}, Page: {chunk.page_number}, "
+                  f"Chars: {len(chunk.content)}, HasSummary: {bool(chunk.summary)}, "
+                  f"HasKeywords: {bool(chunk.keywords)}, HasQuestions: {bool(chunk.hypothetical_questions)}")
+            if chunk.hypothetical_questions:
+                print(f"    Questions: {chunk.hypothetical_questions[:2]}...")
+            if chunk.summary:
+                print(f"    Summary: {chunk.summary[:100]}...")
 
         # Step 3 & 4: Embed with LocalEmbedder on GPU/CPU
-        print(f"[Worker] Generating local 768d vectors (Offline CUDA Batch mode)...")
+        print(f"[Worker] Step 2/4: Generating local 768d vectors (Offline CUDA Batch mode)...")
+        embed_start = time.time()
         chunks = embedder.embed_chunks(chunks, batch_size=32)
+        embed_time = time.time() - embed_start
+        print(f"[Worker] Step 2/4: Embedded {len(chunks)} chunks in {embed_time:.2f}s")
 
-        # Step 5: Sau khi sinh vector mới thành công 100% mới xóa chunk cũ và ghi chunk mới (Atomic Transaction)
+        # Verify vectors
+        for i, chunk in enumerate(chunks):
+            has_content_vec = chunk.content_vector is not None and len(chunk.content_vector) > 0
+            has_question_vec = chunk.questions_vector is not None and len(chunk.questions_vector) > 0
+            print(f"  [Chunk {i+1}] ContentVec: {has_content_vec} ({len(chunk.content_vector) if has_content_vec else 0}d), "
+                  f"QuestionVec: {has_question_vec} ({len(chunk.questions_vector) if has_question_vec else 0}d)")
+
+        # Step 5: Atomic Transaction - Save chunks
+        print(f"[Worker] Step 3/4: Saving {len(chunks)} chunks to PostgreSQL...")
+        save_start = time.time()
         cursor.execute("DELETE FROM document_chunks WHERE document_id = %s;", (document_id,))
 
-        print(f"[Worker] Saving {len(chunks)} chunks to PostgreSQL...")
         from psycopg2.extras import execute_values
         chunk_records = [
             (
@@ -176,6 +206,16 @@ def process_document_background(
             (document_id,)
         )
         conn.commit()
+        save_time = time.time() - save_start
+
+        total_time = time.time() - start_time
+        print(f"[Worker] Step 4/4: Saved to DB in {save_time:.2f}s")
+        print(f"{'='*60}")
+        print(f"[Worker] COMPLETED: {filename} in {total_time:.2f}s total")
+        print(f"  Parse: {parse_time:.2f}s | Embed: {embed_time:.2f}s | DB: {save_time:.2f}s")
+        print(f"  Chunks: {len(chunks)} | Vectors: {sum(1 for c in chunks if c.content_vector)} content + "
+              f"{sum(1 for c in chunks if c.questions_vector)} questions")
+        print(f"{'='*60}\n")
 
         # Step 7: Dọn dẹp file vật lý cũ chỉ khi đã nạp thành công toàn bộ
         if old_file_path and os.path.exists(old_file_path) and old_file_path != str(file_path):

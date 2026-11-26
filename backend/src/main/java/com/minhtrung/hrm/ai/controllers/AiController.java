@@ -292,12 +292,12 @@ public class AiController {
         log.info("User {} ({}) đang upload tài liệu: {} (Phòng ban áp dụng: {})",
                 currentUser.getUserId(), currentUser.getFullName(), file.getOriginalFilename(), effectiveDepartments);
 
-        Object result = aiServiceClient.uploadDocument(
+        ResponseEntity<Object> result = aiServiceClient.uploadDocument(
                 file,
                 effectiveDepartments,
                 currentUser
         );
-        return ResponseEntity.ok(result);
+        return result;
     }
 
     /**

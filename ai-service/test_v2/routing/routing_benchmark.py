@@ -3,7 +3,6 @@
 Routing Benchmark Test for HRM AI Service
 Tests the LLM router (rewrite + route) with Gemini 3.5 Flash Lite
 """
-
 import sys
 import json
 import time
@@ -20,7 +19,7 @@ from src.chat.chat_service import ChatService, reset_usage, take_usage
 
 
 class RoutingBenchmark:
-    def __init__(self, dataset_path: str, model: str = "gemini-1.5-flash"):
+    def __init__(self, dataset_path: str, model: str = "gemini-3.5-flash-lite"):
         self.dataset_path = dataset_path
         self.model = model
         self.chat_service = ChatService()
@@ -260,7 +259,7 @@ def main():
     parser.add_argument("--dataset", type=str,
                        default="ai-service/test_v2/dataset/routing_test.json",
                        help="Path to test dataset JSON")
-    parser.add_argument("--model", type=str, default="gemini-1.5-flash",
+    parser.add_argument("--model", type=str, default="gemini-3.5-flash-lite",
                        help="Model to use for routing")
 
     args = parser.parse_args()

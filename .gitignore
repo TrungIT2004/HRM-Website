@@ -229,3 +229,22 @@ ai-service/tests/baselines-120b/
 ai-service/tests/retrieval_db_only/results/
 ai-service/test_v2/**/results/
 **/generated_testset.*
+
+# Ad-hoc AI-service run scripts & outputs (not source, regenerable)
+ai-service/run_queries*.py
+ai-service/run_summary*.txt
+ai-service/query_results*.json
+ai-service/*_scores*.txt
+ai-service/chat_result.txt
+ai-service/check_answers.txt
+ai-service/chunk_output.txt
+ai-service/verify_output.txt
+ai-service/clear_cache.py
+ai-service/update_target.py
+ai-service/verify_results.py
+ai-service/ocr_test*/
+ai-service/ocr_test_results*.txt
+
+# Root scratch / test artifacts (not source)
+passing.txt
+fix_test_file.py

@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "D001",
+    "question": "Tôi muốn đăng ký xe đi công tác đột xuất thì cần thực hiện trước thời hạn nào?",
+    "ground_truth": "Đối với đăng ký xe đột xuất, Đơn vị cần phối hợp với nhân viên phụ trách xe (P.HC) qua điện thoại hoặc zalo trước 16h00 ngày N-1.",
+    "needs_review": true,
+    "reference_contexts": [
+      "CÔNG TY CP VIỄN THÔNG ACT\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nSố: 21A/HD-ACT-HC\n\nTp HCM, ngày 07 tháng 05 năm 2024\n\nHƯỚNG DẪN\nVề việc đăng ký xe đi công tác\n\nCăn cứ quy chế quản lý và sử dụng xe ô tô Công ty Cổ phần Viễn thông ACT số: 453a/QĐ-ACT-KHCT ban hành ngày 01/09/2018;\nCăn cứ chức năng, nhiệm vụ Phòng Hành chính.\n\nNhằm hướng dẫn các Đơn vị đăng ký xe ô tô Công ty đi công tác đúng quy trình, quy định đảm bảo đáp ứng nhu cầu xe đi công tác. Phòng Hành chính (P.HC) hướng dẫn Đơn vị các bước đăng ký như sau:\n\nBước 1: Đơn vị có nhu cầu sử dụng xe phối hợp với nhân viên phụ trách xe (P.HC) cung cấp các thông tin như: ngày giờ, điểm đi, điểm đến, số người ... đi công tác. Phối hợp qua điện thoại, zalo trước 12h thứ 7 hàng tuần (đối với đăng ký theo kế hoạch tuần), trước 16h00 ngày N-1 (đối với đăng ký xe đột xuất).\n\nBước 2: Sau khi đã thống nhất các thông tin với nhân viên phụ trách xe (P.HC), Đơn vị thực hiện ký đề xuất xe theo mẫu BM01 đính kèm.\n\nBước 3: Sau khi hoàn tất trình ký Đơn vị chuyển bản ký qua email hoặc zalo về cho nhân viên phụ trách xe (P.HC) lưu trữ, trường hợp đề xuất bị từ chối thì đơn vị phối hợp lại từ Bước 1.\n\nBước 4: Nhân viên phụ trách xe (P.HC) sau khi tiếp nhận đề xuất đã phê duyệt thực hiện chuyển thông tin đăng ký cho bộ phận lái xe, phân công tài xế và chuyển thông tin xe, tài xế cho Đơn vị đi công tác.\n\nBước 5: Nhân viên phụ trách xe (P.HC) theo dõi, tổng hợp, ký xác nhận kết quả thực hiện hàng tháng trước ngày 5 tháng N+1 theo BM02.\n\nGhi chú:\n\n✓ Với bất kỳ thay đổi nào khác với thông tin đã đăng ký (được phê duyệt) Đơn vị phải phản hồi ngay về P.HC để điều chỉnh và trình ký lại đề xuất.\n\n✓ Trường hợp xe ô tô Công ty không đảm bảo P.HC thực hiện đề xuất chi phí thuê xe ngoài hoàn thành trước 01 ngày của kế hoạch đăng ký (áp dụng đối với các chuyến đăng ký theo kế hoạch tuần, các chuyến phát sinh gấp P.HC xin ý kiến Ban TGĐ và các Bộ phận liên quan trước khi thuê xe và bổ sung đề xuất sau 24h)."
+    ],
+    "relevant_chunk_ids": [
+      "c7bf49b8-6f54-483e-8a6c-66ad1c88287b"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D002",
+    "question": "Tôi muốn đăng ký xe đi công tác thì cần gửi yêu cầu cho phòng ban nào?",
+    "ground_truth": "Để đăng ký xe đi công tác, nhân viên cần gửi Phiếu đăng ký xe cho Phòng Hành chính.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Trên đây là Hướng dẫn về việc đăng ký xe đi công tác. Kính đề nghị các Đơn vị liên quan phối hợp và thực hiện theo đúng hướng dẫn./.\n\nTrân trọng cảm ơn!\n\n**Nơi nhận:**\n- Ban TGĐ (b/c);\n- Các Khối, P/ban, TTKV (t/h);\n- Lưu: VT (01).\n\n**TRƯỞNG PHÒNG**\n\nChâu Thị Xuân Đào\n\nBM01\n\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT\nĐƠN VỊ/ PHÒNG BAN\nSố: ......../PĐK-ACT-HC\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập – Tự do – Hạnh phúc\nTp HCM, ngày    tháng    năm 2024\n\nPHIẾU ĐĂNG KÝ XE\nKính gửi: Phòng Hành chính\n\n- Căn cứ vào............................................;\n- Căn cứ vào ..........................................\nĐể bảo đảm .................................... Nay ..................... kính đề xuất Phòng Hành chính đảm bảo xe công tác như sau:\n\n| STT | Đơn vị đề xuất | Nội dung công việc | Số người | Người liên hệ_SĐT | Nơi đi | Nơi đến | Loại xe | Ngày đi | Ngày về | Ghi chú |\n| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |\n| 1 | K.DA | Nghiệm thu dự án | 3 | Nguyễn Văn A _ 098xxxxxxx | VP Bình giã | Kiên giang | 7 chỗ | .../.../2024 | .../.../2024 | |\n\nPHÒNG HC\n(Ký, ghi rõ họ tên)\n\nTRƯỞNG ĐƠN VỊ\n(Ký, ghi rõ họ tên)\n\nNGƯỜI LẬP\n(Ký, ghi rõ họ tên)"
+    ],
+    "relevant_chunk_ids": [
+      "a53dfb19-868c-45e2-8d43-bbde0f6e92cb"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D003",
+    "question": "Trong tháng 04/2024, lái xe Bùi Xuân Quang nghỉ phép vào ngày nào?",
+    "ground_truth": "Lái xe Bùi Xuân Quang nghỉ phép vào ngày 10 tháng 04 (Thứ 4).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM02\n\nPHÒNG HÀNH CHÍNH\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM  \nĐộc lập - Tự do - Hạnh phúc\n\n**BẢNG TỔNG HỢP XE CÔNG TÁC THÁNG 04.2024**\n\n| Ngày | Thứ | Loại xe | Lái xe | Đơn vị sử dụng | Nội dung | Thời gian sử dụng | Ghi chú |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n| 1 | Thứ 2 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 2 | Thứ 3 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-12h00 | 12h00-17h30: UCTT |\n| 3 | Thứ 4 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 4 | Thứ 5 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 5 | Thứ 6 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 6 | Thứ 7 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-12h00 | |\n| 7 | Chủ nhật | | | | | | |\n| 8 | Thứ 2 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 9 | Thứ 3 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 10 | Thứ 4 | | Bùi Xuân Quang | | | | Nghỉ phép |\n| 11 | Thứ 5 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 12 | Thứ 6 | Santafe - 7 chỗ | Bùi Xuân Quang | P.QLNL | Công tác | 06h30-12h00 | 12h00-17h30: UCTT |\n| 13 | Thứ 7 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-12h00 | |\n| 14 | Chủ nhật | | | | | | |\n| 15 | Thứ 2 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DVKT | Công tác | 08h-17h30 | Hội thảo GĐH |\n| 16 | Thứ 3 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-17h30 | |\n| 17 | Thứ 4 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-12h00 | 12h00-17h30: UCTT |\n| 18 | Thứ 5 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 19 | Thứ 6 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-17h30 | |\n| 20 | Thứ 7 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-12h00 | |\n| 21 | Chủ nhật | | | | | | |\n| 22 | Thứ 2 | | Bùi Xuân Quang | P.TH - K.DVKT | UCTT | 08h-17h30 | |\n| 23 | Thứ 3 | Santafe - 7 chỗ | Bùi Xuân Quang | K.DA | Công tác | 08h-17h30 | |\n| 24 | Thứ 4 | | Bùi Xuân Quang | P.TH - K.DVKT | UCT"
+    ],
+    "relevant_chunk_ids": [
+      "3dd60916-c503-471d-9c5f-af5864b24949"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D004",
+    "question": "Quyết định số 917./QĐ-ACT về việc đăng ký và sử dụng xe công tác có hiệu lực từ khi nào?",
+    "ground_truth": "Quyết định này có hiệu lực kể từ ngày ký (ngày 08 tháng 9 năm 2025).",
+    "needs_review": true,
+    "reference_contexts": [
+      "CÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nSố: 917./QĐ-ACT\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nTp. Hồ Chí Minh, ngày 08 tháng 9. năm 2025\n\nQUYẾT ĐỊNH\nBan hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT\n\nTỔNG GIÁM ĐỐC\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nCăn cứ Điều lệ, Quy chế hoạt động và thẩm quyền của Tổng Giám đốc Công ty Cổ phần Viễn thông ACT;\nCăn cứ tình hình thực tế của Công ty Cổ phần Viễn thông ACT;\nTheo đề nghị của Giám đốc Khối Dịch vụ kỹ thuật.\n\nQUYẾT ĐỊNH:\n\nĐiều 1. Ban hành kèm theo Quyết định này Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.\nĐiều 2. Quyết định này có hiệu lực kể từ ngày ký.\nĐiều 3. Giám đốc Khối Dịch vụ kỹ thuật, Giám đốc các khối, Trưởng Phòng/Ban và các đơn vị trực thuộc chịu trách nhiệm thi hành Quyết định này./.\n\nNơi nhận:\n- Như Điều 3 (thực hiện);\n- Lưu: VT, DVKT. BaoNL.\n\nTỔNG GIÁM ĐỐC\n\nPhạm Tuấn Anh"
+    ],
+    "relevant_chunk_ids": [
+      "19d97b8d-fc9f-4598-bb49-5078c21669bf"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D005",
+    "question": "Xe ô tô phục vụ công tác của Công ty Cổ phần Viễn thông ACT được bố trí cho những nhu cầu nào?",
+    "ground_truth": "Xe ô tô phục vụ công tác được bố trí cho các nhu cầu chính đáng đã được phê duyệt, bao gồm: Tham dự các cuộc họp, hội nghị, hội thảo; Đi công tác tại các cơ quan quản lý, đối tác, khách hàng; Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án; và các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty.",
+    "needs_review": true,
+    "reference_contexts": [
+      "2\n\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT    CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nQUY ĐỊNH\nVề công tác đăng ký, điều phối xe và sử dụng xe\ntrong Công ty Cổ phần Viễn thông ACT\n*(Ban hành kèm theo Quyết định số 217/QĐ-ACT ngày 08 tháng 9 năm 2025*\n*của Tổng Giám đốc Công ty Cổ phần Viễn thông ACT)*\n\n**Điều 1. Mục đích**\n1. Làm cơ sở cho việc tổ chức, quản lý, điều phối và kiểm soát toàn bộ hoạt động công tác, vận chuyển hàng hóa, vật tư, thiết bị, công cụ dụng cụ, tài liệu... phục vụ cho hoạt động sản xuất – kinh doanh và vận hành nội bộ của công ty.\n2. Đảm bảo sử dụng hiệu quả tài nguyên sẵn có (phương tiện, nhân sự), hạn chế chi phí phát sinh không cần thiết trong công tác vận chuyển.\n3. Hạn chế rủi ro phát sinh như: vận chuyển sai mục đích, trễ tiến độ, lãng phí nhiên liệu, không theo dõi được lịch trình.\n4. Tăng tính chủ động cho các đơn vị trong việc lập kế hoạch vận chuyển, đồng thời đảm bảo công tác vận chuyển được phối hợp nhịp nhàng, không chồng chéo.\n5. Nâng cao năng suất làm việc thông qua việc tối ưu tuyến đường, phương tiện, thời gian vận chuyển, và hạn chế trùng lặp nhu cầu giữa các bộ phận.\n\n**Điều 2. Phạm vi áp dụng**\n1. Đối tượng áp dụng:\nToàn thể các đơn vị trực thuộc, các cá nhân có liên quan đến hoạt động yêu cầu, điều phối, thực hiện hoặc phê duyệt công tác vận chuyển.\n2. Loại hình vận chuyển:\na) Vận chuyển nội thành, ngoại thành, liên tỉnh, bao gồm cả vận chuyển giữa các văn phòng, kho, dự án,...\nb) Vận chuyển định kỳ theo kế hoạch (lịch giao nhận thường xuyên) hoặc vận chuyển phát sinh, đột xuất.\nc) Vận chuyển một chiều, hai chiều, hoặc nhiều điểm giao/nhận kết hợp.\nd) Xe ô tô phục vụ công tác được bố trí nhằm đáp ứng nhu cầu đi lại chính đáng, đã được phê duyệt, của các đơn vị trong Công ty, bao gồm: Tham dự các cuộc họp, hội nghị, hội thảo; Đi công tác tại các cơ quan quản lý, đối tác, khách hàng; Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án ; Các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty.\n3. Loại hàng hóa á"
+    ],
+    "relevant_chunk_ids": [
+      "fcd87c4d-dfb6-4da7-ae79-e60a098f8cc0"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D006",
+    "question": "Khi nào tôi nên sử dụng dịch vụ vận chuyển thuê ngoài thay vì xe công ty?",
+    "ground_truth": "Dịch vụ vận chuyển thuê ngoài được ưu tiên sử dụng khi: Quãng đường dài trên 30km hoặc liên tỉnh; hàng hóa số lượng lớn, cồng kềnh hoặc cần xe chuyên dụng; xe công ty không có sẵn hoặc không phù hợp; nhu cầu khẩn cấp ngoài giờ hành chính/ngày nghỉ; hoặc yêu cầu nhiều điểm giao nhận trong thời gian ngắn.",
+    "needs_review": true,
+    "reference_contexts": [
+      "3\n\na) Vật tư kỹ thuật, thiết bị, máy móc, công cụ dụng cụ, linh kiện;\nb) Hàng mẫu, hàng hóa thương mại;\nc) Tài sản cố định, hàng tồn kho điều chuyển nội bộ;\nd) Các loại hàng hóa có yêu cầu đặc biệt về bảo quản, an toàn, dễ vỡ hoặc có giá trị cao...\n\nĐiều 3. Phân loại phương thức vận chuyển\n\n1. Xe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài, được quản lý và điều phối bởi Phòng Hành chính, Phòng Tổng hợp hoặc Bộ phận điều phối phương tiện. Xe phục vụ công tác vận chuyển của công ty được ưu tiên sử dụng trong các trường hợp:\na) Quãng đường ngắn (nhỏ hơn hoặc bằng 30km).\nb) Khối lượng hàng hóa nhỏ/lẻ, trọng lượng nhỏ hơn hoặc bằng 500kg, dễ xếp dỡ.\nc) Điểm đến nằm trong lộ trình hiện có hoặc có thể ghép tuyến.\nd) Phù hợp với điều kiện vận hành (đường cấm tải, giờ cấm, thời tiết...).\nđ) Xe có sẵn trong khung thời gian yêu cầu.\n\n2. Dịch vụ vận chuyển thuê ngoài bao gồm hợp đồng dịch vụ theo chuyến hoặc định kỳ với đơn vị vận tải ngoài, có thể là xe tải lớn, xe chuyên dụng... theo yêu cầu. Dịch vụ vận chuyển thuê ngoài được ưu tiên sử dụng trong các trường hợp:\na) Quãng đường dài (trên 30km), liên tỉnh.\nb) Hàng hóa số lượng lớn, cồng kềnh hoặc có yêu cầu xe chuyên dụng.\nc) Xe công ty không có sẵn hoặc không phù hợp.\nd) Nhu cầu khẩn cấp, phát sinh ngoài giờ hành chính hoặc ngày nghỉ.\nđ) Yêu cầu nhiều điểm giao nhận trong thời gian ngắn.\n\nĐiều 4. Nguyên tắc sử dụng phương thức vận chuyển\n\n1. Nguyên tắc tiết kiệm và hiệu quả\na) Ưu tiên sử dụng xe công ty nếu có thể đáp ứng được yêu cầu về thời gian, địa điểm, khối lượng và đặc tính hàng hóa.\nb) Ưu tiên sắp xếp theo thứ tự: yêu cầu phục vụ hoạt động SXKD, sau đó đến nhu cầu hành chính thường xuyên.\n\n2. Nguyên tắc tối ưu tuyến đường và thời gian\na) Không điều xe riêng cho các yêu cầu có thể kết hợp được về tuyến hoặc thời gian.\nb) Khuyến khích các bộ phận chủ động trao đổi và thống nhất lộ trình chung với đơn vị điều phối.\nc) Hạn chế điều xe trong các khung giờ cao điểm (t"
+    ],
+    "relevant_chunk_ids": [
+      "f117d86c-53cb-4f4a-b57c-2acfffef757a"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D007",
+    "question": "Tôi cần đăng ký xe công tác cho kế hoạch đã được phê duyệt trước thì phải gửi yêu cầu trước mấy giờ?",
+    "ground_truth": "Mọi yêu cầu vận chuyển cần được lập đề xuất cụ thể và gửi về đơn vị điều phối trước 15h00 ngày hôm trước.",
+    "needs_review": true,
+    "reference_contexts": [
+      "4\n\nphối phương tiện.\nb) Mọi yêu cầu vận chuyển cần được lập đề xuất cụ thể và gửi về đơn vị điều phối trước 15h00 ngày hôm trước (đối với kế hoạch đã được phê duyệt trước đó).\nc) Trường hợp đột xuất cần nêu rõ lý do và được phê duyệt bởi quản lý cấp phòng trở lên (gửi thông tin về đơn vị điều phối ít nhất 4 giờ trước thời gian thực hiện vận chuyển).\nd) Lộ trình vận chuyển, tài sản mang theo và người đi cùng (nếu có) phải được ghi nhận đầy đủ trong lịch sử điều xe.\ne) Yêu cầu phải có đầy đủ thông tin vận chuyển (theo biểu mẫu): Thời gian vận chuyển, đơn vị đề xuất, nội dung, thông tin hàng hóa. Thông tin nhận hàng, trả hàng (tọa độ vị trí, địa chỉ, người liên hệ, thời gian tiếp nhận).\n4. Nguyên tắc kiểm soát mục đích và tài sản\na) Tuyệt đối không sử dụng xe công ty vào mục đích cá nhân, không rõ ràng hoặc chưa được phê duyệt.\nb) Nghiêm cấm chở hàng hóa không rõ nguồn gốc, không có chứng từ hợp lệ.\nc) Mọi thay đổi trên hành trình phải báo cáo lại để cập nhật và lưu hồ sơ.\n5. Với hàng hóa có đặc điểm đặc biệt\nHàng hóa có yêu cầu đặc biệt (dễ vỡ, cần nhiệt độ bảo quản, hàng nguy hiểm,...) cần nêu rõ yêu cầu trong đề xuất vận chuyển và được bố trí phương tiện phù hợp để đảm bảo an toàn.\nĐiều 5. Trách nhiệm và xử lý vi phạm\n1. Phòng Hành chính, Phòng Tổng hợp và các Đơn vị điều phối có trách nhiệm:\na) Nhận và tổng hợp yêu cầu vận chuyển;\nb) Sắp xếp, điều phối xe hợp lý;\nc) Theo dõi nhật ký vận chuyển, báo cáo định kỳ.\n2. Đơn vị đề xuất có trách nhiệm:\na) Gửi thông tin chính xác, đúng thời hạn;\nb) Đảm bảo hàng hóa phù hợp, đóng gói đúng chuẩn;\nc) Phối hợp đúng giờ, đúng địa điểm.\n3. Tài xế có trách nhiệm:\na) Tuân thủ hành trình, tốc độ, quy định an toàn;\nb) Không tự ý thay đổi mục đích chuyến đi;\nc) Ghi chép đầy đủ nhật ký xe.\n4. Trường hợp sử dụng sai mục đích, không tuân thủ quy định, hoặc gây thiệt hại phát sinh\na) Có thể bị từ chối phê duyệt vận chuyển trong các lần kế tiếp.\nb) Bị xử lý kỷ luật theo quy định công ty (tùy mức độ)."
+    ],
+    "relevant_chunk_ids": [
+      "9fa35ecb-1107-48f7-ac57-80cce8366555"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D008",
+    "question": "Quy định về phân quyền và nguyên tắc sử dụng phương tiện vận chuyển được cập nhật định kỳ bao lâu một lần?",
+    "ground_truth": "Quy định sẽ được xem xét, cập nhật định kỳ 6 tháng/lần hoặc theo chỉ đạo của Tổng Giám đốc.",
+    "needs_review": true,
+    "reference_contexts": [
+      "5\n\nc) Trường hợp nghiêm trọng, phải bồi hoàn thiệt hại.\n\nĐiều 6. Hiệu lực thi hành và cập nhật\n\n1. Quy định này có hiệu lực kể từ ngày ký và thay thế tất cả các quy định cũ (nếu có) liên quan đến phân quyền và nguyên tắc sử dụng phương tiện vận chuyển.\n\n2. Quy định sẽ được xem xét, cập nhật định kỳ 6 tháng/lần hoặc theo chỉ đạo của Tổng Giám đốc nhằm phù hợp với điều kiện thực tế và thay đổi pháp lý liên quan.\n\n3. Các đơn vị có trách nhiệm phổ biến và hướng dẫn thực hiện đến toàn thể nhân viên có liên quan, đảm bảo việc triển khai thực hiện thống nhất và hiệu quả./.\n\n**TỔNG GIÁM ĐỐC**\n\n*Phạm Tuấn Anh*"
+    ],
+    "relevant_chunk_ids": [
+      "9b445ab1-faeb-403f-9a62-b2738d23ccdc"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D035",
+    "question": "Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in của công ty có mã hiệu là gì?",
+    "ground_truth": "Mã hiệu của Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in là QT.ACT.HC-05.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| ACT | CÔNG TY CỔ PHẦN VIỄN THÔNG ACT | Mã hiệu: QT.ACT.HC-05 |\n| :---: | :---: | :--- |\n| | **QUY TRÌNH QUẢN LÝ VĂN PHÒNG PHẨM, VỆ SINH PHẨM VÀ MỰC IN** | Ngày có hiệu lực: 01/07/2024 |\n| | | Ngày hết hiệu lực: ..../...../........ |\n| | | Lần ban hành: 1 |\n| | | Trang: 1/9 |\n\n**PHIẾU ĐỀ NGHỊ LẬP/SỬA ĐỔI TÀI LIỆU**\n\n[X] Viết mới &emsp;&emsp;&emsp;&emsp;&emsp; [ ] Sửa đổi &emsp;&emsp;&emsp;&emsp;&emsp; [ ] Bổ sung\n\nĐơn vị soạn thảo: Phòng Hành chính\n\nTên tài liệu: Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.\n\nMã hiệu: QT.ACT.HC-05\n\nLần ban hành: 01\n\nNội dung: Quy trình quy định việc sử dụng văn phòng phẩm, mực in trong Công ty, đảm bảo đủ nhu cầu, sử dụng tiết kiệm.\n\nĐề nghị ban hành tới các đơn vị: Các Khối, Phòng ban trực thuộc Công ty; Trung tâm vận hành, phòng Tổng hợp và Ban quản lý tài sản OS - thuộc Khối dịch vụ kỹ thuật./.\n\n*Tp HCM, ngày &emsp; tháng &emsp; năm 2024*"
+    ],
+    "relevant_chunk_ids": [
+      "df1190b4-362f-4fee-b707-8af4079ce3b6"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D036",
+    "question": "Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in của Công ty Cổ phần Viễn thông ACT có mã hiệu là gì?",
+    "ground_truth": "Mã hiệu của quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in là QT.ACT.HC-05.",
+    "needs_review": true,
+    "reference_contexts": [
+      "CÔNG TY CỔ PHẦN VIỄN THÔNG ACT\nQUY TRÌNH QUẢN LÝ VĂN PHÒNG PHẨM, VỆ SINH PHẨM VÀ MỰC IN\n\nMã hiệu: QT.ACT.HC-05\nNgày có hiệu lực: 01/07/2024\nNgày hết hiệu lực: ...../...../.......\nLần ban hành: 1\nTrang: 3/9\n\nPHIẾU LẤY Ý KIẾN CỦA CÁC ĐƠN VỊ THAM GIA QUY TRÌNH\n\n| TT | Đơn vị | Nội dung nhận xét/ý kiến | Ký xác nhận |\n|---|---|---|---|\n| 1 | Phòng Kế toán | Đồng ý | [Chữ ký] |\n| 2 | Ban TCĐT | Đồng ý | [Chữ ký]<br>Võ Ngọc Yến Nhi |\n| 3 | Ban Mua sắm | ........................................................................<br>........................................................................<br>........................................................................<br>........................................................................ | [Chữ ký]<br>Võ Ngọc Yến Nhi |"
+    ],
+    "relevant_chunk_ids": [
+      "9ada2ec9-fcba-4ed4-856c-46d0224109cd"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D037",
+    "question": "Định mức sử dụng văn phòng phẩm và mực in hàng tháng cho nhân viên văn phòng là bao nhiêu?",
+    "ground_truth": "Định mức sử dụng văn phòng phẩm và mực in đối với nhân viên khối văn phòng và nhân viên văn phòng tại trung tâm khu vực là 120.000/người/tháng.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| ACT | CÔNG TY CỔ PHẦN VIỄN THÔNG ACT | Mã hiệu: QT.ACT.HC-05 |\n| :--- | :--- | :--- |\n| | **QUY TRÌNH QUẢN LÝ VĂN PHÒNG PHẨM, VỆ SINH PHẨM VÀ MỰC IN** | Ngày có hiệu lực: 01/07/2024 |\n| | | Ngày hết hiệu lực: ..../...../....... |\n| | | Lần ban hành: 1 |\n| | | Trang: 5/9 |\n\n+ Đối với khối văn phòng: Định mức sử dụng VPP và mực in: 120.000/người/tháng, định mức chi cho mua ngoài (đồ dùng vệ sinh, mua dây điện, ổ cắm, phí vệ sinh...) bao gồm VP Đồng Xoài và trung tâm đào tạo: 5.000.000/tháng.\n\n+ Đối với trung tâm khu vực: Định mức sử dụng VPP và mực in: 120.000/người/tháng với nhân viên văn phòng và 30.000/người/tháng đối với kỹ thuật viên, định mức chi cho mua ngoài (đồ dùng vệ sinh, mua dây điện, ổ cắm, phí vệ sinh...): 2.500.000 (đối với trung tâm khu vực <100 người) và 2.750.000 (đối với trung tâm khu vực $\\ge$100 người).\n\n*(Định mức sử dụng VPP, vệ sinh phẩm và mực in không áp dụng với Cộng tác viên).*\n\n- Những khối và phòng ban có đặc thù công việc phải sử dụng VPP và mực in vượt so với định mức đưa ra thì phải có Phiếu đề xuất có chữ ký của Trưởng đơn vị, trình cho Tổng giám đốc và Kế toán trưởng phê duyệt.\n\n- Phòng HC có trách nhiệm rà soát lại định mức sử dụng VPP, vệ sinh phẩm và mực in cho phù hợp. Trường hợp có sự thay đổi, Phòng HC cập nhật lại định mức theo quy định của Công ty.\n\n**6.3 Quy trình cấp phát VPP, vệ sinh phẩm:**\n- Vào ngày 25 đến 30 hàng tháng, các phòng ban lập giấy đề nghị VPP và vệ sinh phẩm của tháng sau theo biểu mẫu: BM02 - QT.ACT.HC-05 sau đó chuyển Phòng HC xem xét. Đối với mực in, Phòng HC sẽ cân đối định mức từ VPP để nạp mực và mua bình mực mới cho các phòng ban. *Đối với những phòng ban có đặc thù công việc cần in nhiều, phải làm Phiếu đề xuất mua thêm hộp mực (Chi tiết giá từng loại mực ở biểu mẫu BM01 - QT.ACT.HC-05).*\n\n- Nhân viên HC có trách nhiệm kiểm tra định mức sử dụng theo quy định, nếu vượt định mức thì chuyển cho phòng ban đề nghị chỉnh sửa lại cho phù hợp, nếu đúng định mức thì tiếp nhận và làm bảng tổng hợp chuyển T"
+    ],
+    "relevant_chunk_ids": [
+      "c182d644-27ec-49c2-91a6-2f157e2139d8"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D038",
+    "question": "Tôi muốn đề xuất mua văn phòng phẩm và vệ sinh phẩm hàng tháng thì cần sử dụng mẫu đơn nào?",
+    "ground_truth": "Để đề xuất mua văn phòng phẩm và vệ sinh phẩm hàng tháng, bạn cần sử dụng Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng theo mẫu BM02-QT.ACT.HC-05.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| ACT | CÔNG TY CỔ PHẦN VIỄN THÔNG ACT | Mã hiệu: QT.ACT.HC-05 |\n| :--- | :--- | :--- |\n| | **QUY TRÌNH QUẢN LÝ VĂN PHÒNG PHẨM, VỆ SINH PHẨM VÀ MỰC IN** | Ngày có hiệu lực: 01/07/2024 |\n| | | Ngày hết hiệu lực: ...../...../....... |\n| | | Lần ban hành: 1 |\n| | | Trang: 8/9 |\n\n### 7. Quy trình cấp phát VPP, vệ sinh phẩm:\n\n| Trách nhiệm thực hiện | Lưu đồ | Ghi chú |\n| :--- | :---: | :--- |\n| Phòng ban, bộ phận đề nghị | Đề xuất mua hàng | Giấy đề nghị cấp VPP, vệ sinh phẩm hàng tháng: BM02 -QT.ACT.HC-05 |\n| P.HC | $\\downarrow$<br>Kiểm tra định mức và nhu cầu mua sắm<br>*(Không đồng ý $\\rightarrow$ quay lại Đề xuất mua hàng)* | |\n| P.HC | $\\downarrow$ Đồng ý<br>Tập hợp | |\n| TP.HC | $\\downarrow$<br>Phê duyệt<br>*(Không đồng ý $\\rightarrow$ quay lại Tập hợp)* | |\n| P.HC | $\\downarrow$ Đồng ý<br>Mua hàng và nhận hàng, phân chia theo đơn vị | |\n| P.HC hoặc Phòng ban, bộ phận đề nghị | $\\downarrow$<br>Cấp phát cho các phòng ban, bộ phận yêu cầu | Giấy cấp phát VPP, vệ sinh phẩm: BM03-QT.ACT.HC-05 |\n| P.HC | $\\downarrow$<br>Lưu hồ sơ | |"
+    ],
+    "relevant_chunk_ids": [
+      "488e94ad-2efa-442a-88a1-8a6a29f4b115"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D039",
+    "question": "Đơn giá của một ream giấy photocopy Double AA A4 loại 80gsm là bao nhiêu?",
+    "ground_truth": "Đơn giá của giấy photocopy Double AA A4 (80gsm) là 81.000 đồng/ream (chưa bao gồm VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n# BẢNG TIÊU CHUẨN VPP, VỆ SINH PHẨM\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n|:---:|---|:---:|:---:|:---:|\n| | **GIẤY PHOTOCOPY** | | | |\n| 1 | Giấy Indo Copy Paper A4 (70gsm) | Ream | 55.000 | |\n| 2 | Giấy photocopy Quality/ZAP A4 (70gsm) | Ream | 64.000 | |\n| 3 | Giấy photocopy Idea A4 (70gsm) | Ream | 66.000 | |\n| 4 | Giấy photocopy Paper One A4 (70gsm) | Ream | 68.000 | |\n| 5 | Giấy photocopy Double AA A4 (70gsm) | Ream | 68.000 | |\n| 6 | Giấy photocopy IK Plus A4 (70gsm) | Ream | 67.000 | |\n| 7 | Giấy Indo Copy Paper A4 (80gsm) | Ream | 62.000 | |\n| 8 | Giấy photocopy Idea A4 (80gsm) | Ream | 75.000 | |\n| 9 | Giấy photocopy IK Plus A4 (80gsm) | Ream | 77.000 | |\n| 10 | Giấy photocopy Paper One A4 (80gsm) | Ream | 80.000 | |\n| 11 | Giấy photocopy Double AA A4 (80gsm) | Ream | 81.000 | |\n| 12 | Giấy photocopy Paper One A4 (100gsm) | Ream | 106.000 | |\n| 13 | Giấy Indo Copy Paper A3 (70gsm) | Ream | 110.000 | |\n| 14 | Giấy Indo Copy Paper A3 (80gsm) | Ream | 124.000 | |\n| 15 | Giấy photocopy Double AA A3 (80gsm) | Ream | 162.000 | |\n| 16 | Giấy photocopy Double AA A3 (70gsm) | Ream | 136.000 | |\n| 17 | Giấy Indo Copy Paper A5 (70gsm) | Ream | 27.500 | |\n| 18 | Giấy Indo Copy Paper A5 (80gsm) | Ream | 31.000 | |\n| 19 | Giấy Ford màu A4 (80gsm) xanh dương | Ream | 73.000 | |\n| | **GIẤY NHIỆT - GIẤY IN LIÊN TỤC - ROKY** | | | |\n| 20 | Giấy nhiệt 57mmx45-200 cuộn/thùng | Cuộn | 7.000 | |\n| 21 | Giấy nhiệt 80mmx45-100 cuộn/thùng | Cuộn | 8.200 | |\n| 22 | Giấy nhiệt 80mmx60-100 cuộn/thùng | Cuộn | 18.000 | |\n| 23 | Giấy nhiệt 80mmx80-50 cuộn/thùng | Cuộn | 26.000 | |\n| 24 | Giấy in liên tục 210x279 1 liên | Thùng | 215.000 | |\n| 25 | Giấy in liên tục 210x279 2 liên đến 6 liên | Thùng | 335.000 | |\n| 26 | Giấy in A0 5kg-100gsm lõi lớn | Cuộn | 189.000 | |\n| 27 | Giấy in A0 5kg-100gsm lõi nhỏ | Cuộn | 189.000 | |\n| 28 | Giấy in A1 6kg-100gsm lõi nhỏ 615 | Cuộn | 209.000 | |\n| 29 | Giấy in A2-K42 3kg-100gsm lõi nhỏ | Cuộn | 132."
+    ],
+    "relevant_chunk_ids": [
+      "a03b6760-3cc8-4ec7-9007-5020b00bda47"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D040",
+    "question": "Giá của bìa 3 dây Thảo Linh gáy 20 phân là bao nhiêu?",
+    "ground_truth": "Giá của bìa 3 dây Thảo Linh gáy 20 phân là 15.000 đồng/cái (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :---: | :--- | :---: | :---: | :---: |\n| 59 | Phân trang giấy A4 10 số | Xấp | 10.000 | |\n| 60 | Phân trang nhựa A4 KingStar 24 chữ cái xám | Xấp | 60.000 | |\n| 61 | Phân trang nhựa A4 KingStar 31 số xám | Xấp | 70.000 | |\n| | **BÌA LÁ - BÌA NÚT - BÌA LỖ - BÌA ACCO - BÌA CÂY** | | | |\n| 62 | Bìa nhựa lá A4 Plus 0.2mm trắng (10 cái/xấp) | Cái | 2.000 | |\n| 63 | Bìa nhựa lá F4 Plus 0.2mm trắng (10 cái/xấp) | Cái | 2.200 | |\n| 64 | Bìa nhựa 1 nút A4, F4 trắng (12 cái/xấp) | Cái | 3.100 | |\n| 65 | Bìa nhựa 1 nút F4 trắng cột dây (12 cái/xấp) | Cái | 5.500 | |\n| 66 | Bìa nhựa 1 nút A5 trắng (10 cái/ xấp) | Cái | 2.000 | |\n| 67 | Cặp 12 ngăn A4 8214, thun | Cái | 38.000 | |\n| 68 | Bìa nylong lổ Mylax 400gr-100 tờ/xấp (70/t) | Xấp | 36.000 | |\n| 69 | Bìa nylong lổ Mylax 620gr-100 tờ/xấp (50/t) | Xấp | 56.000 | |\n| 70 | Bìa nylong lổ SureMark SQ5206 (100 tờ/xấp) | Xấp | 100.000 | |\n| 71 | Bìa acco Thiên Long xanh dương | Cái | 5.700 | |\n| 72 | Bìa acco Mylax xanh lá (10 cái/xấp) | Cái | 3.500 | |\n| 73 | Bìa aco giấy Plus không kẹp 87-096 (màu xanh lá) | Cái | 8.000 | |\n| 74 | Bìa cây gáy đục lớn 310 xanh dương | Cái | 4.500 | |\n| 75 | Bìa cây chốt đầu QW324A xanh dương | Cái | 4.500 | |\n| 76 | Bìa cây gáy trong nhỏ 310 trắng | Cái | 2.700 | |\n| | **BÌA 3 DÂY** | | | |\n| 77 | Bìa 3 dây Thảo Linh gáy 10 phân | Cái | 11.500 | |\n| 78 | Bìa 3 dây Thảo Linh gáy 15 phân | Cái | 13.200 | |\n| 79 | Bìa 3 dây Thảo Linh gáy 20 phân | Cái | 15.000 | |\n| | **HỘP VUÔNG ĐỰNG HỒ SƠ** | | | |\n| 80 | Hộp vuông simili 7 phân | Cái | 33.000 | |\n| 81 | Hộp vuông simili 10 phân | Cái | 35.000 | |\n| 82 | Hộp vuông simili 15 phân | Cái | 47.000 | |\n| 83 | Hộp vuông simili 20 phân | Cái | 53.000 | |\n\n3"
+    ],
+    "relevant_chunk_ids": [
+      "39fb16a7-2e9d-464e-a7ee-61139fb949f4"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D041",
+    "question": "Giá của một cây bút bi UNI SX101 Jestream 0.7mm xanh là bao nhiêu?",
+    "ground_truth": "Giá của một cây bút bi UNI SX101 Jestream 0.7mm xanh là 20.000 VNĐ (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n|---|---|:---:|:---:|---|\n| 141 | Bút cắm bàn Flexoffice FO-PH01/VN xanh (2 cây/bộ) | Bộ | 14.500 | |\n| 142 | Bút bi TL027 - 05mm - (20 cây/hộp) | Cây | 3.600 | |\n| 143 | Bút bi TL08 - 08mm - (20 cây/hộp) | Cây | 3.600 | |\n| 144 | Bút bi TL095 - 05mm - (20 cây/hộp) | Cây | 6.900 | |\n| 145 | Bút bi TL023 - 05mm - (20 cây/hộp) | Cây | 3.600 | |\n| 146 | Bút bi TL025 - 08mm - (20 cây/hộp) | Cây | 4.500 | |\n| 147 | Bút bi TL036 - 07mm - (20 cây/hộp) | Cây | 9.500 | |\n| 148 | Bút bi TL047 - 07mm - (20 cây/hộp) | Cây | 6.200 | |\n| 149 | Bút bi TL079 - 05mm - (20 cây/hộp) | Cây | 3.600 | |\n| 150 | Bút bi TL031 - 05mm - (20 cây/hộp) | Cây | 7.800 | |\n| 151 | Bút bi TL061 - 05mm - (20 cây/hộp) | Cây | 3.200 | |\n| 152 | Bút bi FO-03 - 05mm - (20 cây/hộp) | Cái | 3.300 | |\n| 153 | Bút bi FO-023 (20 cây/hộp) | Cái | 3.300 | |\n| 154 | Bút bi UNI SX101 Jestream 0.7mm xanh | Cây | 20.000 | |\n| 155 | Bút bi UNI Click BP XSB-R7 xanh - bấm | Cây | 18.000 | |\n| 156 | Bút bi UNI SN-100 0.7 xanh - bấm | Cây | 25.000 | |\n| | **BÚT LÔNG KIM CÁC LOẠI** | | | |\n| 157 | Bút lông kim UNI UB150 0,5mm (12 cây/hộp) | Cây | 10.000 | |\n| 158 | Bút lông kim UNI Eye Micro UB150 0,5mm - (CH) | Cây | 30.000 | |\n| 159 | Bút lông kim UNI Eye Fine UB157 0,7mm - (CH) | Cây | 36.000 | |\n| 160 | Bút lông kim UNI Vision Elite UB200 0,8mm (12 cây/hộp) | Cây | 55.000 | |\n| 161 | Bút gel UNI Signo UM-100 - 0,5mm xanh (12 cây/hộp) | Cây | 26.000 | |\n| 162 | Bút gel B01 B Master 0,6mm xanh - (12 cây/hộp) | Cây | 5.500 | |\n| 163 | Bút Gel B011 - 0.5 xanh - (20 cây/hộp) | Cây | 5.500 | |\n| 164 | Bút Gel MG K35 0.5mm (20 cây/hộp) | Cây | 12.000 | |\n| 165 | Bút gel Thiên Long 08 Sunbeam 0.5mm (20 cây/hộp) | Cây | 5.500 | |\n| 166 | Bút gel MINI 0.5mm | Cây | 2.400 | |\n| 167 | Bút gel Dong-A P&T 0.5mm | Cây | 10.000 | |\n\n6"
+    ],
+    "relevant_chunk_ids": [
+      "06722c48-745d-498a-a45a-e3346c12ccf1"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D042",
+    "question": "Giá của một quyển bìa nhựa 60 lá Flexoffice FO-DB03 là bao nhiêu?",
+    "ground_truth": "Giá của bìa nhựa 60 lá Flexoffice FO-DB03 là 55.000 đồng/quyển (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :--- | :--- | :---: | :---: | :---: |\n| 193 | Ruột chì DELI 0,5 (tép) | Tép | 8.000 | |\n| 194 | Ruột chì YOYO mạ vàng 0,7mm | Tép | 3.200 | |\n| 195 | Gôm chì Pentel ZEH 03 nhỏ | Cục | 7.200 | |\n| 196 | Gôm chì Pentel ZEH 05 trung | Cục | 11.000 | |\n| 197 | Gôm chì Pentel ZEH 10 lớn | Cục | 15.000 | |\n| 198 | Gôm chì E06 nhỏ | Cục | 2.700 | |\n| 199 | Chuốt chì Thiên Long S-01 | Cái | 2.600 | |\n| 200 | Chuốt chì TOMBO | Cái | 6.500 | |\n| 201 | Chuốt chì Staedtler | Cái | 14.500 | |\n| 202 | Bút dạ quang Halo zee HL03 (5 cây/vĩ) | Cây | 6.800 | |\n| 203 | Bút dạ quang TOYO SP28 (10 cây/hộp) | Cây | 5.000 | |\n| 204 | Bút dạ quang Staedtler 364 (10 cây/hộp) | Cây | 21.000 | |\n| | **BÚT XÓA - RUỘT XÓA** | | | |\n| 205 | Bút xóa Thiên Long CP-02 (10 cây/hộp) | Cây | 19.000 | |\n| 206 | Bút xóa Flexoffice FO-CB01 (10ml) (20 cây/hộp) | Cây | 12.300 | |\n| 207 | Bút xóa kéo Plus (5mmx12mét) (10 cây/hộp) | Cây | 20.000 | |\n| 208 | Bút xóa kéo Plus mini (5mmx7 mét) (20 cây/hộp) | Cây | 13.000 | |\n| 209 | Ruột bút xóa Plus 5mmx12 mét (10 cái/hộp) | Cái | 15.000 | |\n| | **BÌA NHỰA NHIỀU LÁ** | | | |\n| 210 | Bìa nhựa 20 lá Flexoffice FO-DB02 | Quyển | 27.500 | |\n| 211 | Bìa nhựa 40 lá Flexoffice FO-DB02 | Quyển | 40.000 | |\n| 212 | Bìa nhựa 60 lá Flexoffice FO-DB03 | Quyển | 55.000 | |\n| 213 | Bìa nhựa 80 lá Flexoffice FO-DB04 | Quyển | 72.000 | |\n| 214 | Bìa nhựa 100 lá Flexoffice FO-DB05 | Cái | 82.000 | |\n| 215 | Bìa nhựa 20 kingjim 186 | Quyển | 30.000 | |\n| 216 | Bìa nhựa 20 lá Plus Pasty V062 | Quyển | 38.000 | |\n| 217 | Bìa nhựa 40 lá Plus V091 | Quyển | 69.000 | |\n| | **TẬP - SỔ CÁC LOẠI** | | | |\n| 218 | Tập học sinh 96 trang 155x205-T05 58gsm | Quyển | 5.200 | |\n| 219 | Tập học sinh 96 trang 155x205-T01/08 100gsm | Quyển | 8.800 | |\n\n8"
+    ],
+    "relevant_chunk_ids": [
+      "a83df9c2-82e4-47f4-a5d6-929601409d5b"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D043",
+    "question": "Đơn giá của máy tính Casio FX-580VNX là bao nhiêu?",
+    "ground_truth": "Đơn giá của máy tính Casio FX-580VNX là 680.000 đồng (chưa bao gồm VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :---: | :--- | :---: | :---: | :---: |\n| 271 | Máy tính Casio FX-570VN Plus | Cái | 513.000 | |\n| 272 | Máy tính Casio FX-580VNX | Cái | 680.000 | |\n| 273 | Máy tính N CAVIET MX 120SK | Cái | 110.000 | |\n| 274 | Máy tính N CAVIET AX 126S | Cái | 155.000 | |\n| 275 | Máy tính Casio AX12 | Cái | 245.000 | |\n| 276 | Máy tính Casio AX120 | Cái | 270.000 | |\n| 277 | Máy tính Casio DX-12B | Cái | 256.000 | |\n| 278 | Máy tính Casio DX-120 | Cái | 283.000 | |\n| 279 | Máy tính Casio MJ-120 Plus | Cái | 240.000 | |\n| 280 | Máy tính Casio GX-14S | Cái | 420.000 | |\n| 281 | Máy đóng số nhảy KW 6 số 20600 | Cái | 550.000 | |\n| 282 | Máy đóng số nhảy SureMark SQ3366 | Cái | 380.000 | |\n| 283 | Máy bắn giá Motex MX 5500 | Cái | 80.000 | |\n| | **MÁY ĐỤC LỖ** | | | |\n| 289 | Máy đục 2 lỗ Munix 20016- 16 tờ | Cái | 55.000 | |\n| 290 | Máy đục 2 lỗ KW-912- 16 tờ | Cái | 70.000 | |\n| 291 | Máy đục 2 lỗ KW-978- 30 tờ | Cái | 103.000 | |\n| 292 | Máy đục 2 lỗ SureMark SQ7621-16 tờ | Cái | 38.000 | |\n| 293 | Máy đục 2 lỗ KW 9670- 60 tờ | Cái | 400.000 | |\n| | **MÁY BẤM KIM** | | | |\n| 294 | Bấm kim số 10 Munix 25004 | Cái | 19.700 | |\n| 295 | Bấm kim số 10 Plus PS-10E | Cái | 28.000 | |\n| 296 | Bấm kim số 10 Double AA ST10SA | Cái | 24.000 | |\n| 297 | Bấm kim số 10 SDI 1104 | Cái | 36.000 | |\n| 298 | Bấm kim số 10 Munix 25009 | Cái | 24.000 | |\n| 299 | Bấm kim số 10 KW 5270 | Cái | 23.000 | |\n| 300 | Bấm kim số 3 Munix 25103 | Cái | 51.000 | |\n| 301 | Bấm kim công ngiệp Stacom C103- 100 tờ | Cái | 228.000 | |\n| 302 | Bấm kim công ngiệp Stacom C104- 210 tờ | Cái | 360.000 | |\n| 303 | Bấm kim công nghiệp KW-50LA | Cái | 490.000 | |\n| 304 | Bấm kim công nghiệp KW-50SA | Cái | 355.000 | |\n| 305 | Máy bấm gỗ KW 8513 | Cái | 265.000 | |\n| | **BĂNG KEO - CẮT KEO** | | | |\n\n11\n\nNguyc"
+    ],
+    "relevant_chunk_ids": [
+      "6b29940a-972e-4803-8f64-7692a89431bd"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D044",
+    "question": "Giá của một xấp bao thư trắng F100 (12x22) là bao nhiêu?",
+    "ground_truth": "Giá của một xấp bao thư trắng F100 (12x22) (100 cái/xấp) là 33.000 đồng (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :---: | :--- | :---: | :---: | :---: |\n| 328 | Băng keo vải 48mm(10 mét) xanh dương (6 cuộn/cây) | Cuộn | 20.000 | |\n| 329 | Băng keo dán tiền Scotch $810\\ 1/2\\text{x}36\\text{Y}$ | Cuộn | 50.000 | |\n| 330 | Băng keo bắn giá màu trắng | Cuộn | 2.700 | |\n| 331 | Màng co quấn máy PE cao 50cm 1,8kg(0,3) 9/ thùng | Cuộn | 93.000 | |\n| 332 | Cắt keo để bàn trung Sunny 2003 | Cái | 15.500 | |\n| 333 | Cắt keo để bàn lớn Sunny 2004 | Cái | 45.000 | |\n| 334 | Cắt keo cầm tay 5 phân sắt | Cái | 20.000 | |\n| 335 | Cắt keo cầm tay 6 phân | Cái | 23.000 | |\n| 336 | Cắt keo cầm tay 7 phân | Cái | 27.000 | |\n| | **KỆ VIẾT - KỆ HỒ SƠ** | | | |\n| 337 | Khay cắm bút inox dạng ly | Cái | 28.500 | |\n| 338 | Khay cắm bút xoay Oval 176 | Cái | 40.000 | |\n| 339 | Khay cắm bút xoay lớn 3007 | Cái | 46.000 | |\n| 340 | Khay cắm bút vuông nhỏ 3008 | Cái | 27.000 | |\n| 341 | Khay cắm bút tròn xoay nhỏ 3009 | Cái | 34.000 | |\n| 342 | Khay cắm bút chữ nhật lớn 3011 | Cái | 34.000 | |\n| 343 | Khay 2 tầng nhựa trong dáng trượt | Cái | 90.000 | |\n| 344 | Khay 2 tầng nhựa đục dáng trượt | Cái | 36.000 | |\n| 345 | Khay 2 tầng mica dáng trượt | Cái | 220.000 | |\n| 346 | Khay 2 tầng nhựa đục dáng trụ thẳng | Cái | 36.000 | |\n| 347 | Khay 3 tầng nhựa trong dáng trượt | Cái | 130.000 | |\n| 348 | Khay 3 tầng nhựa đục dáng trụ thẳng | Cái | 55.800 | |\n| 349 | Khay 3 tầng mica dáng trượt | Cái | 340.000 | |\n| 350 | Khay 3 tầng inox màu đen Comix dáng trụ thẳng | Cái | 243.000 | |\n| 351 | Khay nhựa 2 ngăn KingStar | Cái | 50.000 | |\n| 352 | Khay gỗ ráp 3 ngăn MG 929, kèm kệ bút | Cái | 260.000 | |\n| 353 | Khay nhựa 3 ngăn TPT | Cái | 29.000 | |\n| 354 | Khay nhựa 3 ngăn KingStar | Cái | 66.000 | |\n| 355 | Khay nhựa 1 ngăn | Cái | 12.000 | |\n| | **BAO THƯ** | | | |\n| 356 | Bao thư trắng F80 (12x18) (100 cái/xấp) | Xấp | 22.500 | |\n| 357 | Bao thư trắng F80 (12x22) (100 cái/xấp) | Xấp | 25.000 | |\n| 358 | Bao thư trắng F100 (1"
+    ],
+    "relevant_chunk_ids": [
+      "cd18b1ba-bcd3-4031-8a62-877a4392c43b"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D045",
+    "question": "Giá của thước kéo JUNXO 67/ G-STAR 76 loại 5 mét là bao nhiêu?",
+    "ground_truth": "Giá của thước kéo JUNXO 67/ G-STAR 76 loại 5 mét là 19.000 đồng (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :---: | :--- | :---: | :---: | :---: |\n| 388 | Bàn cắt giấy A3 SureMark SQ3105 | Cái | 590.000 | |\n| | **THƯỚC KẺ** | | | |\n| 389 | Thước nhựa cứng SR-02 20cm | Cây | 3.800 | |\n| 390 | Thước nhôm 20cm | Cây | 10.000 | |\n| 391 | Thước nhựa cứng SR-03 30cm | Cây | 4.800 | |\n| 392 | Thước nhôm 30cm- MG 96027 | Cây | 16.000 | |\n| 393 | Thước nhựa dẻo WIN 15cm | Cây | 1.800 | |\n| 394 | Thước nhựa dẻo WIN 20cm | Cây | 2.500 | |\n| 395 | Thước nhựa dẻo WIN 30cm | Cây | 4.000 | |\n| 396 | Thước nhựa dẻo WIN 50cm | Cây | 16.000 | |\n| 397 | Thước kéo JUNXO 67/ G-STAR 76 loại 2 mét | Cái | 10.400 | |\n| 398 | Thước kéo JUNXO 67/ G-STAR 76 loại 3 mét | Cái | 11.700 | |\n| 399 | Thước kéo JUNXO 67/ G-STAR 76 loại 5 mét | Cái | 19.000 | |\n| 400 | Thước kéo JUNXO 67/ G-STAR 76 loại 7,5 mét | Cái | 37.000 | |\n| 401 | Thước kéo JUNXO 67/ G-STAR 76 loại 10 mét | Cái | 56.000 | |\n| 402 | Thước kéo JUNXO 67/ G-STAR 76 loại 7,5 mét lỗ ban | Cái | 44.000 | |\n| | **HỒ DÁN** | | | |\n| 403 | Hồ khô Double AA-8gr (Thái Lan) | Cái | 4.300 | |\n| 404 | Hồ dán nước Bến Nghé 52ml (12 lọ/khay) | Lọ | 5.500 | |\n| 405 | Hồ khô Scotch 6008 | Cái | 18.000 | |\n| 406 | Keo dán nước Quốc Toàn (12 lọ/khay) | Lọ | 2.400 | |\n| 407 | Keo dán nước G-08 (12 lọ/khay) | Lọ | 2.700 | |\n| 408 | Keo dán nước Queen (12 lọ/khay) | Lọ | 5.500 | |\n| | **MỰC - STAMPON** | | | |\n| 409 | Mực bút lông dầu Hoa Đào (12 hộp/lốc) | Hộp | 4.500 | |\n| 410 | Mực bút lông dầu Penta (12 hộp/lốc) | Hộp | 5.500 | |\n| 411 | Mực bút lông dầu FO-PMI02 đen (12 hộp/lốc) | Hộp | 9.000 | |\n| 412 | Mực bút lông dầu Bến Nghé RI-02 xanh | Hộp | 8.300 | |\n| 413 | Mực dấu Trodat (10 hộp/lốc) | Hộp | 41.000 | |\n| 414 | Mực bút lông bảng FO-WBI02 xanh (12 hộp/lốc) | Hộp | 18.000 | |\n| 415 | Mực dấu Shiny S61/S62/S63 đen/đỏ/xanh 28ml (12 hộp/lốc) | Hộp | 36.000 | |\n| 416 | Mực dấu Shiny S61/S62/S63 đen/đỏ/xanh 28ml (12 hộp/lốc) | Hộp | 69.000 | |\n| 417 | Stampon Hors"
+    ],
+    "relevant_chunk_ids": [
+      "6567ba45-0fbe-4170-b8d6-e400c4a867f6"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D046",
+    "question": "Giá của một hộp kẹp acco sắt SDI loại 1 là bao nhiêu?",
+    "ground_truth": "Giá của kẹp acco sắt SDI loại 1 (Hãng) là 50.000 đồng/hộp (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :---: | :--- | :---: | :---: | :---: |\n| 477 | Lò xo nhựa trắng 25mm - 220 tờ - hộp 50 | Cái | 3.600 | |\n| 478 | Lò xo nhựa trắng 28mm - 240 tờ - hộp 50 | Cái | 3.700 | |\n| 479 | Lò xo nhựa trắng 35mm - 320 tờ - hộp 50 | Cái | 4.100 | |\n| 480 | Lò xo nhựa trắng 32mm - 300 tờ - hộp 50 | Cái | 3.900 | |\n| 481 | Lò xo nhựa trắng 38mm - 350 tờ - hộp 50 | Cái | 4.300 | |\n| 482 | Lò xo nhựa trắng 45mm - 400 tờ - hộp 50 | Cái | 4.500 | |\n| 483 | Lò xo nhựa trắng 51mm - 450 tờ - hộp 50 | Cái | 5.000 | |\n| 484 | Lò xo nhựa trắng 8mm - 45 tờ - hộp 100 | Cái | 600 | |\n| 485 | Lò xo nhựa trắng 10mm - 65 tờ - hộp 100 | Cái | 700 | |\n| 486 | Lò xo nhựa trắng 12mm - 105 tờ - hộp 100 | Cái | 1.000 | |\n| 487 | Lò xo nhựa trắng 14mm - 125 tờ - hộp 100 | Cái | 1.100 | |\n| 488 | Lò xo nhựa trắng 16mm - 145 tờ - hộp 100 | Cái | 1.500 | |\n| 489 | Lò xo nhựa trắng 18mm - 165 tờ - hộp 100 | Cái | 1.800 | |\n| 490 | Lò xo nhựa trắng 20mm - 180 tờ - hộp 100 | Cái | 2.000 | |\n| 491 | Lò xo nhựa trắng 22mm - 195 tờ - hộp 50 | Cái | 3.100 | |\n| 492 | Kim kẹp giấy bằng nhựa | Bịch | 1.500 | |\n| 493 | Kim kẹp giấy C62- 25mm FO-PAC01 | Hộp | 3.500 | |\n| 494 | Kim kẹp giấy C32 đầu tròn | Hộp | 3.500 | |\n| 495 | Kim kẹp giấy C82 đầu tròn | Hộp | 6.000 | |\n| 496 | Kẹp acco nhựa GSTAR/ ANGLESS | Hộp | 15.000 | |\n| 497 | Kẹp acco nhựa Stacom C501 | Hộp | 24.000 | |\n| 498 | Kẹp acco nhựa SureMark | Hộp | 24.000 | |\n| 499 | Kẹp acco sắt SDI loại 1 (Hãng) | Hộp | 50.000 | |\n| 500 | Kẹp acco sắt SDI loại 2 | Hộp | 22.000 | |\n| 501 | Đinh ghim thông báo nhựa | Bịch | 4.200 | |\n| | **PIN - TÚI RÁC - THUN - PHẤN - VỆ SINH MÁY TÍNH** | | | |\n| 502 | Pin Alkaline Energizer 2A (2 viên/vỉ) (L2) | Vỉ | 15.000 | |\n| 503 | Pin Alkaline Energizer 3A (2 viên/vỉ) (L2) | Vỉ | 15.000 | |\n| 504 | Pin Alkaline Energizer 2A hãng (2 viên/vỉ) (LR6/2BP) | Vỉ | 35.000 | |\n\n18"
+    ],
+    "relevant_chunk_ids": [
+      "be9a30e0-907e-443c-949d-e1aa9ef1b158"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D047",
+    "question": "Giá của một hộp khẩu trang xanh 4 lớp (50 cái/hộp) là bao nhiêu?",
+    "ground_truth": "Giá của một hộp khẩu trang xanh 4 lớp (50 cái/hộp) là 35.000 đồng (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| --- | --- | --- | --- | --- |\n| 533 | Bảng nỹ 60cmx80cm | Cái | 200.000 | |\n| 534 | Bảng nỹ 80cmx120cm | Cái | 400.000 | |\n| | **VẬT DỤNG VỆ SINH** | | | |\n| 535 | Bàn chải chà sàn dài 1 mét | Cái | 80.000 | |\n| 536 | Cây rửa ly 7 màu | Cái | 13.000 | |\n| 537 | Xô nhựa 12 lít | Cái | 31.000 | |\n| 538 | Xô nhựa 20 lít | Cái | 58.000 | |\n| 539 | Khẩu trang xanh 4 lớp - (50 cái/hộp) | Hộp | 35.000 | |\n| 540 | Cồn y tế 1 lít/chai | chai | 46.000 | |\n| 541 | Cồn y tế 4.5 lít/cal | cal | 140.000 | |\n| 542 | Khăn ướt Baby | Bịch | 14.000 | |\n| 543 | Khăn lau 25x25 trắng | Cái | 3.400 | |\n| 544 | Khăn lau 25x25 vàng | Cái | 3.500 | |\n| 545 | Khăn lau 25x25 nâu | Cái | 4.000 | |\n| 546 | Khăn lau đa năng 28x28cm | Cái | 8.000 | |\n| 547 | Khăn lau 30x50 xanh | Cái | 15.000 | |\n| 548 | Bao tay len | Đôi | 5.000 | |\n| 549 | Bao tay xốp 100gr/bịch | Bịch | 8.000 | |\n| 550 | Bật lửa | Cái | 4.000 | |\n| 551 | Ly nhựa THH 399-220ml - (50 cái/cây) (1.500 cái/thùng) | Cây | 11.000 | |\n| 552 | Ly nhựa THH 396-60ml - (50 cái/cây) (2.000 cái/thùng) | Cây | 8.000 | |\n| 553 | Ly giấy 65Oz | Cái | 900 | |\n| 554 | Miếng rửa chén SUM Inox (12 cái/vĩ) | Cái | 3.000 | |\n| 555 | Miếng rửa chén 2 mặt xanh lớn số 3 (bịch 10) | Cái | 2.700 | |\n| 556 | Miếng rửa chén 3 lớp oval (xanh-mose-xanh) | Cái | 5.500 | |\n| 557 | Hót rác có tay cầm rời | Cái | 16.000 | |\n| | Ky rác cán cao nhỏ- NEW | Cái | 36.000 | |\n| 558 | Hót rác Inox | Cái | 55.000 | |\n| 559 | Nước tinh khiết AquaFina 350ml | Thùng | 100.000 | |\n| 560 | Cây lau khô Trần Thức 45 | Cái | 105.000 | |\n| 561 | Cây lau khô Homeinno 45 | Cái | 145.000 | |\n| 562 | Cây lau khô Homeinno 60 | Cái | 170.000 | |\n| 563 | Tấm lau khô san hô 45 Homeinno | Cái | 50.000 | |\n\n20"
+    ],
+    "relevant_chunk_ids": [
+      "44e26ecb-cc34-4db6-8ee7-20f4d0df688f"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D048",
+    "question": "Giá của một bình xịt thơm phòng Sumo 400ml là bao nhiêu?",
+    "ground_truth": "Giá của bình xịt thơm phòng Sumo 400ml là 50.000 đồng/chai (chưa VAT).",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM01 - QT.ACT.HC-05\n| Stt | Tên hàng | Đơn vị tính | Đơn giá (Chưa VAT) | Ghi chú |\n| :---: | :--- | :---: | :---: | :---: |\n| 599 | Nước lau kính Sumo 800ml | Chai | 36.000 | |\n| 600 | Nước lau bếp Sumo 800ml | Chai | 48.000 | |\n| 601 | Bình xịt thơm phòng Sumo 400ml | Chai | 50.000 | |\n| 602 | Kem tẩy đa năng Sumo | Chai | 44.000 | |\n| 603 | Nước tẩy toilet 90ml Vim | Chai | 36.000 | |\n| 604 | Nước tẩy toilet 90ml DUCK | Chai | 35.000 | |\n| 605 | Nước xả Comfort 800ml chai | Chai | 59.000 | |\n| 606 | Nước xả Comfort 1,8kg | Túi | 117.000 | |\n| 607 | Nước giặt Omo cửa trên 2,2kg (thùng 4 túi) | Túi | 127.000 | |\n| 608 | Bột giặt Omo 720g | Bịch | 38.000 | |\n| 609 | Bột giặt Omo 3kg | Túi | 133.000 | |\n| 610 | Bột giặt Omo 6kg | Túi | 255.000 | |\n| 611 | Bột giặt Surf 400gr | Bịch | 15.000 | |\n| 612 | Bột giặt Surf 2kg | Túi | 60.000 | |\n| 613 | Bột giặt Surf 5,8kg | Túi | 173.000 | |\n| 614 | Bình xịt côn trùng Raid 700ml | Chai | 60.000 | |\n| 615 | Rửa tay Lifebuoy cục | Cục | 12.700 | |\n| 616 | Nước rửa tay Lifebuoy 180ml | Chai | 32.700 | |\n| 617 | Nước rửa tay Lifebuoy túi 443ml | Túi | 55.000 | |\n| 618 | Nước rửa tay Lifebuoy 500ml | Chai | 73.500 | |\n| 619 | Nước rửa tay Lifebuoy 3,8kg | Chai | 310.000 | |\n| 620 | Thảm nhựa Welcome 30x50cm | Cái | 50.000 | |\n| 621 | Thảm nhựa Welcome 50x70cm | Cái | 70.000 | |\n| 622 | Thảm vải siêu thấm 40x60 | Cái | 50.000 | |\n| 623 | Thảm Carmi PP in 40x60 | Cái | 60.000 | |\n| 624 | Bao tay cao su Cầu Vồng | Đôi | 20.000 | |\n| 625 | Vải vụn - bao 50kg | Kg | 15.000 | |\n| 626 | Túi đựng rác không lõi màu | Bịch | 30.000 | |\n| 627 | Bao rác đen 100x120cm | Kg | 45.000 | |\n| 628 | Rổ nhựa No.164 (38.3x26xH9) | Cái | 17.000 | |\n| 629 | Rổ nhựa No.163 (28.8x20xH7.5) | Cái | 10.000 | |\n| 630 | Rổ nhựa No.165 (43x30xH10) | Cái | 20.000 | |\n| 631 | Sọc rác nhựa DT lớn H207 (41x41xH45cm) | Cái | 66.000 | |\n| 632 | Sọc rác nhựa DT trung H044(cao 38cm) | Cái | 40.000 | |\n| 633 | Sọc rác nhựa DT trung quai phi 31x34 | Cái | 31.000 | |\n|"
+    ],
+    "relevant_chunk_ids": [
+      "de22f413-040c-4b00-88a8-bd1546508c78"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D049",
+    "question": "Tổng số tiền thanh toán cho đơn cấp phát văn phòng phẩm này là bao nhiêu?",
+    "ground_truth": "Tổng tiền thanh toán là 587.740 đồng (Năm trăm tám mươi bảy nghìn bảy trăm bốn mươi đồng chẵn).",
+    "needs_review": true,
+    "reference_contexts": [
+      "*(Bức ảnh hoàn toàn trắng, không có nội dung chữ nào để phiên âm.)*\n\nBM03 - QT.ACT.HC-05\n\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT\n\nCỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nGIẤY CẤP PHÁT VĂN PHÒNG PHẨM\n\nTên người nhận:\nPhòng ban:\nDiễn giải:\n\nNgày: .../.../......\n\n| Stt | Tên hàng | Đơn vị tính | Số lượng | Đơn giá | Thành tiền | % thuế GTGT |\n|:---:|---|:---:|:---:|:---:|:---:|:---:|\n| 1 | Bìa kiếng A4 dày 1.5 (100 tờ.xấp) | Xấp | 2 | 61.000 | 122.000 | 8% |\n| 2 | Pin đồng tiền Maxell 2032 vỹ 5 viên | Viên | 1 | 12.000 | 12.000 | 8% |\n| 3 | Miếng phân trang 5 màu Pronoti 45502- 12x50mm | Xấp | 10 | 11.000 | 110.000 | 8% |\n| 4 | Cồn y tế 1 lít/ chai | Chai | 2 | 46.000 | 92.000 | 10% |\n| 5 | Bút chì bấm UNI M5-100 0.5 | Cây | 5 | 36.500 | 182.500 | 8% |\n| 6 | Ruột chì DELI 0,5 (tép) | Tép | 3 | 8.000 | 24.000 | 8% |\n| **Cộng tiền hàng** | | | | | **542.500** |\n| **Tiền thuế GTGT:** | | | | | **45.240** |\n| **Tổng tiền thanh toán:** | | | | | **587.740** |\n\nSố tiền viết bằng chữ: Năm trăm tám mươi bảy nghìn bảy trăm bốn mươi đồng chẵn.\n\nNgười giao hàng\n*(Ký, họ tên)*\n\nNgười nhận hàng\n*(Ký, họ tên)*"
+    ],
+    "relevant_chunk_ids": [
+      "1f458fab-bdfa-4b2d-84b6-667ef927dcda"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D050",
+    "question": "Ai là người lập Giấy cấp phát khăn giấy?",
+    "ground_truth": "Người lập Giấy cấp phát khăn giấy là bà Đỗ Thị Ánh Nguyệt thuộc Phòng Hành chính.",
+    "needs_review": true,
+    "reference_contexts": [
+      "BM03 - QT.ACT.HC-05\n\nCÔNG TY CỔ PHẦN VIỄN THÔNG ACT CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n\nGIẤY CẤP PHÁT KHĂN GIẤY\nTP.HCM, Ngày tháng năm\n\nHọ và tên : Đỗ Thị Ánh Nguyệt\nĐơn vị công tác : PHÒNG HÀNH CHÍNH\n\n| Stt | Phòng ban | ĐVT | Số Lượng | Đơn giá | Thành tiền | Ký nhận | Ghi chú |\n|---|---|---|---|---|---|---|---|\n| 1 | P. Kế toán | Bịch | | | | | |\n| 2 | P. QLTS + Kho Q12 (6ng) | Bịch | | | | | |\n| 3 | BP mua sắm | Bịch | | | | | |\n| 4 | BP pháp chế | Bịch | | | | | |\n| 5 | Ban TC-ĐT | Bịch | | | | | |\n| 6 | P. Tổng hợp+BGĐ khối DVKT | Bịch | | | | | |\n| 7 | Ban Quản lý tài sản OS | Bịch | | | | | |\n| 8 | P.Khai thác | Bịch | | | | | |\n| 9 | P.CĐBR + PGĐ TTVH | Bịch | | | | | |\n| 10 | NOC (P.ĐHVT) | Bịch | | | | | |\n| 11 | P. QL DV kỹ thuật và xây lắp | Bịch | | | | | |\n| 12 | P. Phát triển - Kinh doanh hạ tầng | Bịch | | | | | |\n| 13 | Ban Kinh doanh dịch vụ | Bịch | | | | | |\n| 14 | P. Kỹ Thuật Dự án | Bịch | | | | | |\n| 15 | P. Quản Lý Khách Hàng | Bịch | | | | | |\n| 16 | P. Hành Chính | Bịch | | | | | |\n| 17 | P. Quản trị nhân lực | Bịch | | | | | |\n| 18 | P. Đào Tạo và phát triển | Bịch | | | | | |\n| 19 | P. Kế hoạch - Chính trị | Bịch | | | | | |\n| 20 | Ban Công nghệ thông tin | Bịch | | | | | |\n| 21 | Ban Kỹ Thuật Viễn Thông | Bịch | | | | | |\n| | TỔNG | | | | | | |\n\nNgười lập\nP.Hành chính"
+    ],
+    "relevant_chunk_ids": [
+      "28c93587-2a71-4faf-9c61-f7c82d06366f"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D051",
+    "question": "Kết quả thực hiện xe công tác hàng tháng được ký xác nhận trước ngày mấy của tháng sau?",
+    "ground_truth": "Nhân viên phụ trách xe (P.HC) theo dõi, tổng hợp, ký xác nhận kết quả thực hiện hàng tháng trước ngày 5 tháng N+1 theo BM02.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Bước 5: Nhân viên phụ trách xe (P.HC) theo dõi, tổng hợp, ký xác nhận kết quả thực hiện hàng tháng trước ngày 5 tháng N+1 theo BM02.\n\nGhi chú:\n\n✓ Với bất kỳ thay đổi nào khác với thông tin đã đăng ký (được phê duyệt) Đơn vị phải phản hồi ngay về P.HC để điều chỉnh và trình ký lại đề xuất."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D052",
+    "question": "Khi xe ô tô Công ty không đảm bảo, Phòng Hành chính thực hiện chi phí thuê xe ngoài trước mấy ngày của kế hoạch đăng ký?",
+    "ground_truth": "Phòng Hành chính thực hiện đề xuất chi phí thuê xe ngoài hoàn thành trước 01 ngày của kế hoạch đăng ký.",
+    "needs_review": true,
+    "reference_contexts": [
+      "✓ Trường hợp xe ô tô Công ty không đảm bảo P.HC thực hiện đề xuất chi phí thuê xe ngoài hoàn thành trước 01 ngày của kế hoạch đăng ký (áp dụng đối với các chuyến đăng ký theo kế hoạch tuần, các chuyến phát sinh gấp P.HC xin ý kiến Ban TGĐ và các Bộ phận liên quan trước khi thuê xe và bổ sung đề xuất sau 24h)."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D053",
+    "question": "Theo nguyên tắc tối ưu tuyến đường và thời gian, công ty không điều xe riêng cho loại yêu cầu nào?",
+    "ground_truth": "Không điều xe riêng cho các yêu cầu có thể kết hợp được về tuyến hoặc thời gian.",
+    "needs_review": true,
+    "reference_contexts": [
+      "2. Nguyên tắc tối ưu tuyến đường và thời gian\na) Không điều xe riêng cho các yêu cầu có thể kết hợp được về tuyến hoặc thời gian.\nb) Khuyến khích các bộ phận chủ động trao đổi và thống nhất lộ trình chung với đơn vị điều phối.\nc) Hạn chế điều xe trong các khung giờ cao điểm (t"
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D054",
+    "question": "Khi sử dụng xe công ty sai mục đích hoặc gây thiệt hại, sẽ bị xử lý như thế nào?",
+    "ground_truth": "Có thể bị từ chối phê duyệt vận chuyển trong các lần kế tiếp và bị xử lý kỷ luật theo quy định công ty (tùy mức độ); trường hợp nghiêm trọng phải bồi hoàn thiệt hại.",
+    "needs_review": true,
+    "reference_contexts": [
+      "4. Trường hợp sử dụng sai mục đích, không tuân thủ quy định, hoặc gây thiệt hại phát sinh\na) Có thể bị từ chối phê duyệt vận chuyển trong các lần kế tiếp.\nb) Bị xử lý kỷ luật theo quy định công ty (tùy mức độ).\nc) Trường hợp nghiêm trọng, phải bồi hoàn thiệt hại."
+    ],
+    "relevant_chunk_ids": [
+      "9ea93aaa-b72f-4c5a-b136-88c3a84af5da"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D055",
+    "question": "Định mức sử dụng văn phòng phẩm và mực in cho kỹ thuật viên tại trung tâm khu vực là bao nhiêu?",
+    "ground_truth": "30.000 đồng/người/tháng.",
+    "needs_review": true,
+    "reference_contexts": [
+      "+ Đối với trung tâm khu vực: Định mức sử dụng VPP và mực in: 120.000/người/tháng với nhân viên văn phòng và 30.000/người/tháng đối với kỹ thuật viên, định mức chi cho mua ngoài (đồ dùng vệ sinh, mua dây điện, ổ cắm, phí vệ sinh...): 2.500.000 (đối với trung tâm khu vực <100 người) và 2.750.000 (đối với trung tâm khu vực ≥100 người)."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D056",
+    "question": "Định mức chi mua ngoài hàng tháng cho trung tâm khu vực dưới 100 người là bao nhiêu?",
+    "ground_truth": "2.500.000 đồng/tháng.",
+    "needs_review": true,
+    "reference_contexts": [
+      "định mức chi cho mua ngoài (đồ dùng vệ sinh, mua dây điện, ổ cắm, phí vệ sinh...): 2.500.000 (đối với trung tâm khu vực <100 người) và 2.750.000 (đối với trung tâm khu vực ≥100 người)."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D057",
+    "question": "Các phòng ban lập giấy đề nghị văn phòng phẩm, vệ sinh phẩm của tháng sau trong khoảng ngày nào hàng tháng?",
+    "ground_truth": "Vào ngày 25 đến 30 hàng tháng, các phòng ban lập giấy đề nghị VPP và vệ sinh phẩm của tháng sau theo biểu mẫu BM02 - QT.ACT.HC-05.",
+    "needs_review": true,
+    "reference_contexts": [
+      "6.3 Quy trình cấp phát VPP, vệ sinh phẩm:\n- Vào ngày 25 đến 30 hàng tháng, các phòng ban lập giấy đề nghị VPP và vệ sinh phẩm của tháng sau theo biểu mẫu: BM02 - QT.ACT.HC-05 sau đó chuyển Phòng HC xem xét."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D058",
+    "question": "Giấy cấp phát văn phòng phẩm, vệ sinh phẩm dùng mẫu số mấy?",
+    "ground_truth": "BM03 - QT.ACT.HC-05.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| P.HC hoặc Phòng ban, bộ phận đề nghị | ↓\nCấp phát cho các phòng ban, bộ phận yêu cầu | Giấy cấp phát VPP, vệ sinh phẩm: BM03-QT.ACT.HC-05 |"
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D059",
+    "question": "Quyết định số 917./QĐ-ACT thay thế tất cả các quy định cũ liên quan đến nội dung nào?",
+    "ground_truth": "Quyết định này thay thế tất cả các quy định cũ (nếu có) liên quan đến phân quyền và nguyên tắc sử dụng phương tiện vận chuyển.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Điều 6. Hiệu lực thi hành và cập nhật\n\n1. Quy định này có hiệu lực kể từ ngày ký và thay thế tất cả các quy định cũ (nếu có) liên quan đến phân quyền và nguyên tắc sử dụng phương tiện vận chuyển."
+    ],
+    "relevant_chunk_ids": [
+      "c24799b2-eabf-4faf-aef3-5e675eaf42c7"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D060",
+    "question": "Theo nguyên tắc kiểm soát mục đích và tài sản, tuyệt đối không được sử dụng xe công ty vào mục đích nào?",
+    "ground_truth": "Tuyệt đối không sử dụng xe công ty vào mục đích cá nhân, không rõ ràng hoặc chưa được phê duyệt.",
+    "needs_review": true,
+    "reference_contexts": [
+      "4. Nguyên tắc kiểm soát mục đích và tài sản\na) Tuyệt đối không sử dụng xe công ty vào mục đích cá nhân, không rõ ràng hoặc chưa được phê duyệt."
+    ],
+    "relevant_chunk_ids": [
+      "9ea93aaa-b72f-4c5a-b136-88c3a84af5da"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D061",
+    "question": "Theo quy trình cấp phát văn phòng phẩm, sau khi Phòng HC kiểm tra định mức và nhu cầu mua sắm, ai là người phê duyệt?",
+    "ground_truth": "Trưởng Phòng Hành chính (TP.HC) là người phê duyệt.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| P.HC | ↓\nKiểm tra định mức và nhu cầu mua sắm\n*(Không đồng ý → quay lại Đề xuất mua hàng)* | |\n| TP.HC | ↓\nPhê duyệt\n*(Không đồng ý → quay lại Tập hợp)* | |"
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D062",
+    "question": "Định mức sử dụng văn phòng phẩm và mực in không áp dụng cho đối tượng nào?",
+    "ground_truth": "Định mức sử dụng VPP, vệ sinh phẩm và mực in không áp dụng với Cộng tác viên.",
+    "needs_review": true,
+    "reference_contexts": [
+      "*(Định mức sử dụng VPP, vệ sinh phẩm và mực in không áp dụng với Cộng tác viên).*"
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D063",
+    "question": "Khi khối hoặc phòng ban sử dụng văn phòng phẩm vượt định mức, phải thực hiện gì?",
+    "ground_truth": "Phải có Phiếu đề xuất có chữ ký của Trưởng đơn vị, trình cho Tổng giám đốc và Kế toán trưởng phê duyệt.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Những khối và phòng ban có đặc thù công việc phải sử dụng VPP và mực in vượt so với định mức đưa ra thì phải có Phiếu đề xuất có chữ ký của Trưởng đơn vị, trình cho Tổng giám đốc và Kế toán trưởng phê duyệt."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D064",
+    "question": "Theo quy định, xe công ty được ưu tiên sử dụng cho quãng đường ngắn bao nhiêu km trở xuống?",
+    "ground_truth": "Quãng đường ngắn (nhỏ hơn hoặc bằng 30km).",
+    "needs_review": true,
+    "reference_contexts": [
+      "1. Xe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài...\nXe phục vụ công tác vận chuyển của công ty được ưu tiên sử dụng trong các trường hợp:\na) Quãng đường ngắn (nhỏ hơn hoặc bằng 30km)."
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D065",
+    "question": "Trong trường hợp xe ô tô Công ty không đảm bảo và là chuyến phát sinh gấp, Phòng Hành chính xin ý kiến ai trước khi thuê xe ngoài?",
+    "ground_truth": "P.HC xin ý kiến Ban TGĐ và các Bộ phận liên quan trước khi thuê xe và bổ sung đề xuất sau 24h.",
+    "needs_review": true,
+    "reference_contexts": [
+      "✓ Trường hợp xe ô tô Công ty không đảm bảo P.HC thực hiện đề xuất chi phí thuê xe ngoài hoàn thành trước 01 ngày của kế hoạch đăng ký (áp dụng đối với các chuyến đăng ký theo kế hoạch tuần, các chuyến phát sinh gấp P.HC xin ý kiến Ban TGĐ và các Bộ phận liên quan trước khi thuê xe và bổ sung đề xuất sau 24h)."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D066",
+    "question": "Mẫu đơn dùng để ký đề xuất xe công tác là mẫu số mấy?",
+    "ground_truth": "Đơn vị thực hiện ký đề xuất xe theo mẫu BM01 đính kèm.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Bước 2: Sau khi đã thống nhất các thông tin với nhân viên phụ trách xe (P.HC), Đơn vị thực hiện ký đề xuất xe theo mẫu BM01 đính kèm."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D067",
+    "question": "Đăng ký xe đi công tác theo kế hoạch tuần phải phối hợp với nhân viên phụ trách xe trước mấy giờ thứ mấy hàng tuần?",
+    "ground_truth": "Trước 12h thứ 7 hàng tuần (đối với đăng ký theo kế hoạch tuần).",
+    "needs_review": true,
+    "reference_contexts": [
+      "Bước 1: Đơn vị có nhu cầu sử dụng xe phối hợp với nhân viên phụ trách xe (P.HC) cung cấp các thông tin như: ngày giờ, điểm đi, điểm đến, số người ... đi công tác. Phối hợp qua điện thoại, zalo trước 12h thứ 7 hàng tuần (đối với đăng ký theo kế hoạch tuần), trước 16h00 ngày N-1 (đối với đăng ký xe đột xuất)."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D068",
+    "question": "Sau khi hoàn tất trình ký, đơn vị chuyển bản ký qua email hoặc zalo về cho ai để lưu trữ?",
+    "ground_truth": "Nhân viên phụ trách xe (P.HC) lưu trữ bản ký.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Bước 3: Sau khi hoàn tất trình ký Đơn vị chuyển bản ký qua email hoặc zalo về cho nhân viên phụ trách xe (P.HC) lưu trữ, trường hợp đề xuất bị từ chối thì đơn vị phối hợp lại từ Bước 1."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D069",
+    "question": "Trường hợp đề xuất xe bị từ chối, đơn vị phải thực hiện lại từ bước nào?",
+    "ground_truth": "Đơn vị phối hợp lại từ Bước 1.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Bước 3: Sau khi hoàn tất trình ký Đơn vị chuyển bản ký qua email hoặc zalo về cho nhân viên phụ trách xe (P.HC) lưu trữ, trường hợp đề xuất bị từ chối thì đơn vị phối hợp lại từ Bước 1."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D070",
+    "question": "Nhân viên phụ trách xe (P.HC) sau khi tiếp nhận đề xuất đã phê duyệt chuyển thông tin đăng ký cho bộ phận gì?",
+    "ground_truth": "Chuyển thông tin đăng ký cho bộ phận lái xe, phân công tài xế và chuyển thông tin xe, tài xế cho Đơn vị đi công tác.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Bước 4: Nhân viên phụ trách xe (P.HC) sau khi tiếp nhận đề xuất đã phê duyệt thực hiện chuyển thông tin đăng ký cho bộ phận lái xe, phân công tài xế và chuyển thông tin xe, tài xế cho Đơn vị đi công tác."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D071",
+    "question": "Có bất kỳ thay đổi nào khác với thông tin đã đăng ký (được phê duyệt), đơn vị phải làm gì?",
+    "ground_truth": "Đơn vị phải phản hồi ngay về P.HC để điều chỉnh và trình ký lại đề xuất.",
+    "needs_review": true,
+    "reference_contexts": [
+      "✓ Với bất kỳ thay đổi nào khác với thông tin đã đăng ký (được phê duyệt) Đơn vị phải phản hồi ngay về P.HC để điều chỉnh và trình ký lại đề xuất."
+    ],
+    "relevant_chunk_ids": [
+      "5acc33f8-a926-4e44-970e-5b895f2d8ce1"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "breadcrumb": "214.HD-ACT-HC Hướng dẫn vv Đăng ký xe đi công tác.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D072",
+    "question": "Theo nguyên tắc tiết kiệm và hiệu quả, xe công ty được ưu tiên sử dụng khi nào?",
+    "ground_truth": "Ưu tiên sử dụng xe công ty nếu có thể đáp ứng được yêu cầu về thời gian, địa điểm, khối lượng và đặc tính hàng hóa.",
+    "needs_review": true,
+    "reference_contexts": [
+      "2. Nguyên tắc tiết kiệm và hiệu quả\na) Ưu tiên sử dụng xe công ty nếu có thể đáp ứng được yêu cầu về thời gian, địa điểm, khối lượng và đặc tính hàng hóa."
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D073",
+    "question": "Theo nguyên tắc tối ưu tuyến đường và thời gian, công ty khuyến khích các bộ phận làm gì?",
+    "ground_truth": "Khuyến khích các bộ phận chủ động trao đổi và thống nhất lộ trình chung với đơn vị điều phối.",
+    "needs_review": true,
+    "reference_contexts": [
+      "2. Nguyên tắc tối ưu tuyến đường và thời gian\na) Không điều xe riêng cho các yêu cầu có thể kết hợp được về tuyến hoặc thời gian.\nb) Khuyến khích các bộ phận chủ động trao đổi và thống nhất lộ trình chung với đơn vị điều phối."
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D074",
+    "question": "Theo nguyên tắc tối ưu tuyến đường và thời gian, công ty hạn chế điều xe trong khung giờ nào?",
+    "ground_truth": "Hạn chế điều xe trong các khung giờ cao điểm.",
+    "needs_review": true,
+    "reference_contexts": [
+      "2. Nguyên tắc tối ưu tuyến đường và thời gian\n...c) Hạn chế điều xe trong các khung giờ cao điểm (t"
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D075",
+    "question": "Theo quy định, nghiêm cấm chở loại hàng hóa nào trên xe công ty?",
+    "ground_truth": "Nghiêm cấm chở hàng hóa không rõ nguồn gốc, không có chứng từ hợp lệ.",
+    "needs_review": true,
+    "reference_contexts": [
+      "4. Nguyên tắc kiểm soát mục đích và tài sản\n...b) Nghiêm cấm chở hàng hóa không rõ nguồn gốc, không có chứng từ hợp lệ."
+    ],
+    "relevant_chunk_ids": [
+      "9ea93aaa-b72f-4c5a-b136-88c3a84af5da"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D076",
+    "question": "Khi có mọi thay đổi trên hành trình, phải thực hiện gì?",
+    "ground_truth": "Mọi thay đổi trên hành trình phải báo cáo lại để cập nhật và lưu hồ sơ.",
+    "needs_review": true,
+    "reference_contexts": [
+      "4. Nguyên tắc kiểm soát mục đích và tài sản\n...c) Mọi thay đổi trên hành trình phải báo cáo lại để cập nhật và lưu hồ sơ."
+    ],
+    "relevant_chunk_ids": [
+      "9ea93aaa-b72f-4c5a-b136-88c3a84af5da"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D077",
+    "question": "Với hàng hóa có yêu cầu đặc biệt (dễ vỡ, cần nhiệt độ bảo quản, hàng nguy hiểm...), phải làm gì?",
+    "ground_truth": "Cần nêu rõ yêu cầu trong đề xuất vận chuyển và được bố trí phương tiện phù hợp để đảm bảo an toàn.",
+    "needs_review": true,
+    "reference_contexts": [
+      "5. Với hàng hóa có đặc điểm đặc biệt\nHàng hóa có yêu cầu đặc biệt (dễ vỡ, cần nhiệt độ bảo quản, hàng nguy hiểm,...) cần nêu rõ yêu cầu trong đề xuất vận chuyển và được bố trí phương tiện phù hợp để đảm bảo an toàn."
+    ],
+    "relevant_chunk_ids": [
+      "9ea93aaa-b72f-4c5a-b136-88c3a84af5da"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D078",
+    "question": "Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in có ngày có hiệu lực là ngày nào?",
+    "ground_truth": "Ngày có hiệu lực: 01/07/2024.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| ACT | CÔNG TY CỔ PHẦN VIỄN THÔNG ACT | Mã hiệu: QT.ACT.HC-05 |\n| :---: | :---: | :--- |\n| | **QUY TRÌNH QUẢN LÝ VĂN PHÒNG PHẨM, VỆ SINH PHẨM VÀ MỰC IN** | Ngày có hiệu lực: 01/07/2024 |"
+    ],
+    "relevant_chunk_ids": [
+      "a3e05cf2-236a-4749-bfd7-eed7f1b73974"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D079",
+    "question": "Lần ban hành đầu tiên của Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in là lần mấy?",
+    "ground_truth": "Lần ban hành: 1.",
+    "needs_review": true,
+    "reference_contexts": [
+      "| | | Lần ban hành: 1 |"
+    ],
+    "relevant_chunk_ids": [
+      "a3e05cf2-236a-4749-bfd7-eed7f1b73974"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D080",
+    "question": "Đối với khối văn phòng, định mức sử dụng văn phòng phẩm và mực in là bao nhiêu mỗi tháng?",
+    "ground_truth": "Định mức sử dụng VPP và mực in: 120.000 đồng/người/tháng.",
+    "needs_review": true,
+    "reference_contexts": [
+      "+ Đối với khối văn phòng: Định mức sử dụng VPP và mực in: 120.000/người/tháng, định mức chi cho mua ngoài (đồ dùng vệ sinh, mua dây điện, ổ cắm, phí vệ sinh...) bao gồm VP Đồng Xoài và trung tâm đào tạo: 5.000.000/tháng."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D081",
+    "question": "Định mức chi cho mua ngoài hàng tháng cho khối văn phòng (bao gồm VP Đồng Xoài và trung tâm đào tạo) là bao nhiêu?",
+    "ground_truth": "5.000.000 đồng/tháng.",
+    "needs_review": true,
+    "reference_contexts": [
+      "định mức chi cho mua ngoài (đồ dùng vệ sinh, mua dây điện, ổ cắm, phí vệ sinh...) bao gồm VP Đồng Xoài và trung tâm đào tạo: 5.000.000/tháng."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D082",
+    "question": "Đối với mực in, Phòng Hành chính sẽ thực hiện gì?",
+    "ground_truth": "Phòng HC sẽ cân đối định mức từ VPP để nạp mực và mua bình mực mới cho các phòng ban.",
+    "needs_review": true,
+    "reference_contexts": [
+      "Đối với mực in, Phòng HC sẽ cân đối định mức từ VPP để nạp mực và mua bình mực mới cho các phòng ban."
+    ],
+    "relevant_chunk_ids": [
+      "a550dfda-05db-4d99-af97-dd74d53cdd1e"
+    ],
+    "category": "van_phong_pham",
+    "source_file": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "breadcrumb": "QT.ACT.HC-05 Quy trình quản lý văn phòng phẩm, vệ sinh phẩm và mực in.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D083",
+    "question": "Theo quy định, loại hình vận chuyển của xe công ty bao gồm những hình thức nào?",
+    "ground_truth": "Vận chuyển nội thành, ngoại thành, liên tỉnh, bao gồm cả vận chuyển giữa các văn phòng, kho, dự án,...",
+    "needs_review": true,
+    "reference_contexts": [
+      "2. Loại hình vận chuyển:\na) Vận chuyển nội thành, ngoại thành, liên tỉnh, bao gồm cả vận chuyển giữa các văn phòng, kho, dự án,..."
+    ],
+    "relevant_chunk_ids": [
+      "1b701226-26ea-43b1-9a77-52371fe05ac8"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D084",
+    "question": "Xe ô tô phục vụ công tác của Công ty được bố trí nhằm đáp ứng nhu cầu gì?",
+    "ground_truth": "Đáp ứng nhu cầu đi lại chính đáng, đã được phê duyệt, của các đơn vị trong Công ty.",
+    "needs_review": true,
+    "reference_contexts": [
+      "d) Xe ô tô phục vụ công tác được bố trí nhằm đáp ứng nhu cầu đi lại chính đáng, đã được phê duyệt, của các đơn vị trong Công ty, bao gồm: Tham dự các cuộc họp, hội nghị, hội thảo; Đi công tác tại các cơ quan quản lý, đối tác, khách hàng; Phục vụ đoàn kiểm tra, khảo sát hiện trường, dự án ; Các nhiệm vụ đột xuất theo chỉ đạo của Lãnh đạo Công ty."
+    ],
+    "relevant_chunk_ids": [
+      "1b701226-26ea-43b1-9a77-52371fe05ac8"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D085",
+    "question": "Xe công ty gồm những loại phương tiện nào?",
+    "ground_truth": "Xe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài.",
+    "needs_review": true,
+    "reference_contexts": [
+      "1. Xe công ty gồm xe ô tô con, xe bán tải hoặc xe tải nhỏ do công ty sở hữu hoặc có quyền sử dụng lâu dài, được quản lý và điều phối bởi Phòng Hành chính, Phòng Tổng hợp hoặc Bộ phận điều phối phương tiện."
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  },
+  {
+    "id": "D086",
+    "question": "Theo nguyên tắc tiết kiệm và hiệu quả, thứ tự ưu tiên sắp xếp yêu cầu vận chuyển là gì?",
+    "ground_truth": "Ưu tiên sắp xếp theo thứ tự: yêu cầu phục vụ hoạt động SXKD, sau đó đến nhu cầu hành chính thường xuyên.",
+    "needs_review": true,
+    "reference_contexts": [
+      "2. Nguyên tắc tiết kiệm và hiệu quả\n...b) Ưu tiên sắp xếp theo thứ tự: yêu cầu phục vụ hoạt động SXKD, sau đó đến nhu cầu hành chính thường xuyên."
+    ],
+    "relevant_chunk_ids": [
+      "5fdcce11-b4e2-461c-9d58-5901f7384371"
+    ],
+    "category": "xe_cong_tac",
+    "source_file": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "breadcrumb": "917.QĐ-ACT_Quyết định ban hành Quy định về công tác đăng ký, điều phối xe và sử dụng xe trong Công ty Cổ phần Viễn thông ACT.pdf",
+    "conversation_id": null,
+    "turn_index": 1,
+    "history": [],
+    "rewrite_expected": "",
+    "allowed_jobs": [
+      "ALL"
+    ],
+    "allowed_departments": [
+      "ALL"
+    ]
+  }
+]
