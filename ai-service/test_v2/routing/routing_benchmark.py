@@ -257,7 +257,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Run routing benchmark test")
     parser.add_argument("--dataset", type=str,
-                       default="ai-service/test_v2/dataset/routing_test.json",
+                       default="ai-service/test_v2/routing/dataset/routing_test.json",
                        help="Path to test dataset JSON")
     parser.add_argument("--model", type=str, default="gemini-3.5-flash-lite",
                        help="Model to use for routing")
