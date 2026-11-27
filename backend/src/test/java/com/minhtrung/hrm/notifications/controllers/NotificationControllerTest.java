@@ -23,6 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.minhtrung.hrm.auth.dtos.internals.TokenPayload;
+import com.minhtrung.hrm.auth.services.JwtService;
 import com.minhtrung.hrm.common.context.RequestContext;
 import com.minhtrung.hrm.common.context.RequestContextHolder;
 import com.minhtrung.hrm.notifications.dtos.responses.NotificationResponse;
@@ -134,6 +135,12 @@ class NotificationControllerTest {
         @Primary
         NotificationService notificationService() {
             return Mockito.mock(NotificationService.class);
+        }
+
+        @Bean
+        @Primary
+        JwtService jwtService() {
+            return Mockito.mock(JwtService.class);
         }
     }
 }

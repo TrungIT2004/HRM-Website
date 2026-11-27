@@ -21,7 +21,7 @@ jobs:
         env:
           POSTGRES_DB: hrm
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: [REDACTED]
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         ports:
           - 5432:5432
         options: >-
@@ -59,7 +59,7 @@ jobs:
         working-directory: backend
         run: |
           cp src/main/resources/application.properties.example src/main/resources/application.properties
-          sed -i 's/YOUR_POSTGRESQL_PASSWORD/[REDACTED]/g' src/main/resources/application.properties
+          sed -i "s/YOUR_POSTGRESQL_PASSWORD/${{ secrets.POSTGRES_PASSWORD }}/g" src/main/resources/application.properties
           mkdir -p logs uploads
 
       - name: Run Backend Tests
@@ -67,7 +67,7 @@ jobs:
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/hrm
           SPRING_DATASOURCE_USERNAME: postgres
-          SPRING_DATASOURCE_PASSWORD: [REDACTED]
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           SPRING_DATA_REDIS_HOST: localhost
           SPRING_DATA_REDIS_PORT: 6379
         run: ./mvnw clean test

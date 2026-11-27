@@ -33,9 +33,12 @@ vi.mock('@/components/providers/NotificationProvider', () => ({
       },
     ],
     unreadCount: 1,
-    markRead: vi.fn(),
-    markAllRead: vi.fn(),
+    markRead: vi.fn().mockResolvedValue(undefined),
+    markAllRead: vi.fn().mockResolvedValue(undefined),
     isConnected: true,
+    fetchPage: vi.fn().mockResolvedValue({ content: [], totalElements: 0, totalPages: 0, size: 0, number: 0 }),
+    fetchUnreadCount: vi.fn().mockResolvedValue(undefined),
+    loadInitialNotifications: vi.fn().mockResolvedValue(undefined),
   }),
 }));
 
@@ -127,7 +130,7 @@ describe('NotificationBell', () => {
 
   it('marks notification as read on click', async () => {
     const { useNotifications } = await import('@/components/providers/NotificationProvider');
-    const mockMarkRead = vi.fn();
+    const mockMarkRead = vi.fn().mockResolvedValue(undefined);
     vi.mocked(useNotifications).mockReturnValue({
       notifications: [
         {
@@ -145,8 +148,11 @@ describe('NotificationBell', () => {
       ],
       unreadCount: 1,
       markRead: mockMarkRead,
-      markAllRead: vi.fn(),
+      markAllRead: vi.fn().mockResolvedValue(undefined),
       isConnected: true,
+      fetchPage: vi.fn().mockResolvedValue({ content: [], totalElements: 0, totalPages: 0, size: 0, number: 0 }),
+      fetchUnreadCount: vi.fn().mockResolvedValue(undefined),
+      loadInitialNotifications: vi.fn().mockResolvedValue(undefined),
     });
 
     render(<NotificationBell />);
@@ -219,9 +225,12 @@ describe('NotificationBell', () => {
         },
       ],
       unreadCount: 3,
-      markRead: vi.fn(),
-      markAllRead: vi.fn(),
+      markRead: vi.fn().mockResolvedValue(undefined),
+      markAllRead: vi.fn().mockResolvedValue(undefined),
       isConnected: true,
+      fetchPage: vi.fn().mockResolvedValue({ content: [], totalElements: 0, totalPages: 0, size: 0, number: 0 }),
+      fetchUnreadCount: vi.fn().mockResolvedValue(undefined),
+      loadInitialNotifications: vi.fn().mockResolvedValue(undefined),
     });
 
     render(<NotificationBell />);
