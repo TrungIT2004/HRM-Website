@@ -19,7 +19,7 @@ jobs:
       postgres:
         image: pgvector/pgvector:pg17
         env:
-          POSTGRES_DB: social_app
+          POSTGRES_DB: hrm
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: [REDACTED]
         ports:
@@ -65,7 +65,7 @@ jobs:
       - name: Run Backend Tests
         working-directory: backend
         env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/social_app
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/hrm
           SPRING_DATASOURCE_USERNAME: postgres
           SPRING_DATASOURCE_PASSWORD: [REDACTED]
           SPRING_DATA_REDIS_HOST: localhost
@@ -97,3 +97,7 @@ jobs:
       - name: Build Next.js
         working-directory: "HRM Website"
         run: npm run build
+
+      - name: Run ESLint
+        working-directory: "HRM Website"
+        run: npm run lint
