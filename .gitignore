@@ -250,3 +250,12 @@ ai-service/ocr_test_results*.txt
 # Root scratch / test artifacts (not source)
 passing.txt
 fix_test_file.py
+
+# Local-only artifacts (not for committing)
+.scratch/
+.vscode/
+AGENTS.md
+opencode.json
+Nginx/
+init-db/Postman Collections/
+init-db/Testing Docs/
