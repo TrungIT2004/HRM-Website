@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-hrm}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-[REDACTED]}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     command: >
@@ -55,9 +55,9 @@ services:
     ports:
       - "${AI_SERVICE_PORT:-8001}:8000"
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:[REDACTED]@hrm-database:5432/hrm_ai # ponytail: password part hardcodes URL-encoded default ([REDACTED]); re-encode manually if POSTGRES_PASSWORD changes
-      HRM_DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:[REDACTED]@hrm-database:5432/${POSTGRES_DB:-hrm} # same encoding caveat as above (Text-to-SQL business DB)
-      INTERNAL_API_SECRET: ${AI_SERVICE_SECRET:-[REDACTED]}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@hrm-database:5432/hrm_ai
+      HRM_DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@hrm-database:5432/${POSTGRES_DB:-hrm}
+      INTERNAL_API_SECRET: ${AI_SERVICE_SECRET}
       LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-1.5-flash}
@@ -84,11 +84,11 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://hrm-database:5432/${POSTGRES_DB:-hrm}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-[REDACTED]}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       SPRING_DATA_REDIS_HOST: hrm-cache
       SPRING_DATA_REDIS_PORT: ${REDIS_PORT:-6379}
       AI_SERVICE_URL: http://hrm-ai-service:8000
-      AI_SERVICE_SECRET: ${AI_SERVICE_SECRET:-[REDACTED]}
+      AI_SERVICE_SECRET: ${AI_SERVICE_SECRET}
     ports:
       - "${BACKEND_PORT:-8080}:8080"
     volumes:

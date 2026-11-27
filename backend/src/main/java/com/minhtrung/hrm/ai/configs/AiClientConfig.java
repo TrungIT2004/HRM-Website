@@ -11,8 +11,8 @@ public class AiClientConfig {
     @Value("${ai.service.base-url:http://localhost:8000}")
     private String baseUrl = "http://localhost:8000";
 
-    @Value("${ai.service.internal-secret:[REDACTED]}")
-    private String internalSecret = "[REDACTED]";
+    @Value("${ai.service.internal-secret}")
+    private String internalSecret;
 
     @Bean
     public RestTemplate aiRestTemplate() {

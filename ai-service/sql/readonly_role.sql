@@ -8,7 +8,7 @@
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'hrm_ai_reader') THEN
-        CREATE ROLE hrm_ai_reader WITH LOGIN PASSWORD '[REDACTED]';
+        CREATE ROLE hrm_ai_reader WITH LOGIN;
     END IF;
 END
 $$;

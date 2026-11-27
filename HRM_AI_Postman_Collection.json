@@ -23,7 +23,7 @@
     },
     {
       "key": "internalSecret",
-      "value": "[REDACTED]",
+      "value": "",
       "type": "string"
     },
     {

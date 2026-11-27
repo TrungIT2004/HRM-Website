@@ -46,7 +46,7 @@ export default function EmployeeDirectoryPage() {
   // Create Employee Form state
   const [newEmp, setNewEmp] = useState<CreateEmployeePayload>({
     email: '',
-    password: '[REDACTED]',
+    password: '',
     firstName: '',
     lastName: '',
     departmentId: '',
@@ -168,7 +168,7 @@ export default function EmployeeDirectoryPage() {
       setIsCreateModalOpen(false);
       setNewEmp({
         email: '',
-        password: '[REDACTED]',
+        password: '',
         firstName: '',
         lastName: '',
         departmentId: departments[0]?.departmentId || '',

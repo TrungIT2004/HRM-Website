@@ -31,7 +31,7 @@ app = FastAPI(
 )
 
 # Internal security secret shared between Spring Boot & FastAPI
-INTERNAL_API_SECRET = os.getenv("INTERNAL_API_SECRET", "[REDACTED]")
+INTERNAL_API_SECRET = os.getenv("INTERNAL_API_SECRET")
 
 async def verify_internal_secret(x_internal_secret: Optional[str] = Header(None)):
     """
