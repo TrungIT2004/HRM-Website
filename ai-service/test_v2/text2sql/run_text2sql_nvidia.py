@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Text-to-SQL test runner using NVIDIA NIM (OpenAI-compatible) with nemotron-3.5-super-vl-120b-a12b.
-Runs the 187 DB_ONLY questions from db_only_hybrid_questions.json
+Runs the 187 DB_ONLY questions from db_only_questions.json
 """
 import os
 import sys
@@ -35,7 +35,7 @@ from openai import OpenAI
 TEST_UID = "d47d452a-3459-4e3f-84f5-e9df27f9125b"
 
 # Questions file
-QS = Path(__file__).resolve().parent.parent.parent / "tests" / "db_only_hybrid_questions.json"
+QS = Path(__file__).resolve().parent / "dataset" / "db_only_questions.json"
 OUT = Path(__file__).resolve().parent / "db_retrieval_eval_nvidia.json"
 
 # Thresholds

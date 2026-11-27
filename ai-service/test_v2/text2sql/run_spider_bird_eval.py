@@ -5,7 +5,7 @@ Measures: EM (Exact Match), EX (Execution), TS (Test Suite), Valid SQL Rate.
 
 Uses production pipeline: build_text2sql_prompt -> validate_sql -> run_hrm_query
 with 7 Gemini API keys using token bucket + sticky assignment (gemini-3.5-flash-lite).
-Runs 187 DB_ONLY questions from db_only_hybrid_questions.json.
+Runs 187 DB_ONLY questions from db_only_questions.json.
 """
 import os
 import sys

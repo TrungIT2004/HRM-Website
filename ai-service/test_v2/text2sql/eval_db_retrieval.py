@@ -36,7 +36,7 @@ load_dotenv()
 from logger import create_logger  # noqa: E402
 
 TEST_UID = "d47d452a-3459-4e3f-84f5-e9df27f9125b"  # Dang Thanh Khai, joined 2026-01-02
-QS = Path(__file__).resolve().parent.parent / "db_only_hybrid_questions.json"
+QS = Path(__file__).resolve().parent / "dataset" / "db_only_questions.json"
 
 # Nguong dat de PASS (de xuat lan dau theo data seed 1 user Jan-Sep 2026;
 # hieu chinh sau khi co baseline that).

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Text-to-SQL test runner using Gemini 3.5 Flash Lite with token bucket + sticky key assignment.
-Runs the 187 DB_ONLY questions from db_only_hybrid_questions.json
+Runs the 187 DB_ONLY questions from db_only_questions.json
 """
 import os
 import sys
@@ -37,7 +37,7 @@ from google.genai import types
 TEST_UID = "d47d452a-3459-4e3f-84f5-e9df27f9125b"
 
 # Questions file
-QS = Path(__file__).resolve().parent.parent.parent / "tests" / "db_only_hybrid_questions.json"
+QS = Path(__file__).resolve().parent / "dataset" / "db_only_questions.json"
 OUT = Path(__file__).resolve().parent / "db_retrieval_eval_gemini.json"
 
 # Thresholds
