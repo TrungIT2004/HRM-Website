@@ -1,7 +1,0 @@
-- generic [active] [ref=f21e1]:
-  - paragraph [ref=f21e5]: Đang tải không gian làm việc...
-  - button "Open Next.js Dev Tools" [ref=f21e11] [cursor=pointer]
-  - alert [ref=f21e15]
-  - 'button "Đổi vai trò: Phạm Thị Cúc" [ref=f21e17] [cursor=pointer]':
-    - generic [ref=f21e21]: "Đổi vai trò:"
-    - generic [ref=f21e22]: Phạm Thị Cúc

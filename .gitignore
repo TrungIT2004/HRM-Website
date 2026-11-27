@@ -210,8 +210,10 @@ test-results/
 scratch/
 
 # Local codebase graph cache (binary, auto-regenerated)
+.agents/
 .codebase-memory/
 .codegraph/
+.playwright-mcp/
 
 # Claude Code local settings
 .claude/
