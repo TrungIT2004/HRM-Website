@@ -181,7 +181,7 @@ export default function DocumentsPage() {
   const [docxHtml, setDocxHtml] = useState<string>('');
   const [xlsxTable, setXlsxTable] = useState<React.ReactNode>(null);
   const [pdfBlobUrl, setPdfBlobUrl] = useState<string>('');
-  const pdfCanvasRef = useRef<HTMLCanvasElement>(null);
+  const pdfContainerRef = useRef<HTMLDivElement>(null);
 
   // Template modals (mẫu đơn): metadata nhập tay vì title/summary do người đăng đặt
   const [isTplUploadOpen, setIsTplUploadOpen] = useState(false);
@@ -386,42 +386,60 @@ export default function DocumentsPage() {
         return;
       }
     } else if ((type.includes('xls') || type.includes('sheet') || type.includes('csv')) && isAiDoc) {
-      // XLSX/CSV tài liệu AI: parse bằng SheetJS, render bảng đầu tiên
+      // XLSX/CSV tài liệu AI: parse bằng SheetJS, render TẤT CẢ sheet (xem hết file)
       try {
         const blob = await apiClient.fetchBlob(`/api/ai/documents/${doc.id}/download`);
         const arrayBuffer = await blob.arrayBuffer();
         const XLSX = await import('xlsx');
         const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
-        setXlsxTable(
-          <table className="w-full text-sm border-collapse border border-slate-200">
-            <thead>
-              <tr className="bg-slate-100">
-                {json[0]?.map((h: any) => (
-                  <th key={h} className="border border-slate-200 px-2 py-1 text-left">
-                    {String(h)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {json.slice(1).map((row: any, i: number) => (
-                <tr key={i} className="bg-white">
-                  {row.map((cell: any, j: number) => (
-                    <td key={j} className="border border-slate-200 px-2 py-1">
-                      {String(cell ?? '')}
-                    </td>
+        const sheets = workbook.SheetNames.map((sheetName) => {
+          const worksheet = workbook.Sheets[sheetName];
+          const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as any[][];
+          return (
+            <div key={sheetName} className="mb-6">
+              <h4 className="text-sm font-medium text-slate-700 mb-2">{sheetName}</h4>
+              <table className="w-full text-sm border-collapse border border-slate-200 mb-4">
+                <thead>
+                  <tr className="bg-slate-100">
+                    {json[0]?.map((h: any) => (
+                      <th key={h} className="border border-slate-200 px-2 py-1 text-left">
+                        {String(h)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {json.slice(1).map((row: any, i: number) => (
+                    <tr key={i} className="bg-white">
+                      {row.map((cell: any, j: number) => (
+                        <td key={j} className="border border-slate-200 px-2 py-1">
+                          {String(cell ?? '')}
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        );
+                </tbody>
+              </table>
+            </div>
+          );
+        });
+        setXlsxTable(sheets);
         previewUrl = '';
       } catch (err: any) {
         showToast(err.message || 'Không thể xem trước file Excel', 'error');
+        return;
+      }
+    } else if ((type.includes('doc') || type.includes('word')) && !isAiDoc) {
+      // DOCX/DOC mẫu đơn: fetch blob từ Spring Boot /uploads/, convert bằng mammoth
+      try {
+        const blob = await apiClient.fetchBlob(fileUrl);
+        const arrayBuffer = await blob.arrayBuffer();
+        const mammoth = await import('mammoth');
+        const { value: html } = await mammoth.convertToHtml({ arrayBuffer });
+        setDocxHtml(html);
+        previewUrl = '';
+      } catch (err: any) {
+        showToast(err.message || 'Không thể xem trước file Word', 'error');
         return;
       }
     } else if (type.includes('pdf')) {
@@ -452,24 +470,32 @@ export default function DocumentsPage() {
   };
 
   // Render PDF bằng pdf.js lên canvas khi pdfBlobUrl thay đổi (import động, tránh SSR)
+  // Vẽ đủ TẤT CẢ trang xếp dọc để người dùng cuộn xem hết file trong modal (không phân trang).
   useEffect(() => {
-    if (!pdfBlobUrl || !pdfCanvasRef.current) return;
+    if (!pdfBlobUrl || !pdfContainerRef.current) return;
     let cancelled = false;
+    pdfContainerRef.current.innerHTML = '';
     (async () => {
       try {
         const pdfjsLib = await import('pdfjs-dist');
         pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
         const pdf = await pdfjsLib.getDocument({ url: pdfBlobUrl }).promise;
         if (cancelled) return;
-        const page = await pdf.getPage(1);
-        if (cancelled) return;
-        const canvas = pdfCanvasRef.current!;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-        const viewport = page.getViewport({ scale: 1.5 });
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        await page.render({ canvas, canvasContext: ctx, viewport }).promise;
+        const totalPages = pdf.numPages;
+        const container = pdfContainerRef.current!;
+        for (let i = 1; i <= totalPages; i++) {
+          if (cancelled) return;
+          const page = await pdf.getPage(i);
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          if (!ctx) continue;
+          const viewport = page.getViewport({ scale: 1.1 });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.className = 'max-w-full mb-3 border border-slate-200/60 rounded-lg shadow-sm';
+          await page.render({ canvas, canvasContext: ctx, viewport }).promise;
+          container.appendChild(canvas);
+        }
       } catch {
         // pdf.js lỗi → để modal hiển thị trống, người dùng vẫn có nút tải xuống
       }
@@ -544,7 +570,14 @@ export default function DocumentsPage() {
 
     setIsUploading(true);
     try {
-      await aiService.uploadDocument(formData);
+      const res = await aiService.uploadDocument(formData);
+      if (res?.status === 'DUPLICATE') {
+        showToast(`"${uploadFile.name}" đã tồn tại trong hệ thống (nội dung giống hệt).`, 'info');
+        setIsUploadModalOpen(false);
+        setUploadFile(null);
+        await fetchDocuments();
+        return;
+      }
       showToast(`Đã tải lên "${uploadFile.name}" thành công! AI đang đọc và xử lý nội dung.`, 'success');
       setIsUploadModalOpen(false);
       setUploadFile(null);
@@ -1464,14 +1497,11 @@ export default function DocumentsPage() {
                   const isPdf = type.includes('pdf');
                   const isAiDoc = 'file_url' in previewDoc;
 
-                  // PDF tài liệu AI: render bằng pdf.js lên canvas
+                  // PDF tài liệu AI: render đủ tất cả trang xếp dọc, cuộn xem hết
                   if (isPdf && isAiDoc) {
                     return (
-                      <div className="w-full h-full flex items-center justify-center bg-slate-50 rounded-xl border border-slate-200">
-                        <canvas
-                          ref={pdfCanvasRef}
-                          className="max-w-full max-h-full object-contain"
-                        />
+                      <div className="w-full h-full overflow-auto p-2 bg-slate-50 rounded-xl border border-slate-200">
+                        <div ref={pdfContainerRef} className="flex flex-col items-center gap-2" />
                       </div>
                     );
                   }
@@ -1490,6 +1520,13 @@ export default function DocumentsPage() {
 
                   // DOCX tài liệu AI: HTML từ mammoth
                   if ((type.includes('doc') || type.includes('word')) && isAiDoc && docxHtml) {
+                    return (
+                      <div className="w-full h-full overflow-auto p-4 bg-slate-50 rounded-xl border border-slate-200" dangerouslySetInnerHTML={{ __html: docxHtml }} />
+                    );
+                  }
+
+                  // DOCX mẫu đơn: HTML từ mammoth
+                  if ((type.includes('doc') || type.includes('word')) && !isAiDoc && docxHtml) {
                     return (
                       <div className="w-full h-full overflow-auto p-4 bg-slate-50 rounded-xl border border-slate-200" dangerouslySetInnerHTML={{ __html: docxHtml }} />
                     );

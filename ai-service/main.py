@@ -309,6 +309,24 @@ async def upload_document(
     cursor = conn.cursor()
 
     try:
+        # 0. Kiểm tra trùng nội dung (SHA-256): nếu đã tồn tại -> không lưu file mới, trả về DUPLICATE
+        cursor.execute(
+            "SELECT id, file_name, file_path, file_size FROM knowledge_documents WHERE file_hash = %s;",
+            (file_hash,)
+        )
+        existing = cursor.fetchone()
+        if existing:
+            return {
+                "status": "DUPLICATE",
+                "message": f"Nội dung file này đã được tải lên trước đó ('{existing[1]}').",
+                "document_id": str(existing[0]),
+                "file_name": existing[1],
+                "file_path": existing[2],
+                "file_size": existing[3],
+                "file_hash": file_hash,
+                "file_url": f"/api/ai/documents/{existing[0]}/download"
+            }
+
         # 1. Lưu file vào thư mục lưu trữ (giữ nguyên tên gốc, tự thêm _v2 nếu trùng tên mà khác hash)
         saved_filename = get_unique_filename(DOCS_STORAGE_DIR, file.filename, file_hash)
         saved_file_path = DOCS_STORAGE_DIR / saved_filename
